@@ -7,3 +7,5 @@
 [Meeting/Stand-Up Minutes (Google Docs)](https://docs.google.com/document/d/1bEWNj8N-nrhuNd3nkQR6mN3cHlwxDy2KsVYWpjgM144/edit?usp=sharing)
 
 [GDD (Google Docs)](https://docs.google.com/document/d/138P-gy7S378_PWAOKHQOqxaJLk1roNfqsPBRjCZCgc0/edit?usp=sharing)
+
+[Assets/Arts (Google Docs)](https://docs.google.com/document/d/1WiUMF1s-twG4LHXwUNz6rZ53zUXrN4-V_yXQnwBV0CE/edit#)
