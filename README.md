@@ -3,3 +3,5 @@
 Feel free to fill out this README or other documentation as you see fit :)
 
 [Important Links](docs/links.md)
+
+[Style Guide](docs/style.md)
