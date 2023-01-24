@@ -10,4 +10,4 @@ We will be using a VCS workflow called "Trunk-based" development. For those of y
 that this is not the same. Where GitFlow creates deep branch patterns such as main->dev->feature_XxXx, the focus of Trunk-based is 
 to have a single "main" branch and to only create single short lived branches off of the main branch.
 
-<insert fig>
+![Visual Representation of TBDev vs GitFlow](figs/TBD_vs_flow.png)
