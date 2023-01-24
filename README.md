@@ -5,4 +5,7 @@ Unity Version 2021.3.16f1 (Latest Long-Term Support Release)
 
 [Important Links](docs/links.md)
 
+[Practices Guide!](docs/practices.md)
+
 [Style Guide](docs/style.md)
+
