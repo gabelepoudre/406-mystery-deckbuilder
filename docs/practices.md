@@ -5,6 +5,8 @@ Provides a (somewhat) verbose guide as to the expected practices when developing
 
 ## Git
 
+TODO: How to use git for those unfamiliar
+
 ### Workflow
 We will be using a VCS workflow called "Trunk-based" development. Specifically- we will have a "low-trust" TBD workflow where pushing changes directly to main is heavily discouraged, and we instead use low-depth branches and pull-requests for any major change. For those of you with experience with GitFlow (feature branches), be aware
 that this is not the same. Where GitFlow creates deep branch patterns such as main->dev->feature_XxXx->..., the focus of Trunk-based is 
@@ -34,7 +36,38 @@ We will be implementing a "1 or more" approval policy for Pull Request, which me
 #### Creating a Pull Request
 Note that a guide will be pinned to the bottom of this document detailing how to create a pull request. Additionally, I (Gabriel) plan to do a live PR demo at the earliest convenience over discord. 
 
-Once you have a branch filled with changes, first you should (do your best to) ensure that it is bug-free and has been manually tested. Once this is done, navigate to [our GitHub repo](https://github.com/gabelepoudre/406-mystery-deckbuilder) and ensure that you have selected your branch (it defaults to main) while on the code tab. Once this is done, you should see a green banner that says something along the lines of "Start Pull Request". **WARNING: Ensure that you are merging your_branch into main (main<-your_branch) and not some other branch**. To gain the full benefit of the PR UI for yourself, scroll to the bottom of the PR creation to (something along the lines of) "Open Pull Request". There will be a dropdown menu that allows you to select "Draft Pull Request". Once this has been selected, you can modify your draft and publish at your leisure for review. This also allows you to navigate to the (something along the lines of) "Review Changes" tab, where you can view the changes you have made and *manually review them *which is a mandatory step of the PR process*.
+Once you have a branch filled with changes, first you should (do your best to) ensure that it is bug-free and has been manually tested. Once this is done, navigate to [our GitHub repo](https://github.com/gabelepoudre/406-mystery-deckbuilder) and ensure that you have selected your branch (it defaults to main) while on the code tab. Once this is done, you should see a green banner that says something along the lines of "Start Pull Request". **WARNING: Ensure that you are merging your_branch into main (main<-your_branch) and not some other branch**. To gain the full benefit of the PR UI for yourself, scroll to the bottom of the PR creation to (something along the lines of) "Open Pull Request". There will be a dropdown menu that allows you to select "Draft Pull Request". Once this has been selected, you can modify your draft and publish at your leisure for review. This also allows you to navigate to the (something along the lines of) "Review Changes" tab, where you can view the changes you have made and *manually review them *which is a mandatory step of the PR process*. After you believe you have completed your PR, you can publish it for review. You should request reviewers using the right menu. It is at your discretion to choose who you wish to request, but I recommend including everyone who may have good insight on the work you have done.
+
+**WARNING: ALWAYS ENSURE THAT YOUR BRANCH HAS BEEN UPDATED TO THE MOST RECENT main BRANCH!!!**
+
+Once your PR has been approved, please:
+- *Really* make sure it is up to date with main. You can reverse other people's work if you are not careful here
+- Merge into main
+- Delete your branch (it will prompt you to do this)
 
 #### Reviewing
-Reviewing someone's 
+Reviewing someone's PR is quite easy. Navigate to the (something along the lines of) "Review Changes" tab. A list of file diffs will be displayed to show you the changes. Read through the individuals code. It is possible on any diff to add a comment refering to 1 or more lines of code. Click and slide over the relevant lines of code and you will be prompted to start a review and add a note. Once a diff has been reviewed, it can be closed to easily keep track of what has been seen. Files labelled as seen will be remembered, so a review can be started at one time and finished another without losing progress. As a highly general rule, all comments that do not need to be answered before approval should be started with "NIT: ..." to imply that the comment is "Nit Picking".
+
+Some things to keep in mind while reviewing the PR:
+- Have they adhered to the PR Template?
+- Is their PR checklist filled?
+- Is a given change out of scope for the PR? This is not a dealbreaker, but commonly a NIT to ensure a change was not kept/commited accidentally
+- Are they adhering (somewhat) to the [Style Guide](style.md)
+- Are they adhering to this practices document?
+- Is the code readable? Is complicated code well documented?
+- Is the code free of logical errors (hard to see just reading, do your best)
+- Are all additions free of typos (be generous here)?
+- Are the number of changed files reasonable? A high file-change count may imply some temp/autogenerated files were added accidentally, or that the branch has not been updated to main
+- Others?
+
+Once your review is complete, you can submit it in one of 3 ways:
+- Approval, which implies the code is good to be merged. 
+- Comment without approval, which implies that you personally do not wish to sign off on the PR, but you do not wish to prevent other reviews from approving the work. Mostly for when there are changes you would *like* done (typos) but don't wish to slow development
+- Request Changes, which implies some issue *must* be rectified and the PR cannot be merged until it is fixed and you have okay'd it. Mostly for when there is a bug, logic error, or an egregious violation of the [Style Guide](style.md) or this practices document
+
+## Structure
+This one is quite short. Please ensure that code you have added is in some way nicely organized into subfolders. Use common sense:
+- Pasting a prefab into the project root is not okay
+- Putting a prefab into root/Prefabs/ is okay but one more level of folder (root/Prefabs/Environment) is recommended.
+- Placing an asset in the root is also not okay, follow same rules as prefabs
+- Placing scripts in the root is really not okay. Scripts should be highly structured (root/Scripts/ClickInteractions/hover_text.cs)
