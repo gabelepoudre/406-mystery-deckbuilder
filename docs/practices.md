@@ -71,3 +71,6 @@ This one is quite short. Please ensure that code you have added is in some way n
 - Putting a prefab into root/Prefabs/ is okay but one more level of folder (root/Prefabs/Environment) is recommended.
 - Placing an asset in the root is also not okay, follow same rules as prefabs
 - Placing scripts in the root is really not okay. Scripts should be highly structured (root/Scripts/ClickInteractions/hover_text.cs)
+
+## Code Standards and Commenting
+TODO!
