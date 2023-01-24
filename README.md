@@ -1,6 +1,7 @@
 # Name TBD, A CMPT406 Unity Project
+## Claws & Clues Interactive
 
-Feel free to fill out this README or other documentation as you see fit :)
+Unity Version 2021.3.16f1 (Latest Long-Term Support Release)
 
 [Important Links](docs/links.md)
 
