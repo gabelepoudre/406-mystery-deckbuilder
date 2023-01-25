@@ -1,5 +1,3 @@
-# Note: Incomplete
-
 # Practices Guide
 Not what you're looking for? Check [The Miscellaneous Guides](guides.md) or [The Style Guide](style.md)
 
