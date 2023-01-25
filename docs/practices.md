@@ -1,7 +1,7 @@
 # Note: Incomplete
 
 # Practices Guide
-Not what you're looking for? Check [The Miscellaneous Guides](guides.md#unity) or [The Style Guide](style.md)
+Not what you're looking for? Check [The Miscellaneous Guides](guides.md) or [The Style Guide](style.md)
 
 
 Provides a (somewhat) verbose guide as to the expected practices when developing. Do your best to follow everything here, unless explicitly labelled as optional. If you have a question, do not hesitate to ask in the #tech channel on discord or to DM me @ G_#5865
@@ -17,10 +17,10 @@ Git itself only contains the version controlling utilities. Storing the "histori
 
 As you can imagine, there are lots of verbs and lots of arguments for those verbs to use command-line git. For that reason, I (note: windows user) use a GUI called "GitHub Desktop" which provides a clean UI for GitHub specifically. Another visual option you might like is TortoiseGit, which is a git UI that builds into a your standard right-click windows menu.
 
-If you you need a more in depth guide on using git, check the [Misc Guides](guides.md) where I (hopefully) have added one on Git Fundamentals
+If you you need a more in depth guide on using git, check the [Misc Guides](guides.md#command-line-git-basics) where I have added one on Git Fundamentals
 
 ### Workflow
-We will be using a VCS workflow called "Trunk-based" development. Specifically- we will have a "low-trust" TBD workflow where pushing changes directly to main is heavily discouraged, and we instead use low-depth branches and pull-requests for any major change. For those of you with experience with GitFlow (feature branches), be aware
+We will be using a VCS workflow called ["Trunk-based" development](guides.md#trunk-based-development-with-pull-requests-blog). Specifically- we will have a "low-trust" TBD workflow where pushing changes directly to main is heavily discouraged, and we instead use low-depth branches and pull-requests for any major change. For those of you with experience with GitFlow (feature branches), be aware
 that this is not the same. Where GitFlow creates deep branch patterns such as main->dev->feature_XxXx->..., the focus of Trunk-based is 
 to have a single "main" branch and to only create single short lived branches off of the main branch (main->some_code).
 
@@ -46,7 +46,7 @@ A "Pull Request" is largely what it sounds like- it is a "Request" to "Pull" the
 We will be implementing a "1 or more" approval policy for Pull Request, which means *at least* one other member of the team will need to review your changes and approve of them. It is highly encouraged to regularily check for live Pull Requests on GitHub and review them. While everyone on the team is considered a valid reviewer, reviewing Pull Requests will be a high priority for the Tech Lead and Test Lead.
 
 #### Creating a Pull Request
-For a decent walkthrough, consider checking the [Misc Guides](guides.md) for one on Pull Requests. Additionally, I (Gabriel) plan to do a live PR demo at the earliest convenience over discord. 
+For the docs, consider checking the [Misc Guides](guides.md#pull-request-docs). Additionally, I (Gabriel) plan to do a live PR demo at the earliest convenience over discord. 
 
 Once you have a branch filled with changes, first you should (do your best to) ensure that it is bug-free and has been manually tested. Once this is done, navigate to [our GitHub repo](https://github.com/gabelepoudre/406-mystery-deckbuilder) and ensure that you have selected your branch (it defaults to main) while on the code tab. Once this is done, you should see a green banner that says something along the lines of "Start Pull Request". **WARNING: Ensure that you are merging your_branch into main (main<-your_branch) and not some other branch**. To gain the full benefit of the PR UI for yourself, scroll to the bottom of the PR creation to (something along the lines of) "Open Pull Request". There will be a dropdown menu that allows you to select "Draft Pull Request". Once this has been selected, you can modify your draft and publish at your leisure for review. This also allows you to navigate to the (something along the lines of) "Review Changes" tab, where you can view the changes you have made and *manually review them *which is a mandatory step of the PR process*. After you believe you have completed your PR, you can publish it for review. You should request reviewers using the right menu. It is at your discretion to choose who you wish to request, but I recommend including everyone who may have good insight on the work you have done.
 
