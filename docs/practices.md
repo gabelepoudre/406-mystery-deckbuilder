@@ -18,7 +18,7 @@ As you can imagine, there are lots of verbs and lots of arguments for those verb
 If you you need a more in depth guide on using git, check the [Misc Guides](guides.md#command-line-git-basics) where I have added one on Git Fundamentals
 
 ### Workflow
-We will be using a VCS workflow called ["Trunk-based" development](guides.md#trunk-based-development-with-pull-requests-blog). Specifically- we will have a "low-trust" TBD workflow where pushing changes directly to main is heavily discouraged, and we instead use low-depth branches and pull-requests for any major change. For those of you with experience with GitFlow (feature branches), be aware
+We will be using a VCS workflow called ["Trunk-based" development](guides.md#trunk-based-development-with-pull-requests-blog). Specifically- we will have a "low-trust" TBD workflow where pushing changes directly to main is <s>heavily discouraged</s> disallowed, and we instead use low-depth branches and pull-requests for any change. For those of you with experience with GitFlow (feature branches), be aware
 that this is not the same. Where GitFlow creates deep branch patterns such as main->dev->feature_XxXx->..., the focus of Trunk-based is 
 to have a single "main" branch and to only create single short lived branches off of the main branch (main->some_code).
 
@@ -26,7 +26,7 @@ Visually, the goal is for the merge history to look like the top of the followin
 
 ![Visual Representation of TBD vs GitFlow](figs/TBD_vs_flow.png)
 
-The largest takeaway from this is that <u>SHORT LIVED and NARROW SCOPE</u> branches will be created to add code, and once that code is completely functioning (free of bugs, manually tested) you submit a Pull Request to have the branch code merged into main. Whenever you wish to add a non-trivial change to the repo, you should create a branch and start working. A branch should not live more than a few days. If a branch is more than a week old, I will contact you to see if we can break up the additions you are making.
+The largest takeaway from this is that <u>SHORT LIVED and NARROW SCOPE</u> branches will be created to add code, and once that code is completely functioning (free of bugs, manually tested) you submit a Pull Request to have the branch code merged into main. Whenever you wish to add a change to the repo, you should create a branch and start working. A branch should not live more than a few days. If a branch is more than a week old, I will contact you to see if we can break up the additions you are making.
 
 #### Branch Naming
 In my experience, it is helpful to tie an owner's name to a branch in small teams. This is **not** to encourage any kind of code ownership, as working on other people's branches is encouraged. It is instead to give an indicator to who needs to be contacted if a branch is long living, or has issues, etc. For this reason, branches should be named [nsid]/[what_the_branch_is_for]. Some examples:
