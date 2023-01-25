@@ -18,7 +18,7 @@ As you can imagine, there are lots of verbs and lots of arguments for those verb
 If you you need a more in depth guide on using git, check the [Misc Guides](guides.md#command-line-git-basics) where I have added one on Git Fundamentals
 
 ### Workflow
-We will be using a VCS workflow called ["Trunk-based" development](guides.md#trunk-based-development-with-pull-requests-blog). Specifically- we will have a "low-trust" TBD workflow where pushing changes directly to main is <s>heavily discouraged</s>disallowed, and we instead use low-depth branches and pull-requests for any change. For those of you with experience with GitFlow (feature branches), be aware
+We will be using a VCS workflow called ["Trunk-based" development](guides.md#trunk-based-development-with-pull-requests-blog). Specifically- we will have a "low-trust" TBD workflow where pushing changes directly to main is <s>heavily discouraged</s> disallowed, and we instead use low-depth branches and pull-requests for any change. For those of you with experience with GitFlow (feature branches), be aware
 that this is not the same. Where GitFlow creates deep branch patterns such as main->dev->feature_XxXx->..., the focus of Trunk-based is 
 to have a single "main" branch and to only create single short lived branches off of the main branch (main->some_code).
 
