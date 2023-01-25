@@ -86,5 +86,22 @@ Generally, the [Style Guide](style.md) is best guide for struture. Only a few "h
 #### Doc Comments
 While it can be tedious, I am asking that all **custom** classes and methods are multi-line doc commented. Unity built-ins (Start(), Update(), etc) do not need to be multi-line commented.
 
-Optional, but suggested- Also include a multi-line comment at the top of your scripts that add you as an author and detail the inner workings of the script
+Optional, but suggested- Also include a multi-line comment at the top of your scripts that add you as an author and detail the inner workings of the script.
+
+Long form example (excuse any errors, I don't have an IDE here):
+
+TestScript.py
+```csharp
+/*
+* author(s): Gabriel LePoudre, John Doe
+* 
+* This script is for a demonstration for a markdown
+*/
+
+public class Card {
+
+}
+
+```
+ 
 
