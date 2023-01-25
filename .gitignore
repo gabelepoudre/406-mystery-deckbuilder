@@ -49,6 +49,9 @@ ExportedObj/
 *.pdb.meta
 *.mdb.meta
 
+# Rider Stuff
+*.idea*
+
 # Unity3D generated file on crash reports
 sysinfo.txt
 
