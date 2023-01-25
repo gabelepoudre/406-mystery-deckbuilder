@@ -96,7 +96,7 @@ Generally, the [Style Guide](style.md) is best guide for struture. Only a few "h
 
 ### Commenting
 #### Doc Comments
-While it can be tedious, I am asking that all **custom** classes and methods are multi-line doc commented. Unity built-ins (Start(), Update(), etc) do not need to be multi-line commented.
+While it can be tedious, I am asking that all **custom** classes and **non-trivial** methods are multi-line doc commented. Unity built-ins (Start(), Update(), MonoBehaviour etc) do not need to be multi-line commented. Specifically, "trivial" methods include things like constructors, getters, setters, incrementers, or anything painfully obvious. While this is somewhat subjective, use your best judgement and lean towards adding a comment.
 
 Optional, but suggested- Also include a multi-line comment at the top of your scripts that add you as an author and detail the inner workings of the script. 
 
@@ -107,13 +107,77 @@ Long form example (excuse any errors, I don't have an IDE here):
 TestScript.py
 ```csharp
 /*
-* author(s): Gabriel LePoudre, Jane Doe
-* 
-* This script is for a demonstration for a markdown
-*/
+ * author(s): Gabriel LePoudre, Jane Doe
+ * 
+ * This script exists as an example of what a "nicely" commented file may look like.
+ * 
+ * Contains the exhaustive list of cards, as well as an abstract base class they extend.
+ * Contains the Attribute enum, which is used to organize card attributes while keeping them serializable
+ * 
+ * Note: This may not be the best way to create cards as someone needs to manually set all the ids as unique... Perhaps an enum?
+ */
 
-public class Card {
+// we don't even use these here...
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
+/* the Attribute enum is used to store all attributes that a card can have */
+public enum Attribute {
+    Intimidation,
+    Sympathy,
+    Confusion,
+}
+
+/*
+ * Card is an abstract class that all cards override/inherit from
+ * 
+ * Note: There is currently no abstract methods defined in this class...
+ */
+public abstract class Card {
+
+    private readonly int _id;
+    private readonly Attribute _attribute;
+    private readonly string _name;
+
+    public Card(int id, int attribute, string name) {
+        this._id = id;
+        this._attribute = (Attribute)attribute;
+        this._name = name;
+    }
+
+    // some getters
+    public int GetId() { return this._id; }
+    public Attribute GetAttribute() { return this._attribute; }
+    public int GetAttributeAsInt() { return (int)this._attribute; }
+    public string GetName() { return this._name; }
+
+    /*
+     * This is an example of a "non-trivial" method. You should probably explain what's going on here
+     */
+    public int AddIdToTheAttributeIntForNoReason() {
+        return this._id + this.GetAttributeAsInt();
+    }
+
+}
+
+/*
+ * #1 SomeNewCard (attribute: Confusion) 
+ * 
+ * Note: While it may seem redundant at times, try to *always* comment your custom classes 
+ */
+public class SomeNewCard : Card {
+    public SomeNewCard() : base(1, (int)Attribute.Confusion, "SomeNewCard") { }
+}
+
+/* #2 AnotherNewCard (attribute: Intimidation) */
+public class AnotherNewCard : Card {
+    public AnotherNewCard() : base(2, (int)Attribute.Intimidation, "AnotherNewCard") { }
+}
+
+/* #3 AThirdNewCard (attribute: Sympathy) */
+public class AThirdNewCard : Card {
+    public AThirdNewCard() : base(3, (int)Attribute.Sympathy, "AThirdCard") { }
 }
 
 ```
