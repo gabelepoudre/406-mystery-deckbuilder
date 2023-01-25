@@ -1,14 +1,24 @@
-# Note: Incomplete
-
 # Practices Guide
+Not what you're looking for? Check [The Miscellaneous Guides](guides.md) or [The Style Guide](style.md)
+
+
 Provides a (somewhat) verbose guide as to the expected practices when developing. Do your best to follow everything here, unless explicitly labelled as optional. If you have a question, do not hesitate to ask in the #tech channel on discord or to DM me @ G_#5865
 
 ## Git
 
-TODO: How to use git for those unfamiliar
+As a brief reminder, Git is a Version Control System (VCS) that allows for multiple *versions* of something to be *controlled* without storing entire backups of a previous version. This is done by keeping track of the differences or "diffs" that have modified a project throughout multiple "merges". These incremental changes create a "history" of the project's progress and allows for changes to be rolled back. More important for us is that this technology allows for easy team development as two individuals can work on seperate parts of a project and merge their changes into the same document.
+
+Git itself only contains the version controlling utilities. Storing the "histories" remotely which enables team git use is done by different companies, like GitHub or GitLab. Git also operates on a command line, where changes are manipulated with a few verbs (note: this list is not at all exhaustive)-
+- `git add --all` Would add all of your current changes
+- `git commit -m "Update practices.md"` Would commit those changes with the message "Update practices.md"
+- `git push` Would push your commits to wherever your changes for this project are being stored (configured earlier)
+
+As you can imagine, there are lots of verbs and lots of arguments for those verbs to use command-line git. For that reason, I (note: windows user) use a GUI called "GitHub Desktop" which provides a clean UI for GitHub specifically. Another visual option you might like is TortoiseGit, which is a git UI that builds into a your standard right-click windows menu.
+
+If you you need a more in depth guide on using git, check the [Misc Guides](guides.md#command-line-git-basics) where I have added one on Git Fundamentals
 
 ### Workflow
-We will be using a VCS workflow called "Trunk-based" development. Specifically- we will have a "low-trust" TBD workflow where pushing changes directly to main is heavily discouraged, and we instead use low-depth branches and pull-requests for any major change. For those of you with experience with GitFlow (feature branches), be aware
+We will be using a VCS workflow called ["Trunk-based" development](guides.md#trunk-based-development-with-pull-requests-blog). Specifically- we will have a "low-trust" TBD workflow where pushing changes directly to main is heavily discouraged, and we instead use low-depth branches and pull-requests for any major change. For those of you with experience with GitFlow (feature branches), be aware
 that this is not the same. Where GitFlow creates deep branch patterns such as main->dev->feature_XxXx->..., the focus of Trunk-based is 
 to have a single "main" branch and to only create single short lived branches off of the main branch (main->some_code).
 
@@ -34,7 +44,7 @@ A "Pull Request" is largely what it sounds like- it is a "Request" to "Pull" the
 We will be implementing a "1 or more" approval policy for Pull Request, which means *at least* one other member of the team will need to review your changes and approve of them. It is highly encouraged to regularily check for live Pull Requests on GitHub and review them. While everyone on the team is considered a valid reviewer, reviewing Pull Requests will be a high priority for the Tech Lead and Test Lead.
 
 #### Creating a Pull Request
-Note that a guide will be pinned to the bottom of this document detailing how to create a pull request. Additionally, I (Gabriel) plan to do a live PR demo at the earliest convenience over discord. 
+For the docs, consider checking the [Misc Guides](guides.md#pull-request-docs). Additionally, I (Gabriel) plan to do a live PR demo at the earliest convenience over discord. 
 
 Once you have a branch filled with changes, first you should (do your best to) ensure that it is bug-free and has been manually tested. Once this is done, navigate to [our GitHub repo](https://github.com/gabelepoudre/406-mystery-deckbuilder) and ensure that you have selected your branch (it defaults to main) while on the code tab. Once this is done, you should see a green banner that says something along the lines of "Start Pull Request". **WARNING: Ensure that you are merging your_branch into main (main<-your_branch) and not some other branch**. To gain the full benefit of the PR UI for yourself, scroll to the bottom of the PR creation to (something along the lines of) "Open Pull Request". There will be a dropdown menu that allows you to select "Draft Pull Request". Once this has been selected, you can modify your draft and publish at your leisure for review. This also allows you to navigate to the (something along the lines of) "Review Changes" tab, where you can view the changes you have made and *manually review them *which is a mandatory step of the PR process*. After you believe you have completed your PR, you can publish it for review. You should request reviewers using the right menu. It is at your discretion to choose who you wish to request, but I recommend including everyone who may have good insight on the work you have done.
 
@@ -84,7 +94,90 @@ Generally, the [Style Guide](style.md) is best guide for struture. Only a few "h
 
 ### Commenting
 #### Doc Comments
-While it can be tedious, I am asking that all **custom** classes and methods are multi-line doc commented. Unity built-ins (Start(), Update(), etc) do not need to be multi-line commented.
+While it can be tedious, I am asking that all **custom** classes and **non-trivial** methods are multi-line doc commented. Unity built-ins (Start(), Update(), MonoBehaviour etc) do not need to be multi-line commented. Specifically, "trivial" methods include things like constructors, getters, setters, incrementers, or anything painfully obvious. While this is somewhat subjective, use your best judgement and lean towards adding a comment.
 
-Optional, but suggested- Also include a multi-line comment at the top of your scripts that add you as an author and detail the inner workings of the script
+Optional, but suggested- Also include a multi-line comment at the top of your scripts that add you as an author and detail the inner workings of the script. 
+
+**NOTE: authors are included ONLY for convenience. Code "ownership" leads to slow and bad development. Whatever you commit to the repo belongs to the group, not you**
+
+Long form example (excuse any errors, I don't have an IDE here):
+
+TestScript.py
+```csharp
+/*
+ * author(s): Gabriel LePoudre, Jane Doe
+ * 
+ * This script exists as an example of what a "nicely" commented file may look like.
+ * 
+ * Contains the exhaustive list of cards, as well as an abstract base class they extend.
+ * Contains the Attribute enum, which is used to organize card attributes while keeping them serializable
+ * 
+ * Note: This may not be the best way to create cards as someone needs to manually set all the ids as unique... Perhaps an enum?
+ */
+
+// we don't even use these here...
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+/* the Attribute enum is used to store all attributes that a card can have */
+public enum Attribute {
+    Intimidation,
+    Sympathy,
+    Confusion,
+}
+
+/*
+ * Card is an abstract class that all cards override/inherit from
+ * 
+ * Note: There is currently no abstract methods defined in this class...
+ */
+public abstract class Card {
+
+    private readonly int _id;
+    private readonly Attribute _attribute;
+    private readonly string _name;
+
+    public Card(int id, int attribute, string name) {
+        this._id = id;
+        this._attribute = (Attribute)attribute;
+        this._name = name;
+    }
+
+    // some getters
+    public int GetId() { return this._id; }
+    public Attribute GetAttribute() { return this._attribute; }
+    public int GetAttributeAsInt() { return (int)this._attribute; }
+    public string GetName() { return this._name; }
+
+    /*
+     * This is an example of a "non-trivial" method. You should probably explain what's going on here
+     */
+    public int AddIdToTheAttributeIntForNoReason() {
+        return this._id + this.GetAttributeAsInt();
+    }
+
+}
+
+/*
+ * #1 SomeNewCard (attribute: Confusion) 
+ * 
+ * Note: While it may seem redundant at times, try to *always* comment your custom classes 
+ */
+public class SomeNewCard : Card {
+    public SomeNewCard() : base(1, (int)Attribute.Confusion, "SomeNewCard") { }
+}
+
+/* #2 AnotherNewCard (attribute: Intimidation) */
+public class AnotherNewCard : Card {
+    public AnotherNewCard() : base(2, (int)Attribute.Intimidation, "AnotherNewCard") { }
+}
+
+/* #3 AThirdNewCard (attribute: Sympathy) */
+public class AThirdNewCard : Card {
+    public AThirdNewCard() : base(3, (int)Attribute.Sympathy, "AThirdCard") { }
+}
+
+```
+ 
 

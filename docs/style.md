@@ -1,4 +1,5 @@
 # Style Guidelines
+Not what you're looking for? Check [The Miscellaneous Guides](guides.md) or [The Practices Guide](practices.md)
 
 Unless anyone feels strongly against it, we will be employing a relaxed* version of [Google's C# Style Guide](https://google.github.io/styleguide/csharp-style.html). The
 most important takeaway from this style guide is the section on naming rules: PascalCase in most cases, camelCase for _privateVariables and parameters. I think as a 
