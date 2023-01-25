@@ -1,6 +1,9 @@
 # Note: Incomplete
 
 # Practices Guide
+Not what you're looking for? Check [The Miscellaneous Guides](guides.md#Unity) or [The Style Guide](style.md)
+
+
 Provides a (somewhat) verbose guide as to the expected practices when developing. Do your best to follow everything here, unless explicitly labelled as optional. If you have a question, do not hesitate to ask in the #tech channel on discord or to DM me @ G_#5865
 
 ## Git
