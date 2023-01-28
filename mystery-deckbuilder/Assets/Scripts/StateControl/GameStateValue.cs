@@ -11,18 +11,18 @@ using System.Collections.Generic;
  * Use this class to store values within the GameState.cs file and allow subscribers to be notified on change
  */
 public class GameStateValue<T> {
-    private T __value;
-    private List<GameStateValueSubscriber<T>> __subscribers;
+    private T _value;
+    private List<GameStateValueSubscriber<T>> _subscribers = new();
 
     public GameStateValue(T value) {
-        this.__value = value;
+        this._value = value;
     }
 
-    public T GetValue() { return this.__value; }
+    public T GetValue() { return this._value; }
 
     /* Adds a given subscriber to the subscriber list */
     public void Subscribe(GameStateValueSubscriber<T> subscriberObject) {
-        this.__subscribers.Add(subscriberObject);
+        this._subscribers.Add(subscriberObject);
     }
 
     /*
@@ -30,10 +30,10 @@ public class GameStateValue<T> {
      * NOTE: changes notifies all subscribers of the change, if any exist
      */
     public void ChangeValue(T newValue) {
-        this.__value = newValue;
+        this._value = newValue;
 
         // notify the subscribers
-        foreach (GameStateValueSubscriber<T> sub in this.__subscribers) {
+        foreach (GameStateValueSubscriber<T> sub in this._subscribers) {
             sub.OnValueChange(newValue);
         }
     }
