@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class TestSubscriber : MonoBehaviour
 {
-    private readonly ValueChangeSubscriber _valueChangeSubscriber = new();
+    private ValueChangeSubscriber _valueChangeSubscriber = new(this);
     private class ValueChangeSubscriber : GameStateValueSubscriber<int>
     {
         public TestSubscriber _referenceToOwner;
-        public ValueChangeSubscriber() : base(GameState.CurrentState().value) { }
+        public ValueChangeSubscriber(TestSubscriber referenceToOwner) : base(GameState.CurrentState().value) { _referenceToOwner = referenceToOwner; }
         public override void OnValueChange(int newValue)
         {
             _referenceToOwner.TheLog();
