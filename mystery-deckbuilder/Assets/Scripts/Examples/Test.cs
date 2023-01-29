@@ -17,10 +17,10 @@ public class Test : MonoBehaviour {
             _delayLeft-=1;
         }
         else if (_delayLeft == 0) {
-            GameStateValue<int> currentValueReference = GameState.CurrentState().value;
-            Debug.Log(currentValueReference.GetValue());
-            currentValueReference.ChangeValue(currentValueReference.GetValue() + 1);
-            Debug.Log(currentValueReference.GetValue());
+            GameStateValue<int> currentValueReference = GameState.Meta.currentArc;
+            Debug.Log(currentValueReference.Value);
+            currentValueReference.Value += 1;
+            Debug.Log(currentValueReference.Value);
             _delayLeft -= 1;
 
             if (resetGameState) {

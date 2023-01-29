@@ -1,23 +1,36 @@
 using System;
+using System.Reflection;
+using System.Collections.Generic;
 
-public class StateClass
+public static class GameState
 {
-    public StateClass() { }
-    public GameStateValue<int> value = new(0);
+    private static List<IGameStateValue> _gameStateValues = new();
+
+    /*
+     * ------------------
+     * USE THIS SPACE TO DEFINE GAME STATES YOU WOULD LIKE TO TRACK
+     * \/--------------\/
+     */
+
+    public static GameStateValue<double> playerSpeed = new(5.0, _gameStateValues);
+    public class Meta 
+    {
+        public static GameStateValue<int> currentArc = new(1, _gameStateValues);
+    }
+
+    /*
+    * /\--------------/\
+    * USE THE ABOVE SPACE TO DEFINE GAME STATES YOU WOULD LIKE TO TRACK
+    * ------------------
+    */
+
+
+    public static void ResetCurrentGameState()
+    {
+        foreach (IGameStateValue gameState in _gameStateValues)
+        {
+            gameState.Reset();
+        }
+    }
+
 }
-public static class GameState {
-    private static StateClass _currentGameState = new();
-
-    public static StateClass CurrentState() { return _currentGameState; }
-    public static void ResetCurrentGameState() { _currentGameState = new StateClass(); }
-}
-
-
-
-/*
-public static class GameState {
-    public static GameStateValue<bool> gameState = new(true);
-}
-*/
-
-
