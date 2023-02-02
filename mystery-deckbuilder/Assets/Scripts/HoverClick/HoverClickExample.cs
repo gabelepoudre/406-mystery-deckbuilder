@@ -5,21 +5,25 @@ using UnityEngine;
 public class HoverClickExample : HoverClick
 {
 
-    public override void onMouseOver(){
-        base.onMouseOver();
+    
+
+    public override void OnMouseOver(){
+        base.OnMouseOver();
         Debug.Log("Mouse Hover Called");
 
     }
 
-    public override void onMouseExit(){
-        base.onMouseExit();
+    public override void OnMouseExit(){
+        base.OnMouseExit();
         Debug.Log("Mouse Exit Called");
 
     }
 
-    public override void onClick(){
-        base.onClick();
-        Debug.Log("On Click Called");
-
+    public override void OnMouseDown(){
+        base.OnMouseDown();
+        Debug.Log("Mouse clicked");
     }
+
+  
+
 }

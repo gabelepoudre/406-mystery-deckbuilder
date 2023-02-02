@@ -5,15 +5,15 @@ using UnityEngine;
 public abstract class HoverClick : MonoBehaviour
 {
 
-    public virtual void onMouseOver(){
+    public virtual void OnMouseOver(){
 
     }
 
-    public virtual void onMouseExit(){
+    public virtual void OnMouseExit(){
 
     }
 
-    public virtual void onClick(){
+    public virtual void OnMouseDown(){
         
     }
 
