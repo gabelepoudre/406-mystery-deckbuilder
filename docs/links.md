@@ -9,3 +9,5 @@
 [GDD (Google Docs)](https://docs.google.com/document/d/138P-gy7S378_PWAOKHQOqxaJLk1roNfqsPBRjCZCgc0/edit?usp=sharing)
 
 [Assets/Arts (Google Docs)](https://docs.google.com/document/d/1WiUMF1s-twG4LHXwUNz6rZ53zUXrN4-V_yXQnwBV0CE/edit#)
+
+[Card Game Mechanics Ideas (Google Docs)](https://docs.google.com/document/d/1PRXLT_Cv92GRgm5UhSmCxdVdu6TU6ij8hF0q80_XiUs/edit)
