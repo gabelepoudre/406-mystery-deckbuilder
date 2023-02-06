@@ -124,7 +124,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9171471758450322481}
         m_TargetAssemblyTypeName: EncounterScript, Assembly-CSharp
-        m_MethodName: ModifyCompliance
+        m_MethodName: IncCompliance
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -136,12 +136,12 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 9171471758450322481}
         m_TargetAssemblyTypeName: EncounterScript, Assembly-CSharp
-        m_MethodName: ModifyPatience
+        m_MethodName: DecPatience
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: -1
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -376,6 +376,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58aceb79c629acb4dbc73b365d02790b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _threshold: 0
+  _compliance: 0
+  _patience: 0
   patienceBar: {fileID: 6983892177897665125}
   complianceBar: {fileID: 6983892177592257835}
 --- !u!1 &6983892177187874297

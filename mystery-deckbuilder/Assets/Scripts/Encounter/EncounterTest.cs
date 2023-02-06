@@ -11,8 +11,8 @@ public class EncounterTest : MonoBehaviour
     public GameObject encounter;
     public void StartEncounter()
     {
-        encounter = Instantiate(encounter);
-        encounter.GetComponent<EncounterScript>().StartEncounter(100, 0, 10);
+        GameObject encounterInstance = Instantiate(encounter);
+        encounterInstance.GetComponent<EncounterScript>().StartEncounter(100, 0, 10);
     }
 
 }
