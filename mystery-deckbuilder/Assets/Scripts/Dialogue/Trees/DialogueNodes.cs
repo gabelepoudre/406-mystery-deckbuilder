@@ -23,7 +23,9 @@ public class PlayerNode: IDialogueNode
 
     public IDialogueNode Next() { return _next; }
 
-    public PlayerNode(string[] dialogue, IDialogueNode next)
+    public void SetNext(IDialogueNode next) { this._next = next; }
+
+    public PlayerNode(string[] dialogue, IDialogueNode next = null)
     {
         this.dialogue = dialogue;
         this._next = next;
@@ -39,7 +41,9 @@ public class NPCNode : IDialogueNode
 
     public IDialogueNode Next() { return _next; }
 
-    public NPCNode(string[] dialogue, IDialogueNode next)
+    public void SetNext(IDialogueNode next) { this._next = next; }
+
+    public NPCNode(string[] dialogue, IDialogueNode next = null)
     {
         this.dialogue = dialogue;
         this._next = next;
@@ -57,7 +61,19 @@ public class OptionNode: IOptionNode
 
     public IDialogueNode Next(int option) { return _nextOptions[option]; }
 
-    public OptionNode((string, IDialogueNode)[] options)
+    public void SetOptions((string, IDialogueNode)[] options)
+    {
+        List<string> opts_list = new();
+        _nextOptions.Clear();
+        foreach ((string, IDialogueNode) option in options)
+        {
+            opts_list.Add(option.Item1);
+            _nextOptions.Add(option.Item2);
+        }
+        this.options = opts_list.ToArray();
+    }
+
+    public OptionNode((string, IDialogueNode)[] options = null)
     {
         List<string> opts_list = new();
         foreach ((string, IDialogueNode) option in options)
