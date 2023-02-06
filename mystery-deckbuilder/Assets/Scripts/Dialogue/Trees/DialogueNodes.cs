@@ -75,13 +75,16 @@ public class OptionNode: IOptionNode
 
     public OptionNode((string, IDialogueNode)[] options = null)
     {
-        List<string> opts_list = new();
-        foreach ((string, IDialogueNode) option in options)
+        if (options != null)
         {
-            opts_list.Add(option.Item1);
-            _nextOptions.Add(option.Item2);
+            List<string> opts_list = new();
+            foreach ((string, IDialogueNode) option in options)
+            {
+                opts_list.Add(option.Item1);
+                _nextOptions.Add(option.Item2);
+            }
+            this.options = opts_list.ToArray();
         }
-        this.options = opts_list.ToArray();
     }
 
 }
