@@ -1,5 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+/*
+ * author(s): Gabriel LePoudre
+ * 
+ * This script houses an example dialogue tree build as a demo to show how to build your own dialogue trees 
+ */
+
+
 using UnityEngine;
 
 public class ExampleDialogue : MonoBehaviour
@@ -7,6 +12,8 @@ public class ExampleDialogue : MonoBehaviour
 
     public DialogueTree dialogueTree;
 
+
+    /* Build the tree and return its reference */
     private DialogueTree BuildTree()
     {
 
