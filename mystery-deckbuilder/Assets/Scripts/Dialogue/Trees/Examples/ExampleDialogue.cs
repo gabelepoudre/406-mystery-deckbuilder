@@ -63,7 +63,7 @@ public class ExampleDialogue : MonoBehaviour
         return new DialogueTree(intro);
     } 
 
-    // Start is called before the first frame update
+    // Awake is called before the start
     void Awake()
     {
         this.dialogueTree = BuildTree();

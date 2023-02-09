@@ -7,7 +7,9 @@ public class ExampleDialogueController : MonoBehaviour
 {
     public Text typeBox;
     public Text dialogueBox;
+    public GameObject optionButtonPrefab;
 
+    private List<GameObject> buttons = new();
     private int _textIndex = -1;
     private IDialogueNode _curNode;
 
@@ -18,6 +20,51 @@ public class ExampleDialogueController : MonoBehaviour
         DialogueTree dt = this.gameObject.GetComponent<ExampleDialogue>().dialogueTree;
         _curNode = dt.root;
         OnNext();
+    }
+
+    private void SpawnOptionButtons()
+    {
+        if (_curNode.Type() != "option")
+        {
+            Debug.LogError("Called SpawnOptionButtons when the current node wasn't an option");
+        }
+        else
+        {
+            OptionNode lCurNode = (OptionNode)_curNode;
+            int counter = 0;
+            foreach (string option in lCurNode.options)
+            {
+                GameObject reference = Instantiate(optionButtonPrefab, this.transform);
+                reference.transform.position = new Vector3(reference.transform.position.x, reference.transform.position.y + 100 + (counter * 40), reference.transform.position.z);
+                reference.GetComponent<ExampleDialogueOptionButton>().optionID = counter;
+                reference.GetComponent<ExampleDialogueOptionButton>().controllerScript = this;
+                reference.GetComponentInChildren<Text>().text = option;
+                buttons.Add(reference);
+                counter += 1;
+            }
+        }
+    }
+
+    /* Called by an OptionButton prefab*/
+    public void OptionSelection(int option)
+    {
+        if (_curNode.Type() != "option")
+        {
+            Debug.LogError("Called OptionSelection when the current node wasn't an option");
+        }
+        else
+        {
+            OptionNode lCurNode = (OptionNode)_curNode;
+            _curNode = lCurNode.Next(option);  // this next is overloaded. If no int is passed, we default to option 0
+            _textIndex = -1;
+
+            foreach(GameObject optionButton in buttons)
+            {
+                Destroy(optionButton);
+            }
+
+            OnNext();
+        }
     }
 
     public void OnNext()
@@ -61,7 +108,7 @@ public class ExampleDialogueController : MonoBehaviour
         }
         else
         {
-            OptionNode lCurNode = (OptionNode)_curNode;
+            SpawnOptionButtons();
         }
     }
 }
