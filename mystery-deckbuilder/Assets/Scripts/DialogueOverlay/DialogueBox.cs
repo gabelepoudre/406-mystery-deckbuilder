@@ -12,6 +12,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+
 
 /*
  * The class responsible for expressing the behavior of the DialogueBox game object
@@ -27,10 +29,15 @@ public class DialogueBox : MonoBehaviour
     private bool inPosition = false;
     private bool finished = false;
 
+    [SerializeField] private GameObject _optionBoxPrefab;
+    [SerializeField] private GameObject _optionButtonPrefab;
+
+    private GameObject _optionBox;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -80,6 +87,42 @@ public class DialogueBox : MonoBehaviour
             text += letter;
             transform.Find("Canvas").Find("Message").GetComponent<TextMeshProUGUI>().SetText(text);
             yield return new WaitForSeconds(0.03f);
+        }
+    }
+
+    public void SpawnOptionBox(OptionNode optionNode)
+    {
+        _optionBox = Instantiate(_optionBoxPrefab, new Vector3(0f, -1.5f, 0f), Quaternion.identity, transform);
+        SpawnOptionButtons(optionNode);
+    }
+
+    public void DestroyOptionBox()
+    {
+        Destroy(_optionBox);
+        foreach(Transform child in transform.Find("Canvas").transform.Find("Canvas").transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
+    private void SpawnOptionButtons(OptionNode optionNode)
+    {
+        int counter = 0;
+        foreach(string option in optionNode.options)
+        {
+            
+            GameObject optionButton = Instantiate(_optionButtonPrefab, new Vector3(5.3f, 0.7f - counter * 0.7f, 0f), 
+            Quaternion.identity, transform.Find("Canvas").transform.Find("Canvas"));
+            optionButton.GetComponentInChildren<Text>().text = option;
+
+            int i = counter;
+            optionButton.GetComponentInChildren<Button>().onClick.AddListener(() => {
+                DialogueBoxManager.Instance.NextNodeByOptionIndex(i);
+                DestroyOptionBox();
+            });
+
+            counter += 1;
+
         }
     }
 
