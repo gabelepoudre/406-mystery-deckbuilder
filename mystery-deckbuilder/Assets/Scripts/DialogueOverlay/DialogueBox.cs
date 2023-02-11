@@ -21,17 +21,16 @@ using UnityEngine.UI;
 */
 public class DialogueBox : MonoBehaviour
 {
-    private string text;
+    private string _text;
 
     //the speed with which it will move to the middle of the screen when instantiated
-    private float speed = 25.0f;
+    private float _speed = 25.0f;
 
-    private bool inPosition = false;
-    private bool finished = false;
+    private bool _inPosition = false; //whether it has finished moving to its position
+    private bool _finished = false; //whether the dialogue is over
 
     [SerializeField] private GameObject _optionBoxPrefab;
     [SerializeField] private GameObject _optionButtonPrefab;
-
     private GameObject _optionBox;
 
     // Start is called before the first frame update
@@ -43,17 +42,17 @@ public class DialogueBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!inPosition && !finished) 
+        if (!_inPosition && !_finished) //if not in position then move to position
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, -1.8f, 0), speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, -1.8f, 0), _speed * Time.deltaTime);
         }
-        if (!finished && transform.position == new Vector3(0, 0, 0))
+        if (!_finished && transform.position == new Vector3(0, 0, 0)) //if its in position
         {
-            inPosition = true;
+            _inPosition = true;
         }
-        if (finished)
+        if (_finished) //if finished then start moving down
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, -7f, 0), speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, -7f, 0), _speed * Time.deltaTime);
         }
 
     }
@@ -74,28 +73,18 @@ public class DialogueBox : MonoBehaviour
     /* Sets finished to true, which will begin moving the box down, and will Destroy after a delay */
     public void DestroyDialogueBox() 
     {
-        finished = true;
+        _finished = true;
         Destroy(gameObject, 2);
     }
 
-    /* Will be invoked as a coroutine to display the characters of the sentence one-by-one */
-    IEnumerator TypeSentence (string sentence)
-    {
-        text = "";
-        foreach(char letter in sentence.ToCharArray())
-        {
-            text += letter;
-            transform.Find("Canvas").Find("Message").GetComponent<TextMeshProUGUI>().SetText(text);
-            yield return new WaitForSeconds(0.03f);
-        }
-    }
-
+    /* instantiate a new option box, as well as its buttons */
     public void SpawnOptionBox(OptionNode optionNode)
     {
         _optionBox = Instantiate(_optionBoxPrefab, new Vector3(0f, -1.5f, 0f), Quaternion.identity, transform);
         SpawnOptionButtons(optionNode);
     }
 
+    /* destroy the spawned option box and its buttons */
     public void DestroyOptionBox()
     {
         Destroy(_optionBox);
@@ -105,25 +94,39 @@ public class DialogueBox : MonoBehaviour
         }
     }
 
+    /* spawn option buttons corresponding to opens in optionNode 
+     * NOTE: yes I should probably relegate this to an option box class instead but 
+     * the Canvas was being weird so I'm doing it like this for now since the alpha is soon
+     */
     private void SpawnOptionButtons(OptionNode optionNode)
     {
         int counter = 0;
         foreach(string option in optionNode.options)
         {
-            
+            //instantiate option buttons
             GameObject optionButton = Instantiate(_optionButtonPrefab, new Vector3(5.3f, 0.7f - counter * 0.7f, 0f), 
             Quaternion.identity, transform.Find("Canvas").transform.Find("Canvas"));
-            optionButton.GetComponentInChildren<Text>().text = option;
+            optionButton.GetComponentInChildren<Text>().text = option; //set correct text of button
 
-            int i = counter;
+            int i = counter; //have to do this or else every button will call option 2 because thats what the counter ends at
             optionButton.GetComponentInChildren<Button>().onClick.AddListener(() => {
                 DialogueBoxManager.Instance.NextNodeByOptionIndex(i);
                 DestroyOptionBox();
             });
 
             counter += 1;
-
         }
     }
 
+    /* Will be invoked as a coroutine to display the characters of the sentence one-by-one */
+    IEnumerator TypeSentence (string sentence)
+    {
+        _text = "";
+        foreach(char letter in sentence.ToCharArray())
+        {
+            _text += letter;
+            transform.Find("Canvas").Find("Message").GetComponent<TextMeshProUGUI>().SetText(_text);
+            yield return new WaitForSeconds(0.03f);
+        }
+    }
 }

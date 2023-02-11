@@ -16,13 +16,14 @@ using UnityEngine;
  * The singleton class responsible for the following:
  * Instantiating DialogueBox GameObjects
  * -Starting dialogues
- * -Commanding the instantiated DialogueBox to display the next sentence
+ * -traversing a given dialogue tree
+ * -Commanding the instantiated DialogueBox to display the next sentence and show the option box
  * -Ending the dialogue and commanding the DialogueBox to destroy itself
 */
 public class DialogueBoxManager : MonoBehaviour
 {
 
-    public static DialogueBoxManager Instance {get; private set; }
+    public static DialogueBoxManager Instance {get; private set; } //a static instance of itself
 
     private DialogueTree _dialogueTree;
     private IDialogueNode _currentNode;
@@ -30,10 +31,9 @@ public class DialogueBoxManager : MonoBehaviour
     private Queue<string> _sentences = new();
 
     [SerializeField] private GameObject _dialogueBoxPrefab;
-    
     private GameObject _dialogueBox;
 
-    /*Since this is a singleton class, we destroy all other instances of it that aren't this one*/
+    /* Since this is a singleton class, we destroy all other instances of it that aren't this one */
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -50,128 +50,114 @@ public class DialogueBoxManager : MonoBehaviour
     void Start()
     {
         _sentences = new Queue<string>();
-        
     }
 
     /* A built-in dialogue to be called by the button in the DialogueTest scene 
-     * for the purpose of demonstration.
+     * for the purpose of demonstration. Uses Gabe's example dialogue tree.
     */
     public void TestDialogueStart() 
     {
-        /*
-        PlayerNode p1 = new(new string[]{"yoyoyo this is a test", "still testing now we go next node"});
-        NPCNode n1 = new(new string[]{"hey this is npc talking", "im still talking"});
-        OptionNode o1 = new(new (string, IDialogueNode)[]{("go player", p1), ("go npc", n1)});
-        p1.SetNext(o1);
-        DialogueTree test = new(p1);
-        StartDialogue(test);
-        */
-
-        PlayerNode intro = new(new string[] { "Hello!", "...", "Hello??" });
-        NPCNode introReply = new(new string[] { "Hi..." });
-        intro.SetNext(introReply);
-
-        PlayerNode hardOfHearing = new(new string[] { "Are you hard of hearing?" });
-        introReply.SetNext(hardOfHearing);
-        NPCNode hardOfHearingReply = new(new string[] { "No..." });
-        hardOfHearing.SetNext(hardOfHearingReply);
-
-        // preparing the base options node. Empty for now, will be filled
-        OptionNode baseOptions = new();
-        hardOfHearingReply.SetNext(baseOptions);
-
-        //* ask name logical path. returns to base options after completion
-        PlayerNode name = new(new string[] { "What is your name?" });
-        NPCNode nameReply = new(new string[] { "George..." });
-        name.SetNext(nameReply);
-        nameReply.SetNext(baseOptions);
-
-        //* ask why George is here
-        PlayerNode whyHere = new(new string[] { "Why are you here?", "Are you lost?" });
-        NPCNode whyHereReply = new(new string[] { "There is no here...", "We aren't real...", "We are an example..." });
-        whyHere.SetNext(whyHereReply);
-
-        //** create options after george tells us we are an example.
-        OptionNode weAreExampleOptions = new();
-        whyHereReply.SetNext(weAreExampleOptions);
-
-        PlayerNode example = new(new string[] { "Wait. What do you mean by \"Example\"?" });
-        NPCNode exampleReply = new(new string[] { "IDK" });
-        example.SetNext(exampleReply);
-        exampleReply.SetNext(baseOptions);
-
-        (string, IDialogueNode)[] exampleOptionList = { 
-            ("Leave conversation", null),
-            ("Ask what he means", example)
-        };
-        weAreExampleOptions.SetOptions(exampleOptionList);
-
-        // fill base options
-        (string, IDialogueNode)[] baseOptionList = {
-            ("Leave conversation", null),
-            ("Ask name", name),
-            ("Ask why he is here", whyHere)
-        };
-        baseOptions.SetOptions(baseOptionList);
-
-        StartDialogue(new DialogueTree(intro));
-        
+        StartDialogue(transform.GetComponent<ExampleDialogue>().dialogueTree);
     }
 
     /* Initiates a new dialogue by instantiating a DialogueBox, adding its sentences to the queue
-     setting the name of the DialogueBox, and displaying the next sentence (in this case the first one)
-     * Parameters:
-     *      dialogue - A Dialogue object whose sentences will be enqueued
-    */
+     * setting the name of the DialogueBox, and displaying the next sentence (in this case the first one)
+     */
     public void StartDialogue(DialogueTree newDialogueTree)
     {
+        //the current dialogue must be ended before starting a new one
+        if (_dialogueBox != null)
+        {
+            Debug.LogError("Error: tried to start a new dialogue when one was already in session");
+            return;
+        }
+
         _dialogueTree = newDialogueTree;
 
+        //instantiate the dialogue box prefab
         _dialogueBox = Instantiate(_dialogueBoxPrefab, new Vector3(0, -7, 0), Quaternion.identity);
 
-        //an empty entrypoint node
-        _currentNode = new PlayerNode(new string[]{}, _dialogueTree.root);
-        NextNode();
-        
+        GoToNode(_dialogueTree.root); //we start at the root node of the dialogue tree
     }
 
-
-
+    /* Moves to the next node in the dialogue tree
+    */
     public void NextNode()
     {
         _currentNode = _currentNode.Next();
+
+        //end dialogue if we've reached the end
         if (_currentNode == null)
         {
             EndDialogue();
             return;
         }
 
-        StopAllCoroutines();
+        StopAllCoroutines(); //stop displaying text, in case player clicks next while text still writing
 
-        if (_currentNode.NodeType() != "option") {
-            _dialogueBox.GetComponent<DialogueBox>().SetName(_currentNode.NodeType()); //change this to name stored in tree
+        if (_currentNode.NodeType() != "option") //if a normal dialogue node
+        {
+
+            _dialogueBox.GetComponent<DialogueBox>().SetName(_currentNode.NodeType()); //change this later to grab name of NPC
             
             EnqueueAllSentences();
             DisplayNextSentence();
         }
-        else {
+        else //if an option node
+        {
             _dialogueBox.GetComponent<DialogueBox>().SpawnOptionBox((OptionNode)_currentNode); //create option box
         }
     }
 
+    /* To be used if current node is an option node
+     * Goes to the option corresponding to the given index
+    */
     public void NextNodeByOptionIndex(int index)
     {
         
-        if (_currentNode.NodeType() != "option")
+        if (_currentNode.NodeType() != "option") //error if current node is not an option node
         {
             Debug.LogError("tried to NextNodeByOptionIndex() when current node wasn't option node");
         }
-        _currentNode = new PlayerNode(new string[]{}, ((OptionNode)_currentNode).Next(index));
-        NextNode();
+     
+        GoToNode(((OptionNode)_currentNode).Next(index));
+    }
+    
+    /* Dequeues the sentence queue, and commands the previously instantiated DialogueBox to display 
+     * the dequeued sentence 
+     */
+    public void DisplayNextSentence()
+    {
+        
+        //if its an option node then the player has to pick an option, rather then clicking next
+        if (_currentNode.NodeType() == "option")
+        {
+            return;
+        }
+        
+
+        if (_sentences.Count != 0) //if we still have sentences in the queue
+        {
+            _dialogueBox.GetComponent<DialogueBox>().DisplaySentence(_sentences.Dequeue());
+        }
+        else //if we ran out of sentences in the queue, traverse to next node
+        {
+            NextNode();
+        }
+        
     }
 
+    /* Commands the previously instantiated DialogueBox to destroy itself */
+    public void EndDialogue()
+    {
+        _dialogueBox.GetComponent<DialogueBox>().DestroyDialogueBox();
+    }
+
+    /* Enqueues all sentences contained in the current node */
     private void EnqueueAllSentences()
     {
+
+        // have to handle PlayerNode and NPCNode unless if IDialogueNode interface had a GetDialogue() or something
         if (_currentNode.NodeType() == "player")
         {
             foreach(string sentence in ((PlayerNode)_currentNode).dialogue)
@@ -192,32 +178,10 @@ public class DialogueBoxManager : MonoBehaviour
         }
     }
 
-    
-    /* Dequeues the sentence queue, and commands the previously instantiated DialogueBox to display 
-     * the dequeued sentence
-     */
-    public void DisplayNextSentence()
+    /* Goes to the specified node via an new empty entrypoint node */
+    private void GoToNode(IDialogueNode node)
     {
-        
-        if (_currentNode.NodeType() == "option")
-        {
-            return;
-        }
-        
-        if (_sentences.Count != 0) {
-            _dialogueBox.GetComponent<DialogueBox>().DisplaySentence(_sentences.Dequeue());
-        }
-        else {
-            NextNode();
-        }
-        
-    }
-
-    
-
-    /* Commands the previously instantiated DialogueBox to destroy itself */
-    public void EndDialogue()
-    {
-        _dialogueBox.GetComponent<DialogueBox>().DestroyDialogueBox();
+        _currentNode = new PlayerNode(new string[]{}, node);
+        NextNode();
     }
 }
