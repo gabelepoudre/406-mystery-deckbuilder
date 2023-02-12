@@ -14,28 +14,30 @@ public class NPC : MonoBehaviour
     [Range(0.0f, 1.0f)]public float currentPatience;
     [Range(0.0f, 1.0f)]public float currentCompliance;
     public DialogueTree diaglogue;
-    public gameObject character;
 
-
-
+    //Get current patience
     public float getPatience()
     {
         return currentPatience;
     }
-    public void changePatience(float x)
+
+    //Set current patience
+    public void setPatience(float x)
     {
-        currentPatience = currentPatience - x;
+        currentPatience = x;
     }
+
+    //Get current compliance
     public float getCompliance()
     {
         return currentCompliance;
     }
+
+    //Set current compliance
     public void setCompliance(float x)
     {
-        currentCompliance = currentCompliance - x;
+        currentCompliance = x;
     }
-
-
 
     // Start is called before the first frame update
     void Start()
