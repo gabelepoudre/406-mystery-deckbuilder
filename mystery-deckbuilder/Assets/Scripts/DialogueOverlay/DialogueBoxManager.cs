@@ -98,7 +98,7 @@ public class DialogueBoxManager : MonoBehaviour
         if (_currentNode.NodeType() != "option") //if a normal dialogue node
         {
 
-            _dialogueBox.GetComponent<DialogueBox>().SetName(_currentNode.NodeType()); //change this later to grab name of NPC
+            _dialogueBox.GetComponent<DialogueBox>().SetName(_currentNode.NodeType()); //TODO: change this to grab name of NPC
             
             EnqueueAllSentences();
             DisplayNextSentence();
