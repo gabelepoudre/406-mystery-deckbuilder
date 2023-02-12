@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 /*
@@ -11,6 +12,7 @@ public abstract class ConversationCard
 
     protected readonly int _id;
     protected IDictionary<string, string> _metadata = new Dictionary<string, string>();
+    protected List<Action> methods = new List<Action>();
 
     public ConversationCard(int id)
     {
@@ -37,10 +39,12 @@ public abstract class PreparationCard
 
     protected readonly int _id;
     protected IDictionary<string, string> _metadata = new Dictionary<string, string>();
+    protected List<Action> methods = new List<Action>();
 
     public PreparationCard(int id)
     {
         this._id = id;
+
 
     }
 
