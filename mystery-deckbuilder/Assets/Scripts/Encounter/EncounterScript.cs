@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ using UnityEngine.UI;
  * script for the encounter gameobject
  * to use:
  *      encounter = Instantiate(encounter);
-        encounter.GetComponent<EncounterScript>().StartEncounter(int complianceThreshold, int startingCompliance, int startingPatience)
+        encounter.GetComponent<EncounterScript>().StartEncounter()
  */
 public class EncounterScript : MonoBehaviour
 {
@@ -18,7 +19,10 @@ public class EncounterScript : MonoBehaviour
     [SerializeField] private string _weakness; //using strings because that is how element is stored in the card class
     [SerializeField] private string _resistance; // !!!CARD CLASS AND NPC CLASS STRINGS MUST MATCH!!! 
 
-    [SerializeField] private int _handSize = 3; 
+    [SerializeField] private int _handSize = 3;
+    private int playCount = 0;
+
+
 
     private int maxPatience = 10; //Not sure if this will ever change, but the option is there
 
@@ -27,6 +31,7 @@ public class EncounterScript : MonoBehaviour
     private List<int> discard; //list of cards that have been played and removed from the deck
 
     private ArrayList hand; //container to hold instantiated card objects
+    private List<List<int>> filters; //experimental coolness
 
     private Sprite NpcSprite; //TODO: a sprite reference will need to be passed in in order to display who the player is in an encounter with
 
@@ -143,6 +148,16 @@ public class EncounterScript : MonoBehaviour
         complianceBar.GetComponent<BarScript>().SetValue(_compliance);
     }
 
+    public string GetWeakness()
+    {
+        return _weakness;
+    }
+
+    public string GetResistance()
+    {
+        return _resistance;
+    }
+
     public void DrawCard()
     {
         int cardID = deck[0];
@@ -158,6 +173,7 @@ public class EncounterScript : MonoBehaviour
 
     public void PlayCard(int ID)
     {
+        playCount++;
         handBackend.Remove(ID);
         discard.Add(ID);
 
@@ -172,6 +188,30 @@ public class EncounterScript : MonoBehaviour
         }
     }
 
+    /** 
+     * card object passes the id of the static object that calculates it's effect and the durration of how long that effect lingers.
+     * "local" effects can just be duration zero or something
+     * this implementation allows cards to pass their lingering effects without them disapearing when the card is destroyed
+     * 
+     */
+    public void AddFilter(int duration, int id)
+    {
+        //duration + playCount will be the play that the effect expires
+        
+        List<int> filter = new List<int>() {duration + playCount, id };
+        filters.Add(filter);
+    }
+
+    public int ResolveFilters()
+    {
+        foreach(List<int> i in filters)
+        {
+            i[0]--;
+            Filters.GetFilterByID(i[1]); //TODO figure out what paramaters need to be sent for a calculation
+
+        }
+        return 0; //TODO figure out what to return. feel like it won't be an int
+    }
 
     /**
      * can send the win/lose result, but there is no one to send it to right now
