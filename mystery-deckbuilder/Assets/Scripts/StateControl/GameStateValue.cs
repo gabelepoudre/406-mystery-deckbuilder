@@ -1,12 +1,6 @@
 /*
  * author(s): Gabriel LePoudre
  * 
- * This script stores the GameStateValue class, which exists to store values pertaining to game state
- */
-
-/*
- * author(s): Gabriel LePoudre
- * 
  * This script contains the GameStateValue class, and the interface that it uses
  */
 

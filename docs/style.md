@@ -9,7 +9,9 @@ small student coding team we can be quite lax on most non-naming rules presented
 *A notable relaxation to their style guidelines is their section on "Whitespace", as most (if not all) IDEs will automatically handle spacing and indentation(tab) length.
 Additionally, I find the Google style for if-statements ugly and less readable, personally:
 
-```aspx
+** NOTE: We have opted to switch our bracket style to the third example here labelled "Unity". Classes will also follow this bracket structure **
+
+```csharp
 // Google
 if (someBool) {
 
@@ -29,5 +31,19 @@ if (someBool) {
         // do something else 
     }
 }
+
+// Unity
+if (someBool)
+{
+    if (someOtherBool) 
+    {
+        // do something
+    }
+    else if (aThirdBool)
+    {
+        // do something else
+    }
+}
+
 
 ```
