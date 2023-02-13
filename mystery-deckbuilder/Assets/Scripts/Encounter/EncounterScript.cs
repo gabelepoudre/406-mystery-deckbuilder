@@ -14,9 +14,20 @@ public class EncounterScript : MonoBehaviour
     [SerializeField] private int _threshold;
     [SerializeField] private int _compliance;
     [SerializeField] private int _patience;
+
+    [SerializeField] private string _weakness; //using strings because that is how element is stored in the card class
+    [SerializeField] private string _resistance; // !!!CARD CLASS AND NPC CLASS STRINGS MUST MATCH!!! 
+
+    [SerializeField] private int _handSize = 3; 
+
     private int maxPatience = 10; //Not sure if this will ever change, but the option is there
 
-    private ArrayList deck; //TODO: this script will need a reference to the deck in whatever form that may take
+    private List<int> deck; //reference to a list of card id numbers that make up the deck 
+    private List<int> handBackend; //TODO purgatory state between being in the deck and being discarded. idk if this is just for backend?
+    private List<int> discard; //list of cards that have been played and removed from the deck
+
+    private ArrayList hand; //container to hold instantiated card objects
+
     private Sprite NpcSprite; //TODO: a sprite reference will need to be passed in in order to display who the player is in an encounter with
 
     public GameObject patienceBar;
@@ -26,12 +37,27 @@ public class EncounterScript : MonoBehaviour
      * initializes the ecounter. 
      * more parameters may be added as their implementaion is solidified
      */
-    public void StartEncounter(int complianceThreshold, int startingCompliance, int startingPatience)
+    public void StartEncounter(int complianceThreshold, int startingCompliance, int startingPatience, string NpcWeakness, string NpcResistance)
     {
         _threshold = complianceThreshold;
         _compliance = startingCompliance;
         _patience = startingPatience;
         SetInitialBarValues();
+
+        _weakness = NpcWeakness;
+        _resistance = NpcResistance;
+
+        InitializeCards();
+    }
+    
+    private void InitializeCards()
+    {
+        deck = GameState.CardInfo.currentDeck.Value;
+        discard = GameState.CardInfo.currentDiscard.Value;
+        for (int i = 0; i < _handSize; i++)
+        {
+            DrawCard();
+        }
     }
 
     /**
@@ -115,6 +141,35 @@ public class EncounterScript : MonoBehaviour
             _compliance = 0;
         }
         complianceBar.GetComponent<BarScript>().SetValue(_compliance);
+    }
+
+    public void DrawCard()
+    {
+        int cardID = deck[0];
+        deck.Remove(cardID);
+        handBackend.Add(cardID);
+
+        Instantiate(null);
+
+
+
+        UpdateCards();
+    }
+
+    public void PlayCard(int ID)
+    {
+        handBackend.Remove(ID);
+        discard.Add(ID);
+
+        UpdateCards();
+    }
+
+    public void UpdateCards()
+    {
+        foreach(Cards i in hand)
+        {
+
+        }
     }
 
 

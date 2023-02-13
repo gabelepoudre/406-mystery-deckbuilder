@@ -49,6 +49,16 @@ public static class GameState
 
     }
 
+    /* GameState holder class for ongoing card and deck information*/
+    public class CardInfo
+    {
+        static int[] startingDeck = {1, 5, 9, 1, 5, 9, 1, 5, 9, 1, 5, 9};
+        public static GameStateValue<List<int>> currentDeck = new(new List<int>(startingDeck), _gameStateValues);
+
+        static int[] startingDiscard = { };
+        public static GameStateValue<List<int>> currentDiscard = new(new List<int>(startingDiscard), _gameStateValues);
+    }
+
 
     /* Sets all tracked GameStateValues to their default values. WARNING: Irreversible */
     public static void ResetCurrentGameState()
