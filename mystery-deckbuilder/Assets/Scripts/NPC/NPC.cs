@@ -16,25 +16,25 @@ public class NPC : MonoBehaviour
     public DialogueTree diaglogue;
 
     //Get current patience
-    public float getPatience()
+    public float GetPatience()
     {
         return currentPatience;
     }
 
     //Set current patience
-    public void setPatience(float x)
+    public void SetPatience(float x)
     {
         currentPatience = x;
     }
 
     //Get current compliance
-    public float getCompliance()
+    public float GetCompliance()
     {
         return currentCompliance;
     }
 
     //Set current compliance
-    public void setCompliance(float x)
+    public void SetCompliance(float x)
     {
         currentCompliance = x;
     }
