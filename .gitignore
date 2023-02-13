@@ -54,6 +54,9 @@ ExportedObj/
 
 # VS stuff
 *.vsconfig*
+*.vscode*
+/.vscode
+*settings.json*
 
 # Unity3D generated file on crash reports
 sysinfo.txt
