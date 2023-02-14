@@ -1,32 +1,49 @@
 
 
+using System;
+using UnityEngine;
+
 public static class Filters
 {
-    public static object GetFilterByID(int id) //param list: card element, base compliance, base patience. can use GameState for a lot of access stuff I guess 
+    public static Array GetFilterByID(int id, int baseComp, int basePatience, string element) //param list: card element, base compliance, base patience. can use GameState for a lot of access stuff I guess 
     {
         switch (id)
         {
-            case 1:
+            case 0:
                 return TestFilter();
+            case 1:
+                return WeaknessCheck(baseComp, element);
+            case 2:
+                return ResistanceCheck(baseComp, element);
             default:
                 return null;
         }
     }
 
-    private static int TestFilter()
+    private static Array TestFilter()
     {
-        
-        return 0;
+        return null;
     }
-    private static int WeaknessCheck() //needs access to card element, base compliance
+    private static Array WeaknessCheck(int baseComp, string element) //needs access to card element, base compliance
     {
-        //GameState.Meta.activeEncounter.Value.GetWeakness;
-        return 0;
+        int modifyAmount = 0;
+        if (String.Equals(GameState.Meta.activeEncounter.Value.GetWeakness(), element))
+        {
+            modifyAmount = baseComp; 
+            
+        }
+        int[] vals = new int[] {0, modifyAmount };
+        return vals;
     }
-    private static int ResistanceCheck() //needs access to card element, base compliance
+    private static Array ResistanceCheck(int baseComp, string element) //needs access to card element, base compliance
     {
-        //GameState.Meta.activeEncounter.Value.GetResistance;
-        return 0;
+        int modifyAmount = 0;
+        if (String.Equals(GameState.Meta.activeEncounter.Value.GetWeakness(), element))
+        {
+            modifyAmount = -(baseComp - 10);
+        }
+        int[] vals = new int[] { 0, modifyAmount };
+        return vals;
     }
 }
 

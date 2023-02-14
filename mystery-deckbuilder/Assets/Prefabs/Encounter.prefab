@@ -456,8 +456,15 @@ MonoBehaviour:
   _threshold: 0
   _compliance: 0
   _patience: 0
+  _weakness: 
+  _resistance: 
+  _handSize: 3
   patienceBar: {fileID: 6983892177897665125}
   complianceBar: {fileID: 6983892177592257835}
+  redCard: {fileID: 14379719057614496, guid: 1cb98c3dc991c2441a2acd6cbacfdcbb, type: 3}
+  blueCard: {fileID: 6389169740637944364, guid: 6420385f4496f724fbe30be4c787e6d9, type: 3}
+  greenCard: {fileID: 601620072370890078, guid: d0e5fd856aa76e34fa4518ad168f2438, type: 3}
+  prepCard: {fileID: 0}
 --- !u!1 &6983892177187874297
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,21 +22,25 @@ public class EncounterScript : MonoBehaviour
     [SerializeField] private int _handSize = 3;
     private int playCount = 0;
 
-
-
     private int maxPatience = 10; //Not sure if this will ever change, but the option is there
 
-    private List<int> deck; //reference to a list of card id numbers that make up the deck 
-    private List<int> handBackend; //TODO purgatory state between being in the deck and being discarded. idk if this is just for backend?
-    private List<int> discard; //list of cards that have been played and removed from the deck
+    private List<int> deck = new List<int>(); //reference to a list of card id numbers that make up the deck 
+    private List<int> handBackend = new List<int>(); //purgatory state between being in the deck and being discarded.
+    private List<int> discard = new List<int>(); //list of cards that have been played and removed from the deck
 
-    private ArrayList hand; //container to hold instantiated card objects
-    private List<List<int>> filters; //experimental coolness
+    private List<ConversationCard> hand = new List<ConversationCard>(); //something weird is going on with all the "hands" I'll sort it out later
+    private List<GameObject> handFrontend = new List<GameObject>(); //container to hold instantiated card objects
+    private List<List<int>> filters = new List<List<int>>(); //experimental coolness
 
     private Sprite NpcSprite; //TODO: a sprite reference will need to be passed in in order to display who the player is in an encounter with
 
     public GameObject patienceBar;
     public GameObject complianceBar;
+
+    public GameObject redCard;
+    public GameObject blueCard;
+    public GameObject greenCard;
+    public GameObject prepCard;
 
     /**
      * initializes the ecounter. 
@@ -44,6 +48,7 @@ public class EncounterScript : MonoBehaviour
      */
     public void StartEncounter(int complianceThreshold, int startingCompliance, int startingPatience, string NpcWeakness, string NpcResistance)
     {
+        GameState.Meta.activeEncounter.Value = this;
         _threshold = complianceThreshold;
         _compliance = startingCompliance;
         _patience = startingPatience;
@@ -59,6 +64,10 @@ public class EncounterScript : MonoBehaviour
     {
         deck = GameState.CardInfo.currentDeck.Value;
         discard = GameState.CardInfo.currentDiscard.Value;
+
+        AddFilter(-1, 1); //adding element weakness/resistance, -1 durration meens they will last forever
+        AddFilter(-1, 2);
+
         for (int i = 0; i < _handSize; i++)
         {
             DrawCard();
@@ -164,7 +173,20 @@ public class EncounterScript : MonoBehaviour
         deck.Remove(cardID);
         handBackend.Add(cardID);
 
-        Instantiate(null);
+        hand.Insert(0, (ConversationCard)Cards.CreateCardWithID(cardID));
+        switch (hand[0].GetElement())
+        {
+            case "Intimidation":
+                handFrontend.Insert(0, Instantiate(redCard)); //TODO mess around with instantiation so that the cards get placed on the field nicely
+                break;
+            case "Sympathy":
+                handFrontend.Insert(0, Instantiate(blueCard));
+                break;
+            case "Persuasion":
+                handFrontend.Insert(0, Instantiate(greenCard));
+                break;
+        }
+        Text[] textFields = handFrontend[0].GetComponentsInChildren<Text>(); // TODO navigate unity's awful gameobject heirarchy to put text values in the correct spot
 
 
 
@@ -178,39 +200,53 @@ public class EncounterScript : MonoBehaviour
         discard.Add(ID);
 
         UpdateCards();
+
+        foreach (List<int> i in filters) //removes filters as they expire
+        {
+            i[0]--;
+            if(i[0] == 0)
+            {
+                filters.Remove(i);
+            }
+        }
     }
 
     public void UpdateCards()
     {
-        foreach(Cards i in hand)
+        
+        foreach (ConversationCard i in hand)
         {
-
+            int[] modifyAmounts = (int[])ResolveFilters(i); //TODO more putting text values in spots
+            
         }
     }
 
     /** 
      * card object passes the id of the static object that calculates it's effect and the durration of how long that effect lingers.
-     * "local" effects can just be duration zero or something
+     * "local" effects can just be duration 1 or something
      * this implementation allows cards to pass their lingering effects without them disapearing when the card is destroyed
      * 
      */
     public void AddFilter(int duration, int id)
     {
         //duration + playCount will be the play that the effect expires
-        
         List<int> filter = new List<int>() {duration + playCount, id };
         filters.Add(filter);
     }
 
-    public int ResolveFilters()
+    public Array ResolveFilters(ConversationCard card)
     {
-        foreach(List<int> i in filters)
-        {
-            i[0]--;
-            Filters.GetFilterByID(i[1]); //TODO figure out what paramaters need to be sent for a calculation
+        
+        int[] modifyAmounts = new int[] {0, 0}; //[0] = patience modifier, [1] = compliance modifier
 
+        foreach (List<int> i in filters)
+        {
+            int[] tempArray = (int[])Filters.GetFilterByID(i[1], card.GetComplianceValue(), card.GetPatienceValue(), card.GetElement());
+            modifyAmounts[0] += tempArray[0];
+            modifyAmounts[1] += tempArray[1];
         }
-        return 0; //TODO figure out what to return. feel like it won't be an int
+        
+        return modifyAmounts; 
     }
 
     /**
