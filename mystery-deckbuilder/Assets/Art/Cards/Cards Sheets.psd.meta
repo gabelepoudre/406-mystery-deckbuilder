@@ -108,8 +108,8 @@ TextureImporter:
       name: Red Card
       rect:
         serializedVersion: 2
-        x: 21
-        y: 591
+        x: 28
+        y: 1922
         width: 864
         height: 1152
       alignment: 0
@@ -129,8 +129,8 @@ TextureImporter:
       name: Green Card
       rect:
         serializedVersion: 2
-        x: 978
-        y: 587
+        x: 981
+        y: 1918
         width: 864
         height: 1152
       alignment: 0
@@ -150,8 +150,8 @@ TextureImporter:
       name: Blue card
       rect:
         serializedVersion: 2
-        x: 1929
-        y: 587
+        x: 1932
+        y: 1918
         width: 864
         height: 1152
       alignment: 0
@@ -172,7 +172,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 111
-        y: 67
+        y: 1391
         width: 689
         height: 275
       alignment: 0
@@ -192,8 +192,8 @@ TextureImporter:
       name: GreenCard_DescripHolder
       rect:
         serializedVersion: 2
-        x: 1064
-        y: 63
+        x: 1061
+        y: 1397
         width: 691
         height: 277
       alignment: 0
@@ -214,7 +214,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2017
-        y: 65
+        y: 1390
         width: 691
         height: 275
       alignment: 0
@@ -235,7 +235,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2863
-        y: 590
+        y: 1921
         width: 815
         height: 1152
       alignment: 0
@@ -256,11 +256,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3030
-        y: 168
+        y: 1490
         width: 168
         height: 174
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -277,11 +277,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3293
-        y: 191
+        y: 1517
         width: 200
         height: 130
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -289,6 +289,48 @@ TextureImporter:
       bones: []
       spriteID: 3b8a1c1ed0026ca49a8966f1941dac65
       internalID: -2120646410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gray Card
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 101
+        width: 864
+        height: 1152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: badac09efe6ac974c9528099bcbe0299
+      internalID: -75891353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrayCard_DescripHolder
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 154
+        width: 691
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24b8029bb833e4e428ea15796343141e
+      internalID: 233764517
       vertices: []
       indices: 
       edges: []
@@ -305,8 +347,10 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       GreenCard_DescripHolder: -265885555
+      Gray Card: -75891353
       Red Card: 584742494
       Conversation Type: -2120646410
+      GrayCard_DescripHolder: 233764517
       RedCard_DescripHolder: -473484313
       BlueCard_DescripHolder: -1629347075
       Blue card: -1526489689
