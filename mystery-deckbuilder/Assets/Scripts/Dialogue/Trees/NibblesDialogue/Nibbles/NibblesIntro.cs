@@ -55,6 +55,7 @@ public class NibblesIntro : MonoBehaviour
     }
 }
 
+/* The class containing the short dialogue that comes after your card encounter with Nibbles */
 public class NibblesIntroAfterEncounter : MonoBehaviour
 {
     public DialogueTree dialogueTree;
