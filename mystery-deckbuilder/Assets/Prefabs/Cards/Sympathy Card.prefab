@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 993781343790485996}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sympathy Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 2788304175356942997}
   - component: {fileID: 659817916856794637}
   - component: {fileID: 8139669136613044813}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Card Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5725423788529785565}
   - component: {fileID: 3469751281165812054}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Card Type
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -305,7 +305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1387185372550554506}
   - component: {fileID: 1220004169081639048}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Green Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -389,7 +389,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6541596724756971342}
   - component: {fileID: 3256567206921229975}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GreenCard_DescripHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,7 +474,7 @@ GameObject:
   - component: {fileID: 4946540359616344547}
   - component: {fileID: 709236086771160740}
   - component: {fileID: 8975635004073698720}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Compliance Num
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -645,7 +645,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6024995878895189086}
   - component: {fileID: 2790544396979863284}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CardPic_PlaceHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -730,7 +730,7 @@ GameObject:
   - component: {fileID: 3490784231479524295}
   - component: {fileID: 2624138915983040689}
   - component: {fileID: 7364262411927487399}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Card Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -904,7 +904,7 @@ GameObject:
   - component: {fileID: 1964644852546981546}
   - component: {fileID: 7754762711996876815}
   - component: {fileID: 1968762020455794430}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Patience Num
   m_TagString: Untagged
   m_Icon: {fileID: 0}

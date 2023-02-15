@@ -19,7 +19,7 @@ public class EncounterScript : MonoBehaviour
     [SerializeField] private string _weakness; //using strings because that is how element is stored in the card class
     [SerializeField] private string _resistance; // !!!CARD CLASS AND NPC CLASS STRINGS MUST MATCH!!! 
 
-    [SerializeField] private int _handSize = 3;
+    [SerializeField] private int _handSize = 5;
     private int playCount = 0;
 
     private int maxPatience = 10; //Not sure if this will ever change, but the option is there
@@ -29,13 +29,16 @@ public class EncounterScript : MonoBehaviour
     private List<int> discard = new List<int>(); //list of cards that have been played and removed from the deck
 
     private List<ConversationCard> hand = new List<ConversationCard>(); //something weird is going on with all the "hands" I'll sort it out later
-    private List<GameObject> handFrontend = new List<GameObject>(); //container to hold instantiated card objects
+    private Dictionary<GameObject, ConversationCard> handFrontend = new Dictionary<GameObject, ConversationCard>(); //container to hold instantiated card objects
     private List<List<int>> filters = new List<List<int>>(); //experimental coolness
 
     private Sprite NpcSprite; //TODO: a sprite reference will need to be passed in in order to display who the player is in an encounter with
 
     public GameObject patienceBar;
     public GameObject complianceBar;
+
+    public GameObject playField;
+    private Dictionary<Transform, bool> locations = new Dictionary<Transform, bool>(); //<spawn location, location is occupied>
 
     public GameObject redCard;
     public GameObject blueCard;
@@ -49,6 +52,7 @@ public class EncounterScript : MonoBehaviour
     public void StartEncounter(int complianceThreshold, int startingCompliance, int startingPatience, string NpcWeakness, string NpcResistance)
     {
         GameState.Meta.activeEncounter.Value = this;
+
         _threshold = complianceThreshold;
         _compliance = startingCompliance;
         _patience = startingPatience;
@@ -57,9 +61,19 @@ public class EncounterScript : MonoBehaviour
         _weakness = NpcWeakness;
         _resistance = NpcResistance;
 
+        InitializePlayArea();
+
         InitializeCards();
     }
-    
+    private void InitializePlayArea()
+    {
+        Transform[] tempArray = playField.GetComponentsInChildren<Transform>();
+        foreach(Transform i in tempArray)
+        {
+            locations.Add(i, false);
+        }
+        locations[playField.transform] = true;
+    }
     private void InitializeCards()
     {
         deck = GameState.CardInfo.currentDeck.Value;
@@ -68,6 +82,7 @@ public class EncounterScript : MonoBehaviour
         AddFilter(-1, 1); //adding element weakness/resistance, -1 durration meens they will last forever
         AddFilter(-1, 2);
 
+        _patience += _handSize; //so you still start with full patience
         for (int i = 0; i < _handSize; i++)
         {
             DrawCard();
@@ -169,35 +184,95 @@ public class EncounterScript : MonoBehaviour
 
     public void DrawCard()
     {
+        Transform place = null;
+        
+        foreach (KeyValuePair<Transform, bool> i in locations)
+        {
+            //Debug.Log("for");
+            if (!i.Value)
+            {
+                //Debug.Log("if");
+                place = i.Key;
+                break;
+            }
+        }
+        
+        if (place == null) //if there is no space for new cards they can't draw (hopefully)
+        {
+            return;
+        }
+
+        locations[place] = true;
+
+        DecPatience(1); //draw patience cost, happens after card draw is successful
+
         int cardID = deck[0];
         deck.Remove(cardID);
         handBackend.Add(cardID);
 
-        hand.Insert(0, (ConversationCard)Cards.CreateCardWithID(cardID));
+        ConversationCard card = (ConversationCard)Cards.CreateCardWithID(cardID);
+        hand.Insert(0, card);
+
+        card.SetTransform(place);
+
+        GameObject frontendCard = null;
         switch (hand[0].GetElement())
         {
             case "Intimidation":
-                handFrontend.Insert(0, Instantiate(redCard)); //TODO mess around with instantiation so that the cards get placed on the field nicely
+                frontendCard = Instantiate(redCard, place.position, place.rotation, playField.transform);
+                handFrontend.Add(frontendCard, card); ; //TODO mess around with instantiation so that the cards get placed on the field nicely
                 break;
             case "Sympathy":
-                handFrontend.Insert(0, Instantiate(blueCard));
+                frontendCard = Instantiate(blueCard, place.position, place.rotation, playField.transform);
+                handFrontend.Add(frontendCard, card);
                 break;
             case "Persuasion":
-                handFrontend.Insert(0, Instantiate(greenCard));
+                frontendCard = Instantiate(greenCard, place.position, place.rotation, playField.transform);
+                handFrontend.Add(frontendCard, card);
+                break;
+            case "Preperation":
+                frontendCard = Instantiate(redCard, place.position, place.rotation, playField.transform);
+                handFrontend.Add(frontendCard, card);
                 break;
         }
-        Text[] textFields = handFrontend[0].GetComponentsInChildren<Text>(); // TODO navigate unity's awful gameobject heirarchy to put text values in the correct spot
+
+        Text[] textFields = frontendCard.GetComponentsInChildren<Text>(); // TODO navigate unity's awful gameobject heirarchy to put text values in the correct spot
+
+        foreach (Text i in textFields)
+        {
+            if (i.CompareTag("Card Name"))
+            {
+                i.text = card.GetName();
+            }
+            else if (i.CompareTag("Card Description"))
+            {
+                i.text = card.GetDescription();
+            }
+            else if (i.CompareTag("Patience"))
+            {
+                i.text = card.GetPatienceValue().ToString();
+            }
+            else if (i.CompareTag("Compliance"))
+            {
+                i.text = card.GetComplianceValue().ToString();
+            }
+        }
 
 
 
         UpdateCards();
     }
 
-    public void PlayCard(int ID)
+    public void PlayCard(int ID, GameObject card)
     {
         playCount++;
         handBackend.Remove(ID);
         discard.Add(ID);
+
+        locations[handFrontend[card].GetTransform()] = false; //I'm going insane
+        hand.Remove(handFrontend[card]);
+        handFrontend.Remove(card);
+        Destroy(card);
 
         UpdateCards();
 
@@ -214,10 +289,50 @@ public class EncounterScript : MonoBehaviour
     public void UpdateCards()
     {
         
-        foreach (ConversationCard i in hand)
+        foreach (KeyValuePair<GameObject, ConversationCard> i in handFrontend)
         {
-            int[] modifyAmounts = (int[])ResolveFilters(i); //TODO more putting text values in spots
-            
+            int[] modifyAmounts = (int[])ResolveFilters(i.Value); //[0] = patience modifier, [1] = compliance modifier
+
+            Text[] textFields = i.Key.GetComponentsInChildren<Text>();
+
+            foreach (Text j in textFields)
+            {
+                
+                if (j.CompareTag("Patience"))
+                {
+                    j.text = (i.Value.GetPatienceValue() + modifyAmounts[0]).ToString();
+                    if(i.Value.GetPatienceValue() + modifyAmounts[0] > i.Value.GetPatienceValue())
+                    {
+                        j.color = Color.green;
+                    }
+                    else if(i.Value.GetPatienceValue() + modifyAmounts[0] < i.Value.GetPatienceValue())
+                    {
+                        j.color = Color.red;
+                    }
+                    else
+                    {
+                        j.color = Color.black;
+                    }
+                    
+                }
+                else if (j.CompareTag("Compliance"))
+                {
+                    j.text = (i.Value.GetComplianceValue() + modifyAmounts[1]).ToString();
+                    if (i.Value.GetComplianceValue() + modifyAmounts[1] > i.Value.GetComplianceValue())
+                    {
+                        j.color = Color.green;
+                    }
+                    else if (i.Value.GetComplianceValue() + modifyAmounts[1] < i.Value.GetComplianceValue())
+                    {
+                        j.color = Color.red;
+                    }
+                    else
+                    {
+                        j.color = Color.black;
+                    }
+                }
+            }
+
         }
     }
 
