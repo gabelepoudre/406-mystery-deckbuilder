@@ -28,7 +28,7 @@ public class EncounterScript : MonoBehaviour
     private List<int> handBackend = new List<int>(); //purgatory state between being in the deck and being discarded.
     private List<int> discard = new List<int>(); //list of cards that have been played and removed from the deck
 
-    private List<ConversationCard> hand = new List<ConversationCard>(); //something weird is going on with all the "hands" I'll sort it out later
+    private List<ConversationCard> hand = new List<ConversationCard>(); //something weird is going on with all the "hands" I'll sort it out later (probably not)
     private Dictionary<GameObject, ConversationCard> handFrontend = new Dictionary<GameObject, ConversationCard>(); //container to hold instantiated card objects
     private List<List<int>> filters = new List<List<int>>(); //experimental coolness
 
@@ -51,6 +51,10 @@ public class EncounterScript : MonoBehaviour
      */
     public void StartEncounter(int complianceThreshold, int startingCompliance, int startingPatience, string NpcWeakness, string NpcResistance)
     {
+        if(GameState.Meta.activeEncounter.Value != null)
+        {
+            throw new Exception();
+        }
         GameState.Meta.activeEncounter.Value = this;
 
         _threshold = complianceThreshold;
@@ -64,7 +68,11 @@ public class EncounterScript : MonoBehaviour
         InitializePlayArea();
 
         InitializeCards();
+        SetPatience(startingPatience); //Initialize cards messes with patience, so this fixes it
     }
+    /**
+     * creates a colection of transforms that cards can be instantiated at
+     */
     private void InitializePlayArea()
     {
         Transform[] tempArray = playField.GetComponentsInChildren<Transform>();
@@ -74,6 +82,10 @@ public class EncounterScript : MonoBehaviour
         }
         locations[playField.transform] = true;
     }
+    /**
+     * sets up the deck and discard pile
+     * draws the first hand
+     */
     private void InitializeCards()
     {
         deck = GameState.CardInfo.currentDeck.Value;
@@ -82,7 +94,7 @@ public class EncounterScript : MonoBehaviour
         AddFilter(-1, 1); //adding element weakness/resistance, -1 durration meens they will last forever
         AddFilter(-1, 2);
 
-        _patience += _handSize; //so you still start with full patience
+
         for (int i = 0; i < _handSize; i++)
         {
             DrawCard();
@@ -123,12 +135,6 @@ public class EncounterScript : MonoBehaviour
             _patience = maxPatience;
         }
         patienceBar.GetComponent<BarScript>().SetValue(_patience);
-    }
-
-    public void DecPatience(int dec)
-    {
-        _patience -= dec;
-        patienceBar.GetComponent<BarScript>().SetValue(_patience);
         if (_patience <= 0)
         {
             EndEncounter(false);
@@ -145,31 +151,25 @@ public class EncounterScript : MonoBehaviour
     {
         return _compliance;
     }
-
-    public void IncCompliance(int inc)
-    {
-        _compliance += inc;
-        complianceBar.GetComponent<BarScript>().SetValue(_compliance);
-        if (_compliance >= _threshold)
-        {
-            EndEncounter(true);
-        }
-    }
-
     /**
      * compliance value cannot go bellow 0
      */
-    public void DecCompliance(int dec)
+    public void IncCompliance(int inc)
     {
-        if (_compliance - dec >= 0)
+        if (_compliance + inc >= 0)
         {
-            _compliance -= dec;
+            _compliance += inc;
         }
         else
         {
             _compliance = 0;
         }
         complianceBar.GetComponent<BarScript>().SetValue(_compliance);
+        complianceBar.GetComponent<BarScript>().SetValue(_compliance);
+        if (_compliance >= _threshold)
+        {
+            EndEncounter(true);
+        }
     }
 
     public string GetWeakness()
@@ -182,8 +182,21 @@ public class EncounterScript : MonoBehaviour
         return _resistance;
     }
 
+    /**
+     * checks if there is a card to draw
+     * finds a place for the card
+     * updates backend
+     * creates card object
+     * intsatiates prefab
+     * sets prefab to match card object
+     */
     public void DrawCard()
     {
+        if (deck.Count == 0) //if you are out of cards, you can't draw more
+        {
+            return;
+        }
+
         Transform place = null;
         
         foreach (KeyValuePair<Transform, bool> i in locations)
@@ -204,8 +217,9 @@ public class EncounterScript : MonoBehaviour
 
         locations[place] = true;
 
-        DecPatience(1); //draw patience cost, happens after card draw is successful
+        IncPatience(-1); //draw patience cost, happens after card draw is successful
 
+        
         int cardID = deck[0];
         deck.Remove(cardID);
         handBackend.Add(cardID);
@@ -258,38 +272,67 @@ public class EncounterScript : MonoBehaviour
             }
         }
 
-
-
         UpdateCards();
+
     }
 
-    public void PlayCard(int ID, GameObject card)
+    /**
+     * Represents the act of playing a card
+     * called from the card prefab script
+     */
+    public void PlayCard(GameObject card) //BUG seems to want to complete the call stack even after the object is destroyed, throws an exception
     {
+        int ID = handFrontend[card].GetId();
         playCount++;
         handBackend.Remove(ID);
         discard.Add(ID);
+
+        Text[] textFields = card.GetComponentsInChildren<Text>(); // TODO navigate unity's awful gameobject heirarchy to put text values in the correct spot
+
+        foreach (Text i in textFields)
+        {
+            if (i.CompareTag("Patience"))
+            {
+                IncPatience(int.Parse(i.text));
+            }
+            else if (i.CompareTag("Compliance"))
+            {
+                IncCompliance(int.Parse(i.text));
+            }
+        }
+
+        handFrontend[card].Execute();
 
         locations[handFrontend[card].GetTransform()] = false; //I'm going insane
         hand.Remove(handFrontend[card]);
         handFrontend.Remove(card);
         Destroy(card);
 
-        UpdateCards();
-
-        foreach (List<int> i in filters) //removes filters as they expire
+        
+        for (int i = 0; i < filters.Count; i++) //removes filters as they expire
         {
-            i[0]--;
-            if(i[0] == 0)
+            if (filters[i][0] == 0)
             {
-                filters.Remove(i);
+                filters.RemoveAt(i);
+            }
+            else
+            {
+                filters[i][0]--;
             }
         }
+
+        UpdateCards();
     }
 
-    public void UpdateCards()
+    /**
+     * Updates the visible card objects 
+     * changes their patience and complience values
+     * changes the text colour to show relation to base value
+     */
+    private void UpdateCards()
     {
         
-        foreach (KeyValuePair<GameObject, ConversationCard> i in handFrontend)
+        foreach (KeyValuePair<GameObject, ConversationCard> i in handFrontend) //looks like an optimization problem, but N of handFrontend is max 5 and N of textFeilds is max 4
         {
             int[] modifyAmounts = (int[])ResolveFilters(i.Value); //[0] = patience modifier, [1] = compliance modifier
 
@@ -344,12 +387,11 @@ public class EncounterScript : MonoBehaviour
      */
     public void AddFilter(int duration, int id)
     {
-        //duration + playCount will be the play that the effect expires
-        List<int> filter = new List<int>() {duration + playCount, id };
+        List<int> filter = new List<int>() {duration, id };
         filters.Add(filter);
     }
 
-    public Array ResolveFilters(ConversationCard card)
+    private Array ResolveFilters(ConversationCard card)
     {
         
         int[] modifyAmounts = new int[] {0, 0}; //[0] = patience modifier, [1] = compliance modifier
@@ -369,6 +411,10 @@ public class EncounterScript : MonoBehaviour
      */
     private void EndEncounter(bool victory)
     {
+        deck.AddRange(handBackend); //puts unused cards back into deck
+        GameState.CardInfo.currentDeck.Value = deck;
+        GameState.CardInfo.currentDiscard.Value = discard;
+        GameState.Meta.activeEncounter.Value = null;
         Destroy(this.gameObject);
     }
 }

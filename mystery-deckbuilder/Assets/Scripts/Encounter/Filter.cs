@@ -10,7 +10,7 @@ public static class Filters
         switch (id)
         {
             case 0:
-                return TestFilter();
+                return NoEffect();
             case 1:
                 return WeaknessCheck(baseComp, element);
             case 2:
@@ -20,9 +20,9 @@ public static class Filters
         }
     }
 
-    private static Array TestFilter()
+    private static Array NoEffect()
     {
-        return null;
+        return new int[] {0, 0};
     }
     private static Array WeaknessCheck(int baseComp, string element) //needs access to card element, base compliance
     {
