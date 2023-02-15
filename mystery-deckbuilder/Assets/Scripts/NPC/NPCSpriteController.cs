@@ -58,28 +58,6 @@ public class NPCSpriteController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        // Ugly conditionals just for testing!!
-        if(Input.GetKeyDown("a"))
-        {
-            GetAngry();
-        }
-        else if(Input.GetKeyDown("h"))
-        {
-            GetHappy();
-        }
-        else if(Input.GetKeyDown("w"))
-        {
-            GetWorry();
-        }
-        else if(Input.GetKeyDown("s"))
-        {
-            GetStress();
-        }
-        else if(Input.GetKeyDown("n"))
-        {
-            GetNeutral();
-        }
         
     }
 }
