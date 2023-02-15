@@ -25,6 +25,8 @@ public class DialogueBoxManager : MonoBehaviour
 
     public static DialogueBoxManager Instance {get; private set; } //a static instance of itself
 
+    public string NPCName {get; set;}
+
     private DialogueTree _dialogueTree;
     private IDialogueNode _currentNode;
 
@@ -49,6 +51,7 @@ public class DialogueBoxManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        NPCName = "NPC";
         _sentences = new Queue<string>();
     }
 
@@ -63,8 +66,10 @@ public class DialogueBoxManager : MonoBehaviour
     /* Initiates a new dialogue by instantiating a DialogueBox, adding its sentences to the queue
      * setting the name of the DialogueBox, and displaying the next sentence (in this case the first one)
      */
-    public void StartDialogue(DialogueTree newDialogueTree)
+    public void StartDialogue(DialogueTree newDialogueTree, string npcName = "NPC")
     {
+        NPCName = npcName;
+
         //the current dialogue must be ended before starting a new one
         if (_dialogueBox != null)
         {
@@ -98,8 +103,14 @@ public class DialogueBoxManager : MonoBehaviour
         if (_currentNode.NodeType() != "option") //if a normal dialogue node
         {
 
-            _dialogueBox.GetComponent<DialogueBox>().SetName(_currentNode.NodeType()); //TODO: change this to grab name of NPC
-            
+            if (_currentNode.NodeType() == "npc") {
+                _dialogueBox.GetComponent<DialogueBox>().SetName(NPCName);
+            }
+            else
+            {
+                _dialogueBox.GetComponent<DialogueBox>().SetName("You");
+            }
+
             EnqueueAllSentences();
             DisplayNextSentence();
         }
