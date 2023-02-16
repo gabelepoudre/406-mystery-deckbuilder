@@ -13,7 +13,7 @@ public class NPC : MonoBehaviour
     [Range(0.0f, 1.0f)]public float startingCompliance;
     [Range(0.0f, 1.0f)]public float currentPatience;
     [Range(0.0f, 1.0f)]public float currentCompliance;
-    public DialogueTree diaglogue;
+    public DialogueTree dialogue;
 
     //Get current patience
     public float GetPatience()
