@@ -66,6 +66,8 @@ public class Bluster : ConversationCard
         this._metadata["description"] = "none";
         this._metadata["patience"] = "-1";
         this._metadata["compliance"] = "10";
+        this._metadata["duration"] = "0";
+        this._metadata["filterId"] = "0";
     }
 }
 
@@ -78,6 +80,8 @@ public class PartingShot : ConversationCard
         this._metadata["description"] = "Can only be used when patience is at 1(2?).";
         this._metadata["patience"] = "-2";
         this._metadata["compliance"] = "30";
+        this._metadata["duration"] = "0";
+        this._metadata["filterId"] = "0";
     }
 }
 
@@ -90,6 +94,8 @@ public class BrowBeat : ConversationCard
         this._metadata["description"] = "Raise compliance by 10 for every card discarded.";
         this._metadata["patience"] = "-2";
         this._metadata["compliance"] = "10";
+        this._metadata["duration"] = "0";
+        this._metadata["filterId"] = "0";
     }
 }
 
@@ -102,6 +108,8 @@ public class BadCop : ConversationCard
         this._metadata["description"] = "Raise compliance by 10 for every Sympathy card in hand";
         this._metadata["patience"] = "-3";
         this._metadata["compliance"] = "10";
+        this._metadata["duration"] = "0";
+        this._metadata["filterId"] = "0";
     }
 }
 
@@ -114,6 +122,8 @@ public class Encourage : ConversationCard
         this._metadata["description"] = "none";
         this._metadata["patience"] = "-1";
         this._metadata["compliance"] = "10";
+        this._metadata["duration"] = "0";
+        this._metadata["filterId"] = "0";
     }
 }
 
@@ -126,6 +136,8 @@ public class Complement : ConversationCard
         this._metadata["description"] = "When played as the first card, it raises compliance by 15 instead of 5.";
         this._metadata["patience"] = "-1";
         this._metadata["compliance"] = "5";
+        this._metadata["duration"] = "0";
+        this._metadata["filterId"] = "0";
     }
 }
 
@@ -138,6 +150,8 @@ public class SobStory : ConversationCard
         this._metadata["description"] = "Raise compliance by 8 for every card drawn so far.";
         this._metadata["patience"] = "-2";
         this._metadata["compliance"] = "8";
+        this._metadata["duration"] = "0";
+        this._metadata["filterId"] = "0";
     }
 }
 
@@ -150,6 +164,8 @@ public class GoodCop : ConversationCard
         this._metadata["description"] = "Raise compliance by 10 for every Intimidation card in hand.";
         this._metadata["patience"] = "-3";
         this._metadata["compliance"] = "10";
+        this._metadata["duration"] = "0";
+        this._metadata["filterId"] = "0";
     }
 }
 
@@ -162,6 +178,8 @@ public class Articulate : ConversationCard
         this._metadata["description"] = "None";
         this._metadata["patience"] = "-1";
         this._metadata["compliance"] = "10";
+        this._metadata["duration"] = "0";
+        this._metadata["filterId"] = "0";
     }
 }
 
@@ -174,6 +192,8 @@ public class Salutation : ConversationCard
         this._metadata["description"] = "When played as the first card, draw a card.";
         this._metadata["patience"] = "-1";
         this._metadata["compliance"] = "8";
+        this._metadata["duration"] = "0";
+        this._metadata["filterId"] = "0";
     }
 }
 
@@ -186,6 +206,8 @@ public class Lecture : ConversationCard
         this._metadata["description"] = "Raise compliance by 10 for every patience still remaining.";
         this._metadata["patience"] = "-3";
         this._metadata["compliance"] = "10";
+        this._metadata["duration"] = "0";
+        this._metadata["filterId"] = "0";
     }
 }
 

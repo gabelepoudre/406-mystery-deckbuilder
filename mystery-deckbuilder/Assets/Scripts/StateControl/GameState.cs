@@ -32,8 +32,10 @@ public static class GameState
         public static GameStateValue<GameplayPhases> currentGameplayPhase = 
             new(GameplayPhases.Tutorial, _gameStateValues);
 
-        public static GameStateValue<bool> notepadActive = new(false, _gameStateValues);
 
+        public static GameStateValue<EncounterScript> activeEncounter = new(null, _gameStateValues);
+
+        public static GameStateValue<bool> notepadActive = new(false, _gameStateValues);
         
     }
 
@@ -49,6 +51,17 @@ public static class GameState
     public class NPCs
     {
 
+    }
+
+    /* GameState holder class for ongoing card and deck information*/
+    public class CardInfo
+    {
+        //these are lists because they have to be in this context. just be mindfull of list length weirdness
+        static int[] startingDeck = {1, 5, 9, 1, 5, 9, 1, 5, 9, 1, 5, 9};
+        public static GameStateValue<List<int>> currentDeck = new(new List<int>(startingDeck), _gameStateValues);
+
+        static int[] startingDiscard = { };
+        public static GameStateValue<List<int>> currentDiscard = new(new List<int>(startingDiscard), _gameStateValues);
     }
 
 

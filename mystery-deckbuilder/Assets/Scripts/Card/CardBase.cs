@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 /*
  * An abstract class that all conversation cards override/inherit from
@@ -12,6 +13,7 @@ public abstract class ConversationCard
 
     protected readonly int _id;
     protected IDictionary<string, string> _metadata = new Dictionary<string, string>();
+    protected Transform placement;
     protected List<Action> methods = new List<Action>();
 
     public ConversationCard(int id)
@@ -27,6 +29,9 @@ public abstract class ConversationCard
     public string GetDescription() { return _metadata["description"]; }
     public int GetComplianceValue() { return int.Parse(_metadata["compliance"]); }
     public int GetPatienceValue() { return int.Parse(_metadata["patience"]); }
+    public Transform GetTransform() { return placement; }
+    public void SetTransform(Transform location) { placement = location;}
+    public void Execute() { GameState.Meta.activeEncounter.Value.AddFilter(int.Parse(_metadata["duration"]), int.Parse(_metadata["filterId"])); }
 }
 
 /*

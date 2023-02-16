@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8845572779709134038}
   - component: {fileID: 7674491743158492222}
   - component: {fileID: 3627799207646167409}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Card Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 9165178147358970802}
   - component: {fileID: 8762351318118236944}
   - component: {fileID: 2656779823808666758}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Compliance Num
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 6074723540747718563}
   - component: {fileID: 5617746505476857018}
   - component: {fileID: 8886533068707349472}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Patience Num
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -528,7 +528,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6389169740257598389}
   - component: {fileID: 6389169740257598390}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CardPic_PlaceHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -611,7 +611,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6389169740637944365}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Persuasion Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -626,7 +626,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6389169740637944364}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.179663, y: -0.6714912, z: -0.022427054}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -651,7 +651,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6389169740739880274}
   - component: {fileID: 6389169740739880275}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Blue card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -735,7 +735,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6389169741483199473}
   - component: {fileID: 6389169741483199474}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueCard_DescripHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -819,7 +819,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6389169741512322792}
   - component: {fileID: 6389169741512322793}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Card Type
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -904,7 +904,7 @@ GameObject:
   - component: {fileID: 5377280319252186590}
   - component: {fileID: 4650970353370842511}
   - component: {fileID: 5215024937270560364}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Card Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
