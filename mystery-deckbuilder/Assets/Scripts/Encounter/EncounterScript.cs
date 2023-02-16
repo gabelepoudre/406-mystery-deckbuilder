@@ -51,10 +51,11 @@ public class EncounterScript : MonoBehaviour
      */
     public void StartEncounter(int complianceThreshold, int startingCompliance, int startingPatience, string npcWeakness, string npcResistance)
     {
-        if(GameState.Meta.activeEncounter.Value != null) //BUG only works on every sencond extra encounter for some reason
+        if(GameState.Meta.activeEncounter.Value != null) 
         {
             Debug.LogError("There is already an avtive Encounter");
             Destroy(this.gameObject);
+            return;
         }
         GameState.Meta.activeEncounter.Value = this;
 
@@ -287,7 +288,7 @@ public class EncounterScript : MonoBehaviour
      * Represents the act of playing a card
      * called from the card prefab script
      */
-    public void PlayCard(GameObject card) //BUG seems to want to complete the call stack even after the object is destroyed, throws an exception
+    public void PlayCard(GameObject card) //BUG (bandaided) seems to want to complete the call stack even after the object is destroyed, throws an exception
     {
         int ID = handFrontend[card].GetId();
         playCount++;
@@ -296,16 +297,25 @@ public class EncounterScript : MonoBehaviour
 
         Text[] textFields = card.GetComponentsInChildren<Text>(); 
 
-        foreach (Text i in textFields)
+        foreach (Text i in textFields) 
         {
-            if (i.CompareTag("Patience"))
-            {
-                IncPatience(int.Parse(i.text));
-            }
-            else if (i.CompareTag("Compliance"))
+            if (i.CompareTag("Compliance"))
             {
                 IncCompliance(int.Parse(i.text));
             }
+            else if (GameState.Meta.activeEncounter.Value == null) //check so that the call stack doesn't run away after Encounter is destroyed
+            {
+                return;
+            }
+            else if (i.CompareTag("Patience"))
+            {
+                IncPatience(int.Parse(i.text));
+            }
+        }
+
+        if (GameState.Meta.activeEncounter.Value == null) //check so that the call stack doesn't run away after Encounter is destroyed
+        {
+            return;
         }
 
         handFrontend[card].Execute();
