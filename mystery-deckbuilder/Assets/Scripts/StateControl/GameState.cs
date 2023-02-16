@@ -32,7 +32,10 @@ public static class GameState
         public static GameStateValue<GameplayPhases> currentGameplayPhase = 
             new(GameplayPhases.Tutorial, _gameStateValues);
 
+
         public static GameStateValue<EncounterScript> activeEncounter = new(null, _gameStateValues);
+
+        public static GameStateValue<bool> notepadActive = new(false, _gameStateValues);
         
     }
 
