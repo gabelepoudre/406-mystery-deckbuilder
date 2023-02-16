@@ -5,7 +5,7 @@ using UnityEngine;
 public class NPC : MonoBehaviour
 {
     //Variables 
-    public string name;
+    public string characterName;
     [Range(0.0f, 1.0f)]public float affinity_1;
     [Range(0.0f, 1.0f)]public float affinity_2;
     [Range(0.0f, 1.0f)]public float affintiy_3;

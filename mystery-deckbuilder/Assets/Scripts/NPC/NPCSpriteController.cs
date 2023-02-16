@@ -15,49 +15,42 @@ public class NPCSpriteController : MonoBehaviour
 
 
     // Switch to Neutral Sprite
-    public void GetNeutral(){
+    public void GetNeutral()
+    {
         spriteRenderer.sprite = neutral;
         
     }
 
 
     // Switch to Happy Sprite
-    public void GetHappy(){
+    public void GetHappy()
+    {
         spriteRenderer.sprite = happy;
         
     }
 
 
     // Switch to Angry Sprite
-    public void GetAngry(){
+    public void GetAngry()
+    {
         spriteRenderer.sprite = angry;
         
     }
 
 
     // Switch to Stress Sprite
-    public void GetStress(){
+    public void GetStress()
+    {
         spriteRenderer.sprite = stress;
         
     }
 
 
     // Switch to Worry Sprite
-    public void GetWorry(){
+    public void GetWorry()
+    {
         spriteRenderer.sprite = worry;
         
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

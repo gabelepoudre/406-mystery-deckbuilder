@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Test_NPCSpriteController : MonoBehaviour
+public class TestNPCSpriteController : MonoBehaviour
 {
 
 
     public NPCSpriteController NPCSpriteController;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
