@@ -4,6 +4,9 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+/*
+    Notepad class creates/organizes Chaptes/Pages within the notebook, and allows for navigation of the display
+*/
 public class Notepad : MonoBehaviour
 {
     //Variables
@@ -13,7 +16,6 @@ public class Notepad : MonoBehaviour
     public GameObject notepadCanvas;
     public GameObject pageImage;
 
-    public bool notebookActive;
     public int currentChapterID = 0;
     public int currentPageID = 0;
 
@@ -30,8 +32,8 @@ public class Notepad : MonoBehaviour
     //Opens or closes the notepad when called
     public void OpenNotepad()
     {
-        notebookActive = !notebookActive;
-        notepadCanvas.SetActive(notebookActive);
+        GameState.Meta.notepadActive.Value = !GameState.Meta.notepadActive.Value;
+        notepadCanvas.SetActive(GameState.Meta.notepadActive.Value);
     }
 
     //Changes the current chapter in the notebook
@@ -96,6 +98,9 @@ public class Notepad : MonoBehaviour
         DropdownItemSelected(tabs);
 
         tabs.onValueChanged.AddListener(delegate{ DropdownItemSelected(tabs);});
+
+        //Refreshes shown value on the dropdown to be the current first chapter
+        tabs.RefreshShownValue();
 
     }
 
@@ -241,8 +246,8 @@ public class Notepad : MonoBehaviour
         currentPage = one.pageList[currentPageID];
 
         //set the notebook to be not visible
-        notebookActive = false;
-        notepadCanvas.SetActive(notebookActive);
+        GameState.Meta.notepadActive.Value = false;
+        notepadCanvas.SetActive(GameState.Meta.notepadActive.Value);
 
         //set chapter dropdown list 
         SetDropdown();
@@ -258,13 +263,6 @@ public class Notepad : MonoBehaviour
         currentPage = currentChapter.pageList[currentPageID];
 
         NavigateNotebook();
-
-  
-
-      
-
-        
-        
-        
+   
     }
 }

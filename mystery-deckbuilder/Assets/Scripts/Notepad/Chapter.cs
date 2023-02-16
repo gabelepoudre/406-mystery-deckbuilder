@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+    Chapter class creates a "chapter" container that holds pages to be displayed
+    Has currentPageID, title, page list, and number of pages
+*/
 public class Chapter 
 {
-
     //Chapters holds numpages, title, and contain ID's. 
     public int currentPageID;
     public string title;

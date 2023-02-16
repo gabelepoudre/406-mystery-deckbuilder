@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+    Page class creates a Page that contains notes to be displayed
+    Has number of notes within the page, a title, an image, and a List of notes
+*/
 public class Page 
 {
-
-
     public int numNotes;
     public string title;
     public GameObject img;

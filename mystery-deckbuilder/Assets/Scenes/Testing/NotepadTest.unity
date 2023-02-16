@@ -501,6 +501,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 146
       objectReference: {fileID: 0}
+    - target: {fileID: 2143028789932876040, guid: 16bcd3563d7fa4af88b6003fa9f7d088, type: 3}
+      propertyPath: m_Options.m_Options.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2143028791853564966, guid: 16bcd3563d7fa4af88b6003fa9f7d088, type: 3}
       propertyPath: m_Text
       value: Option A
