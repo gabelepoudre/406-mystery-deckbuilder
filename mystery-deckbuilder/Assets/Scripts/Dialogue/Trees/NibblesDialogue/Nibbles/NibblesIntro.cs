@@ -44,6 +44,11 @@ public class NibblesIntro : MonoBehaviour
 
         introReply.SetOptions(IntroReplyOptionsList);
 
+        //NOTE: this is just for the alpha demo
+        //TODO: remove this once a proper way of starting encounters is implemented
+        NPCNode startEncounter = new(new string[] {"ENCOUNTER"});
+        confidential.SetNext(startEncounter);
+
 
         return new DialogueTree(intro);
     }
@@ -52,6 +57,15 @@ public class NibblesIntro : MonoBehaviour
     {
         this.dialogueTree = BuildTree();
 
+    }
+
+
+    public DialogueTree GetIntroAfterEncounter()
+    {
+        DialogueTree tree = new (new NPCNode(new string[] {"You're very persuasive!",
+        "Near the rail yard, operating out of an old sea can, there is a small perogy place known as Mike's Perogies", "That is where you should start."}));
+
+        return tree;
     }
 }
 
