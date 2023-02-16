@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class NPCSpriteController : MonoBehaviour
 {
-    
-    // Sprite Variables
-    public SpriteRenderer spriteRenderer;
+
+    public Image spriteImage;
     public Sprite neutral;
     public Sprite happy;
     public Sprite angry;
@@ -17,7 +17,7 @@ public class NPCSpriteController : MonoBehaviour
     // Switch to Neutral Sprite
     public void GetNeutral()
     {
-        spriteRenderer.sprite = neutral;
+        spriteImage.sprite = neutral;
         
     }
 
@@ -25,7 +25,7 @@ public class NPCSpriteController : MonoBehaviour
     // Switch to Happy Sprite
     public void GetHappy()
     {
-        spriteRenderer.sprite = happy;
+        spriteImage.sprite = happy;
         
     }
 
@@ -33,7 +33,7 @@ public class NPCSpriteController : MonoBehaviour
     // Switch to Angry Sprite
     public void GetAngry()
     {
-        spriteRenderer.sprite = angry;
+        spriteImage.sprite = angry;
         
     }
 
@@ -41,7 +41,7 @@ public class NPCSpriteController : MonoBehaviour
     // Switch to Stress Sprite
     public void GetStress()
     {
-        spriteRenderer.sprite = stress;
+        spriteImage.sprite = stress;
         
     }
 
@@ -49,7 +49,7 @@ public class NPCSpriteController : MonoBehaviour
     // Switch to Worry Sprite
     public void GetWorry()
     {
-        spriteRenderer.sprite = worry;
+        spriteImage.sprite = worry;
         
     }
 
