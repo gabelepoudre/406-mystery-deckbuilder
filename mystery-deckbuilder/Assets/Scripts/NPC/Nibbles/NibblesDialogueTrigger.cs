@@ -14,4 +14,12 @@ public class NibblesDialogueTrigger : MonoBehaviour
         string name = transform.GetComponent<NPC>().name;
         DialogueBoxManager.Instance.StartDialogue(tree, name);
     }
+
+    public void StartEndOfEncounterDialogue()
+    {
+        Debug.Log("triggered dialogue");
+        DialogueTree tree = transform.GetComponent<NibblesIntro>().GetIntroAfterEncounter();
+        string name = transform.GetComponent<NPC>().name;
+        DialogueBoxManager.Instance.StartDialogue(tree, name);
+    }
 }

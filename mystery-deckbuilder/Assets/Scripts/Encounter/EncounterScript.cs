@@ -433,6 +433,11 @@ public class EncounterScript : MonoBehaviour
         GameState.CardInfo.currentDeck.Value = deck;
         GameState.CardInfo.currentDiscard.Value = discard;
         GameState.Meta.activeEncounter.Value = null;
+
+        //NOTE: this is just a temporary thing until we implement a proper system for initiating post-encounter dialogues
+        //TODO: remove this after implementing a proper system for initiating post-encounter dialogues
+        GameObject.Find("Nibbles").transform.GetComponent<NibblesDialogueTrigger>().StartEndOfEncounterDialogue();
+
         Destroy(this.gameObject);
     }
 }

@@ -98,6 +98,14 @@ public class DialogueBoxManager : MonoBehaviour
             return;
         }
 
+        //TODO: remove this once a proper way of initiating encounters is implemented
+        if (_currentNode.NodeType() == "npc" && ((NPCNode)_currentNode).dialogue[0] == "ENCOUNTER")
+        {
+            EndDialogue();
+            GameObject.Find("Nibbles").GetComponent<EncounterTest>().StartEncounter();
+
+        }
+
         StopAllCoroutines(); //stop displaying text, in case player clicks next while text still writing
 
         if (_currentNode.NodeType() != "option") //if a normal dialogue node
@@ -163,6 +171,20 @@ public class DialogueBoxManager : MonoBehaviour
     {
         _dialogueBox.GetComponent<DialogueBox>().DestroyDialogueBox();
     }
+
+
+
+    /* 
+     * NOTE: this is a temporary method to initiate the encounter with Nibbles for the Alpha demo
+     * TODO: remove this method and implement a proper way of starting encounters
+     */
+     public void StartNibblesEncounter()
+     {
+
+     }
+
+
+
 
     /* Enqueues all sentences contained in the current node */
     private void EnqueueAllSentences()
