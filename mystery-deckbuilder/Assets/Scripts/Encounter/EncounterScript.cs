@@ -49,11 +49,12 @@ public class EncounterScript : MonoBehaviour
      * initializes the ecounter. 
      * more parameters may be added as their implementaion is solidified
      */
-    public void StartEncounter(int complianceThreshold, int startingCompliance, int startingPatience, string NpcWeakness, string NpcResistance)
+    public void StartEncounter(int complianceThreshold, int startingCompliance, int startingPatience, string npcWeakness, string npcResistance)
     {
-        if(GameState.Meta.activeEncounter.Value != null)
+        if(GameState.Meta.activeEncounter.Value != null) //BUG only works on every sencond extra encounter for some reason
         {
-            throw new Exception();
+            Debug.LogError("There is already an avtive Encounter");
+            Destroy(this.gameObject);
         }
         GameState.Meta.activeEncounter.Value = this;
 
@@ -62,13 +63,13 @@ public class EncounterScript : MonoBehaviour
         _patience = startingPatience;
         SetInitialBarValues();
 
-        _weakness = NpcWeakness;
-        _resistance = NpcResistance;
+        _weakness = npcWeakness;
+        _resistance = npcResistance;
 
         InitializePlayArea();
 
         InitializeCards();
-        SetPatience(startingPatience); //Initialize cards messes with patience, so this fixes it
+        SetPatience(startingPatience); //Initialize cards uses DrawCard to draw the starting hand, DrawCard increments patience, this resets it to where it should be
     }
     /**
      * creates a colection of transforms that cards can be instantiated at
@@ -122,6 +123,9 @@ public class EncounterScript : MonoBehaviour
     }
 
     /**
+     * Patience is stored in a format where values from the same location could be either positive or negative. 
+     * it makes sense to have one funtion rather than having additional checks to determine which function to use
+     * 
      * patience will never go above max
      */
     public void IncPatience(int inc)
@@ -151,7 +155,11 @@ public class EncounterScript : MonoBehaviour
     {
         return _compliance;
     }
+
     /**
+     * Compliance is stored in a format where values from the same location could be either positive or negative. 
+     * it makes sense to have one funtion rather than having additional checks to determine which function to use
+     * 
      * compliance value cannot go bellow 0
      */
     public void IncCompliance(int inc)
@@ -233,8 +241,8 @@ public class EncounterScript : MonoBehaviour
         switch (hand[0].GetElement())
         {
             case "Intimidation":
-                frontendCard = Instantiate(redCard, place.position, place.rotation, playField.transform);
-                handFrontend.Add(frontendCard, card); ; //TODO mess around with instantiation so that the cards get placed on the field nicely
+                frontendCard = Instantiate(redCard, place.position, place.rotation, playField.transform);  //TODO mess around with instantiation so that the cards get placed on the field nicely (only if the current 5-slot method is not sufficient)
+                handFrontend.Add(frontendCard, card);
                 break;
             case "Sympathy":
                 frontendCard = Instantiate(blueCard, place.position, place.rotation, playField.transform);
@@ -250,8 +258,7 @@ public class EncounterScript : MonoBehaviour
                 break;
         }
 
-        Text[] textFields = frontendCard.GetComponentsInChildren<Text>(); // TODO navigate unity's awful gameobject heirarchy to put text values in the correct spot
-
+        Text[] textFields = frontendCard.GetComponentsInChildren<Text>(); 
         foreach (Text i in textFields)
         {
             if (i.CompareTag("Card Name"))
@@ -287,7 +294,7 @@ public class EncounterScript : MonoBehaviour
         handBackend.Remove(ID);
         discard.Add(ID);
 
-        Text[] textFields = card.GetComponentsInChildren<Text>(); // TODO navigate unity's awful gameobject heirarchy to put text values in the correct spot
+        Text[] textFields = card.GetComponentsInChildren<Text>(); 
 
         foreach (Text i in textFields)
         {
@@ -332,7 +339,7 @@ public class EncounterScript : MonoBehaviour
     private void UpdateCards()
     {
         
-        foreach (KeyValuePair<GameObject, ConversationCard> i in handFrontend) //looks like an optimization problem, but N of handFrontend is max 5 and N of textFeilds is max 4
+        foreach (KeyValuePair<GameObject, ConversationCard> i in handFrontend) //looks like an optimization problem, but N of handFrontend is max 5 and N of textFields is max 4
         {
             int[] modifyAmounts = (int[])ResolveFilters(i.Value); //[0] = patience modifier, [1] = compliance modifier
 
@@ -380,7 +387,8 @@ public class EncounterScript : MonoBehaviour
     }
 
     /** 
-     * card object passes the id of the static object that calculates it's effect and the durration of how long that effect lingers.
+     * card object passes the id of the static object that calculates it's effect and the duration of how long that effect lingers.
+     * duration -1 (or any negative number) will persist indefinitly 
      * "local" effects can just be duration 1 or something
      * this implementation allows cards to pass their lingering effects without them disapearing when the card is destroyed
      * 
@@ -398,7 +406,7 @@ public class EncounterScript : MonoBehaviour
 
         foreach (List<int> i in filters)
         {
-            int[] tempArray = (int[])Filters.GetFilterByID(i[1], card.GetComplianceValue(), card.GetPatienceValue(), card.GetElement());
+            int[] tempArray = (int[])Filters.GetFilterByID(i[1], card);
             modifyAmounts[0] += tempArray[0];
             modifyAmounts[1] += tempArray[1];
         }
