@@ -67,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -105,57 +105,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Complience bar - top
+      name: Complience bar
       rect:
         serializedVersion: 2
-        x: 93
-        y: 1872
-        width: 519
-        height: 156
+        x: 91
+        y: 1571
+        width: 1515
+        height: 516
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ed8c108ccfcf9d74c99bc6190e0834bf
-      internalID: -1284881674
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Complience bar - mid
-      rect:
-        serializedVersion: 2
-        x: 95
-        y: 1200
-        width: 517
-        height: 501
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b7e3b4827a1c4ee47a162594c16d4589
-      internalID: -2043811953
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Complience bar - bttm
-      rect:
-        serializedVersion: 2
-        x: 95
-        y: 129
-        width: 514
-        height: 875
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,15 +126,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Complience Fill bar - bttm
+      name: Complience Fill bar
       rect:
         serializedVersion: 2
-        x: 691
-        y: 179
-        width: 383
-        height: 825
+        x: 142
+        y: 1103
+        width: 1438
+        height: 389
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,99 +147,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Complience Fill bar - mid
+      name: Patience bar
       rect:
         serializedVersion: 2
-        x: 690
-        y: 1201
-        width: 388
-        height: 500
+        x: 110
+        y: 84
+        width: 1519
+        height: 519
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9e2fdb16ab5c84a41ac1ba16ac42c11a
-      internalID: 358177744
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Complience Fill bar - top
-      rect:
-        serializedVersion: 2
-        x: 691
-        y: 1873
-        width: 383
-        height: 108
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e5e4af09385c79440b8469eb62050168
-      internalID: 50326363
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Patience bar - top
-      rect:
-        serializedVersion: 2
-        x: 1257
-        y: 1874
-        width: 518
-        height: 154
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e30ec0366b88c6a4ca39c74ae13bf80b
-      internalID: 1496857042
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Patience bar - mid
-      rect:
-        serializedVersion: 2
-        x: 1260
-        y: 1202
-        width: 512
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5aaf20739e5eb0b44b24e5bc4c1dc490
-      internalID: -951390488
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Patience bar - bttm
-      rect:
-        serializedVersion: 2
-        x: 1259
-        y: 127
-        width: 516
-        height: 877
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -294,15 +168,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Patience Fill bar - bottom
+      name: Patience Fill bar
       rect:
         serializedVersion: 2
-        x: 1826
-        y: 176
-        width: 385
-        height: 826
+        x: 158
+        y: 652
+        width: 1422
+        height: 390
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -310,48 +184,6 @@ TextureImporter:
       bones: []
       spriteID: 231d9748554703c45abf6277f448ec0a
       internalID: 829165233
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Patience Fill bar - mid
-      rect:
-        serializedVersion: 2
-        x: 1825
-        y: 1201
-        width: 388
-        height: 502
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: de3c39d492b93e549ba295e4d3dab8c8
-      internalID: 572428664
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Patience Fill bar - top
-      rect:
-        serializedVersion: 2
-        x: 1828
-        y: 1874
-        width: 385
-        height: 107
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fd174b6f18521de4aac2f0efe1d47c5a
-      internalID: -241830498
       vertices: []
       indices: 
       edges: []
@@ -365,7 +197,7 @@ TextureImporter:
         width: 1386
         height: 642
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -386,7 +218,7 @@ TextureImporter:
         width: 649
         height: 652
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -407,7 +239,7 @@ TextureImporter:
         width: 649
         height: 646
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -430,21 +262,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Patience Fill bar: 829165233
       Patience bar - mid: -951390488
       Patience Fill bar - top: -241830498
       Complience bar - mid: -2043811953
       Complience bar - logo: 1479139359
       Complience Fill bar - mid: 358177744
+      Complience Fill bar: -1421221736
       Complience bar - top: -1284881674
-      Patience Fill bar - bottom: 829165233
       Patience Fill bar - mid: 572428664
       Patience bar - top: 1496857042
       Complience Fill bar - top: 50326363
       DrawCard_Bttn: 224173996
-      Complience Fill bar - bttm: -1421221736
-      Patience bar - bttm: -2052475375
+      Patience bar: -2052475375
+      Complience bar: -323444595
       Patience bar - Logo: -1468448988
-      Complience bar - bttm: -323444595
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 1

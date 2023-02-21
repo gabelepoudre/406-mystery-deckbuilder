@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1516656012120221560}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1060, y: 175, z: 0}
+  m_LocalPosition: {x: 1085, y: 175, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -201,7 +201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2693501758239236722}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 180, y: 175, z: 0}
+  m_LocalPosition: {x: 125, y: 175, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -232,7 +232,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2806645462160169150}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 400, y: 175, z: 0}
+  m_LocalPosition: {x: 365, y: 175, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -339,7 +339,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3483821849190397747}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 620, y: 175, z: 0}
+  m_LocalPosition: {x: 605, y: 175, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -696,7 +696,7 @@ Canvas:
   m_GameObject: {fileID: 6983892176161029115}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -802,10 +802,10 @@ MonoBehaviour:
   patienceBar: {fileID: 6983892177897665125}
   complianceBar: {fileID: 6983892177592257835}
   playField: {fileID: 6983892177187874297}
-  redCard: {fileID: 9007100378750078215, guid: 8b0026cd7af57c04f88e27726e345ba2, type: 3}
-  blueCard: {fileID: 791065038224991643, guid: 739eb219d28ae6c40b03747a49cc237e, type: 3}
-  greenCard: {fileID: 3114602930462600318, guid: 5c5a70115ada127409bdd13fad9d9e01, type: 3}
-  prepCard: {fileID: 1602454844919155312, guid: 17a981d15dfe96e40904424e904155b0, type: 3}
+  redCard: {fileID: 9204399067519391359, guid: d5c35f3dc6245a848a89dad5faaa533a, type: 3}
+  blueCard: {fileID: 2988496786782926893, guid: 07f68a7fc0afc044bacc2613d0e3cc07, type: 3}
+  greenCard: {fileID: 3279046307657509022, guid: 800d684852fc101438fafc008241abf0, type: 3}
+  prepCard: {fileID: 7945119398423598118, guid: 9dbc6185c465d6349ad98af7cc0ae5b5, type: 3}
 --- !u!1 &6983892177187874297
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,7 +1444,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7786693242556552388}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 840, y: 175, z: 0}
+  m_LocalPosition: {x: 845, y: 175, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
