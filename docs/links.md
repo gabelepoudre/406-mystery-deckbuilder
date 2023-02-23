@@ -11,3 +11,5 @@
 [Assets/Arts (Google Docs)](https://docs.google.com/document/d/1WiUMF1s-twG4LHXwUNz6rZ53zUXrN4-V_yXQnwBV0CE/edit#)
 
 [Card Game Mechanics Ideas (Google Docs)](https://docs.google.com/document/d/1PRXLT_Cv92GRgm5UhSmCxdVdu6TU6ij8hF0q80_XiUs/edit)
+
+[Narrative Docs](https://docs.google.com/document/d/1NlXgzLprJPMrhC-r_i5MwGYqWEWqXWnfXdsUy9EMAMA/edit#)
