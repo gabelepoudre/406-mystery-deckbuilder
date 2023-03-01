@@ -192,10 +192,10 @@ TextureImporter:
       name: DrawCard_Bttn
       rect:
         serializedVersion: 2
-        x: 2416
-        y: 1004
-        width: 1386
-        height: 642
+        x: 2324
+        y: 768
+        width: 1155
+        height: 1378
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
