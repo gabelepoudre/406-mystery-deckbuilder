@@ -90,7 +90,7 @@ public class EncounterScript : MonoBehaviour
      */
     private void InitializeCards()
     {
-        deck = GameState.CardInfo.currentDeck.Value;
+        deck = GameState.Player.currentDeck.Value;
         discard = GameState.CardInfo.currentDiscard.Value;
 
         AddFilter(-1, 1); //adding element weakness/resistance, -1 durration meens they will last forever
@@ -430,7 +430,7 @@ public class EncounterScript : MonoBehaviour
     private void EndEncounter(bool victory)
     {
         deck.AddRange(handBackend); //puts unused cards back into deck
-        GameState.CardInfo.currentDeck.Value = deck;
+        GameState.Player.currentDeck.Value = deck;
         GameState.CardInfo.currentDiscard.Value = discard;
         GameState.Meta.activeEncounter.Value = null;
 

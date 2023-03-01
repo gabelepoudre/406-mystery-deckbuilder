@@ -8,11 +8,11 @@ using UnityEngine;
  */
 public class EncounterTest : MonoBehaviour
 {
-    public GameObject encounter;
+    public NPC npc;
     public void StartEncounter()
     {
-        GameObject encounterInstance = Instantiate(encounter);
-        encounterInstance.GetComponent<EncounterScript>().StartEncounter(100, 0, 10, "Intimidation", "");
+        EncounterConfig conf = new EncounterConfig(npc);
+        Encounter encounterInstance = Encounter.StartEncounter(conf);
     }
 
 }

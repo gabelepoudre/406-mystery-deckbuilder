@@ -16,25 +16,39 @@ public abstract class Card
 
     protected readonly int _id;
     protected IDictionary<string, string> _metadata = new Dictionary<string, string>();
-    protected Transform placement;
+    protected CardPrefabController frontendController;
+    protected int position;
     protected List<Action> methods = new List<Action>();
 
     public Card(int id)
     {
         this._id = id;
-        
     }
 
-    // some getters
     public int GetId() { return this._id; }
     public string GetElement() { return _metadata["element"]; }
     public string GetName() { return _metadata["name"]; }
     public string GetDescription() { return _metadata["description"]; }
     public int GetComplianceValue() { return int.Parse(_metadata["compliance"]); }
     public int GetPatienceValue() { return int.Parse(_metadata["patience"]); }
-    public Transform GetTransform() { return placement; }
-    public void SetTransform(Transform location) { placement = location;}
-    public void Execute() { GameState.Meta.activeEncounter.Value.AddFilter(int.Parse(_metadata["duration"]), int.Parse(_metadata["filterId"])); }
+    public int GetPosition() { return position; }
+    public void SetPosition(int index) { position = index;}
+//    public void Execute() { GameState.Meta.activeEncounter.Value.AddFilter(int.Parse(_metadata["duration"]), int.Parse(_metadata["filterId"])); }
+    public void SetAndInitializeFrontendController(CardPrefabController controller)
+    {
+        frontendController = controller;
+        frontendController.SetCardName(GetName());
+        frontendController.SetCardDescription(GetDescription());
+        frontendController.SetDefaultPatience(GetPatienceValue());
+        if (GetElement() != "Preparation")
+        {
+            frontendController.SetDefaultCompliance(GetComplianceValue());
+        }
+    }
+    public CardPrefabController GetFrontendController()
+    {
+        return frontendController;
+    }
 }
 
 /*
