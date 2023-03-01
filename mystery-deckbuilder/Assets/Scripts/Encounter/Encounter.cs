@@ -10,17 +10,17 @@ public class Encounter
 {
     public static Encounter StartEncounter(EncounterConfig config)
     {
-    //    if (GameState.Meta.activeEncounter.Value != null)
-    //    {
-    //        Debug.LogError("Tried to initialize an encounter while one was active");
-    //        return null;
-    //    }
-    //    else
-    //    {
+        if (GameState.Meta.activeEncounter.Value != null)
+        {
+            Debug.LogError("Tried to initialize an encounter while one was active");
+            return null;
+        }
+        else
+        {
            Encounter encounter = new Encounter(config);
-    //        GameState.Meta.activeEncounter.Value = encounter;
+            GameState.Meta.activeEncounter.Value = encounter;
             return encounter;
-     //   }
+        }
     }
 
     public static void EndEncounter()
@@ -42,5 +42,6 @@ public class Encounter
     {
         _encounterPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Encounter/Encounter.prefab");
         GameObject.Instantiate(_encounterPrefab);
+        _encounterController = _encounterPrefab.GetComponent<EncounterPrefabController>();
     }
 }

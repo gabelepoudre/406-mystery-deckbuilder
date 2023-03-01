@@ -14,12 +14,19 @@ public class EncounterPrefabController : MonoBehaviour
     private BarScript _complianceBarScript;
     private BarScript _patienceBarScript;
     private PlaceMatPrefabController _placeMatScript;
-    private GameObject _encounterPrefab;
-    private NPCSpriteController _npcHeadshotScript;
-    private NPCSpriteController _glubHeadshotScript;
+    private NPCEncounterSpriteController _npcHeadshotScript;
 
     void Start()
     {
-            
+        _complianceBarScript = complianceBar.GetComponent<BarScript>();
+        _patienceBarScript = patienceBar.GetComponent<BarScript>();
+        _placeMatScript = cardPlaceMat.GetComponent<PlaceMatPrefabController>();
+        _npcHeadshotScript = npcHeadshot.GetComponent<NPCEncounterSpriteController>();
     }
+
+    public void Initialize(EncounterConfig config)
+    {
+        _npcHeadshotScript = config.Opponent.gameObject.GetComponent<NPCEncounterSpriteController>();
+    }
+
 }
