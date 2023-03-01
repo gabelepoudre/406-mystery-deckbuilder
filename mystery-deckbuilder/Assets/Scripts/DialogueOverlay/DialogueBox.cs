@@ -88,7 +88,7 @@ public class DialogueBox : MonoBehaviour
         }
     }
 
-    /* spawn option buttons corresponding to opens in optionNode 
+    /* spawn option buttons corresponding to optionss in optionNode 
      * NOTE: yes I should probably relegate this to an option box class instead but 
      * the Canvas was being weird so I'm doing it like this for now since the alpha is soon
      */
@@ -104,7 +104,7 @@ public class DialogueBox : MonoBehaviour
 
             int i = counter; //have to do this or else every button will call option 2 because thats what the counter ends at
             optionButton.GetComponentInChildren<Button>().onClick.AddListener(() => {
-                DialogueBoxManager.Instance.NextNodeByOptionIndex(i);
+                DialogueManager.Instance.NextNodeByOptionIndex(i);
                 DestroyOptionBox();
             });
 

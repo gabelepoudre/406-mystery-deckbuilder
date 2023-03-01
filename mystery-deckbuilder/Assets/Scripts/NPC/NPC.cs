@@ -5,15 +5,20 @@ using UnityEngine;
 public class NPC : MonoBehaviour
 {
     //Variables 
-    public string characterName;
+    public string CharacterName;
     [Range(0.0f, 1.0f)]public float affinity_1;
     [Range(0.0f, 1.0f)]public float affinity_2;
     [Range(0.0f, 1.0f)]public float affintiy_3;
-    [Range(0.0f, 1.0f)]public float startingPatience;
-    [Range(0.0f, 1.0f)]public float startingCompliance;
-    [Range(0.0f, 1.0f)]public float currentPatience;
-    [Range(0.0f, 1.0f)]public float currentCompliance;
-    public DialogueTree dialogue;
+    [Range(0.0f, 10.0f)]public float startingPatience;
+    [Range(0.0f, 100.0f)]public float startingCompliance;
+    [Range(0.0f, 10.0f)]public float currentPatience;
+    [Range(0.0f, 100.0f)]public float currentCompliance;
+
+    [Range(0.0f, 100.0f)] public float ComplianceThreshhold;
+
+    public Dictionary<string, DialogueTree> DialogueTreeDictionary;
+    public string CurrentDialogueKey { get; set; }
+
 
     //Get current patience
     public float GetPatience()
@@ -47,11 +52,19 @@ public class NPC : MonoBehaviour
         
     }
 
+    void Awake()
+    {
+        DialogueTreeDictionary = GetComponent<IDialogueTreeCollection>().GetDialogueTrees();
+        CurrentDialogueKey = "Intro";
+    }
+
     // Update is called once per frame
     void Update()
     {
         
     }
+
+    
 
 
 }

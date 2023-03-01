@@ -107,3 +107,18 @@ public class OptionNode: IOptionNode
     }
 
 }
+
+public class EncounterNode: IDialogueNode
+{
+    private IDialogueNode _next;
+
+    public string NodeType() { return "encounter"; }
+
+    public IDialogueNode Next() { return _next; }
+
+    public EncounterNode()
+    {
+        _next = null;
+    }
+
+}

@@ -434,9 +434,8 @@ public class EncounterScript : MonoBehaviour
         GameState.CardInfo.currentDiscard.Value = discard;
         GameState.Meta.activeEncounter.Value = null;
 
-        //NOTE: this is just a temporary thing until we implement a proper system for initiating post-encounter dialogues
-        //TODO: remove this after implementing a proper system for initiating post-encounter dialogues
-        GameObject.Find("Nibbles").transform.GetComponent<NibblesDialogueTrigger>().StartEndOfEncounterDialogue();
+        //if you won, then increment encounters completed in GameState
+        if (victory) GameState.NPCs.latestNPCEncountersCompleted.Value.Value += 1;
 
         Destroy(this.gameObject);
     }

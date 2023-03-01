@@ -50,6 +50,16 @@ public static class GameState
     /* GameState holder class for NPCs data. Could be their current location */
     public class NPCs
     {
+        
+        
+
+        public static GameStateValue<GameStateValue<int>> latestNPCEncountersCompleted = new(null, _gameStateValues);
+
+        public static class Nibbles
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+        }
+        
 
     }
 

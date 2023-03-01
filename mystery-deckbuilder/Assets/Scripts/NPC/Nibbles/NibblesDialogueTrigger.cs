@@ -7,19 +7,14 @@ public class NibblesDialogueTrigger : MonoBehaviour
 {
 
     //will be called when player clicks Nibbles
-    public void StartDialogue1()
+    public void StartDialogue()
     {
+        GameState.NPCs.latestNPCEncountersCompleted.Value = GameState.NPCs.Nibbles.encountersCompleted;
+        string currentDialogueKey = transform.GetComponent<NPC>().CurrentDialogueKey;
+        DialogueTree tree = transform.GetComponent<NPC>().DialogueTreeDictionary[currentDialogueKey];
+        DialogueManager.Instance.StartDialogue(tree, this.gameObject);
         Debug.Log("triggered dialogue");
-        DialogueTree tree = transform.GetComponent<NibblesIntro>().dialogueTree;
-        string name = transform.GetComponent<NPC>().name;
-        DialogueBoxManager.Instance.StartDialogue(tree, name);
     }
 
-    public void StartEndOfEncounterDialogue()
-    {
-        Debug.Log("triggered dialogue");
-        DialogueTree tree = transform.GetComponent<NibblesIntro>().GetIntroAfterEncounter();
-        string name = transform.GetComponent<NPC>().name;
-        DialogueBoxManager.Instance.StartDialogue(tree, name);
-    }
+   
 }

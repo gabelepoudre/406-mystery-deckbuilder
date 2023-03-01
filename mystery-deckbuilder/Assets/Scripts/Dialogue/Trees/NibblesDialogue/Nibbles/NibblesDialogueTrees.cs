@@ -1,18 +1,32 @@
-
-/*
- * author(s): Ehsan Soltan. 
-*/
+/**
+  * Author(s): Ehsan Soltan
+**/
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/* The class containing the dialogue tree for the Nibbles' little intro */
-public class NibblesIntro : MonoBehaviour
+/** The Class which holds all of Nibble's dialogue trees in a dictionary **/
+public class NibblesDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 {
-    public DialogueTree dialogueTree;
+    private Dictionary<string, DialogueTree> _dialogueTreeDict;
 
-    private DialogueTree BuildTree()
+    public NibblesDialogueTrees()
+    {
+        _dialogueTreeDict = new();
+        BuildTreeDictionary();
+    }
+
+    
+    private void BuildTreeDictionary()
+    {
+    
+        _dialogueTreeDict.Add("Intro", BuildIntro());
+        _dialogueTreeDict.Add("IntroAfterEncounter", BuildIntroAfterEncounter());
+    }
+
+    /** Nibbles' intro **/
+    private DialogueTree BuildIntro()
     {
         NPCNode intro = new(new string[] {"Cheesed to meet you detective! Are you finding enough to eat around here?", 
         "Hopefully our small town food can compete with your big city cuisine."});
@@ -53,37 +67,24 @@ public class NibblesIntro : MonoBehaviour
         return new DialogueTree(intro);
     }
 
-    void Awake()
+    /** Nibbles' intro after you beat him **/
+    private DialogueTree BuildIntroAfterEncounter()
     {
-        this.dialogueTree = BuildTree();
-
-    }
-
-
-    public DialogueTree GetIntroAfterEncounter()
-    {
-        DialogueTree tree = new (new NPCNode(new string[] {"You're very persuasive!",
+         DialogueTree tree = new (new NPCNode(new string[] {"You're very persuasive!",
         "Near the rail yard, operating out of an old sea can, there is a small perogy place known as Mike's Perogies", "That is where you should start."}));
 
         return tree;
     }
-}
 
-/* The class containing the short dialogue that comes after your card encounter with Nibbles */
-public class NibblesIntroAfterEncounter : MonoBehaviour
-{
-    public DialogueTree dialogueTree;
-
-    private DialogueTree BuildTree()
+    public Dictionary<string, DialogueTree> GetDialogueTrees()
     {
-        NPCNode clue = new(new string[] {"You're very persuasive!",
-        "Near the rail yard, operating out of an old sea can, there is a small perogy place known as Mike's Perogies. That is where you should start."});
-
-        return new DialogueTree(clue);
+        return _dialogueTreeDict;
     }
 
     void Awake()
     {
-        this.dialogueTree = BuildTree();
+
     }
+
+
 }

@@ -491,7 +491,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2001625925}
         m_TargetAssemblyTypeName: NibblesDialogueTrigger, Assembly-CSharp
-        m_MethodName: StartDialogue1
+        m_MethodName: StartDialogue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1400,6 +1400,8 @@ GameObject:
   - component: {fileID: 2001625926}
   - component: {fileID: 2001625925}
   - component: {fileID: 2001625929}
+  - component: {fileID: 2001625930}
+  - component: {fileID: 2001625931}
   m_Layer: 0
   m_Name: Nibbles
   m_TagString: Untagged
@@ -1443,7 +1445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc0fcdafee5d4a6ba706fd6de02ebe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: 
+  CharacterName: Nibbles
   affinity_1: 0.43
   affinity_2: 0.45
   affintiy_3: 0.45
@@ -1451,6 +1453,7 @@ MonoBehaviour:
   startingCompliance: 1
   currentPatience: 1
   currentCompliance: 0
+  ComplianceThreshhold: 0
 --- !u!4 &2001625928
 Transform:
   m_ObjectHideFlags: 0
@@ -1480,6 +1483,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   encounter: {fileID: 6983892176770601184, guid: 3567f7b06a728894589bdd79772d2135, type: 3}
+--- !u!114 &2001625930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001625924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7cfbb8405f144fc6af63073dbac02fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2001625931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001625924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87553b6c3432f427fb00207ae70695cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2028931662 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5047022708360817769, guid: 18752f3764f814d358ab810e52124cf8, type: 3}
