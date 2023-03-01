@@ -8,7 +8,10 @@ using UnityEngine;
  * The values for the cards attributes are declared in derived card classes.
  */
 
-public abstract class ConversationCard
+
+
+
+public abstract class Card
 {
 
     protected readonly int _id;
@@ -16,7 +19,7 @@ public abstract class ConversationCard
     protected Transform placement;
     protected List<Action> methods = new List<Action>();
 
-    public ConversationCard(int id)
+    public Card(int id)
     {
         this._id = id;
         

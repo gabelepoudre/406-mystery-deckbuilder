@@ -245,6 +245,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4174418159464316274}
+  - component: {fileID: 5930018260695696992}
   m_Layer: 0
   m_Name: GreenCard_Canvas
   m_TagString: Untagged
@@ -281,6 +282,28 @@ RectTransform:
   m_AnchoredPosition: {x: -435, y: -293.4}
   m_SizeDelta: {x: 230, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5930018260695696992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3279046307657509022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225bc087590562649aa0f33c286ddaca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlight: {fileID: 5827223605787441995}
+  cardRect: {fileID: 7077043118421097241}
+  cardPicture: {fileID: 5378160112040217131}
+  type: {fileID: 7331105436299826098}
+  descriptionHolder: {fileID: 4823464840982785570}
+  cardName: {fileID: 5909936035407685335}
+  cardDescription: {fileID: 2088721625738568858}
+  visiblePatience: {fileID: 6123695644855418162}
+  visibleCompliance: {fileID: 2904068403030525809}
+  EffectCirclePrefab: {fileID: 3556328495919305323, guid: a115be2bd1977244dacbc0f6e52f413a, type: 3}
 --- !u!1 &6050173125011940638
 GameObject:
   m_ObjectHideFlags: 0

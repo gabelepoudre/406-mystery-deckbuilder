@@ -28,8 +28,8 @@ public class EncounterScript : MonoBehaviour
     private List<int> handBackend = new List<int>(); //purgatory state between being in the deck and being discarded.
     private List<int> discard = new List<int>(); //list of cards that have been played and removed from the deck
 
-    private List<ConversationCard> hand = new List<ConversationCard>(); //something weird is going on with all the "hands" I'll sort it out later (probably not)
-    private Dictionary<GameObject, ConversationCard> handFrontend = new Dictionary<GameObject, ConversationCard>(); //container to hold instantiated card objects
+    private List<Card> hand = new List<Card>(); //something weird is going on with all the "hands" I'll sort it out later (probably not)
+    private Dictionary<GameObject, Card> handFrontend = new Dictionary<GameObject, Card>(); //container to hold instantiated card objects
     private List<List<int>> filters = new List<List<int>>(); //experimental coolness
 
     private Sprite NpcSprite; //TODO: a sprite reference will need to be passed in in order to display who the player is in an encounter with
@@ -233,7 +233,7 @@ public class EncounterScript : MonoBehaviour
         deck.Remove(cardID);
         handBackend.Add(cardID);
 
-        ConversationCard card = (ConversationCard)Cards.CreateCardWithID(cardID);
+        Card card = (Card)Cards.CreateCardWithID(cardID);
         hand.Insert(0, card);
 
         card.SetTransform(place);
@@ -349,7 +349,7 @@ public class EncounterScript : MonoBehaviour
     private void UpdateCards()
     {
         
-        foreach (KeyValuePair<GameObject, ConversationCard> i in handFrontend) //looks like an optimization problem, but N of handFrontend is max 5 and N of textFields is max 4
+        foreach (KeyValuePair<GameObject, Card> i in handFrontend) //looks like an optimization problem, but N of handFrontend is max 5 and N of textFields is max 4
         {
             int[] modifyAmounts = (int[])ResolveFilters(i.Value); //[0] = patience modifier, [1] = compliance modifier
 
@@ -409,7 +409,7 @@ public class EncounterScript : MonoBehaviour
         filters.Add(filter);
     }
 
-    private Array ResolveFilters(ConversationCard card)
+    private Array ResolveFilters(Card card)
     {
         
         int[] modifyAmounts = new int[] {0, 0}; //[0] = patience modifier, [1] = compliance modifier

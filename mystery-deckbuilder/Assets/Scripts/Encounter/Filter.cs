@@ -11,7 +11,7 @@ using UnityEngine;
  */
 public static class Filters
 {
-    public static Array GetFilterByID(int id, ConversationCard card) //can use GameState for a lot of access stuff 
+    public static Array GetFilterByID(int id, Card card) //can use GameState for a lot of access stuff 
     {
         switch (id)
         {
@@ -30,7 +30,7 @@ public static class Filters
     {
         return new int[] {0, 0};
     }
-    private static Array WeaknessCheck(ConversationCard card) //needs access to card element, base compliance
+    private static Array WeaknessCheck(Card card) //needs access to card element, base compliance
     {
         int modifyAmount = 0;
         if (String.Equals(GameState.Meta.activeEncounter.Value.GetWeakness(), card.GetElement()))
@@ -41,7 +41,7 @@ public static class Filters
         int[] vals = new int[] {0, modifyAmount };
         return vals;
     }
-    private static Array ResistanceCheck(ConversationCard card) //needs access to card element, base compliance
+    private static Array ResistanceCheck(Card card) //needs access to card element, base compliance
     {
         int modifyAmount = 0;
         if (String.Equals(GameState.Meta.activeEncounter.Value.GetWeakness(), card.GetComplianceValue()))

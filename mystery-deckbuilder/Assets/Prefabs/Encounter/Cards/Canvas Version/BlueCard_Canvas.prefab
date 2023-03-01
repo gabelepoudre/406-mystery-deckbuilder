@@ -241,6 +241,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4859677109974491038}
+  - component: {fileID: 5995856936049300336}
   m_Layer: 0
   m_Name: BlueCard_Canvas
   m_TagString: Untagged
@@ -277,6 +278,28 @@ RectTransform:
   m_AnchoredPosition: {x: -39, y: -293.4}
   m_SizeDelta: {x: 230, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5995856936049300336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2988496786782926893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225bc087590562649aa0f33c286ddaca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlight: {fileID: 9062726757288551814}
+  cardRect: {fileID: 7943361727441181158}
+  cardPicture: {fileID: 575365372043764291}
+  type: {fileID: 8907273883857251613}
+  descriptionHolder: {fileID: 4179027265834552901}
+  cardName: {fileID: 8807010179950821059}
+  cardDescription: {fileID: 965297206041516667}
+  visiblePatience: {fileID: 6664161149262240035}
+  visibleCompliance: {fileID: 7851711931929084409}
+  EffectCirclePrefab: {fileID: 3556328495919305323, guid: a115be2bd1977244dacbc0f6e52f413a, type: 3}
 --- !u!1 &3001597044552754594
 GameObject:
   m_ObjectHideFlags: 0

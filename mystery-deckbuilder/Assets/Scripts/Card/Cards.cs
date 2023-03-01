@@ -1,8 +1,3 @@
-
-
-
-
-
 /*
  * Static class containing a method to return an instance of a card with a given ID
  * Returned object must be cast to it's card type (Conversation/Preparation)
@@ -57,7 +52,7 @@ public static class Cards
  * Stats can only be accessed and not changed in an instance of a card
  * Any special card effects are not implemented yet
  */
-public class Bluster : ConversationCard
+public class Bluster : Card
 {
     public Bluster() : base(1)
     {
@@ -71,7 +66,7 @@ public class Bluster : ConversationCard
     }
 }
 
-public class PartingShot : ConversationCard
+public class PartingShot : Card
 {
     public PartingShot() : base(2)
     {
@@ -85,7 +80,7 @@ public class PartingShot : ConversationCard
     }
 }
 
-public class BrowBeat : ConversationCard
+public class BrowBeat : Card
 {
     public BrowBeat() : base(3)
     {
@@ -99,7 +94,7 @@ public class BrowBeat : ConversationCard
     }
 }
 
-public class BadCop : ConversationCard
+public class BadCop : Card
 {
     public BadCop() : base(4)
     {
@@ -113,7 +108,7 @@ public class BadCop : ConversationCard
     }
 }
 
-public class Encourage : ConversationCard
+public class Encourage : Card
 {
     public Encourage() : base(5)
     {
@@ -127,7 +122,7 @@ public class Encourage : ConversationCard
     }
 }
 
-public class Complement : ConversationCard
+public class Complement : Card
 {
     public Complement() : base(6)
     {
@@ -141,7 +136,7 @@ public class Complement : ConversationCard
     }
 }
 
-public class SobStory : ConversationCard
+public class SobStory : Card
 {
     public SobStory() : base(7)
     {
@@ -155,7 +150,7 @@ public class SobStory : ConversationCard
     }
 }
 
-public class GoodCop : ConversationCard
+public class GoodCop : Card
 {
     public GoodCop() : base(8)
     {
@@ -169,7 +164,7 @@ public class GoodCop : ConversationCard
     }
 }
 
-public class Articulate : ConversationCard
+public class Articulate : Card
 {
     public Articulate() : base(9)
     {
@@ -183,7 +178,7 @@ public class Articulate : ConversationCard
     }
 }
 
-public class Salutation : ConversationCard
+public class Salutation : Card
 {
     public Salutation() : base(10)
     {
@@ -197,7 +192,7 @@ public class Salutation : ConversationCard
     }
 }
 
-public class Lecture : ConversationCard
+public class Lecture : Card
 {
     public Lecture() : base(11)
     {
@@ -214,7 +209,7 @@ public class Lecture : ConversationCard
 /*
  * Derived basic classes for Preparation cards, all base stats for the card are hardcoded
  */
-public class MenacingPresence: PreparationCard
+public class MenacingPresence: Card
 {
     public MenacingPresence() : base(12)
     {
@@ -225,7 +220,7 @@ public class MenacingPresence: PreparationCard
     }
 }
 
-public class Tirade : PreparationCard
+public class Tirade : Card
 {
     public Tirade() : base(13)
     {
@@ -236,7 +231,7 @@ public class Tirade : PreparationCard
     }
 }
 
-public class Empathize : PreparationCard
+public class Empathize : Card
 {
     public Empathize() : base(14)
     {
@@ -247,7 +242,7 @@ public class Empathize : PreparationCard
     }
 }
 
-public class Reassure : PreparationCard
+public class Reassure : Card
 {
     public Reassure() : base(15)
     {
@@ -258,7 +253,7 @@ public class Reassure : PreparationCard
     }
 }
 
-public class Eloquence : PreparationCard
+public class Eloquence : Card
 {
     public Eloquence() : base(16)
     {
@@ -269,7 +264,7 @@ public class Eloquence : PreparationCard
     }
 }
 
-public class Monologue : PreparationCard
+public class Monologue : Card
 {
     public Monologue() : base(17)
     {

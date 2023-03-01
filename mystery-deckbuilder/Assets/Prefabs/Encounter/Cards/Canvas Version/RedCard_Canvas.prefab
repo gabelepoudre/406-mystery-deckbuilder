@@ -401,6 +401,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9204399067519391352}
+  - component: {fileID: 8058471359181297630}
   m_Layer: 0
   m_Name: RedCard_Canvas
   m_TagString: Untagged
@@ -437,6 +438,28 @@ RectTransform:
   m_AnchoredPosition: {x: -774.1, y: -293.4}
   m_SizeDelta: {x: 230, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8058471359181297630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9204399067519391359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225bc087590562649aa0f33c286ddaca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlight: {fileID: 7003521811298671803}
+  cardRect: {fileID: 9204399067772510904}
+  cardPicture: {fileID: 9204399067603209291}
+  type: {fileID: 9204399067685551646}
+  descriptionHolder: {fileID: 9204399067246946821}
+  cardName: {fileID: 9204399067905808146}
+  cardDescription: {fileID: 9204399067317339242}
+  visiblePatience: {fileID: 9204399066829263771}
+  visibleCompliance: {fileID: 9204399066614395109}
+  EffectCirclePrefab: {fileID: 3556328495919305323, guid: a115be2bd1977244dacbc0f6e52f413a, type: 3}
 --- !u!1 &9204399067603209289
 GameObject:
   m_ObjectHideFlags: 0
