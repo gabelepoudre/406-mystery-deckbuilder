@@ -434,7 +434,7 @@ public class EncounterScript : MonoBehaviour
         GameState.CardInfo.currentDiscard.Value = discard;
         GameState.Meta.activeEncounter.Value = null;
 
-        //if you won, then increment encounters completed in GameState
+        //if you win, then increment encounters completed in GameState
         if (victory) GameState.NPCs.latestNPCEncountersCompleted.Value.Value += 1;
 
         Destroy(this.gameObject);

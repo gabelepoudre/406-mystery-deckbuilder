@@ -1,15 +1,17 @@
-/**
-  * Author(s): Ehsan Soltan
-**/
+/*
+ * Author(s): Ehsan Soltan
+ */
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/** The Class which holds all of Nibble's dialogue trees in a dictionary **/
+/* The Class which holds all of Nibble's dialogue trees in a dictionary, the point being
+ * that all of Nibbles' dialogue will be built here and passed to the NPC class 
+ */
 public class NibblesDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 {
-    private Dictionary<string, DialogueTree> _dialogueTreeDict;
+    private Dictionary<string, DialogueTree> _dialogueTreeDict; //a dictionary of dialogue trees
 
     public NibblesDialogueTrees()
     {
@@ -18,6 +20,7 @@ public class NibblesDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     }
 
     
+    //populates the dictionary will Nibbles' dialogue trees
     private void BuildTreeDictionary()
     {
     
@@ -79,11 +82,6 @@ public class NibblesDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     public Dictionary<string, DialogueTree> GetDialogueTrees()
     {
         return _dialogueTreeDict;
-    }
-
-    void Awake()
-    {
-
     }
 
 

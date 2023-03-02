@@ -55,7 +55,7 @@ public class NPC : MonoBehaviour
     void Awake()
     {
         DialogueTreeDictionary = GetComponent<IDialogueTreeCollection>().GetDialogueTrees();
-        CurrentDialogueKey = "Intro";
+        CurrentDialogueKey = "Intro"; 
     }
 
     // Update is called once per frame
@@ -64,7 +64,7 @@ public class NPC : MonoBehaviour
         
     }
 
-    
+
 
 
 }

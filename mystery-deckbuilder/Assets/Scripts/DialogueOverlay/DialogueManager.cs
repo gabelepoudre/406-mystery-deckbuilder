@@ -95,6 +95,8 @@ public class DialogueManager : MonoBehaviour
         }
 
         //TODO: remove this once a proper way of initiating encounters is implemented
+        // in which the arguments passed to the encounter like compliance and stuff is dependent
+        // on the current NPC you're talking to, rather than Nibbles
         if (_currentNode.NodeType() == "encounter")
         {
             EndDialogue();
@@ -200,5 +202,11 @@ public class DialogueManager : MonoBehaviour
     {
         _currentNode = new PlayerNode(new string[]{}, node);
         NextNode();
+    }
+
+    private void StartEncounter()
+    {
+
+        EndDialogue();
     }
 }

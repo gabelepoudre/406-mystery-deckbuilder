@@ -108,6 +108,7 @@ public class OptionNode: IOptionNode
 
 }
 
+/* A class for representing a leaf node that indicates when an encounter should start */
 public class EncounterNode: IDialogueNode
 {
     private IDialogueNode _next;
@@ -118,7 +119,7 @@ public class EncounterNode: IDialogueNode
 
     public EncounterNode()
     {
-        _next = null;
+        _next = null; //since it must always be a leaf node
     }
 
 }
