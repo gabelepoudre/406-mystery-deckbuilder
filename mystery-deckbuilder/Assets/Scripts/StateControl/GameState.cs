@@ -50,13 +50,23 @@ public static class GameState
     /* GameState holder class for NPCs data. Could be their current location */
     public class NPCs
     {
-        
-        
 
+        //
+        public static string lastNPCSpokenTo = "";
+
+        //so we can access the encounters completed value with the name of the NPC
+        public static Dictionary<string, GameStateValue<int>> npcNameToEncountersCompleted = new(){{"Nibbles", Nibbles.encountersCompleted}};
+        
+        
+        /* This GameStateValue references the GameStateValue representing the number of encounters completed for the 
+           last NPC we talked to.
+         */
         public static GameStateValue<GameStateValue<int>> latestNPCEncountersCompleted = new(null, _gameStateValues);
 
+        //data specifically pertaining to Nibbles
         public static class Nibbles
         {
+            //the number of encounters completed with Nibbles
             public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
         }
         
