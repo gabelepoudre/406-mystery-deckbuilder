@@ -22,7 +22,7 @@ public class NibblesStateListener : MonoBehaviour
         //key "IntroAfterEncounter"
         if (GameState.NPCs.Nibbles.encountersCompleted.Value == 1 && GameState.currentDay.Value == 0)
         {
-            transform.GetComponent<NPC>().CurrentDialogueKey += "AfterEncounter";
+            transform.GetComponent<NPC>().CurrentDialogueKey = "IntroAfterEncounter";
             transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
 
         }
