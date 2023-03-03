@@ -18,6 +18,6 @@ public class NextButton : MonoBehaviour
      */
     public void GetNextSentence()
     {
-        DialogueBoxManager.Instance.DisplayNextSentence();
+        DialogueManager.Instance.DisplayNextSentence();
     }
 }

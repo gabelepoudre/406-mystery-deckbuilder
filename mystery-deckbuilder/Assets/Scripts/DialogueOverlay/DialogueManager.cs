@@ -2,7 +2,7 @@
  *
  * author(s) Ehsan Soltan
  *
- * This script contains a singleton class that is responsible for managing the dialogue box.
+ * This script contains a singleton class that is responsible for managing dialogue.
  * It contains public methods for starting a dialogue, displaying the next sentence, and ending the dialogue.
  *
  *
@@ -20,12 +20,14 @@ using UnityEngine;
  * -Commanding the instantiated DialogueBox to display the next sentence and show the option box
  * -Ending the dialogue and commanding the DialogueBox to destroy itself
 */
-public class DialogueBoxManager : MonoBehaviour
+public class DialogueManager : MonoBehaviour
 {
 
-    public static DialogueBoxManager Instance {get; private set; } //a static instance of itself
+    public static DialogueManager Instance {get; private set; } //a static instance of itself
 
     public string NPCName {get; set;}
+
+    public GameObject CurrentNPC;
 
     private DialogueTree _dialogueTree;
     private IDialogueNode _currentNode;
@@ -55,20 +57,14 @@ public class DialogueBoxManager : MonoBehaviour
         _sentences = new Queue<string>();
     }
 
-    /* A built-in dialogue to be called by the button in the DialogueTest scene 
-     * for the purpose of demonstration. Uses Gabe's example dialogue tree.
-    */
-    public void TestDialogueStart() 
-    {
-        StartDialogue(transform.GetComponent<ExampleDialogue>().dialogueTree);
-    }
 
     /* Initiates a new dialogue by instantiating a DialogueBox, adding its sentences to the queue
      * setting the name of the DialogueBox, and displaying the next sentence (in this case the first one)
      */
-    public void StartDialogue(DialogueTree newDialogueTree, string npcName = "NPC")
+    public void StartDialogue(DialogueTree newDialogueTree, GameObject currentNPC)
     {
-        NPCName = npcName;
+        CurrentNPC = currentNPC;
+        NPCName = CurrentNPC.GetComponent<NPC>().CharacterName;
 
         //the current dialogue must be ended before starting a new one
         if (_dialogueBox != null)
@@ -99,7 +95,9 @@ public class DialogueBoxManager : MonoBehaviour
         }
 
         //TODO: remove this once a proper way of initiating encounters is implemented
-        if (_currentNode.NodeType() == "npc" && ((NPCNode)_currentNode).dialogue[0] == "ENCOUNTER")
+        // in which the arguments passed to the encounter like compliance and stuff is dependent
+        // on the current NPC you're talking to, rather than Nibbles
+        if (_currentNode.NodeType() == "encounter")
         {
             EndDialogue();
             GameObject.Find("Nibbles").GetComponent<EncounterTest>().StartEncounter();
@@ -174,18 +172,6 @@ public class DialogueBoxManager : MonoBehaviour
 
 
 
-    /* 
-     * NOTE: this is a temporary method to initiate the encounter with Nibbles for the Alpha demo
-     * TODO: remove this method and implement a proper way of starting encounters
-     */
-     public void StartNibblesEncounter()
-     {
-
-     }
-
-
-
-
     /* Enqueues all sentences contained in the current node */
     private void EnqueueAllSentences()
     {
@@ -216,5 +202,11 @@ public class DialogueBoxManager : MonoBehaviour
     {
         _currentNode = new PlayerNode(new string[]{}, node);
         NextNode();
+    }
+
+    private void StartEncounter()
+    {
+
+        EndDialogue();
     }
 }
