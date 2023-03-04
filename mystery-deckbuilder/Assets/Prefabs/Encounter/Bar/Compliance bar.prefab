@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 236906184725771773}
   - component: {fileID: 2009521513929616874}
   - component: {fileID: 5226219806031385609}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Type
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 3082552375465473944}
   - component: {fileID: 5687178019489244753}
   - component: {fileID: 5417363178892292817}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3256554535284385470}
   - component: {fileID: 8582841964978913445}
-  m_Layer: 5
+  - component: {fileID: 7450406217651040852}
+  m_Layer: 6
   m_Name: Compliance bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,7 +233,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1468405945543887434}
   m_HandleRect: {fileID: 0}
@@ -244,6 +245,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7450406217651040852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4703920723646042926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10e8dbf8150cfe5449cf9bb5c1efc879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 8582841964978913445}
 --- !u!1 &5418916026746714992
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +269,7 @@ GameObject:
   - component: {fileID: 1392166279171478386}
   - component: {fileID: 1114196542461928063}
   - component: {fileID: 4583167915507383021}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,7 +345,7 @@ GameObject:
   - component: {fileID: 1468405945543887434}
   - component: {fileID: 475159038766543084}
   - component: {fileID: 5122750660461763943}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
