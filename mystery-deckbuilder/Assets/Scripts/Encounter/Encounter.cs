@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-
-
 public class Encounter
 {
     public static Encounter StartEncounter(EncounterConfig config)
@@ -41,6 +39,18 @@ public class Encounter
     private EncounterPrefabController _encounterController;
 
     private List<Card> _hand = new();
+
+    // statistics
+    public StatisticsClass Statistics = new StatisticsClass();
+    public class StatisticsClass
+    {
+        public int NumberOfPlays { get; set; } = 0;
+        public int IntimidationCardsPlayed { get; set; } = 0;
+        public int SympathyCardsPlayed { get; set; } = 0;
+        public int PersuasionCardsPlayed { get; set; } = 0;
+        public int PreparationCardsPlayed { get; set; } = 0;
+
+    }
     
     public Encounter(EncounterConfig config)
     {
@@ -102,5 +112,16 @@ public class Encounter
 
         // remove card
         _encounterController.RemoveCard(card);
+    }
+
+
+    public EncounterPrefabController GetEncounterController()
+    {
+        return _encounterController;
+    }
+
+    public List<Card> GetHand()
+    {
+        return _hand;
     }
 }

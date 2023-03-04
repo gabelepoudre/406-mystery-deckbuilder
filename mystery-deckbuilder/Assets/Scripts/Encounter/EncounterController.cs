@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EncounterController : MonoBehaviour
 {
+
     private bool EncounterActive()
     {
         return GameState.Meta.activeEncounter.Value != null;
@@ -25,5 +26,4 @@ public class EncounterController : MonoBehaviour
             Debug.LogWarning("Tried to draw card when no encounter was active!");
         }
     }
-
 }

@@ -15,22 +15,37 @@ public class EncounterPrefabController : MonoBehaviour
     public GameObject blueCard;
     public GameObject greenCard;
     public GameObject greyCard;
+    public Transform cardHighlightTransform;
 
     private BarScript _complianceBarScript;
     private BarScript _patienceBarScript;
     private PlaceMatPrefabController _placeMatScript;
     private NPCEncounterSpriteController _npcHeadshotScript;
 
-    void Start()
+    private Vector3 _oldHighlightedCardTransformPosition;
+    private GameObject _highlightedCard;
+
+    void Awake()
     {
         _complianceBarScript = complianceBar.GetComponent<BarScript>();
+        if (_complianceBarScript == null)
+        {
+            Debug.LogError("Could not find BarScript on compliance bar");
+        }
         _patienceBarScript = patienceBar.GetComponent<BarScript>();
+        if (_patienceBarScript == null)
+        {
+            Debug.LogError("Could not find BarScript on compliance bar");
+        }
         _placeMatScript = cardPlaceMat.GetComponent<PlaceMatPrefabController>();
     }
 
     public void Initialize(EncounterConfig config)
     {
         //_npcHeadshotScript = config.Opponent.gameObject.GetComponent<NPCEncounterSpriteController>();
+        _complianceBarScript.SetMax(config.MaximumCompliance);
+        _patienceBarScript.SetMax(config.MaximumPatience);
+        _patienceBarScript.SetValue(config.MaximumPatience);
     }
 
     public void PlaceCard(Card card)
@@ -76,5 +91,49 @@ public class EncounterPrefabController : MonoBehaviour
     {
         _placeMatScript.ClearPosition(card.GetPosition());
         Destroy(card.GetFrontendController().gameObject);  // finds the card prefab
+    }
+
+    public void HighlightCard(GameObject cardFrontend)
+    {
+        _oldHighlightedCardTransformPosition = cardFrontend.transform.position;
+        cardFrontend.transform.localScale = new Vector3(cardFrontend.transform.localScale.x * 2, cardFrontend.transform.localScale.y * 2, cardFrontend.transform.localScale.z);
+        _highlightedCard = cardFrontend;
+
+        Transform newTransform = cardHighlightTransform;
+        _highlightedCard.transform.position = new Vector3(newTransform.position.x, newTransform.position.y, newTransform.position.z);
+    }
+
+    public void UnHighlightCard()
+    {
+        if (_highlightedCard == null)
+        {
+            Debug.LogWarning("There is no card to un-highlight");
+        }
+        else
+        {
+            _highlightedCard.transform.position = _oldHighlightedCardTransformPosition;
+            _highlightedCard.transform.localScale = new Vector3(_highlightedCard.transform.localScale.x / 2, _highlightedCard.transform.localScale.y / 2, _highlightedCard.transform.localScale.z);
+            _highlightedCard = null;
+        }
+    }
+
+    public int GetPatience()
+    {
+        return _patienceBarScript.GetValue();
+    }
+
+    public int GetCompliance()
+    {
+        return _complianceBarScript.GetValue();
+    }
+
+    public void SetPatience(int value)
+    {
+        _patienceBarScript.SetValue(value);
+    }
+
+    public void SetCompliance(int value)
+    {
+        _complianceBarScript.SetValue(value);
     }
 }

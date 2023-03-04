@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class CardPrefabController : MonoBehaviour, IPointerClickHandler
+public class CardPrefabController : MonoBehaviour, IPointerClickHandler, IDeselectHandler
 {
     public Image highlight;
     public Image cardRect;
@@ -15,12 +15,37 @@ public class CardPrefabController : MonoBehaviour, IPointerClickHandler
     public Text cardDescription;
     public Text visiblePatience;
     public Text visibleCompliance;
-    public GameObject EffectCirclePrefab;
+    public GameObject effectCirclePrefab;
+    public GameObject options;
+    [SerializeField] Color selectionTint;
 
     private List<GameObject> _effectCircles;
     private int _defaultCompliance;
     private int _defaultPatience;
     private int _position;
+
+    private bool _highlighted = false;
+    private bool _showingOptions = false;
+
+    protected bool __evilToldToDeselect = false;
+    protected int __evilDeselectionDelay = -1;
+
+
+    public void FixedUpdate()
+    {
+        if (!(__evilDeselectionDelay == -1))
+        {
+            __evilDeselectionDelay -= 1;
+            if (__evilDeselectionDelay <= 0 || !__evilToldToDeselect)
+            {
+                if(__evilToldToDeselect == true)
+                {
+                    HideOptions();
+                    __evilDeselectionDelay = -1;
+                }
+            }
+        }
+    }
 
     public void SetDefaultCompliance(int defaultCompliance)
     {
@@ -88,8 +113,66 @@ public class CardPrefabController : MonoBehaviour, IPointerClickHandler
         _position = idx;
     }
 
+    public int GetPosition()
+    {
+        return _position;
+    }
+
+    public bool IsHighlighted()
+    {
+        return _highlighted;
+    }
+
+    public void HighlightCard()
+    {
+        GameState.Meta.activeEncounter.Value.GetEncounterController().HighlightCard(this.gameObject);
+        EventSystem.current.SetSelectedGameObject(gameObject);
+        _highlighted = true;
+        HideOptions();
+    }
+
+    public void UnHighlightCard()
+    {
+        GameState.Meta.activeEncounter.Value.GetEncounterController().UnHighlightCard();
+        _highlighted = false;
+        Debug.Log("Unhighlighted");
+    }
+
+    public void ShowOptions()
+    {
+        cardRect.color = selectionTint;
+        EventSystem.current.SetSelectedGameObject(gameObject);
+        options.SetActive(true);
+        _showingOptions = true;
+    }
+
+    public void HideOptions()
+    {
+        cardRect.color = Color.white;
+        options.SetActive(false);
+        _showingOptions = false;
+    }
+
     public void OnPointerClick(PointerEventData eventData) 
     {
-        GameState.Meta.activeEncounter.Value.PlayCard(_position);
+        __evilToldToDeselect = false;
+        if (!_highlighted)
+        {
+            ShowOptions();
+        }
+         //GameState.Meta.activeEncounter.Value.PlayCard(_position);
+    }
+
+    public void OnDeselect(BaseEventData eventData)
+    {
+        if (_highlighted)
+        {
+            UnHighlightCard();
+        }
+        else
+        {
+            __evilToldToDeselect = true;
+            __evilDeselectionDelay = 6;
+        }
     }
 }

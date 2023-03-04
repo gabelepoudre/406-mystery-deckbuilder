@@ -57,9 +57,9 @@ public class Bluster : Card
     public Bluster() : base(1)
     {
         this._metadata["element"] = "Intimidation";
-        this._metadata["name"] = "bluster";
+        this._metadata["name"] = "Bluster";
         this._metadata["description"] = "none";
-        this._metadata["patience"] = "-1";
+        this._metadata["patience"] = "1";
         this._metadata["compliance"] = "10";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
@@ -73,7 +73,7 @@ public class PartingShot : Card
         this._metadata["element"] = "Intimidation";
         this._metadata["name"] = "Parting Shot";
         this._metadata["description"] = "Can only be used when patience is at 1(2?).";
-        this._metadata["patience"] = "-2";
+        this._metadata["patience"] = "2";
         this._metadata["compliance"] = "30";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
@@ -87,7 +87,7 @@ public class BrowBeat : Card
         this._metadata["element"] = "Intimidation";
         this._metadata["name"] = "Brow Beat";
         this._metadata["description"] = "Raise compliance by 10 for every card discarded.";
-        this._metadata["patience"] = "-2";
+        this._metadata["patience"] = "2";
         this._metadata["compliance"] = "10";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
@@ -101,7 +101,7 @@ public class BadCop : Card
         this._metadata["element"] = "Intimidation";
         this._metadata["name"] = "Bad Cop";
         this._metadata["description"] = "Raise compliance by 10 for every Sympathy card in hand";
-        this._metadata["patience"] = "-3";
+        this._metadata["patience"] = "3";
         this._metadata["compliance"] = "10";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
@@ -115,7 +115,7 @@ public class Encourage : Card
         this._metadata["element"] = "Sympathy";
         this._metadata["name"] = "Encourage";
         this._metadata["description"] = "none";
-        this._metadata["patience"] = "-1";
+        this._metadata["patience"] = "1";
         this._metadata["compliance"] = "10";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
@@ -129,7 +129,7 @@ public class Complement : Card
         this._metadata["element"] = "Sympathy";
         this._metadata["name"] = "Complement";
         this._metadata["description"] = "When played as the first card, it raises compliance by 15 instead of 5.";
-        this._metadata["patience"] = "-1";
+        this._metadata["patience"] = "1";
         this._metadata["compliance"] = "5";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
@@ -143,7 +143,7 @@ public class SobStory : Card
         this._metadata["element"] = "Sympathy";
         this._metadata["name"] = "Sob Story";
         this._metadata["description"] = "Raise compliance by 8 for every card drawn so far.";
-        this._metadata["patience"] = "-2";
+        this._metadata["patience"] = "2";
         this._metadata["compliance"] = "8";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
@@ -157,7 +157,7 @@ public class GoodCop : Card
         this._metadata["element"] = "Sympathy";
         this._metadata["name"] = "Good Cop";
         this._metadata["description"] = "Raise compliance by 10 for every Intimidation card in hand.";
-        this._metadata["patience"] = "-3";
+        this._metadata["patience"] = "3";
         this._metadata["compliance"] = "10";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
@@ -171,7 +171,7 @@ public class Articulate : Card
         this._metadata["element"] = "Persuasion";
         this._metadata["name"] = "Articulate";
         this._metadata["description"] = "None";
-        this._metadata["patience"] = "-1";
+        this._metadata["patience"] = "1";
         this._metadata["compliance"] = "10";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
@@ -185,7 +185,7 @@ public class Salutation : Card
         this._metadata["element"] = "Persuasion";
         this._metadata["name"] = "Salutation";
         this._metadata["description"] = "When played as the first card, draw a card.";
-        this._metadata["patience"] = "-1";
+        this._metadata["patience"] = "1";
         this._metadata["compliance"] = "8";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
@@ -199,7 +199,7 @@ public class Lecture : Card
         this._metadata["element"] = "Persuasion";
         this._metadata["name"] = "Lecture";
         this._metadata["description"] = "Raise compliance by 10 for every patience still remaining.";
-        this._metadata["patience"] = "-3";
+        this._metadata["patience"] = "3";
         this._metadata["compliance"] = "10";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
@@ -216,7 +216,7 @@ public class MenacingPresence: Card
         this._metadata["element"] = "Preparation";
         this._metadata["name"] = "Menacing Presence";
         this._metadata["description"] = "+5 compliance to conversation cards for 3 plays.";
-        this._metadata["patience"] = "-1";
+        this._metadata["patience"] = "1";
     }
 }
 
@@ -227,7 +227,7 @@ public class Tirade : Card
         this._metadata["element"] = "Preparation";
         this._metadata["name"] = "Tirade";
         this._metadata["description"] = "+1 card for each persuasion card in hand.";
-        this._metadata["patience"] = "-2";
+        this._metadata["patience"] = "2";
     }
 }
 
@@ -249,7 +249,7 @@ public class Reassure : Card
         this._metadata["element"] = "Preparation";
         this._metadata["name"] = "Reassure";
         this._metadata["description"] = "+1 temporary patience for each card in hand.";
-        this._metadata["patience"] = "-2";
+        this._metadata["patience"] = "2";
     }
 }
 
@@ -260,7 +260,7 @@ public class Eloquence : Card
         this._metadata["element"] = "Preparation";
         this._metadata["name"] = "Eloquence";
         this._metadata["description"] = "The next conversation card you play gives +10 more compliance";
-        this._metadata["patience"] = "-1";
+        this._metadata["patience"] = "1";
     }
 }
 
@@ -271,6 +271,6 @@ public class Monologue : Card
         this._metadata["element"] = "Preparation";
         this._metadata["name"] = "Monologue";
         this._metadata["description"] = "+1 card for each sympathy card in hand.";
-        this._metadata["patience"] = "-2";
+        this._metadata["patience"] = "2";
     }
 }
