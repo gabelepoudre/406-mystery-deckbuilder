@@ -32,7 +32,7 @@ public abstract class Card
     public int GetComplianceValue() { return int.Parse(_metadata["compliance"]); }
     public int GetPatienceValue() { return int.Parse(_metadata["patience"]); }
     public int GetPosition() { return position; }
-    public void SetPosition(int index) { position = index;}
+    public void SetPosition(int index) { position = index; }
 //    public void Execute() { GameState.Meta.activeEncounter.Value.AddFilter(int.Parse(_metadata["duration"]), int.Parse(_metadata["filterId"])); }
     public void SetAndInitializeFrontendController(CardPrefabController controller)
     {
@@ -40,6 +40,7 @@ public abstract class Card
         frontendController.SetCardName(GetName());
         frontendController.SetCardDescription(GetDescription());
         frontendController.SetDefaultPatience(GetPatienceValue());
+        frontendController.SetPosition(GetPosition());
         if (GetElement() != "Preparation")
         {
             frontendController.SetDefaultCompliance(GetComplianceValue());

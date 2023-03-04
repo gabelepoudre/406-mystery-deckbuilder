@@ -48,33 +48,23 @@ public class Encounter
         _encounterPrefab = GameObject.Instantiate(prefabReference);
 
         _encounterController = _encounterPrefab.GetComponent<EncounterPrefabController>();
-        Debug.Log("Next should NOT be null");
-        Debug.Log(_encounterController);
 
         _encounterController.Initialize(config);
-        Debug.Log("Next should NOT be null");
-        Debug.Log(_encounterController);
     }
 
 
     public void DrawCard()
     {
-
-        Debug.Log("AHHHHHHHHHH 3");
-        Debug.Log(_encounterPrefab);
-
-        Debug.Log("Next should NOT be null");
-        Debug.Log(_encounterPrefab);
-        _encounterController = _encounterPrefab.GetComponent<EncounterPrefabController>();
-        Debug.Log("Next should NOT be null");
-        Debug.Log(_encounterController);
         if (_encounterController.PlaceMatFull())
         {
             Debug.Log("Can't draw, there is no place for the card");
         }
+        else if (GameState.Player.dailyDeck.Value.Count == 0)
+        {
+            Debug.Log("Daily deck is empty!");
+        }
         else
         {
-            Debug.Log("Debug 2");
             int draw_idx = Mathf.RoundToInt((Random.value * (GameState.Player.dailyDeck.Value.Count-1)));
 
             int draw_value = GameState.Player.dailyDeck.Value[draw_idx];
@@ -84,12 +74,33 @@ public class Encounter
             Card draw = (Card)Cards.CreateCardWithID(draw_value);
             if (draw == null)
             {
-                Debug.LogWarning("Drawed a card with an invalid index");
+                Debug.LogError("Drew a card with an invalid index");
             }
             _hand.Add(draw);
             _encounterController.PlaceCard(draw);
         }
     }
 
+    public void PlayCard(int position)
+    {
+        // find card
+        Card card = null;
 
+        foreach(Card c in _hand)
+        {
+            if (c.GetPosition() == position)
+            {
+                card = c;
+            }
+        }
+        if (card == null)
+        {
+            Debug.Log("Card at position " + position.ToString() + "could not be found in deck");
+        }
+
+        // TODO, actual implementation of game state change
+
+        // remove card
+        _encounterController.RemoveCard(card);
+    }
 }

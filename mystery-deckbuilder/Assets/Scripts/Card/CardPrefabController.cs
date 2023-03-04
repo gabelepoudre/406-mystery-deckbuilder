@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class CardPrefabController : MonoBehaviour
+public class CardPrefabController : MonoBehaviour, IPointerClickHandler
 {
     public Image highlight;
     public Image cardRect;
@@ -19,6 +20,7 @@ public class CardPrefabController : MonoBehaviour
     private List<GameObject> _effectCircles;
     private int _defaultCompliance;
     private int _defaultPatience;
+    private int _position;
 
     public void SetDefaultCompliance(int defaultCompliance)
     {
@@ -79,5 +81,15 @@ public class CardPrefabController : MonoBehaviour
     public void SetCardDescription(string description)
     {
         cardDescription.text = description;
+    }
+
+    public void SetPosition(int idx)
+    {
+        _position = idx;
+    }
+
+    public void OnPointerClick(PointerEventData eventData) 
+    {
+        GameState.Meta.activeEncounter.Value.PlayCard(_position);
     }
 }

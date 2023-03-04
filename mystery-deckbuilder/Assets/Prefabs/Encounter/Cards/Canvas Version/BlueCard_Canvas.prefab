@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 4490813693859455981}
   - component: {fileID: 5925784578878288768}
   - component: {fileID: 965297206041516667}
+  - component: {fileID: 3709540272931085320}
   m_Layer: 0
   m_Name: Description Text
   m_TagString: Untagged
@@ -232,6 +233,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: a
+--- !u!114 &3709540272931085320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2302014752427014672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03847e8642a24b9428166edd9b050768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2988496786782926893
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,6 +255,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4859677109974491038}
   - component: {fileID: 5995856936049300336}
+  - component: {fileID: 3562469101041655643}
   m_Layer: 0
   m_Name: BlueCard_Canvas
   m_TagString: Untagged
@@ -300,6 +314,19 @@ MonoBehaviour:
   visiblePatience: {fileID: 6664161149262240035}
   visibleCompliance: {fileID: 7851711931929084409}
   EffectCirclePrefab: {fileID: 3556328495919305323, guid: a115be2bd1977244dacbc0f6e52f413a, type: 3}
+--- !u!114 &3562469101041655643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2988496786782926893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4865c0c3ff773f489721eca74aa42e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardHighlight: {fileID: 1447258782107317838}
 --- !u!1 &3001597044552754594
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,6 +338,8 @@ GameObject:
   - component: {fileID: 635167192562640187}
   - component: {fileID: 5951935845457541401}
   - component: {fileID: 7943361727441181158}
+  - component: {fileID: 458745477104263607}
+  - component: {fileID: 2463445476933279393}
   m_Layer: 0
   m_Name: rect
   m_TagString: Untagged
@@ -376,6 +405,44 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!61 &458745477104263607
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3001597044552754594}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &2463445476933279393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3001597044552754594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdc443ec06c3bd1419ee022969908110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5801234708276360048
 GameObject:
   m_ObjectHideFlags: 0

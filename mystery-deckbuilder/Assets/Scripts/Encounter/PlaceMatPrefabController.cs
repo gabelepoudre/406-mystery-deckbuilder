@@ -38,10 +38,7 @@ public class PlaceMatPrefabController : MonoBehaviour
     }
 
     public int GetEmptyTransformIndex()
-    {
-
-        DebugLogTheLocations();
-       
+    {       
         if (IsFull())
         {
             Debug.LogWarning("Tried to get empty card spot when mat is full");
@@ -60,6 +57,11 @@ public class PlaceMatPrefabController : MonoBehaviour
         
         Debug.LogError("GetEmptyTransform() couldn't find a card location despite not being full");
         return 5; // this should never happen because of the first if in this method
+    }
+
+    public void ClearPosition(int position)
+    {
+        _cardLocations[position] = (false, _cardLocations[position].Item2);
     }
 
     public Transform GetTransformFromIndex(int index)

@@ -71,4 +71,10 @@ public class EncounterPrefabController : MonoBehaviour
     {
         return _placeMatScript.IsFull();
     }
+
+    public void RemoveCard(Card card)
+    {
+        _placeMatScript.ClearPosition(card.GetPosition());
+        Destroy(card.GetFrontendController().gameObject);  // finds the card prefab
+    }
 }
