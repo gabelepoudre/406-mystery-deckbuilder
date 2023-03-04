@@ -554,6 +554,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6002290621637727978}
   - component: {fileID: 5393760069258799515}
+  - component: {fileID: 2292112789360807564}
   m_Layer: 0
   m_Name: GrayCard_Canvas
   m_TagString: Untagged
@@ -611,6 +612,19 @@ MonoBehaviour:
   visiblePatience: {fileID: 579494228279617667}
   visibleCompliance: {fileID: 0}
   EffectCirclePrefab: {fileID: 3556328495919305323, guid: a115be2bd1977244dacbc0f6e52f413a, type: 3}
+--- !u!114 &2292112789360807564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6754762022743972773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4865c0c3ff773f489721eca74aa42e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardHighlight: {fileID: 1663899323833305272}
 --- !u!1 &8458863876258410004
 GameObject:
   m_ObjectHideFlags: 0

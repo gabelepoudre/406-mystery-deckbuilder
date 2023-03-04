@@ -402,6 +402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9204399067519391352}
   - component: {fileID: 8058471359181297630}
+  - component: {fileID: 1287024397326360124}
   m_Layer: 0
   m_Name: RedCard_Canvas
   m_TagString: Untagged
@@ -460,6 +461,19 @@ MonoBehaviour:
   visiblePatience: {fileID: 9204399066829263771}
   visibleCompliance: {fileID: 9204399066614395109}
   EffectCirclePrefab: {fileID: 3556328495919305323, guid: a115be2bd1977244dacbc0f6e52f413a, type: 3}
+--- !u!114 &1287024397326360124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9204399067519391359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4865c0c3ff773f489721eca74aa42e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardHighlight: {fileID: 6786172845171488672}
 --- !u!1 &9204399067603209289
 GameObject:
   m_ObjectHideFlags: 0
