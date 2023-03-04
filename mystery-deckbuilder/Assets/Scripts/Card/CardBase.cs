@@ -44,6 +44,7 @@ public abstract class Card
         {
             frontendController.SetDefaultCompliance(GetComplianceValue());
         }
+        Debug.Log("Ran Card Initialization");
     }
     public CardPrefabController GetFrontendController()
     {

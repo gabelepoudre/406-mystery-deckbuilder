@@ -468,8 +468,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: EncounterScript, Assembly-CSharp
+      - m_Target: {fileID: 5273391573441211690}
+        m_TargetAssemblyTypeName: EncounterController, Assembly-CSharp
         m_MethodName: DrawCard
         m_Mode: 1
         m_Arguments:
@@ -758,6 +758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6983892176770601185}
   - component: {fileID: 5648356094964155888}
+  - component: {fileID: 5273391573441211690}
   m_Layer: 0
   m_Name: Encounter
   m_TagString: Untagged
@@ -798,6 +799,22 @@ MonoBehaviour:
   complianceBar: {fileID: 6983892177592257835}
   patienceBar: {fileID: 6983892177897665125}
   cardPlaceMat: {fileID: 6983892177187874297}
+  redCard: {fileID: 9204399067519391359, guid: d5c35f3dc6245a848a89dad5faaa533a, type: 3}
+  blueCard: {fileID: 2988496786782926893, guid: 07f68a7fc0afc044bacc2613d0e3cc07, type: 3}
+  greenCard: {fileID: 3279046307657509022, guid: 800d684852fc101438fafc008241abf0, type: 3}
+  greyCard: {fileID: 6754762022743972773, guid: 9dbc6185c465d6349ad98af7cc0ae5b5, type: 3}
+--- !u!114 &5273391573441211690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6983892176770601184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4233bda3836f0584e8d4d9aa245ee31a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6983892177187874297
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,7 +1217,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2c6071d43e4cf47b85ce574f5d547d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteImage: {fileID: 6983892177764667032}
   neutral: {fileID: 21300000, guid: 51292d721bf3a6a4881f5b7d8ccd239f, type: 3}
   happy: {fileID: 21300000, guid: eba4a6212cb10e74486b52a8443f5026, type: 3}
   angry: {fileID: 21300000, guid: bf2bedaa5c97f5f4b9a2b140a7c61856, type: 3}

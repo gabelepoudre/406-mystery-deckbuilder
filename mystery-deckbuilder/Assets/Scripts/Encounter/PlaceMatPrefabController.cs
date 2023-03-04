@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class PlaceMatPrefabController : MonoBehaviour
 {
-    private List<(bool, Transform)> _cardLocations;
+    private List<(bool, Transform)> _cardLocations = new List<(bool, Transform)>();
     void Start()
     {
         foreach(Transform t in this.GetComponentsInChildren<Transform>())
         {
-            _cardLocations.Add((false, t));
+            if (t != gameObject.transform)
+            {
+                _cardLocations.Add((false, t));
+            }
         }
     }
 
@@ -25,24 +28,36 @@ public class PlaceMatPrefabController : MonoBehaviour
         return true;
     }
 
+    private void DebugLogTheLocations()
+    {
+        Debug.Log("------------****-------------");
+        foreach ((bool, Transform) loc in _cardLocations)
+        {
+            Debug.Log(loc.Item1.ToString() + "|" + loc.Item2.ToString());
+        }
+    }
+
     public int GetEmptyTransformIndex()
     {
+
+        DebugLogTheLocations();
+       
         if (IsFull())
         {
             Debug.LogWarning("Tried to get empty card spot when mat is full");
             return 5;
         }
 
-        for (int index = 0; index < _cardLocations.Count - 1; index++)
+        for (int index = 0; index <= _cardLocations.Count - 1; index++)
         {
             (bool, Transform) location = _cardLocations[index];
             if (!location.Item1)
             {
-                location.Item1 = true;
+                _cardLocations[index] = (true, location.Item2);
                 return index;
             }
         }
-
+        
         Debug.LogError("GetEmptyTransform() couldn't find a card location despite not being full");
         return 5; // this should never happen because of the first if in this method
     }
@@ -51,4 +66,6 @@ public class PlaceMatPrefabController : MonoBehaviour
     {
         return _cardLocations[index].Item2;
     }
+
+    //TODO, remove cards
 }
