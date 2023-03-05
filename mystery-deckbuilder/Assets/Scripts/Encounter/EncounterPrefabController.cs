@@ -129,11 +129,13 @@ public class EncounterPrefabController : MonoBehaviour
 
     public void SetPatience(int value)
     {
+        Debug.Log("Patience was set to " + value.ToString() + ", was " + _patienceBarScript.GetValue());
         _patienceBarScript.SetValue(value);
     }
 
     public void SetCompliance(int value)
     {
+        Debug.Log("Compliance was set to " + value.ToString() + ", was " + _complianceBarScript.GetValue());
         _complianceBarScript.SetValue(value);
     }
 }
