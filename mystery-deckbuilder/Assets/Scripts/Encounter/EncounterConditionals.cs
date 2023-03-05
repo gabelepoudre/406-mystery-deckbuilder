@@ -1,5 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+/*
+ * author(s): Gabriel LePoudre
+ * 
+ * For static methods to call in effects ONLY. This is because we can't guarantee
+ *  an Encounter is active outside of an Effect
+ *  
+ *  NOTE: Largely untested
+ */
+
 using UnityEngine;
 
 public static class EncounterConditionals

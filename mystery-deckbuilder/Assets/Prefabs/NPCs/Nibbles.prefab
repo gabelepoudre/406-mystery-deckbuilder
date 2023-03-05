@@ -425,10 +425,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8310409467724307527}
   - component: {fileID: 8310409467724307528}
-  - component: {fileID: 8310409467724307526}
   - component: {fileID: 8310409467724307525}
   - component: {fileID: 8310409467724307524}
   - component: {fileID: 8310409467724307523}
+  - component: {fileID: 7538326253552544718}
   m_Layer: 0
   m_Name: Nibbles
   m_TagString: Untagged
@@ -473,19 +473,7 @@ MonoBehaviour:
   currentPatience: 1
   currentCompliance: 0
   ComplianceThreshhold: 0
---- !u!114 &8310409467724307526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8310409467724307531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91a1955493f006f44a66f5d702b06773, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounter: {fileID: 6983892176770601184, guid: 3567f7b06a728894589bdd79772d2135, type: 3}
+  encounterSprites: {fileID: 7538326253552544718}
 --- !u!114 &8310409467724307525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,6 +510,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc47e8dd8a1314ed6ab6b2748b2ab7ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7538326253552544718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8310409467724307531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c2c6071d43e4cf47b85ce574f5d547d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  neutral: {fileID: 21300000, guid: 51292d721bf3a6a4881f5b7d8ccd239f, type: 3}
+  happy: {fileID: 21300000, guid: eba4a6212cb10e74486b52a8443f5026, type: 3}
+  angry: {fileID: 21300000, guid: bf2bedaa5c97f5f4b9a2b140a7c61856, type: 3}
+  stress: {fileID: 21300000, guid: 7b1857ee33c79e6449d292c30dc1aed1, type: 3}
+  worry: {fileID: 21300000, guid: e57dc30f7fd776c4b9cc2fb079d09367, type: 3}
 --- !u!1 &8310409467959974986
 GameObject:
   m_ObjectHideFlags: 0

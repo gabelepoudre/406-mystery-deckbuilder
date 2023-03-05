@@ -1,4 +1,11 @@
-using System.Collections;
+/*
+ * author(s): Gabriel LePoudre, William Metivier
+ * 
+ * The class that controls a card frontend
+ * Implements Click and Deselection handlers
+ * 
+ */
+
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -17,9 +24,9 @@ public class CardPrefabController : MonoBehaviour, IPointerClickHandler, IDesele
     public Text visibleCompliance;
     public GameObject effectCirclePrefab;
     public GameObject options;
-    [SerializeField] Color selectionTint;
+    [SerializeField] Color selectionTint; 
 
-    private List<GameObject> _effectCircles;
+    private List<GameObject> _effectCircles;  // TODO, we will eventually initialize circles which hover-over to display currently applied effects
     private int _defaultCompliance;
     private int _defaultPatience;
     private int _position;
@@ -27,6 +34,14 @@ public class CardPrefabController : MonoBehaviour, IPointerClickHandler, IDesele
     private bool _highlighted = false;
     private bool _showingOptions = false;
 
+    /*
+     * The following fields and FixedUpdate solve the following problem:
+     *  - The flow of select/deselect is that when you click away from a gameObject, deselect is called BEFORE select
+     *  - since deselect is called before select, we don't know if the user is selecting us a second time
+     *  - to click post-selection buttons "play" and "?" the user MUST select the card twice
+     *  - without this fix, attempting to select "play" or "?" causes the buttons to be hid and reappear, with no clickEvent for the button to register
+     *  - with this fix, it takes 6 frames to deselect an object, which does go through if the object we reselect in that time is us, again
+     */
     protected bool __evilToldToDeselect = false;
     protected int __evilDeselectionDelay = -1;
 
@@ -47,6 +62,7 @@ public class CardPrefabController : MonoBehaviour, IPointerClickHandler, IDesele
         }
     }
 
+    /* Plays the current card */
     public void PlayCard()
     {
         if (GameState.Meta.activeEncounter.Value == null)
@@ -178,7 +194,6 @@ public class CardPrefabController : MonoBehaviour, IPointerClickHandler, IDesele
         {
             ShowOptions();
         }
-         //GameState.Meta.activeEncounter.Value.PlayCard(_position);
     }
 
     public void OnDeselect(BaseEventData eventData)

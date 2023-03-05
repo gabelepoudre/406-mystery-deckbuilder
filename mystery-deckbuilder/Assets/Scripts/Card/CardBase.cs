@@ -9,7 +9,7 @@ using UnityEngine;
  */
 
 
-
+/* The card class's non-default Patience and Compliance properties automatically update their linked frontend card*/
 public abstract class Card
 {
 
@@ -182,6 +182,8 @@ public abstract class Card
 }
 
 /*
+ * NOTE: Antiquated
+ * 
  * An abstract class that all preparation cards override/inherit from
  * All of a cards atrributes and information will be stored in a dictionary which can only be accessed through getter methods.
  * The values for the cards attributes are declared in derived card classes.

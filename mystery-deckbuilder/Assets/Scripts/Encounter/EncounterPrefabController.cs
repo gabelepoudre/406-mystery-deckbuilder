@@ -1,5 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+/*
+ * author(s): Gabriel LePoudre, William Metivier
+ * 
+ * Created to be attached to the Encounter prefab
+ * Handles the "front end" of the Encounter
+ * 
+ */
+
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -27,6 +33,7 @@ public class EncounterPrefabController : MonoBehaviour
 
     void Awake()
     {
+        // this is in awake because we need the bar scripts to initialize before Start()
         _complianceBarScript = complianceBar.GetComponent<BarScript>();
         if (_complianceBarScript == null)
         {
@@ -40,14 +47,42 @@ public class EncounterPrefabController : MonoBehaviour
         _placeMatScript = cardPlaceMat.GetComponent<PlaceMatPrefabController>();
     }
 
+    /* Initializes the front-end with what it needs from a config */
     public void Initialize(EncounterConfig config)
     {
-        //_npcHeadshotScript = config.Opponent.gameObject.GetComponent<NPCEncounterSpriteController>();
+        _npcHeadshotScript = config.Opponent.encounterSprites;
         _complianceBarScript.SetMax(config.MaximumCompliance);
         _patienceBarScript.SetMax(config.MaximumPatience);
         _patienceBarScript.SetValue(config.MaximumPatience);
     }
 
+    /* Testing function to demo that we can change headshots */
+    public void RandomlyChangeHeadshot()
+    {
+        // Note: this is for test purposes
+        Debug.Log("Changing NPC headshot for testing purposes");
+
+        switch(Mathf.RoundToInt(Random.value*4))
+        {
+            case 0:
+                _npcHeadshotScript.GetAngry(npcHeadshot);
+                break;
+            case 1:
+                _npcHeadshotScript.GetNeutral(npcHeadshot);
+                break;
+            case 2:
+                _npcHeadshotScript.GetHappy(npcHeadshot);
+                break;
+            case 3:
+                _npcHeadshotScript.GetStress(npcHeadshot);
+                break;
+            case 4:
+                _npcHeadshotScript.GetWorry(npcHeadshot);
+                break;
+        }
+    }
+
+    /* Place a card on the frontend. This requires us to create the frontend and link it to the Card class (SetAndInitializeFrontendController) */
     public void PlaceCard(Card card)
     {
         // find an open index
@@ -82,17 +117,23 @@ public class EncounterPrefabController : MonoBehaviour
         card.SetAndInitializeFrontendController(frontendController);
     }
 
+    /* Reaches into placemat to see if it is full (convienience method) */
     public bool PlaceMatFull()
     {
         return _placeMatScript.IsFull();
     }
 
+    /* Remove the Card prefab at that location */
     public void RemoveCard(Card card)
     {
+        // TODO: remove call, for testing purposes only
+        RandomlyChangeHeadshot();
+
         _placeMatScript.ClearPosition(card.GetPosition());
         Destroy(card.GetFrontendController().gameObject);  // finds the card prefab
     }
 
+    /* Highlights a card given it's instantiated prefab */
     public void HighlightCard(GameObject cardFrontend)
     {
         _oldHighlightedCardTransformPosition = cardFrontend.transform.position;
@@ -103,6 +144,7 @@ public class EncounterPrefabController : MonoBehaviour
         _highlightedCard.transform.position = new Vector3(newTransform.position.x, newTransform.position.y, newTransform.position.z);
     }
 
+    /* Unhighlights the currently highlighted card */
     public void UnHighlightCard()
     {
         if (_highlightedCard == null)
@@ -130,12 +172,25 @@ public class EncounterPrefabController : MonoBehaviour
     public void SetPatience(int value)
     {
         Debug.Log("Patience was set to " + value.ToString() + ", was " + _patienceBarScript.GetValue());
-        _patienceBarScript.SetValue(value);
+        _patienceBarScript.SetValue(value); 
     }
 
     public void SetCompliance(int value)
     {
         Debug.Log("Compliance was set to " + value.ToString() + ", was " + _complianceBarScript.GetValue());
         _complianceBarScript.SetValue(value);
+    }
+    
+    /* This is only here because the draw button needs a non-static attached Monobehaviour to OnClick()*/
+    public void DrawCard()
+    {
+        if (GameState.Meta.activeEncounter.Value != null)
+        {
+            GameState.Meta.activeEncounter.Value.DrawCard();
+        }
+        else
+        {
+            Debug.LogWarning("Tried to draw card when no encounter was active!");
+        }
     }
 }

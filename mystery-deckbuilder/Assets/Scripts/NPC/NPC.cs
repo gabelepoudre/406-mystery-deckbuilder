@@ -19,6 +19,8 @@ public class NPC : MonoBehaviour
 
     [Range(0.0f, 100.0f)] public float ComplianceThreshhold;
 
+    public NPCEncounterSpriteController encounterSprites;
+
     public Dictionary<string, DialogueTree> DialogueTreeDictionary;
     public string CurrentDialogueKey { get; set; }
 

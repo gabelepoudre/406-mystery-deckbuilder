@@ -1,10 +1,18 @@
-using System.Collections;
+
+/*
+ * author(s): Gabriel LePoudre, William Metivier
+ * 
+ * The class that acts as the model for the current encounter, and uses the PrefabController
+ * 
+ */
+
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
 public class Encounter
 {
+    /* Static method to launch an Encounter from wherever as long as you have a vblid config */
     public static Encounter StartEncounter(EncounterConfig config)
     {
         if (GameState.Meta.activeEncounter.Value != null)
@@ -20,6 +28,7 @@ public class Encounter
         }
     }
 
+    /* Static method to end an Encounter from wherever as long as there is an Encounter to close*/
     public static void EndEncounter()
     {
         if (GameState.Meta.activeEncounter.Value == null)
@@ -44,7 +53,7 @@ public class Encounter
     // statistics
     public StatisticsClass Statistics = new StatisticsClass();
 
-
+    /* Statistics is used to hold information about the GameState and make it easier to implement conditionals */
     public class StatisticsClass
     {
         public int NumberOfPlays { get; set; } = 0;
@@ -59,6 +68,7 @@ public class Encounter
         public int PreparationCardsInHand { get; set; } = 0;
     }
 
+    /* An effect (as seen by E prefix) for an NPC weakness */
     public class EElementWeakness : Effect, IExecutableEffect
     {
         private string _element;
@@ -66,6 +76,8 @@ public class Encounter
         {
             _element = element;
         }
+
+        /* Executes the effect. A conditional may be called within */
         public void Execute(Encounter enc)
         {
             List<Card> hand = enc.GetHand();
@@ -79,6 +91,7 @@ public class Encounter
         }
     }
 
+    /* An effect (as seen by E prefix) for an NPC strength */
     public class EElementResistance : Effect, IExecutableEffect
     {
         private string _element;
@@ -86,6 +99,8 @@ public class Encounter
         {
             _element = element;
         }
+
+        /* Executes the effect. A conditional may be called within */
         public void Execute(Encounter enc)
         {
             List<Card> hand = enc.GetHand();
@@ -99,12 +114,12 @@ public class Encounter
         }
     }
 
+    /* Constructor with config */
     public Encounter(EncounterConfig config)
     {
         GameObject prefabReference = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Encounter/Encounter.prefab");
-        Statistics = new StatisticsClass();
-        Statistics.NumberOfPlays += 1;
-        Statistics.NumberOfPlays -= 1;
+        Statistics = new StatisticsClass(); // we reinitialize this, just in case
+
         _encounterPrefab = GameObject.Instantiate(prefabReference);
 
         _encounterController = _encounterPrefab.GetComponent<EncounterPrefabController>();
@@ -112,7 +127,7 @@ public class Encounter
         _encounterController.Initialize(config);
     }
 
-
+    /* Draw a card, if we can. Draws trigger "OnChange" which recalculates all card values */
     public void DrawCard()
     {
         if (_encounterController.PlaceMatFull())
@@ -169,12 +184,12 @@ public class Encounter
         }
     }
 
+    /* Resolves global effects, as part of OnChange */
     private void ResolveGlobals()
     {
         if (globalEffects.Count == 0)
         {
-            // TODO: REMOVE
-            Debug.Log(this);
+            // TODO: REMOVE, this should not be hard coded
             globalEffects.Add(new EElementWeakness("Sympathy"));
             globalEffects.Add(new EElementResistance("Intimidation"));
         }
@@ -196,6 +211,7 @@ public class Encounter
         }
     }
 
+    /* Reset and recalculate all cards on any change (draw or play) */
     private void OnChange()
     {
         // wipe all card stuff, resolve all cards on change
@@ -207,9 +223,10 @@ public class Encounter
             c.UnstackableComplianceMod = 0;
             c.OnChange();
         }
-        ResolveGlobals();  //TODO: fix
+        ResolveGlobals();
     }
 
+    /* Play a card given it's position on the board (stored internally to the card class if Initialized properly)*/
     public void PlayCard(int position)
     {
         // find card
@@ -248,7 +265,6 @@ public class Encounter
                 break;
         }
 
-        // TODO, actual implementation of game state change
         int totalCompliance = card.GetTotalCompliance();
         int totalPatience = card.GetTotalPatience();
         card.OnPlay();
@@ -256,7 +272,7 @@ public class Encounter
         _encounterController.SetCompliance(_encounterController.GetCompliance() + totalCompliance);
         _encounterController.SetPatience(_encounterController.GetPatience() - totalPatience);
 
-        // remove from hand for now
+        // remove from hand for now, we don't want to apply effects to a played card
         _hand.Remove(card);
 
         OnChange(); // we call this on all draws and plays
@@ -265,12 +281,13 @@ public class Encounter
         _encounterController.RemoveCard(card);
     }
 
-
+    /* Exposes the controller */
     public EncounterPrefabController GetEncounterController()
     {
         return _encounterController;
     }
 
+    /* Exposes the hand (used mostly in conditionals) */
     public List<Card> GetHand()
     {
         return _hand;

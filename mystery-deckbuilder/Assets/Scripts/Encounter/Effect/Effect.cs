@@ -1,3 +1,10 @@
+/*
+ * author(s): Gabriel LePoudre, William Metivier
+ * 
+ * The classes that define an Effect
+ * 
+ */
+
 public class Effect
 {
     private int _numPlayTermination;

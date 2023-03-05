@@ -1,6 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+/*
+ * author(s): Gabriel LePoudre
+ * 
+ * For Initializing Encounters. Mostly handled by NPC calls
+ */
 
 public class EncounterConfig
 {
