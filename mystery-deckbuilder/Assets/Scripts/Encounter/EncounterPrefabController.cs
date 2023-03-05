@@ -72,8 +72,8 @@ public class EncounterPrefabController : MonoBehaviour
             case "Persuasion":
                 cardFrontend = Instantiate(greenCard, empty.position, empty.rotation, _placeMatScript.gameObject.transform);
                 break;
-            case "Preperation":
-                cardFrontend = Instantiate(redCard, empty.position, empty.rotation, _placeMatScript.gameObject.transform);
+            case "Preparation":
+                cardFrontend = Instantiate(greyCard, empty.position, empty.rotation, _placeMatScript.gameObject.transform);
                 break;
         }
 

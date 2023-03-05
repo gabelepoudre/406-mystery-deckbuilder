@@ -52,7 +52,6 @@ public static class EncounterConditionals
     {
         return E.GetEncounterController().GetCompliance() == value;
     }
-    // todo! put these in statistics
     public static bool CardsOfElementInHandLessThan(string element, int value)
     {
         int num = 0;
@@ -89,4 +88,5 @@ public static class EncounterConditionals
         }
         return num == value;
     }
+    
 }

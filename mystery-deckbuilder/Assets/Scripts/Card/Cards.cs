@@ -1,3 +1,32 @@
+
+public class Effect
+{
+    private int _numPlayTermination;
+    private Card _parent;
+    public Effect(int duration, Card parent)
+    {
+        _numPlayTermination = GameState.Meta.activeEncounter.Value.Statistics.NumberOfPlays + duration;
+        _parent = parent;
+    }
+
+    public int GetTerminationPlay()
+    {
+        return _numPlayTermination;
+    }
+
+    public Card GetParent()
+    {
+        return _parent;
+    }
+}
+
+public interface IEffect
+{
+    public int GetTerminationPlay();
+    public Card GetParent();
+    public void Execute();
+}
+
 /*
  * Static class containing a method to return an instance of a card with a given ID
  * Returned object must be cast to it's card type (Conversation/Preparation)
@@ -58,7 +87,7 @@ public class Bluster : Card
     {
         this._metadata["element"] = "Intimidation";
         this._metadata["name"] = "Bluster";
-        this._metadata["description"] = "none";
+        this._metadata["description"] = "No special effect";
         this._metadata["patience"] = "1";
         this._metadata["compliance"] = "10";
         this._metadata["duration"] = "0";

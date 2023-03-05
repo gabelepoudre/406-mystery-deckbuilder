@@ -47,6 +47,19 @@ public class CardPrefabController : MonoBehaviour, IPointerClickHandler, IDesele
         }
     }
 
+    public void PlayCard()
+    {
+        if (GameState.Meta.activeEncounter.Value == null)
+        {
+            Debug.LogError("Played card when no encounter was active");
+        }
+        else
+        {
+            GameState.Meta.activeEncounter.Value.PlayCard(_position);
+        }
+        
+    }
+
     public void SetDefaultCompliance(int defaultCompliance)
     {
         _defaultCompliance = defaultCompliance;

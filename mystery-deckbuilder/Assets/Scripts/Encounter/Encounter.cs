@@ -45,11 +45,15 @@ public class Encounter
     public class StatisticsClass
     {
         public int NumberOfPlays { get; set; } = 0;
+        public int NumberOfDraws { get; set; } = 0;
         public int IntimidationCardsPlayed { get; set; } = 0;
         public int SympathyCardsPlayed { get; set; } = 0;
         public int PersuasionCardsPlayed { get; set; } = 0;
         public int PreparationCardsPlayed { get; set; } = 0;
-
+        public int IntimidationCardsInHand { get; set; } = 0;
+        public int SympathyCardsInHand { get; set; } = 0;
+        public int PersuasionCardsInHand { get; set; } = 0;
+        public int PreparationCardsInHand { get; set; } = 0;
     }
     
     public Encounter(EncounterConfig config)
@@ -86,8 +90,34 @@ public class Encounter
             {
                 Debug.LogError("Drew a card with an invalid index");
             }
-            _hand.Add(draw);
-            _encounterController.PlaceCard(draw);
+            else
+            {
+                // quick statistics
+                switch (draw.GetElement())
+                {
+                    case "Intimidation":
+                        Statistics.IntimidationCardsInHand += 1;
+                        Statistics.NumberOfDraws += 1;
+                        break;
+                    case "Sympathy":
+                        Statistics.SympathyCardsInHand += 1;
+                        Statistics.NumberOfDraws += 1;
+                        break;
+                    case "Persuasion":
+                        Statistics.PersuasionCardsInHand += 1;
+                        Statistics.NumberOfDraws += 1;
+                        break;
+                    case "Preparation":
+                        Statistics.PreparationCardsInHand += 1;
+                        Statistics.NumberOfDraws += 1;
+                        break;
+                }
+
+                _hand.Add(draw);
+                _encounterController.PlaceCard(draw);
+
+                _encounterController.SetPatience(_encounterController.GetPatience() - 1);
+            }
         }
     }
 
@@ -109,6 +139,14 @@ public class Encounter
         }
 
         // TODO, actual implementation of game state change
+        int totalCompliance = card.GetTotalCompliance();
+        int totalPatience = card.GetTotalPatience();
+        card.OnPlay();
+
+        _encounterController.SetCompliance(_encounterController.GetCompliance() + totalCompliance);
+        _encounterController.SetPatience(_encounterController.GetPatience() - totalPatience);
+
+        // resolve all cards on change
 
         // remove card
         _encounterController.RemoveCard(card);

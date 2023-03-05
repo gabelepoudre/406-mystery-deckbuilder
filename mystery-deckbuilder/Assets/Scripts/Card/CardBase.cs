@@ -10,7 +10,6 @@ using UnityEngine;
 
 
 
-
 public abstract class Card
 {
 
@@ -42,11 +41,41 @@ public abstract class Card
     public string GetName() { return _metadata["name"]; }
     public string GetDescription() { return _metadata["description"]; }
 
+    // for play executions
+    public virtual void OnPlay()
+    {
+        Debug.Log("Card " + GetName() + "had it's base OnPlay called");
+        // this is where triggering an effect may go
+    }
+
+    public virtual void OnChange()
+    {
+        Debug.Log("Card " + GetName() + "had it's base OnPlay called");
+        // this is where triggering an effect may go
+    }
+
+    public virtual void OnDraw()
+    {
+        Debug.Log("Card " + GetName() + "had it's base OnPlay called");
+        // this is where triggering an effect may go
+    }
+
     public int GetDefaultCompliance() { return int.Parse(_metadata["compliance"]); }
     public int GetStackableComplianceMod() { return _stackableComplianceMod; }
     public int GetUnstackableComplianceMod() { return _unstackableComplianceMod; }
     public int GetStackableCompliance() { return GetStackableComplianceMod() + GetDefaultCompliance(); }
-    public int GetTotalCompliance() { return GetStackableCompliance() + GetUnstackableComplianceMod(); }
+    public int GetTotalCompliance() 
+    {
+        if (!_complianceOverridden)
+        {
+            return GetStackableCompliance() + GetUnstackableComplianceMod();
+        }
+        else
+        {
+            return _complianceOverride;
+        }
+        
+    }
     public bool ComplianceOverriden() { return _complianceOverridden; }
     public int ComplianceOverrideValue() { return _complianceOverride; }
 
@@ -55,7 +84,18 @@ public abstract class Card
     public int GetStackablePatienceMod() { return _stackablePatienceMod; }
     public int GetUnstackablePatienceMod() { return _unstackablePatienceMod; }
     public int GetStackablePatience() { return GetStackablePatienceMod() + GetDefaultPatience(); }
-    public int GetTotalPatience() { return GetStackablePatience() + GetUnstackablePatienceMod(); }
+    public int GetTotalPatience() 
+    { 
+        if (!_patienceOverridden) 
+        {
+            return GetStackablePatience() + GetUnstackablePatienceMod();
+        }
+        else
+        {
+            return _patienceOverride;
+        }
+        
+    }
     public bool PatienceOverriden() { return _patienceOverridden; }
     public int PatienceOverrideValue() { return _patienceOverride; }
 
