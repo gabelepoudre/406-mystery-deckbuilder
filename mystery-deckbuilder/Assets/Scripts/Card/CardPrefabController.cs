@@ -60,6 +60,11 @@ public class CardPrefabController : MonoBehaviour, IPointerClickHandler, IDesele
         
     }
 
+    public bool CurrentlyShowingOptions()
+    {
+        return _showingOptions;
+    }
+
     public void SetDefaultCompliance(int defaultCompliance)
     {
         _defaultCompliance = defaultCompliance;

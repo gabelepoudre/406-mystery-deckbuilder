@@ -1,30 +1,22 @@
-
+using UnityEngine;
 public class Effect
 {
     private int _numPlayTermination;
-    private Card _parent;
-    public Effect(int duration, Card parent)
+    public Effect(int duration, Encounter enc)
     {
-        _numPlayTermination = GameState.Meta.activeEncounter.Value.Statistics.NumberOfPlays + duration;
-        _parent = parent;
+        _numPlayTermination = enc.Statistics.NumberOfPlays + duration;
     }
 
     public int GetTerminationPlay()
     {
         return _numPlayTermination;
     }
-
-    public Card GetParent()
-    {
-        return _parent;
-    }
 }
 
-public interface IEffect
+public interface IExecutableEffect
 {
     public int GetTerminationPlay();
-    public Card GetParent();
-    public void Execute();
+    public void Execute(Encounter enc);
 }
 
 /*

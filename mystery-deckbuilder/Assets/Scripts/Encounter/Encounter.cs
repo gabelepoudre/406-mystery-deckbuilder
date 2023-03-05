@@ -37,11 +37,14 @@ public class Encounter
 
     private GameObject _encounterPrefab;
     private EncounterPrefabController _encounterController;
+    private List<IExecutableEffect> globalEffects;
 
     private List<Card> _hand = new();
 
     // statistics
     public StatisticsClass Statistics = new StatisticsClass();
+
+
     public class StatisticsClass
     {
         public int NumberOfPlays { get; set; } = 0;
@@ -55,10 +58,53 @@ public class Encounter
         public int PersuasionCardsInHand { get; set; } = 0;
         public int PreparationCardsInHand { get; set; } = 0;
     }
-    
+
+    public class EElementWeakness : Effect, IExecutableEffect
+    {
+        private string _element;
+        public EElementWeakness(Encounter enc, string element): base(99, enc)
+        {
+            _element = element;
+        }
+        public void Execute(Encounter enc)
+        {
+            List<Card> hand = enc.GetHand();
+            foreach (Card c in hand)
+            {
+                if (c.GetElement() == _element)
+                {
+                    c.StackableComplianceMod += 0.5f;
+                }
+            }
+        }
+    }
+
+    public class EElementResistance : Effect, IExecutableEffect
+    {
+        private string _element;
+        public EElementResistance(Encounter enc, string element) : base(99, enc)
+        {
+            _element = element;
+        }
+        public void Execute(Encounter enc)
+        {
+            List<Card> hand = enc.GetHand();
+            foreach (Card c in hand)
+            {
+                if (c.GetElement() == _element)
+                {
+                    c.StackableComplianceMod -= 0.5f;
+                }
+            }
+        }
+    }
+
     public Encounter(EncounterConfig config)
     {
         GameObject prefabReference = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Encounter/Encounter.prefab");
+        Statistics = new StatisticsClass();
+        Statistics.NumberOfPlays += 1;
+        Statistics.NumberOfPlays -= 1;
         _encounterPrefab = GameObject.Instantiate(prefabReference);
 
         _encounterController = _encounterPrefab.GetComponent<EncounterPrefabController>();
@@ -116,9 +162,50 @@ public class Encounter
                 _hand.Add(draw);
                 _encounterController.PlaceCard(draw);
 
+                OnChange(); // we call this on all draws and plays
+
                 _encounterController.SetPatience(_encounterController.GetPatience() - 1);
             }
         }
+    }
+
+    private void ResolveGlobals()
+    {
+        if (globalEffects.Count == 0)
+        {
+            // TODO: REMOVE
+            globalEffects.Add(new EElementWeakness(this, "Intimidation"));
+        }
+        List<IExecutableEffect> toRemove = new(); 
+        foreach (IExecutableEffect e in globalEffects)
+        {
+            if (e.GetTerminationPlay() < Statistics.NumberOfPlays)
+            {
+                toRemove.Add(e);
+            }
+            else
+            {
+                e.Execute(this);
+            }
+        }
+        foreach(IExecutableEffect e in toRemove)
+        {
+            globalEffects.Remove(e);
+        }
+    }
+
+    private void OnChange()
+    {
+        // wipe all card stuff, resolve all cards on change
+        foreach (Card c in _hand)
+        {
+            c.StackableComplianceMod = 0;
+            c.UnstackableComplianceMod = 0;
+            c.StackablePatienceMod = 0;
+            c.UnstackableComplianceMod = 0;
+            c.OnChange();
+        }
+        //ResolveGlobals();  //TODO: fix
     }
 
     public void PlayCard(int position)
@@ -138,6 +225,27 @@ public class Encounter
             Debug.Log("Card at position " + position.ToString() + "could not be found in deck");
         }
 
+        // quick statistics
+        switch (card.GetElement())
+        {
+            case "Intimidation":
+                Statistics.IntimidationCardsInHand -= 1;
+                Statistics.NumberOfPlays += 1;
+                break;
+            case "Sympathy":
+                Statistics.SympathyCardsInHand -= 1;
+                Statistics.NumberOfPlays += 1;
+                break;
+            case "Persuasion":
+                Statistics.PersuasionCardsInHand -= 1;
+                Statistics.NumberOfPlays += 1;
+                break;
+            case "Preparation":
+                Statistics.PreparationCardsInHand -= 1;
+                Statistics.NumberOfPlays += 1;
+                break;
+        }
+
         // TODO, actual implementation of game state change
         int totalCompliance = card.GetTotalCompliance();
         int totalPatience = card.GetTotalPatience();
@@ -146,7 +254,10 @@ public class Encounter
         _encounterController.SetCompliance(_encounterController.GetCompliance() + totalCompliance);
         _encounterController.SetPatience(_encounterController.GetPatience() - totalPatience);
 
-        // resolve all cards on change
+        // remove from hand for now
+        _hand.Remove(card);
+
+        OnChange(); // we call this on all draws and plays
 
         // remove card
         _encounterController.RemoveCard(card);

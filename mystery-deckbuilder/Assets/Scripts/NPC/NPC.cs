@@ -6,9 +6,12 @@ public class NPC : MonoBehaviour
 {
     //Variables 
     public string CharacterName;
-    [Range(0.0f, 1.0f)]public float affinity_1;
-    [Range(0.0f, 1.0f)]public float affinity_2;
-    [Range(0.0f, 1.0f)]public float affintiy_3;
+
+    [Range(0.0f, 1.0f)]public float affinity_1 = 0.5f;
+    [Range(0.0f, 1.0f)]public float affinity_2 = 0.5f;
+    [Range(0.0f, 1.0f)]public float affintiy_3 = 0.5f;
+
+
     [Range(0.0f, 10.0f)]public float startingPatience;
     [Range(0.0f, 100.0f)]public float startingCompliance;
     [Range(0.0f, 10.0f)]public float currentPatience;

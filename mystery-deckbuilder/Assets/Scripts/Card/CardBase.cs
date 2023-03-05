@@ -19,17 +19,91 @@ public abstract class Card
     protected int position;
     protected List<Action> methods = new List<Action>();
 
-    private int _stackableComplianceMod = 0;  // Note! Stackable values are ALWAYS multiplications. No additions
-    private int _unstackableComplianceMod = 0;  // Note! Unstackable values are ALWAYS additions. No multiplications
-    private int _complianceOverride = 0; // Note! Override is for fully overrulling a compliance value (e.g. the next card you play will give no compliance)
-    private bool _complianceOverridden = false;
+    public int DefaultCompliance { get { return int.Parse(_metadata["compliance"]); } }
 
-    private int _stackablePatienceMod = 0;  // Note! Stackable values are ALWAYS multiplications. No additions
-    private int _unstackablePatienceMod = 0;  // Note! Unstackable values are ALWAYS additions. No multiplications
-    private int _patienceOverride = 0; // Note! Override is for fully overrulling a patience value (e.g. the next card you play will cost no patience)
-    private bool _patienceOverridden = false;
+    public float StackableComplianceMod 
+    {
+        get { return _stackableComplianceMod; }
+        set 
+        {
+            _stackableComplianceMod = value;
+            frontendController.SetCompliance(GetTotalCompliance());
+        } 
+    }  // Note! Stackable values are ALWAYS a multiplication of default. No additions
+    private float _stackableComplianceMod = 0;
+    public int UnstackableComplianceMod
+    {
+        get { return _unStackableComplianceMod; }
+        set
+        {
+            _unStackableComplianceMod = value;
+            frontendController.SetCompliance(GetTotalCompliance());
+        }
+    }  // Note! Unstackable values are ALWAYS additions. No multiplications
+    private int _unStackableComplianceMod = 0;
 
+    public int ComplianceOverride
+    {
+        get { return _complianceOverride; }
+        set
+        {
+            _complianceOverride = value;
+            frontendController.SetCompliance(GetTotalCompliance());
+        }
+    }  // Note! Override is for fully overrulling a compliance value (e.g. the next card you play will give no compliance)
+    private int _complianceOverride = 0; 
+    public bool ComplianceOverridden
+    {
+        get { return _complianceOverriden; }
+        set
+        {
+            _complianceOverriden = value;
+            frontendController.SetCompliance(GetTotalCompliance());
+        }
+    }  // Note! Override is for fully overrulling a compliance value (e.g. the next card you play will give no compliance)
+    private bool _complianceOverriden = false;
 
+    public int DefaultPatience { get { return int.Parse(_metadata["patience"]); } }
+    public float StackablePatienceMod
+    {
+        get { return _stackablePatienceMod; }
+        set
+        {
+            _stackablePatienceMod = value;
+            frontendController.SetPatience(GetTotalPatience());
+        }
+    }  // Note! Stackable values are ALWAYS a multiplication of default. No additions
+    private float _stackablePatienceMod = 0;   
+    public int UnstackablePatienceMod
+    {
+        get { return _unStackablePatienceMod; }
+        set
+        {
+            _unStackablePatienceMod = value;
+            frontendController.SetPatience(GetTotalPatience());
+        }
+    }  // Note! Unstackable values are ALWAYS additions. No multiplications
+    private int _unStackablePatienceMod = 0;     
+    public int PatienceOverride
+    {
+        get { return _patienceOverride; }
+        set
+        {
+            _patienceOverride = value;
+            frontendController.SetPatience(GetTotalPatience());
+        }
+    }  // Note! Override is for fully overrulling a patience value (e.g. the next card you play will cost no patience)
+    private int _patienceOverride = 0;      
+    public bool PatienceOverridden
+    {
+        get { return _patienceOverriden; }
+        set
+        {
+            _patienceOverriden = value;
+            frontendController.SetPatience(GetTotalPatience());
+        }
+    }  // Note! Override is for fully overrulling a patience value (e.g. the next card you play will cost no patience)
+    private bool _patienceOverriden = false;
 
     public Card(int id)
     {
@@ -60,44 +134,30 @@ public abstract class Card
         // this is where triggering an effect may go
     }
 
-    public int GetDefaultCompliance() { return int.Parse(_metadata["compliance"]); }
-    public int GetStackableComplianceMod() { return _stackableComplianceMod; }
-    public int GetUnstackableComplianceMod() { return _unstackableComplianceMod; }
-    public int GetStackableCompliance() { return GetStackableComplianceMod() + GetDefaultCompliance(); }
     public int GetTotalCompliance() 
     {
-        if (!_complianceOverridden)
+        if (!ComplianceOverridden)
         {
-            return GetStackableCompliance() + GetUnstackableComplianceMod();
+            return DefaultCompliance + (int)(DefaultCompliance * StackableComplianceMod) + UnstackableComplianceMod;
         }
         else
         {
-            return _complianceOverride;
+            return ComplianceOverride;
         }
         
     }
-    public bool ComplianceOverriden() { return _complianceOverridden; }
-    public int ComplianceOverrideValue() { return _complianceOverride; }
-
-
-    public int GetDefaultPatience() { return int.Parse(_metadata["patience"]); }
-    public int GetStackablePatienceMod() { return _stackablePatienceMod; }
-    public int GetUnstackablePatienceMod() { return _unstackablePatienceMod; }
-    public int GetStackablePatience() { return GetStackablePatienceMod() + GetDefaultPatience(); }
     public int GetTotalPatience() 
     { 
-        if (!_patienceOverridden) 
+        if (!PatienceOverridden) 
         {
-            return GetStackablePatience() + GetUnstackablePatienceMod();
+            return DefaultPatience + (int)(DefaultPatience * StackablePatienceMod) + UnstackablePatienceMod;
         }
         else
         {
-            return _patienceOverride;
+            return PatienceOverride;
         }
         
     }
-    public bool PatienceOverriden() { return _patienceOverridden; }
-    public int PatienceOverrideValue() { return _patienceOverride; }
 
     public int GetPosition() { return position; }
     public void SetPosition(int index) { position = index; }
@@ -107,11 +167,11 @@ public abstract class Card
         frontendController = controller;
         frontendController.SetCardName(GetName());
         frontendController.SetCardDescription(GetDescription());
-        frontendController.SetDefaultPatience(GetDefaultPatience());
+        frontendController.SetDefaultPatience(DefaultPatience);
         frontendController.SetPosition(GetPosition());
         if (GetElement() != "Preparation")
         {
-            frontendController.SetDefaultCompliance(GetDefaultCompliance());
+            frontendController.SetDefaultCompliance(DefaultCompliance);
         }
         Debug.Log("Ran Card Initialization");
     }
