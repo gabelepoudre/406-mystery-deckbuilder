@@ -11,7 +11,7 @@ public class EncounterTest : MonoBehaviour
     public NPC npc;
     public void StartEncounter()
     {
-        EncounterConfig conf = new EncounterConfig(npc);
+        EncounterConfig conf = new EncounterConfig(npc, 200, 50);
         Encounter encounterInstance = Encounter.StartEncounter(conf);
     }
 

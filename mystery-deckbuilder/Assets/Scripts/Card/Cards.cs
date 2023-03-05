@@ -1,23 +1,4 @@
 using UnityEngine;
-public class Effect
-{
-    private int _numPlayTermination;
-    public Effect(int duration, Encounter enc)
-    {
-        _numPlayTermination = enc.Statistics.NumberOfPlays + duration;
-    }
-
-    public int GetTerminationPlay()
-    {
-        return _numPlayTermination;
-    }
-}
-
-public interface IExecutableEffect
-{
-    public int GetTerminationPlay();
-    public void Execute(Encounter enc);
-}
 
 /*
  * Static class containing a method to return an instance of a card with a given ID

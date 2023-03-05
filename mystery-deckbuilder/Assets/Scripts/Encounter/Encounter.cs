@@ -37,7 +37,7 @@ public class Encounter
 
     private GameObject _encounterPrefab;
     private EncounterPrefabController _encounterController;
-    private List<IExecutableEffect> globalEffects;
+    private List<IExecutableEffect> globalEffects = new();
 
     private List<Card> _hand = new();
 
@@ -62,7 +62,7 @@ public class Encounter
     public class EElementWeakness : Effect, IExecutableEffect
     {
         private string _element;
-        public EElementWeakness(Encounter enc, string element): base(99, enc)
+        public EElementWeakness(string element): base(99)
         {
             _element = element;
         }
@@ -82,7 +82,7 @@ public class Encounter
     public class EElementResistance : Effect, IExecutableEffect
     {
         private string _element;
-        public EElementResistance(Encounter enc, string element) : base(99, enc)
+        public EElementResistance(string element) : base(99)
         {
             _element = element;
         }
@@ -174,7 +174,9 @@ public class Encounter
         if (globalEffects.Count == 0)
         {
             // TODO: REMOVE
-            globalEffects.Add(new EElementWeakness(this, "Intimidation"));
+            Debug.Log(this);
+            globalEffects.Add(new EElementWeakness("Sympathy"));
+            globalEffects.Add(new EElementResistance("Intimidation"));
         }
         List<IExecutableEffect> toRemove = new(); 
         foreach (IExecutableEffect e in globalEffects)
@@ -205,7 +207,7 @@ public class Encounter
             c.UnstackableComplianceMod = 0;
             c.OnChange();
         }
-        //ResolveGlobals();  //TODO: fix
+        ResolveGlobals();  //TODO: fix
     }
 
     public void PlayCard(int position)

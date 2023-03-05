@@ -118,19 +118,19 @@ public abstract class Card
     // for play executions
     public virtual void OnPlay()
     {
-        Debug.Log("Card " + GetName() + "had it's base OnPlay called");
+        Debug.Log("Card " + GetName() + " had it's base OnPlay called");
         // this is where triggering an effect may go
     }
 
     public virtual void OnChange()
     {
-        Debug.Log("Card " + GetName() + "had it's base OnPlay called");
+        Debug.Log("Card " + GetName() + " had it's base OnChange called");
         // this is where triggering an effect may go
     }
 
     public virtual void OnDraw()
     {
-        Debug.Log("Card " + GetName() + "had it's base OnPlay called");
+        Debug.Log("Card " + GetName() + " had it's base OnDraw called");
         // this is where triggering an effect may go
     }
 
