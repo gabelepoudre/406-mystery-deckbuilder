@@ -1,0 +1,827 @@
+fileFormatVersion: 2
+guid: 80befe54550d9cc488444444502a32a6
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: notepadUI_susTab
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 4121
+        width: 3158
+        height: 1849
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8850516423ee1874d8845081e965f132
+      internalID: -1482740979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_zoneTab
+      rect:
+        serializedVersion: 2
+        x: 3918
+        y: 4121
+        width: 3158
+        height: 1849
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4e979b71e91a0b41864dc3e8ffd4938
+      internalID: 573404352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_pauseTab
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 2107
+        width: 3158
+        height: 1851
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db679f3ac7379cf4b950cee900ed2547
+      internalID: 198226162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_deckTab
+      rect:
+        serializedVersion: 2
+        x: 3918
+        y: 2107
+        width: 3158
+        height: 1851
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fd812d3c70a61d4ab3471ff0644d63f
+      internalID: -809390741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_saveBttn
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 1681
+        width: 545
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e746876ddf365c748924046c4482aaa7
+      internalID: -1806779681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_loadBttn
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 1375
+        width: 557
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fbce741d9b22b74bb36e747bae478f4
+      internalID: -648599026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_quitBttn
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 1014
+        width: 631
+        height: 298
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20d4d4028f80b6c4abb251451d62bef4
+      internalID: 1750730769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_susCont_notMet
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 1363
+        width: 290
+        height: 419
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3b87b706d86a3249a378afab14de51c
+      internalID: 221548183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_susCont_met
+      rect:
+        serializedVersion: 2
+        x: 1401
+        y: 1363
+        width: 291
+        height: 419
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 974fd6377b2285f49b11501ab04ba9d8
+      internalID: 1297733052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_mainTab_backBttn
+      rect:
+        serializedVersion: 2
+        x: 1177
+        y: 991
+        width: 113
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 330274f2e0dbc944a8fbb54feb8188b4
+      internalID: 1748960573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_mainTab_nextBttn
+      rect:
+        serializedVersion: 2
+        x: 1419
+        y: 991
+        width: 113
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c948c188588e6584d9d5d759a3b0e92a
+      internalID: -324155758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_mainTab_closeBttn
+      rect:
+        serializedVersion: 2
+        x: 1278
+        y: 708
+        width: 171
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dccc9c37f9aaf0f4ca3f0d5876411a9c
+      internalID: 1792651597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_zoneCont_met
+      rect:
+        serializedVersion: 2
+        x: 1886
+        y: 1138
+        width: 851
+        height: 858
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57fddf6edb24f9745b5d80199331e93f
+      internalID: 737053548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_zoneCont_notMet
+      rect:
+        serializedVersion: 2
+        x: 2872
+        y: 1138
+        width: 851
+        height: 858
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a8e445864f77f240b164d3db091a4d6
+      internalID: 292360019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_deckTab_upBttn
+      rect:
+        serializedVersion: 2
+        x: 4142
+        y: 1623
+        width: 126
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0d63cae0c247c44ebf177a15cb001c1
+      internalID: 473536732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_deckTab_downBttn
+      rect:
+        serializedVersion: 2
+        x: 4142
+        y: 722
+        width: 126
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3f7a561df7cea84fbc34135b7273d41
+      internalID: 330093275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_deckTab_deckBG
+      rect:
+        serializedVersion: 2
+        x: 4298
+        y: 691
+        width: 1060
+        height: 1074
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21d681894014c5f42afa2700a42492b9
+      internalID: 1854829166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_deckTab_colBG
+      rect:
+        serializedVersion: 2
+        x: 5736
+        y: 699
+        width: 1060
+        height: 901
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c0397882fc9aec42b63170e90eaeb1c
+      internalID: -1002566884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_deckTab_colTopBG
+      rect:
+        serializedVersion: 2
+        x: 5735
+        y: 1613
+        width: 1055
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a651eecbd54f74b409beda5cec54ef24
+      internalID: 244806281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_deckTab_col_upBttn
+      rect:
+        serializedVersion: 2
+        x: 5539
+        y: 1480
+        width: 90
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8a6a11bffca58749ae2c927088e1e3b
+      internalID: -129393083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_deckTab_col_downBttn
+      rect:
+        serializedVersion: 2
+        x: 5534
+        y: 832
+        width: 96
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8deff937af914c64180fe151b74761cc
+      internalID: 1468303396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_deckTab_countCont
+      rect:
+        serializedVersion: 2
+        x: 4306
+        y: 334
+        width: 338
+        height: 277
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afdd89460e797a047b28e61089d4f802
+      internalID: -935828767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_deckTab_addBttn
+      rect:
+        serializedVersion: 2
+        x: 4822
+        y: 339
+        width: 171
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff81fdca3741c6e45aea7b43faf3537a
+      internalID: 649248590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_deckTab_delBttn
+      rect:
+        serializedVersion: 2
+        x: 5160
+        y: 339
+        width: 171
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9b2bbe6c78799549a0c822f74b95c8f
+      internalID: 2130097762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_deckTab_colBlueBttn
+      rect:
+        serializedVersion: 2
+        x: 5996
+        y: 1856
+        width: 118
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e61eaadf15385d44ea04cc4168fe4bde
+      internalID: -146504265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_deckTab_colRedBttn
+      rect:
+        serializedVersion: 2
+        x: 6134
+        y: 1857
+        width: 120
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15787a4fb91bf344f810a51591f3d082
+      internalID: 1017954644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_deckTab_colGreenBttn
+      rect:
+        serializedVersion: 2
+        x: 6273
+        y: 1857
+        width: 118
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0caa8d3822d04544aea97f9f8e04a5c
+      internalID: -1801286731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_deckTab_colGrayBttn
+      rect:
+        serializedVersion: 2
+        x: 6410
+        y: 1856
+        width: 119
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 369adb74c669e0a4fa3a5b8c2864bffc
+      internalID: 563880514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_tab_pauseIcon
+      rect:
+        serializedVersion: 2
+        x: 1837
+        y: 521
+        width: 367
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d53d191fc1a4744fa81bce531f10ec5
+      internalID: -846234670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_tab_zoneIcon
+      rect:
+        serializedVersion: 2
+        x: 2386
+        y: 521
+        width: 367
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 625e2b4254fa9a34da37ac76347b0041
+      internalID: 806418649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_tab_susIcon
+      rect:
+        serializedVersion: 2
+        x: 2934
+        y: 521
+        width: 367
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6958a67c5360475429548cd5d76165c3
+      internalID: 1006054500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepadUI_tab_cardIcon
+      rect:
+        serializedVersion: 2
+        x: 3477
+        y: 527
+        width: 367
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 518fe891b4addd34b81a10fc86ce2385
+      internalID: -640181715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      notepadUI_deckTab_delBttn: 2130097762
+      notepadUI_deckTab_countCont: -935828767
+      notepadUI_susTab: -1482740979
+      notepadUI_deckTab_deckBG: 1854829166
+      notepadUI_deckTab_colRedBttn: 1017954644
+      notepadUI_deckTab_addBttn: 649248590
+      notepadUI_deckTab_colTopBG: 244806281
+      notepadUI_deckTab_colBG: -1002566884
+      notepadUI_saveBttn: -1806779681
+      notepadUI_susCont_met: 1297733052
+      notepadUI_tab_susIcon: 1006054500
+      notepadUI_zoneCont_notMet: 292360019
+      notepadUI_mainTab_nextBttn: -324155758
+      notepadUI_deckTab_col_upBttn: -129393083
+      notepadUI_zoneTab: 573404352
+      notepadUI_quitBttn: 1750730769
+      notepadUI_zoneCont_met: 737053548
+      notepadUI_deckTab_colBlueBttn: -146504265
+      notepadUI_susCont_notMet: 221548183
+      notepadUI_tab_pauseIcon: -846234670
+      notepadUI_deckTab: -809390741
+      notepadUI_deckTab_downBttn: 330093275
+      notepadUI_tab_cardIcon: -640181715
+      notepadUI_pauseTab: 198226162
+      notepadUI_deckTab_col_downBttn: 1468303396
+      notepadUI_loadBttn: -648599026
+      notepadUI_deckTab_colGreenBttn: -1801286731
+      notepadUI_deckTab_upBttn: 473536732
+      notepadUI_deckTab_colGrayBttn: 563880514
+      notepadUI_tab_zoneIcon: 806418649
+      notepadUI_mainTab_closeBttn: 1792651597
+      notepadUI_mainTab_backBttn: 1748960573
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
