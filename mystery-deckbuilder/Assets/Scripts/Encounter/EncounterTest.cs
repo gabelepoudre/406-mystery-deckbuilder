@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /**
@@ -8,11 +6,11 @@ using UnityEngine;
  */
 public class EncounterTest : MonoBehaviour
 {
-    public GameObject encounter;
+    public NPC npc;
     public void StartEncounter()
     {
-        GameObject encounterInstance = Instantiate(encounter);
-        encounterInstance.GetComponent<EncounterScript>().StartEncounter(100, 0, 10, "Intimidation", "");
+        EncounterConfig conf = new EncounterConfig(npc, 200, 50);
+        Encounter encounterInstance = Encounter.StartEncounter(conf);
     }
 
 }

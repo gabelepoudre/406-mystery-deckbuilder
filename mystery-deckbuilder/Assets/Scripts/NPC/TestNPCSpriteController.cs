@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class TestNPCSpriteController : MonoBehaviour
 {
 
+    public Image image;
 
-    public NPCSpriteController NPCSpriteController;
+
+
+    public NPCEncounterSpriteController NPCSpriteController;
 
     // Update is called once per frame
     void Update()
@@ -15,23 +19,23 @@ public class TestNPCSpriteController : MonoBehaviour
         // Long conditional for testing - press a letter to switch the sprite
         if(Input.GetKeyDown("a"))
         {
-            NPCSpriteController.GetAngry();
+            NPCSpriteController.GetAngry(image);
         }
         else if(Input.GetKeyDown("h"))
         {
-            NPCSpriteController.GetHappy();
+            NPCSpriteController.GetHappy(image);
         }
         else if(Input.GetKeyDown("w"))
         {
-            NPCSpriteController.GetWorry();
+            NPCSpriteController.GetWorry(image);
         }
         else if(Input.GetKeyDown("s"))
         {
-            NPCSpriteController.GetStress();
+            NPCSpriteController.GetStress(image);
         }
         else if(Input.GetKeyDown("n"))
         {
-            NPCSpriteController.GetNeutral();
+            NPCSpriteController.GetNeutral(image);
         }
     }
 }

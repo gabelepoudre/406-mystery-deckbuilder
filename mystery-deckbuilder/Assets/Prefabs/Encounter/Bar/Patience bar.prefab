@@ -314,6 +314,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1514142457675954489}
   - component: {fileID: 8619455386849077827}
+  - component: {fileID: 3216660408559942375}
   m_Layer: 5
   m_Name: Patience bar
   m_TagString: Untagged
@@ -384,7 +385,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 7512493126231230240}
   m_HandleRect: {fileID: 0}
@@ -396,3 +397,16 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3216660408559942375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8895067364079211780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10e8dbf8150cfe5449cf9bb5c1efc879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 8619455386849077827}
