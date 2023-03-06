@@ -100,8 +100,7 @@ public class DialogueManager : MonoBehaviour
         if (_currentNode.NodeType() == "encounter")
         {
             EndDialogue();
-            GameObject.Find("Nibbles").GetComponent<EncounterTest>().StartEncounter();
-
+            Encounter.StartEncounter(new EncounterConfig(CurrentNPC.GetComponent<NPC>()));
         }
 
         StopAllCoroutines(); //stop displaying text, in case player clicks next while text still writing
@@ -193,7 +192,7 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("error. tried to enqueue sentences of option node");
+            Debug.LogError("error. tried to enqueue sentences of node type" + _currentNode.NodeType());
         }
     }
 

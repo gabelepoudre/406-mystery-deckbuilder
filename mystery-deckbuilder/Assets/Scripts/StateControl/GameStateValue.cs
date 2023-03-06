@@ -47,7 +47,7 @@ public class GameStateValue<T>: IGameStateValue
     }
 
     /* Emits the "OnChange" event, if anyone is listening*/
-    private void Raise() 
+    public void Raise() 
     {
         OnChange?.Invoke();
     }

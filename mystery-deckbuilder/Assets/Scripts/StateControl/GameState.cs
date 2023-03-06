@@ -33,7 +33,7 @@ public static class GameState
             new(GameplayPhases.Tutorial, _gameStateValues);
 
 
-        public static GameStateValue<EncounterScript> activeEncounter = new(null, _gameStateValues);
+        public static GameStateValue<Encounter> activeEncounter = new(null, _gameStateValues);
 
         public static GameStateValue<bool> notepadActive = new(false, _gameStateValues);
         
@@ -43,7 +43,11 @@ public static class GameState
     /* GameStateValue holder class for Player data. Could be what they know for use in Dialogue trees */
     public class Player
     {
-       
+        public static GameStateValue<List<int>> fullDeck;
+
+        // tutorial/testing TODO remove
+        static int[] startingDeck = { 1, 5, 9, 1, 5, 9, 1, 5, 9, 1, 5, 9 };
+        public static GameStateValue<List<int>> dailyDeck = new(new List<int>(startingDeck), _gameStateValues);
     }
 
 
@@ -78,7 +82,6 @@ public static class GameState
     {
         //these are lists because they have to be in this context. just be mindfull of list length weirdness
         static int[] startingDeck = {1, 5, 9, 1, 5, 9, 1, 5, 9, 1, 5, 9};
-        public static GameStateValue<List<int>> currentDeck = new(new List<int>(startingDeck), _gameStateValues);
 
         static int[] startingDiscard = { };
         public static GameStateValue<List<int>> currentDiscard = new(new List<int>(startingDiscard), _gameStateValues);

@@ -214,6 +214,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 750071167351184563, guid: 8eadea771e41ddf4bbbdaeace59c00d4, type: 3}
+      propertyPath: npc
+      value: 
+      objectReference: {fileID: 8310409467724307528, guid: bac6354023b164192b46b1c42676e4ea, type: 3}
     - target: {fileID: 3312584751294481288, guid: 8eadea771e41ddf4bbbdaeace59c00d4, type: 3}
       propertyPath: m_Name
       value: TestCanvas
