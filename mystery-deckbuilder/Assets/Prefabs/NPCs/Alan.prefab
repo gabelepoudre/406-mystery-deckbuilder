@@ -528,8 +528,11 @@ GameObject:
   - component: {fileID: 7126463672181600984}
   - component: {fileID: 2974809267316779736}
   - component: {fileID: 701282225796089859}
+  - component: {fileID: 2875625806598518071}
+  - component: {fileID: -6906192284787102331}
+  - component: {fileID: 5868004497586744959}
   m_Layer: 0
-  m_Name: _NPCTemplate
+  m_Name: Alan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -602,3 +605,41 @@ MonoBehaviour:
   angry: {fileID: 0}
   stress: {fileID: 0}
   worry: {fileID: 0}
+--- !u!114 &2875625806598518071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7429489653972524998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e0a88f353c1487992adb10c1bd895b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _streetViewStationary: {fileID: 0}
+  _streetViewWave: {fileID: 0}
+--- !u!114 &-6906192284787102331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7429489653972524998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f513b6b0ac20a4686973e3de9d2f70dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5868004497586744959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7429489653972524998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24e801ebe1dd4447ea2b3c354c752b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

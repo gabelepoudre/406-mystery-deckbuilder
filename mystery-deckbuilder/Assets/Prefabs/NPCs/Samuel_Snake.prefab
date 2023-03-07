@@ -528,8 +528,10 @@ GameObject:
   - component: {fileID: 7126463672181600984}
   - component: {fileID: 2974809267316779736}
   - component: {fileID: 701282225796089859}
+  - component: {fileID: -2378992812928900945}
+  - component: {fileID: 1500329521221884344}
   m_Layer: 0
-  m_Name: _NPCTemplate
+  m_Name: Samuel_Snake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -602,3 +604,27 @@ MonoBehaviour:
   angry: {fileID: 0}
   stress: {fileID: 0}
   worry: {fileID: 0}
+--- !u!114 &-2378992812928900945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7429489653972524998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34d446875c16745ae8287c0d89639fec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1500329521221884344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7429489653972524998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98a2e31f1fd6947bbaccd044d7ca3f4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

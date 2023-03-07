@@ -528,8 +528,10 @@ GameObject:
   - component: {fileID: 7126463672181600984}
   - component: {fileID: 2974809267316779736}
   - component: {fileID: 701282225796089859}
+  - component: {fileID: 9199238820055118742}
+  - component: {fileID: 1680480853739025566}
   m_Layer: 0
-  m_Name: _NPCTemplate
+  m_Name: Crouton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -602,3 +604,27 @@ MonoBehaviour:
   angry: {fileID: 0}
   stress: {fileID: 0}
   worry: {fileID: 0}
+--- !u!114 &9199238820055118742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7429489653972524998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e0359c7f214b46208ffc21227cd92f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1680480853739025566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7429489653972524998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d90a1259ee8804694870a049f67941af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
