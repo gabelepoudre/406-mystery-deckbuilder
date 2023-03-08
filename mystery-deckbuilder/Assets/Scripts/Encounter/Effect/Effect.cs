@@ -29,7 +29,7 @@ public class Effect
 public interface IExecutableEffect
 {
     public int GetTerminationPlay();
-    public void Execute(Encounter enc);
+    public void Execute();
     public Color GetColor();
     public string GetName();
     public string GetDescription();

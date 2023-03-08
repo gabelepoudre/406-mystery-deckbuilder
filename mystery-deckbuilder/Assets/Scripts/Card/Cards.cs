@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /*
@@ -74,13 +75,47 @@ public class PartingShot : Card
     {
         this._metadata["element"] = "Intimidation";
         this._metadata["name"] = "Parting Shot";
-        this._metadata["description"] = "Can only be used when patience is at 1(2?).";
+        this._metadata["description"] = "[Passive] Double compliance when patience is less than 2.";
         this._metadata["patience"] = "2";
-        this._metadata["compliance"] = "30";
+        this._metadata["compliance"] = "15";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
+
+        this.__localEffects["Parting Shot!"] = new EPartingShot(this);
+    }
+
+    public override void OnChange()
+    {
+        this.__localEffects["Parting Shot!"].Execute();
+    }
+
+
+    /* A local effect (as seen by E prefix) for parting shot */
+    public class EPartingShot : Effect, IExecutableEffect
+    {
+        private Color _color = new Color(255 / 255, 255 / 255, 100 / 255);
+
+        private Card _parent;
+        private string _name = "Parting Shot!";
+        private string _desc_1 = "Doubled compliance while remaining patience is 1!";
+
+        public EPartingShot(Card c) : base(99) { _parent = c; }
+        public string GetDescription() { return _desc_1; }
+        public string GetName() { return _name; }
+        public Color GetColor() { return _color; }
+
+        /* Executes the effect. A conditional may be called within */
+        public void Execute()
+        {
+            if (EncounterConditionals.PatienceEqualTo(1))
+            {
+                _parent.StackableComplianceMod += 1;
+                _parent.DisplayEffect(this);
+            }
+        }
     }
 }
+
 
 public class BrowBeat : Card
 {
@@ -88,11 +123,46 @@ public class BrowBeat : Card
     {
         this._metadata["element"] = "Intimidation";
         this._metadata["name"] = "Brow Beat";
-        this._metadata["description"] = "Raise compliance by 10 for every card discarded.";
+        this._metadata["description"] = "[Passive] Raise compliance by 10 for every card played.";
         this._metadata["patience"] = "2";
         this._metadata["compliance"] = "10";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
+
+        this.__localEffects["Brow Beat!"] = new EBrowBeat(this);
+    }
+
+    public override void OnChange()
+    {
+        this.__localEffects["Brow Beat!"].Execute();
+    }
+
+    /* A local effect (as seen by E prefix) for Brow Beat */
+    public class EBrowBeat : Effect, IExecutableEffect
+    {
+        private Color _color = new Color(255 / 255, 255 / 255, 100 / 255);
+
+        private Card _parent;
+        private string _name = "Brow Beat!";
+        private string _desc_1 = "Raising compliance by 10 for every card played! (";
+
+        public EBrowBeat(Card c) : base(99) { _parent = c; }
+        public string GetDescription() 
+        {
+            return _desc_1 + GameState.Meta.activeEncounter.Value.Statistics.NumberOfPlays + ")"; 
+        }
+        public string GetName() { return _name; }
+        public Color GetColor() { return _color; }
+
+        /* Executes the effect. A conditional may be called within */
+        public void Execute()
+        {
+            if (EncounterConditionals.NumberPlaysGreaterThan(0))
+            {
+                _parent.UnstackableComplianceMod += 10 * GameState.Meta.activeEncounter.Value.Statistics.NumberOfPlays;
+                _parent.DisplayEffect(this);
+            }
+        }
     }
 }
 

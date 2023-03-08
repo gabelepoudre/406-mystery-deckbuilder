@@ -130,8 +130,9 @@ public class Encounter
 
                 _hand.Add(draw);
                 _encounterController.PlaceCard(draw);
-
+                
                 OnChange(); // we call this on all draws and plays
+                draw.OnDraw();
 
                 _encounterController.SetPatience(_encounterController.GetPatience() - 1);
             }
@@ -156,7 +157,7 @@ public class Encounter
             }
             else
             {
-                e.Execute(this);
+                e.Execute();
             }
         }
         foreach(IExecutableEffect e in toRemove)
@@ -274,8 +275,9 @@ public class EElementWeakness : Effect, IExecutableEffect
     public Color GetColor() { return _color; }
 
     /* Executes the effect. A conditional may be called within */
-    public void Execute(Encounter enc)
+    public void Execute()
     {
+        Encounter enc = GameState.Meta.activeEncounter.Value;
         List<Card> hand = enc.GetHand();
         foreach (Card c in hand)
         {
@@ -314,14 +316,11 @@ public class EElementResistance : Effect, IExecutableEffect
 
     public string GetName() { return _name; }
     public Color GetColor() { return _color; }
-    public EElementResistance(string element) : base(99)
-    {
-        _element = element;
-    }
 
     /* Executes the effect. A conditional may be called within */
-    public void Execute(Encounter enc)
+    public void Execute()
     {
+        Encounter enc = GameState.Meta.activeEncounter.Value;
         List<Card> hand = enc.GetHand();
         foreach (Card c in hand)
         {

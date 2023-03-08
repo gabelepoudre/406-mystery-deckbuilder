@@ -17,7 +17,8 @@ public abstract class Card
     protected IDictionary<string, string> _metadata = new Dictionary<string, string>();
     protected CardPrefabController frontendController;
     protected int position;
-    protected List<Action> methods = new List<Action>();
+
+    protected Dictionary<string, IExecutableEffect> __localEffects = new();
 
     public int DefaultCompliance { get { return int.Parse(_metadata["compliance"]); } }
 

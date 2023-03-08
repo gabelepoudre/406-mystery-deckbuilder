@@ -46,7 +46,7 @@ public static class GameState
         public static GameStateValue<List<int>> fullDeck;
 
         // tutorial/testing TODO remove
-        static int[] startingDeck = { 1, 5, 9, 1, 5, 9, 1, 5, 9, 1, 5, 9 };
+        static int[] startingDeck = { 1, 5, 9, 1, 5, 9, 1, 5, 9, 1, 5, 9, 3, 3, 3, 3, 3 };
         public static GameStateValue<List<int>> dailyDeck = new(new List<int>(startingDeck), _gameStateValues);
     }
 
