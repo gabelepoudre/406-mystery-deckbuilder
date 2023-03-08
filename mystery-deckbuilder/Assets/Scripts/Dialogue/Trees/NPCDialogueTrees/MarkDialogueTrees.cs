@@ -6,21 +6,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/* The Class which holds all of Samuel Snake's dialogue trees in a dictionary, the point being
- * that all of Samuel Snake's dialogue will be built here and passed to the NPC class 
+/* The Class which holds all of Mark's dialogue trees in a dictionary, the point being
+ * that all of Mark's dialogue will be built here and passed to the NPC class 
  */
-public class Samuel_SnakeDialogueTrees : MonoBehaviour, IDialogueTreeCollection
+public class MarkDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 {
     private Dictionary<string, DialogueTree> _dialogueTreeDict; //a dictionary of dialogue trees
 
-    public Samuel_SnakeDialogueTrees()
+    public MarkDialogueTrees()
     {
         _dialogueTreeDict = new();
         BuildTreeDictionary();
     }
 
     
-    //populates the dictionary will Nibbles' dialogue trees
+    //populates the dictionary with dialogue trees
     private void BuildTreeDictionary()
     {
     
@@ -32,7 +32,7 @@ public class Samuel_SnakeDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     /** intro **/
     private DialogueTree BuildIntro()
     {
-        NPCNode intro = new(new string[] {"Hi detective.", "You've caught me between calls, so let me know if you need anything."});
+        NPCNode intro = new(new string[] {"Um hi detective...", "I'm usually pretty busy, but I could spare some time right now if you needed something."});
         OptionNode introReply = new(); //create option list later
         intro.SetNext(introReply);
 
@@ -40,10 +40,13 @@ public class Samuel_SnakeDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         PlayerNode askRole = new(new string[] {"What is your role here in Small Pines?"});
         PlayerNode askTheft = new(new string[] {"So do you have any idea as to who might be involved in the berry theft?"});
         
-        NPCNode explainWhere = new(new string[] {"I was definitelyOnly the strongest survive in this economy."});
+        NPCNode explainWhere = new(new string[] {"I was probably up working on something in my shop.", "I'm always grinding to get ahead, you know.", 
+        "Only the strongest survive in this economy."});
         NPCNode explainRole = new(new string[] {"I'm a bit of a general handyman around here. I'm experienced in just about every trade.", 
         "All of the real important ones anyway.", "I don't actually have any kind of ticket or whatever, but those schools are a bunch of scammers and gatekeepers anyway."});
         EncounterNode encounter = new();
+        explainWhere.SetNext(introReply);
+        explainRole.SetNext(introReply);
 
         askWhere.SetNext(explainWhere);
         askRole.SetNext(explainRole);

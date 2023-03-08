@@ -33,7 +33,7 @@ public class MarryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     {
         
         NPCNode greeting = new(new string[] {"Hello detective, how are you enjoying Small Pines? Would you care for a brochure?"});
-        OptionNode reply = new(); //create later
+        OptionNode reply = new(); //set later
         greeting.SetNext(reply);
 
 

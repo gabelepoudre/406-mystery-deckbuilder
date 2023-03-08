@@ -32,6 +32,9 @@ public static class GameState
         public static GameStateValue<GameplayPhases> currentGameplayPhase = 
             new(GameplayPhases.Tutorial, _gameStateValues);
 
+        
+        public static GameStateValue<int> currentAct = new(1, _gameStateValues);
+
 
         public static GameStateValue<Encounter> activeEncounter = new(null, _gameStateValues);
 
@@ -72,8 +75,21 @@ public static class GameState
         //data specifically pertaining to Nibbles
         public static class Nibbles
         {
-            //the number of encounters completed with Nibbles
+           
             public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+        }
+
+        public static class Austin
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+        }
+
+        public static class Mark
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
         }
         
 

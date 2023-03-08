@@ -12,19 +12,43 @@ public class AustinStateListener : MonoBehaviour
 
     private void ChangeDialogueBasedOnState()
     {
-        //dialogue based on whether you've won an encounter with Nibbles for the day
-        GameState.NPCs.Nibbles.encountersCompleted.OnChange += OnEncounterComplete;
+        //dialogue based on whether you've completed an encounter (succesfully or not)
+        GameState.NPCs.Austin.encountersCompleted.OnChange += OnEncounterComplete;
+        GameState.currentDay.OnChange += OnDayChange;
+        GameState.Meta.currentAct.OnChange += OnActChange;
     }
 
     private void OnEncounterComplete()
     {
-        //if you've completed the first encounter, then we want to initiate the dialogue tree that corresponds to the 
-        //key "IntroAfterEncounter"
-        if (GameState.NPCs.Nibbles.encountersCompleted.Value == 1 && GameState.currentDay.Value == 0)
+        //if you've completed the encounter, then we want to initiate the dialogue tree that corresponds to the correct dialogue tree
+        if (GameState.NPCs.Austin.encountersWon.Value == 1)
         {
-            transform.GetComponent<NPC>().CurrentDialogueKey = "IntroAfterEncounter";
-            transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
+            transform.GetComponent<NPC>().CurrentDialogueKey = "Act2EncounterWin";
+        }
+        else
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "Act2EncounterLoss";
+        }
 
+        transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
+    }
+
+
+    //reset the post-loss dialogue to the normal one
+    private void OnDayChange()
+    {
+        if (GameState.NPCs.Austin.encountersWon.Value == 0)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
+        }
+    }
+
+    //gets a different dialogue in act 2
+    private void OnActChange()
+    {
+        if (GameState.Meta.currentAct.Value == 2)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "Act2";
         }
     }
 
