@@ -68,52 +68,6 @@ public class Encounter
         public int PreparationCardsInHand { get; set; } = 0;
     }
 
-    /* An effect (as seen by E prefix) for an NPC weakness */
-    public class EElementWeakness : Effect, IExecutableEffect
-    {
-        private string _element;
-        public EElementWeakness(string element): base(99)
-        {
-            _element = element;
-        }
-
-        /* Executes the effect. A conditional may be called within */
-        public void Execute(Encounter enc)
-        {
-            List<Card> hand = enc.GetHand();
-            foreach (Card c in hand)
-            {
-                if (c.GetElement() == _element)
-                {
-                    c.StackableComplianceMod += 0.5f;
-                }
-            }
-        }
-    }
-
-    /* An effect (as seen by E prefix) for an NPC strength */
-    public class EElementResistance : Effect, IExecutableEffect
-    {
-        private string _element;
-        public EElementResistance(string element) : base(99)
-        {
-            _element = element;
-        }
-
-        /* Executes the effect. A conditional may be called within */
-        public void Execute(Encounter enc)
-        {
-            List<Card> hand = enc.GetHand();
-            foreach (Card c in hand)
-            {
-                if (c.GetElement() == _element)
-                {
-                    c.StackableComplianceMod -= 0.5f;
-                }
-            }
-        }
-    }
-
     /* Constructor with config */
     public Encounter(EncounterConfig config)
     {
@@ -190,8 +144,8 @@ public class Encounter
         if (globalEffects.Count == 0)
         {
             // TODO: REMOVE, this should not be hard coded
-            globalEffects.Add(new EElementWeakness("Sympathy"));
-            globalEffects.Add(new EElementResistance("Intimidation"));
+            globalEffects.Add(new EElementWeakness("Sympathy", 0.5f));
+            globalEffects.Add(new EElementResistance("Intimidation", 0.5f));
         }
         List<IExecutableEffect> toRemove = new(); 
         foreach (IExecutableEffect e in globalEffects)
@@ -217,10 +171,7 @@ public class Encounter
         // wipe all card stuff, resolve all cards on change
         foreach (Card c in _hand)
         {
-            c.StackableComplianceMod = 0;
-            c.UnstackableComplianceMod = 0;
-            c.StackablePatienceMod = 0;
-            c.UnstackableComplianceMod = 0;
+            c.Clear();
             c.OnChange();
         }
         ResolveGlobals();
@@ -291,5 +242,94 @@ public class Encounter
     public List<Card> GetHand()
     {
         return _hand;
+    }
+}
+
+
+/* An effect (as seen by E prefix) for an NPC weakness */
+public class EElementWeakness : Effect, IExecutableEffect
+{
+    private string _element;
+
+    private Color _color = new Color(50 / 255, 255 / 255, 50 / 255); // displayed on cards
+
+    private float _mod;
+    private string _name = "Element Weakness";
+    private string _desc_1 = "Your opponent is susceptible to ";
+    private string _desc_2 = "Increase compliance by ";
+
+    public EElementWeakness(string element, float mod) : base(99)
+    {
+        _element = element;
+        _mod = mod;
+    }
+
+    public string GetDescription()
+    {
+        // string formatter? I barely know her!
+        return _desc_1 + _element + "! " + _desc_2 + (_mod * 100).ToString() + "%";
+    }
+
+    public string GetName() { return _name; }
+    public Color GetColor() { return _color; }
+
+    /* Executes the effect. A conditional may be called within */
+    public void Execute(Encounter enc)
+    {
+        List<Card> hand = enc.GetHand();
+        foreach (Card c in hand)
+        {
+            if (c.GetElement() == _element)
+            {
+                c.StackableComplianceMod += 0.5f;
+                c.DisplayEffect(this);
+            }
+        }
+    }
+}
+
+/* An effect (as seen by E prefix) for an NPC strength */
+public class EElementResistance : Effect, IExecutableEffect
+{
+    private string _element;
+
+    private Color _color = new Color(255 / 255, 50 / 255, 50 / 255); // displayed on cards
+
+    private float _mod;
+    private string _name = "Element Resistance";
+    private string _desc_1 = "Your opponent is resistant against ";
+    private string _desc_2 = "Reduce compliance by ";
+
+    public EElementResistance(string element, float mod) : base(99)
+    {
+        _element = element;
+        _mod = mod;
+    }
+
+    public string GetDescription()
+    {
+        // string formatter? I barely know her!
+        return _desc_1 + _element + "! " + _desc_2 + (-(_mod) * 100).ToString() + "%";
+    }
+
+    public string GetName() { return _name; }
+    public Color GetColor() { return _color; }
+    public EElementResistance(string element) : base(99)
+    {
+        _element = element;
+    }
+
+    /* Executes the effect. A conditional may be called within */
+    public void Execute(Encounter enc)
+    {
+        List<Card> hand = enc.GetHand();
+        foreach (Card c in hand)
+        {
+            if (c.GetElement() == _element)
+            {
+                c.StackableComplianceMod -= 0.5f;
+                c.DisplayEffect(this);
+            }
+        }
     }
 }

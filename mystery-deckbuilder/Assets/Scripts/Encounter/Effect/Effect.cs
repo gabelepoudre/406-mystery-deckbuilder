@@ -5,6 +5,8 @@
  * 
  */
 
+using UnityEngine;
+
 public class Effect
 {
     private int _numPlayTermination;
@@ -17,10 +19,18 @@ public class Effect
     {
         return _numPlayTermination;
     }
+
+    public int GetRemainingDuration()
+    {
+        return _numPlayTermination - GameState.Meta.activeEncounter.Value.Statistics.NumberOfPlays;
+    }
 }
 
 public interface IExecutableEffect
 {
     public int GetTerminationPlay();
     public void Execute(Encounter enc);
+    public Color GetColor();
+    public string GetName();
+    public string GetDescription();
 }

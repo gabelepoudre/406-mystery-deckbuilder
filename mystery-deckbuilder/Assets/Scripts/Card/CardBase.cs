@@ -110,6 +110,29 @@ public abstract class Card
         this._id = id;
     }
     
+    public void DisplayEffect(IExecutableEffect effect)
+    {
+        frontendController.DisplayEffect(effect);
+    }
+
+    public void ClearVisualEffects()
+    {
+        frontendController.ClearEffects();
+    }
+
+    public void Clear()
+    {
+        StackableComplianceMod = 0;
+        UnstackableComplianceMod = 0;
+        StackablePatienceMod = 0;
+        UnstackableComplianceMod = 0;
+        PatienceOverridden = false;
+        PatienceOverride = 0;
+        ComplianceOverridden = false;
+        ComplianceOverride = 0;
+        ClearVisualEffects();
+    }
+
     public int GetId() { return this._id; }
     public string GetElement() { return _metadata["element"]; }
     public string GetName() { return _metadata["name"]; }
