@@ -234,8 +234,9 @@ public class PageNavigation : MonoBehaviour
         chapterList.Add(two); //1
         chapterList.Add(p);//2
         chapterList.Add(deckChapter);//3
-        ChangedChapterSuspects();
-        // currentChapter = chapterList[0];
+        // ChangedChapterSuspects();
+        currentChapter = chapterList[0];
+        currentPageID = 0;
       
         currentPage = one.pageList[currentPageID];
         previousPageID = currentPageID -1;
