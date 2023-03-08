@@ -128,7 +128,8 @@ public class PageNavigation : MonoBehaviour
         Time.timeScale = 1;
 
         currentChapterID = 1;
-        Debug.Log("current chapter id" + currentChapterID);
+        Debug.Log("current chapter id " + currentChapterID);
+        Debug.Log("Size of chapterList " + chapterList.Count);
         
         currentChapter = chapterList[currentChapterID];
         currentPage = currentChapter.pageList[0];
@@ -149,7 +150,7 @@ public class PageNavigation : MonoBehaviour
 
     }
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
 
 
@@ -234,6 +235,7 @@ public class PageNavigation : MonoBehaviour
         chapterList.Add(two); //1
         chapterList.Add(p);//2
         chapterList.Add(deckChapter);//3
+        Debug.Log(chapterList.Count);
         // ChangedChapterSuspects();
         currentChapter = chapterList[0];
         currentPageID = 0;
