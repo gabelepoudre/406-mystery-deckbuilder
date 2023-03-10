@@ -68,7 +68,8 @@ public class DialogueBox : MonoBehaviour
     public void DestroyDialogueBox() 
     {
         _finished = true;
-        Destroy(gameObject, 2);
+        DestroyOptionBox();
+        Destroy(gameObject, 0.5f);
     }
 
     /* instantiate a new option box, as well as its buttons */

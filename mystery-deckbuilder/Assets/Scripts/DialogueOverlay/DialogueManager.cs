@@ -26,6 +26,7 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager Instance {get; private set; } //a static instance of itself
 
     public string NPCName {get; set;}
+    public string SecondNPCName {get; set;}
 
     public GameObject CurrentNPC;
 
@@ -36,6 +37,8 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField] private GameObject _dialogueBoxPrefab;
     private GameObject _dialogueBox;
+    
+    private bool onSecondNPC;
 
     /* Since this is a singleton class, we destroy all other instances of it that aren't this one */
     private void Awake()
@@ -54,17 +57,27 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         NPCName = "NPC";
+        SecondNPCName = "empty name";
         _sentences = new Queue<string>();
+        onSecondNPC = false;
     }
 
 
     /* Initiates a new dialogue by instantiating a DialogueBox, adding its sentences to the queue
      * setting the name of the DialogueBox, and displaying the next sentence (in this case the first one)
+     * optional parameter secondNPC: if the dialogue is just two NPCs talking to each other, it will alternate the NPC names
+     * starting with the name of currentNPC
      */
-    public void StartDialogue(DialogueTree newDialogueTree, GameObject currentNPC)
+    public void StartDialogue(DialogueTree newDialogueTree, GameObject currentNPC, GameObject secondNPC=null)
     {
         CurrentNPC = currentNPC;
         NPCName = CurrentNPC.GetComponent<NPC>().CharacterName;
+
+        if (secondNPC != null)
+        {
+            SecondNPCName = secondNPC.GetComponent<NPC>().CharacterName;
+        }
+
 
         //the current dialogue must be ended before starting a new one
         if (_dialogueBox != null)
@@ -109,7 +122,17 @@ public class DialogueManager : MonoBehaviour
         {
 
             if (_currentNode.NodeType() == "npc") {
-                _dialogueBox.GetComponent<DialogueBox>().SetName(NPCName);
+                
+                //the point of this if else is to alternate between the two NPCs if the player passed one in to the optional secondNPC parameter in StartDialogue
+                if (! onSecondNPC) 
+                {
+                    _dialogueBox.GetComponent<DialogueBox>().SetName(NPCName);
+                }
+                else
+                {
+                    _dialogueBox.GetComponent<DialogueBox>().SetName(SecondNPCName);
+                    onSecondNPC = true;
+                }
             }
             else
             {
@@ -167,6 +190,8 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     {
         _dialogueBox.GetComponent<DialogueBox>().DestroyDialogueBox();
+        SecondNPCName = "empty name";
+        onSecondNPC = false;
     }
 
 

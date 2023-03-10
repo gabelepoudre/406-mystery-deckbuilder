@@ -528,10 +528,10 @@ GameObject:
   - component: {fileID: 7126463672181600984}
   - component: {fileID: 2974809267316779736}
   - component: {fileID: 701282225796089859}
-  - component: {fileID: -5246211144570750038}
-  - component: {fileID: 7479802857352612167}
+  - component: {fileID: 7075775841706571472}
+  - component: {fileID: -3461740719969023774}
   m_Layer: 0
-  m_Name: Marry
+  m_Name: Austin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -565,7 +565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc0fcdafee5d4a6ba706fd6de02ebe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterName: Marry
+  CharacterName: Austin
   affinity_1: 0.43
   affinity_2: 0.45
   affintiy_3: 0.45
@@ -604,7 +604,7 @@ MonoBehaviour:
   angry: {fileID: 0}
   stress: {fileID: 0}
   worry: {fileID: 0}
---- !u!114 &-5246211144570750038
+--- !u!114 &7075775841706571472
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -613,10 +613,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7429489653972524998}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18b991e39b08449f0a27d121bb326772, type: 3}
+  m_Script: {fileID: 11500000, guid: 8323f0c5ea0bc4ff48eda414a2572116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7479802857352612167
+--- !u!114 &-3461740719969023774
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -625,6 +625,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7429489653972524998}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3622392d570a34d9aa1979b38e1a4b71, type: 3}
+  m_Script: {fileID: 11500000, guid: 03b44ee50f65d4869a0a4945eeabe9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

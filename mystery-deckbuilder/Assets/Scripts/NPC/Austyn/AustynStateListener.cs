@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NibblesStateListener : MonoBehaviour
+public class AustynStateListener : MonoBehaviour
 {
-    // Start is called before the first frame update
+     // Start is called before the first frame update
     void Start()
     {
         ChangeDialogueBasedOnState();
@@ -12,8 +12,8 @@ public class NibblesStateListener : MonoBehaviour
 
     private void ChangeDialogueBasedOnState()
     {
-        //dialogue based on whether you've won an encounter with Nibbles for the day
-        GameState.NPCs.Nibbles.encountersCompleted.OnChange += OnEncounterComplete;
+        
+        GameState.NPCs.Austyn.encountersCompleted.OnChange += OnEncounterComplete;
         GameState.currentDay.OnChange += OnDayChange;
     }
 
@@ -21,7 +21,7 @@ public class NibblesStateListener : MonoBehaviour
     {
         //if you've completed the first encounter, then we want to initiate the next dialogue tree depending on whether you won or lost
         
-        if (GameState.NPCs.Nibbles.encountersWon.Value == 1)
+        if (GameState.NPCs.Austyn.encountersWon.Value == 1)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "IntroAfterEncounterWin";
         }
@@ -38,10 +38,9 @@ public class NibblesStateListener : MonoBehaviour
     //reset the post-loss dialogue to the normal one
     private void OnDayChange()
     {
-        if (GameState.NPCs.Nibbles.encountersWon.Value == 0)
+        if (GameState.NPCs.Austyn.encountersWon.Value == 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
         }
     }
-
 }

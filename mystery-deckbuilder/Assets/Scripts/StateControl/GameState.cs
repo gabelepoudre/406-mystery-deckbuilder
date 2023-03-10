@@ -72,7 +72,7 @@ public static class GameState
          */
         public static GameStateValue<GameStateValue<int>> latestNPCEncountersCompleted = new(null, _gameStateValues);
 
-        //data specifically pertaining to Nibbles
+        
         public static class Nibbles
         {
            
@@ -86,7 +86,19 @@ public static class GameState
             public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
         }
 
+        public static class Austyn
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+        }
+
         public static class Mark
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+        }
+
+        public static class Samuel_Snake
         {
             public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
             public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
