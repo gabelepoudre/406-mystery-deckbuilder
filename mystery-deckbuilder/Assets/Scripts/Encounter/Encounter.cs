@@ -66,6 +66,20 @@ public class Encounter
         public int SympathyCardsInHand { get; set; } = 0;
         public int PersuasionCardsInHand { get; set; } = 0;
         public int PreparationCardsInHand { get; set; } = 0;
+        public int Patience
+        {
+            get
+            {
+                return GameState.Meta.activeEncounter.Value.GetEncounterController().GetPatience();
+            }
+        }
+        public int Compliance
+        {
+            get
+            {
+                return GameState.Meta.activeEncounter.Value.GetEncounterController().GetCompliance();
+            }
+        }
     }
 
     /* Constructor with config */
@@ -82,7 +96,7 @@ public class Encounter
     }
 
     /* Draw a card, if we can. Draws trigger "OnChange" which recalculates all card values */
-    public void DrawCard()
+    public void DrawCard(int patienceCost)
     {
         if (_encounterController.PlaceMatFull())
         {
@@ -134,7 +148,7 @@ public class Encounter
                 OnChange(); // we call this on all draws and plays
                 draw.OnDraw();
 
-                _encounterController.SetPatience(_encounterController.GetPatience() - 1);
+                _encounterController.SetPatience(_encounterController.GetPatience() - patienceCost);
             }
         }
     }
@@ -219,7 +233,6 @@ public class Encounter
 
         int totalCompliance = card.GetTotalCompliance();
         int totalPatience = card.GetTotalPatience();
-        card.OnPlay();
 
         _encounterController.SetCompliance(_encounterController.GetCompliance() + totalCompliance);
         _encounterController.SetPatience(_encounterController.GetPatience() - totalPatience);
@@ -231,6 +244,7 @@ public class Encounter
 
         // remove card
         _encounterController.RemoveCard(card);
+        card.OnPlay();
     }
 
     /* Exposes the controller */

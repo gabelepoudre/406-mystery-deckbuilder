@@ -186,7 +186,7 @@ public class EncounterPrefabController : MonoBehaviour
     {
         if (GameState.Meta.activeEncounter.Value != null)
         {
-            GameState.Meta.activeEncounter.Value.DrawCard();
+            GameState.Meta.activeEncounter.Value.DrawCard(1);
         }
         else
         {

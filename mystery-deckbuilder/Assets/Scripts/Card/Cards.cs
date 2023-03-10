@@ -75,7 +75,7 @@ public class PartingShot : Card
     {
         this._metadata["element"] = "Intimidation";
         this._metadata["name"] = "Parting Shot";
-        this._metadata["description"] = "[Passive] Double compliance when patience is less than 2.";
+        this._metadata["description"] = "Double Compliance when Patience is less than 2.";
         this._metadata["patience"] = "2";
         this._metadata["compliance"] = "15";
         this._metadata["duration"] = "0";
@@ -97,7 +97,7 @@ public class PartingShot : Card
 
         private Card _parent;
         private string _name = "Parting Shot!";
-        private string _desc_1 = "Doubled compliance while remaining patience is 1!";
+        private string _desc_1 = "Doubled Compliance while remaining Patience is 1!";
 
         public EPartingShot(Card c) : base(99) { _parent = c; }
         public string GetDescription() { return _desc_1; }
@@ -123,7 +123,7 @@ public class BrowBeat : Card
     {
         this._metadata["element"] = "Intimidation";
         this._metadata["name"] = "Brow Beat";
-        this._metadata["description"] = "[Passive] Raise compliance by 10 for every card played.";
+        this._metadata["description"] = "Raise Compliance by 10 for every card played.";
         this._metadata["patience"] = "2";
         this._metadata["compliance"] = "10";
         this._metadata["duration"] = "0";
@@ -144,7 +144,7 @@ public class BrowBeat : Card
 
         private Card _parent;
         private string _name = "Brow Beat!";
-        private string _desc_1 = "Raising compliance by 10 for every card played! (";
+        private string _desc_1 = "Raising Compliance by 10 for every card played! (";
 
         public EBrowBeat(Card c) : base(99) { _parent = c; }
         public string GetDescription() 
@@ -172,11 +172,46 @@ public class BadCop : Card
     {
         this._metadata["element"] = "Intimidation";
         this._metadata["name"] = "Bad Cop";
-        this._metadata["description"] = "Raise compliance by 10 for every Sympathy card in hand";
+        this._metadata["description"] = "Raise Compliance by 10 for every Sympathy card in hand";
         this._metadata["patience"] = "3";
         this._metadata["compliance"] = "10";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
+
+        this.__localEffects["Bad Cop!"] = new EBadCop(this);
+    }
+
+    public override void OnChange()
+    {
+        this.__localEffects["Bad Cop!"].Execute();
+    }
+
+    /* A local effect (as seen by E prefix) for Bad Cop */
+    public class EBadCop : Effect, IExecutableEffect
+    {
+        private Color _color = new Color(255 / 255, 255 / 255, 100 / 255);
+
+        private Card _parent;
+        private string _name = "Bad Cop!";
+        private string _desc_1 = "Raising Compliance by 10 for every Sympathy card in hand! (";
+
+        public EBadCop(Card c) : base(99) { _parent = c; }
+        public string GetDescription()
+        {
+            return _desc_1 + GameState.Meta.activeEncounter.Value.Statistics.SympathyCardsInHand + ")";
+        }
+        public string GetName() { return _name; }
+        public Color GetColor() { return _color; }
+
+        /* Executes the effect. A conditional may be called within */
+        public void Execute()
+        {
+            if (EncounterConditionals.CardsOfElementInHandGreaterThan("Sympathy", 0))
+            {
+                _parent.UnstackableComplianceMod += 10 * GameState.Meta.activeEncounter.Value.Statistics.SympathyCardsInHand;
+                _parent.DisplayEffect(this);
+            }
+        }
     }
 }
 
@@ -186,7 +221,7 @@ public class Encourage : Card
     {
         this._metadata["element"] = "Sympathy";
         this._metadata["name"] = "Encourage";
-        this._metadata["description"] = "none";
+        this._metadata["description"] = "No special effect";
         this._metadata["patience"] = "1";
         this._metadata["compliance"] = "10";
         this._metadata["duration"] = "0";
@@ -200,11 +235,46 @@ public class Complement : Card
     {
         this._metadata["element"] = "Sympathy";
         this._metadata["name"] = "Complement";
-        this._metadata["description"] = "When played as the first card, it raises compliance by 15 instead of 5.";
+        this._metadata["description"] = "When no cards have been played, triple Compliance";
         this._metadata["patience"] = "1";
         this._metadata["compliance"] = "5";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
+
+        this.__localEffects["Complement!"] = new EComplement(this);
+    }
+
+    public override void OnChange()
+    {
+        this.__localEffects["Complement!"].Execute();
+    }
+
+    /* A local effect (as seen by E prefix) for Complement */
+    public class EComplement : Effect, IExecutableEffect
+    {
+        private Color _color = new Color(255 / 255, 255 / 255, 100 / 255);
+
+        private Card _parent;
+        private string _name = "Complement!";
+        private string _desc_1 = "No cards have been played, so Complement's Compliance is tripled!";
+
+        public EComplement(Card c) : base(99) { _parent = c; }
+        public string GetDescription()
+        {
+            return _desc_1;
+        }
+        public string GetName() { return _name; }
+        public Color GetColor() { return _color; }
+
+        /* Executes the effect. A conditional may be called within */
+        public void Execute()
+        {
+            if (EncounterConditionals.NumberPlaysLessThan(1))
+            {
+                _parent.StackableComplianceMod += 2;
+                _parent.DisplayEffect(this);
+            }
+        }
     }
 }
 
@@ -214,11 +284,46 @@ public class SobStory : Card
     {
         this._metadata["element"] = "Sympathy";
         this._metadata["name"] = "Sob Story";
-        this._metadata["description"] = "Raise compliance by 8 for every card drawn so far.";
+        this._metadata["description"] = "Raise Compliance by 8 for every card drawn so far";
         this._metadata["patience"] = "2";
         this._metadata["compliance"] = "8";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
+
+        this.__localEffects["Sob Story!"] = new ESobStory(this);
+    }
+
+    public override void OnChange()
+    {
+        this.__localEffects["Sob Story!"].Execute();
+    }
+
+    /* A local effect (as seen by E prefix) for Sob Story */
+    public class ESobStory : Effect, IExecutableEffect
+    {
+        private Color _color = new Color(255 / 255, 255 / 255, 100 / 255);
+
+        private Card _parent;
+        private string _name = "Sob Story!";
+        private string _desc_1 = "Raising Compliance by 8 for every card drawn so far! (";
+
+        public ESobStory(Card c) : base(99) { _parent = c; }
+        public string GetDescription()
+        {
+            return _desc_1 + GameState.Meta.activeEncounter.Value.Statistics.NumberOfDraws + ")";
+        }
+        public string GetName() { return _name; }
+        public Color GetColor() { return _color; }
+
+        /* Executes the effect. A conditional may be called within */
+        public void Execute()
+        {
+            if (EncounterConditionals.NumberDrawsGreaterThan(1))
+            {
+                _parent.UnstackableComplianceMod += 8 * GameState.Meta.activeEncounter.Value.Statistics.NumberOfDraws;
+                _parent.DisplayEffect(this);
+            }
+        }
     }
 }
 
@@ -233,6 +338,41 @@ public class GoodCop : Card
         this._metadata["compliance"] = "10";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
+
+        this.__localEffects["Good Cop!"] = new EGoodCop(this);
+    }
+
+    public override void OnChange()
+    {
+        this.__localEffects["Good Cop!"].Execute();
+    }
+
+    /* A local effect (as seen by E prefix) for Good Cop */
+    public class EGoodCop : Effect, IExecutableEffect
+    {
+        private Color _color = new Color(255 / 255, 255 / 255, 100 / 255);
+
+        private Card _parent;
+        private string _name = "Good Cop!";
+        private string _desc_1 = "Raising Compliance by 10 for every Intimidation card in hand! (";
+
+        public EGoodCop(Card c) : base(99) { _parent = c; }
+        public string GetDescription()
+        {
+            return _desc_1 + GameState.Meta.activeEncounter.Value.Statistics.IntimidationCardsInHand + ")";
+        }
+        public string GetName() { return _name; }
+        public Color GetColor() { return _color; }
+
+        /* Executes the effect. A conditional may be called within */
+        public void Execute()
+        {
+            if (EncounterConditionals.CardsOfElementInHandGreaterThan("Intimidation", 0))
+            {
+                _parent.UnstackableComplianceMod += 10 * GameState.Meta.activeEncounter.Value.Statistics.IntimidationCardsInHand;
+                _parent.DisplayEffect(this);
+            }
+        }
     }
 }
 
@@ -242,7 +382,7 @@ public class Articulate : Card
     {
         this._metadata["element"] = "Persuasion";
         this._metadata["name"] = "Articulate";
-        this._metadata["description"] = "None";
+        this._metadata["description"] = "No special effect";
         this._metadata["patience"] = "1";
         this._metadata["compliance"] = "10";
         this._metadata["duration"] = "0";
@@ -256,12 +396,47 @@ public class Salutation : Card
     {
         this._metadata["element"] = "Persuasion";
         this._metadata["name"] = "Salutation";
-        this._metadata["description"] = "When played as the first card, draw a card.";
+        this._metadata["description"] = "When played as the first card, draw a card";
         this._metadata["patience"] = "1";
         this._metadata["compliance"] = "8";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
+
+        this.__localEffects["Salutation!"] = new ESalutation(this);
     }
+
+    public override void OnPlay()
+    {
+        this.__localEffects["Salutation!"].Execute();
+    }
+
+    /* A local effect (as seen by E prefix) for Salutation */
+    public class ESalutation : Effect, IExecutableEffect
+    {
+        private Color _color = new Color(255 / 255, 255 / 255, 100 / 255);
+
+        private Card _parent;
+        private string _name = "Salutation!";
+        private string _desc_1 = "When played as the first card, draw a card!";
+
+        public ESalutation  (Card c) : base(99) { _parent = c; }
+        public string GetDescription()
+        {
+            return _desc_1;
+        }
+        public string GetName() { return _name; }
+        public Color GetColor() { return _color; }
+
+        /* Executes the effect. A conditional may be called within */
+        public void Execute()
+        {
+            if (EncounterConditionals.NumberPlaysEqualTo(1))  // this one is weird because it is counted after the play
+            {
+                GameState.Meta.activeEncounter.Value.DrawCard(0);
+            }
+        }
+    }
+
 }
 
 public class Lecture : Card
@@ -270,11 +445,46 @@ public class Lecture : Card
     {
         this._metadata["element"] = "Persuasion";
         this._metadata["name"] = "Lecture";
-        this._metadata["description"] = "Raise compliance by 10 for every patience still remaining.";
+        this._metadata["description"] = "Raise Compliance by 10 for every Patience still remaining";
         this._metadata["patience"] = "3";
         this._metadata["compliance"] = "10";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
+
+        this.__localEffects["Lecture!"] = new ELecture(this);
+    }
+
+    public override void OnChange()
+    {
+        this.__localEffects["Lecture!"].Execute();
+    }
+
+    /* A local effect (as seen by E prefix) for Lecture */
+    public class ELecture : Effect, IExecutableEffect
+    {
+        private Color _color = new Color(255 / 255, 255 / 255, 100 / 255);
+
+        private Card _parent;
+        private string _name = "Lecture!";
+        private string _desc_1 = "Raising Compliance by 10 for every Patience remaining! (";
+
+        public ELecture(Card c) : base(99) { _parent = c; }
+        public string GetDescription()
+        {
+            return _desc_1 + GameState.Meta.activeEncounter.Value.Statistics.Patience + ")";
+        }
+        public string GetName() { return _name; }
+        public Color GetColor() { return _color; }
+
+        /* Executes the effect. A conditional may be called within */
+        public void Execute()
+        {
+            if (EncounterConditionals.PatienceGreaterThan(0))
+            {
+                _parent.UnstackableComplianceMod += 10 * GameState.Meta.activeEncounter.Value.Statistics.Patience;
+                _parent.DisplayEffect(this);
+            }
+        }
     }
 }
 
