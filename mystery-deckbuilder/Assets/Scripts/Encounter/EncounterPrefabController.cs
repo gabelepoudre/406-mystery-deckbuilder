@@ -169,16 +169,32 @@ public class EncounterPrefabController : MonoBehaviour
         return _complianceBarScript.GetValue();
     }
 
-    public void SetPatience(int value)
+    public bool SetAndCheckPatience(int value)
     {
         Debug.Log("Patience was set to " + value.ToString() + ", was " + _patienceBarScript.GetValue());
-        _patienceBarScript.SetValue(value); 
+        _patienceBarScript.SetValue(value);
+        if (_patienceBarScript.IsEmpty())
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
-    public void SetCompliance(int value)
+    public bool SetAndCheckCompliance(int value)
     {
         Debug.Log("Compliance was set to " + value.ToString() + ", was " + _complianceBarScript.GetValue());
         _complianceBarScript.SetValue(value);
+        if (_complianceBarScript.IsFull())
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
     
     /* This is only here because the draw button needs a non-static attached Monobehaviour to OnClick()*/

@@ -396,7 +396,7 @@ public class Salutation : Card
     {
         this._metadata["element"] = "Persuasion";
         this._metadata["name"] = "Salutation";
-        this._metadata["description"] = "When played as the first card, draw a card";
+        this._metadata["description"] = "When played as the first card, automatically draw a card";
         this._metadata["patience"] = "1";
         this._metadata["compliance"] = "8";
         this._metadata["duration"] = "0";
@@ -417,7 +417,7 @@ public class Salutation : Card
 
         private Card _parent;
         private string _name = "Salutation!";
-        private string _desc_1 = "When played as the first card, draw a card!";
+        private string _desc_1 = "No cards have been played, so automatically draw a card on play!";
 
         public ESalutation  (Card c) : base(99) { _parent = c; }
         public string GetDescription()
@@ -432,6 +432,7 @@ public class Salutation : Card
         {
             if (EncounterConditionals.NumberPlaysEqualTo(1))  // this one is weird because it is counted after the play
             {
+                Debug.Log("Triggered a draw card effect!");
                 GameState.Meta.activeEncounter.Value.DrawCard(0);
             }
         }
@@ -497,8 +498,45 @@ public class MenacingPresence: Card
     {
         this._metadata["element"] = "Preparation";
         this._metadata["name"] = "Menacing Presence";
-        this._metadata["description"] = "+5 compliance to conversation cards for 3 plays.";
+        this._metadata["description"] = "+5 Compliance to Conversation cards for 3 plays";
         this._metadata["patience"] = "1";
+        this._metadata["compliance"] = "0";
+    }
+
+    public override void OnPlay()
+    {
+        GameState.Meta.activeEncounter.Value.AddGlobal(new EMenacingPresence());
+    }
+
+    /* A local effect (as seen by E prefix) for MenacingPresence */
+    public class EMenacingPresence : Effect, IExecutableEffect
+    {
+        private Color _color = new Color(200 / 255, 200 / 255, 200 / 255);
+
+        private string _name = "Lecture!";
+        private string _desc_1 = "+5 Compliance to Conversation cards for 3 plays (";
+
+        public EMenacingPresence() : base(3) {}
+        public string GetDescription()
+        {
+            return _desc_1 + this.GetRemainingDuration().ToString() + " remaining)";
+        }
+        public string GetName() { return _name; }
+        public Color GetColor() { return _color; }
+
+        /* Executes the effect. A conditional may be called within */
+        public void Execute()
+        {
+            List<Card> hand = GameState.Meta.activeEncounter.Value.GetHand();
+            foreach(Card c in hand)
+            {
+                if (c.GetElement() != "Preparation")
+                {
+                    c.UnstackableComplianceMod += 5;
+                    c.DisplayEffect(this);
+                }
+            }
+        }
     }
 }
 
@@ -508,8 +546,43 @@ public class Tirade : Card
     {
         this._metadata["element"] = "Preparation";
         this._metadata["name"] = "Tirade";
-        this._metadata["description"] = "+1 card for each persuasion card in hand.";
+        this._metadata["description"] = "The next card you play has quadruple Compliance and Patience";
         this._metadata["patience"] = "2";
+        this._metadata["compliance"] = "0";
+    }
+
+    public override void OnPlay()
+    {
+        GameState.Meta.activeEncounter.Value.AddGlobal(new ETirade());
+    }
+
+    /* A local effect (as seen by E prefix) for Tirade */
+    public class ETirade : Effect, IExecutableEffect
+    {
+        private Color _color = new Color(200 / 255, 200 / 255, 200 / 255);
+
+        private string _name = "Tirade!";
+        private string _desc_1 = "For this play only, this card has quadruple Compliance and Patience!";
+
+        public ETirade() : base(1) { }
+        public string GetDescription()
+        {
+            return _desc_1;
+        }
+        public string GetName() { return _name; }
+        public Color GetColor() { return _color; }
+
+        /* Executes the effect. A conditional may be called within */
+        public void Execute()
+        {
+            List<Card> hand = GameState.Meta.activeEncounter.Value.GetHand();
+            foreach (Card c in hand)
+            {
+                c.StackableComplianceMod += 4;
+                c.StackablePatienceMod += 4;
+                c.DisplayEffect(this);
+            }
+        }
     }
 }
 
@@ -519,8 +592,43 @@ public class Empathize : Card
     {
         this._metadata["element"] = "Preparation";
         this._metadata["name"] = "Empathize";
-        this._metadata["description"] = "The next card you play costs 1 less patience.";
+        this._metadata["description"] = "The next card you play costs 0 Patience";
         this._metadata["patience"] = "0";
+        this._metadata["compliance"] = "0";
+    }
+
+    public override void OnPlay()
+    {
+        GameState.Meta.activeEncounter.Value.AddGlobal(new EEmpathize());
+    }
+
+    /* A local effect (as seen by E prefix) for Empathize */
+    public class EEmpathize : Effect, IExecutableEffect
+    {
+        private Color _color = new Color(200 / 255, 200 / 255, 200 / 255);
+
+        private string _name = "Empathize!";
+        private string _desc_1 = "For this play only, this card costs 0 Patience!";
+
+        public EEmpathize() : base(1) { }
+        public string GetDescription()
+        {
+            return _desc_1;
+        }
+        public string GetName() { return _name; }
+        public Color GetColor() { return _color; }
+
+        /* Executes the effect. A conditional may be called within */
+        public void Execute()
+        {
+            List<Card> hand = GameState.Meta.activeEncounter.Value.GetHand();
+            foreach (Card c in hand)
+            {
+                c.PatienceOverridden = true;
+                c.PatienceOverride = 0;
+                c.DisplayEffect(this);
+            }
+        }
     }
 }
 
@@ -530,8 +638,44 @@ public class Reassure : Card
     {
         this._metadata["element"] = "Preparation";
         this._metadata["name"] = "Reassure";
-        this._metadata["description"] = "+1 temporary patience for each card in hand.";
-        this._metadata["patience"] = "2";
+        this._metadata["description"] = "Gain a patience free play for each Conversation card in your hand";
+        this._metadata["patience"] = "5";
+        this._metadata["compliance"] = "0";
+    }
+
+    public override void OnPlay()
+    {
+        GameState.Meta.activeEncounter.Value.AddGlobal(new EReassure());
+    }
+
+    /* A local effect (as seen by E prefix) for Reassure */
+    public class EReassure : Effect, IExecutableEffect
+    {
+        private Color _color = new Color(200 / 255, 200 / 255, 200 / 255);
+
+        private string _name = "Reassure!";
+        private string _desc_1 = "For the next ";
+        private string _desc_2 = " plays only, this card costs 0 Patience!";
+
+        public EReassure() : base(GameState.Meta.activeEncounter.Value.Statistics.ConversationCardsInHand) { }
+        public string GetDescription()
+        {
+            return _desc_1 + this.GetRemainingDuration() + _desc_2;
+        }
+        public string GetName() { return _name; }
+        public Color GetColor() { return _color; }
+
+        /* Executes the effect. A conditional may be called within */
+        public void Execute()
+        {
+            List<Card> hand = GameState.Meta.activeEncounter.Value.GetHand();
+            foreach (Card c in hand)
+            {
+                c.PatienceOverridden = true;
+                c.PatienceOverride = 0;
+                c.DisplayEffect(this);
+            }
+        }
     }
 }
 
@@ -541,8 +685,56 @@ public class Eloquence : Card
     {
         this._metadata["element"] = "Preparation";
         this._metadata["name"] = "Eloquence";
-        this._metadata["description"] = "The next conversation card you play gives +10 more compliance";
+        this._metadata["description"] = "The next Conversation card you play gives +10 more Compliance";
         this._metadata["patience"] = "1";
+        this._metadata["compliance"] = "0";
+    }
+
+    public override void OnPlay()
+    {
+        GameState.Meta.activeEncounter.Value.AddGlobal(new EEloquence());
+    }
+
+    /* A local effect (as seen by E prefix) for Empathize */
+    public class EEloquence : Effect, IExecutableEffect
+    {
+        private Color _color = new Color(200 / 255, 200 / 255, 200 / 255);
+
+        private int _conv_cards_played_on_execute = -1;
+        private string _name = "Eloquence!";
+        private string _desc_1 = "For this play only, this card gains +10 Compliance!";
+
+        public EEloquence() : base(99) { }
+        public string GetDescription()
+        {
+            return _desc_1;
+        }
+        public string GetName() { return _name; }
+        public Color GetColor() { return _color; }
+
+        /* Executes the effect. A conditional may be called within */
+        public void Execute()
+        {
+            if (_conv_cards_played_on_execute == -1)
+            {
+                _conv_cards_played_on_execute = GameState.Meta.activeEncounter.Value.Statistics.ConversationCardsPlayed;
+            }
+            else if (_conv_cards_played_on_execute < GameState.Meta.activeEncounter.Value.Statistics.ConversationCardsPlayed)
+            {
+                this.__forceTermination = true;
+                return;
+            }
+
+            List<Card> hand = GameState.Meta.activeEncounter.Value.GetHand();
+            foreach (Card c in hand)
+            {
+                if (c.GetElement() != "Preparation")
+                {
+                    c.UnstackableComplianceMod += 10;
+                }
+                c.DisplayEffect(this);
+            }
+        }
     }
 }
 
@@ -552,7 +744,39 @@ public class Monologue : Card
     {
         this._metadata["element"] = "Preparation";
         this._metadata["name"] = "Monologue";
-        this._metadata["description"] = "+1 card for each sympathy card in hand.";
+        this._metadata["description"] = "Automatically draw up to 2 cards without reducing Patience";
         this._metadata["patience"] = "2";
+        this._metadata["compliance"] = "0";
+    }
+
+    public override void OnPlay()
+    {
+        IExecutableEffect e = new EMonologue();
+        e.Execute();
+    }
+
+    /* A local effect (as seen by E prefix) for Salutation */
+    public class EMonologue : Effect, IExecutableEffect
+    {
+        private Color _color = new Color(255 / 255, 255 / 255, 100 / 255);
+
+        private string _name = "Monologue!";
+        private string _desc_1 = "Automatically draw up to 2 cards without reducing Patience!";
+
+        public EMonologue() : base(1) {}
+        public string GetDescription()
+        {
+            return _desc_1;
+        }
+        public string GetName() { return _name; }
+        public Color GetColor() { return _color; }
+
+        /* Executes the effect. A conditional may be called within */
+        public void Execute()
+        {
+            Debug.Log("Triggered a draw card effect!");
+            GameState.Meta.activeEncounter.Value.DrawCard(0);
+            GameState.Meta.activeEncounter.Value.DrawCard(0);
+        }
     }
 }

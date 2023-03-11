@@ -31,4 +31,19 @@ public class BarScript : MonoBehaviour
     {
         return (int)slider.value;
     }
+
+    public int GetMax()
+    {
+        return (int)slider.maxValue;
+    }
+
+    public bool IsFull()
+    {
+        return GetMax() == GetValue();
+    }
+
+    public bool IsEmpty()
+    {
+        return GetValue() == 0;
+    }
 }

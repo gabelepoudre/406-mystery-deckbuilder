@@ -28,20 +28,6 @@ public class Encounter
         }
     }
 
-    /* Static method to end an Encounter from wherever as long as there is an Encounter to close*/
-    public static void EndEncounter()
-    {
-        if (GameState.Meta.activeEncounter.Value == null)
-        {
-            Debug.LogError("Tried to close an encounter when none were active");
-        }
-        else
-        {
-            //TODO
-        }
-    }
-
-
     // end of statics
 
     private GameObject _encounterPrefab;
@@ -62,10 +48,12 @@ public class Encounter
         public int SympathyCardsPlayed { get; set; } = 0;
         public int PersuasionCardsPlayed { get; set; } = 0;
         public int PreparationCardsPlayed { get; set; } = 0;
+        public int ConversationCardsPlayed { get; set; } = 0;
         public int IntimidationCardsInHand { get; set; } = 0;
         public int SympathyCardsInHand { get; set; } = 0;
         public int PersuasionCardsInHand { get; set; } = 0;
         public int PreparationCardsInHand { get; set; } = 0;
+        public int ConversationCardsInHand { get; set; } = 0;
         public int Patience
         {
             get
@@ -108,6 +96,8 @@ public class Encounter
         }
         else
         {
+            Debug.Log("Drawing a card");
+
             int draw_idx = Mathf.RoundToInt((Random.value * (GameState.Player.dailyDeck.Value.Count-1)));
 
             int draw_value = GameState.Player.dailyDeck.Value[draw_idx];
@@ -126,14 +116,17 @@ public class Encounter
                 {
                     case "Intimidation":
                         Statistics.IntimidationCardsInHand += 1;
+                        Statistics.ConversationCardsInHand += 1;
                         Statistics.NumberOfDraws += 1;
                         break;
                     case "Sympathy":
                         Statistics.SympathyCardsInHand += 1;
+                        Statistics.ConversationCardsInHand += 1;
                         Statistics.NumberOfDraws += 1;
                         break;
                     case "Persuasion":
                         Statistics.PersuasionCardsInHand += 1;
+                        Statistics.ConversationCardsInHand += 1;
                         Statistics.NumberOfDraws += 1;
                         break;
                     case "Preparation":
@@ -148,7 +141,12 @@ public class Encounter
                 OnChange(); // we call this on all draws and plays
                 draw.OnDraw();
 
-                _encounterController.SetPatience(_encounterController.GetPatience() - patienceCost);
+                bool continueGame = _encounterController.SetAndCheckPatience(_encounterController.GetPatience() - patienceCost);
+                if (!continueGame)
+                {
+                    EndEncounter(false);
+                    return;
+                }
             }
         }
     }
@@ -165,7 +163,10 @@ public class Encounter
         List<IExecutableEffect> toRemove = new(); 
         foreach (IExecutableEffect e in globalEffects)
         {
-            if (e.GetTerminationPlay() < Statistics.NumberOfPlays)
+            Debug.Log(e.GetName());
+            Debug.Log(e.GetTerminationPlay());
+            Debug.Log(Statistics.NumberOfPlays);
+            if (e.GetTerminationPlay() <= Statistics.NumberOfPlays || e.ForceTermination())
             {
                 toRemove.Add(e);
             }
@@ -215,36 +216,61 @@ public class Encounter
         {
             case "Intimidation":
                 Statistics.IntimidationCardsInHand -= 1;
+                Statistics.ConversationCardsInHand -= 1;
+
                 Statistics.NumberOfPlays += 1;
+                Statistics.IntimidationCardsPlayed += 1;
+                Statistics.ConversationCardsPlayed += 1;
                 break;
             case "Sympathy":
                 Statistics.SympathyCardsInHand -= 1;
+                Statistics.ConversationCardsInHand -= 1;
+
                 Statistics.NumberOfPlays += 1;
+                Statistics.SympathyCardsPlayed += 1;
+                Statistics.ConversationCardsPlayed += 1;
                 break;
             case "Persuasion":
                 Statistics.PersuasionCardsInHand -= 1;
+                Statistics.ConversationCardsInHand -= 1;
+
                 Statistics.NumberOfPlays += 1;
+                Statistics.PersuasionCardsPlayed += 1;
+                Statistics.ConversationCardsPlayed += 1;
                 break;
             case "Preparation":
                 Statistics.PreparationCardsInHand -= 1;
+
                 Statistics.NumberOfPlays += 1;
+                Statistics.PreparationCardsPlayed += 1;
+                Statistics.ConversationCardsPlayed += 1;
                 break;
         }
 
         int totalCompliance = card.GetTotalCompliance();
         int totalPatience = card.GetTotalPatience();
 
-        _encounterController.SetCompliance(_encounterController.GetCompliance() + totalCompliance);
-        _encounterController.SetPatience(_encounterController.GetPatience() - totalPatience);
+        bool continueGame = _encounterController.SetAndCheckCompliance(_encounterController.GetCompliance() + totalCompliance);
+        if (!continueGame)
+        {
+            EndEncounter(true);
+            return;
+        }
+
+        continueGame = _encounterController.SetAndCheckPatience(_encounterController.GetPatience() - totalPatience);
+        if (!continueGame)
+        {
+            EndEncounter(false);
+            return;
+        }
 
         // remove from hand for now, we don't want to apply effects to a played card
         _hand.Remove(card);
 
-        OnChange(); // we call this on all draws and plays
-
         // remove card
         _encounterController.RemoveCard(card);
         card.OnPlay();
+        OnChange(); // we call this on all draws and plays
     }
 
     /* Exposes the controller */
@@ -257,6 +283,18 @@ public class Encounter
     public List<Card> GetHand()
     {
         return _hand;
+    }
+
+    public void AddGlobal(IExecutableEffect e)
+    {
+        globalEffects.Add(e);
+    }
+
+    public void EndEncounter(bool victory)
+    {
+        GameState.Meta.lastEncounterEndedInVictory.Value = victory;
+        GameState.Meta.activeEncounter.Value = null;
+        GameObject.Destroy(_encounterPrefab);
     }
 }
 
