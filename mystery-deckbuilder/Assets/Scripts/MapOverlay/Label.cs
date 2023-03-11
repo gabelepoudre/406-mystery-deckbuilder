@@ -9,6 +9,7 @@ public class Label : MonoBehaviour
 
     public void MoveToScene(string scene)
     {
+        Debug.Log("Move to " + scene);
         SceneManager.LoadScene(scene);
     }
 

@@ -32,8 +32,10 @@ public class Notepad : MonoBehaviour
     //Opens or closes the notepad when called
     public void OpenNotepad()
     {
+        Debug.Log("Notepad was open" + GameState.Meta.notepadActive.Value);
         GameState.Meta.notepadActive.Value = !GameState.Meta.notepadActive.Value;
         notepadCanvas.SetActive(GameState.Meta.notepadActive.Value);
+        Debug.Log("Notepad now open" + GameState.Meta.notepadActive.Value);
     }
 
     //Changes the current chapter in the notebook
