@@ -81,6 +81,7 @@ public class Encounter
         _encounterController = _encounterPrefab.GetComponent<EncounterPrefabController>();
 
         _encounterController.Initialize(config);
+
     }
 
     /* Draw a card, if we can. Draws trigger "OnChange" which recalculates all card values */
@@ -147,6 +148,7 @@ public class Encounter
                     EndEncounter(false);
                     return;
                 }
+                _encounterController.ChangeHeadshotBasedOnPatience();
             }
         }
     }
@@ -263,6 +265,7 @@ public class Encounter
             EndEncounter(false);
             return;
         }
+        _encounterController.ChangeHeadshotBasedOnPatience();
 
         // remove from hand for now, we don't want to apply effects to a played card
         _hand.Remove(card);
@@ -309,7 +312,7 @@ public class EElementWeakness : Effect, IExecutableEffect
     private float _mod;
     private string _name = "Element Weakness";
     private string _desc_1 = "Your opponent is susceptible to ";
-    private string _desc_2 = "Increase compliance by ";
+    private string _desc_2 = "Increase Compliance by ";
 
     public EElementWeakness(string element, float mod) : base(99)
     {
@@ -352,7 +355,7 @@ public class EElementResistance : Effect, IExecutableEffect
     private float _mod;
     private string _name = "Element Resistance";
     private string _desc_1 = "Your opponent is resistant against ";
-    private string _desc_2 = "Reduce compliance by ";
+    private string _desc_2 = "Reduce Compliance by ";
 
     public EElementResistance(string element, float mod) : base(99)
     {

@@ -17,11 +17,20 @@ public class EffectController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         gameObject.SetActive(true);
     }
 
+    private bool CardIsHighlighted()
+    {
+        return gameObject.GetComponentInParent<CardPrefabController>().IsHighlighted();
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
-        effectTooltip.SetActive(true);
-        effectTooltip.GetComponent<EffectTooltipController>().SetTitle(_currentEffect.GetName());
-        effectTooltip.GetComponent<EffectTooltipController>().SetDescription(_currentEffect.GetDescription());
+        if (CardIsHighlighted())
+        {
+            effectTooltip.SetActive(true);
+            effectTooltip.GetComponent<EffectTooltipController>().SetTitle(_currentEffect.GetName());
+            effectTooltip.GetComponent<EffectTooltipController>().SetDescription(_currentEffect.GetDescription());
+        }
+
     }
 
     public void OnPointerExit(PointerEventData eventData)
