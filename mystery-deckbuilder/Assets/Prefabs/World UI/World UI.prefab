@@ -239,7 +239,6 @@ GameObject:
   - component: {fileID: 905738060473532876}
   - component: {fileID: 905738060473532877}
   - component: {fileID: 905738060473532878}
-  - component: {fileID: 3270516650668550017}
   - component: {fileID: 9016996161350173883}
   m_Layer: 5
   m_Name: Glub
@@ -363,22 +362,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!58 &3270516650668550017
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 905738060473532872}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 1
-  m_UsedByComposite: 0
-  m_Offset: {x: -11.85, y: 0}
-  serializedVersion: 2
-  m_Radius: 156.17
 --- !u!114 &9016996161350173883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -697,7 +680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8679184070414422611, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8679184070414422613, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
       propertyPath: m_RootOrder
