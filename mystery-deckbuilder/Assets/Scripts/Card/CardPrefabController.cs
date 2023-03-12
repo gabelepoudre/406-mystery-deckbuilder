@@ -24,12 +24,14 @@ public class CardPrefabController : MonoBehaviour, IPointerClickHandler, IDesele
     public Text visibleCompliance;
     public GameObject effectCirclePrefab;
     public GameObject options;
+    public GameObject effectSlots;
     [SerializeField] Color selectionTint; 
 
     private List<GameObject> _effectCircles;  // TODO, we will eventually initialize circles which hover-over to display currently applied effects
     private int _defaultCompliance;
     private int _defaultPatience;
     private int _position;
+    private EffectSlotController _effectSlotController;
 
     private bool _highlighted = false;
     private bool _showingOptions = false;
@@ -62,6 +64,11 @@ public class CardPrefabController : MonoBehaviour, IPointerClickHandler, IDesele
         }
     }
 
+    void Awake()
+    {
+        _effectSlotController = effectSlots.GetComponent<EffectSlotController>();
+    }
+
     /* Plays the current card */
     public void PlayCard()
     {
@@ -74,6 +81,16 @@ public class CardPrefabController : MonoBehaviour, IPointerClickHandler, IDesele
             GameState.Meta.activeEncounter.Value.PlayCard(_position);
         }
         
+    }
+
+    public void DisplayEffect(IExecutableEffect effect)
+    {
+        _effectSlotController.DisplayEffect(effect);
+    }
+
+    public void ClearEffects()
+    {
+        _effectSlotController.Clear();
     }
 
     public bool CurrentlyShowingOptions()

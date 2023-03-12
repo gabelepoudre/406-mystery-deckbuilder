@@ -24,6 +24,16 @@ public class Page
         this.img = img;
     }
 
+    public GameObject GetImage()
+    {
+        return this.img;
+    }
+
+    public void SetImage(GameObject img)
+    {
+        this.img = img;
+    }
+
     //Set the number of notes in the page
     public void SetNumNotes(int x)
     {
