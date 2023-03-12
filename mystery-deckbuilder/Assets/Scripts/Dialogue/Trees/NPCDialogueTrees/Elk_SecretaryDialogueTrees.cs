@@ -701,6 +701,7 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         "To me she was simply a tool I used to achieve my goals. I am despicable for believing this is the correct path.",
         "I will reveal to everyone about my doings, apologize to all affected, and quit my position as Small Pines Secretary, on that you have my word.",
         "Detective, on a final note, I have been told that the Rat Mob knows something about the berries.",
+        "Investigate that old bossy rat and his brat son.",
         "All I can ask of you is to seek out the criminals and bring justice to this case once and for all, just as you have with me..."}));
     }
 
