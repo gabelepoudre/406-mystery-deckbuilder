@@ -37,27 +37,27 @@ public static class EncounterConditionals
     }
     public static bool PatienceLessThan(int value)
     {
-        return E.GetEncounterController().GetPatience() < value;
+        return E.Statistics.Patience < value;
     }
     public static bool PatienceGreaterThan(int value)
     {
-        return E.GetEncounterController().GetPatience() > value;
+        return E.Statistics.Patience > value;
     }
     public static bool PatienceEqualTo(int value)
     {
-        return E.GetEncounterController().GetPatience() == value;
+        return E.Statistics.Patience == value;
     }
     public static bool ComplianceLessThan(int value)
     {
-        return E.GetEncounterController().GetCompliance() < value;
+        return E.Statistics.Compliance < value;
     }
     public static bool ComplianceGreaterThan(int value)
     {
-        return E.GetEncounterController().GetCompliance() > value;
+        return E.Statistics.Compliance > value;
     }
     public static bool ComplianceEqualTo(int value)
     {
-        return E.GetEncounterController().GetCompliance() == value;
+        return E.Statistics.Compliance == value;
     }
     public static bool CardsOfElementInHandLessThan(string element, int value)
     {
@@ -95,5 +95,16 @@ public static class EncounterConditionals
         }
         return num == value;
     }
-    
+    public static bool NumberDrawsLessThan(int value)
+    {
+        return E.Statistics.NumberOfDraws < value;
+    }
+    public static bool NumberDrawsGreaterThan(int value)
+    {
+        return E.Statistics.NumberOfDraws > value;
+    }
+    public static bool NumberDrawsEqualTo(int value)
+    {
+        return E.Statistics.NumberOfDraws == value;
+    }
 }

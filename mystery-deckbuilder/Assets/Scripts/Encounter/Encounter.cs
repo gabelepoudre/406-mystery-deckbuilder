@@ -28,20 +28,6 @@ public class Encounter
         }
     }
 
-    /* Static method to end an Encounter from wherever as long as there is an Encounter to close*/
-    public static void EndEncounter()
-    {
-        if (GameState.Meta.activeEncounter.Value == null)
-        {
-            Debug.LogError("Tried to close an encounter when none were active");
-        }
-        else
-        {
-            //TODO
-        }
-    }
-
-
     // end of statics
 
     private GameObject _encounterPrefab;
@@ -62,54 +48,24 @@ public class Encounter
         public int SympathyCardsPlayed { get; set; } = 0;
         public int PersuasionCardsPlayed { get; set; } = 0;
         public int PreparationCardsPlayed { get; set; } = 0;
+        public int ConversationCardsPlayed { get; set; } = 0;
         public int IntimidationCardsInHand { get; set; } = 0;
         public int SympathyCardsInHand { get; set; } = 0;
         public int PersuasionCardsInHand { get; set; } = 0;
         public int PreparationCardsInHand { get; set; } = 0;
-    }
-
-    /* An effect (as seen by E prefix) for an NPC weakness */
-    public class EElementWeakness : Effect, IExecutableEffect
-    {
-        private string _element;
-        public EElementWeakness(string element): base(99)
+        public int ConversationCardsInHand { get; set; } = 0;
+        public int Patience
         {
-            _element = element;
-        }
-
-        /* Executes the effect. A conditional may be called within */
-        public void Execute(Encounter enc)
-        {
-            List<Card> hand = enc.GetHand();
-            foreach (Card c in hand)
+            get
             {
-                if (c.GetElement() == _element)
-                {
-                    c.StackableComplianceMod += 0.5f;
-                }
+                return GameState.Meta.activeEncounter.Value.GetEncounterController().GetPatience();
             }
         }
-    }
-
-    /* An effect (as seen by E prefix) for an NPC strength */
-    public class EElementResistance : Effect, IExecutableEffect
-    {
-        private string _element;
-        public EElementResistance(string element) : base(99)
+        public int Compliance
         {
-            _element = element;
-        }
-
-        /* Executes the effect. A conditional may be called within */
-        public void Execute(Encounter enc)
-        {
-            List<Card> hand = enc.GetHand();
-            foreach (Card c in hand)
+            get
             {
-                if (c.GetElement() == _element)
-                {
-                    c.StackableComplianceMod -= 0.5f;
-                }
+                return GameState.Meta.activeEncounter.Value.GetEncounterController().GetCompliance();
             }
         }
     }
@@ -125,10 +81,11 @@ public class Encounter
         _encounterController = _encounterPrefab.GetComponent<EncounterPrefabController>();
 
         _encounterController.Initialize(config);
+
     }
 
     /* Draw a card, if we can. Draws trigger "OnChange" which recalculates all card values */
-    public void DrawCard()
+    public void DrawCard(int patienceCost)
     {
         if (_encounterController.PlaceMatFull())
         {
@@ -140,6 +97,8 @@ public class Encounter
         }
         else
         {
+            Debug.Log("Drawing a card");
+
             int draw_idx = Mathf.RoundToInt((Random.value * (GameState.Player.dailyDeck.Value.Count-1)));
 
             int draw_value = GameState.Player.dailyDeck.Value[draw_idx];
@@ -158,14 +117,17 @@ public class Encounter
                 {
                     case "Intimidation":
                         Statistics.IntimidationCardsInHand += 1;
+                        Statistics.ConversationCardsInHand += 1;
                         Statistics.NumberOfDraws += 1;
                         break;
                     case "Sympathy":
                         Statistics.SympathyCardsInHand += 1;
+                        Statistics.ConversationCardsInHand += 1;
                         Statistics.NumberOfDraws += 1;
                         break;
                     case "Persuasion":
                         Statistics.PersuasionCardsInHand += 1;
+                        Statistics.ConversationCardsInHand += 1;
                         Statistics.NumberOfDraws += 1;
                         break;
                     case "Preparation":
@@ -176,10 +138,17 @@ public class Encounter
 
                 _hand.Add(draw);
                 _encounterController.PlaceCard(draw);
-
+                
                 OnChange(); // we call this on all draws and plays
+                draw.OnDraw();
 
-                _encounterController.SetPatience(_encounterController.GetPatience() - 1);
+                bool continueGame = _encounterController.SetAndCheckPatience(_encounterController.GetPatience() - patienceCost);
+                if (!continueGame)
+                {
+                    EndEncounter(false);
+                    return;
+                }
+                _encounterController.ChangeHeadshotBasedOnPatience();
             }
         }
     }
@@ -190,19 +159,22 @@ public class Encounter
         if (globalEffects.Count == 0)
         {
             // TODO: REMOVE, this should not be hard coded
-            globalEffects.Add(new EElementWeakness("Sympathy"));
-            globalEffects.Add(new EElementResistance("Intimidation"));
+            globalEffects.Add(new EElementWeakness("Sympathy", 0.5f));
+            globalEffects.Add(new EElementResistance("Intimidation", 0.5f));
         }
         List<IExecutableEffect> toRemove = new(); 
         foreach (IExecutableEffect e in globalEffects)
         {
-            if (e.GetTerminationPlay() < Statistics.NumberOfPlays)
+            Debug.Log(e.GetName());
+            Debug.Log(e.GetTerminationPlay());
+            Debug.Log(Statistics.NumberOfPlays);
+            if (e.GetTerminationPlay() <= Statistics.NumberOfPlays || e.ForceTermination())
             {
                 toRemove.Add(e);
             }
             else
             {
-                e.Execute(this);
+                e.Execute();
             }
         }
         foreach(IExecutableEffect e in toRemove)
@@ -217,10 +189,7 @@ public class Encounter
         // wipe all card stuff, resolve all cards on change
         foreach (Card c in _hand)
         {
-            c.StackableComplianceMod = 0;
-            c.UnstackableComplianceMod = 0;
-            c.StackablePatienceMod = 0;
-            c.UnstackableComplianceMod = 0;
+            c.Clear();
             c.OnChange();
         }
         ResolveGlobals();
@@ -249,36 +218,62 @@ public class Encounter
         {
             case "Intimidation":
                 Statistics.IntimidationCardsInHand -= 1;
+                Statistics.ConversationCardsInHand -= 1;
+
                 Statistics.NumberOfPlays += 1;
+                Statistics.IntimidationCardsPlayed += 1;
+                Statistics.ConversationCardsPlayed += 1;
                 break;
             case "Sympathy":
                 Statistics.SympathyCardsInHand -= 1;
+                Statistics.ConversationCardsInHand -= 1;
+
                 Statistics.NumberOfPlays += 1;
+                Statistics.SympathyCardsPlayed += 1;
+                Statistics.ConversationCardsPlayed += 1;
                 break;
             case "Persuasion":
                 Statistics.PersuasionCardsInHand -= 1;
+                Statistics.ConversationCardsInHand -= 1;
+
                 Statistics.NumberOfPlays += 1;
+                Statistics.PersuasionCardsPlayed += 1;
+                Statistics.ConversationCardsPlayed += 1;
                 break;
             case "Preparation":
                 Statistics.PreparationCardsInHand -= 1;
+
                 Statistics.NumberOfPlays += 1;
+                Statistics.PreparationCardsPlayed += 1;
+                Statistics.ConversationCardsPlayed += 1;
                 break;
         }
 
         int totalCompliance = card.GetTotalCompliance();
         int totalPatience = card.GetTotalPatience();
-        card.OnPlay();
 
-        _encounterController.SetCompliance(_encounterController.GetCompliance() + totalCompliance);
-        _encounterController.SetPatience(_encounterController.GetPatience() - totalPatience);
+        bool continueGame = _encounterController.SetAndCheckCompliance(_encounterController.GetCompliance() + totalCompliance);
+        if (!continueGame)
+        {
+            EndEncounter(true);
+            return;
+        }
+
+        continueGame = _encounterController.SetAndCheckPatience(_encounterController.GetPatience() - totalPatience);
+        if (!continueGame)
+        {
+            EndEncounter(false);
+            return;
+        }
+        _encounterController.ChangeHeadshotBasedOnPatience();
 
         // remove from hand for now, we don't want to apply effects to a played card
         _hand.Remove(card);
 
-        OnChange(); // we call this on all draws and plays
-
         // remove card
         _encounterController.RemoveCard(card);
+        card.OnPlay();
+        OnChange(); // we call this on all draws and plays
     }
 
     /* Exposes the controller */
@@ -291,5 +286,104 @@ public class Encounter
     public List<Card> GetHand()
     {
         return _hand;
+    }
+
+    public void AddGlobal(IExecutableEffect e)
+    {
+        globalEffects.Add(e);
+    }
+
+    public void EndEncounter(bool victory)
+    {
+        GameState.Meta.lastEncounterEndedInVictory.Value = victory;
+        GameState.Meta.activeEncounter.Value = null;
+        GameObject.Destroy(_encounterPrefab);
+    }
+}
+
+
+/* An effect (as seen by E prefix) for an NPC weakness */
+public class EElementWeakness : Effect, IExecutableEffect
+{
+    private string _element;
+
+    private Color _color = new Color(50 / 255, 255 / 255, 50 / 255); // displayed on cards
+
+    private float _mod;
+    private string _name = "Element Weakness";
+    private string _desc_1 = "Your opponent is susceptible to ";
+    private string _desc_2 = "Increase Compliance by ";
+
+    public EElementWeakness(string element, float mod) : base(99)
+    {
+        _element = element;
+        _mod = mod;
+    }
+
+    public string GetDescription()
+    {
+        // string formatter? I barely know her!
+        return _desc_1 + _element + "! " + _desc_2 + (_mod * 100).ToString() + "%";
+    }
+
+    public string GetName() { return _name; }
+    public Color GetColor() { return _color; }
+
+    /* Executes the effect. A conditional may be called within */
+    public void Execute()
+    {
+        Encounter enc = GameState.Meta.activeEncounter.Value;
+        List<Card> hand = enc.GetHand();
+        foreach (Card c in hand)
+        {
+            if (c.GetElement() == _element)
+            {
+                c.StackableComplianceMod += 0.5f;
+                c.DisplayEffect(this);
+            }
+        }
+    }
+}
+
+/* An effect (as seen by E prefix) for an NPC strength */
+public class EElementResistance : Effect, IExecutableEffect
+{
+    private string _element;
+
+    private Color _color = new Color(255 / 255, 50 / 255, 50 / 255); // displayed on cards
+
+    private float _mod;
+    private string _name = "Element Resistance";
+    private string _desc_1 = "Your opponent is resistant against ";
+    private string _desc_2 = "Reduce Compliance by ";
+
+    public EElementResistance(string element, float mod) : base(99)
+    {
+        _element = element;
+        _mod = mod;
+    }
+
+    public string GetDescription()
+    {
+        // string formatter? I barely know her!
+        return _desc_1 + _element + "! " + _desc_2 + (-(_mod) * 100).ToString() + "%";
+    }
+
+    public string GetName() { return _name; }
+    public Color GetColor() { return _color; }
+
+    /* Executes the effect. A conditional may be called within */
+    public void Execute()
+    {
+        Encounter enc = GameState.Meta.activeEncounter.Value;
+        List<Card> hand = enc.GetHand();
+        foreach (Card c in hand)
+        {
+            if (c.GetElement() == _element)
+            {
+                c.StackableComplianceMod -= 0.5f;
+                c.DisplayEffect(this);
+            }
+        }
     }
 }
