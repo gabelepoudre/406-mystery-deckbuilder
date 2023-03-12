@@ -19,6 +19,7 @@ public class GlubDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     
         _dialogueTreeDict.Add("Intro", BuildIntro());
         _dialogueTreeDict.Add("MapDialogue", BuildMapDialogue());
+        _dialogueTreeDict.Add("Day2Intro", BuildDay2Intro());
       
     }
 
@@ -31,6 +32,15 @@ public class GlubDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         ".......", "I just realized I don't know where the Berry Farm is....", 
         "Maybe she can help me."});
         return new DialogueTree(intro);
+    }
+
+    private DialogueTree BuildDay2Intro()
+    {
+        PlayerNode root = new(new string[] {"Why is there yelling in the morning? I thought Small Pines was supposed to be as quiet as the deep sea.", 
+        "This is supposed to be my special vacation, my luscious scales might get dirty if I get involved.", 
+        "But if this is a big deal, then maybe I should check it out"});
+
+        return new DialogueTree(root);
     }
 
     private DialogueTree BuildMapDialogue()
