@@ -531,7 +531,7 @@ GameObject:
   - component: {fileID: -2378992812928900945}
   - component: {fileID: 1500329521221884344}
   m_Layer: 0
-  m_Name: Samuel_Snake
+  m_Name: Samuel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

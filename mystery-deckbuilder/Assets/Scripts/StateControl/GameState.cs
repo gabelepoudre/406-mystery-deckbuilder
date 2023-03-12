@@ -78,31 +78,115 @@ public static class GameState
            
             public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
             public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
         }
 
         public static class Austin
         {
             public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
             public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
         }
 
         public static class Austyn
         {
             public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
             public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Alan
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
         }
 
         public static class Mark
         {
             public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
             public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
         }
 
-        public static class Samuel_Snake
+        public static class Samuel
         {
             public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
             public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
         }
+
+        public static class Doug
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Elk
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Rat_Leader
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Rat_Prince
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Rat_Mob
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Bee
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Marry
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Wolverine
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Black_Bear
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Crouton
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        
         
 
     }

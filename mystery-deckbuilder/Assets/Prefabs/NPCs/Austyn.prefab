@@ -565,7 +565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc0fcdafee5d4a6ba706fd6de02ebe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterName: Austin
+  CharacterName: Austyn
   affinity_1: 0.43
   affinity_2: 0.45
   affintiy_3: 0.45

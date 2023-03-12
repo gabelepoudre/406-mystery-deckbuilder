@@ -1,26 +1,20 @@
-/*
- * Author(s): Ehsan Soltan
- */
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/* The Class which holds all of the Elk Secretary's dialogue trees in a dictionary, the point being
- * that all of the dialogue will be built here and passed to the NPC class 
- */
-public class Doug_BeaverDialogueTrees : MonoBehaviour, IDialogueTreeCollection
+/* All of Black bear's dialogue trees */
+public class BlackBearDialogueTrees : MonoBehaviour
 {
     private Dictionary<string, DialogueTree> _dialogueTreeDict; //a dictionary of dialogue trees
 
-    public Doug_BeaverDialogueTrees()
+    public BlackBearDialogueTrees()
     {
         _dialogueTreeDict = new();
         BuildTreeDictionary();
     }
 
     
-
+  
     private void BuildTreeDictionary()
     {
     
@@ -28,16 +22,17 @@ public class Doug_BeaverDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         _dialogueTreeDict.Add("IntroAfterEncounter", BuildIntroAfterEncounter());
     }
 
- 
+  
     private DialogueTree BuildIntro()
     {
-        
+        //TODO: implement
         return new DialogueTree(null);
     }
 
  
     private DialogueTree BuildIntroAfterEncounter()
     {
+        //TODO: implement
          return new DialogueTree(null);
     }
 
@@ -45,6 +40,5 @@ public class Doug_BeaverDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     {
         return _dialogueTreeDict;
     }
-
 
 }

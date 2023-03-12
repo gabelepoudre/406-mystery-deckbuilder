@@ -123,9 +123,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: NibblesDialogueTrigger, Assembly-CSharp
-        m_MethodName: StartDialogue1
+      - m_Target: {fileID: 2974809267316779736}
+        m_TargetAssemblyTypeName: NPCDialogueTrigger, Assembly-CSharp
+        m_MethodName: StartDialogue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -565,7 +565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc0fcdafee5d4a6ba706fd6de02ebe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterName: 
+  CharacterName: Bee
   affinity_1: 0.43
   affinity_2: 0.45
   affintiy_3: 0.45

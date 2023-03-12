@@ -528,10 +528,10 @@ GameObject:
   - component: {fileID: 7126463672181600984}
   - component: {fileID: 2974809267316779736}
   - component: {fileID: 701282225796089859}
-  - component: {fileID: -7381755355167526033}
-  - component: {fileID: 6097387358199702386}
+  - component: {fileID: 7845169710697442161}
+  - component: {fileID: 7583753490131259419}
   m_Layer: 0
-  m_Name: Rat_Mob
+  m_Name: Black_Bear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -565,7 +565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc0fcdafee5d4a6ba706fd6de02ebe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterName: Rat Mob
+  CharacterName: Black Bear
   affinity_1: 0.43
   affinity_2: 0.45
   affintiy_3: 0.45
@@ -604,7 +604,7 @@ MonoBehaviour:
   angry: {fileID: 0}
   stress: {fileID: 0}
   worry: {fileID: 0}
---- !u!114 &-7381755355167526033
+--- !u!114 &7845169710697442161
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -613,10 +613,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7429489653972524998}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e16e245d6a5444f883ae2177ffe5f2d, type: 3}
+  m_Script: {fileID: 11500000, guid: f0ea58445680a4815b5569708c57117c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6097387358199702386
+--- !u!114 &7583753490131259419
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -625,6 +625,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7429489653972524998}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a743fcb166b9430681d4a659332899a, type: 3}
+  m_Script: {fileID: 11500000, guid: b094a9368e547496f9a390ad28e08771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

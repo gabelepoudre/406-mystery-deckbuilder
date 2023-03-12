@@ -19,7 +19,7 @@ public class NPCDialogueTrigger : MonoBehaviour
 
         //call on the dialogue manager to start the dialogue, passing it the tree corresponding to the current dialogue key
         DialogueManager.Instance.StartDialogue(tree, this.gameObject);
-        Debug.Log("triggered dialogue");
+        Debug.Log("triggered dialogue with " + transform.GetComponent<NPC>().CharacterName);
     }
 
    

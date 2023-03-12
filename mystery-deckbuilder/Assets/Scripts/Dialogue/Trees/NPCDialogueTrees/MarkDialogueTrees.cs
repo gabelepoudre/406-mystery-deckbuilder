@@ -25,8 +25,8 @@ public class MarkDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     {
     
         _dialogueTreeDict.Add("Intro", BuildIntro());
-        _dialogueTreeDict.Add("IntroAfterEncounterWin", BuildIntroAfterEncounterWin());
-        _dialogueTreeDict.Add("IntroAfterEncounterLoss", BuildIntroAfterEncounterLoss());
+        _dialogueTreeDict.Add("AfterEncounterWin", BuildAfterEncounterWin());
+        _dialogueTreeDict.Add("AfterEncounterLoss", BuildAfterEncounterLoss());
     }
 
     /** intro **/
@@ -66,7 +66,7 @@ public class MarkDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     }
 
     /** intro after you beat him **/
-    private DialogueTree BuildIntroAfterEncounterWin()
+    private DialogueTree BuildAfterEncounterWin()
     {
          DialogueTree tree = new (new NPCNode(new string[] {"No one ever asks me,", "but in my opinion it was those beavers that stole the berries", 
          "After all of their disastrous union policies, they must be desperate for some good pres.", "Every year they host a harvest festival, and every year it's outshined by the berry festival.", 
@@ -74,7 +74,7 @@ public class MarkDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         return tree;
     }
 
-    private DialogueTree BuildIntroAfterEncounterLoss()
+    private DialogueTree BuildAfterEncounterLoss()
     {
         DialogueTree tree = new(new NPCNode(new string[] {"Oh you know, I've been too busy working on myself to keep up with the gossip."}));
         return tree;

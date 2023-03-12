@@ -14,7 +14,6 @@ public class AustinStateListener : MonoBehaviour
     {
         //dialogue based on whether you've completed an encounter (succesfully or not)
         GameState.NPCs.Austin.encountersCompleted.OnChange += OnEncounterComplete;
-        GameState.currentDay.OnChange += OnDayChange;
         GameState.Meta.currentAct.OnChange += OnActChange;
     }
 
@@ -31,17 +30,13 @@ public class AustinStateListener : MonoBehaviour
         }
 
         transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
-    }
 
-
-    //reset the post-loss dialogue to the normal one
-    private void OnDayChange()
-    {
-        if (GameState.NPCs.Austin.encountersWon.Value == 0)
+        if (GameState.NPCs.Austin.encountersCompleted.Value == 0)
         {
-            transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
+            transform.GetComponent<NPC>().CurrentDialogueKey = "Act2";
         }
     }
+
 
     //gets a different dialogue in act 2
     private void OnActChange()

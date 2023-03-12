@@ -25,8 +25,8 @@ public class NibblesDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     {
     
         _dialogueTreeDict.Add("Intro", BuildIntro());
-        _dialogueTreeDict.Add("IntroAfterEncounterWin", BuildIntroAfterEncounterWin());
-        _dialogueTreeDict.Add("IntroAfterEncounterLoss", BuildIntroAfterEncounterLoss());
+        _dialogueTreeDict.Add("AfterEncounterWin", BuildAfterEncounterWin());
+        _dialogueTreeDict.Add("AfterEncounterLoss", BuildAfterEncounterLoss());
     }
 
     /** Nibbles' intro **/
@@ -72,14 +72,14 @@ public class NibblesDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     }
 
     /** Nibbles' intro after you beat him **/
-    private DialogueTree BuildIntroAfterEncounterWin()
+    private DialogueTree BuildAfterEncounterWin()
     {
          DialogueTree tree = new (new NPCNode(new string[] {"You're very persuasive!",
         "Near the rail yard, operating out of an old sea can, there is a small perogy place known as Mike's Perogies", "That is where you should start."}));
         return tree;
     }
 
-    private DialogueTree BuildIntroAfterEncounterLoss()
+    private DialogueTree BuildAfterEncounterLoss()
     {
         DialogueTree tree = new(new NPCNode(new string[] {"I could tell you, but I think you should discover it yourself."}));
         return tree;

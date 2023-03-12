@@ -25,8 +25,8 @@ public class AustynDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     {
     
         _dialogueTreeDict.Add("Intro", BuildIntro());
-        _dialogueTreeDict.Add("IntroAfterEncounterWin", BuildIntroAfterEncounterWin());
-        _dialogueTreeDict.Add("IntroAfterEncounterLoss", BuildIntroAfterEncounterLoss());
+        _dialogueTreeDict.Add("AfterEncounterWin", BuildAfterEncounterWin());
+        _dialogueTreeDict.Add("AfterEncounterLoss", BuildAfterEncounterLoss());
         
     }
 
@@ -70,13 +70,13 @@ public class AustynDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
  
     
-    private DialogueTree BuildIntroAfterEncounterWin()
+    private DialogueTree BuildAfterEncounterWin()
     {
         return new DialogueTree(new NPCNode(new string[] {"I mean...", "I guess the union has the equipment and the manpower to steal the berries, but they would never do that.", 
         "The union loves Small Pines. The would never sabotage the festival."}));
     }
 
-    private DialogueTree BuildIntroAfterEncounterLoss()
+    private DialogueTree BuildAfterEncounterLoss()
     {
         return new DialogueTree(new NPCNode(new string[] {"I don't know if the union would like me talking about them like this", "Really sorry..."}));
     }

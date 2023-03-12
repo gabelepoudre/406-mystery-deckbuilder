@@ -14,7 +14,7 @@ public class NibblesStateListener : MonoBehaviour
     {
         //dialogue based on whether you've won an encounter with Nibbles for the day
         GameState.NPCs.Nibbles.encountersCompleted.OnChange += OnEncounterComplete;
-        GameState.currentDay.OnChange += OnDayChange;
+     
     }
 
     private void OnEncounterComplete()
@@ -23,25 +23,23 @@ public class NibblesStateListener : MonoBehaviour
         
         if (GameState.NPCs.Nibbles.encountersWon.Value == 1)
         {
-            transform.GetComponent<NPC>().CurrentDialogueKey = "IntroAfterEncounterWin";
+            transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWin";
         }
         else
         {
-            transform.GetComponent<NPC>().CurrentDialogueKey = "IntroAfterEncounterLoss";
+            transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterLoss";
         }
 
         transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
 
-        
-    }
-
-    //reset the post-loss dialogue to the normal one
-    private void OnDayChange()
-    {
-        if (GameState.NPCs.Nibbles.encountersWon.Value == 0)
+        if (GameState.NPCs.Nibbles.encountersCompleted.Value == 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
         }
+
+        
     }
+
+    
 
 }

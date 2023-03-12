@@ -35,7 +35,7 @@ public class BeeDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         return new DialogueTree(null);
     }
 
-    /** Nibbles' intro after you beat him **/
+  
     private DialogueTree BuildIntroAfterEncounter()
     {
          return new DialogueTree(null);

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AustynStateListener : MonoBehaviour
+public class SamuelStateListener : MonoBehaviour
 {
-     // Start is called before the first frame update
+    // Start is called before the first frame update
     void Start()
     {
         ChangeDialogueBasedOnState();
@@ -12,16 +12,15 @@ public class AustynStateListener : MonoBehaviour
 
     private void ChangeDialogueBasedOnState()
     {
-        
-        GameState.NPCs.Austyn.encountersCompleted.OnChange += OnEncounterComplete;
-   
+        GameState.NPCs.Samuel.encountersCompleted.OnChange += OnEncounterComplete;
     }
 
     private void OnEncounterComplete()
     {
+
         //if you've completed the first encounter, then we want to initiate the next dialogue tree depending on whether you won or lost
         
-        if (GameState.NPCs.Austyn.encountersWon.Value == 1)
+        if (GameState.NPCs.Samuel.encountersWon.Value == 1)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWin";
         }
@@ -32,13 +31,15 @@ public class AustynStateListener : MonoBehaviour
 
         transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
 
-        if (GameState.NPCs.Austyn.encountersCompleted.Value == 0)
+        if (GameState.NPCs.Samuel.encountersCompleted.Value == 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
         }
-
-        
     }
 
     
+
+  
+    
+
 }

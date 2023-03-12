@@ -25,7 +25,6 @@ public class MarryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     {
     
         _dialogueTreeDict.Add("Intro", BuildIntro());
-        _dialogueTreeDict.Add("IntroAfterEncounter", BuildIntroAfterEncounter());
     }
 
  
@@ -59,12 +58,6 @@ public class MarryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
 
         return new DialogueTree(greeting);
-    }
-
- 
-    private DialogueTree BuildIntroAfterEncounter()
-    {
-         return new DialogueTree(null);
     }
 
     public Dictionary<string, DialogueTree> GetDialogueTrees()

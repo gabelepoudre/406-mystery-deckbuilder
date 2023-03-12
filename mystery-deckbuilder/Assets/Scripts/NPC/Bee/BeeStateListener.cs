@@ -12,20 +12,14 @@ public class BeeStateListener : MonoBehaviour
 
     private void ChangeDialogueBasedOnState()
     {
-        //dialogue based on whether you've won an encounter with Nibbles for the day
-        GameState.NPCs.Nibbles.encountersCompleted.OnChange += OnEncounterComplete;
+      
+        GameState.NPCs.Bee.encountersCompleted.OnChange += OnEncounterComplete;
     }
 
     private void OnEncounterComplete()
     {
-        //if you've completed the first encounter, then we want to initiate the dialogue tree that corresponds to the 
-        //key "IntroAfterEncounter"
-        if (GameState.NPCs.Nibbles.encountersCompleted.Value == 1 && GameState.currentDay.Value == 0)
-        {
-            transform.GetComponent<NPC>().CurrentDialogueKey = "IntroAfterEncounter";
-            transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
-
-        }
+   
+        //TODO: implement
     }
 
     
