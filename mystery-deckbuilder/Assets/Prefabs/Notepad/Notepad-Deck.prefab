@@ -674,6 +674,7 @@ GameObject:
   - component: {fileID: 6478270656888802736}
   - component: {fileID: 8618191364843207424}
   - component: {fileID: 8778300092534491115}
+  - component: {fileID: 5308086210602356349}
   m_Layer: 5
   m_Name: card Copies Txt
   m_TagString: Untagged
@@ -743,6 +744,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 3/3
+--- !u!114 &5308086210602356349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830424807241785015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c455f8a2beee18d4cbec56235c42ff30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &831124530904887744
 GameObject:
   m_ObjectHideFlags: 0
@@ -1232,6 +1245,7 @@ GameObject:
   - component: {fileID: 8632291464152969572}
   - component: {fileID: 2841351932276616481}
   - component: {fileID: 3032852302452059502}
+  - component: {fileID: 4256015720814198156}
   m_Layer: 5
   m_Name: card Copies Txt
   m_TagString: Untagged
@@ -1301,6 +1315,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 3/3
+--- !u!114 &4256015720814198156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684298122806849571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c455f8a2beee18d4cbec56235c42ff30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1819646592813394234
 GameObject:
   m_ObjectHideFlags: 0
@@ -1952,6 +1978,7 @@ GameObject:
   - component: {fileID: 283023962291923508}
   - component: {fileID: 97582797769319172}
   - component: {fileID: 8268190758211572505}
+  - component: {fileID: 1991264246046976025}
   m_Layer: 5
   m_Name: card Copies Txt
   m_TagString: Untagged
@@ -2021,6 +2048,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 3/3
+--- !u!114 &1991264246046976025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3472237770108194886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c455f8a2beee18d4cbec56235c42ff30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3619265630137865341
 GameObject:
   m_ObjectHideFlags: 0
@@ -2818,6 +2857,7 @@ GameObject:
   - component: {fileID: 3535306222705147226}
   - component: {fileID: 3976368475304777245}
   - component: {fileID: 5524207960500282045}
+  - component: {fileID: 5050910139590787523}
   m_Layer: 5
   m_Name: card Copies Txt
   m_TagString: Untagged
@@ -2887,6 +2927,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 3/3
+--- !u!114 &5050910139590787523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5230078329356265424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c455f8a2beee18d4cbec56235c42ff30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5292781708899607721
 GameObject:
   m_ObjectHideFlags: 0
@@ -3412,6 +3464,7 @@ GameObject:
   - component: {fileID: 1010695132976054960}
   - component: {fileID: 6297332246957445994}
   - component: {fileID: 7462804751320940449}
+  - component: {fileID: 2853880147158811309}
   m_Layer: 5
   m_Name: card Copies Txt
   m_TagString: Untagged
@@ -3481,6 +3534,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 3/3
+--- !u!114 &2853880147158811309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5676818619032291964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c455f8a2beee18d4cbec56235c42ff30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5955458022641023223
 GameObject:
   m_ObjectHideFlags: 0
@@ -4154,6 +4219,7 @@ GameObject:
   - component: {fileID: 3066823441785742971}
   - component: {fileID: 4477520682573560062}
   - component: {fileID: 2974335558684546051}
+  - component: {fileID: 7103902310698308756}
   m_Layer: 5
   m_Name: card Copies Txt
   m_TagString: Untagged
@@ -4223,6 +4289,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 3/3
+--- !u!114 &7103902310698308756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7568142544921941738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c455f8a2beee18d4cbec56235c42ff30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7647744214753311885
 GameObject:
   m_ObjectHideFlags: 0
