@@ -26,6 +26,29 @@ public class NotepadController : MonoBehaviour
  
     }
 
+    //Opens the notepad and sets the pause menu active
+    public void OpenPause()
+    {
+        GameState.Meta.notepadActive.Value = !GameState.Meta.notepadActive.Value;
+        notepadCanvas.SetActive(GameState.Meta.notepadActive.Value);
+
+        sus.SetActive(false);
+        pause.SetActive(true);
+        deck.SetActive(false);
+        zone.SetActive(false);
+    }
+
+    public void OpenDeck()
+    {
+        GameState.Meta.notepadActive.Value = !GameState.Meta.notepadActive.Value;
+        notepadCanvas.SetActive(GameState.Meta.notepadActive.Value);
+
+        sus.SetActive(false);
+        pause.SetActive(false);
+        deck.SetActive(true);
+        zone.SetActive(false);
+    }
+
     //Closes the notepad
     public void CloseNotepad()
     {

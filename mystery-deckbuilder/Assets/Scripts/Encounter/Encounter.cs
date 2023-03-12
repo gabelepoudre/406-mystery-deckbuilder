@@ -13,11 +13,28 @@ using UnityEngine;
 public class Encounter
 {
     /* Static method to launch an Encounter from wherever as long as you have a vblid config */
-    public static Encounter StartEncounter(EncounterConfig config)
+    public static Encounter StartEncounter(EncounterConfig config, bool force = false)
     {
         if (GameState.Meta.activeEncounter.Value != null)
         {
             Debug.LogError("Tried to initialize an encounter while one was active");
+            return null;
+        }
+        else if (GameState.Player.dailyDeck.Value.Count == 0)
+        {
+            // launch ENCOUNTER DISALLOWED popup
+            GameObject prefabReference = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Encounter/EncounterDisallowed.prefab");
+            GameObject instantiated = GameObject.Instantiate(prefabReference);
+            return null;
+        }
+        else if (GameState.Player.dailyDeck.Value.Count < 10 && !force)
+        {
+            // launch ARE YOU SURE popup
+            GameObject prefabReference = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Encounter/AreYouSure.prefab");
+            GameObject instantiated = GameObject.Instantiate(prefabReference);
+            AreYouSureController popController = instantiated.GetComponent<AreYouSureController>();
+            popController.SetDescription("Are you sure you would like to launch this Encounter? You only have " + GameState.Player.dailyDeck.Value.Count + " cards remaining in your deck!");
+            popController.SetConfig(config);
             return null;
         }
         else
@@ -32,6 +49,7 @@ public class Encounter
 
     private GameObject _encounterPrefab;
     private EncounterPrefabController _encounterController;
+    private NPC _opponent;
     private List<IExecutableEffect> globalEffects = new();
 
     private List<Card> _hand = new();
@@ -54,6 +72,10 @@ public class Encounter
         public int PersuasionCardsInHand { get; set; } = 0;
         public int PreparationCardsInHand { get; set; } = 0;
         public int ConversationCardsInHand { get; set; } = 0;
+        public int NumberCardsInHand 
+        { 
+            get { return ConversationCardsInHand + PreparationCardsInHand; } 
+        }
         public int Patience
         {
             get
@@ -82,6 +104,7 @@ public class Encounter
 
         _encounterController.Initialize(config);
 
+        _opponent = config.Opponent;
     }
 
     /* Draw a card, if we can. Draws trigger "OnChange" which recalculates all card values */
@@ -156,11 +179,34 @@ public class Encounter
     /* Resolves global effects, as part of OnChange */
     private void ResolveGlobals()
     {
-        if (globalEffects.Count == 0)
+        if (globalEffects.Count == 0)  // we add this here because the NPC isn't done initializing on definition for some reason
         {
-            // TODO: REMOVE, this should not be hard coded
-            globalEffects.Add(new EElementWeakness("Sympathy", 0.5f));
-            globalEffects.Add(new EElementResistance("Intimidation", 0.5f));
+            if (_opponent.affinity_intimidation > 0.5f)
+            {
+                globalEffects.Add(new EElementResistance("Intimidation", 0.5f));
+            }
+            else if (_opponent.affinity_intimidation < 0.5f)
+            {
+                globalEffects.Add(new EElementWeakness("Intimidation", 0.5f));
+            }
+
+            if (_opponent.affinity_sympathy > 0.5f)
+            {
+                globalEffects.Add(new EElementResistance("Sympathy", 0.5f));
+            }
+            else if (_opponent.affinity_sympathy < 0.5f)
+            {
+                globalEffects.Add(new EElementWeakness("Sympathy", 0.5f));
+            }
+
+            if (_opponent.affintiy_persuasion > 0.5f)
+            {
+                globalEffects.Add(new EElementResistance("Persuasion", 0.5f));
+            }
+            else if (_opponent.affintiy_persuasion < 0.5f)
+            {
+                globalEffects.Add(new EElementWeakness("Persuasion", 0.5f));
+            }
         }
         List<IExecutableEffect> toRemove = new(); 
         foreach (IExecutableEffect e in globalEffects)
@@ -193,6 +239,11 @@ public class Encounter
             c.OnChange();
         }
         ResolveGlobals();
+        if(GameState.Player.dailyDeck.Value.Count == 0 && Statistics.NumberCardsInHand == 0)
+        {
+            Debug.Log("Ended encounter because player had no cards left");
+            EndEncounter(false);
+        }
     }
 
     /* Play a card given it's position on the board (stored internally to the card class if Initialized properly)*/
