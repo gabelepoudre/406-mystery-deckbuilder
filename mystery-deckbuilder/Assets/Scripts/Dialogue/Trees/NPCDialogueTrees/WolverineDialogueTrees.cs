@@ -1,14 +1,7 @@
-/*
- * Author(s): Ehsan Soltan
- */
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/* The Class which holds all of Wolverine's dialogue trees in a dictionary, the point being
- * that all of the dialogue will be built here and passed to the NPC class 
- */
 public class WolverineDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 {
     private Dictionary<string, DialogueTree> _dialogueTreeDict; //a dictionary of dialogue trees
@@ -20,31 +13,63 @@ public class WolverineDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     }
 
     
-
+    //populates the dictionary will Speck's dialogue trees
     private void BuildTreeDictionary()
     {
     
         _dialogueTreeDict.Add("Intro", BuildIntro());
-        _dialogueTreeDict.Add("IntroAfterEncounter", BuildIntroAfterEncounter());
+        _dialogueTreeDict.Add("AfterEncounterWin", BuildAfterEncounterWin());
+        _dialogueTreeDict.Add("AfterEncounterLoss", BuildAfterEncounterLoss());
     }
 
- 
     private DialogueTree BuildIntro()
     {
         
-        return new DialogueTree(null);
+        OptionNode options = new(); //set options later
+
+        PlayerNode askWhere = new(new string[] {"Where were you on the night of the berry disappearance?"});
+        PlayerNode answerWhere = new(new string[] {"......"});
+        askWhere.SetNext(answerWhere);
+        answerWhere.SetNext(options);
+       
+
+        PlayerNode askRole = new(new string[] {"What is your role here in Small Pines?"});
+        NPCNode answerRole = new(new string[] {"......"});
+        askRole.SetNext(answerRole);
+        answerRole.SetNext(options);
+
+        PlayerNode convince = new(new string[] {"What is it going to take to convince you?"});
+        EncounterNode encounter = new();
+        convince.SetNext(encounter);
+
+
+        (string, IDialogueNode) [] OptionsList = {
+            ("Ask about Whereabouts", askWhere),
+            ("Ask about Role", askRole),
+            ("Ask what convince", convince)
+        };
+
+        options.SetOptions(OptionsList);
+
+
+        return new DialogueTree(options);
     }
 
- 
-    private DialogueTree BuildIntroAfterEncounter()
+    private DialogueTree BuildAfterEncounterWin()
     {
-         return new DialogueTree(null);
+        NPCNode root = new(new string[] {"Fine, do what you will."});
+         DialogueTree tree = new (root);
+        return tree;
+    }
+
+    private DialogueTree BuildAfterEncounterLoss()
+    {
+        DialogueTree tree = new(new NPCNode(new string[] {"I am unconvinced."}));
+        return tree;
     }
 
     public Dictionary<string, DialogueTree> GetDialogueTrees()
     {
         return _dialogueTreeDict;
     }
-
-
 }

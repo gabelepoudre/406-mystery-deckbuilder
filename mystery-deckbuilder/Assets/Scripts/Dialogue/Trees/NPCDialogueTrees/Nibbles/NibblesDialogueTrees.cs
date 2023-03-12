@@ -58,7 +58,6 @@ public class NibblesDialogueTrees : MonoBehaviour, IDialogueTreeCollection
             ("Ask about Nibbles", askAboutNibbles),
             ("Ask about Small Pines", askAboutSmallPines),
             ("Ask about restaurants", askAboutRestaurants)
-
         };
 
         introReply.SetOptions(IntroReplyOptionsList);

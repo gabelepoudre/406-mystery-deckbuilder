@@ -40,7 +40,7 @@ public static class GameState
 
         public static GameStateValue<bool> notepadActive = new(false, _gameStateValues);
 
-        public static GameStateValue<bool> lastEncounterWin = new(false, _gameStateValues);
+        //public static GameStateValue<bool> lastEncounterWin = new(false, _gameStateValues);
         
     }
 
@@ -53,6 +53,17 @@ public static class GameState
         // tutorial/testing TODO remove
         static int[] startingDeck = { 1, 5, 9, 1, 5, 9, 1, 5, 9, 1, 5, 9 };
         public static GameStateValue<List<int>> dailyDeck = new(new List<int>(startingDeck), _gameStateValues);
+
+
+        public enum Locations
+        {
+            Motel,
+            Bar,
+            Boxcar
+        }
+
+        //NOTE: be sure to update this. the state listeners of certain NPCs (like Rat Prince) that are placed in multiple locations rely on this
+        public static GameStateValue<Locations> location = new(Locations.Motel, _gameStateValues);
     }
 
 
@@ -142,6 +153,7 @@ public static class GameState
             public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
             public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
             public static GameStateValue<bool> met = new(false, _gameStateValues);
+            
         }
 
         public static class Rat_Mob
@@ -180,6 +192,41 @@ public static class GameState
         }
 
         public static class Crouton
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Nina
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Mike
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Speck
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Oslow
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Clay
         {
             public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
             public static GameStateValue<int> encountersWon = new(0, _gameStateValues);

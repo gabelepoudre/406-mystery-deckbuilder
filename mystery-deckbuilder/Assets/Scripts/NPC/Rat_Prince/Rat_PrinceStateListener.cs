@@ -12,13 +12,42 @@ public class Rat_PrinceStateListener : MonoBehaviour
 
     private void ChangeDialogueBasedOnState()
     {
-        //dialogue based on whether you've won an encounter with Nibbles for the day
+        //dialogue based on whether you've won an encounter
         GameState.NPCs.Rat_Prince.encountersCompleted.OnChange += OnEncounterComplete;
+
+        //location-dependent
+        GameState.Player.location.OnChange += OnLocationChange;
     }
 
     private void OnEncounterComplete()
     {
-        //TODO: implement
+         if (GameState.NPCs.Rat_Prince.encountersWon.Value == 1)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWin";
+        }
+        else
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterLoss";
+        }
+
+        transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
+
+        if (GameState.NPCs.Rat_Prince.encountersCompleted.Value == 0)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "Confession";
+        }
+    }
+
+    private void OnLocationChange()
+    {
+        if (GameState.Player.location.Value == GameState.Player.Locations.Bar)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "Bar";
+        }
+        else if (GameState.Player.location.Value == GameState.Player.Locations.Boxcar)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "Boxcar";
+        }
     }
 
     

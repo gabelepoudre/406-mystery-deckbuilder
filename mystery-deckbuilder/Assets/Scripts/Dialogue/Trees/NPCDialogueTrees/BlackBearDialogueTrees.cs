@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /* All of Black bear's dialogue trees */
-public class BlackBearDialogueTrees : MonoBehaviour
+public class BlackBearDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 {
     private Dictionary<string, DialogueTree> _dialogueTreeDict; //a dictionary of dialogue trees
 
@@ -14,31 +14,26 @@ public class BlackBearDialogueTrees : MonoBehaviour
     }
 
     
-  
+    //populates the dictionary will Speck's dialogue trees
     private void BuildTreeDictionary()
     {
     
         _dialogueTreeDict.Add("Intro", BuildIntro());
-        _dialogueTreeDict.Add("IntroAfterEncounter", BuildIntroAfterEncounter());
+      
     }
 
-  
     private DialogueTree BuildIntro()
     {
-        //TODO: implement
-        return new DialogueTree(null);
+        NPCNode intro = new(new string[] {"Hello detective. Let me quickly catch you up to speed on what I've found at the crime scene.", 
+        "The disappearance happened last night. There was a large number of footprints which indicates a big group worked together to steal the berries.", 
+        "There's evidence that the culprits escaped using the river and travelled North. And uhhh. That's all I got, sorry.", 
+        "We have one week left before the berry festival, so we better act quickly"});
+        return new DialogueTree(intro);
     }
 
- 
-    private DialogueTree BuildIntroAfterEncounter()
-    {
-        //TODO: implement
-         return new DialogueTree(null);
-    }
-
+   
     public Dictionary<string, DialogueTree> GetDialogueTrees()
     {
         return _dialogueTreeDict;
     }
-
 }
