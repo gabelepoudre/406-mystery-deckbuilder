@@ -256,21 +256,13 @@ public static class GameState
     /* GameState holder class for Zones */
     public class Zones
     {
-        
+
         //to keep track of what zones have been visited by the player
         public static List<string> zonesVisted = new List<string>();
 
 
     }
 
-    /* GameState holder class for Zones */
-    public class Zones
-    {
-        //to keep track of what zones have been visited by the player
-        public static List<string> zonesVisted = new List<string>();
-
-
-    }
 
     /* GameState holder class for ongoing card and deck information*/
     public class CardInfo
