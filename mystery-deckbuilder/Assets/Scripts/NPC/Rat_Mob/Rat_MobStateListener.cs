@@ -13,7 +13,16 @@ public class Rat_MobStateListener : MonoBehaviour
     private void ChangeDialogueBasedOnState()
     {
         //dialogue based on whether you've won an encounter with Nibbles for the day
-        GameState.NPCs.Rat_Mob.encountersCompleted.OnChange += OnEncounterComplete;
+        
+        try 
+        {
+            GameState.NPCs.Rat_Mob.encountersCompleted.OnChange += OnEncounterComplete;
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Rat_Mob.encountersCompleted.OnChange -= OnEncounterComplete;
+        }
     }
 
     private void OnEncounterComplete()

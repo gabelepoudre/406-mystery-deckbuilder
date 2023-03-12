@@ -25,9 +25,8 @@ public class AustinDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     {
     
         _dialogueTreeDict.Add("Intro", BuildIntro());
-        _dialogueTreeDict.Add("Act2", BuildAct2Dialogue());
-        _dialogueTreeDict.Add("Act2EncounterWin", BuildAct2EncounterWin());
-        _dialogueTreeDict.Add("Act2EncounterLoss", BuildAct2EncounterLoss());
+        _dialogueTreeDict.Add("EncounterWin", BuildEncounterWin());
+        _dialogueTreeDict.Add("EncounterLoss", BuildEncounterLoss());
         
     }
 
@@ -62,48 +61,14 @@ public class AustinDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         return new DialogueTree(greeting);
     }
 
- 
-    private DialogueTree BuildAct2Dialogue()
-    {
 
-        NPCNode intro = new(new string[] {"Oh hey detective. Is there something we could help with?"});
-        OptionNode reply = new(); //set later
-        intro.SetNext(reply);
-
-        PlayerNode askDisappearance = new(new string[] {"Where were you on the night of the berry disappearance?"});
-        PlayerNode askRole = new(new string[] {"What is your role here in Small Pines?"});
-        PlayerNode askBerries = new(new string[] {"So as a union worker, do you think the union could have stolen the berries?"});
-
-        NPCNode explainDisappearance = new(new string[] {"Oh we were home by that time.", "The union is really good about not forcing overtime.", 
-        "It's usually only the hardcore members that stay up late."});
-        NPCNode explainRole = new(new string[] {"I started at the union recently.", "Honestly it's been one of the best things to happen to us.", 
-        "It's so nice to have a stable job and a solid income"});
-        explainDisappearance.SetNext(reply);
-        explainRole.SetNext(reply);
-
-        EncounterNode encounter = new();
-
-        askDisappearance.SetNext(explainDisappearance);
-        askRole.SetNext(explainRole);
-        askBerries.SetNext(encounter);
-
-        (string, IDialogueNode)[] optionsList = {
-            ("Ask where he was", askDisappearance),
-            ("Ask role", askRole)
-        };
-
-        reply.SetOptions(optionsList);
-
-         return new DialogueTree(intro);
-    }
-
-    private DialogueTree BuildAct2EncounterWin()
+    private DialogueTree BuildEncounterWin()
     {
         return new DialogueTree(new NPCNode(new string[] {"I mean, I guess the union has the equipment and manpower to steal the berries,", 
         "but they would never do that.", "The union loves Small Pines. They would never sabotage the festival"}));
     }
 
-    private DialogueTree BuildAct2EncounterLoss()
+    private DialogueTree BuildEncounterLoss()
     {
         return new DialogueTree(new NPCNode(new string[] {"I don't know that the union would like me talking about them like this.....", "Really sorry...."}));
     }

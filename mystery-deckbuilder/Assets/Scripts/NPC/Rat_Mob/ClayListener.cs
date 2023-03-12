@@ -13,7 +13,16 @@ public class ClayListener : MonoBehaviour
     private void ChangeDialogueBasedOnState()
     {
         //dialogue based on whether you've won an encounter with Nibbles for the day
-        GameState.NPCs.Clay.encountersCompleted.OnChange += OnEncounterComplete;
+        
+        try 
+        {
+            GameState.NPCs.Clay.encountersCompleted.OnChange += OnEncounterComplete;
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Clay.encountersCompleted.OnChange -= OnEncounterComplete;
+        }
      
     }
 

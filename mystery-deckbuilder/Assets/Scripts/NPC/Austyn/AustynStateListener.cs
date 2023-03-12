@@ -13,7 +13,16 @@ public class AustynStateListener : MonoBehaviour
     private void ChangeDialogueBasedOnState()
     {
         
-        GameState.NPCs.Austyn.encountersCompleted.OnChange += OnEncounterComplete;
+        try 
+        {
+            GameState.NPCs.Austyn.encountersCompleted.OnChange += OnEncounterComplete;
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Austyn.encountersCompleted.OnChange -= OnEncounterComplete;
+        }
+
    
     }
 

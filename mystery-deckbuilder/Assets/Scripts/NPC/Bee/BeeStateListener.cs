@@ -13,7 +13,16 @@ public class BeeStateListener : MonoBehaviour
     private void ChangeDialogueBasedOnState()
     {
       
-        GameState.NPCs.Bee.encountersCompleted.OnChange += OnEncounterComplete;
+        try 
+        {
+            GameState.NPCs.Bee.encountersCompleted.OnChange += OnEncounterComplete;
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Bee.encountersCompleted.OnChange -= OnEncounterComplete;
+        }
+
     }
 
     private void OnEncounterComplete()

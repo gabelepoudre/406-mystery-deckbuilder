@@ -13,7 +13,16 @@ public class MarkStateListener : MonoBehaviour
     private void ChangeDialogueBasedOnState()
     {
         
-        GameState.NPCs.Mark.encountersCompleted.OnChange += OnEncounterComplete;
+        
+        try 
+        {
+            GameState.NPCs.Mark.encountersCompleted.OnChange += OnEncounterComplete;
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Mark.encountersCompleted.OnChange -= OnEncounterComplete;
+        }
     }
 
     private void OnEncounterComplete()

@@ -12,8 +12,17 @@ public class Black_BearStateListener : MonoBehaviour
 
     private void ChangeDialogueBasedOnState()
     {
-        //dialogue based on whether you've won an encounter with Nibbles for the day
-        GameState.NPCs.Black_Bear.encountersCompleted.OnChange += OnEncounterComplete;
+        //dialogue based on whether you've won an encounter with Bear for the day
+        try 
+        {
+            GameState.NPCs.Black_Bear.encountersCompleted.OnChange += OnEncounterComplete;
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Black_Bear.encountersCompleted.OnChange -= OnEncounterComplete;
+        }
+
     }
 
     private void OnEncounterComplete()

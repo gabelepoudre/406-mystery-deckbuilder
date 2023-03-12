@@ -13,6 +13,8 @@ public class NibblesDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 {
     private Dictionary<string, DialogueTree> _dialogueTreeDict; //a dictionary of dialogue trees
 
+
+
     public NibblesDialogueTrees()
     {
         _dialogueTreeDict = new();
