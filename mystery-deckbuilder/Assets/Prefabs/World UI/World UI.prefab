@@ -823,6 +823,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1425035604778906778}
     m_Modifications:
+    - target: {fileID: 8386694841746709757, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
+      propertyPath: redCardNoEncounter
+      value: 
+      objectReference: {fileID: 9204399067519391359, guid: 97a6a58ded51d2a499c75eef49cf975f, type: 3}
+    - target: {fileID: 8386694841746709757, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
+      propertyPath: blueCardNoEncounter
+      value: 
+      objectReference: {fileID: 2988496786782926893, guid: 07628ced1fda5ee4a9b9bdacd696b590, type: 3}
+    - target: {fileID: 8386694841746709757, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
+      propertyPath: greyCardNoEncounter
+      value: 
+      objectReference: {fileID: 6754762022743972773, guid: 47e9ed273c5e13540a3d8920f734db6e, type: 3}
+    - target: {fileID: 8386694841746709757, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
+      propertyPath: greenCardNoEncounter
+      value: 
+      objectReference: {fileID: 3279046307657509022, guid: 7d09218a0cfde6f4099a944f6b56e6ff, type: 3}
     - target: {fileID: 8679184070414422610, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
       propertyPath: map
       value: 
