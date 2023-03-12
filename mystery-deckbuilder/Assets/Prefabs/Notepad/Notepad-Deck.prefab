@@ -167,6 +167,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2622787708850560988}
+  - component: {fileID: 224024368266688813}
   m_Layer: 5
   m_Name: Notepad-Deck
   m_TagString: Untagged
@@ -225,6 +226,30 @@ RectTransform:
   m_AnchoredPosition: {x: -0.010132, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &224024368266688813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253366144930051765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ecc8491b12fac4a8df61ed7d3da7a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deckContainers:
+  - {fileID: 2652825386215624544}
+  - {fileID: 7647744214753311885}
+  - {fileID: 4098511292090017359}
+  - {fileID: 831124530904887744}
+  - {fileID: 3619265630137865341}
+  - {fileID: 894513244393016789}
+  collectionContainers: []
+  redCardNoEncounter: {fileID: 9204399067519391359, guid: 97a6a58ded51d2a499c75eef49cf975f, type: 3}
+  blueCardNoEncounter: {fileID: 2988496786782926893, guid: 07628ced1fda5ee4a9b9bdacd696b590, type: 3}
+  greenCardNoEncounter: {fileID: 3279046307657509022, guid: 7d09218a0cfde6f4099a944f6b56e6ff, type: 3}
+  greyCardNoEncounter: {fileID: 6754762022743972773, guid: 47e9ed273c5e13540a3d8920f734db6e, type: 3}
 --- !u!1 &276253087914762020
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,6 +790,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 245266986227621741}
+  - component: {fileID: 3170322144048322877}
   m_Layer: 5
   m_Name: DeckCard container 4
   m_TagString: Untagged
@@ -794,6 +820,20 @@ RectTransform:
   m_AnchoredPosition: {x: -462.04, y: -189.16}
   m_SizeDelta: {x: 123.9221, y: 195.6882}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3170322144048322877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831124530904887744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720d88f84f38e534fbfed9aaaeae1132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawn: {fileID: 8951350363283371657}
+  quantityController: {fileID: 5308086210602356349}
 --- !u!1 &894513244393016789
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,6 +843,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5298184573013568552}
+  - component: {fileID: 2122015864435237234}
   m_Layer: 5
   m_Name: DeckCard container 6
   m_TagString: Untagged
@@ -832,6 +873,20 @@ RectTransform:
   m_AnchoredPosition: {x: -187.59995, y: -189.59999}
   m_SizeDelta: {x: 123.9221, y: 195.6882}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2122015864435237234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894513244393016789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720d88f84f38e534fbfed9aaaeae1132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawn: {fileID: 6972854506139293009}
+  quantityController: {fileID: 4256015720814198156}
 --- !u!1 &1026852037420162099
 GameObject:
   m_ObjectHideFlags: 0
@@ -1660,6 +1715,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9043650925826789038}
+  - component: {fileID: 33271271665013023}
   m_Layer: 5
   m_Name: DeckCard container 1
   m_TagString: Untagged
@@ -1689,6 +1745,20 @@ RectTransform:
   m_AnchoredPosition: {x: -462.03897, y: 12.4059}
   m_SizeDelta: {x: 123.9221, y: 195.6882}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &33271271665013023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2652825386215624544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720d88f84f38e534fbfed9aaaeae1132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawn: {fileID: 3685413808716608555}
+  quantityController: {fileID: 5050910139590787523}
 --- !u!1 &2733719829282499542
 GameObject:
   m_ObjectHideFlags: 0
@@ -2069,6 +2139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5922497100899785546}
+  - component: {fileID: 4725193153089924796}
   m_Layer: 5
   m_Name: DeckCard container 5
   m_TagString: Untagged
@@ -2098,6 +2169,20 @@ RectTransform:
   m_AnchoredPosition: {x: -325.00003, y: -189.59998}
   m_SizeDelta: {x: 123.9221, y: 195.6882}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4725193153089924796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3619265630137865341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720d88f84f38e534fbfed9aaaeae1132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawn: {fileID: 4647563054771168633}
+  quantityController: {fileID: 7103902310698308756}
 --- !u!1 &3635783214968926487
 GameObject:
   m_ObjectHideFlags: 0
@@ -2261,6 +2346,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6931883954834568856}
+  - component: {fileID: 3023993648196008358}
   m_Layer: 5
   m_Name: DeckCard container 3
   m_TagString: Untagged
@@ -2290,6 +2376,20 @@ RectTransform:
   m_AnchoredPosition: {x: -187.6, y: 12.4059}
   m_SizeDelta: {x: 123.9221, y: 195.6882}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3023993648196008358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4098511292090017359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720d88f84f38e534fbfed9aaaeae1132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawn: {fileID: 7023070886530807738}
+  quantityController: {fileID: 2853880147158811309}
 --- !u!1 &4302564059954514551
 GameObject:
   m_ObjectHideFlags: 0
@@ -4310,6 +4410,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4910396257773616796}
+  - component: {fileID: 4640710930347091077}
   m_Layer: 5
   m_Name: DeckCard container 2
   m_TagString: Untagged
@@ -4339,6 +4440,20 @@ RectTransform:
   m_AnchoredPosition: {x: -325, y: 12.4059}
   m_SizeDelta: {x: 123.9221, y: 195.6882}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4640710930347091077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7647744214753311885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720d88f84f38e534fbfed9aaaeae1132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawn: {fileID: 929883397269340187}
+  quantityController: {fileID: 1991264246046976025}
 --- !u!1 &7650611895904649187
 GameObject:
   m_ObjectHideFlags: 0

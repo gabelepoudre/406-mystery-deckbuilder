@@ -255,6 +255,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4859677109974491038}
   - component: {fileID: 3562469101041655643}
+  - component: {fileID: 6249000122790250906}
   m_Layer: 0
   m_Name: BlueCard_Canvas
   m_TagString: Untagged
@@ -304,6 +305,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardHighlight: {fileID: 1447258782107317838}
+--- !u!114 &6249000122790250906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2988496786782926893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f8976a4620a94443ac4a4b4fe3f1a12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlight: {fileID: 9062726757288551814}
+  cardRect: {fileID: 7943361727441181158}
+  cardPicture: {fileID: 575365372043764291}
+  type: {fileID: 8907273883857251613}
+  descriptionHolder: {fileID: 4179027265834552901}
+  cardName: {fileID: 8807010179950821059}
+  cardDescription: {fileID: 965297206041516667}
+  visiblePatience: {fileID: 6664161149262240035}
+  visibleCompliance: {fileID: 7851711931929084409}
 --- !u!1 &3001597044552754594
 GameObject:
   m_ObjectHideFlags: 0
