@@ -13,12 +13,12 @@ public class Label : MonoBehaviour
         SceneManager.LoadScene(scene);
     }
 
-    public void display()
+    public void Display()
     {
         LabelDisplay = true;
     }
 
-    public void hide()
+    public void Hide()
     {
         LabelDisplay = false;
     }
