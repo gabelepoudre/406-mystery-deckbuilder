@@ -63,14 +63,10 @@ public class DeckCardQuantityController : MonoBehaviour
     {
         GetLinkedText().text = CardsActiveInDeck + "/" + CardsContainedInDeck + "/" + CardHoldMax;
     }
+
     void Start()
     {
-        
+        UpdateQuantity();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
