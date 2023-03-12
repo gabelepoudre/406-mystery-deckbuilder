@@ -65,6 +65,10 @@ public class Encounter
         public int PersuasionCardsInHand { get; set; } = 0;
         public int PreparationCardsInHand { get; set; } = 0;
         public int ConversationCardsInHand { get; set; } = 0;
+        public int NumberCardsInHand 
+        { 
+            get { return ConversationCardsInHand + PreparationCardsInHand; } 
+        }
         public int Patience
         {
             get
@@ -228,7 +232,11 @@ public class Encounter
             c.OnChange();
         }
         ResolveGlobals();
-
+        if(GameState.Player.dailyDeck.Value.Count == 0 && Statistics.NumberCardsInHand == 0)
+        {
+            Debug.Log("Ended encounter because player had no cards left");
+            EndEncounter(false);
+        }
     }
 
     /* Play a card given it's position on the board (stored internally to the card class if Initialized properly)*/
