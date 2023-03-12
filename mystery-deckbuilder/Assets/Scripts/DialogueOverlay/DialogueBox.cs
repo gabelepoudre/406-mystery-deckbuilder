@@ -68,7 +68,8 @@ public class DialogueBox : MonoBehaviour
     public void DestroyDialogueBox() 
     {
         _finished = true;
-        Destroy(gameObject, 2);
+        DestroyOptionBox();
+        Destroy(gameObject, 0.5f);
     }
 
     /* instantiate a new option box, as well as its buttons */
@@ -98,7 +99,7 @@ public class DialogueBox : MonoBehaviour
         foreach(string option in optionNode.options)
         {
             //instantiate option buttons
-            GameObject optionButton = Instantiate(_optionButtonPrefab, new Vector3(5.3f, 0.7f - counter * 0.7f, 0f), 
+            GameObject optionButton = Instantiate(_optionButtonPrefab, new Vector3(5.0f, 1.3f - counter * 0.5f, 0f), 
             Quaternion.identity, transform.Find("Canvas").transform.Find("Canvas"));
             optionButton.GetComponentInChildren<Text>().text = option; //set correct text of button
 

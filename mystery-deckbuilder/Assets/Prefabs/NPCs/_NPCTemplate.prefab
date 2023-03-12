@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 7126463671949975561}
   - component: {fileID: 7126463671949975560}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -526,7 +526,8 @@ GameObject:
   m_Component:
   - component: {fileID: 944568824185304349}
   - component: {fileID: 7126463672181600984}
-  - component: {fileID: 7126463672181600985}
+  - component: {fileID: 2974809267316779736}
+  - component: {fileID: 701282225796089859}
   m_Layer: 0
   m_Name: _NPCTemplate
   m_TagString: Untagged
@@ -572,7 +573,7 @@ MonoBehaviour:
   currentCompliance: 0
   ComplianceThreshhold: 0
   encounterSprites: {fileID: 0}
---- !u!114 &7126463672181600985
+--- !u!114 &2974809267316779736
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -581,6 +582,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 7429489653972524998}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4edb79ce7568244aaa091c23144ffd87, type: 3}
+  m_Script: {fileID: 11500000, guid: dc47e8dd8a1314ed6ab6b2748b2ab7ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &701282225796089859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7429489653972524998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c2c6071d43e4cf47b85ce574f5d547d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  neutral: {fileID: 0}
+  happy: {fileID: 0}
+  angry: {fileID: 0}
+  stress: {fileID: 0}
+  worry: {fileID: 0}

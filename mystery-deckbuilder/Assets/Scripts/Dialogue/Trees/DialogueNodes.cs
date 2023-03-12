@@ -47,6 +47,7 @@ public class NPCNode : IDialogueNode
 {
     private IDialogueNode _next;
     public string[] dialogue;
+    public string Name { get; set; }
 
     /* The type of node (player, npc, option) we are dealing with */
     public string NodeType() { return "npc"; }
@@ -57,9 +58,10 @@ public class NPCNode : IDialogueNode
     public void SetNext(IDialogueNode next) { this._next = next; }
 
     /* Note: next default to null, which will terminate the conversation */
-    public NPCNode(string[] dialogue, IDialogueNode next = null)
+    public NPCNode(string[] dialogue, IDialogueNode next = null, string name=null)
     {
         this.dialogue = dialogue;
+        this.Name = name;
         this._next = next;
     }
 }
