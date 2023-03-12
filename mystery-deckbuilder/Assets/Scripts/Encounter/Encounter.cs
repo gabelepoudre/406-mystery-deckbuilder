@@ -20,6 +20,13 @@ public class Encounter
             Debug.LogError("Tried to initialize an encounter while one was active");
             return null;
         }
+        else if (GameState.Player.dailyDeck.Value.Count == 0)
+        {
+            // launch ENCOUNTER DISALLOWED popup
+            GameObject prefabReference = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Encounter/EncounterDisallowed.prefab");
+            GameObject instantiated = GameObject.Instantiate(prefabReference);
+            return null;
+        }
         else if (GameState.Player.dailyDeck.Value.Count < 10 && !force)
         {
             // launch ARE YOU SURE popup
