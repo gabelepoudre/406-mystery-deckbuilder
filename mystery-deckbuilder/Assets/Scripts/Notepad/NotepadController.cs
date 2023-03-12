@@ -12,6 +12,7 @@ public class NotepadController : MonoBehaviour
     public GameObject sus;
     public GameObject pause;
     public GameObject deck;
+    public GameObject map;
 
     //Opens the notepad and sets the first chapter (suspects) to be active
     public void OpenNotepad()

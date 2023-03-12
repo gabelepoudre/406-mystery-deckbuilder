@@ -11,8 +11,11 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class CardPrefabController : MonoBehaviour, IPointerClickHandler, IDeselectHandler
+public class CardPrefabController : MonoBehaviour, IDeselectHandler, IPointerEnterHandler, IPointerExitHandler
 {
+    private string[] modes = {"PLAY", "HIGHLIGHT" };
+    private string currentMode = "PLAY";
+
     public Image highlight;
     public Image cardRect;
     public Image cardPicture;
@@ -204,25 +207,53 @@ public class CardPrefabController : MonoBehaviour, IPointerClickHandler, IDesele
         _showingOptions = false;
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (!_highlighted)
+        {
+            ShowOptions();
+        }
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (!_highlighted)
+        {
+            HideOptions();
+        }
+    }
+        /*
+        switch (currentMode)
+        {
+            case "PLAY":
+                //show play button
+                break;
+            case "HIGHLIGHT":
+                //show ? button
+                break;
+        }
+    }
     public void OnPointerClick(PointerEventData eventData) 
     {
+        
         __evilToldToDeselect = false;
         if (!_highlighted)
         {
             ShowOptions();
         }
     }
-
+        */
     public void OnDeselect(BaseEventData eventData)
     {
         if (_highlighted)
         {
             UnHighlightCard();
         }
+        /*
         else
         {
             __evilToldToDeselect = true;
             __evilDeselectionDelay = 6;
         }
+        */
     }
 }
