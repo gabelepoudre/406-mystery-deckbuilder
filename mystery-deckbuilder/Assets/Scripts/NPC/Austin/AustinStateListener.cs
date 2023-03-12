@@ -13,8 +13,28 @@ public class AustinStateListener : MonoBehaviour
     private void ChangeDialogueBasedOnState()
     {
         //dialogue based on whether you've completed an encounter (succesfully or not)
-        GameState.NPCs.Austin.encountersCompleted.OnChange += OnEncounterComplete;
-        GameState.Meta.currentAct.OnChange += OnActChange;
+        try 
+        {
+            GameState.NPCs.Austin.encountersCompleted.OnChange += OnEncounterComplete;
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Austin.encountersCompleted.OnChange -= OnEncounterComplete;
+        }
+
+        try 
+        {
+            GameState.Meta.currentAct.OnChange += OnActChange;
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.Meta.currentAct.OnChange -= OnActChange;
+        }
+
+
+       
     }
 
     private void OnEncounterComplete()

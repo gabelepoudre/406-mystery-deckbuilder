@@ -14,7 +14,16 @@ public class Elk_SecretaryStateListener : MonoBehaviour
 
     private void ChangeDialogueBasedOnState()
     {
-        GameState.NPCs.Elk.encountersCompleted.OnChange += OnEncounterComplete;
+        
+        try 
+        {
+            GameState.NPCs.Elk.encountersCompleted.OnChange += OnEncounterComplete;
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Elk.encountersCompleted.OnChange -= OnEncounterComplete;
+        }
     }
 
     private void OnEncounterComplete()

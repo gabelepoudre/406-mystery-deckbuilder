@@ -13,10 +13,29 @@ public class Rat_PrinceStateListener : MonoBehaviour
     private void ChangeDialogueBasedOnState()
     {
         //dialogue based on whether you've won an encounter
-        GameState.NPCs.Rat_Prince.encountersCompleted.OnChange += OnEncounterComplete;
+        
+        try 
+        {
+            GameState.NPCs.Rat_Prince.encountersCompleted.OnChange += OnEncounterComplete;
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Rat_Prince.encountersCompleted.OnChange -= OnEncounterComplete;
+        }
 
         //location-dependent
-        GameState.Player.location.OnChange += OnLocationChange;
+
+        try 
+        {
+            GameState.Player.location.OnChange += OnLocationChange;
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.Player.location.OnChange -= OnLocationChange;
+        }
+       
     }
 
     private void OnEncounterComplete()

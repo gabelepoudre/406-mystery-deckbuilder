@@ -12,7 +12,16 @@ public class SamuelStateListener : MonoBehaviour
 
     private void ChangeDialogueBasedOnState()
     {
-        GameState.NPCs.Samuel.encountersCompleted.OnChange += OnEncounterComplete;
+        
+        try 
+        {
+            GameState.NPCs.Samuel.encountersCompleted.OnChange += OnEncounterComplete;
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Samuel.encountersCompleted.OnChange -= OnEncounterComplete;
+        }
     }
 
     private void OnEncounterComplete()

@@ -12,7 +12,16 @@ public class MarryStateListener : MonoBehaviour
 
     private void ChangeDialogueBasedOnState()
     {
-        GameState.NPCs.Marry.encountersCompleted.OnChange += OnEncounterComplete;
+        
+        try 
+        {
+            GameState.NPCs.Marry.encountersCompleted.OnChange += OnEncounterComplete;
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Marry.encountersCompleted.OnChange -= OnEncounterComplete;
+        }
     }
 
     private void OnEncounterComplete()

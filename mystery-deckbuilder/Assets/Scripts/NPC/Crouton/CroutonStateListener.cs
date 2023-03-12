@@ -14,7 +14,16 @@ public class CroutonStateListener : MonoBehaviour
     private void ChangeDialogueBasedOnState()
     {
        
-        GameState.NPCs.Crouton.encountersCompleted.OnChange += OnEncounterComplete;
+        try 
+        {
+            GameState.NPCs.Crouton.encountersCompleted.OnChange += OnEncounterComplete;
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Crouton.encountersCompleted.OnChange -= OnEncounterComplete;
+        }
+
     }
 
     private void OnEncounterComplete()

@@ -79,6 +79,7 @@ public static class GameState
 
         
         //so we can access the met value with the name of the NPC
+        // yes very grotesque i know
         public static Dictionary<string, GameStateValue<bool>> npcNameToMet = new(){{"Nibbles", Nibbles.met}, 
         {"Austin", Austin.met}, {"Austyn", Austyn.met}, {"Alan", Alan.met}, 
         {"Mark", Mark.met}, {"Samuel", Samuel.met}, {"Doug", Doug.met}, 
@@ -87,6 +88,9 @@ public static class GameState
         {"Wolverine", Wolverine.met}, {"Black Bear", Black_Bear.met}, {"Crouton", Crouton.met}, 
         {"Nina", Nina.met}, {"Mike", Mike.met}, {"Speck", Speck.met}, 
         {"Oslow", Oslow.met}, {"Clay", Clay.met}};
+
+        //we'll be switching scenes so we have to statically store NPC dialogue keys
+        public static Dictionary<string, string> currentNPCDialogueKeys = new();
         
         public static class Nibbles
         {

@@ -13,11 +13,39 @@ public class DougStateListener : MonoBehaviour
     private void ChangeDialogueBasedOnState()
     {
         //dialogue based on whether you've won an encounter with him for the day
-        GameState.NPCs.Doug.encountersCompleted.OnChange += OnEncounterComplete;
+        try 
+        {
+            GameState.NPCs.Doug.encountersCompleted.OnChange += OnEncounterComplete;
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Doug.encountersCompleted.OnChange -= OnEncounterComplete;
+        }
+
 
         //dialogue based on whether you've met austyn or mark or both
-        GameState.NPCs.Austyn.met.OnChange += MetAustynOrMark;
-        GameState.NPCs.Mark.met.OnChange += MetAustynOrMark;
+        try 
+        {
+            GameState.NPCs.Austyn.met.OnChange += MetAustynOrMark;
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Austyn.met.OnChange -= MetAustynOrMark;
+        }
+
+         try 
+        {
+            GameState.NPCs.Mark.met.OnChange += MetAustynOrMark;
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Mark.met.OnChange -= MetAustynOrMark;
+        }
+
+       
     }
 
     private void OnEncounterComplete()
