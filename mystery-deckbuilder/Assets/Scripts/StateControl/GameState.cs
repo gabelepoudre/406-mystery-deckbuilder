@@ -37,6 +37,7 @@ public static class GameState
 
 
         public static GameStateValue<Encounter> activeEncounter = new(null, _gameStateValues);
+        public static GameStateValue<bool> lastEncounterEndedInVictory = new(false, _gameStateValues);
 
         public static GameStateValue<bool> notepadActive = new(false, _gameStateValues);
 
@@ -51,7 +52,8 @@ public static class GameState
         public static GameStateValue<List<int>> fullDeck;
 
         // tutorial/testing TODO remove
-        static int[] startingDeck = { 1, 5, 9, 1, 5, 9, 1, 5, 9, 1, 5, 9 };
+        //static int[] startingDeck = { 10, 10, 10, 10, 17, 17, 17, 17 };
+        static int[] startingDeck = { 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17 };
         public static GameStateValue<List<int>> dailyDeck = new(new List<int>(startingDeck), _gameStateValues);
 
 
@@ -77,6 +79,11 @@ public static class GameState
         //NOTE: updates automatically in NPCdialoguetrigger
         public static string lastNPCSpokenTo = "";
 
+        //so we can access the encounters completed value with the name of the NPC
+        public static Dictionary<string, GameStateValue<int>> npcNameToEncountersCompleted = new(){{"Nibbles", Nibbles.encountersCompleted}};
+
+        //to keep track of what NPCs have been met by the player
+        public static List<string> npcsMet = new List<string>();
         
         //so we can access the met value with the name of the NPC
         // yes very grotesque i know
@@ -243,6 +250,25 @@ public static class GameState
 
         
         
+
+    }
+
+    /* GameState holder class for Zones */
+    public class Zones
+    {
+        
+        //to keep track of what zones have been visited by the player
+        public static List<string> zonesVisted = new List<string>();
+
+
+    }
+
+    /* GameState holder class for Zones */
+    public class Zones
+    {
+        //to keep track of what zones have been visited by the player
+        public static List<string> zonesVisted = new List<string>();
+
 
     }
 
