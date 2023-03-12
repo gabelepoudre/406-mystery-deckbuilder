@@ -90,7 +90,7 @@ public static class GameState
         {"Austin", Austin.met}, {"Austyn", Austyn.met}, {"Alan", Alan.met}, 
         {"Mark", Mark.met}, {"Samuel", Samuel.met}, {"Doug", Doug.met}, 
         {"Elk Secretary", Elk.met}, {"Rat Leader", Rat_Leader.met}, {"Rat Prince", Rat_Prince.met}, 
-        {"Rat Mob", Rat_Mob.met}, {"Bee", Bee.met}, {"Marry", Marry.met}, 
+        {"Big Rat", Big_Rat.met}, {"Bee", Bee.met}, {"Marry", Marry.met}, 
         {"Wolverine", Wolverine.met}, {"Black Bear", Black_Bear.met}, {"Crouton", Crouton.met}, 
         {"Nina", Nina.met}, {"Mike", Mike.met}, {"Speck", Speck.met}, 
         {"Oslow", Oslow.met}, {"Clay", Clay.met}};
@@ -99,7 +99,7 @@ public static class GameState
         {"Austin", Austin.encountersCompleted}, {"Austyn", Austyn.encountersCompleted}, {"Alan", Alan.encountersCompleted}, 
         {"Mark", Mark.encountersCompleted}, {"Samuel", Samuel.encountersCompleted}, {"Doug", Doug.encountersCompleted}, 
         {"Elk Secretary", Elk.encountersCompleted}, {"Rat Leader", Rat_Leader.encountersCompleted}, {"Rat Prince", Rat_Prince.encountersCompleted}, 
-        {"Rat Mob", Rat_Mob.encountersCompleted}, {"Bee", Bee.encountersCompleted}, {"Marry", Marry.encountersCompleted}, 
+        {"Big Rat", Big_Rat.encountersCompleted}, {"Bee", Bee.encountersCompleted}, {"Marry", Marry.encountersCompleted}, 
         {"Wolverine", Wolverine.encountersCompleted}, {"Black Bear", Black_Bear.encountersCompleted}, {"Crouton", Crouton.encountersCompleted}, 
         {"Nina", Nina.encountersCompleted}, {"Mike", Mike.encountersCompleted}, {"Speck", Speck.encountersCompleted}, 
         {"Oslow", Oslow.encountersCompleted}, {"Clay", Clay.encountersCompleted}};
@@ -108,7 +108,7 @@ public static class GameState
         {"Austin", Austin.encountersWon}, {"Austyn", Austyn.encountersWon}, {"Alan", Alan.encountersWon}, 
         {"Mark", Mark.encountersWon}, {"Samuel", Samuel.encountersWon}, {"Doug", Doug.encountersWon}, 
         {"Elk Secretary", Elk.encountersWon}, {"Rat Leader", Rat_Leader.encountersWon}, {"Rat Prince", Rat_Prince.encountersWon}, 
-        {"Rat Mob", Rat_Mob.encountersWon}, {"Bee", Bee.encountersWon}, {"Marry", Marry.encountersWon}, 
+        {"Big Rat", Big_Rat.encountersWon}, {"Bee", Bee.encountersWon}, {"Marry", Marry.encountersWon}, 
         {"Wolverine", Wolverine.encountersWon}, {"Black Bear", Black_Bear.encountersWon}, {"Crouton", Crouton.encountersWon}, 
         {"Nina", Nina.encountersWon}, {"Mike", Mike.encountersWon}, {"Speck", Speck.encountersWon}, 
         {"Oslow", Oslow.encountersWon}, {"Clay", Clay.encountersWon}};
@@ -188,7 +188,7 @@ public static class GameState
             
         }
 
-        public static class Rat_Mob
+        public static class Big_Rat
         {
             public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
             public static GameStateValue<int> encountersWon = new(0, _gameStateValues);

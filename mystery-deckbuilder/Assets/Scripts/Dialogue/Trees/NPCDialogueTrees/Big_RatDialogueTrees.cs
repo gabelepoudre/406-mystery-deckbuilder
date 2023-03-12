@@ -9,11 +9,11 @@ using UnityEngine;
 /* The Class which holds all of the Rat Mob's dialogue trees in a dictionary, the point being
  * that all of the dialogue will be built here and passed to the NPC class 
  */
-public class Rat_MobDialogueTrees : MonoBehaviour, IDialogueTreeCollection
+public class Big_RatDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 {
     private Dictionary<string, DialogueTree> _dialogueTreeDict; //a dictionary of dialogue trees
 
-    public Rat_MobDialogueTrees()
+    public Big_RatDialogueTrees()
     {
         _dialogueTreeDict = new();
         BuildTreeDictionary();
@@ -25,10 +25,10 @@ public class Rat_MobDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     {
     
         _dialogueTreeDict.Add("Intro", BuildIntro());
-        _dialogueTreeDict.Add("", BuildIntroAfterHenchmen());
-        _dialogueTreeDict.Add("", BuildIntroAfterHenchmenAndNote());
-        _dialogueTreeDict.Add("IntroAfterEncounter", BuildIntroAfterEncounter());
-        _dialogueTreeDict.Add("", BuildAfterLoss());
+        _dialogueTreeDict.Add("AfterHenchmen", BuildAfterHenchmen());
+        _dialogueTreeDict.Add("AfterHenchmenAndNote", BuildAfterHenchmenAndNote());
+        _dialogueTreeDict.Add("AfterEncounterWin", BuildAfterEncounterWin());
+        _dialogueTreeDict.Add("AfterEncounterLoss", BuildAfterEncounterLoss());
     }
 
  
@@ -39,7 +39,7 @@ public class Rat_MobDialogueTrees : MonoBehaviour, IDialogueTreeCollection
             "stop talking to me and go bother someone else" }));
     }
 
-    private DialogueTree BuildIntroAfterHenchmen()
+    private DialogueTree BuildAfterHenchmen()
     {
         NPCNode greeting = new(new string[] { "I hear someone has been snooping around and sticking their nose where it don't belong!",
         "Fine, you have my attention. What do you want from me?" });
@@ -81,7 +81,7 @@ public class Rat_MobDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         return new DialogueTree(greeting);
     }
 
-    private DialogueTree BuildIntroAfterHenchmenAndNote()
+    private DialogueTree BuildAfterHenchmenAndNote()
     {
         NPCNode greeting = new(new string[] { "I hear someone has been snooping around and sticking their nose where it don't belong!",
         "Fine, you have my attention. What do you want from me?" });
@@ -131,7 +131,7 @@ public class Rat_MobDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         return new DialogueTree(greeting);
     }
 
-    private DialogueTree BuildIntroAfterEncounter()
+    private DialogueTree BuildAfterEncounterWin()
     {
          return new DialogueTree(new NPCNode(new string[] { "Ok, fine you got me there.", 
              "That's right, we decided to meet  up at the berry farm, then travel by tunnel.", 
@@ -143,7 +143,7 @@ public class Rat_MobDialogueTrees : MonoBehaviour, IDialogueTreeCollection
              "You can probably find him at his bar, or sculking around neer the rail yard." }));
     }
 
-    private DialogueTree BuildAfterLoss()
+    private DialogueTree BuildAfterEncounterLoss()
     {
         return new DialogueTree(new NPCNode(new string[] { "I really don't like nosy detectives. Stop asking me to explain." }));
     }

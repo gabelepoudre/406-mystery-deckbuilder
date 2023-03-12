@@ -41,7 +41,7 @@ public class ClayListener : MonoBehaviour
 
         transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
 
-        if (GameState.NPCs.Clay.encountersCompleted.Value == 0)
+        if (GameState.NPCs.Clay.encountersWon.Value == 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
         }

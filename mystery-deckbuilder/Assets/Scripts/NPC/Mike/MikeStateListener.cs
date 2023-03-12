@@ -35,7 +35,7 @@ public class MikeStateListener : MonoBehaviour
 
         transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
 
-        if (GameState.NPCs.Mike.encountersCompleted.Value == 0)
+        if (GameState.NPCs.Mike.encountersWon.Value == 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
         }

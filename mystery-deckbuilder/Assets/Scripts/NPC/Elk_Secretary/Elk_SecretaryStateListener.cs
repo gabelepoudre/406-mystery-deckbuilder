@@ -43,7 +43,7 @@ public class Elk_SecretaryStateListener : MonoBehaviour
 
         transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
 
-        if (GameState.NPCs.Elk.encountersCompleted.Value == 0)
+        if (GameState.NPCs.Elk.encountersWon.Value == 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = _preEncounterDialogueKey;
         }

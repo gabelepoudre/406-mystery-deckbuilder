@@ -41,7 +41,7 @@ public class AustynStateListener : MonoBehaviour
 
         transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
 
-        if (GameState.NPCs.Austyn.encountersCompleted.Value == 0)
+        if (GameState.NPCs.Austyn.encountersWon.Value == 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
         }

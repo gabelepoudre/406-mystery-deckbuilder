@@ -42,7 +42,7 @@ public class AlanStateListener : MonoBehaviour
 
         transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
 
-        if (GameState.NPCs.Alan.encountersCompleted.Value == 0)
+        if (GameState.NPCs.Alan.encountersWon.Value == 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
         }

@@ -41,7 +41,7 @@ public class OslowStateListener : MonoBehaviour
 
         transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
 
-        if (GameState.NPCs.Oslow.encountersCompleted.Value == 0)
+        if (GameState.NPCs.Oslow.encountersWon.Value == 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
         }

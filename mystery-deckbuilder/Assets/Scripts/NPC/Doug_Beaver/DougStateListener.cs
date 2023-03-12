@@ -81,7 +81,7 @@ public class DougStateListener : MonoBehaviour
 
         transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
 
-        if (GameState.NPCs.Doug.encountersCompleted.Value == 0)
+        if (GameState.NPCs.Doug.encountersWon.Value == 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
         }

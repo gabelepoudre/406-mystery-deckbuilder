@@ -51,7 +51,7 @@ public class Rat_PrinceStateListener : MonoBehaviour
 
         transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
 
-        if (GameState.NPCs.Rat_Prince.encountersCompleted.Value == 0)
+        if (GameState.NPCs.Rat_Prince.encountersWon.Value == 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "Confession";
         }

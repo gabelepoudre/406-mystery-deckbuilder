@@ -39,7 +39,7 @@ public class AustinStateListener : MonoBehaviour
 
         transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
 
-        if (GameState.NPCs.Austin.encountersCompleted.Value == 0)
+        if (GameState.NPCs.Austin.encountersWon.Value == 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
         }

@@ -41,7 +41,7 @@ public class NinaStateListener : MonoBehaviour
 
         transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
 
-        if (GameState.NPCs.Nina.encountersCompleted.Value == 0)
+        if (GameState.NPCs.Nina.encountersWon.Value == 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
         }

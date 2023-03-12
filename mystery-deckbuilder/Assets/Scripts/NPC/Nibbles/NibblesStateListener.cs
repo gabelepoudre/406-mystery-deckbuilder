@@ -41,7 +41,7 @@ public class NibblesStateListener : MonoBehaviour
 
         transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
 
-        if (GameState.NPCs.Nibbles.encountersCompleted.Value == 0)
+        if (GameState.NPCs.Nibbles.encountersWon.Value == 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
         }

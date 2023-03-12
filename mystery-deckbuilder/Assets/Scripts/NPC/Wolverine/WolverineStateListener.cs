@@ -40,7 +40,7 @@ public class WolverineStateListener : MonoBehaviour
 
         transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
 
-        if (GameState.NPCs.Wolverine.encountersCompleted.Value == 0)
+        if (GameState.NPCs.Wolverine.encountersWon.Value == 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
         }

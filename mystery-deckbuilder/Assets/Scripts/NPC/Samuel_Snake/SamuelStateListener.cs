@@ -40,7 +40,7 @@ public class SamuelStateListener : MonoBehaviour
 
         transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
 
-        if (GameState.NPCs.Samuel.encountersCompleted.Value == 0)
+        if (GameState.NPCs.Samuel.encountersWon.Value == 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
         }

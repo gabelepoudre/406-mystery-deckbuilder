@@ -42,7 +42,7 @@ public class CroutonStateListener : MonoBehaviour
 
         transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
 
-        if (GameState.NPCs.Crouton.encountersCompleted.Value == 0)
+        if (GameState.NPCs.Crouton.encountersWon.Value == 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = _preEncounterDialogueKey;
         }

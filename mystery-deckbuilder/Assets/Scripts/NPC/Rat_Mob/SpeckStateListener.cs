@@ -41,7 +41,7 @@ public class SpeckStateListener : MonoBehaviour
 
         transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
 
-        if (GameState.NPCs.Speck.encountersCompleted.Value == 0)
+        if (GameState.NPCs.Speck.encountersWon.Value == 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
         }
