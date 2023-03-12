@@ -26,18 +26,6 @@ public class NoEncounterCardPrefabController : MonoBehaviour, IPointerClickHandl
     private int _defaultCompliance;
     private int _defaultPatience;
 
-
-    /*
-     * The following fields and FixedUpdate solve the following problem:
-     *  - The flow of select/deselect is that when you click away from a gameObject, deselect is called BEFORE select
-     *  - since deselect is called before select, we don't know if the user is selecting us a second time
-     *  - to click post-selection buttons "play" and "?" the user MUST select the card twice
-     *  - without this fix, attempting to select "play" or "?" causes the buttons to be hid and reappear, with no clickEvent for the button to register
-     *  - with this fix, it takes 6 frames to deselect an object, which does go through if the object we reselect in that time is us, again
-     */
-    protected bool __evilToldToDeselect = false;
-    protected int __evilDeselectionDelay = -1; 
-
     public void SetDefaultCompliance(int defaultCompliance)
     {
         _defaultCompliance = defaultCompliance;
@@ -68,7 +56,6 @@ public class NoEncounterCardPrefabController : MonoBehaviour, IPointerClickHandl
             visibleCompliance.color = Color.black;
         }
     }
-
 
     public void SetPatience(int patience)
     {
