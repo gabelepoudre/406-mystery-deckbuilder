@@ -60,6 +60,9 @@ public static class GameState
 
         //so we can access the encounters completed value with the name of the NPC
         public static Dictionary<string, GameStateValue<int>> npcNameToEncountersCompleted = new(){{"Nibbles", Nibbles.encountersCompleted}};
+
+        //to keep track of what NPCs have been met by the player
+        public static List<string> npcsMet = new List<string>();
         
         
         /* This GameStateValue references the GameStateValue representing the number of encounters completed for the 
@@ -74,6 +77,15 @@ public static class GameState
             public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
         }
         
+
+    }
+
+    /* GameState holder class for Zones */
+    public class Zones
+    {
+        //to keep track of what zones have been visited by the player
+        public static List<string> zonesVisted = new List<string>();
+
 
     }
 

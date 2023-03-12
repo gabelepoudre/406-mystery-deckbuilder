@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //NotepadController helps to control the notepad and states within it
 public class NotepadController : MonoBehaviour
@@ -12,6 +13,7 @@ public class NotepadController : MonoBehaviour
     public GameObject pause;
     public GameObject deck;
 
+    //Opens the notepad and sets the first chapter (suspects) to be active
     public void OpenNotepad()
     {
         GameState.Meta.notepadActive.Value = !GameState.Meta.notepadActive.Value;
@@ -21,12 +23,10 @@ public class NotepadController : MonoBehaviour
         pause.SetActive(false);
         deck.SetActive(false);
         zone.SetActive(false);
-
-
-      
  
     }
 
+    //Closes the notepad
     public void CloseNotepad()
     {
         GameState.Meta.notepadActive.Value = !GameState.Meta.notepadActive.Value;
@@ -34,27 +34,27 @@ public class NotepadController : MonoBehaviour
 
     }
 
+    //TODO - Save Game data
     public void SaveGame()
     {
 
     }
 
 
+    //TODO - Load game data
     public void LoadGame()
     {
        
 
     }
 
+    //Quits game and opens main menu
     public void QuitGame()
     {
         Debug.Log("quit pressed");
         //Open main menu
-        //Application.Quit() will only work from a built application NOT in editor
-        #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-        #endif
-        Application.Quit();
+        SceneManager.LoadScene("MainMenu");
+ 
 
     }
 

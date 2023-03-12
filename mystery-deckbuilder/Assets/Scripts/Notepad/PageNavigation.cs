@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class PageNavigation : MonoBehaviour
 {
 
-  
     public int numNotes;
     public GameObject seenImage;
     public GameObject unseenImage;
@@ -31,14 +30,13 @@ public class PageNavigation : MonoBehaviour
     public void NextPage()
     {
         //If next page, exists, go
-        Debug.Log(currentPageID);
+    
         
      if(currentPageID < (currentChapter.GetNumPages() -1))
      {
             currentPageID += 1;
             previousPageID +=1;
             DisplayNotes();
-            Debug.Log("current page" + currentPageID);
      }
          
     }
@@ -48,8 +46,7 @@ public class PageNavigation : MonoBehaviour
     //Displays all current info to the notebook
     public void DisplayNotes()
     {
-        
-
+        //hide previous images
         if(currentPageID > 0)
         {
             //Set the previous image to be not active
@@ -63,18 +60,16 @@ public class PageNavigation : MonoBehaviour
         }
 
         
-
+        //display current image
         currentPage.GetImage().SetActive(true);
         
-
-       
-
         pageTitle.text = currentPage.GetTitle().ToString();
 
+        noteText.text = "";
         //Display each note the current page holds
         foreach(var item in currentPage.notes)
         {
-            noteText.text = item.ToString();
+            noteText.text = noteText.text + " " + item.ToString();
         } 
 
     }
@@ -96,41 +91,35 @@ public class PageNavigation : MonoBehaviour
     }
 
 
+    //Change the current chapter to be the suspect chapter
     public void ChangedChapterSuspects()
     {
         Time.timeScale = 1;
-  
         currentChapterID = 0;
-        Debug.Log("changed chapter ID to " + currentChapterID);
         currentChapter = chapterList[currentChapterID];
-        Debug.Log("changed cahpter");
         currentPage = currentChapter.pageList[0];
         DisplayNotes();
-       
-        
+          
     }
 
+    //Change the current chapter to be the Deck chapter
     public void ChangedChapterDeck()
     {
         //in case coming from paused screen
         Time.timeScale = 1;
-       
         currentChapterID = 3;
         currentChapter = chapterList[currentChapterID];
-
-
     }
 
     
+    //Change the current chapter to be the zone chapter
     public void ChangedChapterZones()
     {
         //in case coming from paused screen
         Time.timeScale = 1;
 
         currentChapterID = 1;
-        Debug.Log("current chapter id " + currentChapterID);
-        Debug.Log("Size of chapterList " + chapterList.Count);
-        
+
         currentChapter = chapterList[currentChapterID];
         currentPage = currentChapter.pageList[0];
         DisplayNotes();
@@ -138,6 +127,7 @@ public class PageNavigation : MonoBehaviour
     }
 
 
+    //Change the current chapter to be the Pause chapter and pause the game
     public void PausePage()
     {
         
@@ -145,10 +135,8 @@ public class PageNavigation : MonoBehaviour
         Time.timeScale = 0;
         currentChapterID = 2;
         currentChapter = chapterList[currentChapterID];
-     
-
-
     }
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -161,17 +149,18 @@ public class PageNavigation : MonoBehaviour
         Chapter one = new Chapter("Suspect" );
         //Create pages for chapter one
         Page ch1p1 = new Page("Nibbles", unseenImage);
-        Page ch1p2 = new Page("Char2", seenImage);
+        Page ch1p2 = new Page("Char2", unseenImage);
         Page ch1p3 = new Page("Bear", unseenImage);
-        Page ch1p4 = new Page("Dog", seenImage);
+        Page ch1p4 = new Page("Dog", unseenImage);
         Page ch1p5 = new Page("Cat", unseenImage);
-        Page ch1p6 = new Page("Fish", seenImage);
+        Page ch1p6 = new Page("Fish", unseenImage);
         Page ch1p7 = new Page("Rat", unseenImage);
-        Page ch1p8 = new Page("Mouse", seenImage);
+        Page ch1p8 = new Page("Mouse", unseenImage);
         Page ch1p9 = new Page("Lizard", unseenImage);
-        Page ch1p10 = new Page("Badger", seenImage);
+        Page ch1p10 = new Page("Badger", unseenImage);
         //add notes to the pages
         ch1p1.AddNotes("This is the nibbles note");
+        ch1p1.AddNotes("Nibbles clue");
         ch1p2.AddNotes("This is the char2 note");
         ch1p3.AddNotes("This is the bear note");
         ch1p4.AddNotes("This is the dog note");
@@ -194,19 +183,19 @@ public class PageNavigation : MonoBehaviour
         one.AddPage(ch1p10);
 
 
-                 //chapter two
+        //chapter two
         Chapter two = new Chapter("Zone");
         //create pages for chapter two
-        Page ch2p1 = new Page("Main street", unseenImage);
-        Page ch2p2 = new Page("River", seenImage);
+        Page ch2p1 = new Page("Mainstreet", seenImage);
+        Page ch2p2 = new Page("River", unseenImage);
         Page ch2p3 = new Page("Restaruant", unseenImage);
-        Page ch2p4 = new Page("Church", seenImage);
+        Page ch2p4 = new Page("Church", unseenImage);
         Page ch2p5 = new Page("Farm", unseenImage);
-        Page ch2p6 = new Page("Otherstreet", seenImage);
+        Page ch2p6 = new Page("Otherstreet", unseenImage);
         Page ch2p7 = new Page("Motel", unseenImage);
-        Page ch2p8 = new Page("Garden", seenImage);
+        Page ch2p8 = new Page("Garden", unseenImage);
         Page ch2p9 = new Page("Pool", unseenImage);
-        Page ch2p10 = new Page("Graveyard", seenImage);
+        Page ch2p10 = new Page("Graveyard", unseenImage);
         //create notes for the pages
         ch2p1.AddNotes("This is the mainst note");
         ch2p2.AddNotes("This is the river note");
@@ -235,14 +224,41 @@ public class PageNavigation : MonoBehaviour
         chapterList.Add(two); //1
         chapterList.Add(p);//2
         chapterList.Add(deckChapter);//3
-        Debug.Log(chapterList.Count);
-        // ChangedChapterSuspects();
+       
+        
         currentChapter = chapterList[0];
         currentPageID = 0;
       
         currentPage = one.pageList[currentPageID];
+    
+
+
         previousPageID = currentPageID -1;
-        Debug.Log("current page" + currentPage.GetTitle());
+
+
+        //Change the suspect images to seen if they have been encountered
+        //for each character in suspects
+        foreach(var pages in chapterList[0].GetPageList())
+        {
+            //if character has been encountered
+             if(GameState.NPCs.npcsMet.Contains(pages.GetTitle()))
+             {
+                pages.SetImage(seenImage);
+
+            }
+
+        }
+
+        foreach(var pages in chapterList[1].GetPageList())
+        {
+            //if zone has been unlocked/visited
+            if(GameState.Zones.zonesVisted.Contains(pages.GetTitle()))
+            {
+                pages.SetImage(seenImage);
+
+            }
+                    
+        }
 
 
     }
