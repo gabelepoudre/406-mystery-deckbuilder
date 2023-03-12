@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AlphaDemo/MainStreet.unity
     guid: 0045a3fedcd5d4baa9c26a7f15a21419
+  - enabled: 1
+    path: Assets/Scenes/Locations/Berry_Farm.unity
+    guid: 39837134135510645aed9e3cc0875943
+  - enabled: 1
+    path: Assets/Scenes/Locations/Breakfast_Palace.unity
+    guid: 4985b2c531016ba4583d1edc22f8c7a6
   m_configObjects: {}
