@@ -130,6 +130,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 905738060394761893, guid: 46a451d6f7fd84947a5a62d91425b599, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 905738060473532879, guid: 46a451d6f7fd84947a5a62d91425b599, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 905738060628842148, guid: 46a451d6f7fd84947a5a62d91425b599, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -218,9 +226,17 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 905738061209863357, guid: 46a451d6f7fd84947a5a62d91425b599, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2952831536078712495, guid: 46a451d6f7fd84947a5a62d91425b599, type: 3}
       propertyPath: m_Name
       value: World UI Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620112418078391981, guid: 46a451d6f7fd84947a5a62d91425b599, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46a451d6f7fd84947a5a62d91425b599, type: 3}
