@@ -54,7 +54,7 @@ public class Rat_PrinceDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     {
         NPCNode root = new(new string[] {"Oh, detective. It would seem you have an unexpectedly powerful way with words.", 
         "My associate is typically not terribly compliant with law enforcement professionals such as yourself.", 
-        "I suppose I can chat with yuo now, if you really nee something."});
+        "I suppose I can chat with you now, if you really need something."});
         PlayerNode evidence = new(new string[] {"The evidence is really not looking good for you.", 
         "If you want to tell your side of the story, now would be the time to do so."});
         EncounterNode encounter = new();

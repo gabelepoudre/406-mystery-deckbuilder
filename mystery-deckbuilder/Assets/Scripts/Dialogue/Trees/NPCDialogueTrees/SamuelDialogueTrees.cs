@@ -37,8 +37,13 @@ public class SamuelDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         intro.SetNext(introReply);
 
         PlayerNode askWhere = new(new string[] {"Where were you the night of the berry disappearance?"});
-        NPCNode explainWhere = new(new string[] {"Me personally, I was at home fast asleep.", "I prescribe to that work hard, sleep hard mentality.", 
-        "As for our workers in general, there certainly weren't any on the clock at that hour."});
+        NPCNode explainWhere = new(new string[] {"- I was definitely home by the time that was taking place. I don’t have an alibi if that’s what you’re asking.",
+            "I live alone and I don’t particularly care to be held in account by anyone if I don’t have to"});
+
+        PlayerNode askRole = new(new string[] { "What is your role here in Small Pines?" });
+        NPCNode roleAnswer = new(new string[] { "I’m the owner operator of a local vehicle and equipment rental company.",
+        "Things like trucks, vans, lawnmowers, snowblowers, and generators.",
+        "I feel like I mostly rent to those beaver thugs, but one of these days I’m going to smarten up and stop renting to them" });
         
         PlayerNode askEvidence = new(new string[] {"There's some solid evidence stacking up against the union.", "I need you to work with me here."});
         EncounterNode encounter = new();
@@ -47,8 +52,12 @@ public class SamuelDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         askWhere.SetNext(explainWhere);
         explainWhere.SetNext(introReply);
 
+        askRole.SetNext(roleAnswer);
+        roleAnswer.SetNext(introReply);
+
         (string, IDialogueNode)[] optionsList = {
             ("Ask whereabouts", askWhere),
+            ("Ask about role", askRole),
             ("Ask about evidence", askEvidence)
         };
 
@@ -60,7 +69,9 @@ public class SamuelDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     /** intro after you beat him **/
     private DialogueTree BuildAfterEncounterWin()
     {
-         DialogueTree tree = new (new NPCNode(new string[] {""}));
+         DialogueTree tree = new (new NPCNode(new string[] {"If anyone, it would be those beavers. My equipment always comes back from them completely trashed.",
+         "Not enough to void their deposit mind you, but way more worn out than it really should be.", 
+         "Those beavers are really of the mindset that they can just throw their weight around and get away with anything."}));
         return tree;
     }
 
