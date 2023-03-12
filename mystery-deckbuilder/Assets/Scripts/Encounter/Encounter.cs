@@ -32,6 +32,7 @@ public class Encounter
 
     private GameObject _encounterPrefab;
     private EncounterPrefabController _encounterController;
+    private NPC _opponent;
     private List<IExecutableEffect> globalEffects = new();
 
     private List<Card> _hand = new();
@@ -82,6 +83,7 @@ public class Encounter
 
         _encounterController.Initialize(config);
 
+        _opponent = config.Opponent;
     }
 
     /* Draw a card, if we can. Draws trigger "OnChange" which recalculates all card values */
@@ -156,11 +158,34 @@ public class Encounter
     /* Resolves global effects, as part of OnChange */
     private void ResolveGlobals()
     {
-        if (globalEffects.Count == 0)
+        if (globalEffects.Count == 0)  // we add this here because the NPC isn't done initializing on definition for some reason
         {
-            // TODO: REMOVE, this should not be hard coded
-            globalEffects.Add(new EElementWeakness("Sympathy", 0.5f));
-            globalEffects.Add(new EElementResistance("Intimidation", 0.5f));
+            if (_opponent.affinity_intimidation > 0.5f)
+            {
+                globalEffects.Add(new EElementResistance("Intimidation", 0.5f));
+            }
+            else if (_opponent.affinity_intimidation < 0.5f)
+            {
+                globalEffects.Add(new EElementWeakness("Intimidation", 0.5f));
+            }
+
+            if (_opponent.affinity_sympathy > 0.5f)
+            {
+                globalEffects.Add(new EElementResistance("Sympathy", 0.5f));
+            }
+            else if (_opponent.affinity_sympathy < 0.5f)
+            {
+                globalEffects.Add(new EElementWeakness("Sympathy", 0.5f));
+            }
+
+            if (_opponent.affintiy_persuasion > 0.5f)
+            {
+                globalEffects.Add(new EElementResistance("Persuasion", 0.5f));
+            }
+            else if (_opponent.affintiy_persuasion < 0.5f)
+            {
+                globalEffects.Add(new EElementWeakness("Persuasion", 0.5f));
+            }
         }
         List<IExecutableEffect> toRemove = new(); 
         foreach (IExecutableEffect e in globalEffects)

@@ -465,9 +465,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Nibbles
-  affinity_1: 0.43
-  affinity_2: 0.45
-  affintiy_3: 0.45
+  affinity_intimidation: 0.288
+  affinity_sympathy: 0.295
+  affintiy_persuasion: 0.705
   startingPatience: 1
   startingCompliance: 1
   currentPatience: 1
