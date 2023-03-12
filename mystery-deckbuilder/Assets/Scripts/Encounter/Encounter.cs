@@ -13,11 +13,16 @@ using UnityEngine;
 public class Encounter
 {
     /* Static method to launch an Encounter from wherever as long as you have a vblid config */
-    public static Encounter StartEncounter(EncounterConfig config)
+    public static Encounter StartEncounter(EncounterConfig config, bool force = false)
     {
         if (GameState.Meta.activeEncounter.Value != null)
         {
             Debug.LogError("Tried to initialize an encounter while one was active");
+            return null;
+        }
+        else if (GameState.Player.dailyDeck.Value.Count < 10 && !force)
+        {
+            // launch ARE YOU SURE popup
             return null;
         }
         else
@@ -218,6 +223,7 @@ public class Encounter
             c.OnChange();
         }
         ResolveGlobals();
+
     }
 
     /* Play a card given it's position on the board (stored internally to the card class if Initialized properly)*/

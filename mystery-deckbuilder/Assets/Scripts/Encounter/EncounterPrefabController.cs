@@ -129,6 +129,12 @@ public class EncounterPrefabController : MonoBehaviour
         return _placeMatScript.IsFull();
     }
 
+    /* Reaches into placemat to see if it is empty (convienience method) */
+    public bool PlaceMatEnpty()
+    {
+        return _placeMatScript.IsEmpty();
+    }
+
     /* Remove the Card prefab at that location */
     public void RemoveCard(Card card)
     {
