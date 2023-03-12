@@ -67,6 +67,9 @@ public class EncounterPrefabController : MonoBehaviour
 
         switch (remainingPatienceRatio)
         {
+            case 0:
+                _npcHeadshotScript.GetHappy(npcHeadshot);
+                break;
             case <=0.15f:
                 _npcHeadshotScript.GetAngry(npcHeadshot);
                 break;
