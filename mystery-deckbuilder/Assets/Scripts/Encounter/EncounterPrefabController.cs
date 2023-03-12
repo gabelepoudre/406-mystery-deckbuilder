@@ -51,33 +51,39 @@ public class EncounterPrefabController : MonoBehaviour
     public void Initialize(EncounterConfig config)
     {
         _npcHeadshotScript = config.Opponent.encounterSprites;
+        ChangeHeadshotBasedOnPatience();
         _complianceBarScript.SetMax(config.MaximumCompliance);
         _patienceBarScript.SetMax(config.MaximumPatience);
         _patienceBarScript.SetValue(config.MaximumPatience);
     }
 
-    /* Testing function to demo that we can change headshots */
-    public void RandomlyChangeHeadshot()
-    {
-        // Note: this is for test purposes
-        Debug.Log("Changing NPC headshot for testing purposes");
 
-        switch(Mathf.RoundToInt(Random.value*4))
+    public void ChangeHeadshotBasedOnPatience()
+    {
+        float remainingPatienceRatio = _patienceBarScript.GetValue() / (float)_patienceBarScript.GetMax();
+        Debug.Log("AAAAAAAAAA " + remainingPatienceRatio);
+        Debug.Log(_patienceBarScript.GetValue());
+        Debug.Log(_patienceBarScript.GetMax());
+
+        switch (remainingPatienceRatio)
         {
             case 0:
-                _npcHeadshotScript.GetAngry(npcHeadshot);
-                break;
-            case 1:
-                _npcHeadshotScript.GetNeutral(npcHeadshot);
-                break;
-            case 2:
                 _npcHeadshotScript.GetHappy(npcHeadshot);
                 break;
-            case 3:
+            case <=0.15f:
+                _npcHeadshotScript.GetAngry(npcHeadshot);
+                break;
+            case <=0.3f:
                 _npcHeadshotScript.GetStress(npcHeadshot);
                 break;
-            case 4:
+            case <=0.5f:
                 _npcHeadshotScript.GetWorry(npcHeadshot);
+                break;
+            case <=0.8f:
+                _npcHeadshotScript.GetNeutral(npcHeadshot);
+                break;
+            default:
+                _npcHeadshotScript.GetHappy(npcHeadshot);
                 break;
         }
     }
@@ -126,9 +132,6 @@ public class EncounterPrefabController : MonoBehaviour
     /* Remove the Card prefab at that location */
     public void RemoveCard(Card card)
     {
-        // TODO: remove call, for testing purposes only
-        RandomlyChangeHeadshot();
-
         _placeMatScript.ClearPosition(card.GetPosition());
         Destroy(card.GetFrontendController().gameObject);  // finds the card prefab
     }
@@ -169,16 +172,32 @@ public class EncounterPrefabController : MonoBehaviour
         return _complianceBarScript.GetValue();
     }
 
-    public void SetPatience(int value)
+    public bool SetAndCheckPatience(int value)
     {
         Debug.Log("Patience was set to " + value.ToString() + ", was " + _patienceBarScript.GetValue());
-        _patienceBarScript.SetValue(value); 
+        _patienceBarScript.SetValue(value);
+        if (_patienceBarScript.IsEmpty())
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
-    public void SetCompliance(int value)
+    public bool SetAndCheckCompliance(int value)
     {
         Debug.Log("Compliance was set to " + value.ToString() + ", was " + _complianceBarScript.GetValue());
         _complianceBarScript.SetValue(value);
+        if (_complianceBarScript.IsFull())
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
     
     /* This is only here because the draw button needs a non-static attached Monobehaviour to OnClick()*/
@@ -186,7 +205,7 @@ public class EncounterPrefabController : MonoBehaviour
     {
         if (GameState.Meta.activeEncounter.Value != null)
         {
-            GameState.Meta.activeEncounter.Value.DrawCard();
+            GameState.Meta.activeEncounter.Value.DrawCard(1);
         }
         else
         {
