@@ -574,7 +574,7 @@ MonoBehaviour:
   currentPatience: 1
   currentCompliance: 0
   ComplianceThreshhold: 0
-  encounterSprites: {fileID: 0}
+  encounterSprites: {fileID: 701282225796089859}
 --- !u!114 &2974809267316779736
 MonoBehaviour:
   m_ObjectHideFlags: 0

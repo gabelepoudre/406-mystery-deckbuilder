@@ -25,7 +25,9 @@ public class WolverineDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     private DialogueTree BuildIntro()
     {
         
+        PlayerNode root = new(new string[] {"....."});
         OptionNode options = new(); //set options later
+        root.SetNext(options);
 
         PlayerNode askWhere = new(new string[] {"Where were you on the night of the berry disappearance?"});
         PlayerNode answerWhere = new(new string[] {"......"});
@@ -52,7 +54,7 @@ public class WolverineDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         options.SetOptions(OptionsList);
 
 
-        return new DialogueTree(options);
+        return new DialogueTree(root);
     }
 
     private DialogueTree BuildAfterEncounterWin()

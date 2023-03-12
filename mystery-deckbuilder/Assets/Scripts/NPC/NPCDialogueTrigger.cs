@@ -7,7 +7,7 @@ using UnityEngine;
 public class NPCDialogueTrigger : MonoBehaviour
 {
 
-    //will be called when player clicks Nibbles
+    //will be called when player clicks character
     public void StartDialogue()
     {
         //since we have just started a dialogue, the last NPC spoken to is this one

@@ -297,6 +297,14 @@ public class Encounter
     {
         GameState.Meta.lastEncounterEndedInVictory.Value = victory;
         GameState.Meta.activeEncounter.Value = null;
+
+        //update State data
+        if (victory)
+        {
+            GameState.NPCs.npcNameToEncountersWon[GameState.NPCs.lastNPCSpokenTo].Value += 1;
+        }
+        GameState.NPCs.npcNameToEncountersCompleted[GameState.NPCs.lastNPCSpokenTo].Value += 1;
+
         GameObject.Destroy(_encounterPrefab);
     }
 }

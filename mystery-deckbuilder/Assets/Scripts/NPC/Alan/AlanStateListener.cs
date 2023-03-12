@@ -24,7 +24,6 @@ public class AlanStateListener : MonoBehaviour
             GameState.NPCs.Alan.encountersCompleted.OnChange -= OnEncounterComplete;
         }
 
-        
     }
 
     private void OnEncounterComplete()
