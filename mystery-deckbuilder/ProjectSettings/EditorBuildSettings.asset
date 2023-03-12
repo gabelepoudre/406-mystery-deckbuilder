@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu/MainMenu.unity
+    path: Assets/Scenes/Map Swap Example/MainMenu/MainMenu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
-    path: Assets/Scenes/MainMenu/TestGame.unity
+    path: Assets/Scenes/Map Swap Example/MainMenu/TestGame.unity
     guid: 9568d9de776edec48a1bebda814504a3
   - enabled: 1
     path: Assets/Scenes/AlphaDemo/AlphaCutscene.unity
@@ -18,9 +18,18 @@ EditorBuildSettings:
     path: Assets/Scenes/AlphaDemo/MainStreet.unity
     guid: 0045a3fedcd5d4baa9c26a7f15a21419
   - enabled: 1
-    path: Assets/Scenes/Locations/Berry_Farm.unity
+    path: Assets/Scenes/Map Swap Example/Berry_Farm.unity
     guid: 39837134135510645aed9e3cc0875943
   - enabled: 1
-    path: Assets/Scenes/Locations/Breakfast_Palace.unity
+    path: Assets/Scenes/Map Swap Example/Breakfast_Palace.unity
     guid: 4985b2c531016ba4583d1edc22f8c7a6
+  - enabled: 1
+    path: Assets/Scenes/Zones/BerryFarm.unity
+    guid: 708a9a70a86658f4a8fece92963dfd1b
+  - enabled: 1
+    path: Assets/Scenes/Zones/BreakfastPalace.unity
+    guid: a208375466e5e3b4ab395004d4585fb0
+  - enabled: 1
+    path: Assets/Scenes/Zones/Motel.unity
+    guid: da188da7154c5c84e8ba404753195304
   m_configObjects: {}

@@ -45,3 +45,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: DialogueBox
+    uniqueID: 1259659933
+    locked: 0
+  - name: OptionsBox
+    uniqueID: 367458657
+    locked: 0

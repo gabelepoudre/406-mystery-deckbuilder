@@ -32,11 +32,16 @@ public static class GameState
         public static GameStateValue<GameplayPhases> currentGameplayPhase = 
             new(GameplayPhases.Tutorial, _gameStateValues);
 
+        
+        public static GameStateValue<int> currentAct = new(1, _gameStateValues);
+
 
         public static GameStateValue<Encounter> activeEncounter = new(null, _gameStateValues);
         public static GameStateValue<bool> lastEncounterEndedInVictory = new(false, _gameStateValues);
 
         public static GameStateValue<bool> notepadActive = new(false, _gameStateValues);
+
+        //public static GameStateValue<bool> lastEncounterWin = new(false, _gameStateValues);
         
     }
 
@@ -50,34 +55,221 @@ public static class GameState
         //static int[] startingDeck = { 10, 10, 10, 10, 17, 17, 17, 17 };
         static int[] startingDeck = { 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17 };
         public static GameStateValue<List<int>> dailyDeck = new(new List<int>(startingDeck), _gameStateValues);
+
+
+        public enum Locations
+        {
+            Motel,
+            Bar,
+            Boxcar
+        }
+
+        //NOTE: be sure to update this. the state listeners of certain NPCs (like Rat Prince) that are placed in multiple locations rely on this
+        public static GameStateValue<Locations> location = new(Locations.Motel, _gameStateValues);
     }
 
 
-    /* GameState holder class for NPCs data. Could be their current location */
+    /* GameState holder class for NPCs data. Could be their current location 
+     * NOTE: be sure to update encountersCompleted and encountersWon for every NPC because they have dialogue
+     * that is dependent on these
+    */
     public class NPCs
     {
 
-        //
+        //NOTE: updates automatically in NPCdialoguetrigger
         public static string lastNPCSpokenTo = "";
-
-        //so we can access the encounters completed value with the name of the NPC
-        public static Dictionary<string, GameStateValue<int>> npcNameToEncountersCompleted = new(){{"Nibbles", Nibbles.encountersCompleted}};
+        
 
         //to keep track of what NPCs have been met by the player
         public static List<string> npcsMet = new List<string>();
         
-        
-        /* This GameStateValue references the GameStateValue representing the number of encounters completed for the 
-           last NPC we talked to.
+        /* So we can access the met value with the name of the NPC (it doesn't let me access the class)
+         *
+         *  FORGIVE ME FATHER FOR I HAVE SINNED
+         *  YES I KNOW THIS IS PROFOUNDLY GROTESQUE I AM SO SORRY FOR DOING THIS BUT I WILL CHANGE IT AFTER THE BETA (UNLESS I FORGET)
          */
-        public static GameStateValue<GameStateValue<int>> latestNPCEncountersCompleted = new(null, _gameStateValues);
+        public static Dictionary<string, GameStateValue<bool>> npcNameToMet = new(){{"Nibbles", Nibbles.met}, 
+        {"Austin", Austin.met}, {"Austyn", Austyn.met}, {"Alan", Alan.met}, 
+        {"Mark", Mark.met}, {"Samuel", Samuel.met}, {"Doug", Doug.met}, 
+        {"Elk Secretary", Elk.met}, {"Rat Leader", Rat_Leader.met}, {"Rat Prince", Rat_Prince.met}, 
+        {"Big Rat", Big_Rat.met}, {"Bee", Bee.met}, {"Marry", Marry.met}, 
+        {"Wolverine", Wolverine.met}, {"Black Bear", Black_Bear.met}, {"Crouton", Crouton.met}, 
+        {"Nina", Nina.met}, {"Mike", Mike.met}, {"Speck", Speck.met}, 
+        {"Oslow", Oslow.met}, {"Clay", Clay.met}};
 
-        //data specifically pertaining to Nibbles
+        public static Dictionary<string, GameStateValue<int>> npcNameToEncountersCompleted = new(){{"Nibbles", Nibbles.encountersCompleted}, 
+        {"Austin", Austin.encountersCompleted}, {"Austyn", Austyn.encountersCompleted}, {"Alan", Alan.encountersCompleted}, 
+        {"Mark", Mark.encountersCompleted}, {"Samuel", Samuel.encountersCompleted}, {"Doug", Doug.encountersCompleted}, 
+        {"Elk Secretary", Elk.encountersCompleted}, {"Rat Leader", Rat_Leader.encountersCompleted}, {"Rat Prince", Rat_Prince.encountersCompleted}, 
+        {"Big Rat", Big_Rat.encountersCompleted}, {"Bee", Bee.encountersCompleted}, {"Marry", Marry.encountersCompleted}, 
+        {"Wolverine", Wolverine.encountersCompleted}, {"Black Bear", Black_Bear.encountersCompleted}, {"Crouton", Crouton.encountersCompleted}, 
+        {"Nina", Nina.encountersCompleted}, {"Mike", Mike.encountersCompleted}, {"Speck", Speck.encountersCompleted}, 
+        {"Oslow", Oslow.encountersCompleted}, {"Clay", Clay.encountersCompleted}};
+
+        public static Dictionary<string, GameStateValue<int>> npcNameToEncountersWon = new(){{"Nibbles", Nibbles.encountersWon}, 
+        {"Austin", Austin.encountersWon}, {"Austyn", Austyn.encountersWon}, {"Alan", Alan.encountersWon}, 
+        {"Mark", Mark.encountersWon}, {"Samuel", Samuel.encountersWon}, {"Doug", Doug.encountersWon}, 
+        {"Elk Secretary", Elk.encountersWon}, {"Rat Leader", Rat_Leader.encountersWon}, {"Rat Prince", Rat_Prince.encountersWon}, 
+        {"Big Rat", Big_Rat.encountersWon}, {"Bee", Bee.encountersWon}, {"Marry", Marry.encountersWon}, 
+        {"Wolverine", Wolverine.encountersWon}, {"Black Bear", Black_Bear.encountersWon}, {"Crouton", Crouton.encountersWon}, 
+        {"Nina", Nina.encountersWon}, {"Mike", Mike.encountersWon}, {"Speck", Speck.encountersWon}, 
+        {"Oslow", Oslow.encountersWon}, {"Clay", Clay.encountersWon}};
+
+        
+
+        //we'll be switching scenes so we have to statically store NPC dialogue keys
+        public static Dictionary<string, string> currentNPCDialogueKeys = new();
+        
         public static class Nibbles
         {
-            //the number of encounters completed with Nibbles
+           
             public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
         }
+
+        public static class Austin
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Austyn
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Alan
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Mark
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Samuel
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Doug
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Elk
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Rat_Leader
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Rat_Prince
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+            
+        }
+
+        public static class Big_Rat
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Bee
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Marry
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Wolverine
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Black_Bear
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Crouton
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Nina
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Mike
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Speck
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Oslow
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        public static class Clay
+        {
+            public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
+            public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
+            public static GameStateValue<bool> met = new(false, _gameStateValues);
+        }
+
+        
         
 
     }
@@ -85,11 +277,13 @@ public static class GameState
     /* GameState holder class for Zones */
     public class Zones
     {
+
         //to keep track of what zones have been visited by the player
         public static List<string> zonesVisted = new List<string>();
 
 
     }
+
 
     /* GameState holder class for ongoing card and deck information*/
     public class CardInfo

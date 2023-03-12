@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 8310409466412650137}
   - component: {fileID: 8310409466412650136}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -465,9 +465,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Nibbles
-  affinity_1: 0.43
-  affinity_2: 0.45
-  affintiy_3: 0.45
+  affinity_intimidation: 0.288
+  affinity_sympathy: 0.295
+  affintiy_persuasion: 0.705
   startingPatience: 1
   startingCompliance: 1
   currentPatience: 1

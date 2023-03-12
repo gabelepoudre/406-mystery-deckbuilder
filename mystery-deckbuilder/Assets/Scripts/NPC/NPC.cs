@@ -7,9 +7,9 @@ public class NPC : MonoBehaviour
     //Variables 
     public string CharacterName;
 
-    [Range(0.0f, 1.0f)]public float affinity_1 = 0.5f;
-    [Range(0.0f, 1.0f)]public float affinity_2 = 0.5f;
-    [Range(0.0f, 1.0f)]public float affintiy_3 = 0.5f;
+    [Range(0.0f, 1.0f)]public float affinity_intimidation = 0.5f;
+    [Range(0.0f, 1.0f)]public float affinity_sympathy = 0.5f;
+    [Range(0.0f, 1.0f)]public float affintiy_persuasion = 0.5f;
 
 
     [Range(0.0f, 10.0f)]public float startingPatience;
@@ -22,7 +22,35 @@ public class NPC : MonoBehaviour
     public NPCEncounterSpriteController encounterSprites;
 
     public Dictionary<string, DialogueTree> DialogueTreeDictionary;
-    public string CurrentDialogueKey { get; set; }
+
+
+    private string _currentDialogueKey;
+    public string CurrentDialogueKey { get => _currentDialogueKey; set {
+        _currentDialogueKey = value;
+        UpdateStaticDialogueKey();
+    } }
+
+    //update the key stored in GameState
+    private void UpdateStaticDialogueKey()
+    {
+        if (GameState.NPCs.currentNPCDialogueKeys.ContainsKey(CharacterName))
+        {
+            GameState.NPCs.currentNPCDialogueKeys[CharacterName] = CurrentDialogueKey;
+        }
+        else
+        {
+            GameState.NPCs.currentNPCDialogueKeys.Add(CharacterName, CurrentDialogueKey);
+        }
+    }
+
+    //get the key stored in GameState
+    private void GetStaticDialogueKey()
+    {
+        if (GameState.NPCs.currentNPCDialogueKeys.ContainsKey(CharacterName))
+        {
+            CurrentDialogueKey = GameState.NPCs.currentNPCDialogueKeys[CharacterName];
+        }
+    }
 
 
     //Get current patience
@@ -61,6 +89,7 @@ public class NPC : MonoBehaviour
     {
         DialogueTreeDictionary = GetComponent<IDialogueTreeCollection>().GetDialogueTrees();
         CurrentDialogueKey = "Intro"; 
+        GetStaticDialogueKey();
     }
 
     // Update is called once per frame

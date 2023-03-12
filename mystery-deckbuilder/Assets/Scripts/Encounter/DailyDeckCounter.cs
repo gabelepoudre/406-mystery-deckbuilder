@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class DailyDeckCounter : MonoBehaviour
 {
+    public int goRedThreshold = 5;
+
     public Text GetTextElement()
     {
         return gameObject.GetComponent<Text>();
@@ -14,11 +16,11 @@ public class DailyDeckCounter : MonoBehaviour
     {
         try
         {
-            if (GameState.Player.dailyDeck.Value.Count <= 5)
+            if (GameState.Player.dailyDeck.Value.Count <= goRedThreshold)
             {
-                GetTextElement().color = new Color(1, 0.5f, 0.5f);
+                GetTextElement().color = new Color(1, 0.1f, 0.1f);
             }
-            GetTextElement().text = GameState.Player.dailyDeck.Value.Count + " Cards Remaining!";
+            GetTextElement().text = GameState.Player.dailyDeck.Value.Count + " Remaining Cards In Deck!";
         }
         catch (MissingReferenceException e)  // oops! This script doesn't exist any more
         {

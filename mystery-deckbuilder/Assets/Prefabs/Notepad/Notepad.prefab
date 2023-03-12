@@ -2404,9 +2404,69 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3b122a51512f874c920392fbad1e181, type: 3}
+--- !u!1 &1319723147059782353 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7647744214753311885, guid: f3b122a51512f874c920392fbad1e181, type: 3}
+  m_PrefabInstance: {fileID: 8679184071520198236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2499835825311028352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6540234490185583324, guid: f3b122a51512f874c920392fbad1e181, type: 3}
+  m_PrefabInstance: {fileID: 8679184071520198236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4652906313876207635 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4098511292090017359, guid: f3b122a51512f874c920392fbad1e181, type: 3}
+  m_PrefabInstance: {fileID: 8679184071520198236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5352687620593109537 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3619265630137865341, guid: f3b122a51512f874c920392fbad1e181, type: 3}
+  m_PrefabInstance: {fileID: 8679184071520198236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5823569114528792780 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2928429015441890960, guid: f3b122a51512f874c920392fbad1e181, type: 3}
+  m_PrefabInstance: {fileID: 8679184071520198236}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6635108933318787456 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2622787708850560988, guid: f3b122a51512f874c920392fbad1e181, type: 3}
+  m_PrefabInstance: {fileID: 8679184071520198236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6674929826877788476 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2652825386215624544, guid: f3b122a51512f874c920392fbad1e181, type: 3}
+  m_PrefabInstance: {fileID: 8679184071520198236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8357019231715487644 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 831124530904887744, guid: f3b122a51512f874c920392fbad1e181, type: 3}
+  m_PrefabInstance: {fileID: 8679184071520198236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8366374069689193353 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 894513244393016789, guid: f3b122a51512f874c920392fbad1e181, type: 3}
+  m_PrefabInstance: {fileID: 8679184071520198236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8517076076963299951 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1026852037420162099, guid: f3b122a51512f874c920392fbad1e181, type: 3}
+  m_PrefabInstance: {fileID: 8679184071520198236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8544520377888049698 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1073717010080863358, guid: f3b122a51512f874c920392fbad1e181, type: 3}
+  m_PrefabInstance: {fileID: 8679184071520198236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8653029664102754652 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 29021952961394432, guid: f3b122a51512f874c920392fbad1e181, type: 3}
+  m_PrefabInstance: {fileID: 8679184071520198236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8734826804119673001 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 93152131584722677, guid: f3b122a51512f874c920392fbad1e181, type: 3}
   m_PrefabInstance: {fileID: 8679184071520198236}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &8932472902672640233 stripped
@@ -2414,6 +2474,32 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 253366144930051765, guid: f3b122a51512f874c920392fbad1e181, type: 3}
   m_PrefabInstance: {fileID: 8679184071520198236}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8386694841746709757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8932472902672640233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ecc8491b12fac4a8df61ed7d3da7a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deckSpawns:
+  - {fileID: 6674929826877788476}
+  - {fileID: 1319723147059782353}
+  - {fileID: 4652906313876207635}
+  - {fileID: 8357019231715487644}
+  - {fileID: 5352687620593109537}
+  - {fileID: 8366374069689193353}
+  collectionSpawns:
+  - {fileID: 5823569114528792780}
+  - {fileID: 8734826804119673001}
+  - {fileID: 8653029664102754652}
+  - {fileID: 8517076076963299951}
+  - {fileID: 8544520377888049698}
+  - {fileID: 2499835825311028352}
 --- !u!1001 &8679184071549184002
 PrefabInstance:
   m_ObjectHideFlags: 0

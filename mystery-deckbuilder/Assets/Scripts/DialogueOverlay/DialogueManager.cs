@@ -36,6 +36,7 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField] private GameObject _dialogueBoxPrefab;
     private GameObject _dialogueBox;
+    
 
     /* Since this is a singleton class, we destroy all other instances of it that aren't this one */
     private void Awake()
@@ -65,6 +66,7 @@ public class DialogueManager : MonoBehaviour
     {
         CurrentNPC = currentNPC;
         NPCName = CurrentNPC.GetComponent<NPC>().CharacterName;
+
 
         //the current dialogue must be ended before starting a new one
         if (_dialogueBox != null)
@@ -109,7 +111,17 @@ public class DialogueManager : MonoBehaviour
         {
 
             if (_currentNode.NodeType() == "npc") {
-                _dialogueBox.GetComponent<DialogueBox>().SetName(NPCName);
+                
+                
+                string secondName = ((NPCNode)_currentNode).Name;
+                if (secondName == null) {
+                    _dialogueBox.GetComponent<DialogueBox>().SetName(NPCName);
+                }
+                else //for handling multiple different NPCs
+                {
+                    _dialogueBox.GetComponent<DialogueBox>().SetName(secondName);
+                }
+               
             }
             else
             {
