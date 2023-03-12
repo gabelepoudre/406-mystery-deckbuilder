@@ -23,6 +23,11 @@ public class Encounter
         else if (GameState.Player.dailyDeck.Value.Count < 10 && !force)
         {
             // launch ARE YOU SURE popup
+            GameObject prefabReference = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Encounter/AreYouSure.prefab");
+            GameObject instantiated = GameObject.Instantiate(prefabReference);
+            AreYouSureController popController = instantiated.GetComponent<AreYouSureController>();
+            popController.SetDescription("Are you sure you would like to launch this Encounter? You only have " + GameState.Player.dailyDeck.Value.Count + " cards remaining in your deck!");
+            popController.SetConfig(config);
             return null;
         }
         else
