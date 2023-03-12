@@ -23,18 +23,6 @@ public class AustinStateListener : MonoBehaviour
             GameState.NPCs.Austin.encountersCompleted.OnChange -= OnEncounterComplete;
         }
 
-        try 
-        {
-            GameState.Meta.currentAct.OnChange += OnActChange;
-        }
-        catch (MissingReferenceException e)
-        {
-            e.Message.Contains("e");
-            GameState.Meta.currentAct.OnChange -= OnActChange;
-        }
-
-
-       
     }
 
     private void OnEncounterComplete()
@@ -42,28 +30,18 @@ public class AustinStateListener : MonoBehaviour
         //if you've completed the encounter, then we want to initiate the dialogue tree that corresponds to the correct dialogue tree
         if (GameState.NPCs.Austin.encountersWon.Value == 1)
         {
-            transform.GetComponent<NPC>().CurrentDialogueKey = "Act2EncounterWin";
+            transform.GetComponent<NPC>().CurrentDialogueKey = "EncounterWin";
         }
         else
         {
-            transform.GetComponent<NPC>().CurrentDialogueKey = "Act2EncounterLoss";
+            transform.GetComponent<NPC>().CurrentDialogueKey = "EncounterLoss";
         }
 
         transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
 
         if (GameState.NPCs.Austin.encountersCompleted.Value == 0)
         {
-            transform.GetComponent<NPC>().CurrentDialogueKey = "Act2";
-        }
-    }
-
-
-    //gets a different dialogue in act 2
-    private void OnActChange()
-    {
-        if (GameState.Meta.currentAct.Value == 2)
-        {
-            transform.GetComponent<NPC>().CurrentDialogueKey = "Act2";
+            transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
         }
     }
 

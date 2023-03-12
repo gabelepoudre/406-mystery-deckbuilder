@@ -34,7 +34,7 @@ public class AustynDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     private DialogueTree BuildIntro()
     {
 
-        NPCNode greeting = new(new string[] {"Oh hey detective.", "Is thee something we could help with?"});
+        NPCNode greeting = new(new string[] {"Oh hey detective.", "Is there something we could help with?"});
         OptionNode reply = new(); //set later
         greeting.SetNext(reply);
 
