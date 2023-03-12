@@ -83,9 +83,11 @@ public static class GameState
         //to keep track of what NPCs have been met by the player
         public static List<string> npcsMet = new List<string>();
         
-        //so we can access the met value with the name of the NPC (it doesn't let me access the class)
-        // I AM SO SORRY FOR DOING THIS. YES I KNOW THIS IS PROFOUNDLY GROTESQUE I WILL REPENT
-        // I WILL FIX THIS AFTER THE BETA 
+        /* So we can access the met value with the name of the NPC (it doesn't let me access the class)
+         *
+         *  FORGIVE ME FATHER FOR I HAVE SINNED
+         *  YES I KNOW THIS IS PROFOUNDLY GROTESQUE I AM SO SORRY FOR DOING THIS BUT I WILL CHANGE IT AFTER THE BETA (UNLESS I FORGET)
+         */
         public static Dictionary<string, GameStateValue<bool>> npcNameToMet = new(){{"Nibbles", Nibbles.met}, 
         {"Austin", Austin.met}, {"Austyn", Austyn.met}, {"Alan", Alan.met}, 
         {"Mark", Mark.met}, {"Samuel", Samuel.met}, {"Doug", Doug.met}, 
@@ -112,6 +114,8 @@ public static class GameState
         {"Wolverine", Wolverine.encountersWon}, {"Black Bear", Black_Bear.encountersWon}, {"Crouton", Crouton.encountersWon}, 
         {"Nina", Nina.encountersWon}, {"Mike", Mike.encountersWon}, {"Speck", Speck.encountersWon}, 
         {"Oslow", Oslow.encountersWon}, {"Clay", Clay.encountersWon}};
+
+        
 
         //we'll be switching scenes so we have to statically store NPC dialogue keys
         public static Dictionary<string, string> currentNPCDialogueKeys = new();

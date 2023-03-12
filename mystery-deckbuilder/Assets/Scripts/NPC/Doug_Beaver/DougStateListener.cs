@@ -92,35 +92,42 @@ public class DougStateListener : MonoBehaviour
 
     private void MetAustynOrMarkOrSamuel()
     {
-        if (GameState.NPCs.Austyn.met.Value)
+        if (GameState.NPCs.Austyn.encountersWon.Value > 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetAustynOnly";
         }
-        if (GameState.NPCs.Mark.met.Value)
+
+        if (GameState.NPCs.Mark.encountersWon.Value > 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetMarkOnly";
         }
-        if (GameState.NPCs.Samuel.met.Value)
+
+        if (GameState.NPCs.Samuel.encountersWon.Value > 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetSamuelOnly";
         }
-        if (GameState.NPCs.Austyn.met.Value && GameState.NPCs.Mark.met.Value)
+
+        if (GameState.NPCs.Austyn.encountersWon.Value > 0 && GameState.NPCs.Mark.encountersWon.Value > 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetAustinAndMark";
         }
-        if (GameState.NPCs.Austyn.met.Value && GameState.NPCs.Samuel.met.Value)
+
+        if (GameState.NPCs.Austyn.encountersWon.Value > 0 && GameState.NPCs.Samuel.encountersWon.Value > 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetAustinAndSamuel";
         }
-        if (GameState.NPCs.Mark.met.Value && GameState.NPCs.Samuel.met.Value)
+
+        if (GameState.NPCs.Mark.encountersWon.Value > 0 && GameState.NPCs.Samuel.encountersWon.Value > 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetMarkAndSamuel";
         }
-        if (GameState.NPCs.Austyn.met.Value && GameState.NPCs.Mark.met.Value)
+
+        if (GameState.NPCs.Austyn.encountersWon.Value > 0 && GameState.NPCs.Mark.encountersWon.Value > 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetAustynAndMark";
         }
-        if (GameState.NPCs.Austyn.met.Value && GameState.NPCs.Mark.met.Value && GameState.NPCs.Samuel.met.Value)
+
+        if (GameState.NPCs.Austyn.encountersWon.Value > 0 && GameState.NPCs.Mark.encountersWon.Value > 0 && GameState.NPCs.Samuel.encountersWon.Value > 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetAllThree";
         }
