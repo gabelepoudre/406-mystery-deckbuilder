@@ -27,10 +27,10 @@ public class DougDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         _dialogueTreeDict.Add("Intro", BuildIntro());
         _dialogueTreeDict.Add("IntroMetAustynOnly", BuildIntroMetAustyn());
         _dialogueTreeDict.Add("IntroMetMarkOnly", BuildIntroMetMark());
-        _dialogueTreeDict.Add("BuildIntroMetSamuel", BuildIntroMetSamuel());
+        _dialogueTreeDict.Add("BuildIntroMetSamuelOnly", BuildIntroMetSamuel());
         _dialogueTreeDict.Add("BuildIntroMetAustynAndSamuel", BuildIntroMetAustynAndSamuel());
         _dialogueTreeDict.Add("BuildIntroMetMarkAndSamuel", BuildIntroMetMarkAndSamuel());
-        _dialogueTreeDict.Add("IntroMetBoth", BuildIntroMetBoth());
+        _dialogueTreeDict.Add("IntroMetAustynAndMark", BuildIntroMetAustynAndMark());
         _dialogueTreeDict.Add("BuildIntroMetAllThree", BuildIntroMetAllThree());
         _dialogueTreeDict.Add("AfterEncounterLoss", BuildAfterEncounterLoss());
         _dialogueTreeDict.Add("AfterEncounterWinFirstMainSuspect", BuildAfterEncounterWinFirstMainSuspect());
@@ -167,8 +167,8 @@ public class DougDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
         explainWhere.SetNext(introReply);
 
-        PlayerNode askSam = new(new string[] { "What do you make of the claim that the beaver union throws it’s weight around is disrespectful to rental equipment?" });
-        NPCNode samAnswer = new(new string[] { "That’s just business." });
+        PlayerNode askSam = new(new string[] { "What do you make of the claim that the beaver union throws itï¿½s weight around is disrespectful to rental equipment?" });
+        NPCNode samAnswer = new(new string[] { "Thatï¿½s just business." });
 
         askSam.SetNext(samAnswer);
         samAnswer.SetNext(introReply);
@@ -211,8 +211,8 @@ public class DougDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         askFestival.SetNext(explainFestival);
         explainFestival.SetNext(introReply);
 
-        PlayerNode askSam = new(new string[] { "What do you make of the claim that the beaver union throws it’s weight around is disrespectful to rental equipment?" });
-        NPCNode samAnswer = new(new string[] { "That’s just business." });
+        PlayerNode askSam = new(new string[] { "What do you make of the claim that the beaver union throws itï¿½s weight around is disrespectful to rental equipment?" });
+        NPCNode samAnswer = new(new string[] { "Thatï¿½s just business." });
 
         askSam.SetNext(samAnswer);
         samAnswer.SetNext(introReply);
@@ -255,8 +255,8 @@ public class DougDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         askUnion.SetNext(explainUnion);
         explainUnion.SetNext(introReply);
 
-        PlayerNode askSam = new(new string[] { "What do you make of the claim that the beaver union throws it’s weight around is disrespectful to rental equipment?" });
-        NPCNode samAnswer = new(new string[] { "That’s just business." });
+        PlayerNode askSam = new(new string[] { "What do you make of the claim that the beaver union throws itï¿½s weight around is disrespectful to rental equipment?" });
+        NPCNode samAnswer = new(new string[] { "Thatï¿½s just business." });
 
         askSam.SetNext(samAnswer);
         samAnswer.SetNext(introReply);
@@ -274,7 +274,7 @@ public class DougDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     }
 
     //if player has met both Austyn and Mark
-    private DialogueTree BuildIntroMetBoth()
+    private DialogueTree BuildIntroMetAustynAndMark()
     {
         NPCNode intro = new(new string[] {"Hello detective. I'm sure you have many questions, but I have some things to tell you first.", 
         "The Small Pines Beaver Lumber Union reserves the right to have a single person take on the role of representing the union and its interests in the public sphere.", 
@@ -352,8 +352,8 @@ public class DougDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         askFestival.SetNext(explainFestival);
         explainFestival.SetNext(introReply);
 
-        PlayerNode askSam = new(new string[] { "What do you make of the claim that the beaver union throws it’s weight around is disrespectful to rental equipment?" });
-        NPCNode samAnswer = new(new string[] { "That’s just business." });
+        PlayerNode askSam = new(new string[] { "What do you make of the claim that the beaver union throws itï¿½s weight around is disrespectful to rental equipment?" });
+        NPCNode samAnswer = new(new string[] { "Thatï¿½s just business." });
 
         askSam.SetNext(samAnswer);
         samAnswer.SetNext(introReply);

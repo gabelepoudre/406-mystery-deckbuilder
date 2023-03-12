@@ -24,25 +24,34 @@ public class DougStateListener : MonoBehaviour
         }
 
 
-        //dialogue based on whether you've met austyn or mark or both
+        //dialogue based on whether you've met austyn or mark or samuel or combinations
         try 
         {
-            GameState.NPCs.Austyn.met.OnChange += MetAustynOrMark;
+            GameState.NPCs.Austyn.met.OnChange += MetAustynOrMarkOrSamuel;
         }
         catch (MissingReferenceException e)
         {
             e.Message.Contains("e");
-            GameState.NPCs.Austyn.met.OnChange -= MetAustynOrMark;
+            GameState.NPCs.Austyn.met.OnChange -= MetAustynOrMarkOrSamuel;
         }
 
-         try 
+        try 
         {
-            GameState.NPCs.Mark.met.OnChange += MetAustynOrMark;
+            GameState.NPCs.Mark.met.OnChange += MetAustynOrMarkOrSamuel;
         }
         catch (MissingReferenceException e)
         {
             e.Message.Contains("e");
-            GameState.NPCs.Mark.met.OnChange -= MetAustynOrMark;
+            GameState.NPCs.Mark.met.OnChange -= MetAustynOrMarkOrSamuel;
+        }
+        try 
+        {
+            GameState.NPCs.Samuel.met.OnChange += MetAustynOrMarkOrSamuel;
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Samuel.met.OnChange -= MetAustynOrMarkOrSamuel;
         }
 
        
@@ -80,7 +89,8 @@ public class DougStateListener : MonoBehaviour
         
     }
 
-    private void MetAustynOrMark()
+
+    private void MetAustynOrMarkOrSamuel()
     {
         if (GameState.NPCs.Austyn.met.Value)
         {
@@ -90,9 +100,29 @@ public class DougStateListener : MonoBehaviour
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetMarkOnly";
         }
+        if (GameState.NPCs.Samuel.met.Value)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetSamuelOnly";
+        }
         if (GameState.NPCs.Austyn.met.Value && GameState.NPCs.Mark.met.Value)
         {
-            transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetBoth";
+            transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetAustinAndMark";
+        }
+        if (GameState.NPCs.Austyn.met.Value && GameState.NPCs.Samuel.met.Value)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetAustinAndSamuel";
+        }
+        if (GameState.NPCs.Mark.met.Value && GameState.NPCs.Samuel.met.Value)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetMarkAndSamuel";
+        }
+        if (GameState.NPCs.Austyn.met.Value && GameState.NPCs.Mark.met.Value)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetAustynAndMark";
+        }
+        if (GameState.NPCs.Austyn.met.Value && GameState.NPCs.Mark.met.Value && GameState.NPCs.Samuel.met.Value)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetAllThree";
         }
     }
 
