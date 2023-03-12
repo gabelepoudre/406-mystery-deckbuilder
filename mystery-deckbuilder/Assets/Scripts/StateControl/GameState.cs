@@ -67,22 +67,26 @@ public static class GameState
     }
 
 
-    /* GameState holder class for NPCs data. Could be their current location */
+    /* GameState holder class for NPCs data. Could be their current location 
+     * NOTE: be sure to update encountersCompleted and encountersWon for every NPC because they have dialogue
+     * that is dependent on these
+    */
     public class NPCs
     {
 
-        //
+        //NOTE: updates automatically in NPCdialoguetrigger
         public static string lastNPCSpokenTo = "";
 
-        //so we can access the encounters completed value with the name of the NPC
-        public static Dictionary<string, GameStateValue<int>> npcNameToEncountersCompleted = new(){{"Nibbles", Nibbles.encountersCompleted}};
         
-        
-        /* This GameStateValue references the GameStateValue representing the number of encounters completed for the 
-           last NPC we talked to.
-         */
-        public static GameStateValue<GameStateValue<int>> latestNPCEncountersCompleted = new(null, _gameStateValues);
-
+        //so we can access the met value with the name of the NPC
+        public static Dictionary<string, GameStateValue<bool>> npcNameToMet = new(){{"Nibbles", Nibbles.met}, 
+        {"Austin", Austin.met}, {"Austyn", Austyn.met}, {"Alan", Alan.met}, 
+        {"Mark", Mark.met}, {"Samuel", Samuel.met}, {"Doug", Doug.met}, 
+        {"Elk Secretary", Elk.met}, {"Rat Leader", Rat_Leader.met}, {"Rat Prince", Rat_Prince.met}, 
+        {"Rat Mob", Rat_Mob.met}, {"Bee", Bee.met}, {"Marry", Marry.met}, 
+        {"Wolverine", Wolverine.met}, {"Black Bear", Black_Bear.met}, {"Crouton", Crouton.met}, 
+        {"Nina", Nina.met}, {"Mike", Mike.met}, {"Speck", Speck.met}, 
+        {"Oslow", Oslow.met}, {"Clay", Clay.met}};
         
         public static class Nibbles
         {

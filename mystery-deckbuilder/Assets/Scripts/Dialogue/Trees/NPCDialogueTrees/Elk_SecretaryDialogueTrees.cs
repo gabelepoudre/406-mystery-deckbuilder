@@ -20,7 +20,7 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     }
 
     
-    //populates the dictionary will Nibbles' dialogue trees
+    //populates the dictionary will Elk's dialogue trees
     private void BuildTreeDictionary()
     {
     
@@ -33,11 +33,11 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         _dialogueTreeDict.Add("BuildAlanWithEvidence", BuildAlanWithEvidence());
         _dialogueTreeDict.Add("BuildAlanWithEvidenceAndNina", BuildAlanWithEvidenceAndNina());
         _dialogueTreeDict.Add("BuildAlanWithEvidenceAndNinaAndCrouton", BuildAlanWithEvidenceAndNinaAndCrouton());
-        _dialogueTreeDict.Add("IntroAfterEncounter", BuildIntroAfterEncounter());
-        _dialogueTreeDict.Add("BuildAfterLoss", BuildAfterLoss());
+        _dialogueTreeDict.Add("AfterEncounterWin", BuildAfterEncounterWin());
+        _dialogueTreeDict.Add("AfterEncounterLoss", BuildAfterEncounterLoss());
     }
 
-    /** Nibbles' intro **/
+    /** Elk's intro **/
     private DialogueTree BuildIntro()
     {
         NPCNode greeting = new(new string[] { "Greetings Detective Glub, I'am both the secretary of Small Pines and the personal advisor for Mayor Crouton.", 
@@ -129,7 +129,7 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
 
         PlayerNode askNina = new(new string[] { "I've met with the Mayor's younger sister, and she's told me that all of Crouton's ideas are denied.",
-            "Why is it that it seems like the Mayor herself doesn’t have her own voice in political matters?" });
+            "Why is it that it seems like the Mayor herself doesnï¿½t have her own voice in political matters?" });
 
         NPCNode ninaAnswer = new(new string[] { "Listen Detective, Nina is a young disappointment to her ancestors...",
         "She does not understand the amount of procedures and care that must be done before an action is taken.",
@@ -334,7 +334,7 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         askCrouton.SetNext(encounter);
 
         PlayerNode askNina = new(new string[] { "I've met with the Mayor's younger sister, and she's told me that all of Crouton's ideas are denied.",
-            "Why is it that it seems like the Mayor herself doesn’t have her own voice in political matters?" });
+            "Why is it that it seems like the Mayor herself doesnï¿½t have her own voice in political matters?" });
 
         NPCNode ninaAnswer = new(new string[] { "Listen Detective, Nina is a young disappointment to her ancestors...",
         "She does not understand the amount of procedures and care that must be done before an action is taken.",
@@ -411,7 +411,7 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         alanAnswer.SetNext(reply);
 
         PlayerNode askNina = new(new string[] { "I've met with the Mayor's younger sister, and she's told me that all of Crouton's ideas are denied.",
-            "Why is it that it seems like the Mayor herself doesn’t have her own voice in political matters?" });
+            "Why is it that it seems like the Mayor herself doesnï¿½t have her own voice in political matters?" });
 
         NPCNode ninaAnswer = new(new string[] { "Listen Detective, Nina is a young disappointment to her ancestors...",
         "She does not understand the amount of procedures and care that must be done before an action is taken.",
@@ -497,7 +497,7 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         askCrouton.SetNext(encounter);
 
         PlayerNode askNina = new(new string[] { "I've met with the Mayor's younger sister, and she's told me that all of Crouton's ideas are denied.",
-            "Why is it that it seems like the Mayor herself doesn’t have her own voice in political matters?" });
+            "Why is it that it seems like the Mayor herself doesnï¿½t have her own voice in political matters?" });
 
         NPCNode ninaAnswer = new(new string[] { "Listen Detective, Nina is a young disappointment to her ancestors...",
         "She does not understand the amount of procedures and care that must be done before an action is taken.",
@@ -577,7 +577,7 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         alanAnswer.SetNext(reply);
 
         PlayerNode askNina = new(new string[] { "I've met with the Mayor's younger sister, and she's told me that all of Crouton's ideas are denied.",
-            "Why is it that it seems like the Mayor herself doesn’t have her own voice in political matters?" });
+            "Why is it that it seems like the Mayor herself doesnï¿½t have her own voice in political matters?" });
 
         NPCNode ninaAnswer = new(new string[] { "Listen Detective, Nina is a young disappointment to her ancestors...",
         "She does not understand the amount of procedures and care that must be done before an action is taken.",
@@ -654,7 +654,7 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         alanAnswer.SetNext(reply);
 
         PlayerNode askNina = new(new string[] { "I've met with the Mayor's younger sister, and she's told me that all of Crouton's ideas are denied.",
-            "Why is it that it seems like the Mayor herself doesn’t have her own voice in political matters?" });
+            "Why is it that it seems like the Mayor herself doesnï¿½t have her own voice in political matters?" });
 
         NPCNode ninaAnswer = new(new string[] { "Listen Detective, Nina is a young disappointment to her ancestors...",
         "She does not understand the amount of procedures and care that must be done before an action is taken.",
@@ -691,8 +691,8 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         return new DialogueTree(greeting);
     }
 
-        /** Nibbles' intro after you beat him **/
-    private DialogueTree BuildIntroAfterEncounter()
+        /** Elk's dialogue after you beat him **/
+    private DialogueTree BuildAfterEncounterWin()
     {
         return new DialogueTree(new NPCNode(new string[] { "What have I done, I've lost my way. I've deceived and used my friends as tools to achieve my dreams.",
         "I've abused my power to conform this town to my views without caring about the input of the town folks.",
@@ -704,7 +704,7 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         "All I can ask of you is to seek out the criminals and bring justice to this case once and for all, just as you have with me..."}));
     }
 
-    private DialogueTree BuildAfterLoss()
+    private DialogueTree BuildAfterEncounterLoss()
     {
         return new DialogueTree(new NPCNode(new string[] { "Detective... You water breather, enough of this, I do not like baseless accusations and I DO NOT LIKE SMALL TALK.",
             "Never approach me again and do your job, find those berries." }));

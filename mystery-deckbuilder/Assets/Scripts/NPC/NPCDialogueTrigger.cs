@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-/* A placeholder dialogue trigger class for the alpha */
+/* A dialogue trigger class which handles dialogue initiation */
 public class NPCDialogueTrigger : MonoBehaviour
 {
 
@@ -12,6 +12,9 @@ public class NPCDialogueTrigger : MonoBehaviour
     {
         //since we have just started a dialogue, the last NPC spoken to is this one
         GameState.NPCs.lastNPCSpokenTo = transform.GetComponent<NPC>().CharacterName;
+
+        //update the met value since we've met them
+        GameState.NPCs.npcNameToMet[transform.GetComponent<NPC>().CharacterName].Value = true;
 
         //start the dialogue based on the NPCs current dialogue key   
         string currentDialogueKey = transform.GetComponent<NPC>().CurrentDialogueKey;
