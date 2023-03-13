@@ -22,6 +22,8 @@ public class EncounterPrefabController : MonoBehaviour
     public GameObject greenCard;
     public GameObject greyCard;
     public Transform cardHighlightTransform;
+    public GameObject YouWonPage;
+    public GameObject YouLostPage;
 
     private BarScript _complianceBarScript;
     private BarScript _patienceBarScript;
@@ -70,16 +72,16 @@ public class EncounterPrefabController : MonoBehaviour
             case 0:
                 _npcHeadshotScript.GetHappy(npcHeadshot);
                 break;
-            case <=0.15f:
+            case <= 0.15f:
                 _npcHeadshotScript.GetAngry(npcHeadshot);
                 break;
-            case <=0.3f:
+            case <= 0.3f:
                 _npcHeadshotScript.GetStress(npcHeadshot);
                 break;
-            case <=0.5f:
+            case <= 0.5f:
                 _npcHeadshotScript.GetWorry(npcHeadshot);
                 break;
-            case <=0.8f:
+            case <= 0.8f:
                 _npcHeadshotScript.GetNeutral(npcHeadshot);
                 break;
             default:
@@ -105,7 +107,7 @@ public class EncounterPrefabController : MonoBehaviour
         switch (card.GetElement())
         {
             case "Intimidation":
-                cardFrontend = Instantiate(redCard, empty.position, empty.rotation, _placeMatScript.gameObject.transform);  
+                cardFrontend = Instantiate(redCard, empty.position, empty.rotation, _placeMatScript.gameObject.transform);
                 break;
             case "Sympathy":
                 cardFrontend = Instantiate(blueCard, empty.position, empty.rotation, _placeMatScript.gameObject.transform);
@@ -205,7 +207,7 @@ public class EncounterPrefabController : MonoBehaviour
             return true;
         }
     }
-    
+
     /* This is only here because the draw button needs a non-static attached Monobehaviour to OnClick()*/
     public void DrawCard()
     {
@@ -217,5 +219,24 @@ public class EncounterPrefabController : MonoBehaviour
         {
             Debug.LogWarning("Tried to draw card when no encounter was active!");
         }
+    }
+
+    public void DisplayYouLostScreen()
+    {
+        YouLostPage.SetActive(true);
+    }
+    public void DisplayYouWonScreen()
+    {
+        YouWonPage.SetActive(true);
+    }
+
+    public void DestroyEncounterWithLoss()
+    {
+        GameState.Meta.activeEncounter.Value.DestroyEncounter(false);
+    }
+
+    public void DestroyEncounterWithWin()
+    {
+        GameState.Meta.activeEncounter.Value.DestroyEncounter(true);
     }
 }
