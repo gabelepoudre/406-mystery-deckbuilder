@@ -41,7 +41,7 @@ public static class GameState
 
         public static GameStateValue<bool> notepadActive = new(false, _gameStateValues);
 
-        //public static GameStateValue<bool> lastEncounterWin = new(false, _gameStateValues);
+       
         
     }
 
@@ -61,7 +61,17 @@ public static class GameState
         {
             Motel,
             Bar,
-            Boxcar
+            Boxcar,
+            LumberYard,
+            RailYard,
+            RatMobCave,
+            BerryFarm,
+            BreakfastPalace,
+            TownHall,
+            RealMainStreet,
+            MotelOfficeInside,
+            MotelRoomInside,
+            PostOfficeInside
         }
 
         //NOTE: be sure to update this. the state listeners of certain NPCs (like Rat Prince) that are placed in multiple locations rely on this
