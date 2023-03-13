@@ -245,7 +245,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4174418159464316274}
-  - component: {fileID: 2330649779169230287}
   - component: {fileID: 8009644496467296835}
   m_Layer: 0
   m_Name: GreenCard_Canvas
@@ -283,19 +282,6 @@ RectTransform:
   m_AnchoredPosition: {x: -435, y: -293.4}
   m_SizeDelta: {x: 230, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2330649779169230287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3279046307657509022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4865c0c3ff773f489721eca74aa42e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardHighlight: {fileID: 6050173125011940638}
 --- !u!114 &8009644496467296835
 MonoBehaviour:
   m_ObjectHideFlags: 0

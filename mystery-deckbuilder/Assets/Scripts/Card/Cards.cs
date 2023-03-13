@@ -7,6 +7,8 @@ using UnityEngine;
  */
 public static class Cards
     {
+    public static int totalCardCount = 17;
+
     public static object CreateCardWithID(int id)
     {
         switch (id)

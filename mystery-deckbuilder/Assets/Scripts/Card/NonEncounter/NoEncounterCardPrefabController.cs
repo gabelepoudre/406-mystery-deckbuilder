@@ -11,7 +11,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class NoEncounterCardPrefabController : MonoBehaviour, IPointerClickHandler, IDeselectHandler
+public class NoEncounterCardPrefabController : MonoBehaviour, IPointerClickHandler, IDeselectHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public Image highlight;
     public Image cardRect;
@@ -94,6 +94,16 @@ public class NoEncounterCardPrefabController : MonoBehaviour, IPointerClickHandl
     public void OnDeselect(BaseEventData eventData)
     {
         Debug.Log("Card deselected");
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x + 0.43f, gameObject.transform.localScale.y + 0.43f, gameObject.transform.localScale.z);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x - 0.43f, gameObject.transform.localScale.y - 0.43f, gameObject.transform.localScale.z);
     }
 
 }
