@@ -8,6 +8,8 @@ public class DougStateListener : MonoBehaviour
     void Start()
     {
         ChangeDialogueBasedOnState();
+        MetAustynOrMarkOrSamuel();
+        UpdateDialogue();
     }
 
     private void ChangeDialogueBasedOnState()
@@ -25,6 +27,7 @@ public class DougStateListener : MonoBehaviour
 
 
         //dialogue based on whether you've met austyn or mark or samuel or combinations
+        /*
         try 
         {
             GameState.NPCs.Austyn.met.OnChange += MetAustynOrMarkOrSamuel;
@@ -53,6 +56,7 @@ public class DougStateListener : MonoBehaviour
             e.Message.Contains("e");
             GameState.NPCs.Samuel.met.OnChange -= MetAustynOrMarkOrSamuel;
         }
+        */
 
        
     }
@@ -86,51 +90,71 @@ public class DougStateListener : MonoBehaviour
             transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
         }
 
-        
+    }
+
+    private void UpdateDialogue()
+    {
+        if (GameState.NPCs.Doug.encountersWon.Value == 1)
+        {
+            //if Doug was the first main suspect we won an encounter with
+            if (GameState.NPCs.Elk.encountersCompleted.Value == 0 && GameState.NPCs.Rat_Leader.encountersCompleted.Value == 0)
+            {
+                transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWinFirstMainSuspect";
+            }
+            else //if he was the second or third
+            {
+                transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWinSecondOrThirdMainSuspect";
+            }
+        }
+       
     }
 
 
     private void MetAustynOrMarkOrSamuel()
     {
-        if (GameState.NPCs.Austyn.encountersWon.Value > 0)
+        if (GameState.NPCs.Doug.encountersWon.Value == 0)
         {
-            transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetAustynOnly";
-        }
+            if (GameState.NPCs.Austyn.encountersWon.Value > 0)
+            {
+                transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetAustynOnly";
+            }
 
-        if (GameState.NPCs.Mark.encountersWon.Value > 0)
-        {
-            transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetMarkOnly";
-        }
+            if (GameState.NPCs.Mark.encountersWon.Value > 0)
+            {
+                transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetMarkOnly";
+            }
 
-        if (GameState.NPCs.Samuel.encountersWon.Value > 0)
-        {
-            transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetSamuelOnly";
-        }
+            if (GameState.NPCs.Samuel.encountersWon.Value > 0)
+            {
+                transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetSamuelOnly";
+            }
 
-        if (GameState.NPCs.Austyn.encountersWon.Value > 0 && GameState.NPCs.Mark.encountersWon.Value > 0)
-        {
-            transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetAustinAndMark";
-        }
+            if (GameState.NPCs.Austyn.encountersWon.Value > 0 && GameState.NPCs.Mark.encountersWon.Value > 0)
+            {
+                transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetAustinAndMark";
+            }
 
-        if (GameState.NPCs.Austyn.encountersWon.Value > 0 && GameState.NPCs.Samuel.encountersWon.Value > 0)
-        {
-            transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetAustinAndSamuel";
-        }
+            if (GameState.NPCs.Austyn.encountersWon.Value > 0 && GameState.NPCs.Samuel.encountersWon.Value > 0)
+            {
+                transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetAustinAndSamuel";
+            }
 
-        if (GameState.NPCs.Mark.encountersWon.Value > 0 && GameState.NPCs.Samuel.encountersWon.Value > 0)
-        {
-            transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetMarkAndSamuel";
-        }
+            if (GameState.NPCs.Mark.encountersWon.Value > 0 && GameState.NPCs.Samuel.encountersWon.Value > 0)
+            {
+                transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetMarkAndSamuel";
+            }
 
-        if (GameState.NPCs.Austyn.encountersWon.Value > 0 && GameState.NPCs.Mark.encountersWon.Value > 0)
-        {
-            transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetAustynAndMark";
-        }
+            if (GameState.NPCs.Austyn.encountersWon.Value > 0 && GameState.NPCs.Mark.encountersWon.Value > 0)
+            {
+                transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetAustynAndMark";
+            }
 
-        if (GameState.NPCs.Austyn.encountersWon.Value > 0 && GameState.NPCs.Mark.encountersWon.Value > 0 && GameState.NPCs.Samuel.encountersWon.Value > 0)
-        {
-            transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetAllThree";
+            if (GameState.NPCs.Austyn.encountersWon.Value > 0 && GameState.NPCs.Mark.encountersWon.Value > 0 && GameState.NPCs.Samuel.encountersWon.Value > 0)
+            {
+                transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetAllThree";
+            }
         }
+       
     }
 
  

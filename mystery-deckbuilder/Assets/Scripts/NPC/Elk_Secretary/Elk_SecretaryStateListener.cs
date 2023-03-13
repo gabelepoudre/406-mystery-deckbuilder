@@ -10,6 +10,7 @@ public class Elk_SecretaryStateListener : MonoBehaviour
     void Start()
     {
         ChangeDialogueBasedOnState();
+        UpdateDialogue();
     }
 
     private void ChangeDialogueBasedOnState()
@@ -48,6 +49,62 @@ public class Elk_SecretaryStateListener : MonoBehaviour
             transform.GetComponent<NPC>().CurrentDialogueKey = _preEncounterDialogueKey;
         }
     }
+
+    private void UpdateDialogue()
+    {
+        
+
+        if (GameState.NPCs.Alan.encountersWon.Value == 1)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "BuildDialogueWithAlan";
+        }
+
+        if (GameState.NPCs.Nina.encountersWon.Value == 1)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "BuildDialogueWithNina";
+        }
+
+        if (GameState.NPCs.Alan.encountersWon.Value == 1 && GameState.NPCs.Nina.encountersWon.Value == 1)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "BuildDialogueWithAlanAndNina";
+        }
+
+        if (GameState.NPCs.Crouton.encountersWon.Value == 1 && GameState.NPCs.Nina.encountersWon.Value == 1)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "BuildDialogueWithCroutonAndNina";
+        }
+
+        if (GameState.NPCs.Alan.encountersWon.Value == 1 && GameState.NPCs.Crouton.encountersWon.Value == 1 && GameState.NPCs.Nina.encountersWon.Value == 1)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "BuildDialogueWithAllThree";
+        }
+
+        if (GameState.NPCs.Alan.encountersWon.Value == 1 && GameState.NPCs.Crouton.gaveEvidence.Value)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "BuildAlanWithEvidence";
+        }
+
+        if (GameState.NPCs.Alan.encountersWon.Value == 1 &&
+        GameState.NPCs.Nina.encountersWon.Value == 1 && GameState.NPCs.Crouton.gaveEvidence.Value)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "BuildAlanWithEvidenceAndNina";
+        }
+
+        if (GameState.NPCs.Alan.encountersWon.Value == 1 && GameState.NPCs.Crouton.encountersWon.Value == 1 &&
+        GameState.NPCs.Nina.encountersWon.Value == 1 && GameState.NPCs.Crouton.gaveEvidence.Value)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "BuildAlanWithEvidenceAndNinaAndCrouton";
+        }
+
+        if (GameState.NPCs.Elk.encountersWon.Value == 1)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWin";
+        }
+       
+    }
+
+
+
 
     
 

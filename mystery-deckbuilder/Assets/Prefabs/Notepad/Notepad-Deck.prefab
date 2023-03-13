@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7256744163642939514}
+  - component: {fileID: 7709089602199483102}
   m_Layer: 5
   m_Name: ColCard container 3
   m_TagString: Untagged
@@ -38,6 +39,20 @@ RectTransform:
   m_AnchoredPosition: {x: 568, y: -27.533}
   m_SizeDelta: {x: 123.9221, y: 190.5661}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7709089602199483102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29021952961394432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d60922cd5961b34785ccf285cb40743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawn: {fileID: 4883256739627360927}
+  quantityController: {fileID: 586473962386772570}
 --- !u!1 &93152131584722677
 GameObject:
   m_ObjectHideFlags: 0
@@ -47,6 +62,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5185110665730667380}
+  - component: {fileID: 5750460315075877197}
   m_Layer: 5
   m_Name: ColCard container 2
   m_TagString: Untagged
@@ -76,6 +92,20 @@ RectTransform:
   m_AnchoredPosition: {x: 430.3, y: -27.533}
   m_SizeDelta: {x: 123.9221, y: 190.5661}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5750460315075877197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 93152131584722677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d60922cd5961b34785ccf285cb40743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawn: {fileID: 3450343340446544591}
+  quantityController: {fileID: 2239993782438617274}
 --- !u!1 &167586988709576862
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,6 +248,7 @@ RectTransform:
   - {fileID: 1019749818738769139}
   - {fileID: 3943841955751101498}
   - {fileID: 7792041465161847975}
+  - {fileID: 6411922211410982483}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -245,11 +276,18 @@ MonoBehaviour:
   - {fileID: 831124530904887744}
   - {fileID: 3619265630137865341}
   - {fileID: 894513244393016789}
-  collectionContainers: []
+  collectionContainers:
+  - {fileID: 2928429015441890960}
+  - {fileID: 93152131584722677}
+  - {fileID: 29021952961394432}
+  - {fileID: 1026852037420162099}
+  - {fileID: 1073717010080863358}
+  - {fileID: 6540234490185583324}
   redCardNoEncounter: {fileID: 9204399067519391359, guid: 97a6a58ded51d2a499c75eef49cf975f, type: 3}
   blueCardNoEncounter: {fileID: 2988496786782926893, guid: 07628ced1fda5ee4a9b9bdacd696b590, type: 3}
   greenCardNoEncounter: {fileID: 3279046307657509022, guid: 7d09218a0cfde6f4099a944f6b56e6ff, type: 3}
   greyCardNoEncounter: {fileID: 6754762022743972773, guid: 47e9ed273c5e13540a3d8920f734db6e, type: 3}
+  previewCardSpawn: {fileID: 6411922211410982483}
 --- !u!1 &276253087914762020
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,7 +603,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3315541829823664518}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 224024368266688813}
+        m_TargetAssemblyTypeName: DeckUIController, Assembly-CSharp
+        m_MethodName: CollectionPageDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &764708206135280176
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,7 +737,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7519403435900221821}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 224024368266688813}
+        m_TargetAssemblyTypeName: DeckUIController, Assembly-CSharp
+        m_MethodName: DeckPageUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &830424807241785015
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,6 +958,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1019749818738769139}
+  - component: {fileID: 2366580382506412613}
   m_Layer: 5
   m_Name: ColCard container 4
   m_TagString: Untagged
@@ -925,6 +988,20 @@ RectTransform:
   m_AnchoredPosition: {x: 291, y: -224.3}
   m_SizeDelta: {x: 123.9221, y: 190.5661}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2366580382506412613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026852037420162099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d60922cd5961b34785ccf285cb40743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawn: {fileID: 7316919972564276051}
+  quantityController: {fileID: 2055729012373156142}
 --- !u!1 &1073717010080863358
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,6 +1011,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3943841955751101498}
+  - component: {fileID: 1850491073548883669}
   m_Layer: 5
   m_Name: ColCard container 5
   m_TagString: Untagged
@@ -963,6 +1041,20 @@ RectTransform:
   m_AnchoredPosition: {x: 430.30005, y: -224.30003}
   m_SizeDelta: {x: 123.9221, y: 190.5661}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1850491073548883669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073717010080863358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d60922cd5961b34785ccf285cb40743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawn: {fileID: 6241486114508759421}
+  quantityController: {fileID: 6124469424132601912}
 --- !u!1 &1237371892520465937
 GameObject:
   m_ObjectHideFlags: 0
@@ -981,7 +1073,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7501495105242938448
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1400,7 +1492,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8665863947074170903
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1850,6 +1942,7 @@ GameObject:
   - component: {fileID: 6156761068770528555}
   - component: {fileID: 3597729112320340131}
   - component: {fileID: 3886067345920731882}
+  - component: {fileID: 2055729012373156142}
   m_Layer: 5
   m_Name: card Copies Txt
   m_TagString: Untagged
@@ -1919,6 +2012,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 3/3
+--- !u!114 &2055729012373156142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2854215935645353857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3ad57a3d41e350458a9ff02f67cec9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2928429015441890960
 GameObject:
   m_ObjectHideFlags: 0
@@ -1928,6 +2033,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5222189283286343497}
+  - component: {fileID: 1254322695683542534}
   m_Layer: 5
   m_Name: ColCard container 1
   m_TagString: Untagged
@@ -1957,6 +2063,56 @@ RectTransform:
   m_AnchoredPosition: {x: 291, y: -27.533}
   m_SizeDelta: {x: 123.9221, y: 190.5661}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1254322695683542534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2928429015441890960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d60922cd5961b34785ccf285cb40743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawn: {fileID: 7133194112545221233}
+  quantityController: {fileID: 8572362374681566261}
+--- !u!1 &2938220788571162622
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6411922211410982483}
+  m_Layer: 5
+  m_Name: SpawnpointToEnglargeDeckCards
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6411922211410982483
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2938220788571162622}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2622787708850560988}
+  m_RootOrder: 31
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -1734.7999, y: -242.69995}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3081223968284727241
 GameObject:
   m_ObjectHideFlags: 0
@@ -1968,6 +2124,7 @@ GameObject:
   - component: {fileID: 5258846763291114245}
   - component: {fileID: 8788435282362294843}
   - component: {fileID: 1240300124109429396}
+  - component: {fileID: 8572362374681566261}
   m_Layer: 5
   m_Name: card Copies Txt
   m_TagString: Untagged
@@ -2037,6 +2194,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 3/3
+--- !u!114 &8572362374681566261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3081223968284727241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3ad57a3d41e350458a9ff02f67cec9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3472237770108194886
 GameObject:
   m_ObjectHideFlags: 0
@@ -2511,7 +2680,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4644672609237961805}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 224024368266688813}
+        m_TargetAssemblyTypeName: DeckUIController, Assembly-CSharp
+        m_MethodName: DeckPageDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4346069183621377269
 GameObject:
   m_ObjectHideFlags: 0
@@ -2523,6 +2704,7 @@ GameObject:
   - component: {fileID: 1111155969515272692}
   - component: {fileID: 3160034694874612421}
   - component: {fileID: 3036239414434112384}
+  - component: {fileID: 6124469424132601912}
   m_Layer: 5
   m_Name: card Copies Txt
   m_TagString: Untagged
@@ -2592,6 +2774,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 3/3
+--- !u!114 &6124469424132601912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4346069183621377269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3ad57a3d41e350458a9ff02f67cec9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4404204068283756316
 GameObject:
   m_ObjectHideFlags: 0
@@ -3206,6 +3400,7 @@ GameObject:
   - component: {fileID: 6003669990602046760}
   - component: {fileID: 4495680817733631098}
   - component: {fileID: 3248223245853381090}
+  - component: {fileID: 6820753921232284353}
   m_Layer: 5
   m_Name: Card Counter Txt
   m_TagString: Untagged
@@ -3275,6 +3470,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 20/20
+--- !u!114 &6820753921232284353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5379788152212761415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 877192dde308d3d4b802c2dd45ea6537, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5450558970968296579
 GameObject:
   m_ObjectHideFlags: 0
@@ -3293,7 +3500,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4117825617498300033
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3408,6 +3615,7 @@ GameObject:
   - component: {fileID: 7428350250175793634}
   - component: {fileID: 8144540003353694111}
   - component: {fileID: 8067400672399005870}
+  - component: {fileID: 586473962386772570}
   m_Layer: 5
   m_Name: card Copies Txt
   m_TagString: Untagged
@@ -3477,6 +3685,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 3/3
+--- !u!114 &586473962386772570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5464634554545122785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3ad57a3d41e350458a9ff02f67cec9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5675257061156141077
 GameObject:
   m_ObjectHideFlags: 0
@@ -3929,6 +4149,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7792041465161847975}
+  - component: {fileID: 8820568482425373916}
   m_Layer: 5
   m_Name: ColCard container 6
   m_TagString: Untagged
@@ -3958,6 +4179,20 @@ RectTransform:
   m_AnchoredPosition: {x: 568, y: -224.30003}
   m_SizeDelta: {x: 123.9221, y: 190.5661}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8820568482425373916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6540234490185583324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d60922cd5961b34785ccf285cb40743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawn: {fileID: 6946454002725272745}
+  quantityController: {fileID: 3657724475682202661}
 --- !u!1 &6785917395466771103
 GameObject:
   m_ObjectHideFlags: 0
@@ -4091,6 +4326,7 @@ GameObject:
   - component: {fileID: 2520005107431121139}
   - component: {fileID: 4770348815741771201}
   - component: {fileID: 6645337322652485082}
+  - component: {fileID: 2239993782438617274}
   m_Layer: 5
   m_Name: card Copies Txt
   m_TagString: Untagged
@@ -4160,6 +4396,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 3/3
+--- !u!114 &2239993782438617274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7053170098346318898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3ad57a3d41e350458a9ff02f67cec9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7198804823190673100
 GameObject:
   m_ObjectHideFlags: 0
@@ -4588,7 +4836,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &983065946533063613
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4703,6 +4951,7 @@ GameObject:
   - component: {fileID: 6667992301135782833}
   - component: {fileID: 1337474856315351152}
   - component: {fileID: 4436747817164088266}
+  - component: {fileID: 3657724475682202661}
   m_Layer: 5
   m_Name: card Copies Txt
   m_TagString: Untagged
@@ -4772,6 +5021,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 3/3
+--- !u!114 &3657724475682202661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8121988510521749156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3ad57a3d41e350458a9ff02f67cec9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8182924563493884906
 GameObject:
   m_ObjectHideFlags: 0
@@ -4893,7 +5154,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1672927461706229211}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 224024368266688813}
+        m_TargetAssemblyTypeName: DeckUIController, Assembly-CSharp
+        m_MethodName: CollectionPageUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8577565746548777337
 GameObject:
   m_ObjectHideFlags: 0

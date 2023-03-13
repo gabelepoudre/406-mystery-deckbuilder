@@ -8,6 +8,7 @@ public class NinaStateListener : MonoBehaviour
     void Start()
     {
         ChangeDialogueBasedOnState();
+        UpdateDialogue();
     }
 
     private void ChangeDialogueBasedOnState()
@@ -45,6 +46,15 @@ public class NinaStateListener : MonoBehaviour
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
         }
+    }
+
+    private void UpdateDialogue()
+    {
+        if (GameState.NPCs.Nina.encountersWon.Value == 1)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWin";
+        }
+       
     }
 
 }

@@ -47,6 +47,20 @@ public class WolverineStateListener : MonoBehaviour
 
     }
 
+    private void UpdateDialogue()
+    {
+        if (GameState.NPCs.Wolverine.encountersWon.Value == 1)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWin";
+        }
+
+        if (GameState.Player.location.Value == GameState.Player.Locations.Bar)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "Bar";
+        }
+       
+    }
+
     
 
 }

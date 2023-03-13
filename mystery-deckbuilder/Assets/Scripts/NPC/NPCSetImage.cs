@@ -12,6 +12,7 @@ public class NPCSetImage : MonoBehaviour
     void Start()
     {
         _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        SetStreetViewStationary();
     }
 
     public void SetStreetViewStationary()

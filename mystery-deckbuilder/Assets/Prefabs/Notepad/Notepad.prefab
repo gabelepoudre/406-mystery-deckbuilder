@@ -1,41 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1662520460100185808
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5786076460799112440}
-  m_Layer: 5
-  m_Name: SpawnpointToEnglargeDeckCards
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &5786076460799112440
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662520460100185808}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6635108933318787456}
-  m_RootOrder: 31
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -804.28, y: 347.47}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8679184070414422611
 GameObject:
   m_ObjectHideFlags: 0
@@ -2067,10 +2031,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8679184070414422613}
     m_Modifications:
-    - target: {fileID: 224024368266688813, guid: f3b122a51512f874c920392fbad1e181, type: 3}
-      propertyPath: previewCardSpawn
-      value: 
-      objectReference: {fileID: 5786076460799112440}
     - target: {fileID: 253366144930051765, guid: f3b122a51512f874c920392fbad1e181, type: 3}
       propertyPath: m_Name
       value: Notepad-Deck
@@ -2358,6 +2318,18 @@ PrefabInstance:
     - target: {fileID: 2622787708850560988, guid: f3b122a51512f874c920392fbad1e181, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6411922211410982483, guid: f3b122a51512f874c920392fbad1e181, type: 3}
+      propertyPath: m_RootOrder
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 6411922211410982483, guid: f3b122a51512f874c920392fbad1e181, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -779.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6411922211410982483, guid: f3b122a51512f874c920392fbad1e181, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 313.3
       objectReference: {fileID: 0}
     - target: {fileID: 7539873813198838147, guid: f3b122a51512f874c920392fbad1e181, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

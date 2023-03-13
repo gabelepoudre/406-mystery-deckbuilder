@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OslowDialogueTrees : MonoBehaviour
+public class OslowDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 {
      private Dictionary<string, DialogueTree> _dialogueTreeDict; //a dictionary of dialogue trees
 

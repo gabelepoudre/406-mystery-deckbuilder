@@ -255,7 +255,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: dd79f0a3e6a3570468b5fb89717ce718, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5a769a5d2a0f8ca4c80e8e5a7e7dce85, type: 3}
   m_Color: {r: 0.7264151, g: 0.7024297, b: 0.7024297, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -278,8 +278,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e0a88f353c1487992adb10c1bd895b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _streetViewStationary: {fileID: 21300000, guid: dd79f0a3e6a3570468b5fb89717ce718, type: 3}
-  _streetViewWave: {fileID: 21300000, guid: 779e50f397751b54089443839f7237d5, type: 3}
+  _streetViewStationary: {fileID: 21300000, guid: 5a769a5d2a0f8ca4c80e8e5a7e7dce85, type: 3}
+  _streetViewWave: {fileID: 21300000, guid: 4ee1f31407b2f5c48a5bd508f0717d28, type: 3}
 --- !u!1 &7126463672415695578
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,9 +566,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Clay
-  affinity_1: 0.43
-  affinity_2: 0.45
-  affintiy_3: 0.45
+  affinity_intimidation: 0.5
+  affinity_sympathy: 0.5
+  affintiy_persuasion: 0.5
   startingPatience: 1
   startingCompliance: 1
   currentPatience: 1

@@ -8,6 +8,7 @@ public class MarkStateListener : MonoBehaviour
     void Start()
     {
         ChangeDialogueBasedOnState();
+        UpdateDialogue();
     }
 
     private void ChangeDialogueBasedOnState()
@@ -46,6 +47,15 @@ public class MarkStateListener : MonoBehaviour
         }
 
         
+    }
+
+    private void UpdateDialogue()
+    {
+        if (GameState.NPCs.Mark.encountersWon.Value == 1)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWin";
+        }
+       
     }
 
     

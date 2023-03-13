@@ -9,6 +9,7 @@ public class CroutonStateListener : MonoBehaviour
     void Start()
     {
         ChangeDialogueBasedOnState();
+        UpdateDialogue();
     }
 
     private void ChangeDialogueBasedOnState()
@@ -46,6 +47,34 @@ public class CroutonStateListener : MonoBehaviour
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = _preEncounterDialogueKey;
         }
+    }
+
+    private void UpdateDialogue()
+    {
+        if (GameState.Player.location.Value == GameState.Player.Locations.BerryFarm && !GameState.NPCs.Crouton.finishedBerryCommotion.Value)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "BerryCommotion";
+            GameState.NPCs.Crouton.finishedBerryCommotion.Value = true;
+        }
+
+        if (GameState.NPCs.Alan.encountersWon.Value > 0)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "DialogueWithAlan";
+        }
+        if (GameState.NPCs.Nina.encountersWon.Value > 0)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "DialogueWithNina";
+        }
+        if (GameState.NPCs.Alan.encountersWon.Value > 0 && GameState.NPCs.Nina.encountersWon.Value > 0)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "DialogueWithBoth";
+        }
+
+        if (GameState.NPCs.Crouton.encountersWon.Value == 1)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWin";
+        }
+       
     }
 
     
