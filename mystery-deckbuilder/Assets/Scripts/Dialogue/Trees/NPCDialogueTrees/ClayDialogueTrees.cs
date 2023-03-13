@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClayDialogueTrees : MonoBehaviour
+public class ClayDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 {
      private Dictionary<string, DialogueTree> _dialogueTreeDict; //a dictionary of dialogue trees
 

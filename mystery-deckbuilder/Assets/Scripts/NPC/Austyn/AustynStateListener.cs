@@ -8,6 +8,7 @@ public class AustynStateListener : MonoBehaviour
     void Start()
     {
         ChangeDialogueBasedOnState();
+        UpdateDialogue();
     }
 
     private void ChangeDialogueBasedOnState()
@@ -47,6 +48,15 @@ public class AustynStateListener : MonoBehaviour
         }
 
         
+    }
+
+    private void UpdateDialogue()
+    {
+        if (GameState.NPCs.Austyn.encountersWon.Value == 1)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWin";
+        }
+       
     }
 
     
