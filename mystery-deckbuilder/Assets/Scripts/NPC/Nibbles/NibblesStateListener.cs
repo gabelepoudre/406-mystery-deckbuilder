@@ -30,24 +30,31 @@ public class NibblesStateListener : MonoBehaviour
     private void OnEncounterComplete()
     {
         //if you've completed the first encounter, then we want to initiate the next dialogue tree depending on whether you won or lost
-        
-        if (GameState.NPCs.Nibbles.encountersWon.Value == 1)
+        try
         {
-            transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWin";
+            if (GameState.NPCs.Nibbles.encountersWon.Value == 1)
+            {
+                transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWin";
+            }
+            else
+            {
+                transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterLoss";
+            }
+
+            transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
+
+            if (GameState.NPCs.Nibbles.encountersWon.Value == 0)
+            {
+                transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
+            }
         }
-        else
+        catch (MissingReferenceException e)
         {
-            transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterLoss";
+            e.Message.Contains("e");
+            GameState.NPCs.Nibbles.encountersCompleted.OnChange -= OnEncounterComplete;
         }
 
-        transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
 
-        if (GameState.NPCs.Nibbles.encountersWon.Value == 0)
-        {
-            transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
-        }
-
-        
     }
 
     private void UpdateDialogue()
