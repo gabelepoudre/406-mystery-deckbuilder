@@ -114,11 +114,12 @@ public class DialogueManager : MonoBehaviour
         if (_currentNode.NodeType() != "option") //if a normal dialogue node
         {
 
-            if (_currentNode.NodeType() == "npc") {
+            if (_currentNode.NodeType() == "npc") 
+            {
                 
                 
                 string secondName = ((NPCNode)_currentNode).Name;
-                if (secondName == null) {
+                if (secondName is null) {
                     _dialogueBox.GetComponent<DialogueBox>().SetName(NPCName);
                 }
                 else //for handling multiple different NPCs
@@ -170,7 +171,8 @@ public class DialogueManager : MonoBehaviour
 
         if (_sentences.Count != 0) //if we still have sentences in the queue
         {
-            _dialogueBox.GetComponent<DialogueBox>().DisplaySentence(_sentences.Dequeue());
+            string sentence = _sentences.Dequeue();
+            _dialogueBox.GetComponent<DialogueBox>().DisplaySentence(sentence);
         }
         else //if we ran out of sentences in the queue, traverse to next node
         {

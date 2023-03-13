@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NPC : MonoBehaviour
 {
@@ -85,14 +86,17 @@ public class NPC : MonoBehaviour
     {
         currentCompliance = startingCompliance;
         currentPatience = startingPatience;
-        
+        GetStaticDialogueKey();
+        UseBerryFarmCrowdDialogue();
+        HideIfNotBerryFarmScriptedEvent();
+        HideIfNPCPresentAtBerryFarm();
     }
 
     void Awake()
     {
         DialogueTreeDictionary = GetComponent<IDialogueTreeCollection>().GetDialogueTrees();
         CurrentDialogueKey = "Intro"; 
-        GetStaticDialogueKey();
+    
     }
 
     // Update is called once per frame
@@ -126,7 +130,7 @@ public class NPC : MonoBehaviour
         DialogueTreeDictionary.Add("BerryFarm", trees[index]);
         _currentDialogueKey = "BerryFarm";
 
-        if (CharacterName == "Crouton")
+        if (CharacterName == "Crouton" || CharacterName == "Black Bear" || CharacterName == "Elk Secretary")
         {
             DialogueTreeDictionary.Add("BerryFarmCrouton", new DialogueTree(new NPCNode(new string[] {"....."})));
             _currentDialogueKey = "BerryFarmCrouton";
@@ -134,22 +138,30 @@ public class NPC : MonoBehaviour
         
     }
 
+    //if the event is over then hide the crowd NPC unless Austin or Austyn
     private void HideIfNotBerryFarmScriptedEvent()
     {
-        if ((GameState.Meta.currentGameplayPhase.Value != GameState.Meta.GameplayPhases.Tutorial || GameState.Meta.currentDay.Value != 2)
-         || CharacterName == "Austin" || CharacterName == "Austyn")
+
+        if ((CharacterName == "Austin" || CharacterName == "Austyn"))
         {
             return;
         }
-        //GameObject.SetActive(false);
+        else if (GameState.Meta.currentGameplayPhase.Value != GameState.Meta.GameplayPhases.Tutorial
+        || GameState.Meta.currentDay.Value != 2)
+        {
+            if (SceneManager.GetActiveScene().name == "BerryFarm") { /*NOTE: I would check the location in GameState but starting location is motel and to test i start scene at berry farm*/
+                gameObject.SetActive(false);
+            }
+        }
     }
 
+    //hide the NPC unless they're at berry farm (during tutorial, day 2)
     private void HideIfNPCPresentAtBerryFarm()
     {
         if (GameState.Meta.currentGameplayPhase.Value == GameState.Meta.GameplayPhases.Tutorial && GameState.Meta.currentDay.Value == 2
-        && GameState.Player.location.Value != GameState.Player.Locations.BerryFarm)
+        && SceneManager.GetActiveScene().name != "BerryFarm") //NOTE: see above for why not checking GameState for location right now
         {
-            //GameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
         
     }

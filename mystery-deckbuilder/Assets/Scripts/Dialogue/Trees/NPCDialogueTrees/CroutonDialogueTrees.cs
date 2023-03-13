@@ -273,8 +273,10 @@ public class CroutonDialogueTrees : MonoBehaviour, IDialogueTreeCollection
             "Now please enough with these baseless accusations and return to your detective work!" }));
     }
 
-    private DialogueTree BuildBerryCommotion()
+    //public because will be called by scripted event trigger
+    public DialogueTree BuildBerryCommotion()
     {
+        //Note: the DialogueManager wasn't setting the name to Crouton when the optional name parameter in NPCNode was null, so i manually specified Crouton for now
         NPCNode berriesGone = new(new string[] {"Oh great haymaker, please help us!", 
         "Did a tornado pass by and we didn't notice?", 
         "what about the festival?! What's gonna happen now?!", 
@@ -289,20 +291,20 @@ public class CroutonDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         "THE BERRIES!!!", "Dude that was uncalled for. Tornadoes don't pick and choose.", 
         "Mommy, when are the berries gonna come back?", "NOOOO, I've waited all hibernation for those berries!"}, name:"Crowd");
         NPCNode cooperation = new(new string[] {"Everyone please...", 
-        "I know how much the Berry Festival means to all of you, but for us to find the berries we need your cooperation and patience!"});
+        "I know how much the Berry Festival means to all of you, but for us to find the berries we need your cooperation and patience!"}, name:"Crouton");
         NPCNode precious = new(new string[] {"Oh Crouton dear is just too precious, I'm so glad she's our mayor!", 
         "MS. CROUTON HELP THE BERRIES!", "Yup the tornado sure as dirt didn't pick and choose you.", 
         "I can't believe this, just like that all gone...", "What the dog doin'?", "Ms. Crouton, when are the berries gonna come back"}, name:"Crowd");
         NPCNode comingBack = new(new string[] {"The're going to come back, don't worry! Everyone please remain calm!", 
-        "We are all going to require everyone's help if we are to find the berries before the Berry festival!"});
+        "We are all going to require everyone's help if we are to find the berries before the Berry festival!"}, name:"Crouton");
         NPCNode quietDown = new(new string[] {"Everyone let's quiet down for Mayor Crouton!", 
         "Oh sweet sweet precious summer berries.", "AAARGHH BERRIES! ME WANT!", "Whatever man, led's drop the berries and tornadoes topic", 
         "I already miss those berries....", "NO NO NO NO NO", "Yup, sounds good. Let's dip now and get Mike's, on you."}, name:"Crowd");
         PlayerNode bad = new(new string[] {"*This is bad, the crowd is nowhere close to calming down*"});
         NPCNode calm = new(new string[] {"Ummm.. Miss Crouton said to remain calm...", "I'M PANICKING CAN YOU TELL!?", 
         "This can't be... My dreams!", "What are we gonna do now?", 
-        "What has happened here will be remembered for all history..."});
-        NPCNode surprise = new(new string[] {"*Visible panic and a surprised Pikachu face* Uhhh please?"});
+        "What has happened here will be remembered for all history..."}, name:"Crowd");
+        NPCNode surprise = new(new string[] {"*Visible panic and a surprised Pikachu face* Uhhh please?"}, name:"Crouton");
         NPCNode silence = new(new string[] {"SILENCE!!!"}, name:"?");
         PlayerNode loud = new(new string[] {"Woah what a loud voice. where did that come from?"});
         NPCNode bear = new(new string[] {"*Gasps* It's the Black Bear!"}, name:"Crowd");
@@ -321,6 +323,34 @@ public class CroutonDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         surprise.SetNext(silence);
         silence.SetNext(loud);
         loud.SetNext(bear);
+
+
+        /* I'm just gonna add this stuff here for now lol. time is of the essence */
+        NPCNode elkIntro = new(new string[] {"Oh it's... you're... You're the renowned detective Glub. We are currently undergoing a bit of a crisis.", 
+        "All the Saskatoon berries that were for the berry festival have gone missing. The town of Small Pines would really appreciate the help of such a renowned detective.",
+        "Will you help us figure out this missing berry mystery?"}, name:"Elk Secretary");
+        OptionNode elkOptions = new(); //set options later
+        bear.SetNext(elkIntro);
+        elkIntro.SetNext(elkOptions);
+
+        NPCNode no = new(new string[] {"Are you sure? The people of Small Pines could really use your help."}, name:"Elk Secretary");
+        no.SetNext(elkOptions);
+
+        NPCNode yes = new(new string[] {"Thank you. I will pass you over to our local detective Black Bear."}, name:"Elk Secretary");
+
+
+        (string, IDialogueNode) [] OptionsList = {
+            ("Yes", yes),
+            ("No", no)
+        };
+
+        elkOptions.SetOptions(OptionsList);
+
+        NPCNode bearIntro = new(new string[] {"Hello detective. Let me quickly catch you up to speed on what I've found at the crime scene.", 
+        "The disappearance happened last night. There was a large number of footprints which indicates a big group worked together to steal the berries.", 
+        "There's evidence that the culprits escaped using the river and travelled North. And uhhh. That's all I got, sorry.", 
+        "We have one week left before the berry festival, so we better act quickly"}, name:"Black Bear");
+        yes.SetNext(bearIntro);
 
         return new DialogueTree(berriesGone);
     }

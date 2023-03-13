@@ -57,7 +57,9 @@ public class NPCNode : IDialogueNode
 
     public void SetNext(IDialogueNode next) { this._next = next; }
 
-    /* Note: next default to null, which will terminate the conversation */
+    /* Note: next default to null, which will terminate the conversation 
+     * Note: name is to specify a name other than the current NPC you're talking to
+    */
     public NPCNode(string[] dialogue, IDialogueNode next = null, string name=null)
     {
         this.dialogue = dialogue;
