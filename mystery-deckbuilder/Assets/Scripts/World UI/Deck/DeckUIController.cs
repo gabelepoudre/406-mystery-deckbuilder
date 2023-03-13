@@ -23,7 +23,9 @@ public class DeckUIController : MonoBehaviour
         }
         set
         {
-            
+            _page = value;
+            Debug.Log("_page swapped to " + _page);
+            DisplayCards();
         }
     }
     private int _page = 1;
@@ -64,25 +66,46 @@ public class DeckUIController : MonoBehaviour
         return cards;
     }
 
+    public void PageUp()
+    {
+        if (CanMovePageUp())
+        {
+            Debug.Log("Went up in deck");
+            Page -= 1;
+        }
+        Debug.Log("Failed to go up in deck");
+    }
+
+    public void PageDown()
+    {
+        if (CanMovePageDown())
+        {
+            Debug.Log("Went down in deck");
+            Page += 1;
+        }
+        Debug.Log("Failed to go down in deck");
+    }
+
     private bool CanMovePageUp()
     {
         if (_page != 1)
         {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     private bool CanMovePageDown()
     {
-        if (_page == 1)
+        Debug.Log(_currentCardInstantiations.Count);
+        if (_currentCardInstantiations.Count != 6)
         {
             return false;
         }
         return true;
     }
 
-    public void DisplayCards(int page)
+    public void DisplayCards()
     {
         if (_currentCardInstantiations.Count != 0)
         {
@@ -90,13 +113,19 @@ public class DeckUIController : MonoBehaviour
             {
                 Destroy(card);
             }
+            _currentCardInstantiations.Clear();
         }
 
         List<(int, int, int, int)> ordered_cards = GetDeckCards();
-        for (int card_section = -6 + (page*6); card_section < -6 + ((page+1)*6) && card_section <= GameState.Player.fullDeck.Value.Count-1; card_section++)
+
+        for (int card_section = -6 + (Page*6); card_section < -6 + ((Page+1)*6) && card_section <= GameState.Player.fullDeck.Value.Count-1; card_section++)
         {
-            int normalized_idx = card_section - ((page - 1) * 6);
-            (int, int, int, int) cardData = ordered_cards[normalized_idx];
+            if (card_section >= ordered_cards.Count-1)
+            {
+                return;
+            }
+            int normalized_idx = card_section - ((Page - 1) * 6);
+            (int, int, int, int) cardData = ordered_cards[card_section];
             int cardIdx = cardData.Item1;
             (int, int, int) quant = (cardData.Item2, cardData.Item3, cardData.Item4);
 
@@ -118,7 +147,7 @@ public class DeckUIController : MonoBehaviour
                     _cardPrefabInstance = Instantiate(greyCardNoEncounter, _deckContainerControllers[normalized_idx].spawn.position, _deckContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
                     break;
             }
-
+            _currentCardInstantiations.Add(_cardPrefabInstance);
 
             NoEncounterCardPrefabController c = _cardPrefabInstance.GetComponent<NoEncounterCardPrefabController>();
             c.makeBiggerTransform = previewCardSpawn;
@@ -135,7 +164,7 @@ public class DeckUIController : MonoBehaviour
             _deckQuantities.Add(deckContainer.GetComponentInChildren<Text>());
             _deckContainerControllers.Add(deckContainer.GetComponent<DeckCardContainerController>());
         }
-        DisplayCards(1);
+        DisplayCards();
 
     }
 
