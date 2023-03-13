@@ -21,21 +21,25 @@ public class MotelTransitions : MonoBehaviour
     }
     public void MotelExteriorToLobby()
     {
+        if (DialogueManager.Instance.DialogueActive) return;
         exterior.SetActive(false);
         interior.SetActive(true);
     }
     public void LobbyToMotelExterior()
     {
+        if (DialogueManager.Instance.DialogueActive) return;
         interior.SetActive(false);
         exterior.SetActive(true);
     }
     public void LobbyToRoom()
     {
+        if (DialogueManager.Instance.DialogueActive) return;
         interior.SetActive(false);
         motelRoom.SetActive(true);
     }
     public void RoomToLobby()
     {
+        if (DialogueManager.Instance.DialogueActive) return;
         interior.SetActive(true);
         motelRoom.SetActive(false);
     }

@@ -27,6 +27,8 @@ public class DialogueManager : MonoBehaviour
 
     public string NPCName {get; set;}
 
+    public bool DialogueActive;
+
     public GameObject CurrentNPC;
 
     private DialogueTree _dialogueTree;
@@ -55,6 +57,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         NPCName = "NPC";
+        DialogueActive = false;
         _sentences = new Queue<string>();
     }
 
@@ -65,6 +68,7 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(DialogueTree newDialogueTree, GameObject currentNPC)
     {
         CurrentNPC = currentNPC;
+        DialogueActive = true;
         NPCName = CurrentNPC.GetComponent<NPC>().CharacterName;
 
 
@@ -178,6 +182,7 @@ public class DialogueManager : MonoBehaviour
     /* Commands the previously instantiated DialogueBox to destroy itself */
     public void EndDialogue()
     {
+        DialogueActive = false;
         _dialogueBox.GetComponent<DialogueBox>().DestroyDialogueBox();
     }
 
@@ -186,6 +191,10 @@ public class DialogueManager : MonoBehaviour
     /* Enqueues all sentences contained in the current node */
     private void EnqueueAllSentences()
     {
+        if (_currentNode.NodeType() == "encounter")
+        {
+            return;
+        }
 
         // have to handle PlayerNode and NPCNode unless if IDialogueNode interface had a GetDialogue() or something
         if (_currentNode.NodeType() == "player")

@@ -8,21 +8,16 @@ public class OslowStateListener : MonoBehaviour
     void Start()
     {
         ChangeDialogueBasedOnState();
+        UpdateDialogue();
     }
 
     private void ChangeDialogueBasedOnState()
     {
         //dialogue based on whether you've won an encounter with Nibbles for the day
         
-        try 
-        {
-            GameState.NPCs.Oslow.encountersCompleted.OnChange += OnEncounterComplete;
-        }
-        catch (MissingReferenceException e)
-        {
-            e.Message.Contains("e");
-            GameState.NPCs.Oslow.encountersCompleted.OnChange -= OnEncounterComplete;
-        }
+       
+        GameState.NPCs.Oslow.encountersCompleted.OnChange += OnEncounterComplete;
+       
      
     }
 
@@ -30,6 +25,8 @@ public class OslowStateListener : MonoBehaviour
     {
         //if you've completed the first encounter, then we want to initiate the next dialogue tree depending on whether you won or lost
         
+        try
+        {
         if (GameState.NPCs.Oslow.encountersWon.Value == 1)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWin";
@@ -45,8 +42,21 @@ public class OslowStateListener : MonoBehaviour
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
         }
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Oslow.encountersCompleted.OnChange -= OnEncounterComplete;
+        }  
+    }
 
-        
+    private void UpdateDialogue()
+    {
+        if (GameState.NPCs.Oslow.encountersWon.Value == 1)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWin";
+        }
+       
     }
 
 }
