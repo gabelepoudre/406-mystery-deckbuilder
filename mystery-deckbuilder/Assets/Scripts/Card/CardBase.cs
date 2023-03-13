@@ -203,6 +203,18 @@ public abstract class Card
     {
         return frontendController;
     }
+
+    public void SetAndInitializeNoEncounterFrontendController(NoEncounterCardPrefabController controller)
+    {
+        controller.SetCardName(GetName());
+        controller.SetCardDescription(GetDescription());
+        controller.SetDefaultPatience(DefaultPatience);
+        if (GetElement() != "Preparation")
+        {
+            controller.SetDefaultCompliance(DefaultCompliance);
+        }
+        Debug.Log("Ran Card Initialization");
+    }
 }
 
 /*

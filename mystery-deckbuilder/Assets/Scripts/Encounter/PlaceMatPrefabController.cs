@@ -36,6 +36,19 @@ public class PlaceMatPrefabController : MonoBehaviour
         return true;
     }
 
+    /* Returns True if no cards are placed*/
+    public bool IsEmpty()
+    {
+        foreach ((bool, Transform) loc in _cardLocations)
+        {
+            if (loc.Item1)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
     /* Debug function */
     private void DebugLogTheLocations()
     {
