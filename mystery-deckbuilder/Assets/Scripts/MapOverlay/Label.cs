@@ -9,6 +9,13 @@ public class Label : MonoBehaviour
 
     public void MoveToScene(string scene)
     {
+        
+        if (DialogueManager.Instance.DialogueActive)
+        {
+            Debug.Log("cannot switch locations when dialogue in session");
+            return;
+        }
+        
         Debug.Log("Move to " + scene);
 
         //update state

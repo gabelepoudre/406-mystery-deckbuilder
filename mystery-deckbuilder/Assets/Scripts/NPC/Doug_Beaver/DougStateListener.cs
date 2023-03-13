@@ -26,7 +26,7 @@ public class DougStateListener : MonoBehaviour
         }
 
 
-        //dialogue based on whether you've met austyn or mark or samuel or combinations
+        //i don't think there's a need to subscribe to the state, but i'm keeping it just in case
         /*
         try 
         {
@@ -92,23 +92,6 @@ public class DougStateListener : MonoBehaviour
 
     }
 
-    private void UpdateDialogue()
-    {
-        if (GameState.NPCs.Doug.encountersWon.Value == 1)
-        {
-            //if Doug was the first main suspect we won an encounter with
-            if (GameState.NPCs.Elk.encountersCompleted.Value == 0 && GameState.NPCs.Rat_Leader.encountersCompleted.Value == 0)
-            {
-                transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWinFirstMainSuspect";
-            }
-            else //if he was the second or third
-            {
-                transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWinSecondOrThirdMainSuspect";
-            }
-        }
-       
-    }
-
 
     private void MetAustynOrMarkOrSamuel()
     {
@@ -157,9 +140,29 @@ public class DougStateListener : MonoBehaviour
        
     }
 
+
+    private void UpdateDialogue()
+    {
+        if (GameState.NPCs.Doug.encountersWon.Value == 1)
+        {
+            //if Doug was the first main suspect we won an encounter with
+            if (GameState.NPCs.Elk.encountersCompleted.Value == 0 && GameState.NPCs.Rat_Leader.encountersCompleted.Value == 0)
+            {
+                transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWinFirstMainSuspect";
+            }
+            else //if he was the second or third
+            {
+                transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWinSecondOrThirdMainSuspect";
+            }
+        }
+       
+    }
+
+}
+
  
 
     
 
-}
+
 

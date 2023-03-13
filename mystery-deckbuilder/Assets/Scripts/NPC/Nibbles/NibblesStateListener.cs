@@ -8,6 +8,7 @@ public class NibblesStateListener : MonoBehaviour
     void Start()
     {
         ChangeDialogueBasedOnState();
+        UpdateDialogue();
     }
 
     private void ChangeDialogueBasedOnState()
@@ -47,6 +48,15 @@ public class NibblesStateListener : MonoBehaviour
         }
 
         
+    }
+
+    private void UpdateDialogue()
+    {
+        if (GameState.NPCs.Nibbles.encountersWon.Value == 1)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWin";
+        }
+       
     }
 
     

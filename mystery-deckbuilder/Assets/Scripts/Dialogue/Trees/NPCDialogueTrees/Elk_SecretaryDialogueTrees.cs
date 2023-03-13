@@ -40,7 +40,7 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     /** Elk's intro **/
     private DialogueTree BuildIntro()
     {
-        NPCNode greeting = new(new string[] { "Greetings Detective Glub, I'am both the secretary of Small Pines and the personal advisor for Mayor Crouton.", 
+        NPCNode greeting = new(new string[] { "Greetings Detective Glub, I am both the secretary of Small Pines and the personal advisor for Mayor Crouton.", 
             "How can I be of service, but do remember, I'am quite a busy person so please no smalltalk" });
 
         OptionNode reply = new();
