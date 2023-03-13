@@ -740,7 +740,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 224024368266688813}
         m_TargetAssemblyTypeName: DeckUIController, Assembly-CSharp
-        m_MethodName: PageUp
+        m_MethodName: DeckPageUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2683,7 +2683,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 224024368266688813}
         m_TargetAssemblyTypeName: DeckUIController, Assembly-CSharp
-        m_MethodName: PageDown
+        m_MethodName: DeckPageDown
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
