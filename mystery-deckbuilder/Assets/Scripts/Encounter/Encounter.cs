@@ -344,7 +344,20 @@ public class Encounter
         globalEffects.Add(e);
     }
 
+    /* Note- Doesn't actually destroy the encounter anymore*/
     public void EndEncounter(bool victory)
+    {
+        if (victory)
+        {
+            _encounterController.DisplayYouWonScreen();
+        }
+        else
+        {
+            _encounterController.DisplayYouLostScreen();
+        }
+    }
+
+    public void DestroyEncounter(bool victory)
     {
         GameState.Meta.lastEncounterEndedInVictory.Value = victory;
         GameState.Meta.activeEncounter.Value = null;
