@@ -31,10 +31,22 @@ public class NoEncounterCardPrefabController : MonoBehaviour, IPointerClickHandl
     private int _defaultCompliance;
     private int _defaultPatience;
 
+    private bool _hasInteraction = true;
+
 
     void Awake()
     {
         _spawnTransformPosition = gameObject.transform.position;
+    }
+
+    public void TurnInteractionsOff()
+    {
+        _hasInteraction = false;
+    }
+
+    public void TurnInteractionsOn()
+    {
+        _hasInteraction = true;
     }
 
     public void SetDefaultCompliance(int defaultCompliance)
@@ -104,7 +116,7 @@ public class NoEncounterCardPrefabController : MonoBehaviour, IPointerClickHandl
 
     public void OnDeselect(BaseEventData eventData)
     {
-        if (_highlighted)
+        if (_highlighted && _hasInteraction)
         {
             gameObject.transform.position = _spawnTransformPosition;
             gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x - 0.8f, gameObject.transform.localScale.y - 0.8f, gameObject.transform.localScale.z);
@@ -114,7 +126,7 @@ public class NoEncounterCardPrefabController : MonoBehaviour, IPointerClickHandl
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (!_highlighted)
+        if (!_highlighted && _hasInteraction)
         {
             _highlighted = true;
             EventSystem.current.SetSelectedGameObject(gameObject);

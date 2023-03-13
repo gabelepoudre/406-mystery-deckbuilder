@@ -29,6 +29,8 @@ public class EncounterPrefabController : MonoBehaviour
     private BarScript _patienceBarScript;
     private PlaceMatPrefabController _placeMatScript;
     private NPCEncounterSpriteController _npcHeadshotScript;
+    private RewardDisplayController _rewardController;
+    private int _cardOnWin;
 
     private Vector3 _oldHighlightedCardTransformPosition;
     private GameObject _highlightedCard;
@@ -47,6 +49,7 @@ public class EncounterPrefabController : MonoBehaviour
             Debug.LogError("Could not find BarScript on compliance bar");
         }
         _placeMatScript = cardPlaceMat.GetComponent<PlaceMatPrefabController>();
+        _rewardController = YouWonPage.GetComponent<RewardDisplayController>();
     }
 
     /* Initializes the front-end with what it needs from a config */
@@ -57,6 +60,7 @@ public class EncounterPrefabController : MonoBehaviour
         _complianceBarScript.SetMax(config.MaximumCompliance);
         _patienceBarScript.SetMax(config.MaximumPatience);
         _patienceBarScript.SetValue(config.MaximumPatience);
+        _cardOnWin = config.Opponent.cardIDUnlockFromWinEncounter;
     }
 
 
@@ -228,6 +232,7 @@ public class EncounterPrefabController : MonoBehaviour
     public void DisplayYouWonScreen()
     {
         YouWonPage.SetActive(true);
+        _rewardController.DisplayCardAsReward(_cardOnWin);
     }
 
     public void DestroyEncounterWithLoss()
