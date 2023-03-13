@@ -20,6 +20,8 @@ public class NPC : MonoBehaviour
 
     [Range(0.0f, 100.0f)] public float ComplianceThreshhold;
 
+    public int cardIDUnlockFromWinEncounter = -1;
+
     public NPCEncounterSpriteController encounterSprites;
 
     public Dictionary<string, DialogueTree> DialogueTreeDictionary;
