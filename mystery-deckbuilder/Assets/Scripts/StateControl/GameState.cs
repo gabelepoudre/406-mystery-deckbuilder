@@ -31,7 +31,7 @@ public static class GameState
             Phase_1, // this is just "normal gameplay"
         }
         public static GameStateValue<GameplayPhases> currentGameplayPhase = 
-            new(GameplayPhases.Phase_1, _gameStateValues);
+            new(GameplayPhases.Tutorial, _gameStateValues);
 
         
         
