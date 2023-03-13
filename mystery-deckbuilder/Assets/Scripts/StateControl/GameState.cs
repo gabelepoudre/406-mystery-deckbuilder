@@ -31,13 +31,13 @@ public static class GameState
             Phase_1, // this is just "normal gameplay"
         }
         public static GameStateValue<GameplayPhases> currentGameplayPhase = 
-            new(GameplayPhases.Phase_1, _gameStateValues); //TODO: change this back to tutorial
+            new(GameplayPhases.Tutorial, _gameStateValues);
 
         
         
         public static GameStateValue<int> currentAct = new(1, _gameStateValues);
 
-        public static GameStateValue<int> currentDay = new(2, _gameStateValues); //TODO: change back to 1 after testing
+        public static GameStateValue<int> currentDay = new(1, _gameStateValues); //TODO: change back to 1 after testing
 
 
         public static GameStateValue<Encounter> activeEncounter = new(null, _gameStateValues);
