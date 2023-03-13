@@ -9,44 +9,44 @@ public static class Cards
     {
     public static int totalCardCount = 17;
 
-    public static object CreateCardWithID(int id)
+    public static object CreateCardWithID(int id, bool no_effect = false)
     {
         switch (id)
         {
             case 1:
-                return new Bluster();
+                return new Bluster(no_effect);
             case 2:
-                return new PartingShot();
+                return new PartingShot(no_effect);
             case 3:
-                return new BrowBeat();
+                return new BrowBeat(no_effect);
             case 4:
-                return new BadCop();
+                return new BadCop(no_effect);
             case 5:
-                return new Encourage();
+                return new Encourage(no_effect);
             case 6:
-                return new Complement();
+                return new Complement(no_effect);
             case 7:
-                return new SobStory();
+                return new SobStory(no_effect);
             case 8:
-                return new GoodCop();
+                return new GoodCop(no_effect);
             case 9:
-                return new Articulate();
+                return new Articulate(no_effect);
             case 10:
-                return new Salutation();
+                return new Salutation(no_effect);
             case 11:
-                return new Lecture();
+                return new Lecture(no_effect);
             case 12:
-                return new MenacingPresence();
+                return new MenacingPresence(no_effect);
             case 13:
-                return new Tirade();
+                return new Tirade(no_effect);
             case 14:
-                return new Empathize();
+                return new Empathize(no_effect);
             case 15:
-                return new Reassure();
+                return new Reassure(no_effect);
             case 16:
-                return new Eloquence();
+                return new Eloquence(no_effect);
             case 17:
-                return new Monologue();
+                return new Monologue(no_effect);
             default:
                 return null;
         }
@@ -59,7 +59,7 @@ public static class Cards
  */
 public class Bluster : Card
 {
-    public Bluster() : base(1)
+    public Bluster(bool noEffect = false) : base(1)
     {
         this._metadata["element"] = "Intimidation";
         this._metadata["name"] = "Bluster";
@@ -73,7 +73,7 @@ public class Bluster : Card
 
 public class PartingShot : Card
 {
-    public PartingShot() : base(2)
+    public PartingShot(bool noEffect = false) : base(2)
     {
         this._metadata["element"] = "Intimidation";
         this._metadata["name"] = "Parting Shot";
@@ -83,7 +83,10 @@ public class PartingShot : Card
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
 
-        this.__localEffects["Parting Shot!"] = new EPartingShot(this);
+        if (!noEffect)
+        {
+            this.__localEffects["Parting Shot!"] = new EPartingShot(this);
+        }
     }
 
     public override void OnChange()
@@ -121,7 +124,7 @@ public class PartingShot : Card
 
 public class BrowBeat : Card
 {
-    public BrowBeat() : base(3)
+    public BrowBeat(bool noEffect = false) : base(3)
     {
         this._metadata["element"] = "Intimidation";
         this._metadata["name"] = "Brow Beat";
@@ -131,7 +134,10 @@ public class BrowBeat : Card
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
 
-        this.__localEffects["Brow Beat!"] = new EBrowBeat(this);
+        if (!noEffect)
+        {
+            this.__localEffects["Brow Beat!"] = new EBrowBeat(this);
+        }
     }
 
     public override void OnChange()
@@ -170,7 +176,7 @@ public class BrowBeat : Card
 
 public class BadCop : Card
 {
-    public BadCop() : base(4)
+    public BadCop(bool noEffect = false) : base(4)
     {
         this._metadata["element"] = "Intimidation";
         this._metadata["name"] = "Bad Cop";
@@ -180,7 +186,10 @@ public class BadCop : Card
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
 
-        this.__localEffects["Bad Cop!"] = new EBadCop(this);
+        if (!noEffect)
+        {
+            this.__localEffects["Bad Cop!"] = new EBadCop(this);
+        }
     }
 
     public override void OnChange()
@@ -219,7 +228,7 @@ public class BadCop : Card
 
 public class Encourage : Card
 {
-    public Encourage() : base(5)
+    public Encourage(bool noEffect = false) : base(5)
     {
         this._metadata["element"] = "Sympathy";
         this._metadata["name"] = "Encourage";
@@ -233,7 +242,7 @@ public class Encourage : Card
 
 public class Complement : Card
 {
-    public Complement() : base(6)
+    public Complement(bool noEffect = false) : base(6)
     {
         this._metadata["element"] = "Sympathy";
         this._metadata["name"] = "Complement";
@@ -243,7 +252,10 @@ public class Complement : Card
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
 
-        this.__localEffects["Complement!"] = new EComplement(this);
+        if (!noEffect)
+        {
+            this.__localEffects["Complement!"] = new EComplement(this);
+        }
     }
 
     public override void OnChange()
@@ -282,7 +294,7 @@ public class Complement : Card
 
 public class SobStory : Card
 {
-    public SobStory() : base(7)
+    public SobStory(bool noEffect = false) : base(7)
     {
         this._metadata["element"] = "Sympathy";
         this._metadata["name"] = "Sob Story";
@@ -292,7 +304,10 @@ public class SobStory : Card
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
 
-        this.__localEffects["Sob Story!"] = new ESobStory(this);
+        if (!noEffect)
+        {
+            this.__localEffects["Sob Story!"] = new ESobStory(this);
+        }
     }
 
     public override void OnChange()
@@ -331,7 +346,7 @@ public class SobStory : Card
 
 public class GoodCop : Card
 {
-    public GoodCop() : base(8)
+    public GoodCop(bool noEffect = false) : base(8)
     {
         this._metadata["element"] = "Sympathy";
         this._metadata["name"] = "Good Cop";
@@ -341,7 +356,10 @@ public class GoodCop : Card
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
 
-        this.__localEffects["Good Cop!"] = new EGoodCop(this);
+        if (!noEffect)
+        {
+            this.__localEffects["Good Cop!"] = new EGoodCop(this);
+        }
     }
 
     public override void OnChange()
@@ -380,7 +398,7 @@ public class GoodCop : Card
 
 public class Articulate : Card
 {
-    public Articulate() : base(9)
+    public Articulate(bool noEffect = false) : base(9)
     {
         this._metadata["element"] = "Persuasion";
         this._metadata["name"] = "Articulate";
@@ -394,7 +412,7 @@ public class Articulate : Card
 
 public class Salutation : Card
 {
-    public Salutation() : base(10)
+    public Salutation(bool noEffect = false) : base(10)
     {
         this._metadata["element"] = "Persuasion";
         this._metadata["name"] = "Salutation";
@@ -404,7 +422,10 @@ public class Salutation : Card
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
 
-        this.__localEffects["Salutation!"] = new ESalutation(this);
+        if (!noEffect)
+        {
+            this.__localEffects["Salutation!"] = new ESalutation(this);
+        }
     }
 
     public override void OnPlay()
@@ -444,7 +465,7 @@ public class Salutation : Card
 
 public class Lecture : Card
 {
-    public Lecture() : base(11)
+    public Lecture(bool noEffect = false) : base(11)
     {
         this._metadata["element"] = "Persuasion";
         this._metadata["name"] = "Lecture";
@@ -454,7 +475,8 @@ public class Lecture : Card
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
 
-        this.__localEffects["Lecture!"] = new ELecture(this);
+        if (!noEffect) { this.__localEffects["Lecture!"] = new ELecture(this); }
+        
     }
 
     public override void OnChange()
@@ -496,7 +518,7 @@ public class Lecture : Card
  */
 public class MenacingPresence: Card
 {
-    public MenacingPresence() : base(12)
+    public MenacingPresence(bool noEffect = false) : base(12)
     {
         this._metadata["element"] = "Preparation";
         this._metadata["name"] = "Menacing Presence";
@@ -544,7 +566,7 @@ public class MenacingPresence: Card
 
 public class Tirade : Card
 {
-    public Tirade() : base(13)
+    public Tirade(bool noEffect = false) : base(13)
     {
         this._metadata["element"] = "Preparation";
         this._metadata["name"] = "Tirade";
@@ -590,7 +612,7 @@ public class Tirade : Card
 
 public class Empathize : Card
 {
-    public Empathize() : base(14)
+    public Empathize(bool noEffect = false) : base(14)
     {
         this._metadata["element"] = "Preparation";
         this._metadata["name"] = "Empathize";
@@ -636,7 +658,7 @@ public class Empathize : Card
 
 public class Reassure : Card
 {
-    public Reassure() : base(15)
+    public Reassure(bool noEffect = false) : base(15)
     {
         this._metadata["element"] = "Preparation";
         this._metadata["name"] = "Reassure";
@@ -683,7 +705,7 @@ public class Reassure : Card
 
 public class Eloquence : Card
 {
-    public Eloquence() : base(16)
+    public Eloquence(bool noEffect = false) : base(16)
     {
         this._metadata["element"] = "Preparation";
         this._metadata["name"] = "Eloquence";
@@ -742,7 +764,7 @@ public class Eloquence : Card
 
 public class Monologue : Card
 {
-    public Monologue() : base(17)
+    public Monologue(bool noEffect = false) : base(17)
     {
         this._metadata["element"] = "Preparation";
         this._metadata["name"] = "Monologue";

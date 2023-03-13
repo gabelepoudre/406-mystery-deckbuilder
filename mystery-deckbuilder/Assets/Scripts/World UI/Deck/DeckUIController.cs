@@ -58,7 +58,7 @@ public class DeckUIController : MonoBehaviour
             int cardIdx = cardData.Item1;
             (int, int, int) quant = (cardData.Item2, cardData.Item3, cardData.Item4);
 
-            Card card = (Card)Cards.CreateCardWithID(cardIdx);
+            Card card = (Card)Cards.CreateCardWithID(cardIdx, true);
             GameObject _cardPrefabInstance = null;
 
             switch (card.GetElement())
@@ -91,9 +91,8 @@ public class DeckUIController : MonoBehaviour
         {
             _deckQuantities.Add(deckContainer.GetComponentInChildren<Text>());
             _deckContainerControllers.Add(deckContainer.GetComponent<DeckCardContainerController>());
-
-            DisplayCards(1);
         }
+        DisplayCards(1);
 
     }
 
