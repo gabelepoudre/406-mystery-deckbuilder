@@ -13,6 +13,8 @@ public class DeckUIController : MonoBehaviour
     public GameObject greenCardNoEncounter;
     public GameObject greyCardNoEncounter;
 
+    public Transform previewCardSpawn;
+
     private List<Text> _deckQuantities = new();
     private List<DeckCardContainerController> _deckContainerControllers = new();
 
@@ -79,9 +81,10 @@ public class DeckUIController : MonoBehaviour
 
 
             NoEncounterCardPrefabController c = _cardPrefabInstance.GetComponent<NoEncounterCardPrefabController>();
+            c.makeBiggerTransform = previewCardSpawn;
             _cardPrefabInstance.transform.localScale = new Vector3(_cardPrefabInstance.transform.localScale.x - 0.43f, _cardPrefabInstance.transform.localScale.y - 0.43f, _cardPrefabInstance.transform.localScale.z);
             card.SetAndInitializeNoEncounterFrontendController(c);
-            _deckContainerControllers[0].SetQuantity(quant);
+            _deckContainerControllers[normalized_idx].SetQuantity(quant);
         }
     }
 

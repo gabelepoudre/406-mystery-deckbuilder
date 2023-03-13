@@ -23,8 +23,19 @@ public class NoEncounterCardPrefabController : MonoBehaviour, IPointerClickHandl
     public Text visiblePatience;
     public Text visibleCompliance;
 
+    public Transform makeBiggerTransform;
+    private Vector3 _spawnTransformPosition;
+
+    private bool _highlighted = false;
+
     private int _defaultCompliance;
     private int _defaultPatience;
+
+
+    void Awake()
+    {
+        _spawnTransformPosition = gameObject.transform.position;
+    }
 
     public void SetDefaultCompliance(int defaultCompliance)
     {
@@ -88,22 +99,33 @@ public class NoEncounterCardPrefabController : MonoBehaviour, IPointerClickHandl
 
     public void OnPointerClick(PointerEventData eventData) 
     {
-        Debug.Log("Card clicked");
+
     }
 
     public void OnDeselect(BaseEventData eventData)
     {
-        Debug.Log("Card deselected");
+        if (_highlighted)
+        {
+            gameObject.transform.position = _spawnTransformPosition;
+            gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x - 0.8f, gameObject.transform.localScale.y - 0.8f, gameObject.transform.localScale.z);
+            _highlighted = false;
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x + 0.43f, gameObject.transform.localScale.y + 0.43f, gameObject.transform.localScale.z);
+        if (!_highlighted)
+        {
+            _highlighted = true;
+            EventSystem.current.SetSelectedGameObject(gameObject);
+            gameObject.transform.position = new Vector3(makeBiggerTransform.position.x, makeBiggerTransform.position.y, makeBiggerTransform.position.z);
+            gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x + 0.8f, gameObject.transform.localScale.y + 0.8f, gameObject.transform.localScale.z);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x - 0.43f, gameObject.transform.localScale.y - 0.43f, gameObject.transform.localScale.z);
+
     }
 
 }
