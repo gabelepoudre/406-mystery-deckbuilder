@@ -5,6 +5,7 @@
  */
 
 using System.Collections.Generic;
+using System;
 
 
 /*
@@ -30,7 +31,7 @@ public static class GameState
             Phase_1, // this is just "normal gameplay"
         }
         public static GameStateValue<GameplayPhases> currentGameplayPhase = 
-            new(GameplayPhases.Tutorial, _gameStateValues);
+            new(GameplayPhases.Phase_1, _gameStateValues);
 
         
         
@@ -76,6 +77,28 @@ public static class GameState
 
         //NOTE: state listeners of certain NPCs (like Rat Prince) that are placed in multiple locations rely on this
         public static GameStateValue<Locations> location = new(Locations.Motel, _gameStateValues);
+
+
+        public static GameStateValue<Dictionary<Locations, bool>> locationsViewable = new(new Dictionary<Locations, bool>()
+        {
+            [Locations.Motel] = false,
+            [Locations.Bar] = false,
+            [Locations.Boxcar] = false,
+            [Locations.LumberYard] = false,
+            [Locations.RailYard] = false,
+            [Locations.RatMobCave] = false,
+            [Locations.BerryFarm] = false,
+            [Locations.BreakfastPalace] = false,
+            [Locations.TownHall] = false,
+            [Locations.RealMainStreet] = false,
+            [Locations.MikesPerogies] = false,
+            [Locations.MotelOfficeInside] = false,
+            [Locations.MotelRoomInside] = false,
+            [Locations.PostOfficeInside] = false
+        }, _gameStateValues);
+
+
+
     }
 
 
