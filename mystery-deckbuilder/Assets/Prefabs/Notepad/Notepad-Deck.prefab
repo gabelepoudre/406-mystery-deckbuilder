@@ -250,6 +250,7 @@ MonoBehaviour:
   blueCardNoEncounter: {fileID: 2988496786782926893, guid: 07628ced1fda5ee4a9b9bdacd696b590, type: 3}
   greenCardNoEncounter: {fileID: 3279046307657509022, guid: 7d09218a0cfde6f4099a944f6b56e6ff, type: 3}
   greyCardNoEncounter: {fileID: 6754762022743972773, guid: 47e9ed273c5e13540a3d8920f734db6e, type: 3}
+  previewCardSpawn: {fileID: 0}
 --- !u!1 &276253087914762020
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,7 +688,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7519403435900221821}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 224024368266688813}
+        m_TargetAssemblyTypeName: DeckUIController, Assembly-CSharp
+        m_MethodName: PageUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &830424807241785015
 GameObject:
   m_ObjectHideFlags: 0
@@ -2511,7 +2524,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4644672609237961805}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 224024368266688813}
+        m_TargetAssemblyTypeName: DeckUIController, Assembly-CSharp
+        m_MethodName: PageDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4346069183621377269
 GameObject:
   m_ObjectHideFlags: 0
