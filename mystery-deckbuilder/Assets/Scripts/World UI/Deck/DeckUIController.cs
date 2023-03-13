@@ -15,8 +15,22 @@ public class DeckUIController : MonoBehaviour
 
     public Transform previewCardSpawn;
 
+    public int Page
+    {
+        get
+        {
+            return _page;
+        }
+        set
+        {
+            
+        }
+    }
+    private int _page = 1;
+
     private List<Text> _deckQuantities = new();
     private List<DeckCardContainerController> _deckContainerControllers = new();
+    private List<GameObject> _currentCardInstantiations = new();
 
     private List<(int, int, int, int)> GetDeckCards()
     {
@@ -50,8 +64,34 @@ public class DeckUIController : MonoBehaviour
         return cards;
     }
 
+    private bool CanMovePageUp()
+    {
+        if (_page != 1)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    private bool CanMovePageDown()
+    {
+        if (_page == 1)
+        {
+            return false;
+        }
+        return true;
+    }
+
     public void DisplayCards(int page)
     {
+        if (_currentCardInstantiations.Count != 0)
+        {
+            foreach(GameObject card in _currentCardInstantiations)
+            {
+                Destroy(card);
+            }
+        }
+
         List<(int, int, int, int)> ordered_cards = GetDeckCards();
         for (int card_section = -6 + (page*6); card_section < -6 + ((page+1)*6) && card_section <= GameState.Player.fullDeck.Value.Count-1; card_section++)
         {
