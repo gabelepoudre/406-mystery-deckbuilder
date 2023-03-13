@@ -33,7 +33,10 @@ public static class GameState
             new(GameplayPhases.Tutorial, _gameStateValues);
 
         
+        
         public static GameStateValue<int> currentAct = new(1, _gameStateValues);
+
+        public static GameStateValue<int> currentDay = new(1, _gameStateValues);
 
 
         public static GameStateValue<Encounter> activeEncounter = new(null, _gameStateValues);

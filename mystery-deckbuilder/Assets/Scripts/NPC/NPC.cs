@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -97,6 +98,61 @@ public class NPC : MonoBehaviour
     {
         
     }
+
+    //if the NPC is just part of the crowd during the berry farm scripted event
+    private void UseBerryFarmCrowdDialogue()
+    {
+        if (GameState.Meta.currentGameplayPhase.Value != GameState.Meta.GameplayPhases.Tutorial || GameState.Meta.currentDay.Value != 2)
+        {
+            return;
+        }
+
+        DialogueTree dialogue1 = new(new NPCNode(new string[] {"I can't believe the berries are gone!"}));
+        DialogueTree dialogue2 = new(new NPCNode(new string[] {"Why would someone do something like this!?"}));
+        DialogueTree dialogue3 = new(new NPCNode(new string[] {"Oh the humanity!!!"}));
+        DialogueTree dialogue4 = new(new NPCNode(new string[] {"How will we ever recover from this????"}));
+        DialogueTree dialogue5 = new(new NPCNode(new string[] {"It's over....."}));
+        DialogueTree dialogue6 = new(new NPCNode(new string[] {"OMG NOOOOO!!!"}));
+        DialogueTree dialogue7 = new(new NPCNode(new string[] {"REEEEEEEEEEEE!!!"}));
+
+        List<DialogueTree> trees = new() {dialogue1, dialogue2, dialogue3, dialogue4, dialogue5, dialogue6, dialogue7};
+        var random = new System.Random();
+        int index = random.Next(trees.Count);
+
+
+        
+        DialogueTreeDictionary.Add("BerryFarm", trees[index]);
+        _currentDialogueKey = "BerryFarm";
+
+        if (CharacterName == "Crouton")
+        {
+            DialogueTreeDictionary.Add("BerryFarmCrouton", new DialogueTree(new NPCNode(new string[] {"....."})));
+            _currentDialogueKey = "BerryFarmCrouton";
+        }
+        
+    }
+
+    private void HideIfNotBerryFarmScriptedEvent()
+    {
+        if ((GameState.Meta.currentGameplayPhase.Value != GameState.Meta.GameplayPhases.Tutorial || GameState.Meta.currentDay.Value != 2)
+         || CharacterName == "Austin" || CharacterName == "Austyn")
+        {
+            return;
+        }
+        //GameObject.SetActive(false);
+    }
+
+    private void HideIfNPCPresentAtBerryFarm()
+    {
+        if (GameState.Meta.currentGameplayPhase.Value == GameState.Meta.GameplayPhases.Tutorial && GameState.Meta.currentDay.Value == 2
+        && GameState.Player.location.Value != GameState.Player.Locations.BerryFarm)
+        {
+            //GameObject.SetActive(false);
+        }
+        
+    }
+
+    
 
 
 
