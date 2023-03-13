@@ -25,6 +25,17 @@ public class Elk_SecretaryStateListener : MonoBehaviour
             e.Message.Contains("e");
             GameState.NPCs.Elk.encountersCompleted.OnChange -= OnEncounterComplete;
         }
+
+        //we have to subscribe to the value since crouton is in the same scene
+        try 
+        {
+            GameState.NPCs.Crouton.encountersWon.OnChange += UpdateDialogue;
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Crouton.encountersWon.OnChange -= UpdateDialogue;
+        }
     }
 
     private void OnEncounterComplete()
