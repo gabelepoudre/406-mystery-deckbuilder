@@ -3268,6 +3268,7 @@ GameObject:
   - component: {fileID: 6003669990602046760}
   - component: {fileID: 4495680817733631098}
   - component: {fileID: 3248223245853381090}
+  - component: {fileID: 6820753921232284353}
   m_Layer: 5
   m_Name: Card Counter Txt
   m_TagString: Untagged
@@ -3337,6 +3338,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 20/20
+--- !u!114 &6820753921232284353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5379788152212761415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 877192dde308d3d4b802c2dd45ea6537, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5450558970968296579
 GameObject:
   m_ObjectHideFlags: 0
