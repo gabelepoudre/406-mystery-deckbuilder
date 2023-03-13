@@ -94,6 +94,8 @@ public static class GameState
          *
          *  FORGIVE ME FATHER FOR I HAVE SINNED
          *  YES I KNOW THIS IS PROFOUNDLY GROTESQUE I AM SO SORRY FOR DOING THIS BUT I WILL CHANGE IT AFTER THE BETA (UNLESS I FORGET)
+         *  
+         *  Select a culprit uses npcNameToMet btw
          */
         public static Dictionary<string, GameStateValue<bool>> npcNameToMet = new(){{"Nibbles", Nibbles.met}, 
         {"Austin", Austin.met}, {"Austyn", Austyn.met}, {"Alan", Alan.met}, 
