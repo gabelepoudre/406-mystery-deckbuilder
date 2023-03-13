@@ -1448,6 +1448,7 @@ GameObject:
   - component: {fileID: 438891529040592829}
   - component: {fileID: 1973884193374858975}
   - component: {fileID: 142597346926237085}
+  - component: {fileID: 1028348748560638681}
   m_Layer: 5
   m_Name: YouWonBackround
   m_TagString: Untagged
@@ -1516,6 +1517,24 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1028348748560638681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7712524390560517971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0090f0895ea1ede43ae1d77135b31c56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redCardNoEncounter: {fileID: 9204399067519391359, guid: 97a6a58ded51d2a499c75eef49cf975f, type: 3}
+  blueCardNoEncounter: {fileID: 2988496786782926893, guid: 07628ced1fda5ee4a9b9bdacd696b590, type: 3}
+  greenCardNoEncounter: {fileID: 3279046307657509022, guid: 7d09218a0cfde6f4099a944f6b56e6ff, type: 3}
+  greyCardNoEncounter: {fileID: 6754762022743972773, guid: 47e9ed273c5e13540a3d8920f734db6e, type: 3}
+  displayText: {fileID: 3022676611054203043}
+  rewardSpawn: {fileID: 6718421355027250233}
 --- !u!1 &7777577840799455126
 GameObject:
   m_ObjectHideFlags: 0
