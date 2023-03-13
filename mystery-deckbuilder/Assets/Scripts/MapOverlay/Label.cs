@@ -5,9 +5,36 @@ using UnityEngine.SceneManagement;
 
 public class Label : MonoBehaviour
 {
-    public bool LabelDisplay = false;
+    public string locationAsString;
 
-    public void MoveToScene(string scene)
+    void Start()
+    {
+        ShowOrHide();
+        GameState.Player.locationsViewable.OnChange += ShowOrHide;
+    }
+
+    public void ShowOrHide()
+    {
+        try
+        {
+            GameState.Player.Locations loc = GameState.Player.Locations.Parse<GameState.Player.Locations>(locationAsString);
+            if (GameState.Player.locationsViewable.Value[loc])
+            {
+                Display();
+            }
+            else
+            {
+                Hide();
+            }
+        }
+        catch(MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.Player.locationsViewable.OnChange -= ShowOrHide;
+        }
+    }
+
+    public void MoveToScene()
     {
         
         if (DialogueManager.Instance.DialogueActive)
@@ -16,23 +43,23 @@ public class Label : MonoBehaviour
             return;
         }
         
-        Debug.Log("Move to " + scene);
+        Debug.Log("Move to " + locationAsString);
 
         //update state
-        GameState.Player.location.Value = GameState.Player.Locations.Parse<GameState.Player.Locations>(scene);
+        GameState.Player.location.Value = GameState.Player.Locations.Parse<GameState.Player.Locations>(locationAsString);
         Debug.Log("update player location state to " + GameState.Player.location.Value.ToString());
 
-        SceneManager.LoadScene(scene);
+        SceneManager.LoadScene(locationAsString);
     }
 
     public void Display()
     {
-        LabelDisplay = true;
+        gameObject.SetActive(true);
     }
 
     public void Hide()
     {
-        LabelDisplay = false;
+        gameObject.SetActive(false);
     }
 
 
