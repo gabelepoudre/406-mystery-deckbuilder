@@ -8,6 +8,7 @@ public class Rat_PrinceStateListener : MonoBehaviour
     void Start()
     {
         ChangeDialogueBasedOnState();
+        UpdateDialogue();
     }
 
     private void ChangeDialogueBasedOnState()
@@ -25,16 +26,6 @@ public class Rat_PrinceStateListener : MonoBehaviour
         }
 
         //location-dependent
-
-        try 
-        {
-            GameState.Player.location.OnChange += OnLocationChange;
-        }
-        catch (MissingReferenceException e)
-        {
-            e.Message.Contains("e");
-            GameState.Player.location.OnChange -= OnLocationChange;
-        }
        
     }
 
@@ -57,17 +48,21 @@ public class Rat_PrinceStateListener : MonoBehaviour
         }
     }
 
-    private void OnLocationChange()
+
+    //Beta workaround
+    private void UpdateDialogue()
     {
-        if (GameState.Player.location.Value == GameState.Player.Locations.Bar)
+        if (GameState.Player.location.Value == GameState.Player.Locations.Boxcar)
         {
-            transform.GetComponent<NPC>().CurrentDialogueKey = "Bar";
+            transform.GetComponent<NPC>().CurrentDialogueKey = "Confession";
         }
-        else if (GameState.Player.location.Value == GameState.Player.Locations.Boxcar)
+        if (GameState.NPCs.Rat_Prince.encountersWon.Value > 0)
         {
-            transform.GetComponent<NPC>().CurrentDialogueKey = "Boxcar";
+            transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWin";
         }
     }
+
+    
 
     
 

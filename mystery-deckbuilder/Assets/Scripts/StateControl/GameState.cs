@@ -66,6 +66,7 @@ public static class GameState
             BreakfastPalace,
             TownHall,
             RealMainStreet,
+            MikesPerogies,
             MotelOfficeInside,
             MotelRoomInside,
             PostOfficeInside

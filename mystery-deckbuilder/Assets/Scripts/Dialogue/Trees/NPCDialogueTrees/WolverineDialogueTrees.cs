@@ -20,6 +20,7 @@ public class WolverineDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         _dialogueTreeDict.Add("Intro", BuildIntro());
         _dialogueTreeDict.Add("AfterEncounterWin", BuildAfterEncounterWin());
         _dialogueTreeDict.Add("AfterEncounterLoss", BuildAfterEncounterLoss());
+        _dialogueTreeDict.Add("Bar", BuildBar());
     }
 
     private DialogueTree BuildIntro()
@@ -67,6 +68,12 @@ public class WolverineDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     private DialogueTree BuildAfterEncounterLoss()
     {
         DialogueTree tree = new(new NPCNode(new string[] {"I am unconvinced."}));
+        return tree;
+    }
+
+    private DialogueTree BuildBar()
+    {
+        DialogueTree tree = new(new NPCNode(new string[] {"...."}));
         return tree;
     }
 

@@ -8,11 +8,12 @@ public class AlanStateListener : MonoBehaviour
     void Start()
     {
         ChangeDialogueBasedOnState();
+        UpdateDialogue();
     }
 
     private void ChangeDialogueBasedOnState()
     {
-        //dialogue based on whether you've won an encounter with Nibbles for the day
+        //dialogue based on whether you've won an encounter for the day
 
         try 
         {
@@ -46,6 +47,16 @@ public class AlanStateListener : MonoBehaviour
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
         }
+    }
+
+
+    private void UpdateDialogue()
+    {
+        if (GameState.NPCs.Alan.encountersWon.Value == 1)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWin";
+        }
+       
     }
 
     

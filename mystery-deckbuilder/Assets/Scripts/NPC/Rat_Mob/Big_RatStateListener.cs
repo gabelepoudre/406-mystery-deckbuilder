@@ -47,6 +47,15 @@ public class Big_RatStateListener : MonoBehaviour
 
     }
 
+    private void UpdateDialogue()
+    {
+        if (GameState.NPCs.Alan.encountersWon.Value == 1)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWin";
+        }
+       
+    }
+
     
 
 }
