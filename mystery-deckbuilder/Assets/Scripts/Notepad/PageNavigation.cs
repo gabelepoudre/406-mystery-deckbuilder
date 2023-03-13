@@ -149,27 +149,28 @@ public class PageNavigation : MonoBehaviour
         Chapter one = new Chapter("Suspect" );
         //Create pages for chapter one
         Page ch1p1 = new Page("Nibbles", unseenImage);
-        Page ch1p2 = new Page("Char2", unseenImage);
-        Page ch1p3 = new Page("Bear", unseenImage);
-        Page ch1p4 = new Page("Dog", unseenImage);
-        Page ch1p5 = new Page("Cat", unseenImage);
-        Page ch1p6 = new Page("Fish", unseenImage);
-        Page ch1p7 = new Page("Rat", unseenImage);
-        Page ch1p8 = new Page("Mouse", unseenImage);
-        Page ch1p9 = new Page("Lizard", unseenImage);
-        Page ch1p10 = new Page("Badger", unseenImage);
-        //add notes to the pages
-        ch1p1.AddNotes("This is the nibbles note");
-        ch1p1.AddNotes("Nibbles clue");
-        ch1p2.AddNotes("This is the char2 note");
-        ch1p3.AddNotes("This is the bear note");
-        ch1p4.AddNotes("This is the dog note");
-        ch1p5.AddNotes("This is the car note");
-        ch1p6.AddNotes("This is the fish note");
-        ch1p7.AddNotes("This is the rat note");
-        ch1p8.AddNotes("This is the mouse note");
-        ch1p9.AddNotes("This is the lizzard note");
-        ch1p10.AddNotes("This is the badger note");
+        Page ch1p2 = new Page("Austin", unseenImage);
+        Page ch1p3 = new Page("Austyn", unseenImage);
+        Page ch1p4 = new Page("Alan", unseenImage);
+        Page ch1p5 = new Page("Mark", unseenImage);
+        Page ch1p6 = new Page("Samuel", unseenImage);
+        Page ch1p7 = new Page("Doug", unseenImage);
+        Page ch1p8 = new Page("Elk Secretary", unseenImage);
+        Page ch1p9 = new Page("Rat Leader", unseenImage);
+        Page ch1p10 = new Page("Rat Prince", unseenImage);
+        Page ch1p11 = new Page("Big Rat", unseenImage);
+        Page ch1p12 = new Page("Bee", unseenImage);
+        Page ch1p13 = new Page("Marry", unseenImage);
+        Page ch1p14 = new Page("Wolverine", unseenImage);
+        Page ch1p15 = new Page("Black Bear", unseenImage);
+        Page ch1p16 = new Page("Crouton", unseenImage);
+        Page ch1p17 = new Page("Nina", unseenImage);
+        Page ch1p18 = new Page("Mike", unseenImage);
+        Page ch1p19 = new Page("Speck", unseenImage);
+        Page ch1p20 = new Page("Oslow", unseenImage);
+        Page ch1p21 = new Page("Clay", unseenImage);
+
+
         //add the pages to the chapter
         one.AddPage(ch1p1);
         one.AddPage(ch1p2);
@@ -196,17 +197,7 @@ public class PageNavigation : MonoBehaviour
         Page ch2p8 = new Page("Garden", unseenImage);
         Page ch2p9 = new Page("Pool", unseenImage);
         Page ch2p10 = new Page("Graveyard", unseenImage);
-        //create notes for the pages
-        ch2p1.AddNotes("This is the mainst note");
-        ch2p2.AddNotes("This is the river note");
-        ch2p3.AddNotes("This is the restar note");
-        ch2p4.AddNotes("This is the church note");
-        ch2p5.AddNotes("This is the farm note");
-        ch2p6.AddNotes("This is the otherst note");
-        ch2p7.AddNotes("This is the motel note");
-        ch2p8.AddNotes("This is the garden note");
-        ch2p9.AddNotes("This is the pool note");
-        ch2p10.AddNotes("This is the grave note");
+
         //add the pages to the chapter
         two.AddPage(ch2p1);
         two.AddPage(ch2p2);
@@ -240,10 +231,18 @@ public class PageNavigation : MonoBehaviour
         //for each character in suspects
         foreach(var pages in chapterList[0].GetPageList())
         {
+            pages.AddNotes("Notes for " + pages.GetTitle());
             //if character has been encountered
-             if(GameState.NPCs.npcsMet.Contains(pages.GetTitle()))
+             if(GameState.NPCs.npcNameToMet.ContainsKey(pages.GetTitle()))
              {
-                pages.SetImage(seenImage);
+                if(GameState.NPCs.npcNameToMet[pages.GetTitle()].Value == true)
+                {
+                    pages.SetImage(seenImage);
+                    pages.AddNotes("Encounters completed with suspect: " +GameState.NPCs.npcNameToEncountersCompleted[pages.GetTitle()].Value );
+                    pages.AddNotes("Encounters won against suspect: " +GameState.NPCs.npcNameToEncountersWon[pages.GetTitle()].Value );
+
+                }
+               
 
             }
 
@@ -251,6 +250,7 @@ public class PageNavigation : MonoBehaviour
 
         foreach(var pages in chapterList[1].GetPageList())
         {
+            pages.AddNotes("Notes for zone " + pages.GetTitle());
             //if zone has been unlocked/visited
             if(GameState.Zones.zonesVisted.Contains(pages.GetTitle()))
             {

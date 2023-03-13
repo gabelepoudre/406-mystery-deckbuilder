@@ -123,6 +123,22 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &210626304 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3643775325885918104, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
+  m_PrefabInstance: {fileID: 3643775325945367704}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &210626305 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3643775325885918105, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
+  m_PrefabInstance: {fileID: 3643775325945367704}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 024131001af0b44f8b00df44aab57b45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &277550695
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +223,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1693540683}
+      - m_Target: {fileID: 210626305}
         m_TargetAssemblyTypeName: NotepadController, Assembly-CSharp
         m_MethodName: OpenNotepad
         m_Mode: 1
@@ -349,7 +365,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1693540684}
+  - {fileID: 210626304}
   - {fileID: 277550696}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -359,22 +375,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1693540683 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8679184070414422610, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-  m_PrefabInstance: {fileID: 8679184072099410713}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 024131001af0b44f8b00df44aab57b45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1693540684 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8679184070414422613, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-  m_PrefabInstance: {fileID: 8679184072099410713}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1807230555
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,58 +662,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1915656041}
   m_CullTransparentMesh: 1
---- !u!1001 &8679184072099410713
+--- !u!1001 &3643775325945367704
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 687811768}
     m_Modifications:
-    - target: {fileID: 8679184070414422611, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
+    - target: {fileID: 3643775325885917799, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
       propertyPath: m_Name
       value: Notepad
       objectReference: {fileID: 0}
-    - target: {fileID: 8679184070414422613, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
+    - target: {fileID: 3643775325885918104, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8679184070414422613, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
+    - target: {fileID: 3643775325885918104, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1846
       objectReference: {fileID: 0}
-    - target: {fileID: 8679184070414422613, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
+    - target: {fileID: 3643775325885918104, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
       propertyPath: m_LocalPosition.y
       value: -1040
       objectReference: {fileID: 0}
-    - target: {fileID: 8679184070414422613, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
+    - target: {fileID: 3643775325885918104, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8679184070414422613, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
+    - target: {fileID: 3643775325885918104, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8679184070414422613, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
+    - target: {fileID: 3643775325885918104, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 8679184070414422613, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
+    - target: {fileID: 3643775325885918104, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 8679184070414422613, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
+    - target: {fileID: 3643775325885918104, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 8679184070414422613, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
+    - target: {fileID: 3643775325885918104, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8679184070414422613, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
+    - target: {fileID: 3643775325885918104, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8679184070414422613, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
+    - target: {fileID: 3643775325885918104, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
