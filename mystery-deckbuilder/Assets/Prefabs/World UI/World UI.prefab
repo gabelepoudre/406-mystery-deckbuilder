@@ -123,7 +123,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8422703384812270096}
+      - m_Target: {fileID: 6028441323436616514}
         m_TargetAssemblyTypeName: NotepadController, Assembly-CSharp
         m_MethodName: OpenPause
         m_Mode: 1
@@ -350,7 +350,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8422703384812270096}
+      - m_Target: {fileID: 6028441323436616514}
         m_TargetAssemblyTypeName: NotepadController, Assembly-CSharp
         m_MethodName: OpenDeck
         m_Mode: 1
@@ -678,7 +678,7 @@ Transform:
   - {fileID: 4620112418078391981}
   - {fileID: 343412318192611716}
   - {fileID: 5767188380341612951}
-  - {fileID: 8422703384812270103}
+  - {fileID: 6028441323436616517}
   - {fileID: 5304494549088095}
   m_Father: {fileID: 905738060628842148}
   m_RootOrder: 0
@@ -823,6 +823,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1425035604778906778}
     m_Modifications:
+    - target: {fileID: 6861375347289049863, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861375347289049863, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -886.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861375347289049863, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -489
+      objectReference: {fileID: 0}
     - target: {fileID: 8386694841746709757, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
       propertyPath: redCardNoEncounter
       value: 
@@ -897,9 +909,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
---- !u!114 &8422703384812270096 stripped
+--- !u!114 &6028441323436616514 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8679184070414422610, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6861375347289049856, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
   m_PrefabInstance: {fileID: 905738061737943106}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -908,9 +920,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 024131001af0b44f8b00df44aab57b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &8422703384812270103 stripped
+--- !u!4 &6028441323436616517 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8679184070414422613, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6861375347289049863, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
   m_PrefabInstance: {fileID: 905738061737943106}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &905738062023408797
@@ -1019,7 +1031,7 @@ PrefabInstance:
     - target: {fileID: 6672356288609979659, guid: 39e0d3727e78c46788ffbe2fe94856f6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8422703384812270096}
+      objectReference: {fileID: 6028441323436616514}
     - target: {fileID: 6672356288609979659, guid: 39e0d3727e78c46788ffbe2fe94856f6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OpenNotepad
