@@ -7,26 +7,22 @@ public class MarryStateListener : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        ChangeDialogueBasedOnState();
+        OnEncounterComplete();
     }
 
+    //marry has no encounters but..
+    //TODO: implement if she has other state based dialogue changes
     private void ChangeDialogueBasedOnState()
     {
-        
-        try 
-        {
-            GameState.NPCs.Marry.encountersCompleted.OnChange += OnEncounterComplete;
-        }
-        catch (MissingReferenceException e)
-        {
-            e.Message.Contains("e");
-            GameState.NPCs.Marry.encountersCompleted.OnChange -= OnEncounterComplete;
-        }
+        return;
+       
     }
 
+    //marry has no encounters
     private void OnEncounterComplete()
     {
-       //TODO: implement
+       return;
     }
 
     

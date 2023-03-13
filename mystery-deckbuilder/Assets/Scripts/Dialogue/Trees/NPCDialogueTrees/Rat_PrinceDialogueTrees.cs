@@ -28,11 +28,11 @@ public class Rat_PrinceDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         _dialogueTreeDict.Add("AfterEncounterWin", BuildAfterEncounterWin());
         _dialogueTreeDict.Add("AfterEncounterLoss", BuildAfterEncounterLoss());
 
-        _dialogueTreeDict.Add("Bar", BuildBar());
+        _dialogueTreeDict.Add("Intro", BuildIntro());
         _dialogueTreeDict.Add("BoxCar", BuildBoxCar());
     }
 
-    private DialogueTree BuildBar()
+    private DialogueTree BuildIntro()
     {
         NPCNode root = new(new string[] {"Detective, don't you know who I am? I am the Rat Prince. The Heir of the true rulers of this town.", 
         "Don't bother me again if you know what's good for you"});

@@ -7,26 +7,26 @@ public class Black_BearStateListener : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        ChangeDialogueBasedOnState();
     }
 
+    //bear has no encounters but..
+    //TODO: implement if he has other state based dialogue changes
     private void ChangeDialogueBasedOnState()
     {
-        //dialogue based on whether you've won an encounter with Bear for the day
-        try 
-        {
-            GameState.NPCs.Black_Bear.encountersCompleted.OnChange += OnEncounterComplete;
-        }
-        catch (MissingReferenceException e)
-        {
-            e.Message.Contains("e");
-            GameState.NPCs.Black_Bear.encountersCompleted.OnChange -= OnEncounterComplete;
-        }
-
+        
+        return;
     }
 
+    //bear has no encounters
     private void OnEncounterComplete()
     {
-        //TODO: implement
+        return;
+    }
+
+    //TODO: implement if he has other state based dialogue changes
+    private void UpdateDialogue()
+    {
+
     }
 }

@@ -8,14 +8,38 @@ public class SamuelStateListener : MonoBehaviour
     void Start()
     {
         ChangeDialogueBasedOnState();
+        UpdateDialogue();
     }
 
     private void ChangeDialogueBasedOnState()
     {
         
-        try 
+        
+        GameState.NPCs.Samuel.encountersCompleted.OnChange += OnEncounterComplete;
+       
+    }
+
+    private void OnEncounterComplete()
+    {
+
+        //if you've completed the first encounter, then we want to initiate the next dialogue tree depending on whether you won or lost
+        try
         {
-            GameState.NPCs.Samuel.encountersCompleted.OnChange += OnEncounterComplete;
+            if (GameState.NPCs.Samuel.encountersWon.Value == 1)
+            {
+                transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWin";
+            }
+            else
+            {
+                transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterLoss";
+            }
+
+            transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
+
+            if (GameState.NPCs.Samuel.encountersWon.Value == 0)
+            {
+                transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
+            }
         }
         catch (MissingReferenceException e)
         {
@@ -24,26 +48,13 @@ public class SamuelStateListener : MonoBehaviour
         }
     }
 
-    private void OnEncounterComplete()
+    private void UpdateDialogue()
     {
-
-        //if you've completed the first encounter, then we want to initiate the next dialogue tree depending on whether you won or lost
-        
         if (GameState.NPCs.Samuel.encountersWon.Value == 1)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWin";
         }
-        else
-        {
-            transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterLoss";
-        }
-
-        transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
-
-        if (GameState.NPCs.Samuel.encountersWon.Value == 0)
-        {
-            transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
-        }
+       
     }
 
     

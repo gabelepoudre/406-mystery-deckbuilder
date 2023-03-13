@@ -135,6 +135,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2730029737286692573}
+        m_TargetAssemblyTypeName: CroutonEvidenceTrigger, Assembly-CSharp
+        m_MethodName: TriggerEvidence
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7126463671682670321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,7 +267,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: dd79f0a3e6a3570468b5fb89717ce718, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 86ffb56058cba6f41acb237efa1ce6e0, type: 3}
   m_Color: {r: 0.7264151, g: 0.7024297, b: 0.7024297, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -278,8 +290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e0a88f353c1487992adb10c1bd895b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _streetViewStationary: {fileID: 21300000, guid: dd79f0a3e6a3570468b5fb89717ce718, type: 3}
-  _streetViewWave: {fileID: 21300000, guid: 779e50f397751b54089443839f7237d5, type: 3}
+  _streetViewStationary: {fileID: 21300000, guid: 86ffb56058cba6f41acb237efa1ce6e0, type: 3}
+  _streetViewWave: {fileID: 21300000, guid: 0590897f712304844a5c911e899217eb, type: 3}
 --- !u!1 &7126463672415695578
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,6 +542,7 @@ GameObject:
   - component: {fileID: 701282225796089859}
   - component: {fileID: 9199238820055118742}
   - component: {fileID: 1680480853739025566}
+  - component: {fileID: 2730029737286692573}
   m_Layer: 0
   m_Name: Crouton
   m_TagString: Untagged
@@ -566,9 +579,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Crouton
-  affinity_1: 0.43
-  affinity_2: 0.45
-  affintiy_3: 0.45
+  affinity_intimidation: 0.5
+  affinity_sympathy: 0.5
+  affintiy_persuasion: 0.5
   startingPatience: 1
   startingCompliance: 1
   currentPatience: 1
@@ -599,11 +612,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2c6071d43e4cf47b85ce574f5d547d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neutral: {fileID: 0}
-  happy: {fileID: 0}
-  angry: {fileID: 0}
-  stress: {fileID: 0}
-  worry: {fileID: 0}
+  neutral: {fileID: 21300000, guid: 69b76798043f9294e80ecd048e0f598f, type: 3}
+  happy: {fileID: 21300000, guid: 2b141436e10be3243bde4e9909f9510f, type: 3}
+  angry: {fileID: 21300000, guid: 71d5e99097a229847ac47310745494f6, type: 3}
+  stress: {fileID: 21300000, guid: 73495014746bf854996269911abe12ee, type: 3}
+  worry: {fileID: 21300000, guid: f2ea7d015499dcc468b28ba484ef01e3, type: 3}
 --- !u!114 &9199238820055118742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -626,5 +639,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d90a1259ee8804694870a049f67941af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2730029737286692573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7429489653972524998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f845a343896d4095af10bd978f11ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
