@@ -40,8 +40,6 @@ public static class GameState
         public static GameStateValue<bool> lastEncounterEndedInVictory = new(false, _gameStateValues);
 
         public static GameStateValue<bool> notepadActive = new(false, _gameStateValues);
-
-       
         
     }
 
@@ -72,7 +70,7 @@ public static class GameState
             PostOfficeInside
         }
 
-        //NOTE: be sure to update this. the state listeners of certain NPCs (like Rat Prince) that are placed in multiple locations rely on this
+        //NOTE: state listeners of certain NPCs (like Rat Prince) that are placed in multiple locations rely on this
         public static GameStateValue<Locations> location = new(Locations.Motel, _gameStateValues);
     }
 
@@ -240,6 +238,12 @@ public static class GameState
             public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
             public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
             public static GameStateValue<bool> met = new(false, _gameStateValues);
+
+            //whether the player has done the berry commotion sequence or not
+            public static GameStateValue<bool> finishedBerryCommotion = new(false, _gameStateValues);
+
+            //whether the she has given the player evidence
+            public static GameStateValue<bool> gaveEvidence = new(false, _gameStateValues);
         }
 
         public static class Nina
@@ -312,5 +316,6 @@ public static class GameState
             gameState.Reset();
         }
     }
+
 
 }
