@@ -126,13 +126,13 @@ MonoBehaviour:
       - m_Target: {fileID: 3549682515636042933}
         m_TargetAssemblyTypeName: Label, Assembly-CSharp
         m_MethodName: MoveToScene
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: TownHall
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &3549682515636042933
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266340a589bfb0e44b4166a665ab33e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LabelDisplay: 0
+  locationAsString: TownHall
 --- !u!1 &343793914117068371
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,7 +165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6717508644487026849
 RectTransform:
   m_ObjectHideFlags: 0
@@ -471,7 +471,7 @@ MonoBehaviour:
       - m_Target: {fileID: 9132650394416730128}
         m_TargetAssemblyTypeName: Label, Assembly-CSharp
         m_MethodName: MoveToScene
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -492,7 +492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266340a589bfb0e44b4166a665ab33e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LabelDisplay: 0
+  locationAsString: BerryFarm
 --- !u!1 &1789427031426570675
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,6 +716,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2984138814158086580}
   - component: {fileID: 2967049120246430882}
+  - component: {fileID: 2212803182244329145}
   m_Layer: 0
   m_Name: MiniMap
   m_TagString: Untagged
@@ -767,6 +768,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2773444268164910261}
   m_CullTransparentMesh: 1
+--- !u!114 &2212803182244329145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2773444268164910261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317e2849940654d40be2aa978b3af9cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3119395177728759745
 GameObject:
   m_ObjectHideFlags: 0
@@ -1510,13 +1523,13 @@ MonoBehaviour:
       - m_Target: {fileID: 465912520848410559}
         m_TargetAssemblyTypeName: Label, Assembly-CSharp
         m_MethodName: MoveToScene
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: LumberYard
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &465912520848410559
@@ -1531,7 +1544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266340a589bfb0e44b4166a665ab33e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LabelDisplay: 0
+  locationAsString: LumberYard
 --- !u!1 &4484732127600559653
 GameObject:
   m_ObjectHideFlags: 0
@@ -1658,7 +1671,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2928339061634509224}
         m_TargetAssemblyTypeName: Label, Assembly-CSharp
         m_MethodName: MoveToScene
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1679,7 +1692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266340a589bfb0e44b4166a665ab33e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LabelDisplay: 0
+  locationAsString: RealMainStreet
 --- !u!1 &4709636660635936675
 GameObject:
   m_ObjectHideFlags: 0
@@ -1806,7 +1819,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2963630296785703438}
         m_TargetAssemblyTypeName: Label, Assembly-CSharp
         m_MethodName: MoveToScene
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1827,7 +1840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266340a589bfb0e44b4166a665ab33e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LabelDisplay: 0
+  locationAsString: RailYard
 --- !u!1 &4795564115979966533
 GameObject:
   m_ObjectHideFlags: 0
@@ -1980,7 +1993,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4365229909201723702
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2165,13 +2178,13 @@ MonoBehaviour:
       - m_Target: {fileID: 2252479277068373672}
         m_TargetAssemblyTypeName: Label, Assembly-CSharp
         m_MethodName: MoveToScene
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: RatMobCave
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2252479277068373672
@@ -2186,7 +2199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266340a589bfb0e44b4166a665ab33e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LabelDisplay: 0
+  locationAsString: RatMobCave
 --- !u!1 &5085591190796356497
 GameObject:
   m_ObjectHideFlags: 0
@@ -2448,7 +2461,7 @@ MonoBehaviour:
       - m_Target: {fileID: 8959526627622848521}
         m_TargetAssemblyTypeName: Label, Assembly-CSharp
         m_MethodName: MoveToScene
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2469,7 +2482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266340a589bfb0e44b4166a665ab33e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LabelDisplay: 0
+  locationAsString: BreakfastPalace
 --- !u!1 &6643165710702666603
 GameObject:
   m_ObjectHideFlags: 0
@@ -2676,13 +2689,13 @@ MonoBehaviour:
       - m_Target: {fileID: 8884964262905050753}
         m_TargetAssemblyTypeName: Label, Assembly-CSharp
         m_MethodName: MoveToScene
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Boxcar
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &8884964262905050753
@@ -2697,7 +2710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266340a589bfb0e44b4166a665ab33e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LabelDisplay: 0
+  locationAsString: Boxcar
 --- !u!1 &7024557176809197343
 GameObject:
   m_ObjectHideFlags: 0
@@ -2824,13 +2837,13 @@ MonoBehaviour:
       - m_Target: {fileID: 8528240110278270502}
         m_TargetAssemblyTypeName: Label, Assembly-CSharp
         m_MethodName: MoveToScene
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Motel
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &8528240110278270502
@@ -2845,7 +2858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266340a589bfb0e44b4166a665ab33e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LabelDisplay: 0
+  locationAsString: Motel
 --- !u!1 &7977255004784237746
 GameObject:
   m_ObjectHideFlags: 0
@@ -2998,7 +3011,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9008689495050765727
 RectTransform:
   m_ObjectHideFlags: 0
