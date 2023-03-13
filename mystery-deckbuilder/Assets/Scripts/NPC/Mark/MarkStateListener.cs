@@ -15,21 +15,16 @@ public class MarkStateListener : MonoBehaviour
     {
         
         
-        try 
-        {
-            GameState.NPCs.Mark.encountersCompleted.OnChange += OnEncounterComplete;
-        }
-        catch (MissingReferenceException e)
-        {
-            e.Message.Contains("e");
-            GameState.NPCs.Mark.encountersCompleted.OnChange -= OnEncounterComplete;
-        }
+        
+        GameState.NPCs.Mark.encountersCompleted.OnChange += OnEncounterComplete;
+        
     }
 
     private void OnEncounterComplete()
     {
         //if you've completed the first encounter, then we want to initiate the next dialogue tree depending on whether you won or lost
-        
+        try
+        {
         if (GameState.NPCs.Mark.encountersWon.Value == 1)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWin";
@@ -44,6 +39,12 @@ public class MarkStateListener : MonoBehaviour
         if (GameState.NPCs.Mark.encountersWon.Value == 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
+        }
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Mark.encountersCompleted.OnChange -= OnEncounterComplete;
         }
 
         

@@ -15,22 +15,15 @@ public class CroutonStateListener : MonoBehaviour
     private void ChangeDialogueBasedOnState()
     {
        
-        try 
-        {
-            GameState.NPCs.Crouton.encountersCompleted.OnChange += OnEncounterComplete;
-        }
-        catch (MissingReferenceException e)
-        {
-            e.Message.Contains("e");
-            GameState.NPCs.Crouton.encountersCompleted.OnChange -= OnEncounterComplete;
-        }
-
+        GameState.NPCs.Crouton.encountersCompleted.OnChange += OnEncounterComplete;
+        
     }
 
     private void OnEncounterComplete()
     {
          //if you've completed the encounter, then we want to initiate the next dialogue tree depending on whether you won or lost
-        
+        try
+        {
         _preEncounterDialogueKey = transform.GetComponent<NPC>().CurrentDialogueKey;
         if (GameState.NPCs.Crouton.encountersWon.Value == 1)
         {
@@ -46,6 +39,12 @@ public class CroutonStateListener : MonoBehaviour
         if (GameState.NPCs.Crouton.encountersWon.Value == 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = _preEncounterDialogueKey;
+        }
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Crouton.encountersCompleted.OnChange -= OnEncounterComplete;
         }
     }
 

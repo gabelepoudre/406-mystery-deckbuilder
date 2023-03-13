@@ -15,16 +15,8 @@ public class NibblesStateListener : MonoBehaviour
     {
         //dialogue based on whether you've won an encounter with Nibbles for the day
         
-        try 
-        {
-            GameState.NPCs.Nibbles.encountersCompleted.OnChange += OnEncounterComplete;
-        }
-        catch (MissingReferenceException e)
-        {
-            e.Message.Contains("e");
-            GameState.NPCs.Nibbles.encountersCompleted.OnChange -= OnEncounterComplete;
-        }
-     
+        GameState.NPCs.Nibbles.encountersCompleted.OnChange += OnEncounterComplete;
+    
     }
 
     private void OnEncounterComplete()

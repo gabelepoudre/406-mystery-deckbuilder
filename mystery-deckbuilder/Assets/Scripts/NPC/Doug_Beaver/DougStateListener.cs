@@ -15,54 +15,14 @@ public class DougStateListener : MonoBehaviour
     private void ChangeDialogueBasedOnState()
     {
         //dialogue based on whether you've won an encounter with him for the day
-        try 
-        {
-            GameState.NPCs.Doug.encountersCompleted.OnChange += OnEncounterComplete;
-        }
-        catch (MissingReferenceException e)
-        {
-            e.Message.Contains("e");
-            GameState.NPCs.Doug.encountersCompleted.OnChange -= OnEncounterComplete;
-        }
-
-
-        //i don't think there's a need to subscribe to the state, but i'm keeping it just in case
-        /*
-        try 
-        {
-            GameState.NPCs.Austyn.met.OnChange += MetAustynOrMarkOrSamuel;
-        }
-        catch (MissingReferenceException e)
-        {
-            e.Message.Contains("e");
-            GameState.NPCs.Austyn.met.OnChange -= MetAustynOrMarkOrSamuel;
-        }
-
-        try 
-        {
-            GameState.NPCs.Mark.met.OnChange += MetAustynOrMarkOrSamuel;
-        }
-        catch (MissingReferenceException e)
-        {
-            e.Message.Contains("e");
-            GameState.NPCs.Mark.met.OnChange -= MetAustynOrMarkOrSamuel;
-        }
-        try 
-        {
-            GameState.NPCs.Samuel.met.OnChange += MetAustynOrMarkOrSamuel;
-        }
-        catch (MissingReferenceException e)
-        {
-            e.Message.Contains("e");
-            GameState.NPCs.Samuel.met.OnChange -= MetAustynOrMarkOrSamuel;
-        }
-        */
-
-       
+        GameState.NPCs.Doug.encountersCompleted.OnChange += OnEncounterComplete;
+          
     }
 
     private void OnEncounterComplete()
     {
+        try
+        {
         //if you've completed the first encounter, then we want to initiate the encounter win tree
         if (GameState.NPCs.Doug.encountersCompleted.Value == 1)
         {
@@ -88,6 +48,12 @@ public class DougStateListener : MonoBehaviour
         if (GameState.NPCs.Doug.encountersWon.Value == 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
+        }
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Doug.encountersCompleted.OnChange -= OnEncounterComplete;
         }
 
     }
