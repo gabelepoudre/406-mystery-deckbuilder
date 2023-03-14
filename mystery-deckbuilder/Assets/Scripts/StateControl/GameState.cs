@@ -121,7 +121,7 @@ public static class GameState
         //to keep track of what NPCs have been met by the player
         public static List<string> npcsMet = new List<string>();
         
-        /* So we can access the met value with the name of the NPC (it doesn't let me access the class)
+        /* So we can access NPC values with the name of the NPC (it doesn't let me access the class)
          *
          *  FORGIVE ME FATHER FOR I HAVE SINNED
          *  YES I KNOW THIS IS PROFOUNDLY GROTESQUE I AM SO SORRY FOR DOING THIS BUT I WILL CHANGE IT AFTER THE BETA (UNLESS I FORGET)
