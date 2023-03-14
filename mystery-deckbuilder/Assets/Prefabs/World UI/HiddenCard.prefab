@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _card: 18
-  _cardFoundPrefab: {fileID: 0}
+  _cardFoundPrefab: {fileID: 5386834558647111553, guid: 22e13d9ebca114bf888774197693ab50, type: 3}
 --- !u!1 &6795207597723677918
 GameObject:
   m_ObjectHideFlags: 0

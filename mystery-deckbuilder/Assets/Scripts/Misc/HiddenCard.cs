@@ -22,6 +22,7 @@ public class HiddenCard : MonoBehaviour
     {
         GameObject cardFound = Instantiate(_cardFoundPrefab, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity, transform.Find("Canvas").transform);
         cardFound.GetComponent<RewardDisplayController>().DisplayCardAsReward(_card);
+        cardFound.GetComponent<RewardDisplayController>().SetParent(this.gameObject);
 
         //gameObject.SetActive(false);
         

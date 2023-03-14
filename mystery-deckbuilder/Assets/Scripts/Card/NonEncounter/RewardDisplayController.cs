@@ -13,6 +13,21 @@ public class RewardDisplayController : MonoBehaviour
     public Text displayText;
     public Transform rewardSpawn;
 
+    private GameObject _parent = null;
+
+    public void SetParent(GameObject parent)
+    {
+        _parent = parent;
+    }
+    public void HideThisAndParent()
+    {
+        if (_parent != null)
+        {
+            this.gameObject.SetActive(false);
+            this._parent.SetActive(false);
+        }
+    }
+
     public void DisplayCardAsReward(int id)
     {
         if (id == -1)
