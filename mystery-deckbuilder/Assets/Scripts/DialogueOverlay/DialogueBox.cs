@@ -96,12 +96,26 @@ public class DialogueBox : MonoBehaviour
     private void SpawnOptionButtons(OptionNode optionNode)
     {
         int counter = 0;
-        foreach(string option in optionNode.options)
+        for (int index = 0; index < optionNode.options.Length; index++)
         {
+            string option = optionNode.options[index];
             //instantiate option buttons
             GameObject optionButton = Instantiate(_optionButtonPrefab, new Vector3(5.0f, 1.3f - counter * 0.5f, 0f), 
             Quaternion.identity, transform.Find("Canvas").transform.Find("Canvas"));
             optionButton.GetComponentInChildren<Text>().text = option; //set correct text of button
+
+            //change text to red if it leads to encounter
+            
+            IDialogueNode node = optionNode.Next(index);
+            if (node.Next() != null)
+            {
+                if (node.Next().NodeType() == "encounter") optionButton.GetComponentInChildren<Text>().color = Color.red;
+            }
+            if (node.Next().Next() != null)
+            {
+                if (node.Next().Next().NodeType() == "encounter") optionButton.GetComponentInChildren<Text>().color = Color.red;
+            }
+            
 
             int i = counter; //have to do this or else every button will call option 2 because thats what the counter ends at
             optionButton.GetComponentInChildren<Button>().onClick.AddListener(() => {
