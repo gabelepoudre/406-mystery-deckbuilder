@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2422232351175661237}
   - component: {fileID: 3549682515636042933}
   m_Layer: 5
-  m_Name: TownHallLabel
+  m_Name: PostOfficeLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,7 +38,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 134.47, y: -83.814}
+  m_AnchoredPosition: {x: 134.47, y: -171}
   m_SizeDelta: {x: 17.401, y: 11.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4622630073686890181
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266340a589bfb0e44b4166a665ab33e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locationAsString: TownHall
+  locationAsString: PostOfficeInside
 --- !u!1 &343793914117068371
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +183,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 108.69, y: -221}
+  m_AnchoredPosition: {x: 108.69, y: -233}
   m_SizeDelta: {x: 7.98, y: 7.28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6709431890251609151
@@ -741,7 +741,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -126.07, y: -40}
+  m_AnchoredPosition: {x: -157, y: -96}
   m_SizeDelta: {x: 7.98, y: 7.28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8002459192937949528
@@ -928,9 +928,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Town Hall
-
-'
+  m_text: Post Office
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1593,7 +1591,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 285.28, y: 94.1961}
+  m_AnchoredPosition: {x: 280.8, y: 170.4}
   m_SizeDelta: {x: 19.485, y: 11.3654}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5199928400579907706
@@ -2245,7 +2243,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -139.94, y: 112.5}
+  m_AnchoredPosition: {x: 210, y: 50}
   m_SizeDelta: {x: 7.98, y: 7.28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5338381131016033026
@@ -2581,7 +2579,7 @@ GameObject:
   - component: {fileID: 8145015312557871137}
   - component: {fileID: 3664323311596221374}
   m_Layer: 5
-  m_Name: glub-at-Town_Hall
+  m_Name: glub-at-Post_Office
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2604,7 +2602,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 124.64, y: 3.64}
+  m_AnchoredPosition: {x: 122, y: -93}
   m_SizeDelta: {x: 7.98, y: 7.28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8145015312557871137
@@ -2683,7 +2681,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -126.0682, y: 22.253}
+  m_AnchoredPosition: {x: 227, y: -34.8}
   m_SizeDelta: {x: 19.7717, y: 10.929}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &743398226937172695
@@ -3059,7 +3057,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -115.07, y: -120.7727}
+  m_AnchoredPosition: {x: -146.3, y: -167.8}
   m_SizeDelta: {x: 18.428, y: 11.2065}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5759284134467576445
@@ -3491,7 +3489,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 271.55, y: 187.28}
+  m_AnchoredPosition: {x: 271.55, y: 250}
   m_SizeDelta: {x: 7.98, y: 7.28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1744301260835880422
