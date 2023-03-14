@@ -10,4 +10,12 @@ public class Sleep : MonoBehaviour
         GameState.Meta.currentDay.Value += 1;
         SceneManager.LoadScene("DeckBuilding");
     }
+
+    public void Awake()
+    {
+        if (GameState.Meta.justSlept.Value)
+        {
+            gameObject.SetActive(false);
+        }
+    }
 }

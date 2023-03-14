@@ -1840,7 +1840,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 7601726814387255700}
     m_Modifications:
     - target: {fileID: 6795207596825268420, guid: 54747101ca5d0432aa3c02f5e7a57288, type: 3}
       propertyPath: _card
@@ -1852,7 +1852,7 @@ PrefabInstance:
       objectReference: {fileID: 5386834558647111553, guid: 22e13d9ebca114bf888774197693ab50, type: 3}
     - target: {fileID: 6795207596825268421, guid: 54747101ca5d0432aa3c02f5e7a57288, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6795207596825268421, guid: 54747101ca5d0432aa3c02f5e7a57288, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2306,6 +2306,11 @@ CanvasRenderer:
 Transform:
   m_CorrespondingSourceObject: {fileID: 944568824185304349, guid: 54db328881ae140c0962e2c887b248c0, type: 3}
   m_PrefabInstance: {fileID: 851252458}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1403801008 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6795207596825268421, guid: 54747101ca5d0432aa3c02f5e7a57288, type: 3}
+  m_PrefabInstance: {fileID: 1222582094}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1492259634 stripped
 Transform:
@@ -3042,6 +3047,7 @@ Transform:
   - {fileID: 606676978}
   - {fileID: 886898570}
   - {fileID: 285136342}
+  - {fileID: 1403801008}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
