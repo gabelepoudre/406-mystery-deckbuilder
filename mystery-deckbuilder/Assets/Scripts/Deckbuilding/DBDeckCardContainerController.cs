@@ -16,9 +16,9 @@ public class DBDeckCardContainerController : MonoBehaviour
         _parentController = GetComponentInParent<DeckUIController>();
     }
 
-    public void SetQuantity((int, int, int) quant)
+    public void SetQuantity((int, int) quant)
     {
-        quantityController.CardsContainedInDeck = quant.Item2;
-        quantityController.CardHoldMax = quant.Item3;
+        quantityController.CardsContainedInDeck = quant.Item1;
+        quantityController.CardHoldMax = quant.Item2;
     }
 }
