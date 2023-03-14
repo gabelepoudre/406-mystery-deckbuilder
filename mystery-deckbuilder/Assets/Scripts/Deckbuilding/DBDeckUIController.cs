@@ -74,6 +74,7 @@ public class DBDeckUIController : MonoBehaviour
                 numberOfCardsWithId += 1;
             }
         }
+        return numberOfCardsWithId;
     }
 
     private List<(int, int, int)> GetDeckCards()
