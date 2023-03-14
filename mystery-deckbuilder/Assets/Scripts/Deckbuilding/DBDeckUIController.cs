@@ -13,7 +13,18 @@ public class DBDeckUIController : MonoBehaviour
     public GameObject greenCardNoEncounter;
     public GameObject greyCardNoEncounter;
 
+    public GameObject plusOne;
+    public GameObject plusTwo;
+    public GameObject plusThree;
+    public GameObject minusOne;
+    public GameObject minusTwo;
+    public GameObject minusThree;
+
+
     public Transform previewCardSpawn;
+    private GameObject _previewedCard = null;
+    private bool _previewedCardIsDeck;
+    private int _previewedCardID;
 
     public int DeckPage
     {
@@ -52,6 +63,18 @@ public class DBDeckUIController : MonoBehaviour
     private List<Text> _collectionQuantities = new();
     private List<DBCollectionCardContainerController> _collectionContainerControllers = new();
     private List<GameObject> _currentCollectionCardInstantiations = new();
+
+    private int GetNumberDeckCardsOfID(int card_id)
+    {
+        int numberOfCardsWithId = 0;
+        foreach (int card in GameState.Player.fullDeck.Value)
+        {
+            if (card == card_id)
+            {
+                numberOfCardsWithId += 1;
+            }
+        }
+    }
 
     private List<(int, int, int)> GetDeckCards()
     {
@@ -218,6 +241,9 @@ public class DBDeckUIController : MonoBehaviour
                 _currentDeckCardInstantiations.Add(_cardPrefabInstance);
 
                 NoEncounterCardPrefabController c = _cardPrefabInstance.GetComponent<NoEncounterCardPrefabController>();
+                c.EnableDeckbuildingMode();
+                c.onlyAddInDeckbuilding = this;
+                c.onlyAddInDeckbuildingIsDeck = true;
                 c.makeBiggerTransform = previewCardSpawn;
                 _cardPrefabInstance.transform.localScale = new Vector3(_cardPrefabInstance.transform.localScale.x - 0.43f, _cardPrefabInstance.transform.localScale.y - 0.43f, _cardPrefabInstance.transform.localScale.z);
                 card.SetAndInitializeNoEncounterFrontendController(c);
@@ -277,6 +303,9 @@ public class DBDeckUIController : MonoBehaviour
                 _currentCollectionCardInstantiations.Add(_cardPrefabInstance);
 
                 NoEncounterCardPrefabController c = _cardPrefabInstance.GetComponent<NoEncounterCardPrefabController>();
+                c.EnableDeckbuildingMode();
+                c.onlyAddInDeckbuilding = this;
+                c.onlyAddInDeckbuildingIsDeck = false;
                 c.makeBiggerTransform = previewCardSpawn;
                 _cardPrefabInstance.transform.localScale = new Vector3(_cardPrefabInstance.transform.localScale.x - 0.43f, _cardPrefabInstance.transform.localScale.y - 0.43f, _cardPrefabInstance.transform.localScale.z);
                 card.SetAndInitializeNoEncounterFrontendController(c);
@@ -287,6 +316,59 @@ public class DBDeckUIController : MonoBehaviour
         {
             e.Message.Contains("e");
             GameState.Player.collection.OnChange -= DisplayCollectionCards;
+        }
+    }
+
+    public void ShowCardInHighlight(int cardID, bool isDeck)
+    {
+        Card card = (Card)Cards.CreateCardWithID(cardID, true);
+        GameObject _cardPrefabInstance = null;
+
+        switch (card.GetElement())
+        {
+            case "Intimidation":
+                _cardPrefabInstance = Instantiate(redCardNoEncounter, previewCardSpawn.position, previewCardSpawn.rotation, this.gameObject.transform);
+                break;
+            case "Sympathy":
+                _cardPrefabInstance = Instantiate(blueCardNoEncounter, previewCardSpawn.position, previewCardSpawn.rotation, this.gameObject.transform);
+                break;
+            case "Persuasion":
+                _cardPrefabInstance = Instantiate(greenCardNoEncounter, previewCardSpawn.position, previewCardSpawn.rotation, this.gameObject.transform);
+                break;
+            case "Preparation":
+                _cardPrefabInstance = Instantiate(greyCardNoEncounter, previewCardSpawn.position, previewCardSpawn.rotation, this.gameObject.transform);
+                break;
+        }
+        NoEncounterCardPrefabController c = _cardPrefabInstance.GetComponent<NoEncounterCardPrefabController>();
+        c.makeBiggerTransform = previewCardSpawn;
+        c.DisableInteractions();
+        _cardPrefabInstance.transform.localScale = new Vector3(_cardPrefabInstance.transform.localScale.x + 0.43f, _cardPrefabInstance.transform.localScale.y + 0.43f, _cardPrefabInstance.transform.localScale.z);
+        card.SetAndInitializeNoEncounterFrontendController(c);
+        if (_previewedCard != null)
+        {
+            Destroy(_previewedCard);
+        }
+        _previewedCard = _cardPrefabInstance;
+        _previewedCardID = cardID;
+        _previewedCardIsDeck = isDeck;
+    }
+
+    public void SetAllButtonsFalse()
+    {
+        plusOne.SetActive(false);
+        plusTwo.SetActive(false);
+        plusThree.SetActive(false);
+        minusOne.SetActive(false);
+        minusTwo.SetActive(false);
+        minusThree.SetActive(false);
+    }
+
+    public void ShowProperControlsForHighlightedCard()
+    {
+        SetAllButtonsFalse();
+        if(_previewedCardIsDeck)
+        {
+
         }
     }
 
