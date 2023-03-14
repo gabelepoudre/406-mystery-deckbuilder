@@ -83,11 +83,27 @@ public class Encounter
                 return GameState.Meta.activeEncounter.Value.GetEncounterController().GetPatience();
             }
         }
+        public float PatiencePercentOfTotal
+        {
+            get
+            {
+                return GameState.Meta.activeEncounter.Value.GetEncounterController().GetPatience() / (float)GameState.Meta.activeEncounter.Value.GetEncounterController().GetMaxPatience();
+            }
+        }
+
         public int Compliance
         {
             get
             {
                 return GameState.Meta.activeEncounter.Value.GetEncounterController().GetCompliance();
+            }
+        }
+
+        public float CompliancePercentOfTotal
+        {
+            get
+            {
+                return GameState.Meta.activeEncounter.Value.GetEncounterController().GetCompliance() / (float)GameState.Meta.activeEncounter.Value.GetEncounterController().GetMaxCompliance();
             }
         }
     }

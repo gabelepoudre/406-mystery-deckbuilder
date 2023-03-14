@@ -179,9 +179,19 @@ public class EncounterPrefabController : MonoBehaviour
         return _patienceBarScript.GetValue();
     }
 
+    public int GetMaxPatience()
+    {
+        return _patienceBarScript.GetMax();
+    }
+
     public int GetCompliance()
     {
         return _complianceBarScript.GetValue();
+    }
+
+    public int GetMaxCompliance()
+    {
+        return _complianceBarScript.GetMax();
     }
 
     public bool SetAndCheckPatience(int value)
