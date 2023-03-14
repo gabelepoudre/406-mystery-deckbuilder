@@ -491,7 +491,7 @@ public class DBDeckUIController : MonoBehaviour
 
     public void LaunchIntoScene()
     {
-        SceneManager.LoadScene(sceneOnComplete.name);
+        SceneManager.LoadScene("Motel");
         GameState.Meta.justSlept.Value = true;
     }
 
