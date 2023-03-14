@@ -128,7 +128,7 @@ public class BrowBeat : Card
     {
         this._metadata["element"] = "Intimidation";
         this._metadata["name"] = "Brow Beat";
-        this._metadata["description"] = "Raise Compliance by 10 for every card played.";
+        this._metadata["description"] = "Raise Compliance by 2 for every card played.";
         this._metadata["patience"] = "2";
         this._metadata["compliance"] = "10";
         this._metadata["duration"] = "0";
@@ -152,7 +152,7 @@ public class BrowBeat : Card
 
         private Card _parent;
         private string _name = "Brow Beat!";
-        private string _desc_1 = "Raising Compliance by 10 for every card played! (";
+        private string _desc_1 = "Raising Compliance by 2 for every card played! (";
 
         public EBrowBeat(Card c) : base(99) { _parent = c; }
         public string GetDescription() 
@@ -167,7 +167,7 @@ public class BrowBeat : Card
         {
             if (EncounterConditionals.NumberPlaysGreaterThan(0))
             {
-                _parent.UnstackableComplianceMod += 10 * GameState.Meta.activeEncounter.Value.Statistics.NumberOfPlays;
+                _parent.UnstackableComplianceMod += 2 * GameState.Meta.activeEncounter.Value.Statistics.NumberOfPlays;
                 _parent.DisplayEffect(this);
             }
         }
@@ -298,9 +298,9 @@ public class SobStory : Card
     {
         this._metadata["element"] = "Sympathy";
         this._metadata["name"] = "Sob Story";
-        this._metadata["description"] = "Raise Compliance by 8 for every card drawn so far";
-        this._metadata["patience"] = "2";
-        this._metadata["compliance"] = "8";
+        this._metadata["description"] = "Raise Compliance by 4 for every card drawn so far";
+        this._metadata["patience"] = "4";
+        this._metadata["compliance"] = "0";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
 
@@ -322,7 +322,7 @@ public class SobStory : Card
 
         private Card _parent;
         private string _name = "Sob Story!";
-        private string _desc_1 = "Raising Compliance by 8 for every card drawn so far! (";
+        private string _desc_1 = "Raising Compliance by 4 for every card drawn so far! (";
 
         public ESobStory(Card c) : base(99) { _parent = c; }
         public string GetDescription()
@@ -337,7 +337,7 @@ public class SobStory : Card
         {
             if (EncounterConditionals.NumberDrawsGreaterThan(1))
             {
-                _parent.UnstackableComplianceMod += 8 * GameState.Meta.activeEncounter.Value.Statistics.NumberOfDraws;
+                _parent.UnstackableComplianceMod += 4 * GameState.Meta.activeEncounter.Value.Statistics.NumberOfDraws;
                 _parent.DisplayEffect(this);
             }
         }
@@ -469,9 +469,9 @@ public class Lecture : Card
     {
         this._metadata["element"] = "Persuasion";
         this._metadata["name"] = "Lecture";
-        this._metadata["description"] = "Raise Compliance by 10 for every Patience still remaining";
+        this._metadata["description"] = "Raise Compliance by 2 for every Patience still remaining";
         this._metadata["patience"] = "3";
-        this._metadata["compliance"] = "10";
+        this._metadata["compliance"] = "5";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
 
@@ -491,7 +491,7 @@ public class Lecture : Card
 
         private Card _parent;
         private string _name = "Lecture!";
-        private string _desc_1 = "Raising Compliance by 10 for every Patience remaining! (";
+        private string _desc_1 = "Raising Compliance by 2 for every Patience remaining! (";
 
         public ELecture(Card c) : base(99) { _parent = c; }
         public string GetDescription()
@@ -506,7 +506,7 @@ public class Lecture : Card
         {
             if (EncounterConditionals.PatienceGreaterThan(0))
             {
-                _parent.UnstackableComplianceMod += 10 * GameState.Meta.activeEncounter.Value.Statistics.Patience;
+                _parent.UnstackableComplianceMod += 2 * GameState.Meta.activeEncounter.Value.Statistics.Patience;
                 _parent.DisplayEffect(this);
             }
         }
