@@ -12,6 +12,7 @@ public class CutsceneScript : MonoBehaviour
     // String - exact name of scene to load
     [Header("Scene index (found in File > Build Settings > Scenes in Build)")]
     [Header("Scene has to be in the game build to work. Will implement loading by scene name later")]
+    public Object sceneToLaunch;
     [SerializeField] private int _sceneIndex;
 
     //The panel that overlays all _slides and changes from clear to black
@@ -40,7 +41,7 @@ public class CutsceneScript : MonoBehaviour
             yield return new WaitForSeconds(_slideDuration);
         }
 
-        SceneManager.LoadScene("RealMainMenu");
+        SceneManager.LoadScene(sceneToLaunch.name);
     }
 
     private IEnumerator SlideTransition()

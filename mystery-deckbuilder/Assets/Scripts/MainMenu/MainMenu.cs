@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public Object sceneToLaunch;
 
     // String - exact name of scene to load
     [Header("Scene index (found in File > Build Settings > Scenes in Build)")]
@@ -15,7 +16,7 @@ public class MainMenu : MonoBehaviour
 
     public void Play() 
     {
-        SceneManager.LoadScene(_sceneIndex);
+        SceneManager.LoadScene(sceneToLaunch.name);
     }
 
     public void Quit()
