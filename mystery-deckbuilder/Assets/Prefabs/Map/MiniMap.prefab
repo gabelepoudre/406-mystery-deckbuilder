@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3777488927301093043}
   - component: {fileID: 2422232351175661237}
   - component: {fileID: 3549682515636042933}
+  - component: {fileID: 3273471965817524767}
   m_Layer: 5
   m_Name: PostOfficeLabel
   m_TagString: Untagged
@@ -148,6 +149,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locationAsString: PostOfficeInside
+--- !u!114 &3273471965817524767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273593827279319708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2daa10e350e814b8dc93ba22055c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &343793914117068371
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,6 +371,7 @@ GameObject:
   - component: {fileID: 4600971861109952154}
   - component: {fileID: 8235171008760908125}
   - component: {fileID: 9132650394416730128}
+  - component: {fileID: 5656638980175694397}
   m_Layer: 5
   m_Name: Berry_Farm_Label
   m_TagString: Untagged
@@ -493,6 +507,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locationAsString: BerryFarm
+--- !u!114 &5656638980175694397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776492124987494422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2daa10e350e814b8dc93ba22055c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1789427031426570675
 GameObject:
   m_ObjectHideFlags: 0
@@ -1566,6 +1592,7 @@ GameObject:
   - component: {fileID: 2046708066228805665}
   - component: {fileID: 7533156313107770538}
   - component: {fileID: 465912520848410559}
+  - component: {fileID: 4325218275805088716}
   m_Layer: 5
   m_Name: Lumber_Yard_Label
   m_TagString: Untagged
@@ -1701,6 +1728,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locationAsString: LumberYard
+--- !u!114 &4325218275805088716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3832153350556736057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2daa10e350e814b8dc93ba22055c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4484732127600559653
 GameObject:
   m_ObjectHideFlags: 0
@@ -1714,6 +1753,7 @@ GameObject:
   - component: {fileID: 3415168138116607510}
   - component: {fileID: 5558323812821440842}
   - component: {fileID: 2928339061634509224}
+  - component: {fileID: 6893007036227423153}
   m_Layer: 5
   m_Name: Main_Street_Label
   m_TagString: Untagged
@@ -1849,6 +1889,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locationAsString: RealMainStreet
+--- !u!114 &6893007036227423153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4484732127600559653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2daa10e350e814b8dc93ba22055c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4709636660635936675
 GameObject:
   m_ObjectHideFlags: 0
@@ -1862,6 +1914,7 @@ GameObject:
   - component: {fileID: 7619203430722595429}
   - component: {fileID: 4078413613215933977}
   - component: {fileID: 2963630296785703438}
+  - component: {fileID: 1734878467805816833}
   m_Layer: 5
   m_Name: Rail_Yard_Label
   m_TagString: Untagged
@@ -1997,6 +2050,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locationAsString: RailYard
+--- !u!114 &1734878467805816833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4709636660635936675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2daa10e350e814b8dc93ba22055c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4795564115979966533
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,6 +2362,7 @@ GameObject:
   - component: {fileID: 762191321640165949}
   - component: {fileID: 5918688536520963175}
   - component: {fileID: 2252479277068373672}
+  - component: {fileID: 3700113211201329324}
   m_Layer: 5
   m_Name: Rat_Area_Label
   m_TagString: Untagged
@@ -2432,6 +2498,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locationAsString: RatMobCave
+--- !u!114 &3700113211201329324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5060831094314580731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2daa10e350e814b8dc93ba22055c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5085591190796356497
 GameObject:
   m_ObjectHideFlags: 0
@@ -2656,6 +2734,7 @@ GameObject:
   - component: {fileID: 8490884677107536243}
   - component: {fileID: 3246315049825448938}
   - component: {fileID: 8959526627622848521}
+  - component: {fileID: 7842490398257520677}
   m_Layer: 5
   m_Name: BreakfastPalace_Label
   m_TagString: Untagged
@@ -2791,6 +2870,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locationAsString: BreakfastPalace
+--- !u!114 &7842490398257520677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5743406176209629270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2daa10e350e814b8dc93ba22055c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6643165710702666603
 GameObject:
   m_ObjectHideFlags: 0
@@ -3032,6 +3123,7 @@ GameObject:
   - component: {fileID: 1564433673740870293}
   - component: {fileID: 1297859214566546531}
   - component: {fileID: 8528240110278270502}
+  - component: {fileID: 5538376538840802841}
   m_Layer: 5
   m_Name: Motel_Label
   m_TagString: Untagged
@@ -3167,6 +3259,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locationAsString: Motel
+--- !u!114 &5538376538840802841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7024557176809197343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2daa10e350e814b8dc93ba22055c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7585289417678759382
 GameObject:
   m_ObjectHideFlags: 0
@@ -3565,7 +3669,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.12, y: 0.47}
+  m_AnchoredPosition: {x: 0.22, y: 0.27}
   m_SizeDelta: {x: 153.63959, y: 45.00732}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7326480534198056744
@@ -3623,8 +3727,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

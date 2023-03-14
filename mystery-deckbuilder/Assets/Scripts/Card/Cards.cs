@@ -7,7 +7,7 @@ using UnityEngine;
  */
 public static class Cards
     {
-    public static int totalCardCount = 19;
+    public static int totalCardCount = 21;
 
     public static object CreateCardWithID(int id, bool no_effect = false)
     {
@@ -51,6 +51,10 @@ public static class Cards
                 return new Inquire(no_effect);
             case 19:
                 return new EarlyBird(no_effect);
+            case 20:
+                return new Despair(no_effect);
+            case 21:
+                return new Accuse(no_effect);
             default:
                 return null;
         }
@@ -905,14 +909,110 @@ public class EarlyBird : Card
         /* Executes the effect. A conditional may be called within */
         public void Execute()
         {
-            // if (EncounterConditionals.CardsOfElementInHandGreaterThan("Sympathy", 0))
-            // {
-            //     _parent.UnstackableComplianceMod += 10 * GameState.Meta.activeEncounter.Value.Statistics.SympathyCardsInHand;
-            //     _parent.DisplayEffect(this);
-            // }
 
             _parent.UnstackableComplianceMod += 1 * (GameState.Player.dailyDeck.Value.Count);
             _parent.DisplayEffect(this);
+        }
+    }
+}
+
+public class Despair : Card
+{
+    public Despair(bool noEffect = false) : base(20)
+    {
+        this._metadata["element"] = "Sympathy";
+        this._metadata["name"] = "Despair";
+        this._metadata["description"] = "Double Compliance when Patience is less than 50%";
+        this._metadata["patience"] = "2";
+        this._metadata["compliance"] = "10";
+        this._metadata["duration"] = "0";
+        this._metadata["filterId"] = "0";
+
+        if (!noEffect)
+        {
+            this.__localEffects["Despair!"] = new EDespair(this);
+        }
+    }
+
+    public override void OnChange()
+    {
+        this.__localEffects["Despair!"].Execute();
+    }
+
+
+    /* A local effect (as seen by E prefix) for despair */
+    public class EDespair : Effect, IExecutableEffect
+    {
+        private Color _color = new Color(255 / 255, 255 / 255, 100 / 255);
+
+        private Card _parent;
+        private string _name = "Despair!";
+        private string _desc_1 = "Doubled Compliance while remaining Patience is less than 50%!";
+
+        public EDespair(Card c) : base(99) { _parent = c; }
+        public string GetDescription() { return _desc_1; }
+        public string GetName() { return _name; }
+        public Color GetColor() { return _color; }
+
+        /* Executes the effect. A conditional may be called within */
+        public void Execute()
+        {
+            if (GameState.Meta.activeEncounter.Value.Statistics.PatiencePercentOfTotal < 0.5)
+            {
+                _parent.StackableComplianceMod += 1;
+                _parent.DisplayEffect(this);
+            }
+        }
+    }
+}
+
+
+public class Accuse : Card
+{
+    public Accuse(bool noEffect = false) : base(21)
+    {
+        this._metadata["element"] = "Intimidation";
+        this._metadata["name"] = "Accuse";
+        this._metadata["description"] = "Double Compliance when Patience is more than 50%";
+        this._metadata["patience"] = "2";
+        this._metadata["compliance"] = "10";
+        this._metadata["duration"] = "0";
+        this._metadata["filterId"] = "0";
+
+        if (!noEffect)
+        {
+            this.__localEffects["Accuse!"] = new EAccuse(this);
+        }
+    }
+
+    public override void OnChange()
+    {
+        this.__localEffects["Accuse!"].Execute();
+    }
+
+
+    /* A local effect (as seen by E prefix) for accuse */
+    public class EAccuse : Effect, IExecutableEffect
+    {
+        private Color _color = new Color(255 / 255, 255 / 255, 100 / 255);
+
+        private Card _parent;
+        private string _name = "Accuse!";
+        private string _desc_1 = "Doubled Compliance while remaining Patience is more than 50%!";
+
+        public EAccuse(Card c) : base(99) { _parent = c; }
+        public string GetDescription() { return _desc_1; }
+        public string GetName() { return _name; }
+        public Color GetColor() { return _color; }
+
+        /* Executes the effect. A conditional may be called within */
+        public void Execute()
+        {
+            if (GameState.Meta.activeEncounter.Value.Statistics.PatiencePercentOfTotal > 0.5)
+            {
+                _parent.StackableComplianceMod += 1;
+                _parent.DisplayEffect(this);
+            }
         }
     }
 }
