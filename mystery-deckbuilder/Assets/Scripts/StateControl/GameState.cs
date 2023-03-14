@@ -78,6 +78,21 @@ public static class GameState
             PostOfficeInside
         }
 
+        public static GameStateValue<Dictionary<Locations, int>> locationBuildIndex = new(new Dictionary<Locations, int>()
+        {
+            [Locations.Motel] = 3,
+            [Locations.Bar] = 4,
+            [Locations.Boxcar] = 5,
+            [Locations.LumberYard] = 6,
+            [Locations.RailYard] = 7,
+            [Locations.RatMobCave] = 8,
+            [Locations.BerryFarm] = 9,
+            [Locations.BreakfastPalace] = 10,
+            [Locations.RealMainStreet] = 2,
+            [Locations.PostOfficeInside] = 11
+        }, _gameStateValues);
+
+
         //NOTE: state listeners of certain NPCs (like Rat Prince) that are placed in multiple locations rely on this
         public static GameStateValue<Locations> location = new(Locations.Motel, _gameStateValues);
 
