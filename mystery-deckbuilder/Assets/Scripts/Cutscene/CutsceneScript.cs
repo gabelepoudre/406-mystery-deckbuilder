@@ -40,7 +40,7 @@ public class CutsceneScript : MonoBehaviour
             yield return new WaitForSeconds(_slideDuration);
         }
 
-        SceneManager.LoadScene(_sceneIndex);
+        SceneManager.LoadScene("RealMainMenu");
     }
 
     private IEnumerator SlideTransition()

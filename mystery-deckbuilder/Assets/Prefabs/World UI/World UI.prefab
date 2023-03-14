@@ -935,7 +935,7 @@ GameObject:
   - component: {fileID: 2578979226927252045}
   - component: {fileID: 2065802143917438986}
   m_Layer: 5
-  m_Name: Cards Remaining Background
+  m_Name: Days Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
