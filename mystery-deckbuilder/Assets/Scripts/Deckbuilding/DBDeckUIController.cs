@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DBDeckUIController : MonoBehaviour
 {
+    public Object sceneOnComplete;
+
     public GameObject[] deckContainers;
     public GameObject[] collectionContainers;
 
@@ -322,25 +325,75 @@ public class DBDeckUIController : MonoBehaviour
 
     public void RevertDeck()
     {
-        GameState.Player.dailyDeck.Value = new(_deckOnStart.ToArray());
+        GameState.Player.fullDeck.Value = new(_deckOnStart.ToArray());
         GameState.Player.dailyDeck.Value = new(GameState.Player.fullDeck.Value.ToArray());
+        ShowProperControlsForHighlightedCard();
     }
 
-    public void ContextAdjustDeck(bool addingCard_, int quantity_)
+    public void AddOneOfPreviewedCard()
     {
-        for (int x = 0; x <= quantity_ -1; x++)
+        for (int x = 0; x <= 1 -1; x++)
         {
-            if(addingCard_)
-            {
-                GameState.Player.fullDeck.Value.Add(_previewedCardID);
-            }
-            else
-            {
-                GameState.Player.fullDeck.Value.Remove(_previewedCardID);
-            }
+            GameState.Player.fullDeck.Value.Add(_previewedCardID);
         }
         GameState.Player.fullDeck.Raise();
         GameState.Player.dailyDeck.Value = new(GameState.Player.fullDeck.Value.ToArray());
+        ShowProperControlsForHighlightedCard();
+    }
+
+    public void AddTwoOfPreviewedCard()
+    {
+        for (int x = 0; x <= 2 - 1; x++)
+        {
+            GameState.Player.fullDeck.Value.Add(_previewedCardID);
+        }
+        GameState.Player.fullDeck.Raise();
+        GameState.Player.dailyDeck.Value = new(GameState.Player.fullDeck.Value.ToArray());
+        ShowProperControlsForHighlightedCard();
+    }
+
+    public void AddThreeOfPreviewedCard()
+    {
+        for (int x = 0; x <= 3 - 1; x++)
+        {
+            GameState.Player.fullDeck.Value.Add(_previewedCardID);
+        }
+        GameState.Player.fullDeck.Raise();
+        GameState.Player.dailyDeck.Value = new(GameState.Player.fullDeck.Value.ToArray());
+        ShowProperControlsForHighlightedCard();
+    }
+
+    public void RemoveOneOfPreviewedCard()
+    {
+        for (int x = 0; x <= 1 - 1; x++)
+        {
+            GameState.Player.fullDeck.Value.Remove(_previewedCardID);
+        }
+        GameState.Player.fullDeck.Raise();
+        GameState.Player.dailyDeck.Value = new(GameState.Player.fullDeck.Value.ToArray());
+        ShowProperControlsForHighlightedCard();
+    }
+
+    public void RemoveTwoOfPreviewedCard()
+    {
+        for (int x = 0; x <= 2 - 1; x++)
+        {
+            GameState.Player.fullDeck.Value.Remove(_previewedCardID);
+        }
+        GameState.Player.fullDeck.Raise();
+        GameState.Player.dailyDeck.Value = new(GameState.Player.fullDeck.Value.ToArray());
+        ShowProperControlsForHighlightedCard();
+    }
+
+    public void RemoveThreeOfPreviewedCard()
+    {
+        for (int x = 0; x <= 3 - 1; x++)
+        {
+            GameState.Player.fullDeck.Value.Remove(_previewedCardID);
+        }
+        GameState.Player.fullDeck.Raise();
+        GameState.Player.dailyDeck.Value = new(GameState.Player.fullDeck.Value.ToArray());
+        ShowProperControlsForHighlightedCard();
     }
 
     public void ShowCardInHighlight(int cardID, bool isDeck)
@@ -430,10 +483,16 @@ public class DBDeckUIController : MonoBehaviour
                 plusThree.SetActive(false);
                 break;
             case < 3:
-                plusThree.SetActive(true);
+                plusThree.SetActive(false);
                 break;
         }
         
+    }
+
+    public void LaunchIntoScene()
+    {
+        SceneManager.LoadScene(sceneOnComplete.name);
+        GameState.Meta.justSlept.Value = true;
     }
 
     public void Start()
@@ -455,5 +514,6 @@ public class DBDeckUIController : MonoBehaviour
         GameState.Player.collection.OnChange += DisplayCollectionCards;
 
         _deckOnStart = new(GameState.Player.fullDeck.Value.ToArray());
+        GameState.Player.dailyDeck.Value = new(GameState.Player.fullDeck.Value.ToArray());
     }
 }
