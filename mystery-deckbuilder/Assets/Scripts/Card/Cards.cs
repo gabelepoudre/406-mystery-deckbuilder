@@ -777,7 +777,7 @@ public class Monologue : Card
         this._metadata["element"] = "Preparation";
         this._metadata["name"] = "Monologue";
         this._metadata["description"] = "Automatically draw up to 2 cards without reducing Patience";
-        this._metadata["patience"] = "2";
+        this._metadata["patience"] = "0";
         this._metadata["compliance"] = "0";
     }
 
