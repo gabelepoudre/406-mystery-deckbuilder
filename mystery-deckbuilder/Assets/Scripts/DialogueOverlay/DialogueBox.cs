@@ -25,9 +25,11 @@ public class DialogueBox : MonoBehaviour
 
     //the speed with which it will move to the middle of the screen when instantiated
     private float _speed = 25.0f;
+    private bool _waiting = true;
 
     private bool _inPosition = false; //whether it has finished moving to its position
     private bool _finished = false; //whether the dialogue is over
+    public bool FinishedSentence = true;
 
     [SerializeField] private GameObject _optionBoxPrefab;
     [SerializeField] private GameObject _optionButtonPrefab;
@@ -127,15 +129,23 @@ public class DialogueBox : MonoBehaviour
         }
     }
 
+    public void SpeedUp()
+    {
+        _waiting = false;
+    }
+
     /* Will be invoked as a coroutine to display the characters of the sentence one-by-one */
     IEnumerator TypeSentence (string sentence)
     {
+        FinishedSentence = false;
         _text = "";
         foreach(char letter in sentence.ToCharArray())
         {
             _text += letter;
             transform.Find("Canvas").Find("Message").GetComponent<TextMeshProUGUI>().SetText(_text);
-            yield return new WaitForSeconds(0.03f);
+            if (_waiting) yield return new WaitForSeconds(0.03f);
         }
+        FinishedSentence = true;
+        _waiting = true;
     }
 }

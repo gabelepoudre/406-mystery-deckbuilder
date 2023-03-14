@@ -162,6 +162,12 @@ public class DialogueManager : MonoBehaviour
      */
     public void DisplayNextSentence()
     {
+
+        if (!_dialogueBox.GetComponent<DialogueBox>().FinishedSentence)
+        {
+            _dialogueBox.GetComponent<DialogueBox>().SpeedUp();
+            return;
+        }
         
         //if its an option node then the player has to pick an option, rather then clicking next
         if (_currentNode.NodeType() == "option")
