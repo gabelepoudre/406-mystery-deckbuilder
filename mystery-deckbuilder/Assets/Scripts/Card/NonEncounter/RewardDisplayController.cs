@@ -38,7 +38,7 @@ public class RewardDisplayController : MonoBehaviour
         }
 
         NoEncounterCardPrefabController cardController = _cardPrefabInstance.GetComponent<NoEncounterCardPrefabController>();
-        cardController.TurnInteractionsOff();
+        cardController.DisableInteractions();
         _cardPrefabInstance.transform.localScale = new Vector3(_cardPrefabInstance.transform.localScale.x + 0.22f, _cardPrefabInstance.transform.localScale.y + 0.22f, _cardPrefabInstance.transform.localScale.z);
         card.SetAndInitializeNoEncounterFrontendController(cardController);
         GameState.Player.collection.Value.Add(card.GetId());
