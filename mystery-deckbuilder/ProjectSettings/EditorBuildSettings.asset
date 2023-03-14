@@ -14,15 +14,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AlphaDemo/AlphaCutscene.unity
     guid: 62474f4cf841aac42a07e43f5dfe7a9e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/AlphaDemo/MainStreet.unity
     guid: 0045a3fedcd5d4baa9c26a7f15a21419
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Map Swap Example/Berry_Farm.unity
     guid: 39837134135510645aed9e3cc0875943
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Map Swap Example/Breakfast_Palace.unity
     guid: 4985b2c531016ba4583d1edc22f8c7a6
+  - enabled: 1
+    path: Assets/Scenes/Zones/RealMainStreet.unity
+    guid: 595cf70ac4f12b6439e3066f4aa49cc7
   - enabled: 1
     path: Assets/Scenes/Zones/BerryFarm.unity
     guid: 708a9a70a86658f4a8fece92963dfd1b
@@ -32,9 +35,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Zones/Motel.unity
     guid: da188da7154c5c84e8ba404753195304
-  - enabled: 1
-    path: Assets/Scenes/Zones/RealMainStreet.unity
-    guid: 595cf70ac4f12b6439e3066f4aa49cc7
   - enabled: 1
     path: Assets/Scenes/Zones/LumberYard.unity
     guid: 56cbb7f64fedb4658b9d0bd5677b7084
@@ -62,4 +62,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Zones/TownHall.unity
     guid: c3839faea3f1045eaa9bbbb8dc8a1bb9
+  - enabled: 1
+    path: Assets/Scenes/DeckBuilding.unity
+    guid: 74cc65548923a8d4ab0dfb0b4ae35794
+  - enabled: 1
+    path: Assets/Scenes/BetaDemo/BetaCutscene.unity
+    guid: adb4dad85e5af7f4f87e8010d736d1f9
   m_configObjects: {}

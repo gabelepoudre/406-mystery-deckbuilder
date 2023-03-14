@@ -31,16 +31,22 @@ public static class GameState
             Phase_1, // this is just "normal gameplay"
         }
         public static GameStateValue<GameplayPhases> currentGameplayPhase = 
-            new(GameplayPhases.Phase_1, _gameStateValues);
+            new(GameplayPhases.Tutorial, _gameStateValues);
 
         
+        
         public static GameStateValue<int> currentAct = new(1, _gameStateValues);
+
+        public static GameStateValue<int> currentDay = new(1, _gameStateValues);
 
 
         public static GameStateValue<Encounter> activeEncounter = new(null, _gameStateValues);
         public static GameStateValue<bool> lastEncounterEndedInVictory = new(false, _gameStateValues);
 
+
         public static GameStateValue<bool> notepadActive = new(false, _gameStateValues);
+        public static GameStateValue<bool> dialogueActive = new(false, _gameStateValues);
+        public static GameStateValue<bool> justSlept = new(false, _gameStateValues);
         
     }
 
@@ -48,10 +54,12 @@ public static class GameState
     /* GameStateValue holder class for Player data. Could be what they know for use in Dialogue trees */
     public class Player
     {
-        static int[] startingDeck = { 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17 };
+        //static int[] startingDeck = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17};
+        static int[] startingDeck = {1, 1, 1, 5, 5, 5, 9, 9, 9, 4, 4, 4, 8, 8, 8, 18, 18, 18, 17, 17, 17};
         public static GameStateValue<List<int>> fullDeck = new(new List<int>(startingDeck), _gameStateValues);
         public static GameStateValue<List<int>> dailyDeck = new(new List<int>(startingDeck), _gameStateValues);
         public static GameStateValue<List<int>> collection = new(new List<int>(startingDeck), _gameStateValues);
+        public static GameStateValue<int> maximumCardsAllowedInDeck = new(21, _gameStateValues);
 
 
         public enum Locations
@@ -64,9 +72,7 @@ public static class GameState
             RatMobCave,
             BerryFarm,
             BreakfastPalace,
-            TownHall,
             RealMainStreet,
-            MikesPerogies,
             MotelOfficeInside,
             MotelRoomInside,
             PostOfficeInside
@@ -86,15 +92,13 @@ public static class GameState
             [Locations.RatMobCave] = false,
             [Locations.BerryFarm] = false,
             [Locations.BreakfastPalace] = false,
-            [Locations.TownHall] = false,
             [Locations.RealMainStreet] = false,
-            [Locations.MikesPerogies] = false,
             [Locations.MotelOfficeInside] = false,
             [Locations.MotelRoomInside] = false,
             [Locations.PostOfficeInside] = false
         }, _gameStateValues);
 
-
+        public static GameStateValue<int> napsRemainingToday = new(1, _gameStateValues);
 
     }
 
@@ -113,7 +117,7 @@ public static class GameState
         //to keep track of what NPCs have been met by the player
         public static List<string> npcsMet = new List<string>();
         
-        /* So we can access the met value with the name of the NPC (it doesn't let me access the class)
+        /* So we can access NPC values with the name of the NPC (it doesn't let me access the class)
          *
          *  FORGIVE ME FATHER FOR I HAVE SINNED
          *  YES I KNOW THIS IS PROFOUNDLY GROTESQUE I AM SO SORRY FOR DOING THIS BUT I WILL CHANGE IT AFTER THE BETA (UNLESS I FORGET)

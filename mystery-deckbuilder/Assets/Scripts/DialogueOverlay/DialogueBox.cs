@@ -25,9 +25,11 @@ public class DialogueBox : MonoBehaviour
 
     //the speed with which it will move to the middle of the screen when instantiated
     private float _speed = 25.0f;
+    private bool _waiting = true;
 
     private bool _inPosition = false; //whether it has finished moving to its position
     private bool _finished = false; //whether the dialogue is over
+    public bool FinishedSentence = true;
 
     [SerializeField] private GameObject _optionBoxPrefab;
     [SerializeField] private GameObject _optionButtonPrefab;
@@ -96,12 +98,26 @@ public class DialogueBox : MonoBehaviour
     private void SpawnOptionButtons(OptionNode optionNode)
     {
         int counter = 0;
-        foreach(string option in optionNode.options)
+        for (int index = 0; index < optionNode.options.Length; index++)
         {
+            string option = optionNode.options[index];
             //instantiate option buttons
             GameObject optionButton = Instantiate(_optionButtonPrefab, new Vector3(5.0f, 1.3f - counter * 0.5f, 0f), 
             Quaternion.identity, transform.Find("Canvas").transform.Find("Canvas"));
             optionButton.GetComponentInChildren<Text>().text = option; //set correct text of button
+
+            //change text to red if it leads to encounter
+            
+            IDialogueNode node = optionNode.Next(index);
+            if (node.Next() != null)
+            {
+                if (node.Next().NodeType() == "encounter") optionButton.GetComponentInChildren<Text>().color = Color.red;
+            }
+            if (node.Next().Next() != null)
+            {
+                if (node.Next().Next().NodeType() == "encounter") optionButton.GetComponentInChildren<Text>().color = Color.red;
+            }
+            
 
             int i = counter; //have to do this or else every button will call option 2 because thats what the counter ends at
             optionButton.GetComponentInChildren<Button>().onClick.AddListener(() => {
@@ -113,15 +129,23 @@ public class DialogueBox : MonoBehaviour
         }
     }
 
+    public void SpeedUp()
+    {
+        _waiting = false;
+    }
+
     /* Will be invoked as a coroutine to display the characters of the sentence one-by-one */
     IEnumerator TypeSentence (string sentence)
     {
+        FinishedSentence = false;
         _text = "";
         foreach(char letter in sentence.ToCharArray())
         {
             _text += letter;
             transform.Find("Canvas").Find("Message").GetComponent<TextMeshProUGUI>().SetText(_text);
-            yield return new WaitForSeconds(0.03f);
+            if (_waiting) yield return new WaitForSeconds(0.03f);
         }
+        FinishedSentence = true;
+        _waiting = true;
     }
 }

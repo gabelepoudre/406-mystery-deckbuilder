@@ -84,6 +84,7 @@ public class DialogueManager : MonoBehaviour
         //instantiate the dialogue box prefab
         _dialogueBox = Instantiate(_dialogueBoxPrefab, new Vector3(0, -7, 0), Quaternion.identity);
 
+        GameState.Meta.dialogueActive.Value = true;
         GoToNode(_dialogueTree.root); //we start at the root node of the dialogue tree
     }
 
@@ -114,11 +115,12 @@ public class DialogueManager : MonoBehaviour
         if (_currentNode.NodeType() != "option") //if a normal dialogue node
         {
 
-            if (_currentNode.NodeType() == "npc") {
+            if (_currentNode.NodeType() == "npc") 
+            {
                 
                 
                 string secondName = ((NPCNode)_currentNode).Name;
-                if (secondName == null) {
+                if (secondName is null) {
                     _dialogueBox.GetComponent<DialogueBox>().SetName(NPCName);
                 }
                 else //for handling multiple different NPCs
@@ -160,6 +162,12 @@ public class DialogueManager : MonoBehaviour
      */
     public void DisplayNextSentence()
     {
+
+        if (!_dialogueBox.GetComponent<DialogueBox>().FinishedSentence)
+        {
+            _dialogueBox.GetComponent<DialogueBox>().SpeedUp();
+            return;
+        }
         
         //if its an option node then the player has to pick an option, rather then clicking next
         if (_currentNode.NodeType() == "option")
@@ -170,7 +178,8 @@ public class DialogueManager : MonoBehaviour
 
         if (_sentences.Count != 0) //if we still have sentences in the queue
         {
-            _dialogueBox.GetComponent<DialogueBox>().DisplaySentence(_sentences.Dequeue());
+            string sentence = _sentences.Dequeue();
+            _dialogueBox.GetComponent<DialogueBox>().DisplaySentence(sentence);
         }
         else //if we ran out of sentences in the queue, traverse to next node
         {
@@ -184,6 +193,7 @@ public class DialogueManager : MonoBehaviour
     {
         DialogueActive = false;
         _dialogueBox.GetComponent<DialogueBox>().DestroyDialogueBox();
+        GameState.Meta.dialogueActive.Value = false;
     }
 
 

@@ -567,13 +567,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterName: Big Rat
   affinity_intimidation: 0.5
-  affinity_sympathy: 0.5
-  affintiy_persuasion: 0.5
+  affinity_sympathy: 0.67
+  affintiy_persuasion: 0.19
   startingPatience: 1
   startingCompliance: 1
   currentPatience: 1
   currentCompliance: 0
   ComplianceThreshhold: 0
+  cardIDUnlockFromWinEncounter: 3
   encounterSprites: {fileID: 701282225796089859}
 --- !u!114 &2974809267316779736
 MonoBehaviour:

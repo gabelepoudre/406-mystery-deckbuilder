@@ -473,6 +473,7 @@ MonoBehaviour:
   currentPatience: 1
   currentCompliance: 0
   ComplianceThreshhold: 0
+  cardIDUnlockFromWinEncounter: 6
   encounterSprites: {fileID: 7538326253552544718}
 --- !u!114 &8310409467724307525
 MonoBehaviour:

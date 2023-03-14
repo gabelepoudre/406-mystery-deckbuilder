@@ -14,7 +14,7 @@ public class CardsInDeckCounter : MonoBehaviour
     {
         try
         {
-            GetTextElement().text = GameState.Player.fullDeck.Value.Count + "/20";
+            GetTextElement().text = GameState.Player.fullDeck.Value.Count + "/21";
         }
         catch (MissingReferenceException e)  // oops! This script doesn't exist any more
         {

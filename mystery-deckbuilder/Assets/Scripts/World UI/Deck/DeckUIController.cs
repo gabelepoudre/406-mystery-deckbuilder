@@ -57,7 +57,7 @@ public class DeckUIController : MonoBehaviour
     {
         List<(int, int, int, int)> cards = new();
 
-        for (int card_id = 0; card_id <= Cards.totalCardCount-1; card_id++)
+        for (int card_id = 1; card_id <= Cards.totalCardCount; card_id++)
         {
             int numberOfCardsWithId = 0;
             int numberOfActiveCardsWithId = 0;
@@ -89,11 +89,11 @@ public class DeckUIController : MonoBehaviour
     {
         List<(int, int, int)> cards = new();
 
-        for (int card_id = 0; card_id <= Cards.totalCardCount - 1; card_id++)
+        for (int card_id = 1; card_id <= Cards.totalCardCount; card_id++)
         {
             int numberOfCardsWithId = 0;
             int maxNumberOfCards = 3;
-            foreach (int card in GameState.Player.fullDeck.Value)
+            foreach (int card in GameState.Player.collection.Value)
             {
                 if (card == card_id)
                 {
@@ -184,105 +184,114 @@ public class DeckUIController : MonoBehaviour
 
     public void DisplayDeckCards()
     {
-        if (_currentDeckCardInstantiations.Count != 0)
+        try
         {
-            foreach(GameObject card in _currentDeckCardInstantiations)
+            if (_currentDeckCardInstantiations.Count != 0)
             {
-                Destroy(card);
+                foreach (GameObject card in _currentDeckCardInstantiations)
+                {
+                    Destroy(card);
+                }
+                _currentDeckCardInstantiations.Clear();
             }
-            _currentDeckCardInstantiations.Clear();
+
+            List<(int, int, int, int)> ordered_cards = GetDeckCards();
+
+            for (int card_section = -6 + (DeckPage * 6); card_section < -6 + ((DeckPage + 1) * 6) && card_section <= ordered_cards.Count - 1; card_section++)
+            {
+                int normalized_idx = card_section - ((DeckPage - 1) * 6);
+                (int, int, int, int) cardData = ordered_cards[card_section];
+                int cardIdx = cardData.Item1;
+                (int, int, int) quant = (cardData.Item2, cardData.Item3, cardData.Item4);
+
+                Card card = (Card)Cards.CreateCardWithID(cardIdx, true);
+                GameObject _cardPrefabInstance = null;
+
+                switch (card.GetElement())
+                {
+                    case "Intimidation":
+                        _cardPrefabInstance = Instantiate(redCardNoEncounter, _deckContainerControllers[normalized_idx].spawn.position, _deckContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
+                        break;
+                    case "Sympathy":
+                        _cardPrefabInstance = Instantiate(blueCardNoEncounter, _deckContainerControllers[normalized_idx].spawn.position, _deckContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
+                        break;
+                    case "Persuasion":
+                        _cardPrefabInstance = Instantiate(greenCardNoEncounter, _deckContainerControllers[normalized_idx].spawn.position, _deckContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
+                        break;
+                    case "Preparation":
+                        _cardPrefabInstance = Instantiate(greyCardNoEncounter, _deckContainerControllers[normalized_idx].spawn.position, _deckContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
+                        break;
+                }
+                _currentDeckCardInstantiations.Add(_cardPrefabInstance);
+
+                NoEncounterCardPrefabController c = _cardPrefabInstance.GetComponent<NoEncounterCardPrefabController>();
+                c.makeBiggerTransform = previewCardSpawn;
+                _cardPrefabInstance.transform.localScale = new Vector3(_cardPrefabInstance.transform.localScale.x - 0.43f, _cardPrefabInstance.transform.localScale.y - 0.43f, _cardPrefabInstance.transform.localScale.z);
+                card.SetAndInitializeNoEncounterFrontendController(c);
+                _deckContainerControllers[normalized_idx].SetQuantity(quant);
+            }
         }
-
-        List<(int, int, int, int)> ordered_cards = GetDeckCards();
-
-        for (int card_section = -6 + (DeckPage*6); card_section < -6 + ((DeckPage+1)*6) && card_section <= GameState.Player.fullDeck.Value.Count-1; card_section++)
+        catch (MissingReferenceException e)
         {
-            if (card_section >= ordered_cards.Count-1)
-            {
-                return;
-            }
-            int normalized_idx = card_section - ((DeckPage - 1) * 6);
-            (int, int, int, int) cardData = ordered_cards[card_section];
-            int cardIdx = cardData.Item1;
-            (int, int, int) quant = (cardData.Item2, cardData.Item3, cardData.Item4);
-
-            Card card = (Card)Cards.CreateCardWithID(cardIdx, true);
-            GameObject _cardPrefabInstance = null;
-
-            switch (card.GetElement())
-            {
-                case "Intimidation":
-                    _cardPrefabInstance = Instantiate(redCardNoEncounter, _deckContainerControllers[normalized_idx].spawn.position, _deckContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                    break;
-                case "Sympathy":
-                    _cardPrefabInstance = Instantiate(blueCardNoEncounter, _deckContainerControllers[normalized_idx].spawn.position, _deckContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                    break;
-                case "Persuasion":
-                    _cardPrefabInstance = Instantiate(greenCardNoEncounter, _deckContainerControllers[normalized_idx].spawn.position, _deckContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                    break;
-                case "Preparation":
-                    _cardPrefabInstance = Instantiate(greyCardNoEncounter, _deckContainerControllers[normalized_idx].spawn.position, _deckContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                    break;
-            }
-            _currentDeckCardInstantiations.Add(_cardPrefabInstance);
-
-            NoEncounterCardPrefabController c = _cardPrefabInstance.GetComponent<NoEncounterCardPrefabController>();
-            c.makeBiggerTransform = previewCardSpawn;
-            _cardPrefabInstance.transform.localScale = new Vector3(_cardPrefabInstance.transform.localScale.x - 0.43f, _cardPrefabInstance.transform.localScale.y - 0.43f, _cardPrefabInstance.transform.localScale.z);
-            card.SetAndInitializeNoEncounterFrontendController(c);
-            _deckContainerControllers[normalized_idx].SetQuantity(quant);
+            e.Message.Contains("e");
+            GameState.Player.fullDeck.OnChange -= DisplayDeckCards;
+            GameState.Player.dailyDeck.OnChange -= DisplayDeckCards;
         }
     }
 
     public void DisplayCollectionCards()
     {
-        if (_currentCollectionCardInstantiations.Count != 0)
+        try
         {
-            foreach (GameObject card in _currentCollectionCardInstantiations)
+            if (_currentCollectionCardInstantiations.Count != 0)
             {
-                Destroy(card);
+                foreach (GameObject card in _currentCollectionCardInstantiations)
+                {
+                    Destroy(card);
+                }
+                _currentCollectionCardInstantiations.Clear();
             }
-            _currentCollectionCardInstantiations.Clear();
+
+            List<(int, int, int)> ordered_cards = GetCollectionCards();
+
+            for (int card_section = -6 + (CollectionPage * 6); card_section < -6 + ((CollectionPage + 1) * 6) && card_section <= ordered_cards.Count - 1; card_section++)
+            {
+                int normalized_idx = card_section - ((CollectionPage - 1) * 6);
+                (int, int, int) cardData = ordered_cards[card_section];
+                int cardIdx = cardData.Item1;
+                (int, int) quant = (cardData.Item2, cardData.Item3);
+
+                Card card = (Card)Cards.CreateCardWithID(cardIdx, true);
+                GameObject _cardPrefabInstance = null;
+
+                switch (card.GetElement())
+                {
+                    case "Intimidation":
+                        _cardPrefabInstance = Instantiate(redCardNoEncounter, _collectionContainerControllers[normalized_idx].spawn.position, _collectionContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
+                        break;
+                    case "Sympathy":
+                        _cardPrefabInstance = Instantiate(blueCardNoEncounter, _collectionContainerControllers[normalized_idx].spawn.position, _collectionContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
+                        break;
+                    case "Persuasion":
+                        _cardPrefabInstance = Instantiate(greenCardNoEncounter, _collectionContainerControllers[normalized_idx].spawn.position, _collectionContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
+                        break;
+                    case "Preparation":
+                        _cardPrefabInstance = Instantiate(greyCardNoEncounter, _collectionContainerControllers[normalized_idx].spawn.position, _collectionContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
+                        break;
+                }
+                _currentCollectionCardInstantiations.Add(_cardPrefabInstance);
+
+                NoEncounterCardPrefabController c = _cardPrefabInstance.GetComponent<NoEncounterCardPrefabController>();
+                c.makeBiggerTransform = previewCardSpawn;
+                _cardPrefabInstance.transform.localScale = new Vector3(_cardPrefabInstance.transform.localScale.x - 0.43f, _cardPrefabInstance.transform.localScale.y - 0.43f, _cardPrefabInstance.transform.localScale.z);
+                card.SetAndInitializeNoEncounterFrontendController(c);
+                _collectionContainerControllers[normalized_idx].SetQuantity(quant);
+            }
         }
-
-        List<(int, int, int)> ordered_cards = GetCollectionCards();
-
-        for (int card_section = -6 + (CollectionPage * 6); card_section < -6 + ((CollectionPage + 1) * 6) && card_section <= GameState.Player.collection.Value.Count - 1; card_section++)
+        catch (MissingReferenceException e)
         {
-            if (card_section >= ordered_cards.Count - 1)
-            {
-                return;
-            }
-            int normalized_idx = card_section - ((CollectionPage - 1) * 6);
-            (int, int, int) cardData = ordered_cards[card_section];
-            int cardIdx = cardData.Item1;
-            (int, int) quant = (cardData.Item2, cardData.Item3);
-
-            Card card = (Card)Cards.CreateCardWithID(cardIdx, true);
-            GameObject _cardPrefabInstance = null;
-
-            switch (card.GetElement())
-            {
-                case "Intimidation":
-                    _cardPrefabInstance = Instantiate(redCardNoEncounter, _collectionContainerControllers[normalized_idx].spawn.position, _collectionContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                    break;
-                case "Sympathy":
-                    _cardPrefabInstance = Instantiate(blueCardNoEncounter, _collectionContainerControllers[normalized_idx].spawn.position, _collectionContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                    break;
-                case "Persuasion":
-                    _cardPrefabInstance = Instantiate(greenCardNoEncounter, _collectionContainerControllers[normalized_idx].spawn.position, _collectionContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                    break;
-                case "Preparation":
-                    _cardPrefabInstance = Instantiate(greyCardNoEncounter, _collectionContainerControllers[normalized_idx].spawn.position, _collectionContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                    break;
-            }
-            _currentCollectionCardInstantiations.Add(_cardPrefabInstance);
-
-            NoEncounterCardPrefabController c = _cardPrefabInstance.GetComponent<NoEncounterCardPrefabController>();
-            c.makeBiggerTransform = previewCardSpawn;
-            _cardPrefabInstance.transform.localScale = new Vector3(_cardPrefabInstance.transform.localScale.x - 0.43f, _cardPrefabInstance.transform.localScale.y - 0.43f, _cardPrefabInstance.transform.localScale.z);
-            card.SetAndInitializeNoEncounterFrontendController(c);
-            _collectionContainerControllers[normalized_idx].SetQuantity(quant);
+            e.Message.Contains("e");
+            GameState.Player.collection.OnChange -= DisplayCollectionCards;
         }
     }
 
@@ -300,6 +309,9 @@ public class DeckUIController : MonoBehaviour
         }
         DisplayDeckCards();
         DisplayCollectionCards();
+        GameState.Player.dailyDeck.OnChange += DisplayDeckCards;
+        GameState.Player.fullDeck.OnChange += DisplayDeckCards;
+        GameState.Player.collection.OnChange += DisplayCollectionCards;
 
     }
 }

@@ -255,7 +255,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: dd79f0a3e6a3570468b5fb89717ce718, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 721cdec0baaca094eb02db74e17e33b1, type: 3}
   m_Color: {r: 0.7264151, g: 0.7024297, b: 0.7024297, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -278,8 +278,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e0a88f353c1487992adb10c1bd895b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _streetViewStationary: {fileID: 21300000, guid: dd79f0a3e6a3570468b5fb89717ce718, type: 3}
-  _streetViewWave: {fileID: 21300000, guid: 779e50f397751b54089443839f7237d5, type: 3}
+  _streetViewStationary: {fileID: 21300000, guid: 721cdec0baaca094eb02db74e17e33b1, type: 3}
+  _streetViewWave: {fileID: 21300000, guid: cc2f36f260062a64d9d6a58b89d430dc, type: 3}
 --- !u!1 &7126463672415695578
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,7 +528,6 @@ GameObject:
   - component: {fileID: 7126463672181600984}
   - component: {fileID: 2974809267316779736}
   - component: {fileID: 701282225796089859}
-  - component: {fileID: 2875625806598518071}
   - component: {fileID: -6906192284787102331}
   - component: {fileID: 5868004497586744959}
   m_Layer: 0
@@ -567,14 +566,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Alan
-  affinity_intimidation: 0.5
-  affinity_sympathy: 0.5
-  affintiy_persuasion: 0.5
+  affinity_intimidation: 0.21
+  affinity_sympathy: 0.79
+  affintiy_persuasion: 0.23
   startingPatience: 1
   startingCompliance: 1
   currentPatience: 1
   currentCompliance: 0
   ComplianceThreshhold: 0
+  cardIDUnlockFromWinEncounter: 19
   encounterSprites: {fileID: 701282225796089859}
 --- !u!114 &2974809267316779736
 MonoBehaviour:
@@ -605,20 +605,6 @@ MonoBehaviour:
   angry: {fileID: 21300000, guid: 71d5e99097a229847ac47310745494f6, type: 3}
   stress: {fileID: 21300000, guid: 73495014746bf854996269911abe12ee, type: 3}
   worry: {fileID: 21300000, guid: f2ea7d015499dcc468b28ba484ef01e3, type: 3}
---- !u!114 &2875625806598518071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7429489653972524998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e0a88f353c1487992adb10c1bd895b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _streetViewStationary: {fileID: 0}
-  _streetViewWave: {fileID: 0}
 --- !u!114 &-6906192284787102331
 MonoBehaviour:
   m_ObjectHideFlags: 0

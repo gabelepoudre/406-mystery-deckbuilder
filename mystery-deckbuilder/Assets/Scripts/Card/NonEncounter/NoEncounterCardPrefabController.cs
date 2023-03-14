@@ -23,6 +23,9 @@ public class NoEncounterCardPrefabController : MonoBehaviour, IPointerClickHandl
     public Text visiblePatience;
     public Text visibleCompliance;
 
+    public DBDeckUIController onlyAddInDeckbuilding; // I am so sorry
+    public bool onlyAddInDeckbuildingIsDeck;  // I am so sorry 
+
     public Transform makeBiggerTransform;
     private Vector3 _spawnTransformPosition;
 
@@ -30,11 +33,34 @@ public class NoEncounterCardPrefabController : MonoBehaviour, IPointerClickHandl
 
     private int _defaultCompliance;
     private int _defaultPatience;
+    private int _id;
+
+    private bool _hasInteraction = true;
+    private bool _deckbuildingMode = false; // I am so sorry
 
 
     void Awake()
     {
         _spawnTransformPosition = gameObject.transform.position;
+    }
+
+    public void DisableInteractions()
+    {
+        _hasInteraction = false;
+    }
+
+    public void EnableInteractions()
+    {
+        _hasInteraction = true;
+    }
+
+    public void EnableDeckbuildingMode()
+    {
+        _deckbuildingMode = true;
+    }
+    public void DisableDeckbuildingMode()
+    {
+        _deckbuildingMode = false;
     }
 
     public void SetDefaultCompliance(int defaultCompliance)
@@ -97,14 +123,22 @@ public class NoEncounterCardPrefabController : MonoBehaviour, IPointerClickHandl
         cardDescription.text = description;
     }
 
+    public void SetCardId(int id)
+    {
+        _id = id;
+    }
+
     public void OnPointerClick(PointerEventData eventData) 
     {
-
+        if (_deckbuildingMode && _hasInteraction)
+        {
+            onlyAddInDeckbuilding.ShowCardInHighlight(this._id, this.onlyAddInDeckbuildingIsDeck);
+        }
     }
 
     public void OnDeselect(BaseEventData eventData)
     {
-        if (_highlighted)
+        if (_highlighted && _hasInteraction  && !_deckbuildingMode)
         {
             gameObject.transform.position = _spawnTransformPosition;
             gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x - 0.8f, gameObject.transform.localScale.y - 0.8f, gameObject.transform.localScale.z);
@@ -114,7 +148,7 @@ public class NoEncounterCardPrefabController : MonoBehaviour, IPointerClickHandl
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (!_highlighted)
+        if (!_highlighted && _hasInteraction && !_deckbuildingMode)
         {
             _highlighted = true;
             EventSystem.current.SetSelectedGameObject(gameObject);

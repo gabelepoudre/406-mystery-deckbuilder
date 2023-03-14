@@ -18,6 +18,13 @@ public class MotelTransitions : MonoBehaviour
         exterior.SetActive(true);
         interior.SetActive(false);
         motelRoom.SetActive(false);
+        if (GameState.Meta.justSlept.Value)
+        {
+            GameState.Meta.justSlept.Value = false;
+            exterior.SetActive(false);
+            interior.SetActive(false);
+            motelRoom.SetActive(true);
+        }
     }
     public void MotelExteriorToLobby()
     {

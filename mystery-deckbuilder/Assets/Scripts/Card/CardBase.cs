@@ -207,6 +207,7 @@ public abstract class Card
     public void SetAndInitializeNoEncounterFrontendController(NoEncounterCardPrefabController controller)
     {
         controller.SetCardName(GetName());
+        controller.SetCardId(GetId());
         controller.SetCardDescription(GetDescription());
         controller.SetDefaultPatience(DefaultPatience);
         if (GetElement() != "Preparation")

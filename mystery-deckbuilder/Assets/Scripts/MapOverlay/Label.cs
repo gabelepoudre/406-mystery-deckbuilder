@@ -13,6 +13,27 @@ public class Label : MonoBehaviour
         GameState.Player.locationsViewable.OnChange += ShowOrHide;
     }
 
+
+    public void MoveToScene()
+    {
+
+        if (DialogueManager.Instance.DialogueActive)
+        {
+            Debug.Log("cannot switch locations when dialogue in session");
+            return;
+        }
+
+        Debug.Log("Move to " + locationAsString);
+
+        //update state
+        GameState.Player.location.Value = GameState.Player.Locations.Parse<GameState.Player.Locations>(locationAsString);
+        //update location related states
+        UpdateState(locationAsString);
+        Debug.Log("update player location state to " + GameState.Player.location.Value.ToString());
+
+        SceneManager.LoadScene(locationAsString);
+    }
+
     public void ShowOrHide()
     {
         try
@@ -27,14 +48,13 @@ public class Label : MonoBehaviour
                 Hide();
             }
         }
-        catch(MissingReferenceException e)
+        catch (MissingReferenceException e)
         {
             e.Message.Contains("e");
             GameState.Player.locationsViewable.OnChange -= ShowOrHide;
         }
     }
-
-    public void MoveToScene()
+    public void MoveToScene(string scene)
     {
         
         if (DialogueManager.Instance.DialogueActive)
@@ -43,13 +63,11 @@ public class Label : MonoBehaviour
             return;
         }
         
-        Debug.Log("Move to " + locationAsString);
+        Debug.Log("Move to " + scene);
 
-        //update state
-        GameState.Player.location.Value = GameState.Player.Locations.Parse<GameState.Player.Locations>(locationAsString);
-        Debug.Log("update player location state to " + GameState.Player.location.Value.ToString());
+        
 
-        SceneManager.LoadScene(locationAsString);
+        SceneManager.LoadScene(scene);
     }
 
     public void Display()
@@ -60,6 +78,23 @@ public class Label : MonoBehaviour
     public void Hide()
     {
         gameObject.SetActive(false);
+    }
+
+    //updates all location-related and gameplay phase states
+    private void UpdateState(string scene)
+    {
+        //update state
+        GameState.Player.location.Value = GameState.Player.Locations.Parse<GameState.Player.Locations>(scene);
+        Debug.Log("update player location state to " + GameState.Player.location.Value.ToString());
+
+        //NOTE: updating gameplay phase if leaving berry barn during tutorial day 2
+        if (SceneManager.GetActiveScene().name == "BerryFarm" &&
+        GameState.Meta.currentGameplayPhase.Value == GameState.Meta.GameplayPhases.Tutorial
+        && GameState.Meta.currentDay.Value == 2)
+        {
+            GameState.Meta.currentGameplayPhase.Value = GameState.Meta.GameplayPhases.Phase_1;
+            Debug.Log("changed gameplay phase to " + GameState.Meta.currentGameplayPhase.Value.ToString());
+        }
     }
 
 

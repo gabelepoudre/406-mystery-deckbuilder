@@ -83,11 +83,27 @@ public class Encounter
                 return GameState.Meta.activeEncounter.Value.GetEncounterController().GetPatience();
             }
         }
+        public float PatiencePercentOfTotal
+        {
+            get
+            {
+                return GameState.Meta.activeEncounter.Value.GetEncounterController().GetPatience() / (float)GameState.Meta.activeEncounter.Value.GetEncounterController().GetMaxPatience();
+            }
+        }
+
         public int Compliance
         {
             get
             {
                 return GameState.Meta.activeEncounter.Value.GetEncounterController().GetCompliance();
+            }
+        }
+
+        public float CompliancePercentOfTotal
+        {
+            get
+            {
+                return GameState.Meta.activeEncounter.Value.GetEncounterController().GetCompliance() / (float)GameState.Meta.activeEncounter.Value.GetEncounterController().GetMaxCompliance();
             }
         }
     }
@@ -121,8 +137,15 @@ public class Encounter
         else
         {
             Debug.Log("Drawing a card");
-
-            int draw_idx = Mathf.RoundToInt((Random.value * (GameState.Player.dailyDeck.Value.Count-1)));
+            int draw_idx = -1;
+            if (GameState.Meta.currentGameplayPhase.Value == GameState.Meta.GameplayPhases.Tutorial)
+            {
+                draw_idx = 0;
+            }
+            else
+            {
+                draw_idx = Mathf.RoundToInt((Random.value * (GameState.Player.dailyDeck.Value.Count - 1)));
+            }
 
             int draw_value = GameState.Player.dailyDeck.Value[draw_idx];
             GameState.Player.dailyDeck.Value.RemoveAt(draw_idx);
@@ -344,7 +367,20 @@ public class Encounter
         globalEffects.Add(e);
     }
 
+    /* Note- Doesn't actually destroy the encounter anymore*/
     public void EndEncounter(bool victory)
+    {
+        if (victory)
+        {
+            _encounterController.DisplayYouWonScreen();
+        }
+        else
+        {
+            _encounterController.DisplayYouLostScreen();
+        }
+    }
+
+    public void DestroyEncounter(bool victory)
     {
         GameState.Meta.lastEncounterEndedInVictory.Value = victory;
         GameState.Meta.activeEncounter.Value = null;
