@@ -7,7 +7,7 @@ using UnityEngine;
  */
 public static class Cards
     {
-    public static int totalCardCount = 18;
+    public static int totalCardCount = 19;
 
     public static object CreateCardWithID(int id, bool no_effect = false)
     {
@@ -49,6 +49,8 @@ public static class Cards
                 return new Monologue(no_effect);
             case 18:
                 return new Inquire(no_effect);
+            case 19:
+                return new EarlyBird(no_effect);
             default:
                 return null;
         }
@@ -856,6 +858,61 @@ public class Inquire : Card
                 _parent.UnstackableComplianceMod += 10 * GameState.Meta.activeEncounter.Value.Statistics.PersuasionCardsInHand;
                 _parent.DisplayEffect(this);
             }
+        }
+    }
+}
+
+public class EarlyBird : Card
+    {
+    public EarlyBird(bool noEffect = false) : base(19)
+    {
+        this._metadata["element"] = "Intimidation";
+        this._metadata["name"] = "Early Bird";
+        this._metadata["description"] = "Raise Compliance by 1 for every card left in the deck";
+        this._metadata["patience"] = "3";
+        this._metadata["compliance"] = "5";
+        this._metadata["duration"] = "0";
+        this._metadata["filterId"] = "0";
+
+        if (!noEffect)
+        {
+            this.__localEffects["Early Bird!"] = new EEarlyBird(this);
+        }
+    }
+
+    public override void OnChange()
+    {
+        this.__localEffects["Early Bird!"].Execute();
+    }
+
+    /* A local effect (as seen by E prefix) for Early Bird */
+    public class EEarlyBird : Effect, IExecutableEffect
+    {
+        private Color _color = new Color(255 / 255, 255 / 255, 100 / 255);
+
+        private Card _parent;
+        private string _name = "Early Bird!";
+        private string _desc_1 = "Raising Compliance by 1 for every card in the deck (";
+
+        public EEarlyBird(Card c) : base(99) { _parent = c; }
+        public string GetDescription()
+        {
+            return _desc_1 + GameState.Player.dailyDeck.Value.Count + ")";
+        }
+        public string GetName() { return _name; }
+        public Color GetColor() { return _color; }
+
+        /* Executes the effect. A conditional may be called within */
+        public void Execute()
+        {
+            // if (EncounterConditionals.CardsOfElementInHandGreaterThan("Sympathy", 0))
+            // {
+            //     _parent.UnstackableComplianceMod += 10 * GameState.Meta.activeEncounter.Value.Statistics.SympathyCardsInHand;
+            //     _parent.DisplayEffect(this);
+            // }
+
+            _parent.UnstackableComplianceMod += 1 * (GameState.Player.dailyDeck.Value.Count);
+            _parent.DisplayEffect(this);
         }
     }
 }
