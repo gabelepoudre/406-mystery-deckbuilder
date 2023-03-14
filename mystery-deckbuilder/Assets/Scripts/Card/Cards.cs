@@ -7,7 +7,7 @@ using UnityEngine;
  */
 public static class Cards
     {
-    public static int totalCardCount = 17;
+    public static int totalCardCount = 18;
 
     public static object CreateCardWithID(int id, bool no_effect = false)
     {
@@ -47,6 +47,8 @@ public static class Cards
                 return new Eloquence(no_effect);
             case 17:
                 return new Monologue(no_effect);
+            case 18:
+                return new Inquire(no_effect);
             default:
                 return null;
         }
@@ -801,6 +803,59 @@ public class Monologue : Card
             Debug.Log("Triggered a draw card effect!");
             GameState.Meta.activeEncounter.Value.DrawCard(0);
             GameState.Meta.activeEncounter.Value.DrawCard(0);
+        }
+    }
+}
+
+
+public class Inquire : Card
+{
+    public Inquire(bool noEffect = false) : base(18)
+    {
+        this._metadata["element"] = "Persuasion";
+        this._metadata["name"] = "Inquire";
+        this._metadata["description"] = "Raise Compliance by 10 for every Persuasion card in hand";
+        this._metadata["patience"] = "3";
+        this._metadata["compliance"] = "10";
+        this._metadata["duration"] = "0";
+        this._metadata["filterId"] = "0";
+
+        if (!noEffect)
+        {
+            this.__localEffects["Inquire!"] = new EInquire(this);
+        }
+    }
+
+    public override void OnChange()
+    {
+        this.__localEffects["Inquire!"].Execute();
+    }
+
+    /* A local effect (as seen by E prefix) for Inquire */
+    public class EInquire : Effect, IExecutableEffect
+    {
+        private Color _color = new Color(255 / 255, 255 / 255, 100 / 255);
+
+        private Card _parent;
+        private string _name = "Inquire!";
+        private string _desc_1 = "Raising Compliance by 10 for every Persuasion card in hand! (";
+
+        public EInquire(Card c) : base(99) { _parent = c; }
+        public string GetDescription()
+        {
+            return _desc_1 + GameState.Meta.activeEncounter.Value.Statistics.PersuasionCardsInHand + ")";
+        }
+        public string GetName() { return _name; }
+        public Color GetColor() { return _color; }
+
+        /* Executes the effect. A conditional may be called within */
+        public void Execute()
+        {
+            if (EncounterConditionals.CardsOfElementInHandGreaterThan("Persuasion", 0))
+            {
+                _parent.UnstackableComplianceMod += 10 * GameState.Meta.activeEncounter.Value.Statistics.PersuasionCardsInHand;
+                _parent.DisplayEffect(this);
+            }
         }
     }
 }
