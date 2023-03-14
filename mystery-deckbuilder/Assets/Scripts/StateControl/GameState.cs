@@ -102,7 +102,7 @@ public static class GameState
             [Locations.PostOfficeInside] = false
         }, _gameStateValues);
 
-
+        public static GameStateValue<int> napsRemainingToday = new(1, _gameStateValues);
 
     }
 

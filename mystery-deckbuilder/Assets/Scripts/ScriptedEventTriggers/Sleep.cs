@@ -8,7 +8,9 @@ public class Sleep : MonoBehaviour
     public void NextDay()
     {
         GameState.Meta.currentDay.Value += 1;
+        GameState.Player.napsRemainingToday.Value = 1;
         SceneManager.LoadScene("DeckBuilding");
+
     }
 
     public void Awake()
