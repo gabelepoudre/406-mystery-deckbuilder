@@ -695,6 +695,7 @@ GameObject:
   - component: {fileID: 211649353337817371}
   - component: {fileID: 1016026345302681541}
   - component: {fileID: 1101600841731526722}
+  - component: {fileID: 7269775515681272708}
   m_Layer: 5
   m_Name: Map
   m_TagString: Untagged
@@ -804,10 +805,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1082643771378014814}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 7269775515681272708}
+        m_TargetAssemblyTypeName: ConditionalMapOpen, Assembly-CSharp
+        m_MethodName: OpenMap
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -816,6 +817,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &7269775515681272708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8087588771586664422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a81c7bc5c4d93944e9b965fde62ca52c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  miniMap: {fileID: 1082643771378014814}
 --- !u!1001 &905738061737943106
 PrefabInstance:
   m_ObjectHideFlags: 0

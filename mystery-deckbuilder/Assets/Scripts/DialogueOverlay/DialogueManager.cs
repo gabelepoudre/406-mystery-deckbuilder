@@ -84,6 +84,7 @@ public class DialogueManager : MonoBehaviour
         //instantiate the dialogue box prefab
         _dialogueBox = Instantiate(_dialogueBoxPrefab, new Vector3(0, -7, 0), Quaternion.identity);
 
+        GameState.Meta.dialogueActive.Value = true;
         GoToNode(_dialogueTree.root); //we start at the root node of the dialogue tree
     }
 
@@ -186,6 +187,7 @@ public class DialogueManager : MonoBehaviour
     {
         DialogueActive = false;
         _dialogueBox.GetComponent<DialogueBox>().DestroyDialogueBox();
+        GameState.Meta.dialogueActive.Value = false;
     }
 
 
