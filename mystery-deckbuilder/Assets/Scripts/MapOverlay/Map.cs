@@ -18,7 +18,6 @@ public class Map : MonoBehaviour
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.RailYard] = false;
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.BreakfastPalace] = false;
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.LumberYard] = false;
-                GameState.Player.locationsViewable.Value[GameState.Player.Locations.MikesPerogies] = false;
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.PostOfficeInside] = false;
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.RatMobCave] = false;
             }
@@ -27,30 +26,29 @@ public class Map : MonoBehaviour
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.BerryFarm] = true;
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.BreakfastPalace] = true;
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.LumberYard] = true;
-                GameState.Player.locationsViewable.Value[GameState.Player.Locations.MikesPerogies] = true;
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.Motel] = true;
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.PostOfficeInside] = true;
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.RatMobCave] = true;
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.RealMainStreet] = true;
-                GameState.Player.locationsViewable.Value[GameState.Player.Locations.TownHall] = true;
+                GameState.Player.locationsViewable.Value[GameState.Player.Locations.RailYard] = true;
 
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.Bar] = false;
-                GameState.Player.locationsViewable.Value[GameState.Player.Locations.RailYard] = false;
+                GameState.Player.locationsViewable.Value[GameState.Player.Locations.Boxcar] = false;
+
             }
             else
             {
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.Bar] = true;
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.RailYard] = true;
+                GameState.Player.locationsViewable.Value[GameState.Player.Locations.Boxcar] = true;
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.BerryFarm] = true;
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.BreakfastPalace] = true;
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.LumberYard] = true;
-                GameState.Player.locationsViewable.Value[GameState.Player.Locations.MikesPerogies] = true;
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.Motel] = true;
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.PostOfficeInside] = true;
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.RailYard] = true;
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.RatMobCave] = true;
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.RealMainStreet] = true;
-                GameState.Player.locationsViewable.Value[GameState.Player.Locations.TownHall] = true;
             }
             GameState.Player.locationsViewable.Raise();
         }
