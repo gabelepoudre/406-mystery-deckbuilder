@@ -90,6 +90,7 @@ public class NPC : MonoBehaviour
         UseBerryFarmCrowdDialogue();
         HideIfNotBerryFarmScriptedEvent();
         HideIfNPCPresentAtBerryFarm();
+        HideIfDay1();
     }
 
     void Awake()
@@ -164,6 +165,17 @@ public class NPC : MonoBehaviour
             gameObject.SetActive(false);
         }
         
+    }
+
+    //hide the NPCs that mention the berry stuff during day 1
+    private void HideIfDay1()
+    {
+        if (GameState.Meta.currentDay.Value != 1) return;
+
+        if (CharacterName != "Nibbles" && CharacterName != "Austin" && CharacterName != "Marry")
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     

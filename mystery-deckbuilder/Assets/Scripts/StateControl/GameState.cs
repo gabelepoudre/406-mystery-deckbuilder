@@ -37,7 +37,7 @@ public static class GameState
         
         public static GameStateValue<int> currentAct = new(1, _gameStateValues);
 
-        public static GameStateValue<int> currentDay = new(1, _gameStateValues); //TODO: change back to 1 after testing
+        public static GameStateValue<int> currentDay = new(1, _gameStateValues);
 
 
         public static GameStateValue<Encounter> activeEncounter = new(null, _gameStateValues);
