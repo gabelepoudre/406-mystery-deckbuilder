@@ -71,8 +71,9 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         "The creative locations would include under the river bridge, the Breakfast palace if all of the berries are squeezed out for juice,",
         "the entire Rodent side of the town, however if that was the case there would've plenty of eyes who saw the berries and I say creative because that would mean that all the rodents are in on the plan,",
         "or finally a bear that might be preparing for hibernation but it's not spring time so this would be unlikely.That was a joke, you are free to laugh or not detective I do not mind.", 
-        "If you do not get the joke then allow me to explain. It is impossible for a singular bear to eat the entirety of the berries and humor comes from the thought of a singular bear trying to gorge down all of the berries...", 
-        "(He sure talks a lot, I guess there really is no room for small talk)" });
+        "If you do not get the joke then allow me to explain. It is impossible for a singular bear to eat the entirety of the berries and humor comes from the thought of a singular bear trying to gorge down all of the berries..."});
+
+        PlayerNode talksAlot = new(new string[] {"(He sure talks a lot, I guess there really is no room for small talk)" });
 
         (string, IDialogueNode)[] replyOptionsList = {
         ("Ask about whereabouts", askWhere),
@@ -86,7 +87,8 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         whereAnswer.SetNext(reply);
 
         askLocations.SetNext(locations);
-        locations.SetNext(reply);
+        locations.SetNext(talksAlot);
+        talksAlot.SetNext(reply);
 
         return new DialogueTree(greeting);
     }
