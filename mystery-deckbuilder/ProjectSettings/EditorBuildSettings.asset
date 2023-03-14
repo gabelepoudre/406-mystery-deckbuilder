@@ -62,4 +62,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Zones/TownHall.unity
     guid: c3839faea3f1045eaa9bbbb8dc8a1bb9
+  - enabled: 1
+    path: Assets/Scenes/DeckBuilding.unity
+    guid: 74cc65548923a8d4ab0dfb0b4ae35794
   m_configObjects: {}
