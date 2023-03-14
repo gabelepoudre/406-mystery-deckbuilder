@@ -72,9 +72,7 @@ public static class GameState
             RatMobCave,
             BerryFarm,
             BreakfastPalace,
-            TownHall,
             RealMainStreet,
-            MikesPerogies,
             MotelOfficeInside,
             MotelRoomInside,
             PostOfficeInside
@@ -94,9 +92,7 @@ public static class GameState
             [Locations.RatMobCave] = false,
             [Locations.BerryFarm] = false,
             [Locations.BreakfastPalace] = false,
-            [Locations.TownHall] = false,
             [Locations.RealMainStreet] = false,
-            [Locations.MikesPerogies] = false,
             [Locations.MotelOfficeInside] = false,
             [Locations.MotelRoomInside] = false,
             [Locations.PostOfficeInside] = false
