@@ -18,7 +18,8 @@ public class TiredNibblesEventTrigger : MonoBehaviour
         if (GameState.Meta.currentDay.Value == 1
         && GameState.NPCs.Nibbles.met.Value
         && GameState.NPCs.Austin.met.Value
-        && GameState.NPCs.Austyn.met.Value)
+        && GameState.NPCs.Marry.met.Value
+        && GameState.Player.location.Value != GameState.Player.Locations.Motel)
         {
             DialogueTree dialogue1 = new(new PlayerNode(new string[] {"*YAWWWWWWN* I sure am tired. Maybe it's time I head back to the motel?"}));
             DialogueTree dialogue2 = new(new PlayerNode(new string[] {"*YAWWWWWWN* Sheesh, I'm tired. Maybe I should start heading back to the motel?"}));
