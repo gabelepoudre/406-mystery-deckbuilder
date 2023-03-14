@@ -57,7 +57,7 @@ public class DBDeckUIController : MonoBehaviour
     {
         List<(int, int, int)> cards = new();
 
-        for (int card_id = 0; card_id <= Cards.totalCardCount-1; card_id++)
+        for (int card_id = 1; card_id <= Cards.totalCardCount; card_id++)
         {
             int numberOfCardsWithId = 0;
             int maxNumberOfCards = 3;
@@ -81,7 +81,7 @@ public class DBDeckUIController : MonoBehaviour
     {
         List<(int, int, int)> cards = new();
 
-        for (int card_id = 0; card_id <= Cards.totalCardCount - 1; card_id++)
+        for (int card_id = 1; card_id <= Cards.totalCardCount; card_id++)
         {
             int numberOfCardsWithId = 0;
             int maxNumberOfCards = 3;
@@ -189,12 +189,9 @@ public class DBDeckUIController : MonoBehaviour
 
             List<(int, int, int)> ordered_cards = GetDeckCards();
 
-            for (int card_section = -6 + (DeckPage * 6); card_section < -6 + ((DeckPage + 1) * 6) && card_section <= GameState.Player.fullDeck.Value.Count - 1; card_section++)
+            for (int card_section = -6 + (DeckPage * 6); card_section < -6 + ((DeckPage + 1) * 6) && card_section <= ordered_cards.Count - 1; card_section++)
             {
-                if (card_section >= ordered_cards.Count - 1)
-                {
-                    return;
-                }
+
                 int normalized_idx = card_section - ((DeckPage - 1) * 6);
                 (int, int, int) cardData = ordered_cards[card_section];
                 int cardIdx = cardData.Item1;
@@ -250,13 +247,11 @@ public class DBDeckUIController : MonoBehaviour
 
             List<(int, int, int)> ordered_cards = GetCollectionCards();
 
-            for (int card_section = -6 + (CollectionPage * 6); card_section < -6 + ((CollectionPage + 1) * 6) && card_section <= GameState.Player.collection.Value.Count - 1; card_section++)
+            for (int card_section = -6 + (CollectionPage * 6); card_section < -6 + ((CollectionPage + 1) * 6) && card_section <= ordered_cards.Count - 1; card_section++)
             {
-                if (card_section >= ordered_cards.Count - 1)
-                {
-                    return;
-                }
+                //Debug.Log("BBBBB2 " + (ordered_cards.Count - 1));
                 int normalized_idx = card_section - ((CollectionPage - 1) * 6);
+
                 (int, int, int) cardData = ordered_cards[card_section];
                 int cardIdx = cardData.Item1;
                 (int, int) quant = (cardData.Item2, cardData.Item3);
