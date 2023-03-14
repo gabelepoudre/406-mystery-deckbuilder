@@ -5,6 +5,8 @@ using UnityEngine;
 public class HiddenCard : MonoBehaviour
 {
     [SerializeField] private int _card;
+    [SerializeField] private GameObject _cardFoundPrefab;
+
 
     // Start is called before the first frame update
     void Start()
@@ -18,11 +20,10 @@ public class HiddenCard : MonoBehaviour
 
     public void PickUpCard()
     {
-        GameObject cardFound = GameObject.Find("CardFound").gameObject;
-        cardFound.SetActive(true);
+        GameObject cardFound = Instantiate(_cardFoundPrefab, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity, transform.Find("Canvas").transform);
         cardFound.GetComponent<RewardDisplayController>().DisplayCardAsReward(_card);
 
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
         
     }
 
