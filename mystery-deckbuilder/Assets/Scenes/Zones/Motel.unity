@@ -2631,6 +2631,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: World UI Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3729424655522108893, guid: 46a451d6f7fd84947a5a62d91425b599, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8031055788555245791, guid: 46a451d6f7fd84947a5a62d91425b599, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46a451d6f7fd84947a5a62d91425b599, type: 3}
 --- !u!1 &2079583507
