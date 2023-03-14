@@ -18,12 +18,12 @@ public class HiddenCard : MonoBehaviour
 
     public void PickUpCard()
     {
-        //add three copies of the card
-        GameState.Player.fullDeck.Value.Add(_card);
-        GameState.Player.fullDeck.Value.Add(_card);
-        GameState.Player.fullDeck.Value.Add(_card);
-        Debug.Log("Picked up card " + _card.ToString());
+        GameObject cardFound = GameObject.Find("CardFound").gameObject;
+        cardFound.SetActive(true);
+        cardFound.GetComponent<RewardDisplayController>().DisplayCardAsReward(_card);
+
         gameObject.SetActive(false);
+        
     }
 
 
