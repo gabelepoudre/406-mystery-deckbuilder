@@ -1269,6 +1269,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nina
       objectReference: {fileID: 0}
+    - target: {fileID: 7429489653972524998, guid: d073dce072bb9484492f276b7ca652c5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d073dce072bb9484492f276b7ca652c5, type: 3}
 --- !u!1001 &851252458

@@ -85,7 +85,7 @@ public class PartingShot : Card
     {
         this._metadata["element"] = "Intimidation";
         this._metadata["name"] = "Parting Shot";
-        this._metadata["description"] = "Double Compliance when Patience is less than 2.";
+        this._metadata["description"] = "Triple Compliance when Patience is less than 5.";
         this._metadata["patience"] = "2";
         this._metadata["compliance"] = "15";
         this._metadata["duration"] = "0";
@@ -110,7 +110,7 @@ public class PartingShot : Card
 
         private Card _parent;
         private string _name = "Parting Shot!";
-        private string _desc_1 = "Doubled Compliance while remaining Patience is 1!";
+        private string _desc_1 = "Tripled Compliance while remaining Patience is 5!";
 
         public EPartingShot(Card c) : base(99) { _parent = c; }
         public string GetDescription() { return _desc_1; }
@@ -120,9 +120,9 @@ public class PartingShot : Card
         /* Executes the effect. A conditional may be called within */
         public void Execute()
         {
-            if (EncounterConditionals.PatienceEqualTo(1))
+            if (EncounterConditionals.PatienceEqualTo(5))
             {
-                _parent.StackableComplianceMod += 1;
+                _parent.StackableComplianceMod += 2;
                 _parent.DisplayEffect(this);
             }
         }
