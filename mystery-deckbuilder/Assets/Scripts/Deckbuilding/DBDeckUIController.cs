@@ -46,21 +46,20 @@ public class DBDeckUIController : MonoBehaviour
     private int _collectionPage = 1;
 
     private List<Text> _deckQuantities = new();
-    private List<DeckCardContainerController> _deckContainerControllers = new();
+    private List<DBDeckCardContainerController> _deckContainerControllers = new();
     private List<GameObject> _currentDeckCardInstantiations = new();
 
     private List<Text> _collectionQuantities = new();
-    private List<CollectionCardContainerController> _collectionContainerControllers = new();
+    private List<DBCollectionCardContainerController> _collectionContainerControllers = new();
     private List<GameObject> _currentCollectionCardInstantiations = new();
 
-    private List<(int, int, int, int)> GetDeckCards()
+    private List<(int, int, int)> GetDeckCards()
     {
-        List<(int, int, int, int)> cards = new();
+        List<(int, int, int)> cards = new();
 
         for (int card_id = 0; card_id <= Cards.totalCardCount-1; card_id++)
         {
             int numberOfCardsWithId = 0;
-            int numberOfActiveCardsWithId = 0;
             int maxNumberOfCards = 3;
             foreach(int card in GameState.Player.fullDeck.Value)
             {
@@ -71,14 +70,7 @@ public class DBDeckUIController : MonoBehaviour
             }
             if (numberOfCardsWithId != 0)  // we found some
             {
-                foreach (int card in GameState.Player.dailyDeck.Value)
-                {
-                    if (card == card_id)
-                    {
-                        numberOfActiveCardsWithId += 1;
-                    }
-                }
-                cards.Add((card_id, numberOfActiveCardsWithId, numberOfCardsWithId, maxNumberOfCards));
+                cards.Add((card_id, numberOfCardsWithId, maxNumberOfCards));
             }
         }
 
@@ -195,7 +187,7 @@ public class DBDeckUIController : MonoBehaviour
                 _currentDeckCardInstantiations.Clear();
             }
 
-            List<(int, int, int, int)> ordered_cards = GetDeckCards();
+            List<(int, int, int)> ordered_cards = GetDeckCards();
 
             for (int card_section = -6 + (DeckPage * 6); card_section < -6 + ((DeckPage + 1) * 6) && card_section <= GameState.Player.fullDeck.Value.Count - 1; card_section++)
             {
@@ -204,9 +196,9 @@ public class DBDeckUIController : MonoBehaviour
                     return;
                 }
                 int normalized_idx = card_section - ((DeckPage - 1) * 6);
-                (int, int, int, int) cardData = ordered_cards[card_section];
+                (int, int, int) cardData = ordered_cards[card_section];
                 int cardIdx = cardData.Item1;
-                (int, int, int) quant = (cardData.Item2, cardData.Item3, cardData.Item4);
+                (int, int) quant = (cardData.Item2, cardData.Item3);
 
                 Card card = (Card)Cards.CreateCardWithID(cardIdx, true);
                 GameObject _cardPrefabInstance = null;
@@ -308,12 +300,12 @@ public class DBDeckUIController : MonoBehaviour
         foreach(GameObject deckContainer in deckContainers)
         {
             _deckQuantities.Add(deckContainer.GetComponentInChildren<Text>());
-            _deckContainerControllers.Add(deckContainer.GetComponent<DeckCardContainerController>());
+            _deckContainerControllers.Add(deckContainer.GetComponent<DBDeckCardContainerController>());
         }
         foreach (GameObject collectionContainer in collectionContainers)
         {
             _collectionQuantities.Add(collectionContainer.GetComponentInChildren<Text>());
-            _collectionContainerControllers.Add(collectionContainer.GetComponent<CollectionCardContainerController>());
+            _collectionContainerControllers.Add(collectionContainer.GetComponent<DBCollectionCardContainerController>());
         }
         DisplayDeckCards();
         DisplayCollectionCards();
