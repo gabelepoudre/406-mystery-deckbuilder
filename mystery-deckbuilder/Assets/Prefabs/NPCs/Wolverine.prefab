@@ -566,9 +566,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Wolverine
-  affinity_intimidation: 0.5
-  affinity_sympathy: 0.5
-  affintiy_persuasion: 0.5
+  affinity_intimidation: 0.29
+  affinity_sympathy: 0.76
+  affintiy_persuasion: 0.75
   startingPatience: 1
   startingCompliance: 1
   currentPatience: 1
