@@ -136,15 +136,7 @@ public class Encounter
         else
         {
             Debug.Log("Drawing a card");
-            int draw_idx = -1;
-            if (GameState.Meta.currentGameplayPhase.Value == GameState.Meta.GameplayPhases.Tutorial)
-            {
-                draw_idx = 0;
-            }
-            else
-            {
-                draw_idx = Mathf.RoundToInt((Random.value * (GameState.Player.dailyDeck.Value.Count - 1)));
-            }
+            int draw_idx = 0;
 
             int draw_value = GameState.Player.dailyDeck.Value[draw_idx];
             GameState.Player.dailyDeck.Value.RemoveAt(draw_idx);
