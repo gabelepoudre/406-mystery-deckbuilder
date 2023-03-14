@@ -8,6 +8,6 @@ public class Sleep : MonoBehaviour
     public void NextDay()
     {
         GameState.Meta.currentDay.Value += 1;
-        //SceneManager.LoadScene(); TODO: set proper scene for deckbuilding
+        SceneManager.LoadScene("DeckBuilding");
     }
 }
