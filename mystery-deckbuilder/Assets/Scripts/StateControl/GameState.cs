@@ -58,6 +58,7 @@ public static class GameState
         public static GameStateValue<List<int>> fullDeck = new(new List<int>(startingDeck), _gameStateValues);
         public static GameStateValue<List<int>> dailyDeck = new(new List<int>(startingDeck), _gameStateValues);
         public static GameStateValue<List<int>> collection = new(new List<int>(startingDeck), _gameStateValues);
+        public static GameStateValue<int> maximumCardsAllowedInDeck = new(20, _gameStateValues);
 
 
         public enum Locations

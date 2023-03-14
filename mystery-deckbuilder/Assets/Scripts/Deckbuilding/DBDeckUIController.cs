@@ -20,7 +20,7 @@ public class DBDeckUIController : MonoBehaviour
     public GameObject minusTwo;
     public GameObject minusThree;
 
-
+    private List<int> _deckOnStart; 
     public Transform previewCardSpawn;
     private GameObject _previewedCard = null;
     private bool _previewedCardIsDeck;
@@ -74,6 +74,7 @@ public class DBDeckUIController : MonoBehaviour
                 numberOfCardsWithId += 1;
             }
         }
+        return numberOfCardsWithId;
     }
 
     private List<(int, int, int)> GetDeckCards()
@@ -319,6 +320,29 @@ public class DBDeckUIController : MonoBehaviour
         }
     }
 
+    public void RevertDeck()
+    {
+        GameState.Player.dailyDeck.Value = new(_deckOnStart.ToArray());
+        GameState.Player.dailyDeck.Value = new(GameState.Player.fullDeck.Value.ToArray());
+    }
+
+    public void ContextAdjustDeck(bool addingCard_, int quantity_)
+    {
+        for (int x = 0; x <= quantity_ -1; x++)
+        {
+            if(addingCard_)
+            {
+                GameState.Player.fullDeck.Value.Add(_previewedCardID);
+            }
+            else
+            {
+                GameState.Player.fullDeck.Value.Remove(_previewedCardID);
+            }
+        }
+        GameState.Player.fullDeck.Raise();
+        GameState.Player.dailyDeck.Value = new(GameState.Player.fullDeck.Value.ToArray());
+    }
+
     public void ShowCardInHighlight(int cardID, bool isDeck)
     {
         Card card = (Card)Cards.CreateCardWithID(cardID, true);
@@ -351,6 +375,7 @@ public class DBDeckUIController : MonoBehaviour
         _previewedCard = _cardPrefabInstance;
         _previewedCardID = cardID;
         _previewedCardIsDeck = isDeck;
+        ShowProperControlsForHighlightedCard();
     }
 
     public void SetAllButtonsFalse()
@@ -366,10 +391,49 @@ public class DBDeckUIController : MonoBehaviour
     public void ShowProperControlsForHighlightedCard()
     {
         SetAllButtonsFalse();
-        if(_previewedCardIsDeck)
+        int num_of_card = GetNumberDeckCardsOfID(_previewedCardID);
+        // show based on amount
+        switch (num_of_card) 
         {
-
+            case < 1:
+                plusOne.SetActive(true);
+                plusTwo.SetActive(true);
+                plusThree.SetActive(true);
+                break;
+            case < 2:
+                plusOne.SetActive(true);
+                plusTwo.SetActive(true);
+                minusOne.SetActive(true);
+                break;
+            case < 3:
+                plusOne.SetActive(true);
+                minusOne.SetActive(true);
+                minusTwo.SetActive(true);
+                break;
+            case < 4:
+                minusOne.SetActive(true);
+                minusTwo.SetActive(true);
+                minusThree.SetActive(true);
+                break;
         }
+        
+        // remove based on max size
+        switch(GameState.Player.maximumCardsAllowedInDeck.Value - GameState.Player.fullDeck.Value.Count)
+        {
+            case < 1:
+                plusOne.SetActive(false);
+                plusTwo.SetActive(false);
+                plusThree.SetActive(false);
+                break;
+            case < 2:
+                plusTwo.SetActive(false);
+                plusThree.SetActive(false);
+                break;
+            case < 3:
+                plusThree.SetActive(true);
+                break;
+        }
+        
     }
 
     public void Start()
@@ -390,5 +454,6 @@ public class DBDeckUIController : MonoBehaviour
         GameState.Player.fullDeck.OnChange += DisplayDeckCards;
         GameState.Player.collection.OnChange += DisplayCollectionCards;
 
+        _deckOnStart = new(GameState.Player.fullDeck.Value.ToArray());
     }
 }
