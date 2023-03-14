@@ -44,6 +44,7 @@ public class OslowDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         PlayerNode askBerries = new(new string[] {"Clay said you might be able to help me. Do you have an idea as to who stole the berries?"});
         NPCNode answerBerries = new(new string[] {"As a keeper, I can't just give you information for free. Let's see if you can persuade me."});
         EncounterNode encounter = new();
+        askBerries.SetNext(answerBerries);
         answerBerries.SetNext(encounter);
 
         (string, IDialogueNode) [] OptionsList = {
@@ -65,7 +66,7 @@ public class OslowDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         "Perhaps you can go there and ask him about that night. There's also something odd about Elk.", 
         "On the surface he seems like a stand-up fellow but he does some shady things behind the mayor's back.", 
         "I have overheard some of his conversations when no one else was around and I can't help but be suspicious of him."});
-         DialogueTree tree = new (root);
+         DialogueTree tree = new(root);
         return tree;
     }
 
