@@ -34,7 +34,7 @@ public class RewardDisplayController : MonoBehaviour
         {
             Debug.LogError("NO CARD REWARD WAS SET FOR NPC. SET REWARD CARD ID IN INSPECTOR FOR NPC PREFAB");
         }
-        Card card = (Card)Cards.CreateCardWithID(id);
+        Card card = (Card)Cards.CreateCardWithID(id, true);
         GameObject _cardPrefabInstance = null;
         switch (card.GetElement())
         {

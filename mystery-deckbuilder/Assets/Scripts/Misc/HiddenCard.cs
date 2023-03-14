@@ -12,7 +12,7 @@ public class HiddenCard : MonoBehaviour
     void Start()
     {
         //to disallow player from picking it up again
-        if (GameState.Player.fullDeck.Value.Contains(_card))
+        if (GameState.Player.collection.Value.Contains(_card))
         {
             gameObject.SetActive(false);
         }
@@ -23,8 +23,6 @@ public class HiddenCard : MonoBehaviour
         GameObject cardFound = Instantiate(_cardFoundPrefab, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity, transform.Find("Canvas").transform);
         cardFound.GetComponent<RewardDisplayController>().DisplayCardAsReward(_card);
         cardFound.GetComponent<RewardDisplayController>().SetParent(this.gameObject);
-
-        //gameObject.SetActive(false);
         
     }
 
