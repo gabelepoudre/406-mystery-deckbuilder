@@ -7,7 +7,6 @@
  */
 
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class Encounter
@@ -23,14 +22,14 @@ public class Encounter
         else if (GameState.Player.dailyDeck.Value.Count == 0)
         {
             // launch ENCOUNTER DISALLOWED popup
-            GameObject prefabReference = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Encounter/EncounterDisallowed.prefab");
+            GameObject prefabReference = GameObject.Find("EncounterController").GetComponent<PrefabRefs>().RejectEncounter;
             GameObject instantiated = GameObject.Instantiate(prefabReference);
             return null;
         }
         else if (GameState.Player.dailyDeck.Value.Count < 10 && !force)
         {
             // launch ARE YOU SURE popup
-            GameObject prefabReference = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Encounter/AreYouSure.prefab");
+            GameObject prefabReference = GameObject.Find("EncounterController").GetComponent<PrefabRefs>().AreYouSure; ;
             GameObject instantiated = GameObject.Instantiate(prefabReference);
             AreYouSureController popController = instantiated.GetComponent<AreYouSureController>();
             popController.SetDescription("Are you sure you would like to launch this Encounter? You only have " + GameState.Player.dailyDeck.Value.Count + " cards remaining in your deck!");
@@ -111,7 +110,7 @@ public class Encounter
     /* Constructor with config */
     public Encounter(EncounterConfig config)
     {
-        GameObject prefabReference = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Encounter/Encounter.prefab");
+        GameObject prefabReference = GameObject.Find("EncounterController").GetComponent<PrefabRefs>().Encounter;
         Statistics = new StatisticsClass(); // we reinitialize this, just in case
 
         _encounterPrefab = GameObject.Instantiate(prefabReference);
