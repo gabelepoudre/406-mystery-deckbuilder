@@ -43,6 +43,7 @@ public static class GameState
         public static GameStateValue<Encounter> activeEncounter = new(null, _gameStateValues);
         public static GameStateValue<bool> lastEncounterEndedInVictory = new(false, _gameStateValues);
 
+
         public static GameStateValue<bool> notepadActive = new(false, _gameStateValues);
         
     }
