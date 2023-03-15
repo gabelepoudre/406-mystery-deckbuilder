@@ -23,7 +23,6 @@ public class DougDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
     private void BuildTreeDictionary()
     {
-    
         _dialogueTreeDict.Add("Intro", BuildIntro());
         _dialogueTreeDict.Add("IntroMetAustynOnly", BuildIntroMetAustyn());
         _dialogueTreeDict.Add("IntroMetMarkOnly", BuildIntroMetMark());
