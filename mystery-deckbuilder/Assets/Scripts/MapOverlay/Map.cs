@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Map : MonoBehaviour
 {
@@ -53,6 +54,11 @@ public class Map : MonoBehaviour
             GameState.Player.locationsViewable.Raise();
         }
         catch (MissingReferenceException e)
+        {
+            e.Message.Contains('e');
+            GameState.Meta.currentAct.OnChange -= UpdateLocations;
+        }
+        catch (NullReferenceException e)
         {
             e.Message.Contains('e');
             GameState.Meta.currentAct.OnChange -= UpdateLocations;

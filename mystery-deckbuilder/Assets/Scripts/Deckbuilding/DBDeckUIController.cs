@@ -328,6 +328,11 @@ public class DBDeckUIController : MonoBehaviour
             e.Message.Contains("e");
             GameState.Player.collection.OnChange -= DisplayCollectionCards;
         }
+        catch(NullReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.Player.collection.OnChange -= DisplayCollectionCards;
+        }
     }
 
     public void RevertDeck()
