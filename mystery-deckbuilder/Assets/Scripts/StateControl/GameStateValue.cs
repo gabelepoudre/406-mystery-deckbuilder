@@ -60,6 +60,11 @@ public class GameStateValue<T>: IGameStateValue
             Debug.LogError("PublishSubscribe broke because there is a null reference in the OnChange invocation list. See Scripts/Encounter/DailyDeckCounter.cs for fix");
             throw e;
         }
+        catch (NullReferenceException e)
+        {
+            Debug.LogError("PublishSubscribe broke because there is a null reference in the OnChange invocation list. See Scripts/Encounter/DailyDeckCounter.cs for fix");
+            throw e;
+        }
     }
 
     /* Resets a GameStateValue to it's .DefaultValue */ 
