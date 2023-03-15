@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class Label : MonoBehaviour
 {
@@ -49,6 +50,11 @@ public class Label : MonoBehaviour
             }
         }
         catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.Player.locationsViewable.OnChange -= ShowOrHide;
+        }
+        catch (NullReferenceException e)
         {
             e.Message.Contains("e");
             GameState.Player.locationsViewable.OnChange -= ShowOrHide;
