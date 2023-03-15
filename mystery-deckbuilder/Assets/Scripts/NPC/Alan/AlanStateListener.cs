@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class AlanStateListener : MonoBehaviour
 {
@@ -42,6 +43,11 @@ public class AlanStateListener : MonoBehaviour
         }
         }
         catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Alan.encountersCompleted.OnChange -= OnEncounterComplete;
+        }
+        catch (NullReferenceException e)
         {
             e.Message.Contains("e");
             GameState.NPCs.Alan.encountersCompleted.OnChange -= OnEncounterComplete;

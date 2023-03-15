@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class DougStateListener : MonoBehaviour
 {
@@ -51,6 +52,11 @@ public class DougStateListener : MonoBehaviour
         }
         }
         catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Doug.encountersCompleted.OnChange -= OnEncounterComplete;
+        }
+        catch (NullReferenceException e)
         {
             e.Message.Contains("e");
             GameState.NPCs.Doug.encountersCompleted.OnChange -= OnEncounterComplete;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SpeckStateListener : MonoBehaviour
 {
@@ -43,6 +44,11 @@ public class SpeckStateListener : MonoBehaviour
         }
         }
         catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Speck.encountersCompleted.OnChange -= OnEncounterComplete;
+        }
+        catch (NullReferenceException e)
         {
             e.Message.Contains("e");
             GameState.NPCs.Speck.encountersCompleted.OnChange -= OnEncounterComplete;

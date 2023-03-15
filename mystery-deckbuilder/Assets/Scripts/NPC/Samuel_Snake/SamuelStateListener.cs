@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SamuelStateListener : MonoBehaviour
 {
@@ -42,6 +43,11 @@ public class SamuelStateListener : MonoBehaviour
             }
         }
         catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Samuel.encountersCompleted.OnChange -= OnEncounterComplete;
+        }
+        catch (NullReferenceException e)
         {
             e.Message.Contains("e");
             GameState.NPCs.Samuel.encountersCompleted.OnChange -= OnEncounterComplete;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class WolverineStateListener : MonoBehaviour
 {
@@ -40,6 +41,11 @@ public class WolverineStateListener : MonoBehaviour
             }
         }
         catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Wolverine.encountersCompleted.OnChange -= OnEncounterComplete;
+        }
+        catch (NullReferenceException e)
         {
             e.Message.Contains("e");
             GameState.NPCs.Wolverine.encountersCompleted.OnChange -= OnEncounterComplete;

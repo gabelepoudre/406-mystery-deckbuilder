@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class NinaStateListener : MonoBehaviour
 {
@@ -47,6 +48,12 @@ public class NinaStateListener : MonoBehaviour
             e.Message.Contains("e");
             GameState.NPCs.Nina.encountersCompleted.OnChange -= OnEncounterComplete;
         }
+        catch (NullReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Nina.encountersCompleted.OnChange -= OnEncounterComplete;
+        }
+
     }
 
     private void UpdateDialogue()

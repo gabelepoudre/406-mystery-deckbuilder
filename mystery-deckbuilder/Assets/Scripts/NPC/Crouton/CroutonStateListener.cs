@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CroutonStateListener : MonoBehaviour
 {
@@ -42,6 +43,11 @@ public class CroutonStateListener : MonoBehaviour
         }
         }
         catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Crouton.encountersCompleted.OnChange -= OnEncounterComplete;
+        }
+        catch (NullReferenceException e)
         {
             e.Message.Contains("e");
             GameState.NPCs.Crouton.encountersCompleted.OnChange -= OnEncounterComplete;

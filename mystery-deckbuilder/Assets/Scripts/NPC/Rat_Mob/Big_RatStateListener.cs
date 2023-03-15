@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Big_RatStateListener : MonoBehaviour
 {
@@ -39,6 +40,11 @@ public class Big_RatStateListener : MonoBehaviour
         }
         }
         catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Big_Rat.encountersCompleted.OnChange -= OnEncounterComplete;
+        }
+        catch (NullReferenceException e)
         {
             e.Message.Contains("e");
             GameState.NPCs.Big_Rat.encountersCompleted.OnChange -= OnEncounterComplete;
