@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ClayListener : MonoBehaviour
 {
@@ -47,8 +48,12 @@ public class ClayListener : MonoBehaviour
             e.Message.Contains("e");
             GameState.NPCs.Clay.encountersCompleted.OnChange -= OnEncounterComplete;
         }
+        catch (NullReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Clay.encountersCompleted.OnChange -= OnEncounterComplete;
+        }
 
-        
     }
 
 

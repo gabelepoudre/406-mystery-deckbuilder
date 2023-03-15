@@ -106,7 +106,7 @@ public class DougStateListener : MonoBehaviour
 
             if (GameState.NPCs.Austyn.encountersWon.Value > 0 && GameState.NPCs.Mark.encountersWon.Value > 0 && GameState.NPCs.Samuel.encountersWon.Value > 0)
             {
-                transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetAllThree";
+                transform.GetComponent<NPC>().CurrentDialogueKey = "BuildIntroMetAllThree";
             }
         }
        
