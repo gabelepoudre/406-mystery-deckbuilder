@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.UI;
 
 public class DBDeckUIController : MonoBehaviour
 {
-    public Object sceneOnComplete;
+    public UnityEngine.Object sceneOnComplete;
 
     public GameObject[] deckContainers;
     public GameObject[] collectionContainers;
@@ -255,6 +256,12 @@ public class DBDeckUIController : MonoBehaviour
             }
         }
         catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.Player.fullDeck.OnChange -= DisplayDeckCards;
+            GameState.Player.dailyDeck.OnChange -= DisplayDeckCards;
+        }
+        catch (NullReferenceException e)
         {
             e.Message.Contains("e");
             GameState.Player.fullDeck.OnChange -= DisplayDeckCards;
