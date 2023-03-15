@@ -51,20 +51,7 @@ public class GameStateValue<T>: IGameStateValue
     /* Emits the "OnChange" event, if anyone is listening*/
     public void Raise() 
     {
-        try
-        {
-            OnChange?.Invoke();
-        }
-        catch (MissingReferenceException e)
-        {
-            Debug.LogError("PublishSubscribe broke because there is a null reference in the OnChange invocation list. See Scripts/Encounter/DailyDeckCounter.cs for fix");
-            throw e;
-        }
-        catch (NullReferenceException e)
-        {
-            Debug.LogError("PublishSubscribe broke because there is a null reference in the OnChange invocation list. See Scripts/Encounter/DailyDeckCounter.cs for fix");
-            throw e;
-        }
+        OnChange?.Invoke();
     }
 
     /* Resets a GameStateValue to it's .DefaultValue */ 
