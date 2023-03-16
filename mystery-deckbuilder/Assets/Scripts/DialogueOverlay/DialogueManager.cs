@@ -193,8 +193,6 @@ public class DialogueManager : MonoBehaviour
     {
         _dialogueBox.GetComponent<DialogueBox>().DestroyDialogueBox();
         DialogueActive = false;
-        _dialogueBox = null;
-        _currentNode = null;
         GameState.Meta.dialogueActive.Value = false;
         _sentences.Clear();
 
