@@ -162,7 +162,7 @@ public class DialogueManager : MonoBehaviour
      */
     public void DisplayNextSentence()
     {
-
+        if (_dialogueBox == null) return; // TODO: 
         if (!_dialogueBox.GetComponent<DialogueBox>().FinishedSentence)
         {
             _dialogueBox.GetComponent<DialogueBox>().SpeedUp();
@@ -191,9 +191,10 @@ public class DialogueManager : MonoBehaviour
     /* Commands the previously instantiated DialogueBox to destroy itself */
     public void EndDialogue()
     {
-        DialogueActive = false;
         _dialogueBox.GetComponent<DialogueBox>().DestroyDialogueBox();
+        DialogueActive = false;
         _dialogueBox = null;
+        _currentNode = null;
         GameState.Meta.dialogueActive.Value = false;
         _sentences.Clear();
 
