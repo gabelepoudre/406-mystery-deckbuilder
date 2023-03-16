@@ -9,13 +9,12 @@ public class WolverineStateListener : MonoBehaviour
     void Start()
     {
         ChangeDialogueBasedOnState();
+        UpdateDialogue();
     }
 
     private void ChangeDialogueBasedOnState()
     {
-     
-        
-       
+    
         GameState.NPCs.Wolverine.encountersCompleted.OnChange += OnEncounterComplete;
        
     }

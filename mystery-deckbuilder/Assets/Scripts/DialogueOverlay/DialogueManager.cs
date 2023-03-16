@@ -107,7 +107,8 @@ public class DialogueManager : MonoBehaviour
         if (_currentNode.NodeType() == "encounter")
         {
             EndDialogue();
-            Encounter.StartEncounter(new EncounterConfig(CurrentNPC.GetComponent<NPC>()));
+            NPC cur = CurrentNPC.GetComponent<NPC>();
+            Encounter.StartEncounter(new EncounterConfig(cur, (int)cur.startingCompliance, (int)cur.startingPatience));
         }
 
         StopAllCoroutines(); //stop displaying text, in case player clicks next while text still writing
