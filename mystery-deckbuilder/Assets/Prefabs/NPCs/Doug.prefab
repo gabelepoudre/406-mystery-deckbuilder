@@ -569,8 +569,8 @@ MonoBehaviour:
   affinity_intimidation: 0.5
   affinity_sympathy: 0.11
   affintiy_persuasion: 0.89
-  startingPatience: 20
-  startingCompliance: 125
+  startingPatience: 25
+  startingCompliance: 120
   currentPatience: 1
   currentCompliance: 0
   ComplianceThreshhold: 0
