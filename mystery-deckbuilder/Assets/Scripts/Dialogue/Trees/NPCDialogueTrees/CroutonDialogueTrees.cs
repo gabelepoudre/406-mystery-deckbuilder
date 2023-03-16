@@ -27,7 +27,7 @@ public class CroutonDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         _dialogueTreeDict.Add("DialogueWithAlan", BuildDialogeWithAlan()); //evidence
         _dialogueTreeDict.Add("DialogueWithNina", BuildDialogueWithNina());
         _dialogueTreeDict.Add("DialogueWithBoth", BuildDialogueWithBoth());
-        _dialogueTreeDict.Add("AfterEncounterWin", BuildEncounterLoss());
+        _dialogueTreeDict.Add("AfterEncounterWin", BuildEncounterWin());
 
         _dialogueTreeDict.Add("BerryCommotion", BuildBerryCommotion());
         _dialogueTreeDict.Add("AfterEncounterLoss", BuildEncounterLoss());
