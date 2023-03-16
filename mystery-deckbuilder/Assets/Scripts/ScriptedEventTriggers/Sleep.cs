@@ -15,7 +15,7 @@ public class Sleep : MonoBehaviour
 
     public void Awake()
     {
-        if (GameState.Meta.justSlept.Value)
+        if (GameState.Meta.justSlept.Value || (GameState.Meta.currentDay.Value == 2 && GameState.Meta.currentGameplayPhase.Value == GameState.Meta.GameplayPhases.Tutorial) || GameState.Meta.currentDay.Value == 7)
         {
             gameObject.SetActive(false);
         }

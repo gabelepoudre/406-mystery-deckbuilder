@@ -9,7 +9,25 @@ public class Map : MonoBehaviour
     {
         try
         {
-            if(GameState.Meta.currentGameplayPhase.Value == GameState.Meta.GameplayPhases.Tutorial)
+            if (GameState.Meta.currentDay.Value == 7)
+            {
+                GameState.Player.locationsViewable.Value[GameState.Player.Locations.Bar] = false;
+                GameState.Player.locationsViewable.Value[GameState.Player.Locations.RailYard] = false;
+                GameState.Player.locationsViewable.Value[GameState.Player.Locations.Boxcar] = false;
+                GameState.Player.locationsViewable.Value[GameState.Player.Locations.BerryFarm] = false;
+                GameState.Player.locationsViewable.Value[GameState.Player.Locations.BreakfastPalace] = false;
+                GameState.Player.locationsViewable.Value[GameState.Player.Locations.LumberYard] = false;
+                GameState.Player.locationsViewable.Value[GameState.Player.Locations.Motel] = false;
+                GameState.Player.locationsViewable.Value[GameState.Player.Locations.PostOfficeInside] = false;
+                GameState.Player.locationsViewable.Value[GameState.Player.Locations.RailYard] = false;
+                GameState.Player.locationsViewable.Value[GameState.Player.Locations.RatMobCave] = false;
+
+                GameState.Player.locationsViewable.Value[GameState.Player.Locations.RealMainStreet] = true;
+
+                return;
+            }
+
+            if (GameState.Meta.currentGameplayPhase.Value == GameState.Meta.GameplayPhases.Tutorial)
             {
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.BerryFarm] = true;
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.RealMainStreet] = true;
@@ -62,16 +80,19 @@ public class Map : MonoBehaviour
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.Bar] = true;
             }
             GameState.Player.locationsViewable.Raise();
+
         }
         catch (MissingReferenceException e)
         {
             e.Message.Contains('e');
             GameState.Meta.currentAct.OnChange -= UpdateLocations;
+            GameState.Meta.currentDay.OnChange -= UpdateLocations;
         }
         catch (NullReferenceException e)
         {
             e.Message.Contains('e');
             GameState.Meta.currentAct.OnChange -= UpdateLocations;
+            GameState.Meta.currentDay.OnChange -= UpdateLocations;
         }
     }
 
@@ -79,5 +100,6 @@ public class Map : MonoBehaviour
     {
         UpdateLocations();
         GameState.Meta.currentAct.OnChange += UpdateLocations;
+        GameState.Meta.currentDay.OnChange += UpdateLocations;
     }
 }
