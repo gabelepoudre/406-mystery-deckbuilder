@@ -5,6 +5,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 /* The Class which holds all of the Crouton's dialogue trees in a dictionary, the point being
  * that all of the dialogue will be built here and passed to the NPC class 
@@ -31,8 +32,18 @@ public class CroutonDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
         _dialogueTreeDict.Add("BerryCommotion", BuildBerryCommotion());
         _dialogueTreeDict.Add("AfterEncounterLoss", BuildEncounterLoss());
+        _dialogueTreeDict.Add("BuildRanOutOfDays", BuildRanOutOfDays());
     }
 
+
+    private DialogueTree BuildRanOutOfDays()
+    {
+        NPCNode croutonForce = new(new string[] { "Well detective, I hope your investigation went well.", "The people of small pines demand a suspect be named." });
+        ArbitraryCodeNode croutonForcePick = new(() => { this.gameObject.GetComponent<PickASuspectLauncher>().Launch(); return 0; });
+        croutonForce.SetNext(croutonForcePick);
+
+        return new DialogueTree(croutonForce);
+    }
 
     private DialogueTree BuildIntro()
     {

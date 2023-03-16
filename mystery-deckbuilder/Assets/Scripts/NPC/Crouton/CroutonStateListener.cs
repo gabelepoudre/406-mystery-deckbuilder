@@ -79,6 +79,11 @@ public class CroutonStateListener : MonoBehaviour
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWin";
         }
+        if (GameState.Meta.currentDay.Value == 7)
+        {
+            Debug.Log("Changed crouton dialogue");
+            transform.GetComponent<NPC>().CurrentDialogueKey = "BuildRanOutOfDays";
+        }
        
     }
 

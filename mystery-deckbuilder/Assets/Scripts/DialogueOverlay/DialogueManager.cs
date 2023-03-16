@@ -111,6 +111,12 @@ public class DialogueManager : MonoBehaviour
             Encounter.StartEncounter(new EncounterConfig(cur, (int)cur.startingCompliance, (int)cur.startingPatience));
         }
 
+        if (_currentNode.NodeType() == "arbitrary")
+        {
+            EndDialogue();
+            ((ArbitraryCodeNode)_currentNode).Execute();
+        }
+
         StopAllCoroutines(); //stop displaying text, in case player clicks next while text still writing
 
         if (_currentNode.NodeType() != "option") //if a normal dialogue node
