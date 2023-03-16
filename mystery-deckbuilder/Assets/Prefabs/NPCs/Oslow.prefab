@@ -566,9 +566,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Oslow
-  affinity_intimidation: 0.5
-  affinity_sympathy: 0.5
-  affintiy_persuasion: 0.5
+  affinity_intimidation: 0.823
+  affinity_sympathy: 0.203
+  affintiy_persuasion: 0.208
   startingPatience: 20
   startingCompliance: 100
   currentPatience: 1
