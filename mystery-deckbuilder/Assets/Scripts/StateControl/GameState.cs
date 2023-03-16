@@ -54,7 +54,10 @@ public static class GameState
     /* GameStateValue holder class for Player data. Could be what they know for use in Dialogue trees */
     public class Player
     {
-        //static int[] startingDeck = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17};
+        //static int[] startingDeck = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21};
+
+        //static int[] startingDeck = {1, 1, 1, 3, 3, 3, 7, 8, 8, 8, 11, 11, 11, 12, 13, 13, 14, 14, 17, 17, 19};
+
         static int[] startingDeck = {1, 1, 1, 5, 5, 5, 9, 9, 9, 4, 4, 4, 8, 8, 8, 18, 18, 18, 17, 17, 17};
         public static GameStateValue<List<int>> fullDeck = new(new List<int>(startingDeck), _gameStateValues);
         public static GameStateValue<List<int>> dailyDeck = new(new List<int>(startingDeck), _gameStateValues);

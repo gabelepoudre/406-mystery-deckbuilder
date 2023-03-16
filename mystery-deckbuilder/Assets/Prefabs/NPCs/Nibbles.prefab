@@ -468,10 +468,10 @@ MonoBehaviour:
   affinity_intimidation: 0.288
   affinity_sympathy: 0.295
   affintiy_persuasion: 0.705
-  startingPatience: 1
-  startingCompliance: 1
-  currentPatience: 1
-  currentCompliance: 0
+  startingPatience: 20
+  startingCompliance: 75
+  currentPatience: 10
+  currentCompliance: 100
   ComplianceThreshhold: 0
   cardIDUnlockFromWinEncounter: 6
   encounterSprites: {fileID: 7538326253552544718}
