@@ -123,7 +123,7 @@ public class DougStateListener : MonoBehaviour
             }
             else //if he was the second or third
             {
-                transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWinSecondOrThirdMainSuspect";
+                transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWinSecondOrThirdSuspect";
             }
         }
        
