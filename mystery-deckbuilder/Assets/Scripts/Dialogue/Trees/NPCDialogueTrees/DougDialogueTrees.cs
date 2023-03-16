@@ -33,7 +33,7 @@ public class DougDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         _dialogueTreeDict.Add("BuildIntroMetAllThree", BuildIntroMetAllThree());
         _dialogueTreeDict.Add("AfterEncounterLoss", BuildAfterEncounterLoss());
         _dialogueTreeDict.Add("AfterEncounterWinFirstMainSuspect", BuildAfterEncounterWinFirstMainSuspect());
-        _dialogueTreeDict.Add("AfterEncounterWinSecondOrThirdSuspect", BuildAfterEncounterWinSecondOrThirdMainSuspect());
+        _dialogueTreeDict.Add("AfterEncounterWinSecondOrThirdMainSuspect", BuildAfterEncounterWinSecondOrThirdMainSuspect());
     }
 
  

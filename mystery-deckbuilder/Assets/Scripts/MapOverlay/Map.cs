@@ -51,6 +51,16 @@ public class Map : MonoBehaviour
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.RatMobCave] = true;
                 GameState.Player.locationsViewable.Value[GameState.Player.Locations.RealMainStreet] = true;
             }
+            if (GameState.NPCs.Big_Rat.encountersWon.Value + GameState.NPCs.Doug.encountersWon.Value 
+            + GameState.NPCs.Elk.encountersWon.Value >= 2)
+            {
+                GameState.Player.locationsViewable.Value[GameState.Player.Locations.Boxcar] = true;
+            }
+            if (GameState.NPCs.Big_Rat.encountersWon.Value + GameState.NPCs.Doug.encountersWon.Value 
+            + GameState.NPCs.Elk.encountersWon.Value >= 1)
+            {
+                GameState.Player.locationsViewable.Value[GameState.Player.Locations.Bar] = true;
+            }
             GameState.Player.locationsViewable.Raise();
         }
         catch (MissingReferenceException e)
