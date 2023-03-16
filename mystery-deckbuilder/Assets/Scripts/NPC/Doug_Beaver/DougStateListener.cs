@@ -64,7 +64,6 @@ public class DougStateListener : MonoBehaviour
 
     }
 
-
     private void MetAustynOrMarkOrSamuel()
     {
         if (GameState.NPCs.Doug.encountersWon.Value == 0)
@@ -81,7 +80,7 @@ public class DougStateListener : MonoBehaviour
 
             if (GameState.NPCs.Samuel.encountersWon.Value > 0)
             {
-                transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetSamuelOnly";
+                transform.GetComponent<NPC>().CurrentDialogueKey = "BuildIntroMetSamuelOnly";
             }
 
             if (GameState.NPCs.Austyn.encountersWon.Value > 0 && GameState.NPCs.Mark.encountersWon.Value > 0)
@@ -91,12 +90,12 @@ public class DougStateListener : MonoBehaviour
 
             if (GameState.NPCs.Austyn.encountersWon.Value > 0 && GameState.NPCs.Samuel.encountersWon.Value > 0)
             {
-                transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetAustinAndSamuel";
+                transform.GetComponent<NPC>().CurrentDialogueKey = "BuildIntroMetAustynAndSamuel";
             }
 
             if (GameState.NPCs.Mark.encountersWon.Value > 0 && GameState.NPCs.Samuel.encountersWon.Value > 0)
             {
-                transform.GetComponent<NPC>().CurrentDialogueKey = "IntroMetMarkAndSamuel";
+                transform.GetComponent<NPC>().CurrentDialogueKey = "BuildIntroMetMarkAndSamuel";
             }
 
             if (GameState.NPCs.Austyn.encountersWon.Value > 0 && GameState.NPCs.Mark.encountersWon.Value > 0)
