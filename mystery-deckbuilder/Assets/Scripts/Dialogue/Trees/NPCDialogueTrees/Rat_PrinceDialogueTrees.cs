@@ -5,6 +5,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /* The Class which holds all of the Rat Prince's dialogue trees in a dictionary, the point being
  * that all of the dialogue will be built here and passed to the NPC class 
@@ -91,10 +92,11 @@ public class Rat_PrinceDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         explainWhy.SetNext(options);
 
         PlayerNode askWhatHappens = new(new string[] {"So what happens now?"});
-        NPCNode explainWhatHappens = new(new string[] {"Well I suppose I'll have to try agian in 12 months when I get out on a suspiciously early parole.", 
+        NPCNode explainWhatHappens = new(new string[] {"Well I suppose I'll have to try again in 12 months when I get out on a suspiciously early parole.", 
         "Ha ha ha ha..."});
         askWhatHappens.SetNext(explainWhatHappens);
-        explainWhatHappens.SetNext(options);
+        ArbitraryCodeNode winGame = new(() => { SceneManager.LoadScene("Good Ending"); return 1; });
+        explainWhatHappens.SetNext(winGame);
 
         (string, IDialogueNode) [] optionsList = {
             ("Ask how", askPullItOff),
