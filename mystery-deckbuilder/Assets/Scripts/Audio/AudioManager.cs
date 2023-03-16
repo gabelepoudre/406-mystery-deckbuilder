@@ -18,6 +18,9 @@ public class AudioManager : MonoBehaviour
 
     public Sound[] sounds;
 
+    // Set value for berry farm leaving after commotion.
+    bool leftCommotion = false;
+
     // static reference to the current instance of the AudioManager.
     // singleton pattern.
     public static AudioManager instance;
@@ -52,6 +55,12 @@ public class AudioManager : MonoBehaviour
 
         // Listen for if the player is in an encounter or not
         GameState.Meta.activeEncounter.OnChange += EncounterChange;
+
+        // Listen for berry commotion
+        GameState.NPCs.Crouton.finishedBerryCommotion.OnChange += BerryCommotionChange;
+
+        // Listen for scene change
+        GameState.Player.location.OnChange += LocationChange;
     }
 
     private void Start()
@@ -126,5 +135,76 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    // Change music on Berry Commotion enter.
+    public void BerryCommotionChange()
+    {
+        try
+        {
+            // here is the code
+
+            // On Commotion enter:
+            //     Stop playing all sounds
+            foreach (Sound s in sounds)
+            {
+                s.source.Stop();
+            }
+            //     Then, 
+            //     Play investigation theme
+            Play("music-placeholder-investigation");
+
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Crouton.finishedBerryCommotion.OnChange -= BerryCommotionChange;
+        }
+        catch (NullReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Crouton.finishedBerryCommotion.OnChange -= BerryCommotionChange;
+        }
+    }
+
+    // Location change listener.
+    public void LocationChange()
+    {
+        try
+        {
+            // here is the code
+
+            // On Berry Commotion exit:
+
+            // (if the player has not left the commotion before,
+            // and the berry commotion has happened)
+
+            if (!leftCommotion && GameState.NPCs.Crouton.finishedBerryCommotion.Value)
+            {
+                // Flip event-happened bit
+                leftCommotion = true;
+                //     Stop playing all sounds
+                foreach (Sound s in sounds)
+                {
+                    s.source.Stop();
+                }
+                //     Then, 
+                //     Play investigation theme
+                Play("music-placeholder-town");
+            }
+ 
+            
+            
+
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Crouton.finishedBerryCommotion.OnChange -= BerryCommotionChange;
+        }
+        catch (NullReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Crouton.finishedBerryCommotion.OnChange -= BerryCommotionChange;
+        }
+    }
 
 }
