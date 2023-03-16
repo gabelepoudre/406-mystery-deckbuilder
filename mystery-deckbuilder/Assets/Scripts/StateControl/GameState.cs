@@ -18,7 +18,7 @@ public static class GameState
     private static List<IGameStateValue> _gameStateValues = new();
 
 
-    public static GameStateValue<int> currentDay = new(8, _gameStateValues); // The current game day, as an example
+  //  public static GameStateValue<int> currentDay = new(8, _gameStateValues); // The current game day, as an example
 
 
     /* GameStateValue holder class for Meta data about the game. Could be what "phase" or "mode" of gameplay */

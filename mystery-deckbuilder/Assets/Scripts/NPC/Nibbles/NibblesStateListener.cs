@@ -10,6 +10,10 @@ public class NibblesStateListener : MonoBehaviour
     {
         ChangeDialogueBasedOnState();
         UpdateDialogue();
+        if (GameState.Meta.currentDay.Value == 7)
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 
     private void ChangeDialogueBasedOnState()
