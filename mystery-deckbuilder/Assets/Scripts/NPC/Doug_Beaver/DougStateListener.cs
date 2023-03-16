@@ -37,7 +37,6 @@ public class DougStateListener : MonoBehaviour
                 transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWinSecondOrThirdMainSuspect";
             }
             
-
         }
         else
         {
