@@ -36,11 +36,6 @@ public class Rat_PrinceStateListener : MonoBehaviour
             }
 
             transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
-
-            if (GameState.NPCs.Rat_Prince.encountersWon.Value == 0)
-            {
-                transform.GetComponent<NPC>().CurrentDialogueKey = "Confession";
-            }
         }
         catch (MissingReferenceException e)
         {
@@ -60,6 +55,11 @@ public class Rat_PrinceStateListener : MonoBehaviour
     private void UpdateDialogue()
     {
         if (GameState.Player.location.Value == GameState.Player.Locations.Boxcar)
+        {
+            transform.GetComponent<NPC>().CurrentDialogueKey = "BoxCar";
+        }
+        if (GameState.Player.location.Value == GameState.Player.Locations.Bar
+        && GameState.NPCs.Wolverine.encountersWon.Value == 1)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "Confession";
         }
