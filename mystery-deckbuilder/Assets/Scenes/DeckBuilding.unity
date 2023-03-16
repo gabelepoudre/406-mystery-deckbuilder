@@ -1620,7 +1620,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9.3, y: 207.2}
+  m_AnchoredPosition: {x: -9.9, y: 178.7}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &512634140
@@ -3135,6 +3135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneOnComplete: {fileID: 102900000, guid: da188da7154c5c84e8ba404753195304, type: 3}
+  cardTypeOnHighlight: {fileID: 512634140}
   deckContainers:
   - {fileID: 1994612514}
   - {fileID: 1733704585}
