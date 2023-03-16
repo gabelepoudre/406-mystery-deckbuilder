@@ -62,7 +62,6 @@ public class SelectACulprit : MonoBehaviour
         {
             int i = GetEmptyIndex();
             Instantiate(g, targets[i].Item2.position, targets[i].Item2.rotation, this.gameObject.transform);
-            targets[i] = (false, targets[i].Item2);
         }
 
     }
