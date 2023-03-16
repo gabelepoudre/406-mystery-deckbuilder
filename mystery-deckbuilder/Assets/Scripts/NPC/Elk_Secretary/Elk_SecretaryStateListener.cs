@@ -118,7 +118,12 @@ public class Elk_SecretaryStateListener : MonoBehaviour
             e.Message.Contains("e");
             GameState.NPCs.Crouton.encountersWon.OnChange -= UpdateDialogue;
         }
-       
+        catch (NullReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Crouton.encountersWon.OnChange -= UpdateDialogue;
+        }
+
     }
 
 
