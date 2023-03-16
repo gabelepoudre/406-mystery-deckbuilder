@@ -30,4 +30,9 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Quit");
         Application.Quit();
     }
+
+    void Start()
+    {
+        GameState.ResetCurrentGameState();
+    }
 }

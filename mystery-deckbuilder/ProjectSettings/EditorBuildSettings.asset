@@ -46,10 +46,10 @@ EditorBuildSettings:
     guid: 74cc65548923a8d4ab0dfb0b4ae35794
   - enabled: 1
     path: Assets/Scenes/Endings/Bad Ending.unity
-    guid: a672e202806ae68428b84cd0a4b98b80
+    guid: 3ee252a16e3ace142a54f11cced8f735
   - enabled: 1
     path: Assets/Scenes/Endings/Good Ending.unity
-    guid: 1bde391d85f6e7e478dd8b4aa3d37c9e
+    guid: b8c6adcde9eb2cf49bcc8efbd8c63ae8
   - enabled: 0
     path: Assets/Scenes/MainMenu/TestGame.unity
     guid: 9568d9de776edec48a1bebda814504a3
