@@ -9,6 +9,8 @@ public class DBDeckUIController : MonoBehaviour
 {
     public UnityEngine.Object sceneOnComplete;
 
+    public Text cardTypeOnHighlight;
+
     public GameObject[] deckContainers;
     public GameObject[] collectionContainers;
 
@@ -433,6 +435,7 @@ public class DBDeckUIController : MonoBehaviour
         c.DisableInteractions();
         _cardPrefabInstance.transform.localScale = new Vector3(_cardPrefabInstance.transform.localScale.x + 0.43f, _cardPrefabInstance.transform.localScale.y + 0.43f, _cardPrefabInstance.transform.localScale.z);
         card.SetAndInitializeNoEncounterFrontendController(c);
+        this.cardTypeOnHighlight.text = "Type: " + card.GetElement();
         if (_previewedCard != null)
         {
             Destroy(_previewedCard);

@@ -193,6 +193,7 @@ public abstract class Card
         frontendController.SetCardDescription(GetDescription());
         frontendController.SetDefaultPatience(DefaultPatience);
         frontendController.SetPosition(GetPosition());
+        frontendController.SetElement(GetElement());
         if (GetElement() != "Preparation")
         {
             frontendController.SetDefaultCompliance(DefaultCompliance);
@@ -210,6 +211,7 @@ public abstract class Card
         controller.SetCardId(GetId());
         controller.SetCardDescription(GetDescription());
         controller.SetDefaultPatience(DefaultPatience);
+        controller.SetElement(GetElement());
         if (GetElement() != "Preparation")
         {
             controller.SetDefaultCompliance(DefaultCompliance);

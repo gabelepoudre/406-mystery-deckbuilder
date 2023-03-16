@@ -34,6 +34,7 @@ public class CardPrefabController : MonoBehaviour, IDeselectHandler, IPointerEnt
     private int _defaultCompliance;
     private int _defaultPatience;
     private int _position;
+    private string _element;
     private EffectSlotController _effectSlotController;
 
     private bool _highlighted = false;
@@ -170,6 +171,16 @@ public class CardPrefabController : MonoBehaviour, IDeselectHandler, IPointerEnt
     public int GetPosition()
     {
         return _position;
+    }
+
+    public void SetElement(string element)
+    {
+        _element = element;
+    }
+
+    public string GetElement()
+    {
+        return _element;
     }
 
     public bool IsHighlighted()

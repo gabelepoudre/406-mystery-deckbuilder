@@ -34,6 +34,7 @@ public class NoEncounterCardPrefabController : MonoBehaviour, IPointerClickHandl
     private int _defaultCompliance;
     private int _defaultPatience;
     private int _id;
+    private string _element;
 
     private bool _hasInteraction = true;
     private bool _deckbuildingMode = false; // I am so sorry
@@ -44,6 +45,15 @@ public class NoEncounterCardPrefabController : MonoBehaviour, IPointerClickHandl
         _spawnTransformPosition = gameObject.transform.position;
     }
 
+    public void SetElement(string element)
+    {
+        _element = element;
+    }
+
+    public string GetElement()
+    {
+        return _element;
+    }
     public void DisableInteractions()
     {
         _hasInteraction = false;
