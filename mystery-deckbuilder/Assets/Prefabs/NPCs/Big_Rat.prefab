@@ -255,7 +255,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: e27de052eb816734d9a7bdebc7d02124, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 71e7e381d49d13a4ebb3d2d8895121ab, type: 3}
   m_Color: {r: 0.7264151, g: 0.7024297, b: 0.7024297, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -278,8 +278,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e0a88f353c1487992adb10c1bd895b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _streetViewStationary: {fileID: 21300000, guid: e27de052eb816734d9a7bdebc7d02124, type: 3}
-  _streetViewWave: {fileID: 21300000, guid: d5d1496b1962dfa46a3828a475af447a, type: 3}
+  _streetViewStationary: {fileID: 21300000, guid: 71e7e381d49d13a4ebb3d2d8895121ab, type: 3}
+  _streetViewWave: {fileID: 21300000, guid: 2984ea09d068db54c85a75d6a2ef17bd, type: 3}
 --- !u!1 &7126463672415695578
 GameObject:
   m_ObjectHideFlags: 0
