@@ -255,7 +255,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 7e75a662018771440a1f5dba6ba5281c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 71f6349a6f6de1349892ba01af107a97, type: 3}
   m_Color: {r: 0.7264151, g: 0.7024297, b: 0.7024297, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -278,8 +278,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e0a88f353c1487992adb10c1bd895b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _streetViewStationary: {fileID: 21300000, guid: 7e75a662018771440a1f5dba6ba5281c, type: 3}
-  _streetViewWave: {fileID: 21300000, guid: db416e5bd7760774ebe494d5bdfe062b, type: 3}
+  _streetViewStationary: {fileID: 21300000, guid: 71f6349a6f6de1349892ba01af107a97, type: 3}
+  _streetViewWave: {fileID: 21300000, guid: f212466ce5dcb5e4c871cc062c839d09, type: 3}
 --- !u!1 &7126463672415695578
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,6 +574,7 @@ MonoBehaviour:
   currentPatience: 1
   currentCompliance: 0
   ComplianceThreshhold: 0
+  cardIDUnlockFromWinEncounter: -1
   encounterSprites: {fileID: 701282225796089859}
 --- !u!114 &2974809267316779736
 MonoBehaviour:
