@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frameHighlight: {fileID: 1105518248035416782}
-  Ending: {fileID: 102900000, guid: 1bde391d85f6e7e478dd8b4aa3d37c9e, type: 3}
+  isBadGuy: 1
 --- !u!1 &1105518248035416782
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class NibblesStateListener : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class NibblesStateListener : MonoBehaviour
     {
         ChangeDialogueBasedOnState();
         UpdateDialogue();
+        if (GameState.Meta.currentDay.Value == 7)
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 
     private void ChangeDialogueBasedOnState()
@@ -41,6 +46,11 @@ public class NibblesStateListener : MonoBehaviour
             }
         }
         catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Nibbles.encountersCompleted.OnChange -= OnEncounterComplete;
+        }
+        catch (NullReferenceException e)
         {
             e.Message.Contains("e");
             GameState.NPCs.Nibbles.encountersCompleted.OnChange -= OnEncounterComplete;

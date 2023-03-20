@@ -43,9 +43,9 @@ public class SamuelDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         PlayerNode askRole = new(new string[] { "What is your role here in Small Pines?" });
         NPCNode roleAnswer = new(new string[] { "I’m the owner operator of a local vehicle and equipment rental company.",
         "Things like trucks, vans, lawnmowers, snowblowers, and generators.",
-        "I feel like I mostly rent to those beaver thugs, but one of these days I’m going to smarten up and stop renting to them" });
+        "I feel like I mostly rent to those beaver thugs, but one of these days I’m going to smarten up and stop renting to them." });
         
-        PlayerNode askEvidence = new(new string[] {"There's some solid evidence stacking up against the union.", "I need you to work with me here."});
+        PlayerNode askEvidence = new(new string[] {"Do you have any client you think might be involved with the berry disappearance?"});
         EncounterNode encounter = new();
         askEvidence.SetNext(encounter);
 
@@ -58,7 +58,7 @@ public class SamuelDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         (string, IDialogueNode)[] optionsList = {
             ("Ask whereabouts", askWhere),
             ("Ask about role", askRole),
-            ("Ask about evidence", askEvidence)
+            ("Ask about theft", askEvidence)
         };
 
         introReply.SetOptions(optionsList);

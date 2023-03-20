@@ -267,7 +267,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 86ffb56058cba6f41acb237efa1ce6e0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7e12e139662b72047bf8bd1d4acec2c6, type: 3}
   m_Color: {r: 0.7264151, g: 0.7024297, b: 0.7024297, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -290,8 +290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e0a88f353c1487992adb10c1bd895b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _streetViewStationary: {fileID: 21300000, guid: 86ffb56058cba6f41acb237efa1ce6e0, type: 3}
-  _streetViewWave: {fileID: 21300000, guid: 0590897f712304844a5c911e899217eb, type: 3}
+  _streetViewStationary: {fileID: 21300000, guid: 7e12e139662b72047bf8bd1d4acec2c6, type: 3}
+  _streetViewWave: {fileID: 21300000, guid: 023ffa608c1078d41965f6d01c08f15f, type: 3}
 --- !u!1 &7126463672415695578
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,6 +543,7 @@ GameObject:
   - component: {fileID: 9199238820055118742}
   - component: {fileID: 1680480853739025566}
   - component: {fileID: 2730029737286692573}
+  - component: {fileID: 6831016675104200510}
   m_Layer: 0
   m_Name: Crouton
   m_TagString: Untagged
@@ -582,8 +583,8 @@ MonoBehaviour:
   affinity_intimidation: 0.74
   affinity_sympathy: 0.18
   affintiy_persuasion: 0.2
-  startingPatience: 1
-  startingCompliance: 1
+  startingPatience: 25
+  startingCompliance: 115
   currentPatience: 1
   currentCompliance: 0
   ComplianceThreshhold: 0
@@ -654,3 +655,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f845a343896d4095af10bd978f11ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6831016675104200510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7429489653972524998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b306a13a200f78429a45978118f6695, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickASuspectPrefab: {fileID: 3538603745719757998, guid: 04b8858fe9e88884d9378f4ae5c0fc98, type: 3}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class OslowStateListener : MonoBehaviour
 {
@@ -47,7 +48,12 @@ public class OslowStateListener : MonoBehaviour
         {
             e.Message.Contains("e");
             GameState.NPCs.Oslow.encountersCompleted.OnChange -= OnEncounterComplete;
-        }  
+        }
+        catch (NullReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Oslow.encountersCompleted.OnChange -= OnEncounterComplete;
+        }   
     }
 
     private void UpdateDialogue()

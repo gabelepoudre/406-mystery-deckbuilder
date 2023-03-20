@@ -23,7 +23,6 @@ public class DougDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
     private void BuildTreeDictionary()
     {
-    
         _dialogueTreeDict.Add("Intro", BuildIntro());
         _dialogueTreeDict.Add("IntroMetAustynOnly", BuildIntroMetAustyn());
         _dialogueTreeDict.Add("IntroMetMarkOnly", BuildIntroMetMark());
@@ -34,7 +33,7 @@ public class DougDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         _dialogueTreeDict.Add("BuildIntroMetAllThree", BuildIntroMetAllThree());
         _dialogueTreeDict.Add("AfterEncounterLoss", BuildAfterEncounterLoss());
         _dialogueTreeDict.Add("AfterEncounterWinFirstMainSuspect", BuildAfterEncounterWinFirstMainSuspect());
-        _dialogueTreeDict.Add("AfterEncounterWinSecondOrThirdSuspect", BuildAfterEncounterWinSecondOrThirdMainSuspect());
+        _dialogueTreeDict.Add("AfterEncounterWinSecondOrThirdMainSuspect", BuildAfterEncounterWinSecondOrThirdMainSuspect());
     }
 
  
@@ -353,7 +352,7 @@ public class DougDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         explainFestival.SetNext(introReply);
 
         PlayerNode askSam = new(new string[] { "What do you make of the claim that the beaver union throws it�s weight around is disrespectful to rental equipment?" });
-        NPCNode samAnswer = new(new string[] { "That�s just business." });
+        NPCNode samAnswer = new(new string[] { "That's just business." });
 
         askSam.SetNext(samAnswer);
         samAnswer.SetNext(introReply);

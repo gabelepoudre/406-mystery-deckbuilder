@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class DeckUIController : MonoBehaviour
 {
@@ -237,6 +238,12 @@ public class DeckUIController : MonoBehaviour
             GameState.Player.fullDeck.OnChange -= DisplayDeckCards;
             GameState.Player.dailyDeck.OnChange -= DisplayDeckCards;
         }
+        catch (NullReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.Player.fullDeck.OnChange -= DisplayDeckCards;
+            GameState.Player.dailyDeck.OnChange -= DisplayDeckCards;
+        }
     }
 
     public void DisplayCollectionCards()
@@ -289,6 +296,11 @@ public class DeckUIController : MonoBehaviour
             }
         }
         catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.Player.collection.OnChange -= DisplayCollectionCards;
+        }
+        catch (NullReferenceException e)
         {
             e.Message.Contains("e");
             GameState.Player.collection.OnChange -= DisplayCollectionCards;

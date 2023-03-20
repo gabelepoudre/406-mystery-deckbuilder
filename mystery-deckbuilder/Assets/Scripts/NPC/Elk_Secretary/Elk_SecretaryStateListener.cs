@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Elk_SecretaryStateListener : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class Elk_SecretaryStateListener : MonoBehaviour
     {
         ChangeDialogueBasedOnState();
         UpdateDialogue();
+        if (GameState.Meta.currentDay.Value == 7)
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 
     private void ChangeDialogueBasedOnState()
@@ -49,6 +54,11 @@ public class Elk_SecretaryStateListener : MonoBehaviour
         }
         }
         catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Elk.encountersCompleted.OnChange -= OnEncounterComplete;
+        }
+        catch (NullReferenceException e)
         {
             e.Message.Contains("e");
             GameState.NPCs.Elk.encountersCompleted.OnChange -= OnEncounterComplete;
@@ -112,7 +122,12 @@ public class Elk_SecretaryStateListener : MonoBehaviour
             e.Message.Contains("e");
             GameState.NPCs.Crouton.encountersWon.OnChange -= UpdateDialogue;
         }
-       
+        catch (NullReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Crouton.encountersWon.OnChange -= UpdateDialogue;
+        }
+
     }
 
 

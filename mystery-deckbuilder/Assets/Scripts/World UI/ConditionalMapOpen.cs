@@ -8,9 +8,7 @@ public class ConditionalMapOpen : MonoBehaviour
 
     public void OpenMap()
     {
-        if (!GameState.Meta.dialogueActive.Value)
-        {
-            miniMap.SetActive(true);
-        }
+        // not conditional
+        miniMap.SetActive(true);
     }
 }

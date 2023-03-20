@@ -9,9 +9,9 @@ public class LaunchNapScene : MonoBehaviour
 
     public void LaunchSetScene()
     {
-        if(sceneToLaunch != null && GameState.Player.napsRemainingToday.Value > 0)
+        if(GameState.Player.napsRemainingToday.Value > 0)
         {
-            SceneManager.LoadScene(sceneToLaunch.name);
+            SceneManager.LoadScene(12);
             GameState.Player.napsRemainingToday.Value -= 1;
         }
     }

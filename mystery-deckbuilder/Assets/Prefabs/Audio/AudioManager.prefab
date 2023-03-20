@@ -57,3 +57,15 @@ MonoBehaviour:
     volume: 0.926
     pitch: 1
     source: {fileID: 0}
+  - name: music-placeholder-town
+    clip: {fileID: 8300000, guid: 1fc2fe250ae22b64facee8bebe65c72c, type: 3}
+    loop: 1
+    volume: 0.771
+    pitch: 1
+    source: {fileID: 0}
+  - name: music-placeholder-investigation
+    clip: {fileID: 8300000, guid: 7768d2a1641ae614797d9a24f5f2a7b6, type: 3}
+    loop: 1
+    volume: 0.771
+    pitch: 1
+    source: {fileID: 0}

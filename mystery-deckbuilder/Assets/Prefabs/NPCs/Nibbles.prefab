@@ -255,7 +255,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: dd79f0a3e6a3570468b5fb89717ce718, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c1ae645abbeeaa54e825c9429ee7142c, type: 3}
   m_Color: {r: 0.7264151, g: 0.7024297, b: 0.7024297, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -278,8 +278,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e0a88f353c1487992adb10c1bd895b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _streetViewStationary: {fileID: 21300000, guid: dd79f0a3e6a3570468b5fb89717ce718, type: 3}
-  _streetViewWave: {fileID: 21300000, guid: 779e50f397751b54089443839f7237d5, type: 3}
+  _streetViewStationary: {fileID: 21300000, guid: c1ae645abbeeaa54e825c9429ee7142c, type: 3}
+  _streetViewWave: {fileID: 21300000, guid: d9aa6bbd271ba654791391cb8b93a72a, type: 3}
 --- !u!1 &8310409467464668352
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,10 +468,10 @@ MonoBehaviour:
   affinity_intimidation: 0.288
   affinity_sympathy: 0.295
   affintiy_persuasion: 0.705
-  startingPatience: 1
-  startingCompliance: 1
-  currentPatience: 1
-  currentCompliance: 0
+  startingPatience: 25
+  startingCompliance: 75
+  currentPatience: 10
+  currentCompliance: 100
   ComplianceThreshhold: 0
   cardIDUnlockFromWinEncounter: 6
   encounterSprites: {fileID: 7538326253552544718}

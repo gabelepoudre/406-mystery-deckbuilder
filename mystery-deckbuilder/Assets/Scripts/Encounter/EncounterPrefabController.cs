@@ -13,6 +13,7 @@ public class EncounterPrefabController : MonoBehaviour
 {
     public Image npcHeadshot;
     public Image glubHeadshot;
+    public Text cardTypeOnHighlight;
     public GameObject complianceBar;
     public GameObject patienceBar;
     public GameObject cardPlaceMat;
@@ -153,6 +154,7 @@ public class EncounterPrefabController : MonoBehaviour
     {
         _oldHighlightedCardTransformPosition = cardFrontend.transform.position;
         cardFrontend.transform.localScale = new Vector3(cardFrontend.transform.localScale.x * 2, cardFrontend.transform.localScale.y * 2, cardFrontend.transform.localScale.z);
+        this.cardTypeOnHighlight.text = cardFrontend.GetComponent<CardPrefabController>().GetElement();
         _highlightedCard = cardFrontend;
 
         Transform newTransform = cardHighlightTransform;
@@ -171,6 +173,7 @@ public class EncounterPrefabController : MonoBehaviour
             _highlightedCard.transform.position = _oldHighlightedCardTransformPosition;
             _highlightedCard.transform.localScale = new Vector3(_highlightedCard.transform.localScale.x / 2, _highlightedCard.transform.localScale.y / 2, _highlightedCard.transform.localScale.z);
             _highlightedCard = null;
+            this.cardTypeOnHighlight.text = "";
         }
     }
 

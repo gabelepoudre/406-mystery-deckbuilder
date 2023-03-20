@@ -38,6 +38,7 @@ public class AlanDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         NPCNode thanks = new(new string[] {"Well thank you very much for your hard work, detective!", 
         "Here in Small Pines the Berry festival is very important to us so we very much appreciate the help, sir!", 
         "We are a tight-knit community here and I'd love to help out"});
+        OptionNode options = new();
         PlayerNode askBerries = new(new string[] {"Alright well I hope you don't mind me asking...", 
         "But where were you on the day that the berries disappeared?"});
         NPCNode answerBerries = new(new string[] {"Just here doing my job, sir,", 
@@ -45,11 +46,17 @@ public class AlanDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         PlayerNode askSuspicious = new(new string[] {"Anything suspicious happened in the past couple of weeks and possibly even a suspect in your mind?"});
         EncounterNode encounter = new();
 
+        (string, IDialogueNode)[] OptionsList = {
+            ("Ask about berries", askBerries),
+            ("Ask about suspects", askSuspicious)
+        };
+        options.SetOptions(OptionsList);
+
         intro.SetNext(reply);
         reply.SetNext(thanks);
-        thanks.SetNext(askBerries);
+        thanks.SetNext(options);
         askBerries.SetNext(answerBerries);
-        answerBerries.SetNext(askSuspicious);
+        answerBerries.SetNext(options);
         askSuspicious.SetNext(encounter);    
 
         return new DialogueTree(intro);

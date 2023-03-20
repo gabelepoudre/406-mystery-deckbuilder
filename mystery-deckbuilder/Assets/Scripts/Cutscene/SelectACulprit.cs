@@ -61,8 +61,7 @@ public class SelectACulprit : MonoBehaviour
         foreach (GameObject g in culprits)
         {
             int i = GetEmptyIndex();
-            Instantiate(g, targets[i].Item2.position, targets[i].Item2.rotation);
-            targets[i] = (false, targets[i].Item2);
+            Instantiate(g, targets[i].Item2.position, targets[i].Item2.rotation, this.gameObject.transform);
         }
 
     }

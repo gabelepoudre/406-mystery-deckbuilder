@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class DailyDeckCounter : MonoBehaviour
 {
@@ -26,6 +27,11 @@ public class DailyDeckCounter : MonoBehaviour
         {
             e.Message.Contains("e");  // we use e erroniously to sidestep Unity warning
             GameState.Player.dailyDeck.OnChange -= DailyDeckChanged;  // remove it from the method list
+        }
+        catch (NullReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.Player.dailyDeck.OnChange -= DailyDeckChanged;
         }
     }
 

@@ -8,12 +8,51 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu/MainMenu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/BetaDemo/BetaCutscene.unity
+    guid: adb4dad85e5af7f4f87e8010d736d1f9
+  - enabled: 1
+    path: Assets/Scenes/Zones/RealMainStreet.unity
+    guid: 595cf70ac4f12b6439e3066f4aa49cc7
+  - enabled: 1
+    path: Assets/Scenes/Zones/Motel.unity
+    guid: da188da7154c5c84e8ba404753195304
+  - enabled: 1
+    path: Assets/Scenes/Zones/Bar.unity
+    guid: 2bfaff4b00eb140f4882c653360b277f
+  - enabled: 1
+    path: Assets/Scenes/Zones/Boxcar.unity
+    guid: 3b9262a740a8142a6851683739b32ce7
+  - enabled: 1
+    path: Assets/Scenes/Zones/LumberYard.unity
+    guid: 56cbb7f64fedb4658b9d0bd5677b7084
+  - enabled: 1
+    path: Assets/Scenes/Zones/Railyard.unity
+    guid: 8d90d8948648f4c02a13ed2931247eb9
+  - enabled: 1
+    path: Assets/Scenes/Zones/RatMobCave.unity
+    guid: 96af1f9f513e8479287f24e089919572
+  - enabled: 1
+    path: Assets/Scenes/Zones/BerryFarm.unity
+    guid: 708a9a70a86658f4a8fece92963dfd1b
+  - enabled: 1
+    path: Assets/Scenes/Zones/BreakfastPalace.unity
+    guid: a208375466e5e3b4ab395004d4585fb0
+  - enabled: 1
+    path: Assets/Scenes/Zones/PostOfficeInside.unity
+    guid: de9027c5ffdbd43d2a2e43c0c67db72b
+  - enabled: 1
+    path: Assets/Scenes/DeckBuilding.unity
+    guid: 74cc65548923a8d4ab0dfb0b4ae35794
+  - enabled: 1
+    path: Assets/Scenes/Endings/Bad Ending.unity
+    guid: 3ee252a16e3ace142a54f11cced8f735
+  - enabled: 1
+    path: Assets/Scenes/Endings/Good Ending.unity
+    guid: b8c6adcde9eb2cf49bcc8efbd8c63ae8
   - enabled: 0
     path: Assets/Scenes/MainMenu/TestGame.unity
     guid: 9568d9de776edec48a1bebda814504a3
-  - enabled: 1
-    path: Assets/Scenes/AlphaDemo/AlphaCutscene.unity
-    guid: 62474f4cf841aac42a07e43f5dfe7a9e
   - enabled: 0
     path: Assets/Scenes/AlphaDemo/MainStreet.unity
     guid: 0045a3fedcd5d4baa9c26a7f15a21419
@@ -23,49 +62,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Map Swap Example/Breakfast_Palace.unity
     guid: 4985b2c531016ba4583d1edc22f8c7a6
-  - enabled: 1
-    path: Assets/Scenes/Zones/RealMainStreet.unity
-    guid: 595cf70ac4f12b6439e3066f4aa49cc7
-  - enabled: 1
-    path: Assets/Scenes/Zones/BerryFarm.unity
-    guid: 708a9a70a86658f4a8fece92963dfd1b
-  - enabled: 1
-    path: Assets/Scenes/Zones/BreakfastPalace.unity
-    guid: a208375466e5e3b4ab395004d4585fb0
-  - enabled: 1
-    path: Assets/Scenes/Zones/Motel.unity
-    guid: da188da7154c5c84e8ba404753195304
-  - enabled: 1
-    path: Assets/Scenes/Zones/LumberYard.unity
-    guid: 56cbb7f64fedb4658b9d0bd5677b7084
-  - enabled: 1
+  - enabled: 0
+    path: Assets/Scenes/AlphaDemo/AlphaCutscene.unity
+    guid: 62474f4cf841aac42a07e43f5dfe7a9e
+  - enabled: 0
     path: Assets/Scenes/Zones/MotelOfficeInside.unity
     guid: 0aa8a8ebdaed4415e904b6d7aea3d1ad
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Zones/MotelRoomInside.unity
     guid: 1710e2c13aa124bcb9baa58fe251a681
-  - enabled: 1
-    path: Assets/Scenes/Zones/PostOfficeInside.unity
-    guid: de9027c5ffdbd43d2a2e43c0c67db72b
-  - enabled: 1
-    path: Assets/Scenes/Zones/Bar.unity
-    guid: 2bfaff4b00eb140f4882c653360b277f
-  - enabled: 1
-    path: Assets/Scenes/Zones/Railyard.unity
-    guid: 8d90d8948648f4c02a13ed2931247eb9
-  - enabled: 1
-    path: Assets/Scenes/Zones/RatMobCave.unity
-    guid: 96af1f9f513e8479287f24e089919572
-  - enabled: 1
-    path: Assets/Scenes/Zones/Boxcar.unity
-    guid: 3b9262a740a8142a6851683739b32ce7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Zones/TownHall.unity
     guid: c3839faea3f1045eaa9bbbb8dc8a1bb9
-  - enabled: 1
-    path: Assets/Scenes/DeckBuilding.unity
-    guid: 74cc65548923a8d4ab0dfb0b4ae35794
-  - enabled: 1
-    path: Assets/Scenes/BetaDemo/BetaCutscene.unity
-    guid: adb4dad85e5af7f4f87e8010d736d1f9
   m_configObjects: {}
