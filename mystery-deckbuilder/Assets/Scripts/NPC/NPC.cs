@@ -14,10 +14,10 @@ public class NPC : MonoBehaviour
     [Range(0.0f, 1.0f)]public float affintiy_persuasion = 0.5f;
 
 
-    [Range(0.0f, 10.0f)]public float startingPatience;
-    [Range(0.0f, 100.0f)]public float startingCompliance;
-    [Range(0.0f, 10.0f)]public float currentPatience;
-    [Range(0.0f, 100.0f)]public float currentCompliance;
+    [Range(1.0f, 500.0f)]public float startingPatience;
+    [Range(1.0f, 500.0f)]public float startingCompliance;
+    [Range(0.0f, 10.0f)]public float currentPatience;  // antiquated
+    [Range(0.0f, 100.0f)]public float currentCompliance;  // antiquated
 
     [Range(0.0f, 100.0f)] public float ComplianceThreshhold;
 

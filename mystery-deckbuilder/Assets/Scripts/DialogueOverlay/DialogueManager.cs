@@ -107,7 +107,16 @@ public class DialogueManager : MonoBehaviour
         if (_currentNode.NodeType() == "encounter")
         {
             EndDialogue();
-            Encounter.StartEncounter(new EncounterConfig(CurrentNPC.GetComponent<NPC>()));
+            NPC cur = CurrentNPC.GetComponent<NPC>();
+            Encounter.StartEncounter(new EncounterConfig(cur, (int)cur.startingCompliance, (int)cur.startingPatience));
+            return;
+        }
+
+        if (_currentNode.NodeType() == "arbitrary")
+        {
+            EndDialogue();
+            ((ArbitraryCodeNode)_currentNode).Execute();
+            return;
         }
 
         StopAllCoroutines(); //stop displaying text, in case player clicks next while text still writing
@@ -162,7 +171,7 @@ public class DialogueManager : MonoBehaviour
      */
     public void DisplayNextSentence()
     {
-
+        if (_dialogueBox == null) return; // TODO: 
         if (!_dialogueBox.GetComponent<DialogueBox>().FinishedSentence)
         {
             _dialogueBox.GetComponent<DialogueBox>().SpeedUp();
@@ -191,9 +200,11 @@ public class DialogueManager : MonoBehaviour
     /* Commands the previously instantiated DialogueBox to destroy itself */
     public void EndDialogue()
     {
-        DialogueActive = false;
         _dialogueBox.GetComponent<DialogueBox>().DestroyDialogueBox();
+        DialogueActive = false;
         GameState.Meta.dialogueActive.Value = false;
+        _sentences.Clear();
+
     }
 
 
@@ -201,10 +212,7 @@ public class DialogueManager : MonoBehaviour
     /* Enqueues all sentences contained in the current node */
     private void EnqueueAllSentences()
     {
-        if (_currentNode.NodeType() == "encounter")
-        {
-            return;
-        }
+    
 
         // have to handle PlayerNode and NPCNode unless if IDialogueNode interface had a GetDialogue() or something
         if (_currentNode.NodeType() == "player")

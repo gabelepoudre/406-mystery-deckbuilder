@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CroutonStateListener : MonoBehaviour
 {
@@ -46,6 +47,11 @@ public class CroutonStateListener : MonoBehaviour
             e.Message.Contains("e");
             GameState.NPCs.Crouton.encountersCompleted.OnChange -= OnEncounterComplete;
         }
+        catch (NullReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.NPCs.Crouton.encountersCompleted.OnChange -= OnEncounterComplete;
+        }
     }
 
     private void UpdateDialogue()
@@ -72,6 +78,11 @@ public class CroutonStateListener : MonoBehaviour
         if (GameState.NPCs.Crouton.encountersWon.Value == 1)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWin";
+        }
+        if (GameState.Meta.currentDay.Value == 7)
+        {
+            Debug.Log("Changed crouton dialogue");
+            transform.GetComponent<NPC>().CurrentDialogueKey = "BuildRanOutOfDays";
         }
        
     }

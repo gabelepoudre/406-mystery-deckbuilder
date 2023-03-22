@@ -255,7 +255,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 4c1a32ee3d590994b8dfaebd58b5c708, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f6db18902a5cdee4d89789b132f3ada7, type: 3}
   m_Color: {r: 0.7264151, g: 0.7024297, b: 0.7024297, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -278,8 +278,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e0a88f353c1487992adb10c1bd895b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _streetViewStationary: {fileID: 21300000, guid: 4c1a32ee3d590994b8dfaebd58b5c708, type: 3}
-  _streetViewWave: {fileID: 21300000, guid: 92434eea52176694987869a5409e8d9d, type: 3}
+  _streetViewStationary: {fileID: 21300000, guid: f6db18902a5cdee4d89789b132f3ada7, type: 3}
+  _streetViewWave: {fileID: 21300000, guid: 9c9015493b6071f4890980cc897a9cc8, type: 3}
 --- !u!1 &7126463672415695578
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,11 +566,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Oslow
-  affinity_intimidation: 0.5
-  affinity_sympathy: 0.5
-  affintiy_persuasion: 0.5
-  startingPatience: 1
-  startingCompliance: 1
+  affinity_intimidation: 0.823
+  affinity_sympathy: 0.203
+  affintiy_persuasion: 0.208
+  startingPatience: 25
+  startingCompliance: 100
   currentPatience: 1
   currentCompliance: 0
   ComplianceThreshhold: 0

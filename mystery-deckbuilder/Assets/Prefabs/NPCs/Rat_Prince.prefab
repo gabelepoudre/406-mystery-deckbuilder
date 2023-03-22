@@ -255,7 +255,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: cf9f36e4212e9df45a83b67b8eaf3c58, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 58a8e78f734ce544281f7048b2f18d32, type: 3}
   m_Color: {r: 0.7264151, g: 0.7024297, b: 0.7024297, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -278,8 +278,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e0a88f353c1487992adb10c1bd895b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _streetViewStationary: {fileID: 21300000, guid: cf9f36e4212e9df45a83b67b8eaf3c58, type: 3}
-  _streetViewWave: {fileID: 21300000, guid: 768a819f68d64354ea08b0d691072644, type: 3}
+  _streetViewStationary: {fileID: 21300000, guid: 58a8e78f734ce544281f7048b2f18d32, type: 3}
+  _streetViewWave: {fileID: 21300000, guid: 6d4c39068b0ca2941a36c591b587774c, type: 3}
 --- !u!1 &7126463672415695578
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,8 +569,8 @@ MonoBehaviour:
   affinity_intimidation: 0.71
   affinity_sympathy: 0.75
   affintiy_persuasion: 0.23
-  startingPatience: 1
-  startingCompliance: 1
+  startingPatience: 25
+  startingCompliance: 135
   currentPatience: 1
   currentCompliance: 0
   ComplianceThreshhold: 0

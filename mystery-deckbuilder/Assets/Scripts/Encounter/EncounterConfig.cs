@@ -10,7 +10,7 @@ public class EncounterConfig
     public int MaximumCompliance { get; set; }
     public NPC Opponent { get; set; }
 
-    public EncounterConfig(NPC opponent, int maxCompliance = 75, int maxPatience = 20)
+    public EncounterConfig(NPC opponent, int maxCompliance = 125, int maxPatience = 20)
     {
         Opponent = opponent;
         MaximumCompliance = maxCompliance;

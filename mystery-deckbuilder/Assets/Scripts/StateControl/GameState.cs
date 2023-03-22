@@ -18,7 +18,7 @@ public static class GameState
     private static List<IGameStateValue> _gameStateValues = new();
 
 
-    public static GameStateValue<int> currentDay = new(0, _gameStateValues); // The current game day, as an example
+  //  public static GameStateValue<int> currentDay = new(8, _gameStateValues); // The current game day, as an example
 
 
     /* GameStateValue holder class for Meta data about the game. Could be what "phase" or "mode" of gameplay */
@@ -54,8 +54,13 @@ public static class GameState
     /* GameStateValue holder class for Player data. Could be what they know for use in Dialogue trees */
     public class Player
     {
-        //static int[] startingDeck = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17};
-        static int[] startingDeck = {1, 1, 1, 5, 5, 5, 9, 9, 9, 4, 4, 4, 8, 8, 8, 18, 18, 18, 17, 17, 17};
+        //static int[] startingDeck = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21};
+
+        //static int[] startingDeck = {1, 1, 1, 3, 3, 3, 7, 8, 8, 8, 11, 11, 11, 12, 13, 13, 14, 14, 17, 17, 19};
+
+        //static int[] startingDeck = {1, 1, 1, 5, 5, 5, 9, 9, 9, 4, 4, 4, 8, 8, 8, 18, 18, 18, 17, 17, 17};
+
+        static int[] startingDeck = {1, 5, 9, 4, 8, 18, 17, 1, 5, 9, 4, 8, 18, 17, 1, 5, 9, 4, 8, 18, 17};
         public static GameStateValue<List<int>> fullDeck = new(new List<int>(startingDeck), _gameStateValues);
         public static GameStateValue<List<int>> dailyDeck = new(new List<int>(startingDeck), _gameStateValues);
         public static GameStateValue<List<int>> collection = new(new List<int>(startingDeck), _gameStateValues);
@@ -77,6 +82,21 @@ public static class GameState
             MotelRoomInside,
             PostOfficeInside
         }
+
+        public static GameStateValue<Dictionary<Locations, int>> locationBuildIndex = new(new Dictionary<Locations, int>()
+        {
+            [Locations.Motel] = 3,
+            [Locations.Bar] = 4,
+            [Locations.Boxcar] = 5,
+            [Locations.LumberYard] = 6,
+            [Locations.RailYard] = 7,
+            [Locations.RatMobCave] = 8,
+            [Locations.BerryFarm] = 9,
+            [Locations.BreakfastPalace] = 10,
+            [Locations.RealMainStreet] = 2,
+            [Locations.PostOfficeInside] = 11
+        }, _gameStateValues);
+
 
         //NOTE: state listeners of certain NPCs (like Rat Prince) that are placed in multiple locations rely on this
         public static GameStateValue<Locations> location = new(Locations.Motel, _gameStateValues);

@@ -12,7 +12,7 @@ using UnityEngine;
 /* Interface for GameStateValues. Exists to ensure you can handle many GameStateValues of arbitrary type*/
 public interface IGameStateValue 
 {
-    public void Reset() { }
+    public void Reset();
 }
 
 /*
@@ -24,7 +24,7 @@ public interface IGameStateValue
 public class GameStateValue<T>: IGameStateValue 
 {
     private T _value;
-    private readonly T _defaultValue;
+    private T _defaultValue;
     public T Value 
     {
         get { return _value; }
@@ -35,7 +35,10 @@ public class GameStateValue<T>: IGameStateValue
         }
     }
 
-    public T DefaultValue { get; }
+    public T DefaultValue {
+        get { return _defaultValue; }
+        set { _defaultValue = value; } 
+    }
 
     public Action OnChange { get; set; }  // this is the magic property needed for pub-sub
 
@@ -51,15 +54,7 @@ public class GameStateValue<T>: IGameStateValue
     /* Emits the "OnChange" event, if anyone is listening*/
     public void Raise() 
     {
-        try
-        {
-            OnChange?.Invoke();
-        }
-        catch (MissingReferenceException e)
-        {
-            Debug.LogError("PublishSubscribe broke because there is a null reference in the OnChange invocation list. See Scripts/Encounter/DailyDeckCounter.cs for fix");
-            throw e;
-        }
+        OnChange?.Invoke();
     }
 
     /* Resets a GameStateValue to it's .DefaultValue */ 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class Label : MonoBehaviour
 {
@@ -16,12 +17,7 @@ public class Label : MonoBehaviour
 
     public void MoveToScene()
     {
-
-        if (DialogueManager.Instance.DialogueActive)
-        {
-            Debug.Log("cannot switch locations when dialogue in session");
-            return;
-        }
+        GameState.Meta.dialogueActive.Value = false;
 
         Debug.Log("Move to " + locationAsString);
 
@@ -53,16 +49,15 @@ public class Label : MonoBehaviour
             e.Message.Contains("e");
             GameState.Player.locationsViewable.OnChange -= ShowOrHide;
         }
+        catch (NullReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.Player.locationsViewable.OnChange -= ShowOrHide;
+        }
     }
     public void MoveToScene(string scene)
     {
-        
-        if (DialogueManager.Instance.DialogueActive)
-        {
-            Debug.Log("cannot switch locations when dialogue in session");
-            return;
-        }
-        
+        GameState.Meta.dialogueActive.Value = false;
         Debug.Log("Move to " + scene);
 
         

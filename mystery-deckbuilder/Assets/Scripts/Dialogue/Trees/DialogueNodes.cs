@@ -5,6 +5,7 @@
  */
 
 using System.Collections.Generic;
+using System;
 
 
 /* This dialogue interface is used to treat all dialogue nodes as equals (for instance, as a return) */
@@ -126,4 +127,23 @@ public class EncounterNode: IDialogueNode
         _next = null; //since it must always be a leaf node
     }
 
+}
+
+/* A class for representing a leaf node that runs arbitrary code */
+public class ArbitraryCodeNode : IDialogueNode
+{
+    private IDialogueNode _next;
+    private Func<int> _lambda;
+
+    public string NodeType() { return "arbitrary"; }
+
+    public IDialogueNode Next() { return _next; }
+
+    public void Execute() { _lambda(); }
+
+    public ArbitraryCodeNode(Func<int> lambda)
+    {
+        _lambda = lambda;
+        _next = null; //since it must always be a leaf node
+    }
 }

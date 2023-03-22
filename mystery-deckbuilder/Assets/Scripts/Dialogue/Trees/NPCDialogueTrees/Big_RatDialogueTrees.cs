@@ -114,8 +114,8 @@ public class Big_RatDialogueTrees : MonoBehaviour, IDialogueTreeCollection
             "Since he's not very smart, I'm guessing he must've done something dumb and knocked himselfout for the whole night." });
 
         (string, IDialogueNode)[] IntroReplyOptionsList = {
-            ("", askLocation),
-            ("", askClay)
+            ("Ask about whereabouts", askLocation),
+            ("Ask about Clay", askClay)
         };
         greeting.SetNext(reply);
         reply.SetOptions(IntroReplyOptionsList);

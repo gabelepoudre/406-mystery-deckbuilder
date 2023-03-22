@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,9 @@ using UnityEngine.UI;
 
 public class DBDeckUIController : MonoBehaviour
 {
-    public Object sceneOnComplete;
+    public UnityEngine.Object sceneOnComplete;
+
+    public Text cardTypeOnHighlight;
 
     public GameObject[] deckContainers;
     public GameObject[] collectionContainers;
@@ -260,6 +263,12 @@ public class DBDeckUIController : MonoBehaviour
             GameState.Player.fullDeck.OnChange -= DisplayDeckCards;
             GameState.Player.dailyDeck.OnChange -= DisplayDeckCards;
         }
+        catch (NullReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.Player.fullDeck.OnChange -= DisplayDeckCards;
+            GameState.Player.dailyDeck.OnChange -= DisplayDeckCards;
+        }
     }
 
     public void DisplayCollectionCards()
@@ -317,6 +326,11 @@ public class DBDeckUIController : MonoBehaviour
             }
         }
         catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.Player.collection.OnChange -= DisplayCollectionCards;
+        }
+        catch(NullReferenceException e)
         {
             e.Message.Contains("e");
             GameState.Player.collection.OnChange -= DisplayCollectionCards;
@@ -421,6 +435,7 @@ public class DBDeckUIController : MonoBehaviour
         c.DisableInteractions();
         _cardPrefabInstance.transform.localScale = new Vector3(_cardPrefabInstance.transform.localScale.x + 0.43f, _cardPrefabInstance.transform.localScale.y + 0.43f, _cardPrefabInstance.transform.localScale.z);
         card.SetAndInitializeNoEncounterFrontendController(c);
+        this.cardTypeOnHighlight.text = "Type: " + card.GetElement();
         if (_previewedCard != null)
         {
             Destroy(_previewedCard);
@@ -491,7 +506,7 @@ public class DBDeckUIController : MonoBehaviour
 
     public void LaunchIntoScene()
     {
-        SceneManager.LoadScene(sceneOnComplete.name);
+        SceneManager.LoadScene("Motel");
         GameState.Meta.justSlept.Value = true;
     }
 

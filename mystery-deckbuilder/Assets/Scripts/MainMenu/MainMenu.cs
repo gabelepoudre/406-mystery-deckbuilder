@@ -16,12 +16,23 @@ public class MainMenu : MonoBehaviour
 
     public void Play() 
     {
-        SceneManager.LoadScene(sceneToLaunch.name);
+        // Stop playing title theme
+        FindObjectOfType<AudioManager>().Stop("music-placeholder-investigation");
+
+        // Start playing intro theme
+        FindObjectOfType<AudioManager>().Play("music-placeholder-town");
+
+        SceneManager.LoadScene(_sceneIndex);
     }
 
     public void Quit()
     {
         Debug.Log("Quit");
         Application.Quit();
+    }
+
+    void Start()
+    {
+        GameState.ResetCurrentGameState();
     }
 }
