@@ -36,6 +36,7 @@ public class CutsceneScript : MonoBehaviour
         _previous.SetActive(false);
     }
 
+    //goes to next slide
     public void NextSlide()
     {
         _currentSlide += 1;
@@ -50,6 +51,7 @@ public class CutsceneScript : MonoBehaviour
         }
     }
 
+    //goes to previous slide
     public void PreviousSlide()
     { 
         if (_currentSlide > 0)
@@ -59,6 +61,7 @@ public class CutsceneScript : MonoBehaviour
         }
     }
 
+    //switches slides without a pause
     private void ChangeSlidesWithoutDelay()
     {
         _slides.ForEach(slide => slide.gameObject.SetActive(_slides.IndexOf(slide) == _currentSlide));
