@@ -104,10 +104,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  sceneToLaunch: {fileID: 102900000, guid: 595cf70ac4f12b6439e3066f4aa49cc7, type: 3}
   _sceneIndex: 2
   _fadeDuration: 0.75
   _slideDuration: 5
+  _previous: {fileID: 8499993308079251505}
+  _next: {fileID: 8529820462528631438}
 --- !u!1 &8499993308079251505
 GameObject:
   m_ObjectHideFlags: 0
