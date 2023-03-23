@@ -68,7 +68,7 @@ public class MarkDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     /** intro after you beat him **/
     private DialogueTree BuildAfterEncounterWin()
     {
-         DialogueTree tree = new (new NPCNode(new string[] {"No one ever asks me,", "but in my opinion it was those beavers that stole the berries", 
+         DialogueTree tree = new (new NPCNode(new string[] {"No one ever asks me...", "But in my opinion it was those beavers that stole the berries.", 
          "After all of their disastrous union policies, they must be desperate for some good pres.", "Every year they host a harvest festival, and every year it's outshined by the berry festival.", 
          "At this point I bet they were coping and seething hard enough to try something crazy."}));
         return tree;

@@ -54,7 +54,7 @@ public class CroutonDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         PlayerNode askWork = new(new string[] { "As Mayor of Small Pines, what exactly do you do as your work?",
             "I'm curious to know if you don't mind me asking." });
 
-        NPCNode freeTimeAnswer = new(new string[] { "Well, before I was the Mayor I liked to visit the main street and walk by the flower shop to smell the flowers." ,
+        NPCNode freeTimeAnswer = new(new string[] { "Well, before I was the Mayor I liked to visit Main Street and walk by the flower shop to smell the flowers." ,
             "I also enjoyed exploring the rail yard and the lumberyard! But ever since I've become the town mayor, I haven't really had that much free time." ,
             "When I do get free time I visit the Hay Bale shrine in the Town Hall's basement and roll around on hay!" });
 
@@ -89,7 +89,7 @@ public class CroutonDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         PlayerNode askWork = new(new string[] { "As Mayor of Small Pines, what exactly do you do as your work?",
             "I'm curious to know if you don't mind me asking." });
 
-        NPCNode freeTimeAnswer = new(new string[] { "Well, before I was the Mayor I liked to visit the main street and walk by the flower shop to smell the flowers." ,
+        NPCNode freeTimeAnswer = new(new string[] { "Well, before I was the Mayor I liked to visit Main Street and walk by the flower shop to smell the flowers." ,
             "I also enjoyed exploring the rail yard and the lumberyard! But ever since I've become the town mayor, I haven't really had that much free time." ,
             "When I do get free time I visit the Hay Bale shrine in the Town Hall's basement and roll around on hay!" });
 
@@ -145,7 +145,7 @@ public class CroutonDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         PlayerNode askWork = new(new string[] { "As Mayor of Small Pines, what exactly do you do as your work?",
             "I'm curious to know if you don't mind me asking." });
 
-        NPCNode freeTimeAnswer = new(new string[] { "Well, before I was the Mayor I liked to visit the main street and walk by the flower shop to smell the flowers." ,
+        NPCNode freeTimeAnswer = new(new string[] { "Well, before I was the Mayor I liked to visit Main Street and walk by the flower shop to smell the flowers." ,
             "I also enjoyed exploring the rail yard and the lumberyard! But ever since I've become the town mayor, I haven't really had that much free time." ,
             "When I do get free time I visit the Hay Bale shrine in the Town Hall's basement and roll around on hay!" });
 
@@ -202,7 +202,7 @@ public class CroutonDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         PlayerNode askWork = new(new string[] { "As Mayor of Small Pines, what exactly do you do as your work?",
             "I'm curious to know if you don't mind me asking." });
 
-        NPCNode freeTimeAnswer = new(new string[] { "Well, before I was the Mayor I liked to visit the main street and walk by the flower shop to smell the flowers." ,
+        NPCNode freeTimeAnswer = new(new string[] { "Well, before I was the Mayor I liked to visit the Main Street and walk by the flower shop to smell the flowers." ,
             "I also enjoyed exploring the rail yard and the lumberyard! But ever since I've become the town mayor, I haven't really had that much free time." ,
             "When I do get free time I visit the Hay Bale shrine in the Town Hall's basement and roll around on hay!" });
 

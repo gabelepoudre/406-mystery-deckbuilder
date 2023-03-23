@@ -49,7 +49,7 @@ public class WolverineDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         (string, IDialogueNode) [] OptionsList = {
             ("Ask about Whereabouts", askWhere),
             ("Ask about Role", askRole),
-            ("Ask what convince", convince)
+            ("Try to convince", convince)
         };
 
         options.SetOptions(OptionsList);

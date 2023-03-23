@@ -42,8 +42,8 @@ public class AlanDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         PlayerNode askBerries = new(new string[] {"Alright well I hope you don't mind me asking...", 
         "But where were you on the day that the berries disappeared?"});
         NPCNode answerBerries = new(new string[] {"Just here doing my job, sir,", 
-        "delivering everyone's hard earned mail and making sure the mail is properly delivered, sir!"});
-        PlayerNode askSuspicious = new(new string[] {"Anything suspicious happened in the past couple of weeks and possibly even a suspect in your mind?"});
+        "delivering everyone's hard-earned mail and making sure the mail is properly delivered, sir!"});
+        PlayerNode askSuspicious = new(new string[] {"Has anything suspicious happened in the past couple of weeks and is there a possible suspect in mind?"});
         EncounterNode encounter = new();
 
         (string, IDialogueNode)[] OptionsList = {
@@ -65,10 +65,10 @@ public class AlanDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     
     private DialogueTree BuildAfterEncounterWin()
     {
-        NPCNode root = new(new string[] {"Well...", "The Town Hall has been receiving a large amount of mysterious mail that are pretty thick if I do say so myself sir.", 
-        "I'm pretty sure they were mailed directly for the Town Hall.", "If I was to pick a suspect for the missing berries, then I'd say it might be the Elk Secretary since everyone loves Mayor Crouton...", 
+        NPCNode root = new(new string[] {"Well...", "The Town Hall has been receiving a large amount of mysterious mail that's pretty thick if I do say so myself, sir.", 
+        "I'm pretty sure they were mailed directly to the Town Hall.", "If I was to pick a suspect for the missing berries, then I'd say it might be the Elk Secretary since everyone loves Mayor Crouton...", 
         "But to be honest with you sir, the Elk Secretary isn't really liked by most people.", 
-        "However, that is all that I can think of at the moment sir I do apologize. I hope I could've been of more service."});
+        "However, that is all I can think of at the moment sir, I do apologize. I hope I could've been of more service."});
          DialogueTree tree = new (root);
         return tree;
     }
