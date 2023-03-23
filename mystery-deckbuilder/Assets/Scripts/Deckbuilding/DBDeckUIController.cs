@@ -341,6 +341,14 @@ public class DBDeckUIController : MonoBehaviour
         ShowProperControlsForHighlightedCard();
     }
 
+    public void ClearDeck()
+    {
+        GameState.Player.fullDeck.Value = new(new int[] { });
+        GameState.Player.dailyDeck.Value = new(GameState.Player.fullDeck.Value.ToArray());
+        ShowProperControlsForHighlightedCard();
+    }
+
+
     public void AddOneOfPreviewedCard()
     {
         for (int x = 0; x <= 1 -1; x++)
