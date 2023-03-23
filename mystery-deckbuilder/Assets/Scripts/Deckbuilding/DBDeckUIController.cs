@@ -10,6 +10,7 @@ public class DBDeckUIController : MonoBehaviour
     public UnityEngine.Object sceneOnComplete;
 
     public Text cardTypeOnHighlight;
+    public Text numCardsInDeck;
 
     public GameObject[] deckContainers;
     public GameObject[] collectionContainers;
@@ -20,11 +21,7 @@ public class DBDeckUIController : MonoBehaviour
     public GameObject greyCardNoEncounter;
 
     public GameObject plusOne;
-    public GameObject plusTwo;
-    public GameObject plusThree;
     public GameObject minusOne;
-    public GameObject minusTwo;
-    public GameObject minusThree;
 
     private List<int> _deckOnStart; 
     public Transform previewCardSpawn;
@@ -446,42 +443,29 @@ public class DBDeckUIController : MonoBehaviour
         ShowProperControlsForHighlightedCard();
     }
 
-    public void SetAllButtonsFalse()
-    {
-        plusOne.SetActive(false);
-        plusTwo.SetActive(false);
-        plusThree.SetActive(false);
-        minusOne.SetActive(false);
-        minusTwo.SetActive(false);
-        minusThree.SetActive(false);
-    }
-
     public void ShowProperControlsForHighlightedCard()
     {
-        SetAllButtonsFalse();
         int num_of_card = GetNumberDeckCardsOfID(_previewedCardID);
+        numCardsInDeck.gameObject.SetActive(true);
+        numCardsInDeck.text = num_of_card.ToString();
         // show based on amount
         switch (num_of_card) 
         {
             case < 1:
                 plusOne.SetActive(true);
-                plusTwo.SetActive(true);
-                plusThree.SetActive(true);
+                minusOne.SetActive(false);
                 break;
             case < 2:
                 plusOne.SetActive(true);
-                plusTwo.SetActive(true);
                 minusOne.SetActive(true);
                 break;
             case < 3:
                 plusOne.SetActive(true);
                 minusOne.SetActive(true);
-                minusTwo.SetActive(true);
                 break;
             case < 4:
                 minusOne.SetActive(true);
-                minusTwo.SetActive(true);
-                minusThree.SetActive(true);
+                plusOne.SetActive(false);
                 break;
         }
         
@@ -490,16 +474,8 @@ public class DBDeckUIController : MonoBehaviour
         {
             case < 1:
                 plusOne.SetActive(false);
-                plusTwo.SetActive(false);
-                plusThree.SetActive(false);
                 break;
-            case < 2:
-                plusTwo.SetActive(false);
-                plusThree.SetActive(false);
-                break;
-            case < 3:
-                plusThree.SetActive(false);
-                break;
+
         }
         
     }
