@@ -42,7 +42,7 @@ public class CutsceneScript : MonoBehaviour
 
         if (_currentSlide >= _slides.Count)
         {
-            SceneManager.LoadScene(sceneToLaunch.name);
+            SceneManager.LoadScene(_sceneIndex);
         }
         else
         {
