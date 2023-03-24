@@ -60,6 +60,8 @@ public class Encounter
     public class StatisticsClass
     {
         public List<int> ListOfPlayedCards { get; set; } = new();
+        public int LastPatienceDamage { get; set; } = 0;
+        public int LastComplianceDamage { get; set; } = 0;
         public int NumberOfPlays { get; set; } = 0;
         public int NumberOfDraws { get; set; } = 0;
         public int IntimidationCardsPlayed { get; set; } = 0;
@@ -121,6 +123,35 @@ public class Encounter
         _encounterController.Initialize(config);
 
         _opponent = config.Opponent;
+    }
+
+    public void ForceCardInHand(int cardID)
+    {
+        Card draw = (Card)Cards.CreateCardWithID(cardID);
+        // quick statistics
+        switch (draw.GetElement())
+        {
+            case "Intimidation":
+                Statistics.IntimidationCardsInHand += 1;
+                Statistics.ConversationCardsInHand += 1;
+                break;
+            case "Sympathy":
+                Statistics.SympathyCardsInHand += 1;
+                Statistics.ConversationCardsInHand += 1;
+                break;
+            case "Persuasion":
+                Statistics.PersuasionCardsInHand += 1;
+                Statistics.ConversationCardsInHand += 1;
+                break;
+            case "Preparation":
+                Statistics.PreparationCardsInHand += 1;
+                break;
+        }
+
+        _hand.Add(draw);
+        _encounterController.PlaceCard(draw);
+
+        OnChange(); // we call this on all draws and plays
     }
 
     /* Draw a card, if we can. Draws trigger "OnChange" which recalculates all card values */
@@ -326,6 +357,8 @@ public class Encounter
 
         int totalCompliance = card.GetTotalCompliance();
         int totalPatience = card.GetTotalPatience();
+        Statistics.LastComplianceDamage = totalCompliance;
+        Statistics.LastPatienceDamage = totalPatience;
 
         bool continueGame = _encounterController.SetAndCheckCompliance(_encounterController.GetCompliance() + totalCompliance);
         if (!continueGame)
