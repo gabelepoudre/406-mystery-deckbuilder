@@ -11,6 +11,7 @@ public class BlockerTutorial : MonoBehaviour
     public GameObject drawBlocker;
     public GameObject cardBlocker1;
     public GameObject cardBlocker2;
+    public GameObject cardBlocker3;
     public GameObject promptDialogue;
     public GameObject promptBars;
     public GameObject promptBars1;
@@ -18,9 +19,11 @@ public class BlockerTutorial : MonoBehaviour
     public GameObject promptDraw;
     public GameObject promptConversation;
     public GameObject promptConversation1;
+    public GameObject promptConversation2;
     public GameObject promptHighlight;
     public GameObject promptDraw2;
     public GameObject promptPreperation;
+    public GameObject promptPreperation1;
     public GameObject promptDone;
 
 
@@ -35,7 +38,7 @@ public class BlockerTutorial : MonoBehaviour
     {
         switch (count)
         {
-            case 0:
+            case 0://start explaining bars
                 mainStreetBlockers.SetActive(false);
                 promptDialogue.SetActive(false);
                 encounterBlockers.SetActive(true);
@@ -49,12 +52,12 @@ public class BlockerTutorial : MonoBehaviour
                 promptBars1.SetActive(false);
                 promptBars2.SetActive(true);
                 break;
-            case 3:
+            case 3://draw first card
                 promptBars2.SetActive(false);
                 drawBlocker.SetActive(false);
                 promptDraw.SetActive(true);
                 break;
-            case 4:
+            case 4://start explaining conversation cards
                 drawBlocker.SetActive(true);
                 cardBlocker1.SetActive(false);
                 promptDraw.SetActive(false);
@@ -66,24 +69,41 @@ public class BlockerTutorial : MonoBehaviour
                 break;
             case 6:
                 promptConversation1.SetActive(false);
-                promptHighlight.SetActive(true);
+                promptConversation2.SetActive(true);
                 break;
             case 7:
+                promptConversation2.SetActive(false);
+                promptHighlight.SetActive(true);
+                break;
+            case 8://draw second card
                 promptHighlight.SetActive(false);
                 drawBlocker.SetActive(false);
                 promptDraw2.SetActive(true);
                 break;
-            case 8:
+            case 9://start explaining prep cards
                 promptDraw2.SetActive(false);
                 drawBlocker.SetActive(true);
+                cardBlocker1.SetActive(true);
                 cardBlocker2.SetActive(false);
                 promptPreperation.SetActive(true);
                 break;
-            case 9:
+            case 10://draw third card
                 promptPreperation.SetActive(false);
+                drawBlocker.SetActive(false);
+                promptDraw2.SetActive(true);
+                break;
+            case 11://
+                drawBlocker.SetActive(true);
+                promptDraw2.SetActive(false);
+                cardBlocker2.SetActive(true);
+                cardBlocker3.SetActive(false);
+                promptPreperation1.SetActive(true);
+                break;
+            case 12:
+                promptPreperation1.SetActive(false);
                 promptDone.SetActive(true);
                 break;
-            case 10://unsub here
+            case 13://unsub here
                 GameState.Meta.activeEncounter.OnChange -= Next;
                 GameState.Player.dailyDeck.OnChange -= Next;
                 Destroy(this.gameObject);
