@@ -7,7 +7,7 @@ using UnityEngine;
  */
 public static class Cards
     {
-    public static int totalCardCount = 30;
+    public static int totalCardCount = 31;
 
     public static object CreateCardWithID(int id, bool no_effect = false)
     {
@@ -73,6 +73,8 @@ public static class Cards
                 return new Love(no_effect);
             case 30:
                 return new WildAccusation(no_effect);
+            case 31:
+                return new Gaslight(no_effect);
             default:
                 return null;
         }
@@ -1388,3 +1390,55 @@ public class WildAccusation : Card
     }
 }
 
+
+public class Gaslight : Card
+{
+    public Gaslight(bool noEffect = false) : base(31)
+    {
+        this._metadata["element"] = "Persuasion";
+        this._metadata["name"] = "Gaslight";
+        this._metadata["description"] = "Undo your last play. It never happened!";
+        this._metadata["patience"] = "0";
+        this._metadata["compliance"] = "0";
+        this._metadata["duration"] = "0";
+        this._metadata["filterId"] = "0";
+
+        if (!noEffect)
+        {
+            this.__localEffects["Gaslight!"] = new EGaslight(this);
+        }
+    }
+
+    public override void OnChange()
+    {
+        this.__localEffects["Gaslight!"].Execute();
+    }
+
+    /* A local effect (as seen by E prefix) for gaslight */
+    public class EGaslight : Effect, IExecutableEffect
+    {
+        private Color _color = new Color(255 / 255, 255 / 255, 100 / 255);
+
+        private Card _parent;
+        private string _name = "Gaslight!";
+        private string _desc_1 = "Undo your last play's compliance and patience, it never happened!";
+
+        public EGaslight(Card c) : base(99) { _parent = c; }
+        public string GetDescription()
+        {
+            return _desc_1;
+        }
+        public string GetName() { return _name; }
+        public Color GetColor() { return _color; }
+
+        /* Executes the effect. A conditional may be called within */
+        public void Execute()
+        {
+            // if (EncounterConditionals.CardsOfElementInHandGreaterThan("Persuasion", 0))
+            // {
+            //     _parent.UnstackableComplianceMod += 10 * GameState.Meta.activeEncounter.Value.Statistics.PersuasionCardsInHand;
+            //     _parent.DisplayEffect(this);
+            // }
+        }
+    }
+}
