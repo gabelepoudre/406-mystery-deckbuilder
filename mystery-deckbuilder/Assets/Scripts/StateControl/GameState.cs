@@ -60,7 +60,7 @@ public static class GameState
 
         //static int[] startingDeck = {1, 1, 1, 5, 5, 5, 9, 9, 9, 4, 4, 4, 8, 8, 8, 18, 18, 18, 17, 17, 17};
 
-        static int[] startingDeck = {1, 5, 9, 4, 8, 18, 17, 1, 5, 9, 4, 8, 18, 17, 1, 5, 9, 4, 8, 18, 17};
+        static int[] startingDeck = {1, 17, 5, 9, 4, 8, 18, 1, 5, 9, 4, 8, 18, 17, 1, 5, 9, 4, 8, 18, 17};
         public static GameStateValue<List<int>> fullDeck = new(new List<int>(startingDeck), _gameStateValues);
         public static GameStateValue<List<int>> dailyDeck = new(new List<int>(startingDeck), _gameStateValues);
         public static GameStateValue<List<int>> collection = new(new List<int>(startingDeck), _gameStateValues);
