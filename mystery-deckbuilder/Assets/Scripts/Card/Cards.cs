@@ -7,7 +7,7 @@ using UnityEngine;
  */
 public static class Cards
     {
-    public static int totalCardCount = 31;
+    public static int totalCardCount = 33;
 
     public static object CreateCardWithID(int id, bool no_effect = false)
     {
@@ -75,6 +75,10 @@ public static class Cards
                 return new WildAccusation(no_effect);
             case 31:
                 return new Gaslight(no_effect);
+            case 32:
+                return new Reconsider(no_effect);
+            case 33:
+                return new Improvise(no_effect);
             default:
                 return null;
         }
@@ -1439,6 +1443,94 @@ public class Gaslight : Card
             //     _parent.UnstackableComplianceMod += 10 * GameState.Meta.activeEncounter.Value.Statistics.PersuasionCardsInHand;
             //     _parent.DisplayEffect(this);
             // }
+        }
+    }
+}
+
+
+public class Reconsider : Card
+{
+    public Reconsider(bool noEffect = false) : base(32)
+    {
+        this._metadata["element"] = "Preparation";
+        this._metadata["name"] = "Reconsider";
+        this._metadata["description"] = "Clears your deck for a fresh start";
+        this._metadata["patience"] = "3";
+        this._metadata["compliance"] = "0";
+    }
+
+    public override void OnPlay()
+    {
+        IExecutableEffect e = new EReconsider();
+        e.Execute();
+    }
+
+    /* A local effect (as seen by E prefix) for reconsider */
+    public class EReconsider : Effect, IExecutableEffect
+    {
+        private Color _color = new Color(200 / 255, 200 / 255, 200 / 255);
+
+        private string _name = "Reconsider!";
+        private string _desc_1 = "Clears your hand for a fresh start!";
+
+        public EReconsider() : base(1) {}
+        public string GetDescription()
+        {
+            return _desc_1;
+        }
+        public string GetName() { return _name; }
+        public Color GetColor() { return _color; }
+
+        /* Executes the effect. A conditional may be called within */
+        public void Execute()
+        {
+            Debug.Log("Triggered a draw card effect!");
+            GameState.Meta.activeEncounter.Value.DrawCard(0);
+            GameState.Meta.activeEncounter.Value.DrawCard(0);
+        }
+    }
+}
+
+
+public class Improvise : Card
+{
+    public Improvise(bool noEffect = false) : base(33)
+    {
+        this._metadata["element"] = "Preparation";
+        this._metadata["name"] = "Improvise";
+        this._metadata["description"] = "Spawns any random card";
+        this._metadata["patience"] = "2";
+        this._metadata["compliance"] = "0";
+    }
+
+    public override void OnPlay()
+    {
+        IExecutableEffect e = new EImprovise();
+        e.Execute();
+    }
+
+    /* A local effect (as seen by E prefix) for improvise */
+    public class EImprovise : Effect, IExecutableEffect
+    {
+        private Color _color = new Color(200 / 255, 200 / 255, 200 / 255);
+
+        private string _name = "Improvise!";
+        private string _desc_1 = "Spawns any card from the game!";
+
+        public EImprovise() : base(1) {}
+        public string GetDescription()
+        {
+            return _desc_1;
+        }
+        public string GetName() { return _name; }
+        public Color GetColor() { return _color; }
+
+        /* Executes the effect. A conditional may be called within */
+        public void Execute()
+        {
+            Debug.Log("Triggered a draw card effect!");
+            GameState.Meta.activeEncounter.Value.DrawCard(0);
+            GameState.Meta.activeEncounter.Value.DrawCard(0);
         }
     }
 }
