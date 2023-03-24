@@ -2499,7 +2499,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: This is a conversation card. They come in Persuasion(green), Sympathy(blue),
-    and Intimidation(Red)
+    and Intimidation(red)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3615,7 +3615,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: This button draws cards from your hand. You can draw at any time, but it
+  m_text: This button draws cards from your deck. You can draw at any time, but it
     costs 1 patience
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
