@@ -159,6 +159,8 @@ public abstract class Card
         PatienceOverride = 0;
         ComplianceOverridden = false;
         ComplianceOverride = 0;
+        ElementOverridden = false;
+        ElementOverride = "";
         ClearVisualEffects();
     }
 

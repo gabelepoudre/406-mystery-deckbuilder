@@ -7,7 +7,7 @@ using UnityEngine;
  */
 public static class Cards
     {
-    public static int totalCardCount = 33;
+    public static int totalCardCount = 36;
 
     public static object CreateCardWithID(int id, bool no_effect = false)
     {
@@ -60,9 +60,9 @@ public static class Cards
             case 23:
                 return new Yell(no_effect);
             case 24:
-                return new AwkwardSilence(no_effect);
+                return new Stare(no_effect);
             case 25:
-                return new DeepBreath(no_effect);
+                return new Sigh(no_effect);
             case 26:
                 return new Shrug(no_effect);
             case 27:
@@ -72,13 +72,19 @@ public static class Cards
             case 29:
                 return new Love(no_effect);
             case 30:
-                return new WildAccusation(no_effect);
+                return new Lie(no_effect);
             case 31:
                 return new Gaslight(no_effect);
             case 32:
                 return new Reconsider(no_effect);
             case 33:
                 return new Improvise(no_effect);
+            case 34:
+                return new Bluff(no_effect);
+            case 35:
+                return new Apologize(no_effect);
+            case 36:
+                return new Commit(no_effect);
             default:
                 return null;
         }
@@ -1512,6 +1518,7 @@ public class Reconsider : Card
             }
             GameState.Meta.activeEncounter.Value.GetHand().Clear();
             GameState.Player.dailyDeck.Raise();
+            GameState.Meta.activeEncounter.Value.RecalculateHandStatistics();
         }
     }
 }
@@ -1567,7 +1574,7 @@ public class Bluff : Card
         this._metadata["name"] = "Bluff";
         this._metadata["description"] = "It's unpredictable! Compliance randomly changes on draw or play";
         this._metadata["patience"] = "4";
-        this._metadata["compliance"] = "0";
+        this._metadata["compliance"] = "15";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
 
@@ -1590,9 +1597,9 @@ public class Bluff : Card
         private Card _parent;
         private string _name = "Bluff!";
         private string _desc_1 = "Right now, bluffing will do ";
-        private string _desc_2 = ""
+        private string _desc_2 = ", but that could change at any time!";
 
-        public EWildAccusation(Card c) : base(99) { _parent = c; }
+        public EBluff(Card c) : base(99) { _parent = c; }
         public string GetDescription()
         {
             return _desc_1 + _parent.GetTotalCompliance() + _desc_2;
@@ -1603,11 +1610,111 @@ public class Bluff : Card
         /* Executes the effect. A conditional may be called within */
         public void Execute()
         {
-            float r = Random.value;
-            if (r > 0.9f)
+            int r = Random.Range(-10, 41);
+            _parent.ComplianceOverridden = true;
+            _parent.ComplianceOverride = r;
+            _parent.DisplayEffect(this);
+        }
+    }
+}
+
+public class Apologize : Card
+{
+    public Apologize(bool noEffect = false) : base(35)
+    {
+        this._metadata["element"] = "Sympathy";
+        this._metadata["name"] = "Apologize";
+        this._metadata["description"] = "3x Compliance if played immedietely after an Intimidation card";
+        this._metadata["patience"] = "3";
+        this._metadata["compliance"] = "10";
+
+        if (!noEffect) { this.__localEffects["Apologize!"] = new EApologize(this); }
+    }
+
+    public override void OnChange()
+    {
+        this.__localEffects["Apologize!"].Execute();
+
+    }
+
+
+    /* A local effect (as seen by E prefix) for apologize */
+    public class EApologize : Effect, IExecutableEffect
+    {
+        private Color _color = new Color(255 / 255, 255 / 255, 100 / 255);
+
+        private Card _parent;
+        private string _name = "Apologize!";
+        private string _desc_1 = "3x Compliance for this turn only!";
+
+
+        public EApologize(Card c) : base(1) { _parent = c; }
+        public string GetDescription()
+        {
+            return _desc_1;
+        }
+        public string GetName() { return _name; }
+        public Color GetColor() { return _color; }
+
+        /* Executes the effect. A conditional may be called within */
+        public void Execute()
+        {
+            if (GameState.Meta.activeEncounter.Value.Statistics.LastPlayElement == "Intimidation")
             {
-                _parent.UnstackableComplianceMod += 30;
+                _parent.StackableComplianceMod += 2;
                 _parent.DisplayEffect(this);
             }
         }
     }
+}
+
+public class Commit : Card
+{
+    public Commit(bool noEffect = false) : base(36)
+    {
+        this._metadata["element"] = "Preparation";
+        this._metadata["name"] = "Commit";
+        this._metadata["description"] = "For 1 play, card Elements mimic the last played Conversation card's Element";
+        this._metadata["patience"] = "0";
+        this._metadata["compliance"] = "0";
+    }
+
+    public override void OnPlay()
+    {
+        GameState.Meta.activeEncounter.Value.InsertGlobal(new ECommit(), 0);
+    }
+
+    /* A local effect (as seen by E prefix) for Empathize */
+    public class ECommit : Effect, IExecutableEffect
+    {
+        private Color _color = new Color(200 / 255, 200 / 255, 200 / 255);
+
+        private string _name = "Commit!";
+        private string _desc_1 = "For this play only, this card is treated as a ";
+        private string _desc_2 = " Card!";
+
+        public ECommit() : base(1) { }
+        public string GetDescription()
+        {
+            return _desc_1 + GameState.Meta.activeEncounter.Value.Statistics.LastPlayElement + _desc_2; 
+        }
+        public string GetName() { return _name; }
+        public Color GetColor() { return _color; }
+
+        /* Executes the effect. A conditional may be called within */
+        public void Execute()
+        {
+            List<Card> hand = GameState.Meta.activeEncounter.Value.GetHand();
+            foreach (Card c in hand)
+            {
+                if (c.GetElement() != "Preparation" && GameState.Meta.activeEncounter.Value.Statistics.LastPlayElement != "")
+                {
+                    c.ElementOverridden = true;
+                    c.ElementOverride = GameState.Meta.activeEncounter.Value.Statistics.LastPlayElement;
+                    c.DisplayEffect(this);
+                }
+            }
+            GameState.Meta.activeEncounter.Value.RecalculateHandStatistics();
+        }
+    }
+}
