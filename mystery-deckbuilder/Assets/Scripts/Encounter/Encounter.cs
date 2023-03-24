@@ -59,6 +59,7 @@ public class Encounter
     /* Statistics is used to hold information about the GameState and make it easier to implement conditionals */
     public class StatisticsClass
     {
+        public List<int> ListOfPlayedCards { get; set; } = new();
         public int NumberOfPlays { get; set; } = 0;
         public int NumberOfDraws { get; set; } = 0;
         public int IntimidationCardsPlayed { get; set; } = 0;
@@ -321,6 +322,7 @@ public class Encounter
                 Statistics.ConversationCardsPlayed += 1;
                 break;
         }
+        Statistics.ListOfPlayedCards.Add(card.GetId());
 
         int totalCompliance = card.GetTotalCompliance();
         int totalPatience = card.GetTotalPatience();

@@ -95,7 +95,7 @@ public class Bluster : Card
     {
         this._metadata["element"] = "Intimidation";
         this._metadata["name"] = "Bluster";
-        this._metadata["description"] = "No special effect";
+        this._metadata["description"] = "";
         this._metadata["patience"] = "2";
         this._metadata["compliance"] = "10";
         this._metadata["duration"] = "0";
@@ -264,7 +264,7 @@ public class Encourage : Card
     {
         this._metadata["element"] = "Sympathy";
         this._metadata["name"] = "Encourage";
-        this._metadata["description"] = "No special effect";
+        this._metadata["description"] = "";
         this._metadata["patience"] = "2";
         this._metadata["compliance"] = "10";
         this._metadata["duration"] = "0";
@@ -434,7 +434,7 @@ public class Articulate : Card
     {
         this._metadata["element"] = "Persuasion";
         this._metadata["name"] = "Articulate";
-        this._metadata["description"] = "No special effect";
+        this._metadata["description"] = "";
         this._metadata["patience"] = "2";
         this._metadata["compliance"] = "10";
         this._metadata["duration"] = "0";
@@ -1064,7 +1064,7 @@ public class Whisper : Card
     /* A local effect (as seen by E prefix) for whisper */
     public class EWhisper : Effect, IExecutableEffect
     {
-        private Color _color = new Color(255 / 255, 255 / 255, 100 / 255);
+        private Color _color = new Color(50 / 255, 150 / 255, 255 / 255);
 
         private Card _parent;
         private string _name = "Whisper!";
@@ -1084,13 +1084,12 @@ public class Whisper : Card
         /* Executes the effect. A conditional may be called within */
         public void Execute()
         {
-            // List<Card> hand = GameState.Meta.activeEncounter.Value.GetHand();
-            // foreach (Card c in hand)
-            // {
-            //     c.PatienceOverridden = true;
-            //     c.PatienceOverride = 0;
-            //     c.DisplayEffect(this);
-            // }
+            List<Card> hand = GameState.Meta.activeEncounter.Value.GetHand();
+            foreach (Card c in hand)
+            {
+                c.StackableComplianceMod += 2;
+                c.DisplayEffect(this);
+             }
         }
     }
 }
@@ -1102,7 +1101,7 @@ public class Yell : Card
     {
         this._metadata["element"] = "Intimidation";
         this._metadata["name"] = "Yell";
-        this._metadata["description"] = "The next two cards you play will have a third of their compliance";
+        this._metadata["description"] = "The next two cards you play will have one third of their compliance";
         this._metadata["patience"] = "2";
         this._metadata["compliance"] = "35";
     }
@@ -1135,13 +1134,12 @@ public class Yell : Card
         /* Executes the effect. A conditional may be called within */
         public void Execute()
         {
-            // List<Card> hand = GameState.Meta.activeEncounter.Value.GetHand();
-            // foreach (Card c in hand)
-            // {
-            //     c.PatienceOverridden = true;
-            //     c.PatienceOverride = 0;
-            //     c.DisplayEffect(this);
-            // }
+            List<Card> hand = GameState.Meta.activeEncounter.Value.GetHand();
+            foreach (Card c in hand)
+            {
+                c.StackableComplianceMod -= 0.66666666f;
+                c.DisplayEffect(this);
+            }
         }
     }
 }
@@ -1153,7 +1151,7 @@ public class AwkwardSilence : Card
     {
         this._metadata["element"] = "Intimidation";
         this._metadata["name"] = "Awkward Silence";
-        this._metadata["description"] = "No effect";
+        this._metadata["description"] = "";
         this._metadata["patience"] = "0";
         this._metadata["compliance"] = "0";
         this._metadata["duration"] = "0";
@@ -1168,7 +1166,7 @@ public class DeepBreath : Card
     {
         this._metadata["element"] = "Sympathy";
         this._metadata["name"] = "Deep Breath";
-        this._metadata["description"] = "No effect";
+        this._metadata["description"] = "";
         this._metadata["patience"] = "0";
         this._metadata["compliance"] = "0";
         this._metadata["duration"] = "0";
@@ -1183,7 +1181,7 @@ public class Shrug : Card
     {
         this._metadata["element"] = "Persuasion";
         this._metadata["name"] = "Shrug";
-        this._metadata["description"] = "No effect";
+        this._metadata["description"] = "";
         this._metadata["patience"] = "0";
         this._metadata["compliance"] = "0";
         this._metadata["duration"] = "0";
@@ -1198,46 +1196,9 @@ public class Live : Card
     {
         this._metadata["element"] = "Intimidation";
         this._metadata["name"] = "Live";
-        this._metadata["description"] = "...";
+        this._metadata["description"] = "3x the compliance of the card \"Laugh\" if played next";
         this._metadata["patience"] = "2";
         this._metadata["compliance"] = "10";
-    }
-
-    public override void OnPlay()
-    {
-        GameState.Meta.activeEncounter.Value.AddGlobal(new ELive());
-    }
-
-
-    /* A local effect (as seen by E prefix) for live */
-    public class ELive : Effect, IExecutableEffect
-    {
-        private Color _color = new Color(255 / 255, 255 / 255, 100 / 255);
-
-        private Card _parent;
-        private string _name = "Live!";
-        private string _desc_1 = "...";
-
-
-        public ELive() : base(2) { }
-        public string GetDescription() 
-        { 
-            return _desc_1; 
-        }
-        public string GetName() { return _name; }
-        public Color GetColor() { return _color; }
-
-        /* Executes the effect. A conditional may be called within */
-        public void Execute()
-        {
-            // List<Card> hand = GameState.Meta.activeEncounter.Value.GetHand();
-            // foreach (Card c in hand)
-            // {
-            //     c.PatienceOverridden = true;
-            //     c.PatienceOverride = 0;
-            //     c.DisplayEffect(this);
-            // }
-        }
     }
 }
 
@@ -1247,15 +1208,17 @@ public class Laugh : Card
     public Laugh(bool noEffect = false) : base(28)
     {
         this._metadata["element"] = "Persuasion";
-        this._metadata["name"] = "Live";
-        this._metadata["description"] = "...";
+        this._metadata["name"] = "Laugh";
+        this._metadata["description"] = "3x the compliance of the card \"Love\" if played next";
         this._metadata["patience"] = "2";
         this._metadata["compliance"] = "10";
+
+        if (!noEffect) { this.__localEffects["Laugh!"] = new ELaugh(this); }
     }
 
-    public override void OnPlay()
+    public override void OnChange()
     {
-        GameState.Meta.activeEncounter.Value.AddGlobal(new ELaugh());
+        this.__localEffects["Laugh!"].Execute();
     }
 
 
@@ -1265,11 +1228,11 @@ public class Laugh : Card
         private Color _color = new Color(255 / 255, 255 / 255, 100 / 255);
 
         private Card _parent;
-        private string _name = "Laugh!";
-        private string _desc_1 = "...";
+        private string _name = "Live Laugh!";
+        private string _desc_1 = "3x compliance for this turn only!";
 
 
-        public ELaugh() : base(2) { }
+        public ELaugh(Card c) : base(2) { _parent = c; }
         public string GetDescription() 
         { 
             return _desc_1; 
@@ -1280,13 +1243,11 @@ public class Laugh : Card
         /* Executes the effect. A conditional may be called within */
         public void Execute()
         {
-            // List<Card> hand = GameState.Meta.activeEncounter.Value.GetHand();
-            // foreach (Card c in hand)
-            // {
-            //     c.PatienceOverridden = true;
-            //     c.PatienceOverride = 0;
-            //     c.DisplayEffect(this);
-            // }
+            Card lastCard = (Card)Cards.CreateCardWithID(GameState.Meta.activeEncounter.Value.Statistics.ListOfPlayedCards[GameState.Meta.activeEncounter.Value.Statistics.ListOfPlayedCards.Count - 1]);
+            if (lastCard.GetName() == "Live")
+            {
+                _parent.StackableComplianceMod += 2;
+            }
         }
     }
 }
@@ -1298,7 +1259,7 @@ public class Love : Card
     {
         this._metadata["element"] = "Sympathy";
         this._metadata["name"] = "Love";
-        this._metadata["description"] = "...";
+        this._metadata["description"] = "6x compliance if played sequentially after cards \"Live\" and \"Laugh\"";
         this._metadata["patience"] = "2";
         this._metadata["compliance"] = "10";
     }
@@ -1473,7 +1434,7 @@ public class Reconsider : Card
         private string _name = "Reconsider!";
         private string _desc_1 = "Clears your hand for a fresh start!";
 
-        public EReconsider() : base(1) {}
+        public EReconsider() : base(1) { }
         public string GetDescription()
         {
             return _desc_1;
@@ -1517,7 +1478,7 @@ public class Improvise : Card
         private string _name = "Improvise!";
         private string _desc_1 = "Spawns any card from the game!";
 
-        public EImprovise() : base(1) {}
+        public EImprovise() : base(1) { }
         public string GetDescription()
         {
             return _desc_1;
