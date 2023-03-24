@@ -22,12 +22,53 @@ public class CutsceneScript : MonoBehaviour
     [SerializeField] private float _fadeDuration = 0.75f;
     [Header("Slide duration (Only works for all slides right now)")]
     [SerializeField] private float _slideDuration = 5f;
+
+    [SerializeField] private GameObject _previous;
+    [SerializeField] private GameObject _next;
     
     // Currently viewed slide
     private int _currentSlide = -1;
 
-    // Whether the fade slide is currently fading
-    private IEnumerator Start()
+    
+    private void Start()
+    {
+        _previous.SetActive(false);
+    }
+
+    //goes to next slide
+    public void NextSlide()
+    {
+        _currentSlide += 1;
+
+        if (_currentSlide >= _slides.Count)
+        {
+            SceneManager.LoadScene(_sceneIndex);
+        }
+        else
+        {
+            ChangeSlidesWithoutDelay();
+        }
+    }
+
+    //goes to previous slide
+    public void PreviousSlide()
+    { 
+        if (_currentSlide > 0)
+        {
+            _currentSlide -= 1;
+            ChangeSlidesWithoutDelay();
+        }
+    }
+
+    //switches slides without a pause
+    private void ChangeSlidesWithoutDelay()
+    {
+        _slides.ForEach(slide => slide.gameObject.SetActive(_slides.IndexOf(slide) == _currentSlide));
+        _previous.SetActive(_currentSlide != 0);
+    }
+
+    //the old method of automatic unskippable cutscene
+    private IEnumerator StartAutomaticCutscene()
     {
         // Set our fade to black slide to black so that the audience can not see the first slide
         // _fadeSlide.color = Color.black;
