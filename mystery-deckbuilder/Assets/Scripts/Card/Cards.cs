@@ -1145,12 +1145,12 @@ public class Yell : Card
 }
 
 
-public class AwkwardSilence : Card
+public class Stare : Card
 {
-    public AwkwardSilence(bool noEffect = false) : base(24)
+    public Stare(bool noEffect = false) : base(24)
     {
         this._metadata["element"] = "Intimidation";
-        this._metadata["name"] = "Awkward Silence";
+        this._metadata["name"] = "Stare";
         this._metadata["description"] = "";
         this._metadata["patience"] = "0";
         this._metadata["compliance"] = "0";
@@ -1160,12 +1160,12 @@ public class AwkwardSilence : Card
 }
 
 
-public class DeepBreath : Card
+public class Sigh : Card
 {
-    public DeepBreath(bool noEffect = false) : base(25)
+    public Sigh(bool noEffect = false) : base(25)
     {
         this._metadata["element"] = "Sympathy";
-        this._metadata["name"] = "Deep Breath";
+        this._metadata["name"] = "Sigh";
         this._metadata["description"] = "";
         this._metadata["patience"] = "0";
         this._metadata["compliance"] = "0";
@@ -1362,12 +1362,12 @@ public class Love : Card
 }
 
 
-public class WildAccusation : Card
+public class Lie : Card
 {
-    public WildAccusation(bool noEffect = false) : base(30)
+    public Lie(bool noEffect = false) : base(30)
     {
         this._metadata["element"] = "Persuasion";
-        this._metadata["name"] = "Wild Accusation";
+        this._metadata["name"] = "Lie";
         this._metadata["description"] = "It's unpredictable! Compliance may skyrocket when you draw or play";
         this._metadata["patience"] = "3";
         this._metadata["compliance"] = "0";
@@ -1376,13 +1376,13 @@ public class WildAccusation : Card
 
         if (!noEffect)
         {
-            this.__localEffects["Wild Accusation!"] = new EWildAccusation(this);
+            this.__localEffects["Lie!"] = new EWildAccusation(this);
         }
     }
 
     public override void OnChange()
     {
-        this.__localEffects["Wild Accusation!"].Execute();
+        this.__localEffects["Lie!"].Execute();
     }
 
     /* A local effect (as seen by E prefix) for wild accusation */
@@ -1391,7 +1391,7 @@ public class WildAccusation : Card
         private Color _color = new Color(255 / 255, 255 / 255, 100 / 255);
 
         private Card _parent;
-        private string _name = "Wild Accusation!";
+        private string _name = "Lie!";
         private string _desc_1 = "Lucky you! If you play this card right now, +30 compliance!";
 
         public EWildAccusation(Card c) : base(99) { _parent = c; }
@@ -1558,3 +1558,56 @@ public class Improvise : Card
         }
     }
 }
+
+public class Bluff : Card
+{
+    public Bluff(bool noEffect = false) : base(34)
+    {
+        this._metadata["element"] = "Persuasion";
+        this._metadata["name"] = "Bluff";
+        this._metadata["description"] = "It's unpredictable! Compliance randomly changes on draw or play";
+        this._metadata["patience"] = "4";
+        this._metadata["compliance"] = "0";
+        this._metadata["duration"] = "0";
+        this._metadata["filterId"] = "0";
+
+        if (!noEffect)
+        {
+            this.__localEffects["Bluff!"] = new EBluff(this);
+        }
+    }
+
+    public override void OnChange()
+    {
+        this.__localEffects["Bluff!"].Execute();
+    }
+
+    /* A local effect (as seen by E prefix) for wild accusation */
+    public class EBluff : Effect, IExecutableEffect
+    {
+        private Color _color = new Color(255 / 255, 255 / 255, 100 / 255);
+
+        private Card _parent;
+        private string _name = "Bluff!";
+        private string _desc_1 = "Right now, bluffing will do ";
+        private string _desc_2 = ""
+
+        public EWildAccusation(Card c) : base(99) { _parent = c; }
+        public string GetDescription()
+        {
+            return _desc_1 + _parent.GetTotalCompliance() + _desc_2;
+        }
+        public string GetName() { return _name; }
+        public Color GetColor() { return _color; }
+
+        /* Executes the effect. A conditional may be called within */
+        public void Execute()
+        {
+            float r = Random.value;
+            if (r > 0.9f)
+            {
+                _parent.UnstackableComplianceMod += 30;
+                _parent.DisplayEffect(this);
+            }
+        }
+    }
