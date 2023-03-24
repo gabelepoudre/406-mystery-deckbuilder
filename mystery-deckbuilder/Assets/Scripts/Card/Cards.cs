@@ -7,7 +7,7 @@ using UnityEngine;
  */
 public static class Cards
     {
-    public static int totalCardCount = 29;
+    public static int totalCardCount = 30;
 
     public static object CreateCardWithID(int id, bool no_effect = false)
     {
@@ -71,6 +71,8 @@ public static class Cards
                 return new Laugh(no_effect);
             case 29:
                 return new Love(no_effect);
+            case 30:
+                return new WildAccusation(no_effect);
             default:
                 return null;
         }
@@ -1332,3 +1334,57 @@ public class Love : Card
         }
     }
 }
+
+
+public class WildAccusation : Card
+{
+    public WildAccusation(bool noEffect = false) : base(30)
+    {
+        this._metadata["element"] = "Persuasion";
+        this._metadata["name"] = "Wild Accusation";
+        this._metadata["description"] = "It's unpredictable! Compliance may switch when you draw or play";
+        this._metadata["patience"] = "3";
+        this._metadata["compliance"] = "15";
+        this._metadata["duration"] = "0";
+        this._metadata["filterId"] = "0";
+
+        if (!noEffect)
+        {
+            this.__localEffects["Wild Accusation!"] = new EWildAccusation(this);
+        }
+    }
+
+    public override void OnChange()
+    {
+        this.__localEffects["Wild Accusation!"].Execute();
+    }
+
+    /* A local effect (as seen by E prefix) for wild accusation */
+    public class EWildAccusation : Effect, IExecutableEffect
+    {
+        private Color _color = new Color(255 / 255, 255 / 255, 100 / 255);
+
+        private Card _parent;
+        private string _name = "Wild Accusation!";
+        private string _desc_1 = "This cards compliance might change with each draw or play!";
+
+        public EWildAccusation(Card c) : base(99) { _parent = c; }
+        public string GetDescription()
+        {
+            return _desc_1;
+        }
+        public string GetName() { return _name; }
+        public Color GetColor() { return _color; }
+
+        /* Executes the effect. A conditional may be called within */
+        public void Execute()
+        {
+            // if (EncounterConditionals.CardsOfElementInHandGreaterThan("Persuasion", 0))
+            // {
+            //     _parent.UnstackableComplianceMod += 10 * GameState.Meta.activeEncounter.Value.Statistics.PersuasionCardsInHand;
+            //     _parent.DisplayEffect(this);
+            // }
+        }
+    }
+}
+
