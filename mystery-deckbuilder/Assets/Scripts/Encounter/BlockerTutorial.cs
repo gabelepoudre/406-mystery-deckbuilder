@@ -25,6 +25,9 @@ public class BlockerTutorial : MonoBehaviour
     public GameObject promptPreperation;
     public GameObject promptPreperation1;
     public GameObject promptDone;
+    public GameObject sblocker;
+    public GameObject sblocker1;
+    public GameObject sblocker2;
 
 
     // Start is called before the first frame update
@@ -60,6 +63,7 @@ public class BlockerTutorial : MonoBehaviour
             case 4://start explaining conversation cards
                 drawBlocker.SetActive(true);
                 cardBlocker1.SetActive(false);
+                sblocker.SetActive(true);
                 promptDraw.SetActive(false);
                 promptConversation.SetActive(true);
                 break;
@@ -84,7 +88,9 @@ public class BlockerTutorial : MonoBehaviour
                 promptDraw2.SetActive(false);
                 drawBlocker.SetActive(true);
                 cardBlocker1.SetActive(true);
+                sblocker.SetActive(false);
                 cardBlocker2.SetActive(false);
+                sblocker1.SetActive(true);
                 promptPreperation.SetActive(true);
                 break;
             case 10://draw third card
@@ -96,7 +102,9 @@ public class BlockerTutorial : MonoBehaviour
                 drawBlocker.SetActive(true);
                 promptDraw2.SetActive(false);
                 cardBlocker2.SetActive(true);
+                sblocker1.SetActive(false);
                 cardBlocker3.SetActive(false);
+                sblocker2.SetActive(true);
                 promptPreperation1.SetActive(true);
                 break;
             case 12:
