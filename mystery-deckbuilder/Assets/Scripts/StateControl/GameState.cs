@@ -47,7 +47,8 @@ public static class GameState
         public static GameStateValue<bool> notepadActive = new(false, _gameStateValues);
         public static GameStateValue<bool> dialogueActive = new(false, _gameStateValues);
         public static GameStateValue<bool> justSlept = new(false, _gameStateValues);
-        
+
+        public static GameStateValue<bool> encounterTutorialComplete = new(false, _gameStateValues);
     }
 
 

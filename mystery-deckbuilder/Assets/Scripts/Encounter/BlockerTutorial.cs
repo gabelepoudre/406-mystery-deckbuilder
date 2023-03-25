@@ -33,8 +33,15 @@ public class BlockerTutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()//subscribe to stuff here
     {
-        GameState.Meta.activeEncounter.OnChange += Next;
-        GameState.Player.dailyDeck.OnChange += Next;
+        if (GameState.Meta.encounterTutorialComplete.Value)
+        {
+            Destroy(this.gameObject);
+        }
+        else //don't let these run unless the whole tutorial is going to be completed
+        {
+            GameState.Meta.activeEncounter.OnChange += Next;
+            GameState.Player.dailyDeck.OnChange += Next;
+        } 
     }
 
     public void Next()
@@ -114,6 +121,7 @@ public class BlockerTutorial : MonoBehaviour
             case 13://unsub here
                 GameState.Meta.activeEncounter.OnChange -= Next;
                 GameState.Player.dailyDeck.OnChange -= Next;
+                GameState.Meta.encounterTutorialComplete.Value = true;
                 Destroy(this.gameObject);
                 break;
 
