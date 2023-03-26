@@ -86,6 +86,10 @@ public class CardPrefabController : MonoBehaviour, IDeselectHandler, IPointerEnt
         }
         
     }
+    public bool GetHighlighted()
+    {
+        return _highlighted;
+    }
 
     public void DisplayEffect(IExecutableEffect effect)
     {
@@ -198,9 +202,12 @@ public class CardPrefabController : MonoBehaviour, IDeselectHandler, IPointerEnt
 
     public void UnHighlightCard()
     {
-        GameState.Meta.activeEncounter.Value.GetEncounterController().UnHighlightCard();
-        _highlighted = false;
-        Debug.Log("Unhighlighted");
+        if (!GameState.Meta.activeEncounter.Value.GetEncounterController().HighlightLock)
+        {
+            _highlighted = false;
+            GameState.Meta.activeEncounter.Value.GetEncounterController().UnHighlightCard();
+            Debug.Log("Unhighlighted");
+        }
     }
 
     public void ShowOptions()
