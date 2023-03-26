@@ -109,13 +109,12 @@ public class DialogueBox : MonoBehaviour
             //change text to red if it leads to encounter
             
             IDialogueNode node = optionNode.Next(index);
-            if (node.Next() != null)
+           
+            //traverse tree until we hit null or back to options. if we hit an encounter node we set the text to red
+            while (node != null && node.NodeType() != "option")
             {
-                if (node.Next().NodeType() == "encounter") optionButton.GetComponentInChildren<Text>().color = Color.red;
-            }
-            if (node.Next().Next() != null)
-            {
-                if (node.Next().Next().NodeType() == "encounter") optionButton.GetComponentInChildren<Text>().color = Color.red;
+                if (node.NodeType() == "encounter") optionButton.GetComponentInChildren<Text>().color = Color.red;
+                node = node.Next();
             }
             
 

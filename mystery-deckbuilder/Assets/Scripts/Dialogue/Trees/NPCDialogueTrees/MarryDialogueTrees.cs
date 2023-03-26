@@ -47,6 +47,8 @@ public class MarryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
         askAboutMarry.SetNext(marryIntroduction);
         askAboutSights.SetNext(marryRecommendation);
+        marryIntroduction.SetNext(reply);
+        marryRecommendation.SetNext(reply);
 
         (string, IDialogueNode)[] introReplyOptionsList = {
             ("Ask about Marry", askAboutMarry),

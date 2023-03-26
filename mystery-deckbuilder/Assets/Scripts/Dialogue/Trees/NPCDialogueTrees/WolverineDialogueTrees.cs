@@ -31,7 +31,7 @@ public class WolverineDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         root.SetNext(options);
 
         PlayerNode askWhere = new(new string[] {"Where were you on the night of the berry disappearance?"});
-        PlayerNode answerWhere = new(new string[] {"......"});
+        NPCNode answerWhere = new(new string[] {"......"});
         askWhere.SetNext(answerWhere);
         answerWhere.SetNext(options);
        
