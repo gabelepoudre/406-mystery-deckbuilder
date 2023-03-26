@@ -89,6 +89,11 @@ public class BlockerTutorial : MonoBehaviour
                 break;
             case 8://draw second card
                 GameState.Meta.activeEncounter.Value.GetEncounterController().HighlightLock = false;
+                if (GameState.Meta.activeEncounter.Value.GetEncounterController().GetHighlightedCard() != null)
+                {
+                    CardPrefabController c = GameState.Meta.activeEncounter.Value.GetEncounterController().GetHighlightedCard().GetComponent<CardPrefabController>();
+                    c.UnHighlightCard();
+                }
                 promptHighlight.SetActive(false);
                 drawBlocker.SetActive(false);
                 promptDraw2.SetActive(true);
