@@ -79,6 +79,7 @@ public class BlockerTutorial : MonoBehaviour
                 promptConversation1.SetActive(true);
                 break;
             case 6:
+                GameState.Meta.activeEncounter.Value.GetEncounterController().HighlightLock = true;
                 promptConversation1.SetActive(false);
                 promptConversation2.SetActive(true);
                 break;
@@ -87,6 +88,7 @@ public class BlockerTutorial : MonoBehaviour
                 promptHighlight.SetActive(true);
                 break;
             case 8://draw second card
+                GameState.Meta.activeEncounter.Value.GetEncounterController().HighlightLock = false;
                 promptHighlight.SetActive(false);
                 drawBlocker.SetActive(false);
                 promptDraw2.SetActive(true);
@@ -122,6 +124,11 @@ public class BlockerTutorial : MonoBehaviour
                 GameState.Meta.activeEncounter.OnChange -= Next;
                 GameState.Player.dailyDeck.OnChange -= Next;
                 GameState.Meta.encounterTutorialComplete.Value = true;
+                if (GameState.Meta.activeEncounter.Value.GetEncounterController().GetHighlightedCard() != null)
+                {
+                    CardPrefabController c = GameState.Meta.activeEncounter.Value.GetEncounterController().GetHighlightedCard().GetComponent<CardPrefabController>();
+                    c.UnHighlightCard();
+                }
                 Destroy(this.gameObject);
                 break;
 

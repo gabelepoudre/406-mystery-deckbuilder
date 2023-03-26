@@ -36,6 +36,8 @@ public class EncounterPrefabController : MonoBehaviour
     private Vector3 _oldHighlightedCardTransformPosition;
     private GameObject _highlightedCard;
 
+    public bool HighlightLock { get; set; } = false;
+
     void Awake()
     {
         // this is in awake because we need the bar scripts to initialize before Start()
@@ -64,6 +66,10 @@ public class EncounterPrefabController : MonoBehaviour
         _cardOnWin = config.Opponent.cardIDUnlockFromWinEncounter;
     }
 
+    public GameObject GetHighlightedCard()
+    {
+        return _highlightedCard;
+    }
 
     public void ChangeHeadshotBasedOnPatience()
     {
@@ -152,28 +158,42 @@ public class EncounterPrefabController : MonoBehaviour
     /* Highlights a card given it's instantiated prefab */
     public void HighlightCard(GameObject cardFrontend)
     {
-        _oldHighlightedCardTransformPosition = cardFrontend.transform.position;
-        cardFrontend.transform.localScale = new Vector3(cardFrontend.transform.localScale.x * 2, cardFrontend.transform.localScale.y * 2, cardFrontend.transform.localScale.z);
-        this.cardTypeOnHighlight.text = cardFrontend.GetComponent<CardPrefabController>().GetElement();
-        _highlightedCard = cardFrontend;
+        if (!HighlightLock && _highlightedCard != null)
+        {
+            CardPrefabController c = _highlightedCard.GetComponent<CardPrefabController>();
+            if (c.GetHighlighted())  // if card thinks it should still be highlighted, force unhighlight again
+            {
+                c.UnHighlightCard();
+            }
+        }
+        if (!HighlightLock || _highlightedCard == null)
+        {
+            _oldHighlightedCardTransformPosition = cardFrontend.transform.position;
+            cardFrontend.transform.localScale = new Vector3(cardFrontend.transform.localScale.x * 2, cardFrontend.transform.localScale.y * 2, cardFrontend.transform.localScale.z);
+            this.cardTypeOnHighlight.text = cardFrontend.GetComponent<CardPrefabController>().GetElement();
+            _highlightedCard = cardFrontend;
 
-        Transform newTransform = cardHighlightTransform;
-        _highlightedCard.transform.position = new Vector3(newTransform.position.x, newTransform.position.y, newTransform.position.z);
+            Transform newTransform = cardHighlightTransform;
+            _highlightedCard.transform.position = new Vector3(newTransform.position.x, newTransform.position.y, newTransform.position.z);
+        }
     }
 
     /* Unhighlights the currently highlighted card */
     public void UnHighlightCard()
     {
-        if (_highlightedCard == null)
+        if (!HighlightLock)
         {
-            Debug.LogWarning("There is no card to un-highlight");
-        }
-        else
-        {
-            _highlightedCard.transform.position = _oldHighlightedCardTransformPosition;
-            _highlightedCard.transform.localScale = new Vector3(_highlightedCard.transform.localScale.x / 2, _highlightedCard.transform.localScale.y / 2, _highlightedCard.transform.localScale.z);
-            _highlightedCard = null;
-            this.cardTypeOnHighlight.text = "";
+            if (_highlightedCard == null)
+            {
+                Debug.LogWarning("There is no card to un-highlight");
+            }
+            else
+            {
+                _highlightedCard.transform.position = _oldHighlightedCardTransformPosition;
+                _highlightedCard.transform.localScale = new Vector3(_highlightedCard.transform.localScale.x / 2, _highlightedCard.transform.localScale.y / 2, _highlightedCard.transform.localScale.z);
+                _highlightedCard = null;
+                this.cardTypeOnHighlight.text = "";
+            }
         }
     }
 
