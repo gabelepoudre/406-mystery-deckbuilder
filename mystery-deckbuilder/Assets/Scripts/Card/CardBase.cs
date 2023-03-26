@@ -22,6 +22,10 @@ public abstract class Card
 
     public int DefaultCompliance { get { return int.Parse(_metadata["compliance"]); } }
 
+    public string DefaultElement { get { return _metadata["element"]; } }
+    
+
+
     public float StackableComplianceMod 
     {
         get { return _stackableComplianceMod; }
@@ -42,6 +46,30 @@ public abstract class Card
         }
     }  // Note! Unstackable values are ALWAYS additions. No multiplications
     private int _unStackableComplianceMod = 0;
+
+    public bool ElementOverridden
+    {
+        get { return _elementOverriden; }
+        set
+        {
+            _elementOverriden = value;
+            frontendController.SetCompliance(GetTotalCompliance());
+            frontendController.SetPatience(GetTotalPatience());
+        }
+    }  // Note! Override is for fully overrulling an element value
+    private bool _elementOverriden = false;
+
+    public string ElementOverride
+    {
+        get { return _elementOverride; }
+        set
+        {
+            _elementOverride = value;
+            frontendController.SetCompliance(GetTotalCompliance());
+            frontendController.SetPatience(GetTotalPatience());
+        }
+    }  // Note! Override is for fully overrulling an element value 
+    private string _elementOverride = "";
 
     public int ComplianceOverride
     {
@@ -131,6 +159,8 @@ public abstract class Card
         PatienceOverride = 0;
         ComplianceOverridden = false;
         ComplianceOverride = 0;
+        ElementOverridden = false;
+        ElementOverride = "";
         ClearVisualEffects();
     }
 
