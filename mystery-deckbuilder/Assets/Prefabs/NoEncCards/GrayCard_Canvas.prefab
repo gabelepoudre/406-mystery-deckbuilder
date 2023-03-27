@@ -611,6 +611,9 @@ MonoBehaviour:
   cardDescription: {fileID: 7901606490934592915}
   visiblePatience: {fileID: 579494228279617667}
   visibleCompliance: {fileID: 7408203079314447740}
+  onlyAddInDeckbuilding: {fileID: 0}
+  onlyAddInDeckbuildingIsDeck: 0
+  makeBiggerTransform: {fileID: 0}
 --- !u!1 &8458863876258410004
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,8 +649,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 230, y: 300}
+  m_AnchoredPosition: {x: 0.5629, y: -33.92799}
+  m_SizeDelta: {x: 200.1775, y: 226.0366}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6158556504048545252
 CanvasRenderer:
