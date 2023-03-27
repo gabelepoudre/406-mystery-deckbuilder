@@ -17,25 +17,21 @@ public class TestNPCSpriteController : MonoBehaviour
     {
         
         // Long conditional for testing - press a letter to switch the sprite
-        if(Input.GetKeyDown("a"))
+        if(Input.GetKeyDown("4"))
         {
-            NPCSpriteController.GetAngry(image);
+            NPCSpriteController.GetPhaseFour(image);
         }
-        else if(Input.GetKeyDown("h"))
+        else if(Input.GetKeyDown("1"))
         {
-            NPCSpriteController.GetHappy(image);
+            NPCSpriteController.GetPhaseOne(image);
         }
-        else if(Input.GetKeyDown("w"))
+        else if(Input.GetKeyDown("3"))
         {
-            NPCSpriteController.GetWorry(image);
+            NPCSpriteController.GetPhaseThree(image);
         }
-        else if(Input.GetKeyDown("s"))
+        else if(Input.GetKeyDown("2"))
         {
-            NPCSpriteController.GetStress(image);
-        }
-        else if(Input.GetKeyDown("n"))
-        {
-            NPCSpriteController.GetNeutral(image);
+            NPCSpriteController.GetPhaseTwo(image);
         }
     }
 }

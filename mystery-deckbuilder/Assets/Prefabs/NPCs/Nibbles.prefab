@@ -523,11 +523,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2c6071d43e4cf47b85ce574f5d547d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neutral: {fileID: 21300000, guid: 8332ab4302fbbdb4789cf7cef7e2da7b, type: 3}
-  happy: {fileID: 21300000, guid: 88f706bb8b768f34b9af23e0fd459248, type: 3}
-  angry: {fileID: 21300000, guid: 2ba679a7156ce4749bd06bb531e0ec26, type: 3}
-  stress: {fileID: 21300000, guid: 238e0a60c08a66d48aa35005c5c14e87, type: 3}
-  worry: {fileID: 21300000, guid: 21db39e2b2ac9344bb54d97fcaa3c041, type: 3}
+  phaseOne: {fileID: 21300000, guid: 88f706bb8b768f34b9af23e0fd459248, type: 3}
+  PhaseTwo: {fileID: 21300000, guid: 8332ab4302fbbdb4789cf7cef7e2da7b, type: 3}
+  PhaseThree: {fileID: 21300000, guid: 21db39e2b2ac9344bb54d97fcaa3c041, type: 3}
+  PhaseFour: {fileID: 21300000, guid: 238e0a60c08a66d48aa35005c5c14e87, type: 3}
 --- !u!1 &8310409467959974986
 GameObject:
   m_ObjectHideFlags: 0
