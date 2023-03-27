@@ -23,7 +23,7 @@ public class DeerDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
     private DialogueTree BuildIntro()
     {
-        NPCNode intro = new(new string[] {"Oh it's... you're... You're the renowned detective Glub. We are currently undergoing a bit of a crisis.", 
+        NPCNode intro = new(new string[] {"Oh it's... You're... You're the renowned detective Glub. We are currently undergoing a bit of a crisis.", 
         "All the Saskatoon berries that were for the berry festival have gone missing. The town of Small Pines would really appreciate the help of such a renowned detective.",
         "Will you help us figure out this missing berry mystery?"});
         OptionNode options = new(); //set options later

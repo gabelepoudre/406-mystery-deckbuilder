@@ -27,7 +27,7 @@ public class BlackBearDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         NPCNode intro = new(new string[] {"Hello detective. Let me quickly catch you up to speed on what I've found at the crime scene.", 
         "The disappearance happened last night. There was a large number of footprints which indicates a big group worked together to steal the berries.", 
         "There's evidence that the culprits escaped using the river and travelled North. And uhhh. That's all I got, sorry.", 
-        "We have one week left before the berry festival, so we better act quickly"});
+        "We have one week left before the Berry Festival, so we better act quickly."});
         return new DialogueTree(intro);
     }
 

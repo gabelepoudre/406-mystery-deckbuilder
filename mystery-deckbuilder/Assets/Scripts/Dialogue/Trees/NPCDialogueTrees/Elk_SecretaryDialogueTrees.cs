@@ -41,7 +41,7 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     private DialogueTree BuildIntro()
     {
         NPCNode greeting = new(new string[] { "Greetings Detective Glub, I am both the secretary of Small Pines and the personal advisor for Mayor Crouton.", 
-            "How can I be of service, but do remember, I'am quite a busy person so please no smalltalk" });
+            "How can I be of service, but do remember, I am quite a busy person so please no smalltalk." });
 
         OptionNode reply = new();
 
@@ -70,7 +70,7 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         "However, I find the Town Hall idea very unlikely, if it is indeed being used to hide the berries, then I'll have more work on my hands.",
         "The creative locations would include under the river bridge, the Breakfast palace if all of the berries are squeezed out for juice,",
         "the entire Rodent side of the town, however if that was the case there would've plenty of eyes who saw the berries and I say creative because that would mean that all the rodents are in on the plan,",
-        "or finally a bear that might be preparing for hibernation but it's not spring time so this would be unlikely.That was a joke, you are free to laugh or not detective I do not mind.", 
+        "or finally a bear that might be preparing for hibernation but it's not spring time so this would be unlikely. That was a joke, you are free to laugh or not detective I do not mind.", 
         "If you do not get the joke then allow me to explain. It is impossible for a singular bear to eat the entirety of the berries and humor comes from the thought of a singular bear trying to gorge down all of the berries..."});
 
         PlayerNode talksAlot = new(new string[] {"(He sure talks a lot, I guess there really is no room for small talk)" });
@@ -95,8 +95,8 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
     private DialogueTree BuildDialogueWithNina()
     {
-        NPCNode greeting = new(new string[] { "Greetings Detective Glub, I'am both the secretary of Small Pines and the personal advisor for Mayor Crouton.",
-            "How can I be of service, but do remember, I'am quite a busy person so please no smalltalk" });
+        NPCNode greeting = new(new string[] { "Greetings Detective Glub, I am both the secretary of Small Pines and the personal advisor for Mayor Crouton.",
+            "How can I be of service, but do remember, I am quite a busy person so please no smalltalk." });
 
         OptionNode reply = new();
 
@@ -131,12 +131,12 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
 
         PlayerNode askNina = new(new string[] { "I've met with the Mayor's younger sister, and she's told me that all of Crouton's ideas are denied.",
-            "Why is it that it seems like the Mayor herself doesn�t have her own voice in political matters?" });
+            "Why is it that it seems like the Mayor herself doesn't have her own voice in political matters?" });
 
         NPCNode ninaAnswer = new(new string[] { "Listen Detective, Nina is a young disappointment to her ancestors...",
         "She does not understand the amount of procedures and care that must be done before an action is taken.",
         "Her older sister Crouton has a tendency of blurting out her thoughts and it is my job to correct her, nothing more than that.",
-        "Is that all Detective, well then I must remind you, I do not have time for small talk" });
+        "Is that all Detective? Well then I must remind you, I do not have time for small talk."});
 
         askNina.SetNext(ninaAnswer);
         ninaAnswer.SetNext(reply);
@@ -163,8 +163,8 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
     private DialogueTree BuildDialogueWithAlan()
     {
-        NPCNode greeting = new(new string[] { "Greetings Detective Glub, I'am both the secretary of Small Pines and the personal advisor for Mayor Crouton.",
-            "How can I be of service, but do remember, I'am quite a busy person so please no smalltalk" });
+        NPCNode greeting = new(new string[] { "Greetings Detective Glub, I am both the secretary of Small Pines and the personal advisor for Mayor Crouton.",
+            "How can I be of service, but do remember, I am quite a busy person so please no smalltalk." });
 
         OptionNode reply = new();
 
@@ -201,7 +201,7 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
             "care to share the contents of that mail with me?" });
 
         NPCNode alanAnswer = new(new string[] { "Detective, accusations without evidence and witnesses is a false report. You could face both criminal or civil charges.", 
-        "I am willing to let this one slide since you are vital to finding the missing berries, but do remember that listening to baseless rumors are quite troublesome.",
+        "I am willing to let this one slide since you are vital to finding the missing berries, but do remember that listening to baseless rumors is quite troublesome.",
         "I recommend avoiding it." });
 
         askAlan.SetNext(alanAnswer);
@@ -230,8 +230,8 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
     private DialogueTree BuildAlanWithEvidence()
     {
-        NPCNode greeting = new(new string[] { "Greetings Detective Glub, I'am both the secretary of Small Pines and the personal advisor for Mayor Crouton.",
-            "How can I be of service, but do remember, I'am quite a busy person so please no smalltalk" });
+        NPCNode greeting = new(new string[] { "Greetings Detective Glub, I am both the secretary of Small Pines and the personal advisor for Mayor Crouton.",
+            "How can I be of service, but do remember, I am quite a busy person so please no smalltalk." });
 
         OptionNode reply = new();
 
@@ -265,11 +265,11 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         "(He sure talks a lot, I guess there really is no room for small talk)" });
 
         PlayerNode askAlan = new(new string[] { "Secretary, these are not baseless rumors.",
-        "Mayor Crouton herself told me that you have been receiving mysterious mail that you do not want to show her" });
+        "Mayor Crouton herself told me that you have been receiving mysterious mail that you do not want to show her." });
 
-        NPCNode alanAnswer = new(new string[] { "That mumbling furball... We receive mails everyday. However, they are always sent to me, so she doesn't see them.",
+        NPCNode alanAnswer = new(new string[] { "That mumbling furball... We receive mail everyday. However, they are always sent to me, so she doesn't see them.",
         "And since I'm the secretary, I deal with those myself.",
-        "If the only lead you have right now are 'mysterious mails', then I suggest you quit this right now and find those berries." });
+        "If the only lead you have right now is 'mysterious mail', then I suggest you quit this right now and find those berries." });
 
         askAlan.SetNext(alanAnswer);
 
@@ -294,8 +294,8 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     }
     private DialogueTree BuildDialogueWithCroutonAndNina()
     {
-        NPCNode greeting = new(new string[] { "Greetings Detective Glub, I'am both the secretary of Small Pines and the personal advisor for Mayor Crouton.",
-            "How can I be of service, but do remember, I'am quite a busy person so please no smalltalk" });
+        NPCNode greeting = new(new string[] { "Greetings Detective Glub, I am both the secretary of Small Pines and the personal advisor for Mayor Crouton.",
+            "How can I be of service, but do remember, I am quite a busy person so please no smalltalk" });
 
         OptionNode reply = new();
 
@@ -336,12 +336,12 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         askCrouton.SetNext(encounter);
 
         PlayerNode askNina = new(new string[] { "I've met with the Mayor's younger sister, and she's told me that all of Crouton's ideas are denied.",
-            "Why is it that it seems like the Mayor herself doesn�t have her own voice in political matters?" });
+            "Why is it that it seems like the Mayor herself doesn't have her own voice in political matters?" });
 
         NPCNode ninaAnswer = new(new string[] { "Listen Detective, Nina is a young disappointment to her ancestors...",
-        "She does not understand the amount of procedures and care that must be done before an action is taken.",
+        "She does not understand the amount of procedures and care that must be taken before an action is taken.",
         "Her older sister Crouton has a tendency of blurting out her thoughts and it is my job to correct her, nothing more than that.",
-        "Is that all Detective, well then I must remind you, I do not have time for small talk" });
+        "Is that all Detective, well then I must remind you, I do not have time for small talk." });
 
         askNina.SetNext(ninaAnswer);
         ninaAnswer.SetNext(reply);
@@ -367,8 +367,8 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
     private DialogueTree BuildDialogueWithAlanAndNina()
     {
-        NPCNode greeting = new(new string[] { "Greetings Detective Glub, I'am both the secretary of Small Pines and the personal advisor for Mayor Crouton.",
-            "How can I be of service, but do remember, I'am quite a busy person so please no smalltalk" });
+        NPCNode greeting = new(new string[] { "Greetings Detective Glub, I am both the secretary of Small Pines and the personal advisor for Mayor Crouton.",
+            "How can I be of service, but do remember, I am quite a busy person so please no smalltalk." });
 
         OptionNode reply = new();
 
@@ -402,10 +402,10 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         "(He sure talks a lot, I guess there really is no room for small talk)" });
 
         PlayerNode askAlan = new(new string[] { "Secretary, I heard that you have been receiving mysterious mail for the past week.",
-            "care to share the contents of that mail with me?" });
+            "Care to share the contents of that mail with me?" });
 
-        NPCNode alanAnswer = new(new string[] { "Detective, accusations without evidence and witnesses is a false report. You could face both criminal or civil charges.",
-        "I am willing to let this one slide since you are vital to finding the missing berries, but do remember that listening to baseless rumors are quite troublesome.",
+        NPCNode alanAnswer = new(new string[] { "Detective, accusations without evidence and witnesses is a false report. You could face both criminal and civil charges.",
+        "I am willing to let this one slide since you are vital to finding the missing berries, but do remember that listening to baseless rumors is quite troublesome.",
         "I recommend avoiding it." });
 
         askAlan.SetNext(alanAnswer);
@@ -413,12 +413,12 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         alanAnswer.SetNext(reply);
 
         PlayerNode askNina = new(new string[] { "I've met with the Mayor's younger sister, and she's told me that all of Crouton's ideas are denied.",
-            "Why is it that it seems like the Mayor herself doesn�t have her own voice in political matters?" });
+            "Why is it that it seems like the Mayor herself doesn't have her own voice in political matters?" });
 
-        NPCNode ninaAnswer = new(new string[] { "Listen Detective, Nina is a young disappointment to her ancestors...",
-        "She does not understand the amount of procedures and care that must be done before an action is taken.",
+        NPCNode ninaAnswer = new(new string[] { "Listen, Detective, Nina is a young disappointment to her ancestors...",
+        "She does not understand the amount of procedures and care that must be taken before an action is taken.",
         "Her older sister Crouton has a tendency of blurting out her thoughts and it is my job to correct her, nothing more than that.",
-        "Is that all Detective, well then I must remind you, I do not have time for small talk" });
+        "Is that all Detective, well then I must remind you, I do not have time for small talk." });
 
         askNina.SetNext(ninaAnswer);
         ninaAnswer.SetNext(reply);
@@ -446,8 +446,8 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
     private DialogueTree BuildDialogueWithAllThree()
     {
-        NPCNode greeting = new(new string[] { "Greetings Detective Glub, I'am both the secretary of Small Pines and the personal advisor for Mayor Crouton.",
-            "How can I be of service, but do remember, I'am quite a busy person so please no smalltalk" });
+        NPCNode greeting = new(new string[] { "Greetings Detective Glub, I am both the secretary of Small Pines and the personal advisor for Mayor Crouton.",
+            "How can I be of service, but do remember, I am quite a busy person so please no smalltalk." });
 
         OptionNode reply = new();
 
@@ -483,8 +483,8 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         PlayerNode askAlan = new(new string[] { "Secretary, I heard that you have been receiving mysterious mail for the past week.",
             "care to share the contents of that mail with me?" });
 
-        NPCNode alanAnswer = new(new string[] { "Detective, accusations without evidence and witnesses is a false report. You could face both criminal or civil charges.",
-        "I am willing to let this one slide since you are vital to finding the missing berries, but do remember that listening to baseless rumors are quite troublesome.",
+        NPCNode alanAnswer = new(new string[] { "Detective, accusations without evidence and witnesses is a false report. You could face both criminal and civil charges.",
+        "I am willing to let this one slide since you are vital to finding the missing berries, but do remember that listening to baseless rumors is quite troublesome.",
         "I recommend avoiding it." });
 
         askAlan.SetNext(alanAnswer);
@@ -502,9 +502,9 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
             "Why is it that it seems like the Mayor herself doesn�t have her own voice in political matters?" });
 
         NPCNode ninaAnswer = new(new string[] { "Listen Detective, Nina is a young disappointment to her ancestors...",
-        "She does not understand the amount of procedures and care that must be done before an action is taken.",
+        "She does not understand the amount of procedures and care that must be taken before an action is taken.",
         "Her older sister Crouton has a tendency of blurting out her thoughts and it is my job to correct her, nothing more than that.",
-        "Is that all Detective, well then I must remind you, I do not have time for small talk" });
+        "Is that all Detective, well then I must remind you, I do not have time for small talk." });
 
         askNina.SetNext(ninaAnswer);
         ninaAnswer.SetNext(reply);
@@ -533,8 +533,8 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
     private DialogueTree BuildAlanWithEvidenceAndNina()
     {
-        NPCNode greeting = new(new string[] { "Greetings Detective Glub, I'am both the secretary of Small Pines and the personal advisor for Mayor Crouton.",
-            "How can I be of service, but do remember, I'am quite a busy person so please no smalltalk" });
+        NPCNode greeting = new(new string[] { "Greetings Detective Glub, I am both the secretary of Small Pines and the personal advisor for Mayor Crouton.",
+            "How can I be of service, but do remember, I am quite a busy person so please no smalltalk." });
 
         OptionNode reply = new();
 
@@ -570,21 +570,21 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         PlayerNode askAlan = new(new string[] { "Secretary, these are not baseless rumors.",
         "Mayor Crouton herself told me that you have been receiving mysterious mail that you do not want to show her" });
 
-        NPCNode alanAnswer = new(new string[] { "That mumbling furball... We receive mails everyday. However, they are always sent to me, so she doesn't see them.",
+        NPCNode alanAnswer = new(new string[] { "That mumbling furball... We receive mail everyday. However, they are always sent to me, so she doesn't see them.",
         "And since I'm the secretary, I deal with those myself.",
-        "If the only lead you have right now are 'mysterious mails', then I suggest you quit this right now and find those berries." });
+        "If the only lead you have right now is 'mysterious mail', then I suggest you quit this right now and find those berries." });
 
         askAlan.SetNext(alanAnswer);
 
         alanAnswer.SetNext(reply);
 
         PlayerNode askNina = new(new string[] { "I've met with the Mayor's younger sister, and she's told me that all of Crouton's ideas are denied.",
-            "Why is it that it seems like the Mayor herself doesn�t have her own voice in political matters?" });
+            "Why is it that it seems like the Mayor herself doesn't have her own voice in political matters?" });
 
         NPCNode ninaAnswer = new(new string[] { "Listen Detective, Nina is a young disappointment to her ancestors...",
-        "She does not understand the amount of procedures and care that must be done before an action is taken.",
+        "She does not understand the amount of procedures and care that must be taken before an action is taken.",
         "Her older sister Crouton has a tendency of blurting out her thoughts and it is my job to correct her, nothing more than that.",
-        "Is that all Detective, well then I must remind you, I do not have time for small talk" });
+        "Is that all Detective, well then I must remind you, I do not have time for small talk." });
 
         askNina.SetNext(ninaAnswer);
         ninaAnswer.SetNext(reply);
@@ -610,8 +610,8 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
     private DialogueTree BuildAlanWithEvidenceAndNinaAndCrouton()
     {
-        NPCNode greeting = new(new string[] { "Greetings Detective Glub, I'am both the secretary of Small Pines and the personal advisor for Mayor Crouton.",
-            "How can I be of service, but do remember, I'am quite a busy person so please no smalltalk" });
+        NPCNode greeting = new(new string[] { "Greetings Detective Glub, I am both the secretary of Small Pines and the personal advisor for Mayor Crouton.",
+            "How can I be of service, but do remember, I am quite a busy person so please no smalltalk." });
 
         OptionNode reply = new();
 
@@ -645,23 +645,23 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         "(He sure talks a lot, I guess there really is no room for small talk)" });
 
         PlayerNode askAlan = new(new string[] { "Secretary, these are not baseless rumors.",
-        "Mayor Crouton herself told me that you have been receiving mysterious mail that you do not want to show her" });
+        "Mayor Crouton herself told me that you have been receiving mysterious mail that you do not want to show her." });
 
-        NPCNode alanAnswer = new(new string[] { "That mumbling furball... We receive mails everyday. However, they are always sent to me, so she doesn't see them.",
+        NPCNode alanAnswer = new(new string[] { "That mumbling furball... We receive mail everyday. However, they are always sent to me, so she doesn't see them.",
         "And since I'm the secretary, I deal with those myself.",
-        "If the only lead you have right now are 'mysterious mails', then I suggest you quit this right now and find those berries." });
+        "If the only lead you have right now is 'mysterious mail', then I suggest you quit this right now and find those berries." });
 
         askAlan.SetNext(alanAnswer);
 
         alanAnswer.SetNext(reply);
 
         PlayerNode askNina = new(new string[] { "I've met with the Mayor's younger sister, and she's told me that all of Crouton's ideas are denied.",
-            "Why is it that it seems like the Mayor herself doesn�t have her own voice in political matters?" });
+            "Why is it that it seems like the Mayor herself doesn't have her own voice in political matters?" });
 
         NPCNode ninaAnswer = new(new string[] { "Listen Detective, Nina is a young disappointment to her ancestors...",
         "She does not understand the amount of procedures and care that must be done before an action is taken.",
         "Her older sister Crouton has a tendency of blurting out her thoughts and it is my job to correct her, nothing more than that.",
-        "Is that all Detective, well then I must remind you, I do not have time for small talk" });
+        "Is that all Detective, well then I must remind you, I do not have time for small talk." });
 
         askNina.SetNext(ninaAnswer);
         ninaAnswer.SetNext(reply);
@@ -696,12 +696,12 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         /** Elk's dialogue after you beat him **/
     private DialogueTree BuildAfterEncounterWin()
     {
-        return new DialogueTree(new NPCNode(new string[] { "What have I done, I've lost my way. I've deceived and used my friends as tools to achieve my dreams.",
-        "I've abused my power to conform this town to my views without caring about the input of the town folks.",
-        "Detective, I have something to tell you. my friend Crouton knows how to reach the peoples hearts.",
+        return new DialogueTree(new NPCNode(new string[] { "What have I done? I've lost my way. I've deceived and used my friends as tools to achieve my dreams.",
+        "I've abused my power to conform this town to my views without caring about the input of the townsfolk.",
+        "Detective, I have something to tell you. my friend Crouton knows how to reach the people's hearts.",
         "I told her to run for mayor and I used her popularity to put myself in a position of power.",
         "To me she was simply a tool I used to achieve my goals. I am despicable for believing this is the correct path.",
-        "I will reveal to everyone about my doings, apologize to all affected, and quit my position as Small Pines Secretary, on that you have my word.",
+        "I will reveal to everyone about my doings, apologize to all affected, and quit my position as Small Pines secretary, on that you have my word.",
         "Detective, on a final note, I have been told that the Rat Mob knows something about the berries.",
         "Investigate that old bossy rat and his brat son.",
         "All I can ask of you is to seek out the criminals and bring justice to this case once and for all, just as you have with me..."}));
@@ -710,7 +710,7 @@ public class Elk_SecretaryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     private DialogueTree BuildAfterEncounterLoss()
     {
         return new DialogueTree(new NPCNode(new string[] { "Detective... You water breather, enough of this, I do not like baseless accusations and I DO NOT LIKE SMALL TALK.",
-            "Never approach me again and do your job, find those berries." }));
+            "Never approach me again and do your job. Find those berries." }));
     }
     public Dictionary<string, DialogueTree> GetDialogueTrees()
     {

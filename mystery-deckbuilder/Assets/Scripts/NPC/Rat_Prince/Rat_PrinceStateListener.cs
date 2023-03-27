@@ -26,6 +26,7 @@ public class Rat_PrinceStateListener : MonoBehaviour
     {
         try
         {
+            string prevDialogue = transform.GetComponent<NPC>().CurrentDialogueKey;
             if (GameState.NPCs.Rat_Prince.encountersWon.Value == 1)
             {
                 transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWin";
@@ -36,6 +37,8 @@ public class Rat_PrinceStateListener : MonoBehaviour
             }
 
             transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
+            transform.GetComponent<NPC>().CurrentDialogueKey = prevDialogue;
+            
         }
         catch (MissingReferenceException e)
         {

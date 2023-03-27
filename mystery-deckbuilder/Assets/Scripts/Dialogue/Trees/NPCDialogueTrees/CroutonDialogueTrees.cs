@@ -54,7 +54,7 @@ public class CroutonDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         PlayerNode askWork = new(new string[] { "As Mayor of Small Pines, what exactly do you do as your work?",
             "I'm curious to know if you don't mind me asking." });
 
-        NPCNode freeTimeAnswer = new(new string[] { "Well, before I was the Mayor I liked to visit the main street and walk by the flower shop to smell the flowers." ,
+        NPCNode freeTimeAnswer = new(new string[] { "Well, before I was the Mayor I liked to visit Main Street and walk by the flower shop to smell the flowers." ,
             "I also enjoyed exploring the rail yard and the lumberyard! But ever since I've become the town mayor, I haven't really had that much free time." ,
             "When I do get free time I visit the Hay Bale shrine in the Town Hall's basement and roll around on hay!" });
 
@@ -89,7 +89,7 @@ public class CroutonDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         PlayerNode askWork = new(new string[] { "As Mayor of Small Pines, what exactly do you do as your work?",
             "I'm curious to know if you don't mind me asking." });
 
-        NPCNode freeTimeAnswer = new(new string[] { "Well, before I was the Mayor I liked to visit the main street and walk by the flower shop to smell the flowers." ,
+        NPCNode freeTimeAnswer = new(new string[] { "Well, before I was the Mayor I liked to visit Main Street and walk by the flower shop to smell the flowers." ,
             "I also enjoyed exploring the rail yard and the lumberyard! But ever since I've become the town mayor, I haven't really had that much free time." ,
             "When I do get free time I visit the Hay Bale shrine in the Town Hall's basement and roll around on hay!" });
 
@@ -145,7 +145,7 @@ public class CroutonDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         PlayerNode askWork = new(new string[] { "As Mayor of Small Pines, what exactly do you do as your work?",
             "I'm curious to know if you don't mind me asking." });
 
-        NPCNode freeTimeAnswer = new(new string[] { "Well, before I was the Mayor I liked to visit the main street and walk by the flower shop to smell the flowers." ,
+        NPCNode freeTimeAnswer = new(new string[] { "Well, before I was the Mayor I liked to visit Main Street and walk by the flower shop to smell the flowers." ,
             "I also enjoyed exploring the rail yard and the lumberyard! But ever since I've become the town mayor, I haven't really had that much free time." ,
             "When I do get free time I visit the Hay Bale shrine in the Town Hall's basement and roll around on hay!" });
 
@@ -202,7 +202,7 @@ public class CroutonDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         PlayerNode askWork = new(new string[] { "As Mayor of Small Pines, what exactly do you do as your work?",
             "I'm curious to know if you don't mind me asking." });
 
-        NPCNode freeTimeAnswer = new(new string[] { "Well, before I was the Mayor I liked to visit the main street and walk by the flower shop to smell the flowers." ,
+        NPCNode freeTimeAnswer = new(new string[] { "Well, before I was the Mayor I liked to visit the Main Street and walk by the flower shop to smell the flowers." ,
             "I also enjoyed exploring the rail yard and the lumberyard! But ever since I've become the town mayor, I haven't really had that much free time." ,
             "When I do get free time I visit the Hay Bale shrine in the Town Hall's basement and roll around on hay!" });
 
@@ -289,31 +289,20 @@ public class CroutonDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     {
         //Note: the DialogueManager wasn't setting the name to Crouton when the optional name parameter in NPCNode was null, so i manually specified Crouton for now
         NPCNode berriesGone = new(new string[] {"Oh great haymaker, please help us!", 
-        "Did a tornado pass by and we didn't notice?", 
         "what about the festival?! What's gonna happen now?!", 
-        "Nah man, I drank too many berries yesterday and passed out on the highway, a tornado would've taken me.", 
-        "Who would've done something like this?!", 
-        "Yeah right, but you're too ugly for the tornado.", 
-        "BERRIES!!"}, name:"Crowd");
+        "Who would've done something like this?!"}, name:"Crowd");
         PlayerNode excuseMe = new(new string[] {"Excuse me, but what happened here?"});
-        NPCNode fishBrains = new(new string[] {"Look around you fish brains, the berries are gone"}, name:"Crowd");
+        NPCNode fishBrains = new(new string[] {"Look around you fish brain, the berries are gone!"}, name:"Crowd");
         PlayerNode woah = new(new string[] {"Woah all the berries are gone just like that, also that was rude."});
-        NPCNode festival = new(new string[] {"Just before the festival! These people are mean!", 
-        "THE BERRIES!!!", "Dude that was uncalled for. Tornadoes don't pick and choose.", 
-        "Mommy, when are the berries gonna come back?", "NOOOO, I've waited all hibernation for those berries!"}, name:"Crowd");
+        NPCNode festival = new(new string[] {"And just before the festival too!"}, name:"Crowd");
         NPCNode cooperation = new(new string[] {"Everyone please...", 
         "I know how much the Berry Festival means to all of you, but for us to find the berries we need your cooperation and patience!"}, name:"Crouton");
-        NPCNode precious = new(new string[] {"Oh Crouton dear is just too precious, I'm so glad she's our mayor!", 
-        "MS. CROUTON HELP THE BERRIES!", "Yup the tornado sure as dirt didn't pick and choose you.", 
-        "I can't believe this, just like that all gone...", "What the dog doin'?", "Ms. Crouton, when are the berries gonna come back"}, name:"Crowd");
-        NPCNode comingBack = new(new string[] {"The're going to come back, don't worry! Everyone please remain calm!", 
-        "We are all going to require everyone's help if we are to find the berries before the Berry festival!"}, name:"Crouton");
-        NPCNode quietDown = new(new string[] {"Everyone let's quiet down for Mayor Crouton!", 
-        "Oh sweet sweet precious summer berries.", "AAARGHH BERRIES! ME WANT!", "Whatever man, led's drop the berries and tornadoes topic", 
-        "I already miss those berries....", "NO NO NO NO NO", "Yup, sounds good. Let's dip now and get Mike's, on you."}, name:"Crowd");
+        NPCNode precious = new(new string[] {"Oh Crouton dear is just too precious, I'm so glad she's our mayor!", "Ms. Crouton, are the berries gonna come back?"}, name:"Crowd");
+        NPCNode comingBack = new(new string[] {"They're going to come back, don't worry! Everyone please remain calm!", 
+        "We are going to require everyone's help if we are to find the berries before the Berry festival!"}, name:"Crouton");
+        NPCNode quietDown = new(new string[] {"Everyone let's quiet down for Mayor Crouton!"}, name:"Crowd");
         PlayerNode bad = new(new string[] {"*This is bad, the crowd is nowhere close to calming down*"});
-        NPCNode calm = new(new string[] {"Ummm.. Miss Crouton said to remain calm...", "I'M PANICKING CAN YOU TELL!?", 
-        "This can't be... My dreams!", "What are we gonna do now?", 
+        NPCNode calm = new(new string[] {"Ummm.. Miss Crouton said to remain calm...", "I'M PANICKING CAN YOU TELL!?",  
         "What has happened here will be remembered for all history..."}, name:"Crowd");
         NPCNode surprise = new(new string[] {"*Visible panic and a surprised Pikachu face* Uhhh please?"}, name:"Crouton");
         NPCNode silence = new(new string[] {"SILENCE!!!"}, name:"?");
@@ -338,7 +327,7 @@ public class CroutonDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
         /* I'm just gonna add this stuff here for now lol. time is of the essence */
         NPCNode elkIntro = new(new string[] {"Oh it's... you're... You're the renowned detective Glub. We are currently undergoing a bit of a crisis.", 
-        "All the Saskatoon berries that were for the berry festival have gone missing. The town of Small Pines would really appreciate the help of such a renowned detective.",
+        "All the Saskatoon berries that were for the Berry Festival have gone missing. The town of Small Pines would really appreciate the help of such a renowned detective.",
         "Will you help us figure out this missing berry mystery?"}, name:"Elk Secretary");
         OptionNode elkOptions = new(); //set options later
         bear.SetNext(elkIntro);

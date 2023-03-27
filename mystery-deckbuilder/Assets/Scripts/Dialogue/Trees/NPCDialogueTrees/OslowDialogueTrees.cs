@@ -30,14 +30,14 @@ public class OslowDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
         PlayerNode askWhere = new(new string[] {"Where were you on the night of the berry disappearance?"});
         PlayerNode answerWhere = new(new string[] {"I was at home enjoying a good novel.", 
-        "I know, it sounds pretty boring but I'm at that age where I just don't have the energy for high spirited activities. Plus, I do like reading"});
+        "I know, it sounds pretty boring but I'm at that age where I just don't have the energy for high spirited activities. Plus, I do like reading."});
         askWhere.SetNext(answerWhere);
         answerWhere.SetNext(options);
 
         PlayerNode askRole = new(new string[] {"What is your role here in Small Pines?"});
         NPCNode answerRole = new(new string[] {"I'm just the village elder now but I guess I'm like an information keeper of sorts?", 
         "I'm old and physically not helpful, however I am knowledgeable so the townsfolk like to come and see me when they want to know something.", 
-        "I also like to keep records of the town history"});
+        "I also like to keep records of the town history."});
         askRole.SetNext(answerRole);
         answerRole.SetNext(options);
 
@@ -61,8 +61,8 @@ public class OslowDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
     private DialogueTree BuildAfterEncounterWin()
     {
-        NPCNode root = new(new string[] {"Hmmm I have a couple ideas but nothing definitive.", 
-        "That night, it seems usually quiet around here so the mob may have been up to something. I did see a young  member head towards Mike's though.", 
+        NPCNode root = new(new string[] {"Hmmm, I have a couple ideas but nothing definitive.", 
+        "That night it seemed usually quiet around here so the mob may have been up to something. I did see a young member head towards Mike's though.", 
         "Perhaps you can go there and ask him about that night. There's also something odd about Elk.", 
         "On the surface he seems like a stand-up fellow but he does some shady things behind the mayor's back.", 
         "I have overheard some of his conversations when no one else was around and I can't help but be suspicious of him."});

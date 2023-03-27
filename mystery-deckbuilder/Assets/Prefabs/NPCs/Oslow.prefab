@@ -569,12 +569,12 @@ MonoBehaviour:
   affinity_intimidation: 0.823
   affinity_sympathy: 0.203
   affintiy_persuasion: 0.208
-  startingPatience: 25
-  startingCompliance: 100
+  startingPatience: 22
+  startingCompliance: 105
   currentPatience: 1
   currentCompliance: 0
   ComplianceThreshhold: 0
-  cardIDUnlockFromWinEncounter: 16
+  cardIDUnlockFromWinEncounter: 7
   encounterSprites: {fileID: 701282225796089859}
 --- !u!114 &2974809267316779736
 MonoBehaviour:
