@@ -25,14 +25,14 @@ public class MikeDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         NPCNode intro = new(new string[] {"Greetings detective, welcome to Mike's Perogies.", 
         "I'm Mike and this here is my humble perogy place."});
         PlayerNode askQuestions = new(new string[] {"Greetings sir, my name is Glub and I'm here to investigate the missing berries. Would it be alright if I asked you a couple of questions?"});
-        NPCNode thankYou = new(new string[] {"Well thank you kindly detective. The Berry Festival means a good deal to use. What can I help with?"});
+        NPCNode thankYou = new(new string[] {"Well thank you kindly detective. The Berry Festival means a good deal to us. What can I help with?"});
         OptionNode options = new();
 
         intro.SetNext(askQuestions);
         askQuestions.SetNext(thankYou);
         thankYou.SetNext(options);
 
-        PlayerNode askSides = new(new string[] {"Well as far as I can remember, the Northern side of town has always been the rodent's side of town while the rest of the animals live on the South side", 
+        PlayerNode askSides = new(new string[] {"Well as far as I can remember, the Northern side of town has always been the rodent's side of town while the rest of the animals live on the Southern side", 
         "However, to be honest with you detective, the relationship between the North and South has been geting worse and worse."});
         PlayerNode askBerries = new(new string[] {"Do you have any possible ideas as to who might've taken the berries?"});
         EncounterNode encounter = new();
@@ -63,10 +63,10 @@ public class MikeDialogueTrees : MonoBehaviour, IDialogueTreeCollection
  
      private DialogueTree BuildAfterEncounterWin()
     {
-        NPCNode root = new(new string[] {"Well I don't have any suspects at the moment...", 
+        NPCNode root = new(new string[] {"Well, I don't have any suspects at the moment...", 
         "But as far as I know Mrs. Crouton will be trying her darndest job to find them messing berries, she sure do love them berry festivals!", 
         "The townsfolk sure did do a great job pickin' em folks to lead 'em folks.", 
-        "Next time you do see Mrs. Crouton, make sure to tell her that her next meal here is on the house"});
+        "Next time you do see Mrs. Crouton, make sure to tell her that her next meal here is on the house!"});
          DialogueTree tree = new (root);
         return tree;
     }

@@ -31,7 +31,7 @@ public class ClayDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
         PlayerNode askWhere = new(new string[] {"Where were you on the night of the berry disappearance?"});
         PlayerNode answerWhere = new(new string[] {"Umm I think I was at home?", 
-        "Wait a sec, I forgot what I just said. I don't feel like telling you where I was"});
+        "Wait a sec, I forgot what I just said. I don't feel like telling you where I was."});
         EncounterNode encounter = new();
         askWhere.SetNext(answerWhere);
         answerWhere.SetNext(encounter);

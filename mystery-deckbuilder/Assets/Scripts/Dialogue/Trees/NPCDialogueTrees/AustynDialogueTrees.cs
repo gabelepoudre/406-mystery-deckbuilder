@@ -44,7 +44,7 @@ public class AustynDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
         NPCNode whereAnswer = new(new string[] {"Oh we were home by that time. The union is really good about not forcing overtime", 
         "It's usually only the hardcore members that stay late."});
-        NPCNode roleAnswer = new(new string[] {"I started at the union recenty.", "Honestly, it's been one of the best things to happen to us", 
+        NPCNode roleAnswer = new(new string[] {"I started at the union recenty.", "Honestly, it's been one of the best things to happen to us.", 
         "It's so nice to have a stable job and a solid income."});
         EncounterNode encounter = new();
 
@@ -73,12 +73,12 @@ public class AustynDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     private DialogueTree BuildAfterEncounterWin()
     {
         return new DialogueTree(new NPCNode(new string[] {"I mean...", "I guess the union has the equipment and the manpower to steal the berries, but they would never do that.", 
-        "The union loves Small Pines. The would never sabotage the festival."}));
+        "The union loves Small Pines. They would never sabotage the festival."}));
     }
 
     private DialogueTree BuildAfterEncounterLoss()
     {
-        return new DialogueTree(new NPCNode(new string[] {"I don't know if the union would like me talking about them like this", "Really sorry..."}));
+        return new DialogueTree(new NPCNode(new string[] {"I don't know if the union would like me talking about them like this.", "Really sorry..."}));
     }
 
     public Dictionary<string, DialogueTree> GetDialogueTrees()
