@@ -1054,7 +1054,7 @@ public class Whisper : Card
     {
         this._metadata["element"] = "Sympathy";
         this._metadata["name"] = "Whisper";
-        this._metadata["description"] = "The next three cards you play will have +5 compliance!";
+        this._metadata["description"] = "The next three cards you play will have +10 compliance!";
         this._metadata["patience"] = "2";
         this._metadata["compliance"] = "5";
 
@@ -1076,7 +1076,7 @@ public class Whisper : Card
         private string _name = "Whisper!";
         private string _desc_1 = "For the next ";
 
-        private string _desc_2 = " plays only, this card has +5 compliance!";
+        private string _desc_2 = " plays only, this card has +10 compliance!";
 
 
         public EWhisper() : base(3) { }
