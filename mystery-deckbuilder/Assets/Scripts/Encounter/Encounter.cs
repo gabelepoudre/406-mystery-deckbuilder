@@ -371,6 +371,7 @@ public class Encounter
         Statistics.LastComplianceDamage = totalCompliance;
         Statistics.LastPatienceDamage = totalPatience;
 
+        _hand.Remove(card);
         bool continueGame = _encounterController.SetAndCheckCompliance(_encounterController.GetCompliance() + totalCompliance);
         if (!continueGame)
         {
@@ -387,7 +388,6 @@ public class Encounter
         _encounterController.ChangeHeadshotBasedOnPatience();
 
         // remove from hand for now, we don't want to apply effects to a played card
-        _hand.Remove(card);
         RecalculateHandStatistics();
 
         // remove card
