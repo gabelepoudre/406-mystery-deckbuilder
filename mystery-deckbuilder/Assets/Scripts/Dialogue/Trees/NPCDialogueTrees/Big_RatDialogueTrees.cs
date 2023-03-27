@@ -46,27 +46,27 @@ public class Big_RatDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         OptionNode reply = new();
 
         PlayerNode askLocation = new(new string[] { "Where were you on the night of the berry disapearance?", 
-            "I've heard it was quiet around here"});
+            "I've heard it was quiet around here."});
 
         NPCNode locationAnswer = new(new string[] { "Why do you care?",
             "If you have to know, I invited the gang to a far away hideout to party the night away.",
-            "I though I would reward everybody's hard work and that a night of snacks and drinks would was perfect for that", 
+            "I thought I would reward everybody's hard work and that a night of snacks and drinks would be perfect for that", 
             "And yes, we have multiple hideouts that are connected by underground tunnels.",
-            "Since the townsfolk don't like us very much, travelling by tunnel is a good way for us to remain out of sigt and not bother anyone." });
+            "Since the townsfolk don't like us very much, travelling by tunnel is a good way for us to remain out of sight and not bother anyone." });
 
-        PlayerNode ok = new(new string[] { "Alright. I ave something else to ask though." });
+        PlayerNode ok = new(new string[] { "Alright. I have something else to ask, though." });
 
-        PlayerNode askClay = new(new string[] { "What happened to clay?",
+        PlayerNode askClay = new(new string[] { "What happened to Clay?",
             "Why can't he remember anything about that night?" });
 
         NPCNode clayAnswer = new(new string[] { "Who knows? Clay has always been an odd one.", 
             "He's too friendly with the townfolk I tell ya.", 
-            "He's also not that bright, so he could be a hinderance to us for... certain activities.",
-            "Since he's not very smart, I'm guessing he must've done something dumb and knocked himselfout for the whole night." });
+            "He's also not that bright, so he could be a hindrance to us for... certain activities.",
+            "Since he's not very smart, I'm guessing he must've done something dumb and knocked himself out for the whole night." });
 
         (string, IDialogueNode)[] IntroReplyOptionsList = {
-            ("", askLocation),
-            ("", askClay)
+            ("Ask about whereabouts", askLocation),
+            ("Ask about Clay", askClay)
         };
         greeting.SetNext(reply);
         reply.SetOptions(IntroReplyOptionsList);
@@ -92,9 +92,9 @@ public class Big_RatDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
         NPCNode locationAnswer = new(new string[] { "Why do you care?",
             "If you have to know, I invited the gang to a far away hideout to party the night away.",
-            "I though I would reward everybody's hard work and that a night of snacks and drinks would was perfect for that",
+            "I thought I would reward everybody's hard work and that a night of snacks and drinks would be perfect for that",
             "And yes, we have multiple hideouts that are connected by underground tunnels.",
-            "Since the townsfolk don't like us very much, travelling by tunnel is a good way for us to remain out of sigt and not bother anyone." });
+            "Since the townsfolk don't like us very much, travelling by tunnel is a good way for us to remain out of sight and not bother anyone." });
 
         PlayerNode notOk = new(new string[] { "This note here seems to contradict what you just told me.", 
             "What is the meaning of this" });
@@ -105,13 +105,13 @@ public class Big_RatDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
         EncounterNode encounter = new();
 
-        PlayerNode askClay = new(new string[] { "What happened to clay?",
+        PlayerNode askClay = new(new string[] { "What happened to Clay?",
             "Why can't he remember anything about that night?" });
 
         NPCNode clayAnswer = new(new string[] { "Who knows? Clay has always been an odd one.",
-            "He's too friendly with the townfolk I tell ya.",
-            "He's also not that bright, so he could be a hinderance to us for... certain activities.",
-            "Since he's not very smart, I'm guessing he must've done something dumb and knocked himselfout for the whole night." });
+            "He's too friendly with the townsfolk I tell ya.",
+            "He's also not that bright, so he could be a hindrance to us for... certain activities.",
+            "Since he's not very smart, I'm guessing he must've done something dumb and knocked himself out for the whole night." });
 
         (string, IDialogueNode)[] IntroReplyOptionsList = {
             ("Ask about whereabouts", askLocation),
