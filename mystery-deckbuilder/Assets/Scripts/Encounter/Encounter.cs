@@ -59,6 +59,10 @@ public class Encounter
     /* Statistics is used to hold information about the GameState and make it easier to implement conditionals */
     public class StatisticsClass
     {
+        public List<int> ListOfPlayedCards { get; set; } = new();
+        public int LastPatienceDamage { get; set; } = 0;
+        public int LastComplianceDamage { get; set; } = 0;
+        public string LastPlayElement { get; set; } = "";
         public int NumberOfPlays { get; set; } = 0;
         public int NumberOfDraws { get; set; } = 0;
         public int IntimidationCardsPlayed { get; set; } = 0;
@@ -122,6 +126,60 @@ public class Encounter
         _opponent = config.Opponent;
     }
 
+    public void RecalculateHandStatistics()
+    {
+        Statistics.IntimidationCardsInHand = 0;
+        Statistics.PersuasionCardsInHand = 0;
+        Statistics.PreparationCardsInHand = 0;
+        Statistics.SympathyCardsInHand = 0;
+        Statistics.ConversationCardsInHand = 0;
+        foreach (Card card in GetHand())
+        {
+            string element = "";
+            if (card.ElementOverridden)
+            {
+                element = card.ElementOverride;
+            }
+            else
+            {
+                element = card.GetElement();
+            }
+
+            switch (element)
+            {
+                case "Intimidation":
+                    Statistics.IntimidationCardsInHand += 1;
+                    Statistics.ConversationCardsInHand += 1;
+                    break;
+
+                case "Sympathy":
+                    Statistics.SympathyCardsInHand += 1;
+                    Statistics.ConversationCardsInHand += 1;
+                    break;
+
+                case "Persuasion":
+                    Statistics.PersuasionCardsInHand += 1;
+                    Statistics.ConversationCardsInHand += 1;
+                    break;
+
+                case "Preparation":
+                    Statistics.PreparationCardsInHand += 1;
+                    break;
+            }
+        }
+    }
+
+    public void ForceCardInHand(int cardID)
+    {
+        Card draw = (Card)Cards.CreateCardWithID(cardID);
+        RecalculateHandStatistics();
+
+        _hand.Add(draw);
+        _encounterController.PlaceCard(draw);
+
+        OnChange(); // we call this on all draws and plays
+    }
+
     /* Draw a card, if we can. Draws trigger "OnChange" which recalculates all card values */
     public void DrawCard(int patienceCost)
     {
@@ -157,31 +215,9 @@ public class Encounter
             }
             else
             {
-                // quick statistics
-                switch (draw.GetElement())
-                {
-                    case "Intimidation":
-                        Statistics.IntimidationCardsInHand += 1;
-                        Statistics.ConversationCardsInHand += 1;
-                        Statistics.NumberOfDraws += 1;
-                        break;
-                    case "Sympathy":
-                        Statistics.SympathyCardsInHand += 1;
-                        Statistics.ConversationCardsInHand += 1;
-                        Statistics.NumberOfDraws += 1;
-                        break;
-                    case "Persuasion":
-                        Statistics.PersuasionCardsInHand += 1;
-                        Statistics.ConversationCardsInHand += 1;
-                        Statistics.NumberOfDraws += 1;
-                        break;
-                    case "Preparation":
-                        Statistics.PreparationCardsInHand += 1;
-                        Statistics.NumberOfDraws += 1;
-                        break;
-                }
-
+                Statistics.NumberOfDraws += 1;
                 _hand.Add(draw);
+                RecalculateHandStatistics();
                 _encounterController.PlaceCard(draw);
                 
                 OnChange(); // we call this on all draws and plays
@@ -254,18 +290,22 @@ public class Encounter
     /* Reset and recalculate all cards on any change (draw or play) */
     private void OnChange()
     {
-        // wipe all card stuff, resolve all cards on change
         foreach (Card c in _hand)
         {
             c.Clear();
-            c.OnChange();
         }
         ResolveGlobals();
-        if(GameState.Player.dailyDeck.Value.Count == 0 && Statistics.NumberCardsInHand == 0)
+        // wipe all card stuff, resolve all cards on change
+        foreach (Card c in _hand)
+        {
+            c.OnChange();
+        }
+        if (GameState.Player.dailyDeck.Value.Count == 0 && Statistics.NumberCardsInHand == 0)
         {
             Debug.Log("Ended encounter because player had no cards left");
             EndEncounter(false);
         }
+        
     }
 
     /* Play a card given it's position on the board (stored internally to the card class if Initialized properly)*/
@@ -287,44 +327,51 @@ public class Encounter
         }
 
         // quick statistics
-        switch (card.GetElement())
+        string element = "";
+        if (card.ElementOverridden)
+        {
+            element = card.ElementOverride;
+        }
+        else
+        {
+            element = card.GetElement();
+        }
+
+        switch (element)
         {
             case "Intimidation":
-                Statistics.IntimidationCardsInHand -= 1;
-                Statistics.ConversationCardsInHand -= 1;
-
                 Statistics.NumberOfPlays += 1;
+                Statistics.LastPlayElement = "Intimidation";
                 Statistics.IntimidationCardsPlayed += 1;
                 Statistics.ConversationCardsPlayed += 1;
                 break;
             case "Sympathy":
-                Statistics.SympathyCardsInHand -= 1;
-                Statistics.ConversationCardsInHand -= 1;
-
                 Statistics.NumberOfPlays += 1;
+                Statistics.LastPlayElement = "Sympathy";
                 Statistics.SympathyCardsPlayed += 1;
                 Statistics.ConversationCardsPlayed += 1;
                 break;
             case "Persuasion":
-                Statistics.PersuasionCardsInHand -= 1;
-                Statistics.ConversationCardsInHand -= 1;
-
                 Statistics.NumberOfPlays += 1;
+                Statistics.LastPlayElement = "Persuation";
                 Statistics.PersuasionCardsPlayed += 1;
                 Statistics.ConversationCardsPlayed += 1;
                 break;
             case "Preparation":
-                Statistics.PreparationCardsInHand -= 1;
-
                 Statistics.NumberOfPlays += 1;
                 Statistics.PreparationCardsPlayed += 1;
                 Statistics.ConversationCardsPlayed += 1;
                 break;
         }
+        
+        Statistics.ListOfPlayedCards.Add(card.GetId());
 
         int totalCompliance = card.GetTotalCompliance();
         int totalPatience = card.GetTotalPatience();
+        Statistics.LastComplianceDamage = totalCompliance;
+        Statistics.LastPatienceDamage = totalPatience;
 
+        _hand.Remove(card);
         bool continueGame = _encounterController.SetAndCheckCompliance(_encounterController.GetCompliance() + totalCompliance);
         if (!continueGame)
         {
@@ -341,7 +388,7 @@ public class Encounter
         _encounterController.ChangeHeadshotBasedOnPatience();
 
         // remove from hand for now, we don't want to apply effects to a played card
-        _hand.Remove(card);
+        RecalculateHandStatistics();
 
         // remove card
         _encounterController.RemoveCard(card);
@@ -366,9 +413,20 @@ public class Encounter
         globalEffects.Add(e);
     }
 
+    public void InsertGlobal(IExecutableEffect e, int idx)
+    {
+        globalEffects.Insert(idx, e);
+    }
+
     /* Note- Doesn't actually destroy the encounter anymore*/
     public void EndEncounter(bool victory)
     {
+        foreach (Card c in _hand)
+        {
+            GameState.Player.dailyDeck.Value.Add(c.GetId());
+
+        }
+        GameState.Player.dailyDeck.Raise();
         if (victory)
         {
             _encounterController.DisplayYouWonScreen();
@@ -430,7 +488,19 @@ public class EElementWeakness : Effect, IExecutableEffect
         List<Card> hand = enc.GetHand();
         foreach (Card c in hand)
         {
-            if (c.GetElement() == _element)
+            if (c.ElementOverridden)
+            {
+                if (c.ElementOverride == _element)
+                {
+                    c.StackableComplianceMod += 0.5f;
+                    c.DisplayEffect(this);
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else if (c.GetElement() == _element)
             {
                 c.StackableComplianceMod += 0.5f;
                 c.DisplayEffect(this);
@@ -473,7 +543,19 @@ public class EElementResistance : Effect, IExecutableEffect
         List<Card> hand = enc.GetHand();
         foreach (Card c in hand)
         {
-            if (c.GetElement() == _element)
+            if (c.ElementOverridden)
+            {
+                if (c.ElementOverride == _element)
+                {
+                    c.StackableComplianceMod -= 0.5f;
+                    c.DisplayEffect(this);
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else if (c.GetElement() == _element)
             {
                 c.StackableComplianceMod -= 0.5f;
                 c.DisplayEffect(this);
