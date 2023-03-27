@@ -421,6 +421,12 @@ public class Encounter
     /* Note- Doesn't actually destroy the encounter anymore*/
     public void EndEncounter(bool victory)
     {
+        foreach (Card c in _hand)
+        {
+            GameState.Player.dailyDeck.Value.Add(c.GetId());
+
+        }
+        GameState.Player.dailyDeck.Raise();
         if (victory)
         {
             _encounterController.DisplayYouWonScreen();
