@@ -18,6 +18,7 @@ public class NextButton : MonoBehaviour
      */
     public void GetNextSentence()
     {
+        GameState.Player.glubTalkingInDialogue.Value = false;
         DialogueManager.Instance.DisplayNextSentence();
     }
 }
