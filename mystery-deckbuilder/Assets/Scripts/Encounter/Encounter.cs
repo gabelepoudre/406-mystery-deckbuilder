@@ -363,6 +363,7 @@ public class Encounter
                 Statistics.ConversationCardsPlayed += 1;
                 break;
         }
+        GameState.Meta.activeEncounterLastCardPlayedElement.Value = element;
         
         Statistics.ListOfPlayedCards.Add(card.GetId());
 
