@@ -35,15 +35,15 @@ public class Rat_PrinceDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
     private DialogueTree BuildIntro()
     {
-        NPCNode root = new(new string[] {"Detective, don't you know who I am? I am the Rat Prince. The Heir of the true rulers of this town.", 
-        "Don't bother me again if you know what's good for you"});
+        NPCNode root = new(new string[] {"Detective, don't you know who I am? I am the Rat Prince. The heir of the true rulers of this town.", 
+        "Don't bother me again if you know what's good for you."});
         return new DialogueTree(root);
     }
 
     private DialogueTree BuildBoxCar()
     {
-        NPCNode root = new(new string[] {"Well well well... Fancy meeting you here, detective. Unfortunately we can't let you look in that boxcar.", 
-        "We are um... doing our own private investigate right now and we wouldn't want any of the evidence to be compromised, now would we?", 
+        NPCNode root = new(new string[] {"Well, well, well... Fancy meeting you here, detective. Unfortunately we can't let you look in that boxcar.", 
+        "We are um... Doing our own private investigate right now and we wouldn't want any of the evidence to be compromised, now would we?", 
         "If you have a problem with that, why don't you take that up with my associate here. Heh. Good luck..."});
         return new DialogueTree(root);
     }
@@ -87,13 +87,13 @@ public class Rat_PrinceDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         "He became distant, and, dare I say, disrespectful.", 
         "And the one thing my father always said was 'never let anyone disrespect you'.", 
         "I suppose I did it to get back at him, but also to show him that he has a competent heir.", 
-        "You know, a living legacy and all that. Thinking about it now, I suppose I did it because I love him"});
+        "You know, a living legacy and all that. Thinking about it now, I suppose I did it because I love him."});
         askWhy.SetNext(explainWhy);
         explainWhy.SetNext(options);
 
         PlayerNode askWhatHappens = new(new string[] {"So what happens now?"});
         NPCNode explainWhatHappens = new(new string[] {"Well I suppose I'll have to try again in 12 months when I get out on a suspiciously early parole.", 
-        "Ha ha ha ha..."});
+        "Ha ha ha ha....."});
         askWhatHappens.SetNext(explainWhatHappens);
         ArbitraryCodeNode winGame = new(() => { SceneManager.LoadScene("Good Ending"); return 1; });
         explainWhatHappens.SetNext(winGame);
