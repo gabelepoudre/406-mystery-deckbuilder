@@ -398,6 +398,7 @@ GameObject:
   - component: {fileID: 1642463390279059765}
   - component: {fileID: 3604730550191482089}
   - component: {fileID: 8949501830108285357}
+  - component: {fileID: 6798114883333031003}
   m_Layer: 5
   m_Name: Glub
   m_TagString: Untagged
@@ -463,6 +464,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6798114883333031003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3425383607623208880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b1b8aed24c2bc24c9f8dbd5d1fc7f9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glub: {fileID: 8949501830108285357}
+  glubNeutral: {fileID: 21300000, guid: 2ab2d62409857744da784145abc374a0, type: 3}
+  glubReactToPersuation: {fileID: 21300000, guid: a71f7a642d544bf4e818d1555158c8ac, type: 3}
+  glubReacttoIntimidation: {fileID: 21300000, guid: fd3a11f4fcec04b408c15d2775f3d613, type: 3}
+  glubReactToSympathy: {fileID: 21300000, guid: 1cc0ec1340cb84b40838e814fddb4550, type: 3}
+  glubReactToPrepration: {fileID: 21300000, guid: 3213ba4576746b1408ced41e843e397f, type: 3}
+  secondsToNeutralSwap: 0.8
 --- !u!1 &3483821849190397747
 GameObject:
   m_ObjectHideFlags: 0
