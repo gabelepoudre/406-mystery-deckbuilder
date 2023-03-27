@@ -381,7 +381,7 @@ public class DougDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         NPCNode dialogue = new(new string[] {"Okay, sure. All our equipment, which includes rentals, follows a rigorous sign-out, sign-in process.", 
         "None of our equipment could have been used for the theft.", 
         "As for our workers, they just want to work a good job, they aren't cultists.", 
-        "Here, let me give you some advice.", "There's this bar called [Rat Prince's Bar] on the North side.", 
+        "Here, let me give you some advice.", "There's this pub on the North side...", 
         "It's frequented by some rough types, but the kind of rough types that have some power behind them."});
 
 

@@ -302,8 +302,7 @@ public class CroutonDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         "We are going to require everyone's help if we are to find the berries before the Berry festival!"}, name:"Crouton");
         NPCNode quietDown = new(new string[] {"Everyone let's quiet down for Mayor Crouton!"}, name:"Crowd");
         PlayerNode bad = new(new string[] {"*This is bad, the crowd is nowhere close to calming down*"});
-        NPCNode calm = new(new string[] {"Ummm.. Miss Crouton said to remain calm...", "I'M PANICKING CAN YOU TELL!?", 
-        "This can't be... My dreams!", 
+        NPCNode calm = new(new string[] {"Ummm.. Miss Crouton said to remain calm...", "I'M PANICKING CAN YOU TELL!?",  
         "What has happened here will be remembered for all history..."}, name:"Crowd");
         NPCNode surprise = new(new string[] {"*Visible panic and a surprised Pikachu face* Uhhh please?"}, name:"Crouton");
         NPCNode silence = new(new string[] {"SILENCE!!!"}, name:"?");
@@ -328,7 +327,7 @@ public class CroutonDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
         /* I'm just gonna add this stuff here for now lol. time is of the essence */
         NPCNode elkIntro = new(new string[] {"Oh it's... you're... You're the renowned detective Glub. We are currently undergoing a bit of a crisis.", 
-        "All the Saskatoon berries that were for the berry festival have gone missing. The town of Small Pines would really appreciate the help of such a renowned detective.",
+        "All the Saskatoon berries that were for the Berry Festival have gone missing. The town of Small Pines would really appreciate the help of such a renowned detective.",
         "Will you help us figure out this missing berry mystery?"}, name:"Elk Secretary");
         OptionNode elkOptions = new(); //set options later
         bear.SetNext(elkIntro);

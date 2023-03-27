@@ -40,10 +40,10 @@ public class AlanDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         "We are a tight-knit community here and I'd love to help out"});
         OptionNode options = new();
         PlayerNode askBerries = new(new string[] {"Alright well I hope you don't mind me asking...", 
-        "But where were you on the day that the berries disappeared?"});
+        "Where were you on the day that the berries disappeared?"});
         NPCNode answerBerries = new(new string[] {"Just here doing my job, sir,", 
         "delivering everyone's hard-earned mail and making sure the mail is properly delivered, sir!"});
-        PlayerNode askSuspicious = new(new string[] {"Has anything suspicious happened in the past couple of weeks and is there a possible suspect in mind?"});
+        PlayerNode askSuspicious = new(new string[] {"Has anything suspicious happened in the past couple of weeks?", "Is there a possible suspect in mind?"});
         EncounterNode encounter = new();
 
         (string, IDialogueNode)[] OptionsList = {

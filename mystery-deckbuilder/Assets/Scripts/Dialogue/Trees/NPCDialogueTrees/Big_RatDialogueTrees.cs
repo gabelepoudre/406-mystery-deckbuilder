@@ -54,7 +54,7 @@ public class Big_RatDialogueTrees : MonoBehaviour, IDialogueTreeCollection
             "And yes, we have multiple hideouts that are connected by underground tunnels.",
             "Since the townsfolk don't like us very much, travelling by tunnel is a good way for us to remain out of sight and not bother anyone." });
 
-        PlayerNode ok = new(new string[] { "Alright. I ave something else to ask, though." });
+        PlayerNode ok = new(new string[] { "Alright. I have something else to ask, though." });
 
         PlayerNode askClay = new(new string[] { "What happened to Clay?",
             "Why can't he remember anything about that night?" });
@@ -92,9 +92,9 @@ public class Big_RatDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
         NPCNode locationAnswer = new(new string[] { "Why do you care?",
             "If you have to know, I invited the gang to a far away hideout to party the night away.",
-            "I though I would reward everybody's hard work and that a night of snacks and drinks would be perfect for that",
+            "I thought I would reward everybody's hard work and that a night of snacks and drinks would be perfect for that",
             "And yes, we have multiple hideouts that are connected by underground tunnels.",
-            "Since the townsfolk don't like us very much, travelling by tunnel is a good way for us to remain out of sigt and not bother anyone." });
+            "Since the townsfolk don't like us very much, travelling by tunnel is a good way for us to remain out of sight and not bother anyone." });
 
         PlayerNode notOk = new(new string[] { "This note here seems to contradict what you just told me.", 
             "What is the meaning of this" });
