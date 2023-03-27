@@ -2645,7 +2645,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6795207596825268421, guid: 54747101ca5d0432aa3c02f5e7a57288, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.06
+      value: 5.68
       objectReference: {fileID: 0}
     - target: {fileID: 6795207596825268421, guid: 54747101ca5d0432aa3c02f5e7a57288, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2954,6 +2954,14 @@ PrefabInstance:
       value: World UI Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 3729424655522108893, guid: 46a451d6f7fd84947a5a62d91425b599, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4467739801104386597, guid: 46a451d6f7fd84947a5a62d91425b599, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5767188380341612952, guid: 46a451d6f7fd84947a5a62d91425b599, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
