@@ -24,7 +24,7 @@ public class NinaDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
     private DialogueTree BuildIntro()
     {
-        NPCNode intro = new(new string[] {"Hey Detective Glub, I'm Nina the Great Pyrenees!", 
+        NPCNode intro = new(new string[] {"Hey, Detective Glub. I'm Nina the Great Pyrenees!", 
         "I heard that you and the folks at the Town Hall are going to be working together to find the missing berries!", 
         "I just know the mystery's gonna be solved!"});
         PlayerNode reply = new(new string[] {"The Town Hall, huh? Say, what are your toughts on Mayor Crouton?"});
