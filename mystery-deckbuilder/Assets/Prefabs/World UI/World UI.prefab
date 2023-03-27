@@ -240,6 +240,7 @@ GameObject:
   - component: {fileID: 905738060473532877}
   - component: {fileID: 905738060473532878}
   - component: {fileID: 9016996161350173883}
+  - component: {fileID: 2464958721250170574}
   m_Layer: 5
   m_Name: Glub
   m_TagString: Untagged
@@ -267,7 +268,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 187.69995, y: 183.03}
-  m_SizeDelta: {x: 370, y: 360}
+  m_SizeDelta: {x: 268.9, y: 360}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &905738060473532876
 CanvasRenderer:
@@ -297,7 +298,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1553de776449e3240b3dad90802d77ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2ab2d62409857744da784145abc374a0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -375,6 +376,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2daa10e350e814b8dc93ba22055c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2464958721250170574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905738060473532872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6c5349abadcaaa468c292aabc57a120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glub: {fileID: 905738060473532877}
+  glubNeutral: {fileID: 21300000, guid: 2ab2d62409857744da784145abc374a0, type: 3}
+  glubTalk: {fileID: 21300000, guid: 3213ba4576746b1408ced41e843e397f, type: 3}
+  secondsToNeutralSwap: 0.25
 --- !u!1 &905738061209863358
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,6 +1023,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1425035604778906778}
     m_Modifications:
+    - target: {fileID: 3643775325885917799, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3643775325885918104, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
       propertyPath: m_RootOrder
       value: 4
