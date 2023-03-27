@@ -72,6 +72,7 @@ public static class GameState
         public static GameStateValue<List<int>> collection = new(new List<int>(startingDeck), _gameStateValues);
         //public static GameStateValue<List<int>> collection = new(new List<int>(startingCollection), _gameStateValues);
         public static GameStateValue<int> maximumCardsAllowedInDeck = new(21, _gameStateValues);
+        public static GameStateValue<bool> glubTalkingInDialogue = new(false, _gameStateValues);
 
 
         public enum Locations
