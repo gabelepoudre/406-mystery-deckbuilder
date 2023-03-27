@@ -141,6 +141,8 @@ public class DialogueManager : MonoBehaviour
             else
             {
                 _dialogueBox.GetComponent<DialogueBox>().SetName("You");
+                GameState.Player.glubTalkingInDialogue.Value = true;
+                Debug.LogWarning("Start yapping");
             }
 
             EnqueueAllSentences();
