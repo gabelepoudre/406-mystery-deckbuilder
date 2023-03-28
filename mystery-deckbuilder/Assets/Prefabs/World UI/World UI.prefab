@@ -123,7 +123,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 9019697684947194407}
         m_TargetAssemblyTypeName: NotepadController, Assembly-CSharp
         m_MethodName: OpenPause
         m_Mode: 1
@@ -352,7 +352,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 9019697684947194407}
         m_TargetAssemblyTypeName: NotepadController, Assembly-CSharp
         m_MethodName: OpenDeck
         m_Mode: 1
@@ -1330,11 +1330,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2923378103940558460, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -908
+      value: -895
       objectReference: {fileID: 0}
     - target: {fileID: 2923378103940558460, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -514
+      value: -488
       objectReference: {fileID: 0}
     - target: {fileID: 2923378103940558460, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1368,6 +1368,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2923378103940558461, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 8087588771586664422}
     - target: {fileID: 2923378103940558461, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
       propertyPath: m_Enabled
       value: 1
