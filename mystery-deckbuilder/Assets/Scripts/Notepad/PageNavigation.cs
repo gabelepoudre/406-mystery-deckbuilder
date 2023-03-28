@@ -335,7 +335,7 @@ public class PageNavigation : MonoBehaviour
                     pages.AddNotes("Encounters won against suspect: " +GameState.NPCs.npcNameToEncountersWon[pages.GetTitle()].Value+ System.Environment.NewLine );
 
                     //if an encounter has been won, display the clues
-                    if(GameState.NPCs.npcNameToEncountersCompleted[pages.GetTitle()].Value > 0)
+                    if(GameState.NPCs.npcNameToEncountersWon[pages.GetTitle()].Value > 0)
                     {
                         if(NPCClues.ContainsKey(pages.GetTitle()))
                         {
