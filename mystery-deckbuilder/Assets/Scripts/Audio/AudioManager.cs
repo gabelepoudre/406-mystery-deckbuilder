@@ -117,7 +117,7 @@ public class AudioManager : MonoBehaviour
                 }
                 //     Then, 
                 //     Play town theme
-                Play("music-placeholder-town");
+                Play("music-town");
             }
             
 
@@ -187,8 +187,8 @@ public class AudioManager : MonoBehaviour
                     s.source.Stop();
                 }
                 //     Then, 
-                //     Play investigation theme
-                Play("music-placeholder-town");
+                //     Play town theme
+                Play("music-town");
             }
  
             
