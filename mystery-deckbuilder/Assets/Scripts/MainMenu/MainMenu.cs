@@ -20,7 +20,7 @@ public class MainMenu : MonoBehaviour
         FindObjectOfType<AudioManager>().Stop("music-placeholder-investigation");
 
         // Start playing intro theme
-        FindObjectOfType<AudioManager>().Play("music-placeholder-town");
+        FindObjectOfType<AudioManager>().Play("music-town");
 
         SceneManager.LoadScene(_sceneIndex);
     }
