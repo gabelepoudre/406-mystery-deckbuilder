@@ -81,22 +81,19 @@ public class EncounterPrefabController : MonoBehaviour
         switch (remainingPatienceRatio)
         {
             case 0:
-                _npcHeadshotScript.GetHappy(npcHeadshot);
+                _npcHeadshotScript.GetPhaseOne(npcHeadshot);
                 break;
-            case <= 0.15f:
-                _npcHeadshotScript.GetAngry(npcHeadshot);
-                break;
-            case <= 0.3f:
-                _npcHeadshotScript.GetStress(npcHeadshot);
+            case <= 0.2f:
+                _npcHeadshotScript.GetPhaseFour(npcHeadshot);
                 break;
             case <= 0.5f:
-                _npcHeadshotScript.GetWorry(npcHeadshot);
+                _npcHeadshotScript.GetPhaseThree(npcHeadshot);
                 break;
-            case <= 0.8f:
-                _npcHeadshotScript.GetNeutral(npcHeadshot);
+            case <= 0.75f:
+                _npcHeadshotScript.GetPhaseTwo(npcHeadshot);
                 break;
             default:
-                _npcHeadshotScript.GetHappy(npcHeadshot);
+                _npcHeadshotScript.GetPhaseOne(npcHeadshot);
                 break;
         }
     }

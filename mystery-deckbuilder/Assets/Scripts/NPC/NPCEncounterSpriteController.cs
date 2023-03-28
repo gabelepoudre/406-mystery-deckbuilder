@@ -6,50 +6,42 @@ using UnityEngine;
 public class NPCEncounterSpriteController : MonoBehaviour
 {
 
-    public Sprite neutral;
-    public Sprite happy;
-    public Sprite angry;
-    public Sprite stress;
-    public Sprite worry;
+    public Sprite phaseOne;
+    public Sprite PhaseTwo;
+    public Sprite PhaseThree;
+    public Sprite PhaseFour;
 
 
-    // Switch to Neutral Sprite
-    public void GetNeutral(Image spriteImage)
+    // Switch to Phase Two Sprite
+    public void GetPhaseTwo(Image spriteImage)
     {
-        spriteImage.sprite = neutral;
+        spriteImage.sprite = PhaseTwo;
         
     }
 
 
-    // Switch to Happy Sprite
-    public void GetHappy(Image spriteImage)
+    // Switch to Phase One Sprite
+    public void GetPhaseOne(Image spriteImage)
     {
-        spriteImage.sprite = happy;
+        spriteImage.sprite = phaseOne;
         
     }
 
 
-    // Switch to Angry Sprite
-    public void GetAngry(Image spriteImage)
+    // Switch to Phase Four Sprite
+    public void GetPhaseFour(Image spriteImage)
     {
-        spriteImage.sprite = angry;
+        spriteImage.sprite = PhaseFour;
         
     }
 
 
-    // Switch to Stress Sprite
-    public void GetStress(Image spriteImage)
+    // Switch to Phase Three Sprite
+    public void GetPhaseThree(Image spriteImage)
     {
-        spriteImage.sprite = stress;
+        spriteImage.sprite = PhaseThree;
         
     }
 
-
-    // Switch to Worry Sprite
-    public void GetWorry(Image spriteImage)
-    {
-        spriteImage.sprite = worry;
-        
-    }
 
 }
