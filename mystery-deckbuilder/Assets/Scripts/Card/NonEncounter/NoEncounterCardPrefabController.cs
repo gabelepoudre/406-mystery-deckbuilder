@@ -14,10 +14,8 @@ using UnityEngine;
 public class NoEncounterCardPrefabController : MonoBehaviour, IPointerClickHandler, IDeselectHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public Image highlight;
-    public Image cardRect;
-    public Image cardPicture;
-    public Image type;
-    public Image descriptionHolder;
+    public Image cardBackground;
+    public CardArtHolder cardArt;
     public Text cardName;
     public Text cardDescription;
     public Text visiblePatience;
@@ -43,6 +41,11 @@ public class NoEncounterCardPrefabController : MonoBehaviour, IPointerClickHandl
     void Awake()
     {
         _spawnTransformPosition = gameObject.transform.position;
+    }
+
+    public void SetBackground(int card_id)
+    {
+        cardBackground.sprite = cardArt.GetArtByCardID(card_id);
     }
 
     public void SetElement(string element)

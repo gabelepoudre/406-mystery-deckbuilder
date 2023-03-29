@@ -17,10 +17,8 @@ public class CardPrefabController : MonoBehaviour, IDeselectHandler, IPointerEnt
     private string currentMode = "PLAY";
 
     public Image highlight;
-    public Image cardRect;
-    public Image cardPicture;
-    public Image type;
-    public Image descriptionHolder;
+    public Image cardBackground;
+    public CardArtHolder cardArt;
     public Text cardName;
     public Text cardDescription;
     public Text visiblePatience;
@@ -86,6 +84,11 @@ public class CardPrefabController : MonoBehaviour, IDeselectHandler, IPointerEnt
         }
         
     }
+    public void SetBackground(int card_id)
+    {
+        cardBackground.sprite = cardArt.GetArtByCardID(card_id);
+    }
+
     public bool GetHighlighted()
     {
         return _highlighted;
@@ -212,7 +215,7 @@ public class CardPrefabController : MonoBehaviour, IDeselectHandler, IPointerEnt
 
     public void ShowOptions()
     {
-        cardRect.color = selectionTint;
+        cardBackground.color = selectionTint;
         EventSystem.current.SetSelectedGameObject(gameObject);
         options.SetActive(true);
         _showingOptions = true;
@@ -220,7 +223,7 @@ public class CardPrefabController : MonoBehaviour, IDeselectHandler, IPointerEnt
 
     public void HideOptions()
     {
-        cardRect.color = Color.white;
+        cardBackground.color = Color.white;
         options.SetActive(false);
         _showingOptions = false;
     }

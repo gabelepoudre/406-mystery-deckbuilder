@@ -1364,10 +1364,7 @@ MonoBehaviour:
   complianceBar: {fileID: 6717082833554143096}
   patienceBar: {fileID: 8699991813880575240}
   cardPlaceMat: {fileID: 6983892177187874297}
-  redCard: {fileID: 9204399067519391359, guid: d5c35f3dc6245a848a89dad5faaa533a, type: 3}
-  blueCard: {fileID: 2988496786782926893, guid: 07f68a7fc0afc044bacc2613d0e3cc07, type: 3}
-  greenCard: {fileID: 3279046307657509022, guid: 800d684852fc101438fafc008241abf0, type: 3}
-  greyCard: {fileID: 6754762022743972773, guid: 9dbc6185c465d6349ad98af7cc0ae5b5, type: 3}
+  cardPrefab: {fileID: 9204399067519391359, guid: d7a560ed737c98041950e49e7339f8fd, type: 3}
   cardHighlightTransform: {fileID: 949298969857433622}
   YouWonPage: {fileID: 7712524390560517971}
   YouLostPage: {fileID: 4291108644256546383}

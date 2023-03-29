@@ -15,10 +15,7 @@ public class DBDeckUIController : MonoBehaviour
     public GameObject[] deckContainers;
     public GameObject[] collectionContainers;
 
-    public GameObject redCardNoEncounter;
-    public GameObject blueCardNoEncounter;
-    public GameObject greenCardNoEncounter;
-    public GameObject greyCardNoEncounter;
+    public GameObject noEncounterCardPrefab;
 
     public GameObject plusOne;
     public GameObject minusOne;
@@ -226,22 +223,8 @@ public class DBDeckUIController : MonoBehaviour
 
                 Card card = (Card)Cards.CreateCardWithID(cardIdx, true);
                 GameObject _cardPrefabInstance = null;
+                _cardPrefabInstance = Instantiate(noEncounterCardPrefab, _deckContainerControllers[normalized_idx].spawn.position, _deckContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
 
-                switch (card.GetElement())
-                {
-                    case "Intimidation":
-                        _cardPrefabInstance = Instantiate(redCardNoEncounter, _deckContainerControllers[normalized_idx].spawn.position, _deckContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                        break;
-                    case "Sympathy":
-                        _cardPrefabInstance = Instantiate(blueCardNoEncounter, _deckContainerControllers[normalized_idx].spawn.position, _deckContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                        break;
-                    case "Persuasion":
-                        _cardPrefabInstance = Instantiate(greenCardNoEncounter, _deckContainerControllers[normalized_idx].spawn.position, _deckContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                        break;
-                    case "Preparation":
-                        _cardPrefabInstance = Instantiate(greyCardNoEncounter, _deckContainerControllers[normalized_idx].spawn.position, _deckContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                        break;
-                }
                 _currentDeckCardInstantiations.Add(_cardPrefabInstance);
 
                 NoEncounterCardPrefabController c = _cardPrefabInstance.GetComponent<NoEncounterCardPrefabController>();
@@ -294,22 +277,8 @@ public class DBDeckUIController : MonoBehaviour
 
                 Card card = (Card)Cards.CreateCardWithID(cardIdx, true);
                 GameObject _cardPrefabInstance = null;
+                _cardPrefabInstance = Instantiate(noEncounterCardPrefab, _collectionContainerControllers[normalized_idx].spawn.position, _collectionContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
 
-                switch (card.GetElement())
-                {
-                    case "Intimidation":
-                        _cardPrefabInstance = Instantiate(redCardNoEncounter, _collectionContainerControllers[normalized_idx].spawn.position, _collectionContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                        break;
-                    case "Sympathy":
-                        _cardPrefabInstance = Instantiate(blueCardNoEncounter, _collectionContainerControllers[normalized_idx].spawn.position, _collectionContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                        break;
-                    case "Persuasion":
-                        _cardPrefabInstance = Instantiate(greenCardNoEncounter, _collectionContainerControllers[normalized_idx].spawn.position, _collectionContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                        break;
-                    case "Preparation":
-                        _cardPrefabInstance = Instantiate(greyCardNoEncounter, _collectionContainerControllers[normalized_idx].spawn.position, _collectionContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                        break;
-                }
                 _currentCollectionCardInstantiations.Add(_cardPrefabInstance);
 
                 NoEncounterCardPrefabController c = _cardPrefabInstance.GetComponent<NoEncounterCardPrefabController>();
@@ -419,22 +388,8 @@ public class DBDeckUIController : MonoBehaviour
     {
         Card card = (Card)Cards.CreateCardWithID(cardID, true);
         GameObject _cardPrefabInstance = null;
+        _cardPrefabInstance = Instantiate(noEncounterCardPrefab, previewCardSpawn.position, previewCardSpawn.rotation, this.gameObject.transform);
 
-        switch (card.GetElement())
-        {
-            case "Intimidation":
-                _cardPrefabInstance = Instantiate(redCardNoEncounter, previewCardSpawn.position, previewCardSpawn.rotation, this.gameObject.transform);
-                break;
-            case "Sympathy":
-                _cardPrefabInstance = Instantiate(blueCardNoEncounter, previewCardSpawn.position, previewCardSpawn.rotation, this.gameObject.transform);
-                break;
-            case "Persuasion":
-                _cardPrefabInstance = Instantiate(greenCardNoEncounter, previewCardSpawn.position, previewCardSpawn.rotation, this.gameObject.transform);
-                break;
-            case "Preparation":
-                _cardPrefabInstance = Instantiate(greyCardNoEncounter, previewCardSpawn.position, previewCardSpawn.rotation, this.gameObject.transform);
-                break;
-        }
         NoEncounterCardPrefabController c = _cardPrefabInstance.GetComponent<NoEncounterCardPrefabController>();
         c.makeBiggerTransform = previewCardSpawn;
         c.DisableInteractions();
