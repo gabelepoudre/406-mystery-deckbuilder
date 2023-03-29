@@ -143,6 +143,13 @@ public class BlockerTutorial : MonoBehaviour
 
         count++;
     }
+    public void Skip()
+    {
+        GameState.Meta.activeEncounter.OnChange -= Next;
+        GameState.Player.dailyDeck.OnChange -= Next;
+        GameState.Meta.encounterTutorialComplete.Value = true;
+        Destroy(this.gameObject);
+    }
 
 
 }

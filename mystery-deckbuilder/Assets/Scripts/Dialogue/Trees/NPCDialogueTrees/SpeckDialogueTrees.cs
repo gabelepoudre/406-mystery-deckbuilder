@@ -29,7 +29,7 @@ public class SpeckDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         intro.SetNext(options);
 
         PlayerNode askWhere = new(new string[] {"Where were you on the night of the berry disappearance?"});
-        PlayerNode answerWhere = new(new string[] {"Me? Why do you want to know? Are all detectives so nosy?"});
+        NPCNode answerWhere = new(new string[] {"Me? Why do you want to know? Are all detectives so nosy?"});
         EncounterNode encounter = new();
         askWhere.SetNext(answerWhere);
         answerWhere.SetNext(encounter);
