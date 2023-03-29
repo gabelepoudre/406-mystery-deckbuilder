@@ -18,6 +18,19 @@ public class CardPrefabController : MonoBehaviour, IDeselectHandler, IPointerEnt
 
     public Image highlight;
     public Image cardBackground;
+
+    public Sprite intimPlayImage;
+    public Sprite sympPlayImage;
+    public Sprite persPlayImage;
+    public Sprite prepPlayImage;
+    public Image playButton;
+
+    public Sprite intimHuhImage;
+    public Sprite sympHuhImage;
+    public Sprite persHuhImage;
+    public Sprite prepHuhImage;
+    public Image huhButton;
+
     public CardArtHolder cardArt;
     public Text cardName;
     public Text cardDescription;
@@ -87,6 +100,29 @@ public class CardPrefabController : MonoBehaviour, IDeselectHandler, IPointerEnt
     public void SetBackground(int card_id)
     {
         cardBackground.sprite = cardArt.GetArtByCardID(card_id);
+        switch (GetElement())
+        {
+            case "Intimidation":
+                this.selectionTint = new Color(1, 0.855f, 0.855f);
+                this.playButton.sprite = intimPlayImage;
+                this.huhButton.sprite = intimHuhImage;
+                break;
+            case "Sympathy":
+                this.selectionTint = new Color(0.874f, 0.889f, 1);
+                this.playButton.sprite = sympPlayImage;
+                this.huhButton.sprite = sympHuhImage;
+                break;
+            case "Persuasion":
+                this.selectionTint = new Color(0.889f, 1, 0.874f);
+                this.playButton.sprite = persPlayImage;
+                this.huhButton.sprite = persHuhImage;
+                break;
+            case "Preparation":
+                this.selectionTint = new Color(0.924f, 0.924f, 0.924f);
+                this.playButton.sprite = prepPlayImage;
+                this.huhButton.sprite = prepHuhImage;
+                break;
+        }
     }
 
     public bool GetHighlighted()
