@@ -123,7 +123,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4467739801104387035}
+      - m_Target: {fileID: 9019697684947194407}
         m_TargetAssemblyTypeName: NotepadController, Assembly-CSharp
         m_MethodName: OpenPause
         m_Mode: 1
@@ -352,7 +352,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4467739801104387035}
+      - m_Target: {fileID: 9019697684947194407}
         m_TargetAssemblyTypeName: NotepadController, Assembly-CSharp
         m_MethodName: OpenDeck
         m_Mode: 1
@@ -788,8 +788,8 @@ Transform:
   - {fileID: 343412318192611716}
   - {fileID: 5767188380341612951}
   - {fileID: 905738060473532879}
-  - {fileID: 4467739801104387034}
   - {fileID: 5304494549088095}
+  - {fileID: 9019697684947194406}
   m_Father: {fileID: 905738060628842148}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1016,123 +1016,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1001 &905738061737943106
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1425035604778906778}
-    m_Modifications:
-    - target: {fileID: 3643775325885917799, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3643775325885918104, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6861375347289049863, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6861375347289049863, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -886.72
-      objectReference: {fileID: 0}
-    - target: {fileID: 6861375347289049863, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -489
-      objectReference: {fileID: 0}
-    - target: {fileID: 8386694841746709757, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-      propertyPath: redCardNoEncounter
-      value: 
-      objectReference: {fileID: 9204399067519391359, guid: 97a6a58ded51d2a499c75eef49cf975f, type: 3}
-    - target: {fileID: 8386694841746709757, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-      propertyPath: blueCardNoEncounter
-      value: 
-      objectReference: {fileID: 2988496786782926893, guid: 07628ced1fda5ee4a9b9bdacd696b590, type: 3}
-    - target: {fileID: 8386694841746709757, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-      propertyPath: greyCardNoEncounter
-      value: 
-      objectReference: {fileID: 6754762022743972773, guid: 47e9ed273c5e13540a3d8920f734db6e, type: 3}
-    - target: {fileID: 8386694841746709757, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-      propertyPath: greenCardNoEncounter
-      value: 
-      objectReference: {fileID: 3279046307657509022, guid: 7d09218a0cfde6f4099a944f6b56e6ff, type: 3}
-    - target: {fileID: 8679184070414422610, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-      propertyPath: map
-      value: 
-      objectReference: {fileID: 1082643771378014814}
-    - target: {fileID: 8679184070414422611, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-      propertyPath: m_Name
-      value: Notepad
-      objectReference: {fileID: 0}
-    - target: {fileID: 8679184070414422611, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8679184070414422613, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8679184070414422613, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -891.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 8679184070414422613, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -492.96997
-      objectReference: {fileID: 0}
-    - target: {fileID: 8679184070414422613, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 7.6350946
-      objectReference: {fileID: 0}
-    - target: {fileID: 8679184070414422613, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8679184070414422613, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8679184070414422613, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8679184070414422613, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8679184070414422613, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8679184070414422613, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8679184070414422613, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
---- !u!4 &4467739801104387034 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3643775325885918104, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-  m_PrefabInstance: {fileID: 905738061737943106}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4467739801104387035 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3643775325885918105, guid: 7256587bbd6cd49c49037d6798ea4d75, type: 3}
-  m_PrefabInstance: {fileID: 905738061737943106}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 024131001af0b44f8b00df44aab57b45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &905738062023408797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1239,7 +1122,11 @@ PrefabInstance:
     - target: {fileID: 6672356288609979659, guid: 39e0d3727e78c46788ffbe2fe94856f6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 4467739801104387035}
+      objectReference: {fileID: 9019697684947194407}
+    - target: {fileID: 6672356288609979659, guid: 39e0d3727e78c46788ffbe2fe94856f6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenNotepad
+      objectReference: {fileID: 0}
     - target: {fileID: 6672356288609979659, guid: 39e0d3727e78c46788ffbe2fe94856f6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: NotepadController, Assembly-CSharp
@@ -1297,7 +1184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2984138814158086580, guid: ae176d3340072e949abe43bc338489ab, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2984138814158086580, guid: ae176d3340072e949abe43bc338489ab, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1428,5 +1315,86 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &6178247800736250970
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1425035604778906778}
+    m_Modifications:
+    - target: {fileID: 2923378103940558460, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378103940558460, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -895
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378103940558460, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -488
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378103940558460, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378103940558460, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378103940558460, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378103940558460, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378103940558460, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378103940558460, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378103940558460, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378103940558460, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378103940558461, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 8087588771586664422}
+    - target: {fileID: 2923378103940558461, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378103940558723, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_Name
+      value: Notepad
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+--- !u!4 &9019697684947194406 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2923378103940558460, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+  m_PrefabInstance: {fileID: 6178247800736250970}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9019697684947194407 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2923378103940558461, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+  m_PrefabInstance: {fileID: 6178247800736250970}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 024131001af0b44f8b00df44aab57b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
