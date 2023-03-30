@@ -13,6 +13,7 @@ public class Deckbuilding_turtorial : MonoBehaviour
     public GameObject ThisArrows;
     public GameObject ThisIsYourCollection;
     public GameObject ThisIsCurrentDeck;
+    public GameObject ClearAll;
     public GameObject UndoAll;
     public GameObject WakeUp;
     public GameObject WakeUpWhenYouFinish;
@@ -57,21 +58,25 @@ public class Deckbuilding_turtorial : MonoBehaviour
                 break;
             case 6:
                 ThisIsYourCollection.SetActive(false);
-                ThisIsYourDeck.SetActive(true);
+                ThisIsCurrentDeck.SetActive(true);
                 break;
             case 7:
-                ThisIsYourDeck.SetActive(false);
-                UndoAll.SetActive(true);
-                break; 
+                ThisIsCurrentDeck.SetActive(false);
+                ClearAll.SetActive(true);
+                break;
             case 8:
+                ClearAll.SetActive(false);
+                UndoAll.SetActive(true);
+                break;
+            case 9:
                 UndoAll.SetActive(false);
                 WakeUp.SetActive(true);
                 break;
-            case 9:
+            case 10:
                 WakeUp.SetActive(false);
                 WakeUpWhenYouFinish.SetActive(true);
                 break; 
-            case 10:
+            case 11:
                 GameState.Meta.DeckBuildingTutorialComplete.Value = true;
                 WakeUpWhenYouFinish.SetActive(false);
                 Destroy(this.gameObject);
