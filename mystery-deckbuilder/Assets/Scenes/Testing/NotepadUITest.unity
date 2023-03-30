@@ -669,6 +669,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 687811768}
     m_Modifications:
+    - target: {fileID: 2923378103729383748, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378103812743089, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378103812743089, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378103812743089, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378103812743089, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2923378103940558460, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -717,5 +737,61 @@ PrefabInstance:
       propertyPath: m_Name
       value: Notepad
       objectReference: {fileID: 0}
+    - target: {fileID: 2923378103992185908, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378103992185908, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 39d62af54b85145e8b8703d9640ebd36, type: 2}
+    - target: {fileID: 2923378103992185908, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378103992185908, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378103992185908, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4845525113468457572, guid: 39d62af54b85145e8b8703d9640ebd36, type: 2}
+    - target: {fileID: 2923378104774606540, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378104774606541, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378104774606541, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378104774606541, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378104774606541, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378105212209541, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378105351727340, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378105667777255, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 39d62af54b85145e8b8703d9640ebd36, type: 2}
+    - target: {fileID: 2923378105667777255, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4845525113468457572, guid: 39d62af54b85145e8b8703d9640ebd36, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5df5620d04df24064b6284e0adc37266, type: 3}

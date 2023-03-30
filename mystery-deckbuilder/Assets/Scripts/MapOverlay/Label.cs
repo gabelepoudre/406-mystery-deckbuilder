@@ -27,6 +27,8 @@ public class Label : MonoBehaviour
         UpdateState(locationAsString);
         Debug.Log("update player location state to " + GameState.Player.location.Value.ToString());
 
+        GameState.Zones.zonesVisted.Value.Add(locationAsString);
+
         SceneManager.LoadScene(locationAsString);
     }
 
