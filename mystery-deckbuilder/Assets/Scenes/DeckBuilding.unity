@@ -6396,7 +6396,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1050694116
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10324,6 +10324,7 @@ MonoBehaviour:
   ThisArrows: {fileID: 192972875}
   ThisIsYourCollection: {fileID: 1388457076}
   ThisIsCurrentDeck: {fileID: 444558759}
+  ClearAll: {fileID: 2085422746}
   UndoAll: {fileID: 1539581192}
   WakeUp: {fileID: 1787030590}
   WakeUpWhenYouFinish: {fileID: 1050694115}
@@ -11466,7 +11467,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1827672946
 RectTransform:
   m_ObjectHideFlags: 0
