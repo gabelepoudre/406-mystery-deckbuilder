@@ -68,11 +68,11 @@ public class PageNavigation : MonoBehaviour
     //Dictionary containing NPC names to their clues
     public static Dictionary<string, string> NPCClues = new()
     {
-        {"Nibbles", "Mike's Perogies is favourite restaurant."}, {"Austin", "..."}, {"Austyn", "Beaver Union has resources to steal berries."}, {"Alan", "Mentioned unmarked mail being sent to town hall."}, 
+        {"Nibbles", "Mike's Perogies is favourite restaurant."}, {"Austin", "..."}, {"Austyn", "Beaver Union has resources to steal berries."}, {"Alan", "Mentioned unmarked mail being sent to town hall...suspicious."}, 
         {"Mark", "Hard feelings about competition between berry festival and Beaver Union's harvest festival could be possible motive"}, {"Samuel", "Says Beaver Union are the kind of people to steal berries."}, {"Doug", "Recommends checking out the Rat Prince bar and suspicious rail cars."}, 
-        {"Elk Secretary", "Rat Mob may be involved."}, {"Rat Leader", ""}, {"Rat Prince", "..."}, 
-        {"Big Rat", "He seemed upset with his son. We should track him down."}, {"Bee", "..."}, {"Marry", "Motel secretary"}, 
-        {"Wolverine", "Very suspicious."}, {"Black Bear", "He could help me solve this case."}, {"Crouton", "Elk Secretary has been pulling the strings as Mayor."}, 
+        {"Elk Secretary", "Rat Mob may be involved."}, {"Rat Leader", "..."}, {"Rat Prince", "He stole the berries."}, 
+        {"Big Rat", "He seemed upset with his son. We should track him down."}, {"Bee", "..."}, {"Marry", "Motel secretary...she probably doesn't know anything."}, 
+        {"Wolverine", "He has to know something about the Rat Prince."}, {"Black Bear", "He could help me solve this case."}, {"Crouton", "Elk Secretary has been pulling the strings as Mayor."}, 
         {"Nina", "Says something weird may be happening to Crouton's budget and legislation."}, {"Mike", "..."}, {"Speck", "Dropped a suspicious note"}, 
         {"Oslow", "Said the rat tunnels were unusually quiet the night of the disappearance. Suggests we talk to Elk"}, {"Clay", "He can't remember a thing...Trademark symptoms of being drugged. But by who?"}
     };
@@ -81,7 +81,7 @@ public class PageNavigation : MonoBehaviour
         public static Dictionary<string, string> ZoneClues = new()
     {
         {"RealMainStreet", "Nibbles, Elk Secretary, and Crouton"}, {"Motel", "Marry and Clay"}, {"RailYard", "Speck and Mark"}, {"PostOfficeInside", "Alan and Samuel"}, 
-        {"BerryFarm", "Austin"}, {"Bar", "Rat Prince and Wolverine"}, {"BreakfastPalace", "Nina"}, 
+        {"BerryFarm", "Austin and Austyn"}, {"Bar", "Rat Prince and Wolverine"}, {"BreakfastPalace", "Nina"}, 
         {"RatMobCave", "Oslow and Big Rat"}, {"Boxcar", "Rat Prince and Wolverine"}, {"LumberYard", "Doug"}, 
     };
 
@@ -170,6 +170,7 @@ public class PageNavigation : MonoBehaviour
         currentChapterID = 0;
         currentChapter = chapterList[currentChapterID];
         currentPage = currentChapter.pageList[0];
+        currentPageID = 0;
         DisplayNotes();
           
     }
@@ -191,8 +192,11 @@ public class PageNavigation : MonoBehaviour
 
         currentChapterID = 1;
 
+
         currentChapter = chapterList[currentChapterID];
+        
         currentPage = currentChapter.pageList[0];
+        currentPageID = 0;
         DisplayNotes();
 
     }
