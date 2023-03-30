@@ -10,16 +10,17 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine;
+using TMPro;
 
 public class NoEncounterCardPrefabController : MonoBehaviour, IPointerClickHandler, IDeselectHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public Image highlight;
     public Image cardBackground;
     public CardArtHolder cardArt;
-    public Text cardName;
-    public Text cardDescription;
-    public Text visiblePatience;
-    public Text visibleCompliance;
+    public TMP_Text cardName;
+    public TMP_Text cardDescription;
+    public TMP_Text visiblePatience;
+    public TMP_Text visibleCompliance;
 
     public DBDeckUIController onlyAddInDeckbuilding; // I am so sorry
     public bool onlyAddInDeckbuildingIsDeck;  // I am so sorry 

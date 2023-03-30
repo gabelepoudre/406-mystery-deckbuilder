@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine;
+using TMPro;
 
 public class CardPrefabController : MonoBehaviour, IDeselectHandler, IPointerEnterHandler, IPointerExitHandler
 {
@@ -32,10 +33,10 @@ public class CardPrefabController : MonoBehaviour, IDeselectHandler, IPointerEnt
     public Image huhButton;
 
     public CardArtHolder cardArt;
-    public Text cardName;
-    public Text cardDescription;
-    public Text visiblePatience;
-    public Text visibleCompliance;
+    public TMP_Text cardName;
+    public TMP_Text cardDescription;
+    public TMP_Text visiblePatience;
+    public TMP_Text visibleCompliance;
     public GameObject effectCirclePrefab;
     public GameObject options;
     public GameObject effectSlots;
