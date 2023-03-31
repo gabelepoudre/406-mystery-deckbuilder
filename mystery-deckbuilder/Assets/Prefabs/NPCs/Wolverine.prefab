@@ -123,8 +123,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2974809267316779736}
-        m_TargetAssemblyTypeName: NPCDialogueTrigger, Assembly-CSharp
+      - m_Target: {fileID: 8684388249696355579}
+        m_TargetAssemblyTypeName: WolverineDialogueTrigger, Assembly-CSharp
         m_MethodName: StartDialogue
         m_Mode: 1
         m_Arguments:
@@ -526,10 +526,10 @@ GameObject:
   m_Component:
   - component: {fileID: 944568824185304349}
   - component: {fileID: 7126463672181600984}
-  - component: {fileID: 2974809267316779736}
   - component: {fileID: 701282225796089859}
   - component: {fileID: -6171114727081839726}
   - component: {fileID: 632391338077561366}
+  - component: {fileID: 8684388249696355579}
   m_Layer: 0
   m_Name: Wolverine
   m_TagString: Untagged
@@ -576,18 +576,6 @@ MonoBehaviour:
   ComplianceThreshhold: 0
   cardIDUnlockFromWinEncounter: 2
   encounterSprites: {fileID: 701282225796089859}
---- !u!114 &2974809267316779736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7429489653972524998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc47e8dd8a1314ed6ab6b2748b2ab7ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &701282225796089859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -600,11 +588,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2c6071d43e4cf47b85ce574f5d547d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neutral: {fileID: 21300000, guid: 69b76798043f9294e80ecd048e0f598f, type: 3}
-  happy: {fileID: 21300000, guid: 2b141436e10be3243bde4e9909f9510f, type: 3}
-  angry: {fileID: 21300000, guid: 71d5e99097a229847ac47310745494f6, type: 3}
-  stress: {fileID: 21300000, guid: 73495014746bf854996269911abe12ee, type: 3}
-  worry: {fileID: 21300000, guid: f2ea7d015499dcc468b28ba484ef01e3, type: 3}
+  phaseOne: {fileID: 0}
+  PhaseTwo: {fileID: 0}
+  PhaseThree: {fileID: 0}
+  PhaseFour: {fileID: 0}
 --- !u!114 &-6171114727081839726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,5 +614,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3cf45f7c8a484ef084ad3a857e7bd3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8684388249696355579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7429489653972524998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f576126c17884b55b1772b2fbb11591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
