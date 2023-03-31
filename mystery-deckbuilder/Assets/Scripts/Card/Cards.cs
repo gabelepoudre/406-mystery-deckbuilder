@@ -102,7 +102,7 @@ public class Bluster : Card
         this._metadata["element"] = "Intimidation";
         this._metadata["name"] = "Bluster";
         this._metadata["description"] = "";
-        this._metadata["patience"] = "2";
+        this._metadata["patience"] = "1";
         this._metadata["compliance"] = "10";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
@@ -271,7 +271,7 @@ public class Encourage : Card
         this._metadata["element"] = "Sympathy";
         this._metadata["name"] = "Encourage";
         this._metadata["description"] = "";
-        this._metadata["patience"] = "2";
+        this._metadata["patience"] = "1";
         this._metadata["compliance"] = "10";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
@@ -441,7 +441,7 @@ public class Articulate : Card
         this._metadata["element"] = "Persuasion";
         this._metadata["name"] = "Articulate";
         this._metadata["description"] = "";
-        this._metadata["patience"] = "2";
+        this._metadata["patience"] = "1";
         this._metadata["compliance"] = "10";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
