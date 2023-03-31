@@ -66,28 +66,27 @@ public static class GameState
 
         public static GameStateValue<bool> dialogueActive = new(false, _gameStateValues);
 
-        public static GameStateValue<bool> dialogueStarted = new(false, _gameStateValues); // TODO trigger
-        public static GameStateValue<bool> dialogueAdvanced = new(false, _gameStateValues); // TODO trigger
-        public static GameStateValue<string> dialogueGoing = new("", _gameStateValues); // TODO trigger,  string is who triggered. "npc" or "player" l
-        public static GameStateValue<bool> dialogueEnded = new(false, _gameStateValues); // TODO trigger
+        public static GameStateValue<bool> dialogueStarted = new(false, _gameStateValues); 
+        public static GameStateValue<bool> dialogueAdvanced = new(false, _gameStateValues); 
+        public static GameStateValue<string> dialogueGoing = new("", _gameStateValues);  // string is who triggered. "npc" or "player". "" for no one
+        public static GameStateValue<bool> dialogueEnded = new(false, _gameStateValues);
 
-        public static GameStateValue<bool> withinDream = new(false, _gameStateValues); // TODO trigger l
+        public static GameStateValue<bool> withinDream = new(false, _gameStateValues); 
         public static GameStateValue<bool> justSlept = new(false, _gameStateValues);
-        public static GameStateValue<bool> dbCardMovedToDeck = new(false, _gameStateValues); // TODO trigger l
-        public static GameStateValue<bool> dbCardRemovedFromDeck = new(false, _gameStateValues); // TODO trigger l
+        public static GameStateValue<bool> dbCardMovedToDeck = new(false, _gameStateValues);
+        public static GameStateValue<bool> dbCardRemovedFromDeck = new(false, _gameStateValues); 
 
-        public static GameStateValue<bool> menuIsOpen = new(false, _gameStateValues); // TODO trigger l
-        public static GameStateValue<bool> menuNotepadTabSwitch = new(false, _gameStateValues); // TODO trigger l
-        public static GameStateValue<bool> menuNotepadPageSwitch = new(false, _gameStateValues); // TODO trigger l
+        public static GameStateValue<bool> menuNotepadTabSwitch = new(false, _gameStateValues);
+        public static GameStateValue<bool> menuNotepadPageSwitch = new(false, _gameStateValues);
 
-        public static GameStateValue<bool> mapIsOpen = new(false, _gameStateValues); // TODO trigger l
-        public static GameStateValue<bool> mapLocationClicked = new(false, _gameStateValues); // TODO trigger l
+        public static GameStateValue<bool> mapIsOpen = new(false, _gameStateValues);
+        public static GameStateValue<bool> mapLocationClicked = new(false, _gameStateValues);
 
 
 
         public static GameStateValue<bool> inBadEnd = new(false, _gameStateValues);
         public static GameStateValue<bool> inGoodEnd = new(false, _gameStateValues);
-        public static GameStateValue<bool> inPickSuspect = new(false, _gameStateValues); // TODO trigger l
+        public static GameStateValue<bool> inPickSuspect = new(false, _gameStateValues);
 
         public static GameStateValue<bool> encounterTutorialComplete = new(false, _gameStateValues);
     }

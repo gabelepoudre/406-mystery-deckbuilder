@@ -497,8 +497,9 @@ public class DBDeckUIController : MonoBehaviour
 
     public void LaunchIntoScene()
     {
-        SceneManager.LoadScene("Motel");
         GameState.Meta.justSlept.Value = true;
+        GameState.Meta.withinDream.Value = false;
+        SceneManager.LoadScene("Motel");
     }
 
     public void Start()
@@ -521,5 +522,6 @@ public class DBDeckUIController : MonoBehaviour
 
         _deckOnStart = new(GameState.Player.fullDeck.Value.ToArray());
         GameState.Player.dailyDeck.Value = new(GameState.Player.fullDeck.Value.ToArray());
+        GameState.Meta.withinDream.Value = true;
     }
 }

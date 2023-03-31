@@ -23,7 +23,7 @@ public class AudioEventSubscriber : MonoBehaviour
         GameState.Meta.dbCardRemovedFromDeck.OnChange += DeckbuilderCardRemovedFromDeck;
         GameState.Meta.pageDownTrigger.OnChange += PageDown;
         GameState.Meta.pageUpTrigger.OnChange += PageUp;
-        GameState.Meta.menuIsOpen.OnChange += InMenuChanged;
+        GameState.Meta.notepadActive.OnChange += InMenuChanged;
         GameState.Meta.mapIsOpen.OnChange += InMapChanged;
         GameState.Meta.menuNotepadPageSwitch.OnChange += MenuPageFlip;
         GameState.Meta.menuNotepadTabSwitch.OnChange += MenuTabFlip;
@@ -463,7 +463,7 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event InMenuChanged triggered");
-            if (GameState.Meta.menuIsOpen.Value)
+            if (GameState.Meta.notepadActive.Value)
             {
                 // do stuff on enter
             }
@@ -475,12 +475,12 @@ public class AudioEventSubscriber : MonoBehaviour
         catch (MissingReferenceException e)
         {
             e.Message.Contains("e");
-            GameState.Meta.menuIsOpen.OnChange -= InMenuChanged;
+            GameState.Meta.notepadActive.OnChange -= InMenuChanged;
         }
         catch (NullReferenceException e)
         {
             e.Message.Contains("e");
-            GameState.Meta.menuIsOpen.OnChange -= InMenuChanged;
+            GameState.Meta.notepadActive.OnChange -= InMenuChanged;
         }
     }
 
