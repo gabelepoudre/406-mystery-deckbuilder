@@ -41,12 +41,12 @@ public static class GameState
 
         public static GameStateValue<bool> lastDayPostDream = new(false, _gameStateValues);
 
-        public static GameStateValue<bool> pageUpTrigger = new(false, _gameStateValues); // TODO trigger l
-        public static GameStateValue<bool> pageDownTrigger = new(false, _gameStateValues); // TODO trigger l
+        public static GameStateValue<bool> pageUpTrigger = new(false, _gameStateValues); 
+        public static GameStateValue<bool> pageDownTrigger = new(false, _gameStateValues); 
 
-        public static GameStateValue<bool> inOpeningCutscene = new(false, _gameStateValues); // TODO trigger l
+        public static GameStateValue<bool> inOpeningCutscene = new(false, _gameStateValues); 
 
-        public static GameStateValue<Encounter> activeEncounter = new(null, _gameStateValues);  // TODO specify if boss l
+        public static GameStateValue<Encounter> activeEncounter = new(null, _gameStateValues); 
         public static GameStateValue<string> activeEncounterLastCardPlayedElement = new("", _gameStateValues);
 
         public static GameStateValue<int> activeEncounterPatienceDroppedByAmount = new(0, _gameStateValues); // TODO trigger l
@@ -84,8 +84,8 @@ public static class GameState
 
 
 
-        public static GameStateValue<bool> inBadEnd = new(false, _gameStateValues); // TODO trigger l
-        public static GameStateValue<bool> inGoodEnd = new(false, _gameStateValues); // TODO trigger l
+        public static GameStateValue<bool> inBadEnd = new(false, _gameStateValues);
+        public static GameStateValue<bool> inGoodEnd = new(false, _gameStateValues);
         public static GameStateValue<bool> inPickSuspect = new(false, _gameStateValues); // TODO trigger l
 
         public static GameStateValue<bool> encounterTutorialComplete = new(false, _gameStateValues);

@@ -269,6 +269,10 @@ PrefabInstance:
       value: CutsceneManager
       objectReference: {fileID: 0}
     - target: {fileID: 3283620315584400571, guid: 66d5b4208b519416c8d271ddf69b5d3a, type: 3}
+      propertyPath: isGoodEnd
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3283620315584400571, guid: 66d5b4208b519416c8d271ddf69b5d3a, type: 3}
       propertyPath: _sceneIndex
       value: 0
       objectReference: {fileID: 0}
