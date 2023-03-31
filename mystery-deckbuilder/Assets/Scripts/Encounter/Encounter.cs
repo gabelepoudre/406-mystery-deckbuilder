@@ -400,6 +400,9 @@ public class Encounter
         _encounterController.RemoveCard(card);
         card.OnPlay();
         OnChange(); // we call this on all draws and plays
+
+        GameState.Meta.activeEncounterPatienceDroppedByAmount.Value = totalPatience;
+        GameState.Meta.activeEncounterComplianceRaisedByAmount.Value = totalCompliance;
     }
 
     /* Exposes the controller */
@@ -436,10 +439,12 @@ public class Encounter
         if (victory)
         {
             _encounterController.DisplayYouWonScreen();
+            GameState.Meta.activeEncounterInWinScreen.Value = true;
         }
         else
         {
             _encounterController.DisplayYouLostScreen();
+            GameState.Meta.activeEncounterInLossScreen.Value = true;
         }
     }
 
@@ -452,8 +457,14 @@ public class Encounter
         if (victory)
         {
             GameState.NPCs.npcNameToEncountersWon[GameState.NPCs.lastNPCSpokenTo].Value += 1;
+            GameState.Meta.activeEncounterInWinScreen.Value = false;
+        }
+        else
+        {
+            GameState.Meta.activeEncounterInLossScreen.Value = false;
         }
         GameState.NPCs.npcNameToEncountersCompleted[GameState.NPCs.lastNPCSpokenTo].Value += 1;
+        
 
         GameObject.Destroy(_encounterPrefab);
     }
