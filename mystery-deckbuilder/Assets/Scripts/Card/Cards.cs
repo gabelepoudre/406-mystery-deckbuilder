@@ -285,8 +285,8 @@ public class Complement : Card
         this._metadata["element"] = "Sympathy";
         this._metadata["name"] = "Complement";
         this._metadata["description"] = "When no cards have been played, triple Compliance";
-        this._metadata["patience"] = "1";
-        this._metadata["compliance"] = "10";
+        this._metadata["patience"] = "2";
+        this._metadata["compliance"] = "15";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
 
@@ -455,8 +455,8 @@ public class Salutation : Card
         this._metadata["element"] = "Persuasion";
         this._metadata["name"] = "Salutation";
         this._metadata["description"] = "When played as the first card, automatically draw a card";
-        this._metadata["patience"] = "1";
-        this._metadata["compliance"] = "8";
+        this._metadata["patience"] = "2";
+        this._metadata["compliance"] = "15";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
 
@@ -1376,7 +1376,7 @@ public class Lie : Card
         this._metadata["name"] = "Lie";
         this._metadata["description"] = "It's unpredictable! Compliance may skyrocket when you draw or play";
         this._metadata["patience"] = "3";
-        this._metadata["compliance"] = "5";
+        this._metadata["compliance"] = "0";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
 
