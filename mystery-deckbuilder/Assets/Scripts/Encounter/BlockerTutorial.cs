@@ -29,6 +29,24 @@ public class BlockerTutorial : MonoBehaviour
     public GameObject sblocker1;
     public GameObject sblocker2;
 
+    public GameObject sblocker3;
+    public GameObject secretBlocker;
+    public GameObject sblocker5;
+    public GameObject tBlocker;
+    public GameObject tBlocker1;
+    public GameObject mapBlocker;
+    public GameObject promptPaws;
+    public GameObject promptPaws1;
+    public GameObject promptGlub;
+    public GameObject promptGlub1;
+    public GameObject promptGlub2;
+    public GameObject promptNotepad;
+    public GameObject promptNotepad1;
+    public GameObject promptMap;
+    public GameObject promptMap1;
+    public GameObject promptSecret;
+    public GameObject promptComplete;
+
 
     // Start is called before the first frame update
     void Start()//subscribe to stuff here
@@ -126,17 +144,82 @@ public class BlockerTutorial : MonoBehaviour
                 promptDone.SetActive(true);
                 break;
             case 13://unsub here
-                GameState.Meta.activeEncounter.OnChange -= Next;
+                
                 GameState.Player.dailyDeck.OnChange -= Next;
-                GameState.Meta.encounterTutorialComplete.Value = true;
+                GameState.Meta.activeEncounter.OnChange -= Next;
+                GameState.Meta.dialogueActive.OnChange += Next;
+                promptDone.SetActive(false);
+                encounterBlockers.SetActive(false);
                 if (GameState.Meta.activeEncounter.Value.GetEncounterController().GetHighlightedCard() != null)
                 {
                     CardPrefabController c = GameState.Meta.activeEncounter.Value.GetEncounterController().GetHighlightedCard().GetComponent<CardPrefabController>();
                     c.UnHighlightCard();
                 }
+                break;
+            case 14:
+                mainStreetBlockers.SetActive(true);
+                sblocker3.SetActive(false);
+                break;
+            case 15:
+                promptPaws.SetActive(true);
+                GameState.Meta.dialogueActive.OnChange -= Next;
+                break;
+            case 16:
+                promptPaws.SetActive(false);
+                promptPaws1.SetActive(true);
+                tBlocker.SetActive(true);
+                break;
+            case 17:
+                promptPaws1.SetActive(false);
+                promptGlub.SetActive(true);
+                tBlocker.SetActive(false);
+                break;
+            case 18:
+                promptGlub.SetActive(false);
+                promptGlub1.SetActive(true);
+                tBlocker.SetActive(true);
+                tBlocker1.SetActive(true);
+                break;
+            case 19:
+                promptGlub1.SetActive(false);
+                promptGlub2.SetActive(true);
+                break;
+            case 20:
+                promptGlub2.SetActive(false);
+                promptNotepad.SetActive(true);
+                tBlocker.SetActive(false);
+                tBlocker1.SetActive(false);
+                break;
+            case 21:
+                promptNotepad.SetActive(false);
+                promptNotepad1.SetActive(true);
+                tBlocker.SetActive(true);
+                break;
+            case 22:
+                promptNotepad1.SetActive(false);
+                promptMap.SetActive(true);
+                tBlocker.SetActive(false);
+                break;
+            case 23:
+                promptMap.SetActive(false);
+                promptMap1.SetActive(true);
+                mapBlocker.SetActive(true);
+                break;
+            case 24:
+                promptMap1.SetActive(false);
+                promptSecret.SetActive(true);
+                secretBlocker.SetActive(false);
+                mapBlocker.SetActive(false);
+                break;
+            case 25:
+                promptSecret.SetActive(false);
+                promptComplete.SetActive(true);
+                sblocker5.SetActive(true);
+                break;
+            case 26:
+                GameState.Meta.encounterTutorialComplete.Value = true;
                 Destroy(this.gameObject);
                 break;
-
 
 
         }
