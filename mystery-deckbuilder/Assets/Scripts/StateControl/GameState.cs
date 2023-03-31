@@ -33,7 +33,8 @@ public static class GameState
         public static GameStateValue<GameplayPhases> currentGameplayPhase = 
             new(GameplayPhases.Tutorial, _gameStateValues);
 
-        
+
+        public static GameStateValue<bool> inMainMenu = new(false, new List<IGameStateValue>());  // evilly we do not reset this value
         
         public static GameStateValue<int> currentAct = new(1, _gameStateValues);
         public static GameStateValue<int> currentDay = new(1, _gameStateValues);
