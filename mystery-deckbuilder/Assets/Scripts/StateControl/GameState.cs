@@ -36,20 +36,27 @@ public static class GameState
         
         
         public static GameStateValue<int> currentAct = new(1, _gameStateValues);
-
         public static GameStateValue<int> currentDay = new(1, _gameStateValues);
+        public static int lastDay = 7;
 
-        public static GameStateValue<bool> inOpeningCutscene = new(false, _gameStateValues); // TODO trigger
+        public static GameStateValue<bool> lastDayPostDream = new(false, _gameStateValues);
 
-        public static GameStateValue<Encounter> activeEncounter = new(null, _gameStateValues);  // TODO specify if boss
+        public static GameStateValue<bool> pageUpTrigger = new(false, _gameStateValues); // TODO trigger l
+        public static GameStateValue<bool> pageDownTrigger = new(false, _gameStateValues); // TODO trigger l
+
+        public static GameStateValue<bool> inOpeningCutscene = new(false, _gameStateValues); // TODO trigger l
+
+        public static GameStateValue<Encounter> activeEncounter = new(null, _gameStateValues);  // TODO specify if boss l
         public static GameStateValue<string> activeEncounterLastCardPlayedElement = new("", _gameStateValues);
 
-        public static GameStateValue<int> activeEncounterPatienceDroppedByAmount = new(0, _gameStateValues); // TODO trigger
-        public static GameStateValue<int> activeEncounterComplianceRaisedByAmount = new(0, _gameStateValues); // TODO trigger
-        public static GameStateValue<bool> activeEncounterCardHoveredOver = new(false, _gameStateValues); // TODO trigger
-        public static GameStateValue<bool> activeEncounterCardHelp = new(false, _gameStateValues); // TODO trigger
-        public static GameStateValue<bool> activeEncounterInWinScreen = new(false, _gameStateValues); // TODO trigger
-        public static GameStateValue<bool> activeEncounterInLossScreen = new(false, _gameStateValues); // TODO trigger
+        public static GameStateValue<int> activeEncounterPatienceDroppedByAmount = new(0, _gameStateValues); // TODO trigger l
+        public static GameStateValue<int> activeEncounterComplianceRaisedByAmount = new(0, _gameStateValues); // TODO trigger l
+        public static GameStateValue<bool> activeEncounterCardHoverOver = new(false, _gameStateValues); // TODO trigger l
+        public static GameStateValue<bool> activeEncounterCardHelp = new(false, _gameStateValues); // TODO trigger l
+        public static GameStateValue<bool> activeEncounterInWinScreen = new(false, _gameStateValues); // TODO trigger l
+        public static GameStateValue<bool> activeEncounterInLossScreen = new(false, _gameStateValues); // TODO trigger l
+
+        public static GameStateValue<bool> nonEncounterCardHoverOver = new(false, _gameStateValues); // TODO trigger l
 
 
         public static GameStateValue<bool> lastEncounterEndedInVictory = new(false, _gameStateValues);
@@ -59,38 +66,27 @@ public static class GameState
 
         public static GameStateValue<bool> dialogueActive = new(false, _gameStateValues);
 
-        public static GameStateValue<string> dialogueStarted = new("", _gameStateValues); // TODO trigger, string is who triggered. "npc" or "player"
-        public static GameStateValue<string> dialogueAdvanced = new("", _gameStateValues); // TODO trigger, string is who triggered. "npc" or "player"
-        public static GameStateValue<string> dialogueEnded = new("", _gameStateValues); // TODO trigger, string is who triggered. "npc" or "player"
+        public static GameStateValue<string> dialogueStarted = new("", _gameStateValues); // TODO trigger, string is who triggered. "npc" or "player" l
+        public static GameStateValue<string> dialogueAdvanced = new("", _gameStateValues); // TODO trigger, string is who triggered. "npc" or "player" l
+        public static GameStateValue<string> dialogueEnded = new("", _gameStateValues); // TODO trigger, string is who triggered. "npc" or "player" l
 
-        public static GameStateValue<bool> withinDream = new(false, _gameStateValues); // TODO trigger
+        public static GameStateValue<bool> withinDream = new(false, _gameStateValues); // TODO trigger l
         public static GameStateValue<bool> justSlept = new(false, _gameStateValues);
-        public static GameStateValue<bool> dbCardHoverOver = new(false, _gameStateValues); // TODO trigger
-        public static GameStateValue<bool> dbCardMovedToDeck = new(false, _gameStateValues); // TODO trigger
-        public static GameStateValue<bool> dbCardRemovedFromDeck = new(false, _gameStateValues); // TODO trigger
-        public static GameStateValue<bool> dbPageSwap = new(false, _gameStateValues); // TODO trigger
+        public static GameStateValue<bool> dbCardMovedToDeck = new(false, _gameStateValues); // TODO trigger l
+        public static GameStateValue<bool> dbCardRemovedFromDeck = new(false, _gameStateValues); // TODO trigger l
 
-        public static GameStateValue<bool> menuIsOpen = new(false, _gameStateValues); // TODO trigger
-        public static GameStateValue<bool> menuHitQuit = new(false, _gameStateValues); // TODO trigger
-        public static GameStateValue<bool> menuNotepadTabSwitch = new(false, _gameStateValues); // TODO trigger
-        public static GameStateValue<bool> menuNotepadPageSwitch = new(false, _gameStateValues); // TODO trigger
-        public static GameStateValue<bool> menuDeckCardHoveredOver = new(false, _gameStateValues); // TODO trigger
-        public static GameStateValue<bool> menuDeckPageSwap = new(false, _gameStateValues); // TODO trigger
+        public static GameStateValue<bool> menuIsOpen = new(false, _gameStateValues); // TODO trigger l
+        public static GameStateValue<bool> menuNotepadTabSwitch = new(false, _gameStateValues); // TODO trigger l
+        public static GameStateValue<bool> menuNotepadPageSwitch = new(false, _gameStateValues); // TODO trigger l
 
-        public static GameStateValue<bool> mapIsOpen = new(false, _gameStateValues); // TODO trigger
-        public static GameStateValue<bool> mapLocationClicked = new(false, _gameStateValues); // TODO trigger
-
-        public static GameStateValue<bool> inRatPub = new(false, _gameStateValues); // TODO trigger
-
-
-        public static GameStateValue<bool> inBadEnd = new(false, _gameStateValues); // TODO trigger
-        public static GameStateValue<bool> inGoodEnd = new(false, _gameStateValues); // TODO trigger
-        public static GameStateValue<bool> inPickSuspect = new(false, _gameStateValues); // TODO trigger
-        public static GameStateValue<bool> suspectChosen = new(false, _gameStateValues); // TODO trigger
+        public static GameStateValue<bool> mapIsOpen = new(false, _gameStateValues); // TODO trigger l
+        public static GameStateValue<bool> mapLocationClicked = new(false, _gameStateValues); // TODO trigger l
 
 
 
-
+        public static GameStateValue<bool> inBadEnd = new(false, _gameStateValues); // TODO trigger l
+        public static GameStateValue<bool> inGoodEnd = new(false, _gameStateValues); // TODO trigger l
+        public static GameStateValue<bool> inPickSuspect = new(false, _gameStateValues); // TODO trigger l
 
         public static GameStateValue<bool> encounterTutorialComplete = new(false, _gameStateValues);
     }

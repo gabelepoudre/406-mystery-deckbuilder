@@ -126,6 +126,11 @@ public class Encounter
         _opponent = config.Opponent;
     }
 
+    public NPC GetOpponent()
+    {
+        return _opponent;
+    }
+
     public void RecalculateHandStatistics()
     {
         Statistics.IntimidationCardsInHand = 0;
