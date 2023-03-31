@@ -1376,7 +1376,7 @@ public class Lie : Card
         this._metadata["name"] = "Lie";
         this._metadata["description"] = "It's unpredictable! Compliance may skyrocket when you draw or play";
         this._metadata["patience"] = "3";
-        this._metadata["compliance"] = "0";
+        this._metadata["compliance"] = "5";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
 
