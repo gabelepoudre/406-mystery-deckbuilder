@@ -165,15 +165,15 @@ public class CardPrefabController : MonoBehaviour, IDeselectHandler, IPointerEnt
 
         if (compliance > _defaultCompliance)
         {
-            visibleCompliance.color = Color.green;
+            visibleCompliance.color = new Color32(0, 255, 0, 255);
         }
         else if (compliance < _defaultCompliance)
         {
-            visibleCompliance.color = Color.red;
+            visibleCompliance.color = new Color32(255, 0, 0, 255);
         }
         else
         {
-            visibleCompliance.color = Color.black;
+            visibleCompliance.color = new Color32(0, 0, 0, 255);
         }
     }
 
@@ -185,15 +185,15 @@ public class CardPrefabController : MonoBehaviour, IDeselectHandler, IPointerEnt
 
         if (patience > _defaultPatience)
         {
-            visiblePatience.color = Color.red;
+            visiblePatience.color = new Color32(255, 0, 0, 255);
         }
         else if (patience < _defaultPatience)
         {
-            visiblePatience.color = Color.green;
+            visiblePatience.color = new Color32(0, 255, 0, 255);
         }
         else
         {
-            visiblePatience.color = Color.black;
+            visiblePatience.color = new Color32(0, 0, 0, 255);
         }
     }
 
