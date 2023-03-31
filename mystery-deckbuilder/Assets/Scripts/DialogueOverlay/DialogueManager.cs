@@ -70,6 +70,7 @@ public class DialogueManager : MonoBehaviour
         CurrentNPC = currentNPC;
         DialogueActive = true;
         NPCName = CurrentNPC.GetComponent<NPC>().CharacterName;
+        GameState.Meta.dialogueStarted.Raise();
 
 
         //the current dialogue must be ended before starting a new one
@@ -141,7 +142,6 @@ public class DialogueManager : MonoBehaviour
             else
             {
                 _dialogueBox.GetComponent<DialogueBox>().SetName("You");
-                GameState.Player.glubTalkingInDialogue.Value = true;
                 Debug.LogWarning("Start yapping");
             }
 
@@ -189,6 +189,8 @@ public class DialogueManager : MonoBehaviour
 
         if (_sentences.Count != 0) //if we still have sentences in the queue
         {
+            GameState.Meta.dialogueGoing.Value = _currentNode.NodeType();
+
             string sentence = _sentences.Dequeue();
             _dialogueBox.GetComponent<DialogueBox>().DisplaySentence(sentence);
         }
@@ -202,6 +204,7 @@ public class DialogueManager : MonoBehaviour
     /* Commands the previously instantiated DialogueBox to destroy itself */
     public void EndDialogue()
     {
+        GameState.Meta.dialogueEnded.Raise();
         _dialogueBox.GetComponent<DialogueBox>().DestroyDialogueBox();
         DialogueActive = false;
         GameState.Meta.dialogueActive.Value = false;

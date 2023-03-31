@@ -33,6 +33,7 @@ public class AudioEventSubscriber : MonoBehaviour
         GameState.Meta.activeEncounterInLossScreen.OnChange += InEncounterLoss;
         GameState.Meta.activeEncounterCardHelp.OnChange += EncounterCardHelpClicked;
         GameState.Player.location.OnChange += LocationChanged;
+        GameState.Meta.dialogueGoing.OnChange += DialogueGoing;
     }
 
     public void CardPlayed()
@@ -97,21 +98,11 @@ public class AudioEventSubscriber : MonoBehaviour
 
     public void DialogueStarted()
     {
+        // note: this only happens once when dialogue box is opened
         try
         {
             Debug.Log("Event DialogueStarted triggered");
-            if (GameState.Meta.dialogueStarted.Value == "npc")
-            {
-                // do stuff
-            }
-            else if (GameState.Meta.dialogueStarted.Value == "player")
-            {
-                // do if glub stuff
-            }
-            else
-            {
-                Debug.LogWarning("Audio listener had an invalid dialogue trigger");
-            }
+            // do stuff, value is not used
         }
         catch (MissingReferenceException e)
         {
@@ -127,21 +118,11 @@ public class AudioEventSubscriber : MonoBehaviour
 
     public void DialogueAdvanced()
     {
+        // note: this only happens when the advance button or an option button are clicked
         try
         {
-            Debug.Log("Event DialogueStarted triggered");
-            if (GameState.Meta.dialogueAdvanced.Value == "npc")
-            {
-                // do stuff
-            }
-            else if (GameState.Meta.dialogueAdvanced.Value == "player")
-            {
-                // do if glub stuff
-            }
-            else
-            {
-                Debug.LogWarning("Audio listener had an invalid dialogue trigger");
-            }
+            Debug.Log("Event DialogueAdvanced triggered");
+            // do stuff, value is not used
         }
         catch (MissingReferenceException e)
         {
@@ -157,21 +138,11 @@ public class AudioEventSubscriber : MonoBehaviour
 
     public void DialogueEnded()
     {
+        // note: this only happens once when dialogue end (including when encounters start)
         try
         {
             Debug.Log("Event DialogueEnded triggered");
-            if (GameState.Meta.dialogueEnded.Value == "npc")
-            {
-                // do stuff
-            }
-            else if (GameState.Meta.dialogueEnded.Value == "player")
-            {
-                // do if glub stuff
-            }
-            else
-            {
-                Debug.LogWarning("Audio listener had an invalid dialogue trigger");
-            }
+            // do stuff, value is not used
         }
         catch (MissingReferenceException e)
         {
@@ -182,6 +153,41 @@ public class AudioEventSubscriber : MonoBehaviour
         {
             e.Message.Contains("e");
             GameState.Meta.dialogueEnded.OnChange -= DialogueEnded;
+        }
+    }
+
+    public void DialogueGoing()
+    {
+        // note: this one is for advanced stuff like NPCs talking. Is true while they are talking and false otherwise
+        try
+        {
+            Debug.Log("Event DialogueGoing triggered with value " + GameState.Meta.dialogueGoing.Value);
+            if (GameState.Meta.dialogueGoing.Value == "npc")
+            {
+                // do stuff
+            }
+            else if (GameState.Meta.dialogueGoing.Value == "player")
+            {
+                // do if glub stuff
+            }
+            else if (GameState.Meta.dialogueGoing.Value == "")
+            {
+                // do no one talking stuff
+            }
+            else
+            {
+                Debug.LogWarning("Audio listener had an invalid dialogue trigger");
+            }
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.Meta.dialogueGoing.OnChange -= DialogueGoing;
+        }
+        catch (NullReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.Meta.dialogueGoing.OnChange -= DialogueGoing;
         }
     }
 

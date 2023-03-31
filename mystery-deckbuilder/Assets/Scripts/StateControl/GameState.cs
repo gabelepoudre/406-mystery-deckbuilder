@@ -51,12 +51,12 @@ public static class GameState
 
         public static GameStateValue<int> activeEncounterPatienceDroppedByAmount = new(0, _gameStateValues);
         public static GameStateValue<int> activeEncounterComplianceRaisedByAmount = new(0, _gameStateValues);
-        public static GameStateValue<bool> activeEncounterCardHoverOver = new(false, _gameStateValues); // TODO trigger l
-        public static GameStateValue<bool> activeEncounterCardHelp = new(false, _gameStateValues); // TODO trigger l
+        public static GameStateValue<bool> activeEncounterCardHoverOver = new(false, _gameStateValues);
+        public static GameStateValue<bool> activeEncounterCardHelp = new(false, _gameStateValues);
         public static GameStateValue<bool> activeEncounterInWinScreen = new(false, _gameStateValues); 
         public static GameStateValue<bool> activeEncounterInLossScreen = new(false, _gameStateValues); 
 
-        public static GameStateValue<bool> nonEncounterCardHoverOver = new(false, _gameStateValues); // TODO trigger l
+        public static GameStateValue<bool> nonEncounterCardHoverOver = new(false, _gameStateValues);
 
 
         public static GameStateValue<bool> lastEncounterEndedInVictory = new(false, _gameStateValues);
@@ -66,9 +66,10 @@ public static class GameState
 
         public static GameStateValue<bool> dialogueActive = new(false, _gameStateValues);
 
-        public static GameStateValue<string> dialogueStarted = new("", _gameStateValues); // TODO trigger, string is who triggered. "npc" or "player" l
-        public static GameStateValue<string> dialogueAdvanced = new("", _gameStateValues); // TODO trigger, string is who triggered. "npc" or "player" l
-        public static GameStateValue<string> dialogueEnded = new("", _gameStateValues); // TODO trigger, string is who triggered. "npc" or "player" l
+        public static GameStateValue<bool> dialogueStarted = new(false, _gameStateValues); // TODO trigger
+        public static GameStateValue<bool> dialogueAdvanced = new(false, _gameStateValues); // TODO trigger
+        public static GameStateValue<string> dialogueGoing = new("", _gameStateValues); // TODO trigger,  string is who triggered. "npc" or "player" l
+        public static GameStateValue<bool> dialogueEnded = new(false, _gameStateValues); // TODO trigger
 
         public static GameStateValue<bool> withinDream = new(false, _gameStateValues); // TODO trigger l
         public static GameStateValue<bool> justSlept = new(false, _gameStateValues);
