@@ -75,8 +75,11 @@ public class NibblesDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     /** Nibbles' intro after you beat him **/
     private DialogueTree BuildAfterEncounterWin()
     {
-         DialogueTree tree = new (new NPCNode(new string[] {"You're very persuasive!",
-        "Near the rail yard, operating out of an old sea can, there is a small perogy place known as Mike's Perogies", "That is where you should start."}));
+        NPCNode nibbles = new(new string[] {"You're very persuasive!",
+        "Near the rail yard, operating out of an old sea can, there is a small perogy place known as Mike's Perogies", "That is where you should start."});
+        PlayerNode response = new(new string[] { "Thanks, I'll definitly put that on my attractions list" });
+        nibbles.SetNext(response);
+         DialogueTree tree = new(nibbles);
         return tree;
     }
 

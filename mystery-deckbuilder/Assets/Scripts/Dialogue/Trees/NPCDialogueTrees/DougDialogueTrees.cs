@@ -46,21 +46,18 @@ public class DougDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         intro.SetNext(introReply);
 
         PlayerNode askWhere = new(new string[] {"Where were you on the night of the berry disappearance?"});
-        PlayerNode askTheft = new(new string[] {"Do you have any client you think might be involved with the berry disappearance?"});
+
         
         NPCNode explainWhere = new(new string[] {"Me personally, I was at home fast asleep.", "I prescribe to that work hard, sleep hard mentality.", 
         "As for our workers in general, there certainly weren't any on the clock at that hour."});
 
-        EncounterNode encounter = new();
 
         askWhere.SetNext(explainWhere);
-        askTheft.SetNext(encounter);
 
         explainWhere.SetNext(introReply);
 
         (string, IDialogueNode) [] IntroReplyOptionsList = {
             ("Ask Whereabouts", askWhere),
-            ("Ask about berries", askTheft)
 
         };
 

@@ -307,7 +307,7 @@ public class CroutonDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         NPCNode surprise = new(new string[] {"*Visible panic and a surprised Pikachu face* Uhhh please?"}, name:"Crouton");
         NPCNode silence = new(new string[] {"SILENCE!!!"}, name:"?");
         PlayerNode loud = new(new string[] {"Woah what a loud voice. where did that come from?"});
-        NPCNode bear = new(new string[] {"*Gasps* It's the Black Bear!"}, name:"Crowd");
+        NPCNode bear = new(new string[] { "*Gasps* It's the Black Bear and Elk Secretary!" }, name:"Crowd");
 
         berriesGone.SetNext(excuseMe);
         excuseMe.SetNext(fishBrains);
