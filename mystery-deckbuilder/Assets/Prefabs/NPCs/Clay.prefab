@@ -566,6 +566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Clay
+  IsBoss: 0
   affinity_intimidation: 0.75
   affinity_sympathy: 0.14
   affintiy_persuasion: 0.15
@@ -600,10 +601,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2c6071d43e4cf47b85ce574f5d547d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phaseOne: {fileID: 0}
-  PhaseTwo: {fileID: 0}
-  PhaseThree: {fileID: 0}
-  PhaseFour: {fileID: 0}
+  phaseOne: {fileID: 21300000, guid: 8465bc6d3a84fe446ad14c510af41b0f, type: 3}
+  PhaseTwo: {fileID: 21300000, guid: 04972e178308c8e41816f21b9e379e4f, type: 3}
+  PhaseThree: {fileID: 21300000, guid: 9569c732e818f6e4d805386d620a3a86, type: 3}
+  PhaseFour: {fileID: 21300000, guid: c0a8ec267f5882b4db5306051dab69cc, type: 3}
 --- !u!114 &8742523821921004747
 MonoBehaviour:
   m_ObjectHideFlags: 0

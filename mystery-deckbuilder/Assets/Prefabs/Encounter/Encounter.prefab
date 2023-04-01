@@ -1476,6 +1476,7 @@ GameObject:
   - component: {fileID: 6983892177764667039}
   - component: {fileID: 6983892177764667033}
   - component: {fileID: 6983892177764667032}
+  - component: {fileID: 5673000700810974373}
   m_Layer: 5
   m_Name: NPCheadshot
   m_TagString: Untagged
@@ -1500,9 +1501,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 443, y: 188}
+  m_AnchoredPosition: {x: 443, y: 365.24005}
   m_SizeDelta: {x: 700, y: 583.5184}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0.8037437}
 --- !u!222 &6983892177764667033
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1541,6 +1542,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5673000700810974373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6983892177764667038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62fe92946192514e9764998dbe5fa89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NPCHeadshot: {fileID: 6983892177764667032}
 --- !u!1 &7712524390560517971
 GameObject:
   m_ObjectHideFlags: 0

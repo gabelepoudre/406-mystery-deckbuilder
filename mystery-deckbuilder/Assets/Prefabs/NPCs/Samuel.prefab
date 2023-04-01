@@ -566,6 +566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Samuel
+  IsBoss: 0
   affinity_intimidation: 0.25
   affinity_sympathy: 0.71
   affintiy_persuasion: 0.28
@@ -600,10 +601,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2c6071d43e4cf47b85ce574f5d547d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phaseOne: {fileID: 0}
-  PhaseTwo: {fileID: 0}
-  PhaseThree: {fileID: 0}
-  PhaseFour: {fileID: 0}
+  phaseOne: {fileID: 21300000, guid: 9332e27e95cdc7b44a93613c2b662b8f, type: 3}
+  PhaseTwo: {fileID: 21300000, guid: 404ec882f2be003479e9c8d56c1971c7, type: 3}
+  PhaseThree: {fileID: 21300000, guid: aefd90dffa8ab1342adebcf1da71f41b, type: 3}
+  PhaseFour: {fileID: 21300000, guid: c2bce774ae7f0ff449485c76bab0a903, type: 3}
 --- !u!114 &-2378992812928900945
 MonoBehaviour:
   m_ObjectHideFlags: 0

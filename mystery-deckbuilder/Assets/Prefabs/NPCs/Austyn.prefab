@@ -566,6 +566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Austyn
+  IsBoss: 0
   affinity_intimidation: 0.8
   affinity_sympathy: 0.17
   affintiy_persuasion: 0.13
@@ -600,10 +601,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2c6071d43e4cf47b85ce574f5d547d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phaseOne: {fileID: 0}
-  PhaseTwo: {fileID: 0}
-  PhaseThree: {fileID: 0}
-  PhaseFour: {fileID: 0}
+  phaseOne: {fileID: 21300000, guid: 87c37c4de760aa94d92d69ec859a9c88, type: 3}
+  PhaseTwo: {fileID: 21300000, guid: 0c5306ffe31223b49bb0574166089cb5, type: 3}
+  PhaseThree: {fileID: 21300000, guid: 88d2b418dccf11e47acf450cb8289c2c, type: 3}
+  PhaseFour: {fileID: 21300000, guid: 166e4df5381677847baedc559caa0faa, type: 3}
 --- !u!114 &-1820561066286035191
 MonoBehaviour:
   m_ObjectHideFlags: 0
