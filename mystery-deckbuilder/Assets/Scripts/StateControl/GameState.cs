@@ -30,6 +30,7 @@ public static class GameState
             Tutorial,
             Phase_1, // this is just "normal gameplay"
         }
+        
         public static GameStateValue<GameplayPhases> currentGameplayPhase = 
             new(GameplayPhases.Tutorial, _gameStateValues);
 
@@ -282,6 +283,7 @@ public static class GameState
             public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
             public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
             public static GameStateValue<bool> met = new(false, _gameStateValues);
+            public static GameStateValue<bool> isInteractableAtBoxCar = new(false, _gameStateValues);
         }
 
         public static class Black_Bear
@@ -350,6 +352,7 @@ public static class GameState
 
         //to keep track of what zones have been visited by the player
         public static List<string> zonesVisted = new List<string>();
+        
 
 
     }

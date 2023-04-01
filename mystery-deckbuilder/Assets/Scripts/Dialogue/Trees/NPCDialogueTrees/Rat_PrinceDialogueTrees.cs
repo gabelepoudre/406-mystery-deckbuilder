@@ -45,6 +45,12 @@ public class Rat_PrinceDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         NPCNode root = new(new string[] {"Well, well, well... Fancy meeting you here, detective. Unfortunately we can't let you look in that boxcar.", 
         "We are um... Doing our own private investigate right now and we wouldn't want any of the evidence to be compromised, now would we?", 
         "If you have a problem with that, why don't you take that up with my associate here. Heh. Good luck..."});
+        ArbitraryCodeNode disappear = new(() => {
+            gameObject.SetActive(false);
+            GameState.NPCs.Wolverine.isInteractableAtBoxCar.Value = true;
+            return 0;
+        });
+        root.SetNext(disappear);
         return new DialogueTree(root);
     }
 
