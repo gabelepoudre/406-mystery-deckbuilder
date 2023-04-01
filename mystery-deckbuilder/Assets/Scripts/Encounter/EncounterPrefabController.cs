@@ -18,10 +18,8 @@ public class EncounterPrefabController : MonoBehaviour
     public GameObject patienceBar;
     public GameObject cardPlaceMat;
 
-    public GameObject redCard;
-    public GameObject blueCard;
-    public GameObject greenCard;
-    public GameObject greyCard;
+    public GameObject cardPrefab;
+
     public Transform cardHighlightTransform;
     public Image FrustrationImage;
     public Image MadImage;
@@ -115,21 +113,7 @@ public class EncounterPrefabController : MonoBehaviour
 
         // actually instantiate the card
         GameObject cardFrontend = null;
-        switch (card.GetElement())
-        {
-            case "Intimidation":
-                cardFrontend = Instantiate(redCard, empty.position, empty.rotation, _placeMatScript.gameObject.transform);
-                break;
-            case "Sympathy":
-                cardFrontend = Instantiate(blueCard, empty.position, empty.rotation, _placeMatScript.gameObject.transform);
-                break;
-            case "Persuasion":
-                cardFrontend = Instantiate(greenCard, empty.position, empty.rotation, _placeMatScript.gameObject.transform);
-                break;
-            case "Preparation":
-                cardFrontend = Instantiate(greyCard, empty.position, empty.rotation, _placeMatScript.gameObject.transform);
-                break;
-        }
+        cardFrontend = Instantiate(cardPrefab, empty.position, empty.rotation, _placeMatScript.gameObject.transform);
 
         // Initialize with the proper info
         CardPrefabController frontendController = cardFrontend.GetComponent<CardPrefabController>();
