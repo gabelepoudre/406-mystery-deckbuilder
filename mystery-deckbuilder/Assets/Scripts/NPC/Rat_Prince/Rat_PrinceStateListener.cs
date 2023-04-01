@@ -8,8 +8,8 @@ public class Rat_PrinceStateListener : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ChangeDialogueBasedOnState();
         UpdateDialogue();
+        ChangeDialogueBasedOnState();
     }
 
     private void ChangeDialogueBasedOnState()
@@ -30,14 +30,14 @@ public class Rat_PrinceStateListener : MonoBehaviour
             if (GameState.NPCs.Rat_Prince.encountersWon.Value == 1)
             {
                 transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWin";
+                transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
             }
             else
             {
                 transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterLoss";
+                transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
+                transform.GetComponent<NPC>().CurrentDialogueKey = prevDialogue;
             }
-
-            transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
-            transform.GetComponent<NPC>().CurrentDialogueKey = prevDialogue;
             
         }
         catch (MissingReferenceException e)

@@ -63,6 +63,8 @@ public class SpeckDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     {
         NPCNode root = new(new string[] {"The night of the incident... Right... I was uhhhh enjoying the night drinking with my buddy Clay.", 
         "Now if you'll excuse me I'm looking for something. (Now where did I drop this stupid thing...)"});
+        PlayerNode note = new(new string[] {"(Hmmm, it looks like he dropped a note.)", "......", "(Maybe I should keep it as evidence.)"});
+        root.SetNext(note);
          DialogueTree tree = new (root);
         return tree;
     }
