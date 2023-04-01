@@ -48,6 +48,7 @@ public class DougStateListener : MonoBehaviour
         if (GameState.NPCs.Doug.encountersWon.Value == 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
+            MetAustynOrMarkOrSamuel();
         }
         }
         catch (MissingReferenceException e)
