@@ -600,10 +600,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2c6071d43e4cf47b85ce574f5d547d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phaseOne: {fileID: 21300000, guid: f15e9d4261121774eb8c9870c419ade3, type: 3}
-  PhaseTwo: {fileID: 21300000, guid: cf48abd81bd020649b0abe5cb1a25152, type: 3}
-  PhaseThree: {fileID: 21300000, guid: 3b6495d39a0e32f42b18cc76e5d4a493, type: 3}
-  PhaseFour: {fileID: 21300000, guid: f62fe0bccafac944d94c8f4405710ca3, type: 3}
+  neutral: {fileID: 21300000, guid: 69b76798043f9294e80ecd048e0f598f, type: 3}
+  happy: {fileID: 21300000, guid: 2b141436e10be3243bde4e9909f9510f, type: 3}
+  angry: {fileID: 21300000, guid: 71d5e99097a229847ac47310745494f6, type: 3}
+  stress: {fileID: 21300000, guid: 73495014746bf854996269911abe12ee, type: 3}
+  worry: {fileID: 21300000, guid: f2ea7d015499dcc468b28ba484ef01e3, type: 3}
 --- !u!114 &-8250950032188721504
 MonoBehaviour:
   m_ObjectHideFlags: 0
