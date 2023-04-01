@@ -11,7 +11,7 @@ public class NPCImageEffectOnPlay : MonoBehaviour
     public int reactionOffsetX = 0;
     public int reactionOffsetY = 0;
     public bool getsMad = false;
-    public bool sweats = true;
+    public bool sweats = false;
     public bool getFrustrated = false;
 
     private Image _attachedNPCImageInEncounter;
