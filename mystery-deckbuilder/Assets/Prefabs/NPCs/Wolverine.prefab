@@ -566,8 +566,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Wolverine
-  reactionOffsetX: 0
-  reactionOffsetY: 0
+  reactionOffsetX: 16
+  reactionOffsetY: 76
   IsBoss: 1
   affinity_intimidation: 0.29
   affinity_sympathy: 0.76

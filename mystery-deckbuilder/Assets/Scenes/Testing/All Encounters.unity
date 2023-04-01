@@ -11463,10 +11463,7 @@ MonoBehaviour:
   - {fileID: 1765947587}
   - {fileID: 1740444687}
   - {fileID: 1759840713}
-  redCardNoEncounter: {fileID: 9204399067519391359, guid: 97a6a58ded51d2a499c75eef49cf975f, type: 3}
-  blueCardNoEncounter: {fileID: 2988496786782926893, guid: 07628ced1fda5ee4a9b9bdacd696b590, type: 3}
-  greenCardNoEncounter: {fileID: 3279046307657509022, guid: 7d09218a0cfde6f4099a944f6b56e6ff, type: 3}
-  greyCardNoEncounter: {fileID: 6754762022743972773, guid: 47e9ed273c5e13540a3d8920f734db6e, type: 3}
+  noEncounterCardPrefab: {fileID: 0}
   plusOne: {fileID: 1865651153}
   minusOne: {fileID: 840380547}
   previewCardSpawn: {fileID: 1511699472}
@@ -11905,14 +11902,6 @@ PrefabInstance:
     - target: {fileID: 944568824185304349, guid: 8a4b952c44aa9430fa1f27a6b8b9d746, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7126463672181600984, guid: 8a4b952c44aa9430fa1f27a6b8b9d746, type: 3}
-      propertyPath: reactionOffsetX
-      value: -37
-      objectReference: {fileID: 0}
-    - target: {fileID: 7126463672181600984, guid: 8a4b952c44aa9430fa1f27a6b8b9d746, type: 3}
-      propertyPath: reactionOffsetY
-      value: 67
       objectReference: {fileID: 0}
     - target: {fileID: 7429489653972524998, guid: 8a4b952c44aa9430fa1f27a6b8b9d746, type: 3}
       propertyPath: m_Name

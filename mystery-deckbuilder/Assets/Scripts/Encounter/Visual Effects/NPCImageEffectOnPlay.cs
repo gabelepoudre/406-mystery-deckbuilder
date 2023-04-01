@@ -22,6 +22,8 @@ public class NPCImageEffectOnPlay : MonoBehaviour
     private bool isFlashed = false;
 
     private bool imageOffset = false;
+    private Vector3 naturalImage;
+
     private bool isStretched = false;
 
     private bool haveSetNatural = false;  // apparently vector3 is non nullable
@@ -31,7 +33,11 @@ public class NPCImageEffectOnPlay : MonoBehaviour
     {
         if (!imageOffset)
         {
+            naturalImage = new Vector3 (_reactionImage.transform.position.x, _reactionImage.transform.position.y, _reactionImage.transform.position.z);
+            Debug.LogWarning("offset Image was " + naturalImage);
             _reactionImage.transform.position = new Vector3(_reactionImage.transform.position.x + linkedNPC.reactionOffsetX, _reactionImage.transform.position.y + linkedNPC.reactionOffsetY, _reactionImage.transform.position.z);
+            Debug.LogWarning("offset now natural is" + naturalImage);
+            Debug.LogWarning("offset now position is" + _reactionImage.transform.position);
             imageOffset = true;
         }
     }
@@ -40,9 +46,10 @@ public class NPCImageEffectOnPlay : MonoBehaviour
     {
         if (imageOffset)
         {
-            Debug.Log("Fixed reactions");
-            _reactionImage.transform.position = new Vector3(_reactionImage.transform.position.x - linkedNPC.reactionOffsetX, _reactionImage.transform.position.y - linkedNPC.reactionOffsetY, _reactionImage.transform.position.z);
-            imageOffset = false;
+            Debug.LogWarning("unoffset Image was " + _reactionImage.transform.position);
+            _reactionImage.transform.position = new Vector3(naturalImage.x, naturalImage.y, naturalImage.z);
+            Debug.LogWarning("unoffset now natural is" + naturalImage);
+            Debug.LogWarning("unoffset now position is" + _reactionImage.transform.position);
         }
     }
 
