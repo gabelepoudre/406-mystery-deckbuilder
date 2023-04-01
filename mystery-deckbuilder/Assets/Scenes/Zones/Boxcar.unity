@@ -836,6 +836,63 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1001 &3475813418903851918
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5902466147220582231, guid: 531c6ba03a9c2448297588810e104cf7, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5902466147220582231, guid: 531c6ba03a9c2448297588810e104cf7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5902466147220582231, guid: 531c6ba03a9c2448297588810e104cf7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5902466147220582231, guid: 531c6ba03a9c2448297588810e104cf7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5902466147220582231, guid: 531c6ba03a9c2448297588810e104cf7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5902466147220582231, guid: 531c6ba03a9c2448297588810e104cf7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5902466147220582231, guid: 531c6ba03a9c2448297588810e104cf7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5902466147220582231, guid: 531c6ba03a9c2448297588810e104cf7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5902466147220582231, guid: 531c6ba03a9c2448297588810e104cf7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5902466147220582231, guid: 531c6ba03a9c2448297588810e104cf7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5902466147220582231, guid: 531c6ba03a9c2448297588810e104cf7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8795591186970194575, guid: 531c6ba03a9c2448297588810e104cf7, type: 3}
+      propertyPath: m_Name
+      value: ExamineBerriesEventTrigger
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 531c6ba03a9c2448297588810e104cf7, type: 3}
 --- !u!4 &4949728161712399547
 Transform:
   m_ObjectHideFlags: 0
