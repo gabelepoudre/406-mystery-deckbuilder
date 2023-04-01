@@ -580,6 +580,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Crouton
+  reactionOffsetX: -6
+  reactionOffsetY: 19
   IsBoss: 0
   affinity_intimidation: 0.74
   affinity_sympathy: 0.18
@@ -591,6 +593,7 @@ MonoBehaviour:
   ComplianceThreshhold: 0
   cardIDUnlockFromWinEncounter: 22
   encounterSprites: {fileID: 701282225796089859}
+  reactionPrefab: {fileID: 2712194818219275452, guid: 4b4b5573e3208524fa9ed0b98fb86ccd, type: 3}
 --- !u!114 &2974809267316779736
 MonoBehaviour:
   m_ObjectHideFlags: 0

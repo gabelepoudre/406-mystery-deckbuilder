@@ -566,6 +566,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Doug
+  reactionOffsetX: -140
+  reactionOffsetY: 90
   IsBoss: 1
   affinity_intimidation: 0.5
   affinity_sympathy: 0.11
@@ -577,6 +579,7 @@ MonoBehaviour:
   ComplianceThreshhold: 0
   cardIDUnlockFromWinEncounter: 15
   encounterSprites: {fileID: 701282225796089859}
+  reactionPrefab: {fileID: 6577830391789524319, guid: 41c0fc94978fb5f4999b7b005ce320f3, type: 3}
 --- !u!114 &2974809267316779736
 MonoBehaviour:
   m_ObjectHideFlags: 0

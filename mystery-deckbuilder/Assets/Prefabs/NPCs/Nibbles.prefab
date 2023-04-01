@@ -465,6 +465,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Nibbles
+  reactionOffsetX: 0
+  reactionOffsetY: 0
+  IsBoss: 0
   affinity_intimidation: 0.288
   affinity_sympathy: 0.295
   affintiy_persuasion: 0.705
@@ -475,6 +478,7 @@ MonoBehaviour:
   ComplianceThreshhold: 0
   cardIDUnlockFromWinEncounter: 21
   encounterSprites: {fileID: 7538326253552544718}
+  reactionPrefab: {fileID: 2712194818219275452, guid: 4b4b5573e3208524fa9ed0b98fb86ccd, type: 3}
 --- !u!114 &8310409467724307525
 MonoBehaviour:
   m_ObjectHideFlags: 0
