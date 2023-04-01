@@ -131,6 +131,7 @@ public class DBDeckUIController : MonoBehaviour
         {
             Debug.Log("Went up in deck");
             DeckPage -= 1;
+            GameState.Meta.pageUpTrigger.Raise();
         }
         Debug.Log("Failed to go up in deck");
     }
@@ -141,6 +142,7 @@ public class DBDeckUIController : MonoBehaviour
         {
             Debug.Log("Went down in deck");
             DeckPage += 1;
+            GameState.Meta.pageDownTrigger.Raise();
         }
         Debug.Log("Failed to go down in deck");
     }
@@ -169,6 +171,7 @@ public class DBDeckUIController : MonoBehaviour
         if (CanMoveCollectionPageUp())
         {
             CollectionPage -= 1;
+            GameState.Meta.pageUpTrigger.Raise();
         }
     }
 
@@ -177,6 +180,7 @@ public class DBDeckUIController : MonoBehaviour
         if (CanMoveCollectionPageDown())
         {
             CollectionPage += 1;
+            GameState.Meta.pageDownTrigger.Raise();
         }
     }
 
@@ -314,12 +318,14 @@ public class DBDeckUIController : MonoBehaviour
     {
         GameState.Player.fullDeck.Value = new(new int[] { });
         GameState.Player.dailyDeck.Value = new(GameState.Player.fullDeck.Value.ToArray());
+        GameState.Meta.dbCardRemovedFromDeck.Raise();
         ShowProperControlsForHighlightedCard();
     }
 
 
     public void AddOneOfPreviewedCard()
     {
+        GameState.Meta.dbCardMovedToDeck.Raise();
         for (int x = 0; x <= 1 -1; x++)
         {
             GameState.Player.fullDeck.Value.Add(_previewedCardID);
@@ -353,6 +359,7 @@ public class DBDeckUIController : MonoBehaviour
 
     public void RemoveOneOfPreviewedCard()
     {
+        GameState.Meta.dbCardRemovedFromDeck.Raise();
         for (int x = 0; x <= 1 - 1; x++)
         {
             GameState.Player.fullDeck.Value.Remove(_previewedCardID);
@@ -445,8 +452,9 @@ public class DBDeckUIController : MonoBehaviour
 
     public void LaunchIntoScene()
     {
-        SceneManager.LoadScene("Motel");
         GameState.Meta.justSlept.Value = true;
+        GameState.Meta.withinDream.Value = false;
+        SceneManager.LoadScene("Motel");
     }
 
     public void Start()
@@ -469,5 +477,6 @@ public class DBDeckUIController : MonoBehaviour
 
         _deckOnStart = new(GameState.Player.fullDeck.Value.ToArray());
         GameState.Player.dailyDeck.Value = new(GameState.Player.fullDeck.Value.ToArray());
+        GameState.Meta.withinDream.Value = true;
     }
 }

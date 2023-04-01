@@ -30,24 +30,65 @@ public static class GameState
             Tutorial,
             Phase_1, // this is just "normal gameplay"
         }
+        
         public static GameStateValue<GameplayPhases> currentGameplayPhase = 
             new(GameplayPhases.Tutorial, _gameStateValues);
 
-        
+
+        public static GameStateValue<bool> inMainMenu = new(false, new List<IGameStateValue>());  // evilly we do not reset this value
         
         public static GameStateValue<int> currentAct = new(1, _gameStateValues);
-
         public static GameStateValue<int> currentDay = new(1, _gameStateValues);
+        public static int lastDay = 7;
 
+        public static GameStateValue<bool> lastDayPostDream = new(false, _gameStateValues);
 
-        public static GameStateValue<Encounter> activeEncounter = new(null, _gameStateValues);
+        public static GameStateValue<bool> pageUpTrigger = new(false, _gameStateValues); 
+        public static GameStateValue<bool> pageDownTrigger = new(false, _gameStateValues); 
+
+        public static GameStateValue<bool> inOpeningCutscene = new(false, _gameStateValues); 
+
+        public static GameStateValue<Encounter> activeEncounter = new(null, _gameStateValues); 
         public static GameStateValue<string> activeEncounterLastCardPlayedElement = new("", _gameStateValues);
+
+        public static GameStateValue<int> activeEncounterPatienceDroppedByAmount = new(0, _gameStateValues);
+        public static GameStateValue<int> activeEncounterComplianceRaisedByAmount = new(0, _gameStateValues);
+        public static GameStateValue<bool> activeEncounterCardHoverOver = new(false, _gameStateValues);
+        public static GameStateValue<bool> activeEncounterCardHelp = new(false, _gameStateValues);
+        public static GameStateValue<bool> activeEncounterInWinScreen = new(false, _gameStateValues); 
+        public static GameStateValue<bool> activeEncounterInLossScreen = new(false, _gameStateValues); 
+
+        public static GameStateValue<bool> nonEncounterCardHoverOver = new(false, _gameStateValues);
+
+
         public static GameStateValue<bool> lastEncounterEndedInVictory = new(false, _gameStateValues);
 
 
         public static GameStateValue<bool> notepadActive = new(false, _gameStateValues);
+
         public static GameStateValue<bool> dialogueActive = new(false, _gameStateValues);
+
+        public static GameStateValue<bool> dialogueStarted = new(false, _gameStateValues); 
+        public static GameStateValue<bool> dialogueAdvanced = new(false, _gameStateValues); 
+        public static GameStateValue<string> dialogueGoing = new("", _gameStateValues);  // string is who triggered. "npc" or "player". "" for no one
+        public static GameStateValue<bool> dialogueEnded = new(false, _gameStateValues);
+
+        public static GameStateValue<bool> withinDream = new(false, _gameStateValues); 
         public static GameStateValue<bool> justSlept = new(false, _gameStateValues);
+        public static GameStateValue<bool> dbCardMovedToDeck = new(false, _gameStateValues);
+        public static GameStateValue<bool> dbCardRemovedFromDeck = new(false, _gameStateValues); 
+
+        public static GameStateValue<bool> menuNotepadTabSwitch = new(false, _gameStateValues);
+        public static GameStateValue<bool> menuNotepadPageSwitch = new(false, _gameStateValues);
+
+        public static GameStateValue<bool> mapIsOpen = new(false, _gameStateValues);
+        public static GameStateValue<bool> mapLocationClicked = new(false, _gameStateValues);
+
+
+
+        public static GameStateValue<bool> inBadEnd = new(false, _gameStateValues);
+        public static GameStateValue<bool> inGoodEnd = new(false, _gameStateValues);
+        public static GameStateValue<bool> inPickSuspect = new(false, _gameStateValues);
 
         public static GameStateValue<bool> encounterTutorialComplete = new(false, _gameStateValues);
     }
@@ -282,6 +323,7 @@ public static class GameState
             public static GameStateValue<int> encountersCompleted = new(0, _gameStateValues);
             public static GameStateValue<int> encountersWon = new(0, _gameStateValues);
             public static GameStateValue<bool> met = new(false, _gameStateValues);
+            public static GameStateValue<bool> isInteractableAtBoxCar = new(false, _gameStateValues);
         }
 
         public static class Black_Bear
@@ -350,6 +392,7 @@ public static class GameState
 
         //to keep track of what zones have been visited by the player
         public static List<string> zonesVisted = new List<string>();
+        
 
 
     }

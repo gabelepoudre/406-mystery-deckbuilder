@@ -13,21 +13,37 @@ public class Page
     public string title;
     public GameObject img;
     public List<string> notes;
+    public Sprite headshot;
+ 
 
     // //Pages hold title, image, number of notes, and contain ID's
 
-    public Page(string title, GameObject img)
+    public Page(string title, GameObject img, Sprite headshot)
     {
         this.title = title;
         this.numNotes = 0;
         this.notes = new List<string>();
         this.img = img;
+        this.headshot = headshot;
+
     }
+    public Sprite GetHeadshot()
+    {
+        return this.headshot;
+    }
+
+
+    public void SetHeadshot(Sprite headshot)
+    {
+        this.headshot = headshot;
+    }
+
 
     public GameObject GetImage()
     {
         return this.img;
     }
+
 
     public void SetImage(GameObject img)
     {

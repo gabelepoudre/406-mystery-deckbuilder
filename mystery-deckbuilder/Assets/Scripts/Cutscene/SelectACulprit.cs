@@ -31,6 +31,8 @@ public class SelectACulprit : MonoBehaviour
     void Start()
     {
 
+        GameState.Meta.inPickSuspect.Value = true;
+
         foreach (Transform t in this.GetComponentsInChildren<Transform>())
         {
             if (t != gameObject.transform)  // we have to check if it is our Transform, for some reason

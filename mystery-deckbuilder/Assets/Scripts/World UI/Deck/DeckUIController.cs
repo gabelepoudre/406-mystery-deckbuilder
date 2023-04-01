@@ -113,6 +113,7 @@ public class DeckUIController : MonoBehaviour
         {
             Debug.Log("Went up in deck");
             DeckPage -= 1;
+            GameState.Meta.pageUpTrigger.Raise();
         }
         Debug.Log("Failed to go up in deck");
     }
@@ -123,6 +124,7 @@ public class DeckUIController : MonoBehaviour
         {
             Debug.Log("Went down in deck");
             DeckPage += 1;
+            GameState.Meta.pageDownTrigger.Raise();
         }
         Debug.Log("Failed to go down in deck");
     }

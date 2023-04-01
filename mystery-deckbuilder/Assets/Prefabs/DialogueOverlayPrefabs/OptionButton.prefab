@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1922235169846100350}
   - component: {fileID: 8249084932998075751}
   - component: {fileID: 4886605660029083508}
+  - component: {fileID: 7265229591214483233}
   m_Layer: 6
   m_Name: OptionButton
   m_TagString: Untagged
@@ -121,7 +122,43 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8249084932998075751}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7265229591214483233}
+        m_TargetAssemblyTypeName: TriggerDialogueAdvance, Assembly-CSharp
+        m_MethodName: DialogueAdvance
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7265229591214483233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54170569088056111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2a4823c3f83e94f8d80f295d0c66a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &967389156850681027
 GameObject:
   m_ObjectHideFlags: 0

@@ -40,7 +40,7 @@ public class NibblesDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         intro.SetNext(introReply);
 
         NPCNode nibblesGourmand = new(new string[] {"I am Nibbles the mouse, I am a locally renowned gourmand.", 
-        "A gourmouse, if you will. I have travelled far, training my palate on all of the amazing creations made of the flatland's boundaries."});
+        "A gourmouse, if you will. I have travelled far, training my palate on all of the amazing creations made of the flatland's bounties."});
         NPCNode loveOfCuisine = new(new string[] {"Not particularly, however wherever you go there will be people with love of cuisine.", 
         "People for who cooking is an art and people for who eating connects to that wonderful art!"});
         NPCNode confidential = new(new string[] {"Hmmmmm........",
@@ -75,8 +75,11 @@ public class NibblesDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     /** Nibbles' intro after you beat him **/
     private DialogueTree BuildAfterEncounterWin()
     {
-         DialogueTree tree = new (new NPCNode(new string[] {"You're very persuasive!",
-        "Near the rail yard, operating out of an old sea can, there is a small perogy place known as Mike's Perogies", "That is where you should start."}));
+        NPCNode nibbles = new(new string[] {"You're very persuasive!",
+        "Near the rail yard, operating out of an old sea can, there is a small perogy place known as Mike's Perogies", "That is where you should start."});
+        PlayerNode response = new(new string[] { "Thanks, I'll definitly put that on my attractions list" });
+        nibbles.SetNext(response);
+         DialogueTree tree = new(nibbles);
         return tree;
     }
 

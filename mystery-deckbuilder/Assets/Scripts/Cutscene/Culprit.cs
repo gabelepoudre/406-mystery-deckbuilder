@@ -13,6 +13,7 @@ public class Culprit : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        GameState.Meta.inPickSuspect.Value = false;
         if (isBadGuy)
         {
             SceneManager.LoadScene("Good Ending");

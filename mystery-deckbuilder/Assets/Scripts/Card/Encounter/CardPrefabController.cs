@@ -234,6 +234,7 @@ public class CardPrefabController : MonoBehaviour, IDeselectHandler, IPointerEnt
 
     public void HighlightCard()
     {
+        GameState.Meta.activeEncounterCardHelp.Raise();
         GameState.Meta.activeEncounter.Value.GetEncounterController().HighlightCard(this.gameObject);
         EventSystem.current.SetSelectedGameObject(gameObject);
         _highlighted = true;
@@ -267,6 +268,7 @@ public class CardPrefabController : MonoBehaviour, IDeselectHandler, IPointerEnt
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        GameState.Meta.activeEncounterCardHoverOver.Raise();
         if (!_highlighted)
         {
             ShowOptions();

@@ -8,6 +8,7 @@ public class NPC : MonoBehaviour
 {
     //Variables 
     public string CharacterName;
+    public bool IsBoss = false;
 
     [Range(0.0f, 1.0f)]public float affinity_intimidation = 0.5f;
     [Range(0.0f, 1.0f)]public float affinity_sympathy = 0.5f;
@@ -120,7 +121,7 @@ public class NPC : MonoBehaviour
         DialogueTree dialogue4 = new(new NPCNode(new string[] {"How will we ever recover from this????"}));
         DialogueTree dialogue5 = new(new NPCNode(new string[] {"It's over....."}));
         DialogueTree dialogue6 = new(new NPCNode(new string[] {"OMG NOOOOO!!!"}));
-        DialogueTree dialogue7 = new(new NPCNode(new string[] {"REEEEEEEEEEEE!!!"}));
+        DialogueTree dialogue7 = new(new NPCNode(new string[] {"Not when my PTO just got approved!"}));
 
         List<DialogueTree> trees = new() {dialogue1, dialogue2, dialogue3, dialogue4, dialogue5, dialogue6, dialogue7};
         var random = new System.Random();
