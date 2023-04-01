@@ -13,7 +13,7 @@ public class NPCImageEffectOnPlay : MonoBehaviour
 
     private NPC _attachedNPC;
     private Image _attachedNPCImageInEncounter;
-    private Transform _reactionPlacement;
+    private Image _reactionImage;
 
     public void UpdateImage()
     {
@@ -21,16 +21,16 @@ public class NPCImageEffectOnPlay : MonoBehaviour
         {
             if (GameState.Meta.activeEncounter.Value != null)
             {
-                if (_reactionPlacement == null)
+                if (_reactionImage == null)
                 {
-                    //_reactionPlacement = GameState.Meta.activeEncounter.Value.GetEncounterController().npcReactionSpawn;
+                    _reactionImage = GameState.Meta.activeEncounter.Value.GetEncounterController().npcReactionSpawn;
                 }
                 _attachedNPCImageInEncounter = GameState.Meta.activeEncounter.Value.GetEncounterController().npcHeadshot;
             }
             else
             {
                 _attachedNPCImageInEncounter = null;
-                _reactionPlacement = null;
+                _reactionImage = null;
             }
         }
         catch (MissingReferenceException e)
@@ -45,12 +45,37 @@ public class NPCImageEffectOnPlay : MonoBehaviour
         }
     }
 
+    public void CardPlayed()
+    {
+        try
+        {
+            TriggerReactionImage();
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("E");
+            GameState.Meta.activeEncounterLastCardPlayedElement.OnChange -= CardPlayed;
+        }
+        catch (NullReferenceException e)
+        {
+            e.Message.Contains("E");
+            GameState.Meta.activeEncounterLastCardPlayedElement.OnChange -= CardPlayed;
+        }
+    }
+
+    public void TriggerReactionImage()
+    {
+        _reactionImage.sprite = npcReactionImage;
+        _reactionImage.color = new Color(_reactionImage.color.r, _reactionImage.color.g, _reactionImage.color.b, 255);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         _attachedNPC = gameObject.GetComponent<NPC>();
 
-        GameState.Meta.activeEncounter.OnChange -= UpdateImage;
+        GameState.Meta.activeEncounter.OnChange += UpdateImage;
+        GameState.Meta.activeEncounterLastCardPlayedElement.OnChange += CardPlayed;
     }
 
     // Update is called once per frame

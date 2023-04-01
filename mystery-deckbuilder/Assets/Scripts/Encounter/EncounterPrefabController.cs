@@ -23,6 +23,7 @@ public class EncounterPrefabController : MonoBehaviour
     public GameObject greenCard;
     public GameObject greyCard;
     public Transform cardHighlightTransform;
+    public Image npcReactionSpawn;
     public GameObject YouWonPage;
     public GameObject YouLostPage;
 
