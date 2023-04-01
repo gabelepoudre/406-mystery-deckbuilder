@@ -21,6 +21,8 @@ public class NPCImageEffectOnPlay : MonoBehaviour
     private int numFlashes = 0;
     private bool isFlashed = false;
 
+    private float stretchFactor = 0;
+
     private bool imageOffset = false;
     private Vector3 naturalImage;
 
@@ -34,10 +36,7 @@ public class NPCImageEffectOnPlay : MonoBehaviour
         if (!imageOffset)
         {
             naturalImage = new Vector3 (_reactionImage.transform.position.x, _reactionImage.transform.position.y, _reactionImage.transform.position.z);
-            Debug.LogWarning("offset Image was " + naturalImage);
             _reactionImage.transform.position = new Vector3(_reactionImage.transform.position.x + linkedNPC.reactionOffsetX, _reactionImage.transform.position.y + linkedNPC.reactionOffsetY, _reactionImage.transform.position.z);
-            Debug.LogWarning("offset now natural is" + naturalImage);
-            Debug.LogWarning("offset now position is" + _reactionImage.transform.position);
             imageOffset = true;
         }
     }
@@ -46,10 +45,7 @@ public class NPCImageEffectOnPlay : MonoBehaviour
     {
         if (imageOffset)
         {
-            Debug.LogWarning("unoffset Image was " + _reactionImage.transform.position);
             _reactionImage.transform.position = new Vector3(naturalImage.x, naturalImage.y, naturalImage.z);
-            Debug.LogWarning("unoffset now natural is" + naturalImage);
-            Debug.LogWarning("unoffset now position is" + _reactionImage.transform.position);
         }
     }
 
@@ -139,16 +135,19 @@ public class NPCImageEffectOnPlay : MonoBehaviour
             if (GameState.Meta.activeEncounterComplianceRaisedByAmount.Value > 40)
             {
                 numFlashes = 12;
+                stretchFactor = 0.20f;
                 curFlashTimerFrames = 1;
             }
             else if (GameState.Meta.activeEncounterComplianceRaisedByAmount.Value > 20)
             {
                 numFlashes = 8;
+                stretchFactor = 0.15f;
                 curFlashTimerFrames = 1;
             }
             else if (GameState.Meta.activeEncounterComplianceRaisedByAmount.Value > 0)
             {
                 numFlashes = 4;
+                stretchFactor = 0.10f;
                 curFlashTimerFrames = 1;
             }
         }
@@ -178,7 +177,7 @@ public class NPCImageEffectOnPlay : MonoBehaviour
             {
                 if (!isStretched)
                 {
-                    _attachedNPCImageInEncounter.transform.localScale = new Vector3(_attachedNPCImageInEncounter.transform.localScale.x * 1.10f, _attachedNPCImageInEncounter.transform.localScale.y * 0.90f, _attachedNPCImageInEncounter.transform.localScale.z);
+                    _attachedNPCImageInEncounter.transform.localScale = new Vector3(_attachedNPCImageInEncounter.transform.localScale.x * 1.0f+stretchFactor, _attachedNPCImageInEncounter.transform.localScale.y * 1.00f-stretchFactor, _attachedNPCImageInEncounter.transform.localScale.z);
                     isStretched = true;
                 }
             }
