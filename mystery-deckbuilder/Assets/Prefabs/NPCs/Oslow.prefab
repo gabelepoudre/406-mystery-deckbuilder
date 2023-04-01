@@ -566,6 +566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Oslow
+  IsBoss: 0
   affinity_intimidation: 0.823
   affinity_sympathy: 0.203
   affintiy_persuasion: 0.208
@@ -600,10 +601,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2c6071d43e4cf47b85ce574f5d547d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phaseOne: {fileID: 0}
-  PhaseTwo: {fileID: 0}
-  PhaseThree: {fileID: 0}
-  PhaseFour: {fileID: 0}
+  phaseOne: {fileID: 21300000, guid: dd4ec402c6f28264ea66c32395af8c8e, type: 3}
+  PhaseTwo: {fileID: 21300000, guid: d7b21d90cadd34d4abda311da837ec0e, type: 3}
+  PhaseThree: {fileID: 21300000, guid: a0bfbcd6e641ae0478da8ed2d123534a, type: 3}
+  PhaseFour: {fileID: 21300000, guid: 695b2018eb4492f42b91bda1df001aad, type: 3}
 --- !u!114 &-6849788635764920746
 MonoBehaviour:
   m_ObjectHideFlags: 0

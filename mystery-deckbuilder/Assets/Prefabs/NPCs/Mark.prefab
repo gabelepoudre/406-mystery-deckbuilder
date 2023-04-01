@@ -566,6 +566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Mark
+  IsBoss: 0
   affinity_intimidation: 0.85
   affinity_sympathy: 0.11
   affintiy_persuasion: 0.18
@@ -600,10 +601,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2c6071d43e4cf47b85ce574f5d547d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phaseOne: {fileID: 0}
-  PhaseTwo: {fileID: 0}
-  PhaseThree: {fileID: 0}
-  PhaseFour: {fileID: 0}
+  phaseOne: {fileID: 21300000, guid: f15e9d4261121774eb8c9870c419ade3, type: 3}
+  PhaseTwo: {fileID: 21300000, guid: cf48abd81bd020649b0abe5cb1a25152, type: 3}
+  PhaseThree: {fileID: 21300000, guid: 3b6495d39a0e32f42b18cc76e5d4a493, type: 3}
+  PhaseFour: {fileID: 21300000, guid: f62fe0bccafac944d94c8f4405710ca3, type: 3}
 --- !u!114 &-8250950032188721504
 MonoBehaviour:
   m_ObjectHideFlags: 0

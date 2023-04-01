@@ -601,10 +601,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2c6071d43e4cf47b85ce574f5d547d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phaseOne: {fileID: 0}
-  PhaseTwo: {fileID: 0}
-  PhaseThree: {fileID: 0}
-  PhaseFour: {fileID: 0}
+  phaseOne: {fileID: 21300000, guid: 98e2f70236eeb8040a70e54332294d3f, type: 3}
+  PhaseTwo: {fileID: 21300000, guid: f7cb75186e56b64489714985753e19b0, type: 3}
+  PhaseThree: {fileID: 21300000, guid: aa221409c5fcf3045be94ecd2171437e, type: 3}
+  PhaseFour: {fileID: 21300000, guid: f8ef0d0859066ca459ecffae314e1ace, type: 3}
 --- !u!114 &-7381755355167526033
 MonoBehaviour:
   m_ObjectHideFlags: 0

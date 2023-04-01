@@ -566,6 +566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Alan
+  IsBoss: 0
   affinity_intimidation: 0.21
   affinity_sympathy: 0.79
   affintiy_persuasion: 0.23
@@ -600,10 +601,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2c6071d43e4cf47b85ce574f5d547d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phaseOne: {fileID: 0}
-  PhaseTwo: {fileID: 0}
-  PhaseThree: {fileID: 0}
-  PhaseFour: {fileID: 0}
+  phaseOne: {fileID: 21300000, guid: 92917c10d5151824e8102b23d876288d, type: 3}
+  PhaseTwo: {fileID: 21300000, guid: ca1a1469ce7b88e4b82e84d717c6f474, type: 3}
+  PhaseThree: {fileID: 21300000, guid: d0d18ab3ab9ad3d42953a774f0509d1f, type: 3}
+  PhaseFour: {fileID: 21300000, guid: dce7e02ec4e5617409a81a39b4c85563, type: 3}
 --- !u!114 &-6906192284787102331
 MonoBehaviour:
   m_ObjectHideFlags: 0
