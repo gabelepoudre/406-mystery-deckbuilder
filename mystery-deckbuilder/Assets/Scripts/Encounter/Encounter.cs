@@ -8,6 +8,7 @@
 
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Encounter
 {
@@ -47,6 +48,7 @@ public class Encounter
     // end of statics
 
     private GameObject _encounterPrefab;
+    private GameObject _reactionPrefab;
     private EncounterPrefabController _encounterController;
     private NPC _opponent;
     private List<IExecutableEffect> globalEffects = new();
@@ -124,6 +126,8 @@ public class Encounter
         _encounterController.Initialize(config);
 
         _opponent = config.Opponent;
+        _reactionPrefab = GameObject.Instantiate(_opponent.reactionPrefab);
+        _reactionPrefab.GetComponent<NPCImageEffectOnPlay>().linkedNPC = _opponent;
     }
 
     public NPC GetOpponent()
@@ -206,7 +210,7 @@ public class Encounter
             }
             else
             {
-                draw_idx = Mathf.RoundToInt((Random.value * (GameState.Player.dailyDeck.Value.Count - 1)));
+                draw_idx = Mathf.RoundToInt((UnityEngine.Random.value * (GameState.Player.dailyDeck.Value.Count - 1)));
             }
 
             int draw_value = GameState.Player.dailyDeck.Value[draw_idx];
@@ -456,16 +460,31 @@ public class Encounter
         //update State data
         if (victory)
         {
-            GameState.NPCs.npcNameToEncountersWon[GameState.NPCs.lastNPCSpokenTo].Value += 1;
+            try
+            {
+                GameState.NPCs.npcNameToEncountersWon[GameState.NPCs.lastNPCSpokenTo].Value += 1;
+            }
+            catch (Exception)
+            {
+                Debug.LogWarning("Failed to add NPCname, probably in debug");
+            }
             GameState.Meta.activeEncounterInWinScreen.Value = false;
         }
         else
         {
             GameState.Meta.activeEncounterInLossScreen.Value = false;
         }
-        GameState.NPCs.npcNameToEncountersCompleted[GameState.NPCs.lastNPCSpokenTo].Value += 1;
+        try
+        {
+            GameState.NPCs.npcNameToEncountersCompleted[GameState.NPCs.lastNPCSpokenTo].Value += 1;
+        }
+        catch (Exception)
+        {
+            Debug.LogWarning("Failed to add NPCname, probably in debug");
+        }
         
 
+        GameObject.Destroy(_reactionPrefab);
         GameObject.Destroy(_encounterPrefab);
     }
 }

@@ -9,6 +9,8 @@ public class DBDeckUIController : MonoBehaviour
 {
     public UnityEngine.Object sceneOnComplete;
 
+    public bool isDebug = false;
+
     public Text cardTypeOnHighlight;
     public Text numCardsInDeck;
 
@@ -452,6 +454,11 @@ public class DBDeckUIController : MonoBehaviour
 
     public void LaunchIntoScene()
     {
+        if (isDebug)
+        {
+            this.gameObject.GetComponentInParent<Canvas>().gameObject.SetActive(false);
+            return;
+        }
         GameState.Meta.justSlept.Value = true;
         GameState.Meta.withinDream.Value = false;
         SceneManager.LoadScene("Motel");

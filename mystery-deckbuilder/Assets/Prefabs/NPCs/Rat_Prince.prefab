@@ -566,6 +566,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Rat Prince
+  reactionOffsetX: -45
+  reactionOffsetY: 58
   IsBoss: 1
   affinity_intimidation: 0.71
   affinity_sympathy: 0.75
@@ -577,6 +579,7 @@ MonoBehaviour:
   ComplianceThreshhold: 0
   cardIDUnlockFromWinEncounter: 21
   encounterSprites: {fileID: 701282225796089859}
+  reactionPrefab: {fileID: 4488296313786778136, guid: f76f2d30f18c9d64dbbc4a8e04af613a, type: 3}
 --- !u!114 &2974809267316779736
 MonoBehaviour:
   m_ObjectHideFlags: 0

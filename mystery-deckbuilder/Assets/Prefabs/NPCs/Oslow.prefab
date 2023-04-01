@@ -566,6 +566,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Oslow
+  reactionOffsetX: 9483
+  reactionOffsetY: 0
   IsBoss: 0
   affinity_intimidation: 0.823
   affinity_sympathy: 0.203
@@ -577,6 +579,7 @@ MonoBehaviour:
   ComplianceThreshhold: 0
   cardIDUnlockFromWinEncounter: 7
   encounterSprites: {fileID: 701282225796089859}
+  reactionPrefab: {fileID: 2712194818219275452, guid: 4b4b5573e3208524fa9ed0b98fb86ccd, type: 3}
 --- !u!114 &2974809267316779736
 MonoBehaviour:
   m_ObjectHideFlags: 0

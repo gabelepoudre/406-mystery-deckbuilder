@@ -21,6 +21,9 @@ public class EncounterPrefabController : MonoBehaviour
     public GameObject cardPrefab;
 
     public Transform cardHighlightTransform;
+    public Image FrustrationImage;
+    public Image MadImage;
+    public Image SweatImage;
     public GameObject YouWonPage;
     public GameObject YouLostPage;
 
