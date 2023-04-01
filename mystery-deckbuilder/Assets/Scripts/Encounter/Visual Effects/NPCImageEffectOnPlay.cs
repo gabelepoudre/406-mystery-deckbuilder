@@ -27,6 +27,11 @@ public class NPCImageEffectOnPlay : MonoBehaviour
     private bool haveSetNatural = false;  // apparently vector3 is non nullable
     private Vector3 naturalScale;
 
+    public void OffsetImage()
+    {
+        _reactionImage.transform.position = new Vector3(_reactionImage.transform.position.x + reactionOffsetX, _reactionImage.transform.position.y + reactionOffsetY, _reactionImage.transform.position.z);
+    }
+
     public void UpdateImage()
     {
         try
@@ -38,14 +43,17 @@ public class NPCImageEffectOnPlay : MonoBehaviour
                     if (getsMad)
                     {
                         _reactionImage = GameState.Meta.activeEncounter.Value.GetEncounterController().MadImage;
+                        OffsetImage();
                     }
                     else if (getFrustrated)
                     {
                         _reactionImage = GameState.Meta.activeEncounter.Value.GetEncounterController().FrustrationImage;
+                        OffsetImage();
                     }
                     else if (sweats)
                     {
                         _reactionImage = GameState.Meta.activeEncounter.Value.GetEncounterController().SweatImage;
+                        OffsetImage();
                     }
                     
                 }
