@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2712194818219275452}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 13.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,8 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcReactionImage: {fileID: 21300000, guid: 16601b314f964634699277bd02120486, type: 3}
-  reactionOffsetX: 0
-  reactionOffsetY: 0
+  linkedNPC: {fileID: 0}
   getsMad: 0
   sweats: 1
   getFrustrated: 0

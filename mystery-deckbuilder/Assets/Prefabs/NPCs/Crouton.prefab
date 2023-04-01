@@ -580,8 +580,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Crouton
-  reactionOffsetX: 0
-  reactionOffsetY: 0
+  reactionOffsetX: -6
+  reactionOffsetY: 19
   IsBoss: 0
   affinity_intimidation: 0.74
   affinity_sympathy: 0.18

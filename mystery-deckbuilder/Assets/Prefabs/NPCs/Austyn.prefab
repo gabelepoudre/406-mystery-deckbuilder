@@ -567,7 +567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterName: Austyn
   reactionOffsetX: 0
-  reactionOffsetY: 0
+  reactionOffsetY: 66
   IsBoss: 0
   affinity_intimidation: 0.8
   affinity_sympathy: 0.17
