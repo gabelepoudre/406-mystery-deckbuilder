@@ -8,6 +8,10 @@ public class NPC : MonoBehaviour
 {
     //Variables 
     public string CharacterName;
+
+    public int reactionOffsetX = 0;
+    public int reactionOffsetY = 0;
+
     public bool IsBoss = false;
 
     [Range(0.0f, 1.0f)]public float affinity_intimidation = 0.5f;

@@ -449,7 +449,6 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8310409466412650138}
-  - {fileID: 6434898314389011102}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -466,6 +465,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Nibbles
+  reactionOffsetX: 0
+  reactionOffsetY: 0
   IsBoss: 0
   affinity_intimidation: 0.288
   affinity_sympathy: 0.295
@@ -477,7 +478,7 @@ MonoBehaviour:
   ComplianceThreshhold: 0
   cardIDUnlockFromWinEncounter: 21
   encounterSprites: {fileID: 7538326253552544718}
-  reactionPrefab: {fileID: 5537819699424279484}
+  reactionPrefab: {fileID: 2712194818219275452, guid: 4b4b5573e3208524fa9ed0b98fb86ccd, type: 3}
 --- !u!114 &8310409467724307525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,70 +632,3 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!1001 &7600369162887974656
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 8310409467724307527}
-    m_Modifications:
-    - target: {fileID: 2712194818219275452, guid: 4b4b5573e3208524fa9ed0b98fb86ccd, type: 3}
-      propertyPath: m_Name
-      value: Sweats
-      objectReference: {fileID: 0}
-    - target: {fileID: 3473601943563138462, guid: 4b4b5573e3208524fa9ed0b98fb86ccd, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3473601943563138462, guid: 4b4b5573e3208524fa9ed0b98fb86ccd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3473601943563138462, guid: 4b4b5573e3208524fa9ed0b98fb86ccd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3473601943563138462, guid: 4b4b5573e3208524fa9ed0b98fb86ccd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3473601943563138462, guid: 4b4b5573e3208524fa9ed0b98fb86ccd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3473601943563138462, guid: 4b4b5573e3208524fa9ed0b98fb86ccd, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3473601943563138462, guid: 4b4b5573e3208524fa9ed0b98fb86ccd, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3473601943563138462, guid: 4b4b5573e3208524fa9ed0b98fb86ccd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3473601943563138462, guid: 4b4b5573e3208524fa9ed0b98fb86ccd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3473601943563138462, guid: 4b4b5573e3208524fa9ed0b98fb86ccd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3473601943563138462, guid: 4b4b5573e3208524fa9ed0b98fb86ccd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4b4b5573e3208524fa9ed0b98fb86ccd, type: 3}
---- !u!1 &5537819699424279484 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2712194818219275452, guid: 4b4b5573e3208524fa9ed0b98fb86ccd, type: 3}
-  m_PrefabInstance: {fileID: 7600369162887974656}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &6434898314389011102 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3473601943563138462, guid: 4b4b5573e3208524fa9ed0b98fb86ccd, type: 3}
-  m_PrefabInstance: {fileID: 7600369162887974656}
-  m_PrefabAsset: {fileID: 0}

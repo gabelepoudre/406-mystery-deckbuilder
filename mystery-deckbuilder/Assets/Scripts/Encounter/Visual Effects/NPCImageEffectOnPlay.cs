@@ -7,9 +7,8 @@ using System;
 public class NPCImageEffectOnPlay : MonoBehaviour
 {
     public Sprite npcReactionImage;
+    public NPC linkedNPC;
 
-    public int reactionOffsetX = 0;
-    public int reactionOffsetY = 0;
     public bool getsMad = false;
     public bool sweats = false;
     public bool getFrustrated = false;
@@ -29,7 +28,7 @@ public class NPCImageEffectOnPlay : MonoBehaviour
 
     public void OffsetImage()
     {
-        _reactionImage.transform.position = new Vector3(_reactionImage.transform.position.x + reactionOffsetX, _reactionImage.transform.position.y + reactionOffsetY, _reactionImage.transform.position.z);
+        _reactionImage.transform.position = new Vector3(_reactionImage.transform.position.x + linkedNPC.reactionOffsetX, _reactionImage.transform.position.y + linkedNPC.reactionOffsetY, _reactionImage.transform.position.z);
     }
 
     public void UpdateImage()
@@ -57,10 +56,16 @@ public class NPCImageEffectOnPlay : MonoBehaviour
                     }
                     
                 }
+                else
+                {
+                    Debug.Log("Reaction image wasn't null, somehow");
+                }
                 _attachedNPCImageInEncounter = GameState.Meta.activeEncounter.Value.GetEncounterController().npcHeadshot;
+                Debug.Log("npcHeadshot in encounter controller failed to set?" + _attachedNPCImageInEncounter == null);
             }
             else
             {
+                Debug.Log("active encounter null on trigger");
                 _attachedNPCImageInEncounter = null;
                 _reactionImage = null;
             }
@@ -187,13 +192,11 @@ public class NPCImageEffectOnPlay : MonoBehaviour
                 curFlashTimerFrames = flashTimerFrames;
                 if (isFlashed)
                 {
-                    Debug.Log("Light");
                     _attachedNPCImageInEncounter.color = new Color(1, 1, 1, 1);
                     isFlashed = false;
                 }
                 else
                 {
-                    Debug.Log("Dark");
                     _attachedNPCImageInEncounter.color = new Color(0.8f, 0.8f, 0.8f, 1);
                     isFlashed = true;
                 }
@@ -246,6 +249,7 @@ public class NPCImageEffectOnPlay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        UpdateImage();
         GameState.Meta.activeEncounter.OnChange += UpdateImage;
         GameState.Meta.activeEncounterComplianceRaisedByAmount.OnChange += CardPlayed;
         GameState.Meta.activeEncounterInLossScreen.OnChange += HideReactionOnWinOrLoss;
