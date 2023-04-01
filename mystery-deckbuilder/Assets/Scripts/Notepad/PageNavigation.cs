@@ -92,6 +92,7 @@ public class PageNavigation : MonoBehaviour
     public void NextPage()
     {
         //If next page, exists, go
+        GameState.Meta.menuNotepadPageSwitch.Raise();
     
         
      if(currentPageID < (currentChapter.GetNumPages() -1))
@@ -169,16 +170,19 @@ public class PageNavigation : MonoBehaviour
         currentChapter = chapterList[currentChapterID];
         currentPage = currentChapter.pageList[0];
         DisplayNotes();
-          
+        GameState.Meta.menuNotepadTabSwitch.Raise();
+
     }
 
     //Change the current chapter to be the Deck chapter
     public void ChangedChapterDeck()
     {
+
         //in case coming from paused screen
         Time.timeScale = 1;
         currentChapterID = 3;
         currentChapter = chapterList[currentChapterID];
+        GameState.Meta.menuNotepadTabSwitch.Raise();
     }
 
     
@@ -193,7 +197,7 @@ public class PageNavigation : MonoBehaviour
         currentChapter = chapterList[currentChapterID];
         currentPage = currentChapter.pageList[0];
         DisplayNotes();
-
+        GameState.Meta.menuNotepadTabSwitch.Raise();
     }
 
 
@@ -205,6 +209,7 @@ public class PageNavigation : MonoBehaviour
         Time.timeScale = 0;
         currentChapterID = 2;
         currentChapter = chapterList[currentChapterID];
+        GameState.Meta.menuNotepadTabSwitch.Raise();
     }
 
     // Start is called before the first frame update

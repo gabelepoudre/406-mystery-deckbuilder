@@ -145,7 +145,7 @@ public class DialogueBox : MonoBehaviour
             if (_waiting) yield return new WaitForSeconds(0.03f);
         }
         FinishedSentence = true;
-        GameState.Player.glubTalkingInDialogue.Value = false;
+        GameState.Meta.dialogueGoing.Value = "";
         _waiting = true;
     }
 }

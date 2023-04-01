@@ -566,6 +566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Doug
+  IsBoss: 1
   affinity_intimidation: 0.5
   affinity_sympathy: 0.11
   affintiy_persuasion: 0.89
