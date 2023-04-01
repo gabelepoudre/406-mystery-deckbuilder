@@ -158,6 +158,7 @@ public class NoEncounterCardPrefabController : MonoBehaviour, IPointerClickHandl
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        GameState.Meta.nonEncounterCardHoverOver.Raise();
         if (!_highlighted && _hasInteraction && !_deckbuildingMode)
         {
             _highlighted = true;

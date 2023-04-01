@@ -566,6 +566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Rat Prince
+  IsBoss: 1
   affinity_intimidation: 0.71
   affinity_sympathy: 0.75
   affintiy_persuasion: 0.23

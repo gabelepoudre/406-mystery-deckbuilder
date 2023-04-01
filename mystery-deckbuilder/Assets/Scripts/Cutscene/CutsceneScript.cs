@@ -9,6 +9,11 @@ public class CutsceneScript : MonoBehaviour
     //All _slides in the project, minus the _fadeSlide
     [SerializeField] private List<Transform> _slides = default;
 
+    [Header("Only click one of these if any")]
+    public bool isOpeningCutscene = false;
+    public bool isGoodEnd = false;
+    public bool isBadEnd = false;
+
     // String - exact name of scene to load
     [Header("Scene index (found in File > Build Settings > Scenes in Build)")]
     [Header("Scene has to be in the game build to work. Will implement loading by scene name later")]
@@ -33,6 +38,18 @@ public class CutsceneScript : MonoBehaviour
     private void Start()
     {
         _previous.SetActive(false);
+        if(isOpeningCutscene)
+        {
+            GameState.Meta.inOpeningCutscene.Value = true;
+        }
+        else if (isGoodEnd)
+        {
+            GameState.Meta.inGoodEnd.Value = true;
+        }
+        else if (isBadEnd)
+        {
+            GameState.Meta.inBadEnd.Value = true;
+        }
     }
 
     //goes to next slide
@@ -42,6 +59,18 @@ public class CutsceneScript : MonoBehaviour
 
         if (_currentSlide >= _slides.Count)
         {
+            if (isOpeningCutscene)
+            {
+                GameState.Meta.inOpeningCutscene.Value = false;
+            }
+            else if (isGoodEnd)
+            {
+                GameState.Meta.inGoodEnd.Value = false;
+            }
+            else if (isBadEnd)
+            {
+                GameState.Meta.inBadEnd.Value = false;
+            }
             SceneManager.LoadScene(_sceneIndex);
         }
         else
@@ -81,6 +110,19 @@ public class CutsceneScript : MonoBehaviour
             yield return new WaitForSeconds(_slideDuration);
         }
 
+
+        if (isOpeningCutscene)
+        {
+            GameState.Meta.inOpeningCutscene.Value = false;
+        }
+        else if (isGoodEnd)
+        {
+            GameState.Meta.inGoodEnd.Value = false;
+        }
+        else if (isBadEnd)
+        {
+            GameState.Meta.inBadEnd.Value = false;
+        }
         SceneManager.LoadScene(_sceneIndex);
     }
 

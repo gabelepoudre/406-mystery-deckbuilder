@@ -10,5 +10,6 @@ public class ConditionalMapOpen : MonoBehaviour
     {
         // not conditional
         miniMap.SetActive(true);
+        GameState.Meta.mapIsOpen.Value = true;
     }
 }
