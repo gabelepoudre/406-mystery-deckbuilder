@@ -47,6 +47,7 @@ public class Encounter
     // end of statics
 
     private GameObject _encounterPrefab;
+    private GameObject _reactionPrefab;
     private EncounterPrefabController _encounterController;
     private NPC _opponent;
     private List<IExecutableEffect> globalEffects = new();
@@ -124,6 +125,7 @@ public class Encounter
         _encounterController.Initialize(config);
 
         _opponent = config.Opponent;
+        _reactionPrefab = GameObject.Instantiate(_opponent.reactionPrefab);
     }
 
     public NPC GetOpponent()
@@ -464,8 +466,8 @@ public class Encounter
             GameState.Meta.activeEncounterInLossScreen.Value = false;
         }
         GameState.NPCs.npcNameToEncountersCompleted[GameState.NPCs.lastNPCSpokenTo].Value += 1;
-        
 
+        GameObject.Destroy(_reactionPrefab);
         GameObject.Destroy(_encounterPrefab);
     }
 }

@@ -14,7 +14,6 @@ public class NPC : MonoBehaviour
     [Range(0.0f, 1.0f)]public float affinity_sympathy = 0.5f;
     [Range(0.0f, 1.0f)]public float affintiy_persuasion = 0.5f;
 
-
     [Range(1.0f, 500.0f)]public float startingPatience;
     [Range(1.0f, 500.0f)]public float startingCompliance;
     [Range(0.0f, 10.0f)]public float currentPatience;  // antiquated
@@ -25,6 +24,7 @@ public class NPC : MonoBehaviour
     public int cardIDUnlockFromWinEncounter = -1;
 
     public NPCEncounterSpriteController encounterSprites;
+    public GameObject reactionPrefab;
 
     public Dictionary<string, DialogueTree> DialogueTreeDictionary;
 
