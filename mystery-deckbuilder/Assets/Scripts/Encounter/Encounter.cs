@@ -462,7 +462,7 @@ public class Encounter
         {
             try
             {
-                GameState.NPCs.npcNameToEncountersWon[GameState.NPCs.lastNPCSpokenTo].Value += 1;
+                GameState.NPCs.npcNameToEncountersWon[GameState.NPCs.lastNPCSpokenTo.Value].Value += 1;
             }
             catch (Exception)
             {
@@ -476,7 +476,7 @@ public class Encounter
         }
         try
         {
-            GameState.NPCs.npcNameToEncountersCompleted[GameState.NPCs.lastNPCSpokenTo].Value += 1;
+            GameState.NPCs.npcNameToEncountersCompleted[GameState.NPCs.lastNPCSpokenTo.Value].Value += 1;
         }
         catch (Exception)
         {
