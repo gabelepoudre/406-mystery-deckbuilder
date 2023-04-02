@@ -2178,10 +2178,10 @@ PrefabInstance:
     - target: {fileID: 4462939111587983103, guid: 9a89543a34e40b04fb9ea954cb1b8a45, type: 3}
       propertyPath: sounds.Array.data[2].clip
       value: 
-      objectReference: {fileID: 8300000, guid: c05af4862e9dcb549987d6b078596232, type: 3}
+      objectReference: {fileID: 8300000, guid: f17e95da1c393a94cb2ea7fead910bc0, type: 3}
     - target: {fileID: 4462939111587983103, guid: 9a89543a34e40b04fb9ea954cb1b8a45, type: 3}
       propertyPath: sounds.Array.data[2].name
-      value: music-town
+      value: music-town-new
       objectReference: {fileID: 0}
     - target: {fileID: 4462939111587983103, guid: 9a89543a34e40b04fb9ea954cb1b8a45, type: 3}
       propertyPath: sounds.Array.data[3].clip
@@ -2428,6 +2428,14 @@ PrefabInstance:
       value: effect-menu-tab
       objectReference: {fileID: 0}
     - target: {fileID: 4462939111587983103, guid: 9a89543a34e40b04fb9ea954cb1b8a45, type: 3}
+      propertyPath: sounds.Array.data[25].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: f5e480b16c7e48a4091262b0cad5c9ed, type: 3}
+    - target: {fileID: 4462939111587983103, guid: 9a89543a34e40b04fb9ea954cb1b8a45, type: 3}
+      propertyPath: sounds.Array.data[25].name
+      value: effect-test
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462939111587983103, guid: 9a89543a34e40b04fb9ea954cb1b8a45, type: 3}
       propertyPath: sounds.Array.data[4].pitch
       value: 1
       objectReference: {fileID: 0}
@@ -2520,6 +2528,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4462939111587983103, guid: 9a89543a34e40b04fb9ea954cb1b8a45, type: 3}
+      propertyPath: sounds.Array.data[25].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462939111587983103, guid: 9a89543a34e40b04fb9ea954cb1b8a45, type: 3}
       propertyPath: sounds.Array.data[2].volume
       value: 0.067
       objectReference: {fileID: 0}
@@ -2609,6 +2621,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4462939111587983103, guid: 9a89543a34e40b04fb9ea954cb1b8a45, type: 3}
       propertyPath: sounds.Array.data[24].volume
+      value: 0.146
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462939111587983103, guid: 9a89543a34e40b04fb9ea954cb1b8a45, type: 3}
+      propertyPath: sounds.Array.data[25].volume
       value: 0.146
       objectReference: {fileID: 0}
     m_RemovedComponents: []
