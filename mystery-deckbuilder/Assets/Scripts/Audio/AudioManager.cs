@@ -81,7 +81,12 @@ public class AudioManager : MonoBehaviour
     {
         if (!GameState.Meta.inMainMenu.Value || name == "music-encounter-normal")  // will be refused if you change the main theme music unless you swap this
         {
+
             Sound s = Array.Find(sounds, sound => sound.name == name);
+            if (s==null)
+            {
+                Debug.LogError("Sound \"" + name + "\" could not be found in sounds");
+            }
             s.source.Play();
         }
         else
