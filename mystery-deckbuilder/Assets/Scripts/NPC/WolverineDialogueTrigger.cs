@@ -9,7 +9,7 @@ public class WolverineDialogueTrigger : MonoBehaviour
     {
         if (GameState.NPCs.Wolverine.isInteractableAtBoxCar.Value || GameState.Player.location.Value != GameState.Player.Locations.Boxcar) {
                 //since we have just started a dialogue, the last NPC spoken to is this one
-            GameState.NPCs.lastNPCSpokenTo = transform.GetComponent<NPC>().CharacterName;
+            GameState.NPCs.lastNPCSpokenTo.Value = transform.GetComponent<NPC>().CharacterName;
 
             //update the met value since we've met them
             GameState.NPCs.npcNameToMet[transform.GetComponent<NPC>().CharacterName].Value = true;
