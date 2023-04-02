@@ -182,9 +182,8 @@ public static class GameState
     {
 
         //NOTE: updates automatically in NPCdialoguetrigger
-        //public static string lastNPCSpokenTo = "";
-        public static GameStateValue<string> lastNPCSpokenTo = new("", _gameStateValues);
-
+        public static string lastNPCSpokenTo = "";
+        
 
         //to keep track of what NPCs have been met by the player
         public static List<string> npcsMet = new List<string>();
