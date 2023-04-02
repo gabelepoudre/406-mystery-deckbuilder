@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+// ADUIO MANAGER USAGE:
+//      Make sure this is placed in the first scene the game loads.
+// TO PLAY A SOUND:
+//      In any script:
+//          FindObjectOfType<AudioManager>().Play("filename-of-sound");
+// TO STOP A SOUND:
+//      In any script:
+//          FindObjectOfType<AudioManager>().Stop("filename-of-sound");
+
 public class AudioEventSubscriber : MonoBehaviour
 {
     public void Start()
