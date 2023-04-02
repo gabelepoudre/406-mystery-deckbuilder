@@ -14,6 +14,9 @@ using System;
 
 public class AudioEventSubscriber : MonoBehaviour
 {
+    // Previous song; song played before encounter
+    String previousSong = "music-town-new";
+
     public void Start()
     {
         GameState.Meta.activeEncounterComplianceRaisedByAmount.OnChange += CardPlayed;
@@ -55,6 +58,9 @@ public class AudioEventSubscriber : MonoBehaviour
             string lastCardPlayedElement = GameState.Meta.activeEncounterLastCardPlayedElement.Value;
             int patienceDealt = GameState.Meta.activeEncounterPatienceDroppedByAmount.Value;
             int complianceGained = GameState.Meta.activeEncounterComplianceRaisedByAmount.Value;
+            // if (GameState.Meta.activeEncounterComplianceRaisedByAmount.Value > 40)
+            // else if (GameState.Meta.activeEncounterComplianceRaisedByAmount.Value > 20)
+            // else if (GameState.Meta.activeEncounterComplianceRaisedByAmount.Value > 0)
             switch (lastCardPlayedElement)
             {
                 case "Intimidation":
@@ -648,18 +654,29 @@ public class AudioEventSubscriber : MonoBehaviour
             Debug.Log("Event EncounterChanged triggered");
             if (GameState.Meta.activeEncounter.Value != null)
             {
-                if(GameState.Meta.activeEncounter.Value.GetOpponent().IsBoss)
+                //     Stop playing all sounds
+                FindObjectOfType<AudioManager>().StopAll();
+
+                if (GameState.Meta.activeEncounter.Value.GetOpponent().IsBoss)
                 {
                     // do start encounter with boss
+                    //     Play boss encounter theme
+                    FindObjectOfType<AudioManager>().Play("music-encounter-boss");
                 }
                 else
                 {
                     // do start encounter non boss
+
+                    //     Play encounter theme
+                    FindObjectOfType<AudioManager>().Play("music-encounter-normal");
                 }
             }
             else
             {
-                // do stuff on exit (not sure if called before or after win screen)
+                // do stuff on exit;
+                // this is triggered AFTER the win/lose screen
+                FindObjectOfType<AudioManager>().StopAll();
+                FindObjectOfType<AudioManager>().Play(previousSong);
             }
         }
         catch (MissingReferenceException e)

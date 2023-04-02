@@ -11,6 +11,9 @@ using UnityEngine;
 // TO STOP A SOUND:
 //      In any script:
 //          FindObjectOfType<AudioManager>().Stop("filename-of-sound");
+// TO STOP ALL SOUNDS:
+//      In any script:
+//          FindObjectOfType<AudioManager>().StopAll();
 
 
 public class AudioManager : MonoBehaviour
@@ -96,10 +99,21 @@ public class AudioManager : MonoBehaviour
 
     }
 
+
     public void Stop(string name)
+        // stops one sound
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         s.source.Stop();
+    }
+
+    public void StopAll()
+        // stops all sounds
+    {
+        foreach (Sound s in sounds)
+        {
+            s.source.Stop();
+        }
     }
 
 
@@ -108,50 +122,50 @@ public class AudioManager : MonoBehaviour
     // Change music on encounter enter or encounter exit.
     public void EncounterChange()
     {
-        try
-        {
-            // here is the code
+        //try
+        //{
+        //    // here is the code
 
-            // On encounter enter:
-            if (GameState.Meta.activeEncounter.Value != null)
-            {
-                //     Stop playing all sounds
-                foreach (Sound s in sounds)
-                {
-                    s.source.Stop();
-                }
-                //     Then, 
-                //     Play investigation theme
-                Play("music-encounter-normal");
-            }
-
-
-            // On encounter exit:
-            if (GameState.Meta.activeEncounter.Value == null)
-            {
-                //     Stop playing all sounds
-                foreach (Sound s in sounds)
-                {
-                    s.source.Stop();
-                }
-                //     Then, 
-                //     Play town theme
-                Play("music-town-new");
-            }
+        //    // On encounter enter:
+        //    if (GameState.Meta.activeEncounter.Value != null)
+        //    {
+        //        //     Stop playing all sounds
+        //        foreach (Sound s in sounds)
+        //        {
+        //            s.source.Stop();
+        //        }
+        //        //     Then, 
+        //        //     Play investigation theme
+        //        Play("music-encounter-normal");
+        //    }
 
 
+        //    // On encounter exit:
+        //    if (GameState.Meta.activeEncounter.Value == null)
+        //    {
+        //        //     Stop playing all sounds
+        //        foreach (Sound s in sounds)
+        //        {
+        //            s.source.Stop();
+        //        }
+        //        //     Then, 
+        //        //     Play town theme
+        //        Play("music-town-new");
+        //    }
 
-        }
-        catch (MissingReferenceException e)
-        {
-            e.Message.Contains("e");
-            GameState.Meta.activeEncounter.OnChange -= EncounterChange;
-        }
-        catch (NullReferenceException e)
-        {
-            e.Message.Contains("e");
-            GameState.Meta.activeEncounter.OnChange -= EncounterChange;
-        }
+
+
+        //}
+        //catch (MissingReferenceException e)
+        //{
+        //    e.Message.Contains("e");
+        //    GameState.Meta.activeEncounter.OnChange -= EncounterChange;
+        //}
+        //catch (NullReferenceException e)
+        //{
+        //    e.Message.Contains("e");
+        //    GameState.Meta.activeEncounter.OnChange -= EncounterChange;
+        //}
     }
 
     // Change music on Berry Commotion enter.
