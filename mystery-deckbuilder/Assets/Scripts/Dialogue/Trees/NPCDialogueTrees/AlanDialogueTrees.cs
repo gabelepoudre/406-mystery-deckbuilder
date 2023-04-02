@@ -75,7 +75,7 @@ public class AlanDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
     private DialogueTree BuildAfterEncounterLoss()
     {
-        DialogueTree tree = new(new NPCNode(new string[] {"Um, nothing really out of the ordinary that I can think of right now sir, but I do apologize for not being helpful to your cause, sir."}));
+        DialogueTree tree = new(new NPCNode(new string[] {"Um, nothing really out of the ordinary that I can think of right now, but I do apologize for not being helpful to your cause, sir."}));
         return tree;
     }
 
