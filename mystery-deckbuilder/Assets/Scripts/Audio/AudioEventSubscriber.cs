@@ -699,6 +699,11 @@ public class AudioEventSubscriber : MonoBehaviour
             if (GameState.Meta.activeEncounterInWinScreen.Value)
             {
                 // do stuff on enter
+                // stop playing all sounds
+                FindObjectOfType<AudioManager>().StopAll();
+
+                // play victory theme
+                FindObjectOfType<AudioManager>().Play("music-encounter-victory");
             }
             else
             {
@@ -725,6 +730,11 @@ public class AudioEventSubscriber : MonoBehaviour
             if (GameState.Meta.activeEncounterInLossScreen.Value)
             {
                 // do stuff on enter
+                // stop playing all sounds
+                FindObjectOfType<AudioManager>().StopAll();
+
+                // play defeat theme
+                FindObjectOfType<AudioManager>().Play("music-encounter-defeat");
             }
             else
             {
