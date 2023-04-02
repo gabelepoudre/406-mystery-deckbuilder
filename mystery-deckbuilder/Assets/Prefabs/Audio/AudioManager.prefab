@@ -186,13 +186,13 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: effect-menu-sound-4
     clip: {fileID: 8300000, guid: 2bd82aec872ffda4ba52ff53a7a7f47b, type: 3}
-    loop: 1
+    loop: 0
     volume: 0.226
     pitch: 1
     source: {fileID: 0}
   - name: effect-menu-tab
     clip: {fileID: 8300000, guid: e67c4dd8cb5e402468895f5d83aeb968, type: 3}
-    loop: 1
+    loop: 0
     volume: 0.146
     pitch: 1
     source: {fileID: 0}
