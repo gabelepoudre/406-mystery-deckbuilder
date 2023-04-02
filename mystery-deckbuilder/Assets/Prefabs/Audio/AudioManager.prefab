@@ -49,25 +49,151 @@ MonoBehaviour:
   - name: music-test
     clip: {fileID: 8300000, guid: 265eb6a34f884b143b0533287cc994eb, type: 3}
     loop: 1
-    volume: 0.769
+    volume: 0.162
     pitch: 1
     source: {fileID: 0}
   - name: effect-test
     clip: {fileID: 8300000, guid: f5e480b16c7e48a4091262b0cad5c9ed, type: 3}
     loop: 0
-    volume: 0.926
+    volume: 0.181
     pitch: 1
     source: {fileID: 0}
-  - name: music-placeholder-town
-    clip: {fileID: 8300000, guid: 1fc2fe250ae22b64facee8bebe65c72c, type: 3}
+  - name: music-town-new
+    clip: {fileID: 8300000, guid: f17e95da1c393a94cb2ea7fead910bc0, type: 3}
     loop: 1
-    volume: 0.771
+    volume: 0.067
+    pitch: 1
+    source: {fileID: 0}
+  - name: music-encounter-normal
+    clip: {fileID: 8300000, guid: 31d016299e6830b44a221d97df26841f, type: 3}
+    loop: 1
+    volume: 0.119
+    pitch: 1
+    source: {fileID: 0}
+  - name: music-encounter-danger
+    clip: {fileID: 8300000, guid: f0341bffb9c515a49a7c8d77d4c90013, type: 3}
+    loop: 1
+    volume: 0.119
     pitch: 1
     source: {fileID: 0}
   - name: music-placeholder-investigation
     clip: {fileID: 8300000, guid: 7768d2a1641ae614797d9a24f5f2a7b6, type: 3}
     loop: 1
-    volume: 0.771
+    volume: 0.155
+    pitch: 1
+    source: {fileID: 0}
+  - name: effect-card-mouse-over-1
+    clip: {fileID: 8300000, guid: 2f16891efef7173498db6140ca0acb78, type: 3}
+    loop: 0
+    volume: 0.303
+    pitch: 1
+    source: {fileID: 0}
+  - name: effect-card-mouse-over-2
+    clip: {fileID: 8300000, guid: ca89d70c8b2f4324397d608843fdcd6f, type: 3}
+    loop: 0
+    volume: 0.315
+    pitch: 1
+    source: {fileID: 0}
+  - name: effect-card-mouse-over-3
+    clip: {fileID: 8300000, guid: 6813e72312e56794cbc685ceec4b5d94, type: 3}
+    loop: 0
+    volume: 0.311
+    pitch: 1
+    source: {fileID: 0}
+  - name: effect-glub
+    clip: {fileID: 8300000, guid: c04656057ad8e1b44a730289e29798ef, type: 3}
+    loop: 0
+    volume: 0.315
+    pitch: 1
+    source: {fileID: 0}
+  - name: effect-hit-heavy
+    clip: {fileID: 8300000, guid: d70f9e8114136c24098b67c7dc969884, type: 3}
+    loop: 0
+    volume: 0.338
+    pitch: 1
+    source: {fileID: 0}
+  - name: effect-hit-light
+    clip: {fileID: 8300000, guid: 595f9aff207eebb4fb1ba0b69508e2dc, type: 3}
+    loop: 0
+    volume: 0.358
+    pitch: 1
+    source: {fileID: 0}
+  - name: effect-hit-medium
+    clip: {fileID: 8300000, guid: ba22fb72d85970d49a2ff89a40e9b3a2, type: 3}
+    loop: 0
+    volume: 0.315
+    pitch: 1
+    source: {fileID: 0}
+  - name: effect-map
+    clip: {fileID: 8300000, guid: 8ccc1f8a94554a046bea89d13800ffad, type: 3}
+    loop: 0
+    volume: 0.155
+    pitch: 1
+    source: {fileID: 0}
+  - name: effect-menu-sound
+    clip: {fileID: 8300000, guid: f4d32643d53477649ad7ab75a05b8e67, type: 3}
+    loop: 0
+    volume: 0.315
+    pitch: 1
+    source: {fileID: 0}
+  - name: effect-notebook-close
+    clip: {fileID: 8300000, guid: ef36b55d697e6aa4a84b0a0b92703494, type: 3}
+    loop: 0
+    volume: 0.311
+    pitch: 1
+    source: {fileID: 0}
+  - name: effect-notebook-open-1
+    clip: {fileID: 8300000, guid: e9666196aae4f164f8779b5682d44ce8, type: 3}
+    loop: 0
+    volume: 0.319
+    pitch: 1
+    source: {fileID: 0}
+  - name: effect-notebook-open-2
+    clip: {fileID: 8300000, guid: cced32394c88513458e861befc42d521, type: 3}
+    loop: 0
+    volume: 0.307
+    pitch: 1
+    source: {fileID: 0}
+  - name: effect-page-flip
+    clip: {fileID: 8300000, guid: b3355c105193758449b5d67806f92b14, type: 3}
+    loop: 0
+    volume: 0.33
+    pitch: 1
+    source: {fileID: 0}
+  - name: music-encounter-defeat
+    clip: {fileID: 8300000, guid: ae867c7aa0556334bb1b1b94258aa181, type: 3}
+    loop: 0
+    volume: 0.167
+    pitch: 1
+    source: {fileID: 0}
+  - name: music-encounter-victory
+    clip: {fileID: 8300000, guid: 27acf44154c757648b831c0f045f590f, type: 3}
+    loop: 0
+    volume: 0.183
+    pitch: 1
+    source: {fileID: 0}
+  - name: effect-menu-sound-2
+    clip: {fileID: 8300000, guid: 9c53ae7f90138ff46bcafb08fbf606b5, type: 3}
+    loop: 1
+    volume: 0.51
+    pitch: 1
+    source: {fileID: 0}
+  - name: effect-menu-sound-3
+    clip: {fileID: 8300000, guid: 639f21dff2c6e8d4ebb706e82c639b20, type: 3}
+    loop: 1
+    volume: 0.374
+    pitch: 1
+    source: {fileID: 0}
+  - name: effect-menu-sound-4
+    clip: {fileID: 8300000, guid: 2bd82aec872ffda4ba52ff53a7a7f47b, type: 3}
+    loop: 1
+    volume: 0.226
+    pitch: 1
+    source: {fileID: 0}
+  - name: effect-menu-tab
+    clip: {fileID: 8300000, guid: e67c4dd8cb5e402468895f5d83aeb968, type: 3}
+    loop: 1
+    volume: 0.146
     pitch: 1
     source: {fileID: 0}
 --- !u!114 &6946789703319326359

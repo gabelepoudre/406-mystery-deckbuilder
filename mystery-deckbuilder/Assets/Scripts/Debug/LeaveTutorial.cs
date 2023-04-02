@@ -9,4 +9,9 @@ public class LeaveTutorial : MonoBehaviour
         GameState.Meta.currentGameplayPhase.Value = GameState.Meta.GameplayPhases.Phase_1;
         GameState.Meta.currentAct.Value = 2;
     }
+
+    public void FixAudioOnClick()
+    {
+        GameState.Meta.inMainMenu.Value = false;
+    }
 }
