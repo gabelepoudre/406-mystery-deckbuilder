@@ -34,6 +34,8 @@ public class AudioEventSubscriber : MonoBehaviour
         GameState.Meta.activeEncounterCardHelp.OnChange += EncounterCardHelpClicked;
         GameState.Player.location.OnChange += LocationChanged;
         GameState.Meta.dialogueGoing.OnChange += DialogueGoing;
+        GameState.Meta.activeEncounterCardDrawn.OnChange += CardDrawn;
+        GameState.Meta.secretFound.OnChange += SecretFound;
     }
 
     public void CardPlayed()
@@ -95,6 +97,45 @@ public class AudioEventSubscriber : MonoBehaviour
             GameState.Player.location.OnChange -= LocationChanged;
         }
     }
+
+    public void CardDrawn()
+    {
+        try
+        {
+            Debug.Log("Event CardDrawn triggered");
+            // do stuff, value is not used
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.Meta.activeEncounterCardDrawn.OnChange -= CardDrawn;
+        }
+        catch (NullReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.Meta.activeEncounterCardDrawn.OnChange -= CardDrawn;
+        }
+    }
+
+    public void SecretFound()
+    {
+        try
+        {
+            Debug.Log("Event SecretFound triggered");
+            // do stuff, value is not used
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.Meta.secretFound.OnChange -= SecretFound;
+        }
+        catch (NullReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.Meta.secretFound.OnChange -= SecretFound;
+        }
+    }
+
 
     public void DialogueStarted()
     {

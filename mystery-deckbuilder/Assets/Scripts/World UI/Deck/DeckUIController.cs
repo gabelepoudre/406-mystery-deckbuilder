@@ -153,6 +153,7 @@ public class DeckUIController : MonoBehaviour
         if (CanMoveCollectionPageUp())
         {
             CollectionPage -= 1;
+            GameState.Meta.pageUpTrigger.Raise();
         }
     }
 
@@ -161,6 +162,7 @@ public class DeckUIController : MonoBehaviour
         if (CanMoveCollectionPageDown())
         {
             CollectionPage += 1;
+            GameState.Meta.pageDownTrigger.Raise();
         }
     }
 

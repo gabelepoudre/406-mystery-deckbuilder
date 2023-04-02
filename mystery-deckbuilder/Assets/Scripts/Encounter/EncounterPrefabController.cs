@@ -115,6 +115,8 @@ public class EncounterPrefabController : MonoBehaviour
         GameObject cardFrontend = null;
         cardFrontend = Instantiate(cardPrefab, empty.position, empty.rotation, _placeMatScript.gameObject.transform);
 
+        GameState.Meta.activeEncounterCardDrawn.Raise();
+
         // Initialize with the proper info
         CardPrefabController frontendController = cardFrontend.GetComponent<CardPrefabController>();
         card.SetAndInitializeFrontendController(frontendController);

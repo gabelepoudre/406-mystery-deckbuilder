@@ -56,7 +56,9 @@ public static class GameState
         public static GameStateValue<bool> activeEncounterCardHoverOver = new(false, _gameStateValues);
         public static GameStateValue<bool> activeEncounterCardHelp = new(false, _gameStateValues);
         public static GameStateValue<bool> activeEncounterInWinScreen = new(false, _gameStateValues); 
-        public static GameStateValue<bool> activeEncounterInLossScreen = new(false, _gameStateValues); 
+        public static GameStateValue<bool> activeEncounterInLossScreen = new(false, _gameStateValues);
+        public static GameStateValue<bool> activeEncounterCardDrawn = new(false, _gameStateValues);
+        public static GameStateValue<bool> secretFound = new(false, _gameStateValues);
 
         public static GameStateValue<bool> nonEncounterCardHoverOver = new(false, _gameStateValues);
 
