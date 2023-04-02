@@ -49,16 +49,20 @@ public class AudioEventSubscriber : MonoBehaviour
             switch (lastCardPlayedElement)
             {
                 case "Intimidation":
-                    // do stuff
+                    // Play light hit sound
+                    FindObjectOfType<AudioManager>().Play("effect-hit-light");
                     break;
                 case "Persuasion":
-                    // do stuff
+                    // Play light hit sound
+                    FindObjectOfType<AudioManager>().Play("effect-hit-light");
                     break;
                 case "Sympathy":
-                    // do stuff
+                    // Play light hit sound
+                    FindObjectOfType<AudioManager>().Play("effect-hit-light");
                     break;
                 case "Preparation":
-                    // do stuff
+                    // Play light hit sound
+                    FindObjectOfType<AudioManager>().Play("effect-hit-light");
                     break;
             }
         }
@@ -84,6 +88,8 @@ public class AudioEventSubscriber : MonoBehaviour
                 // do stuff. Note: if you want to ensure you don't replay base music on 
                 //  each location swap but still want pub music, you'll want to keep a variable like
                 //  "normal music playing" and check against it for an else if to this conditional
+
+
             }
         }
         catch (MissingReferenceException e)
@@ -163,7 +169,8 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event DialogueAdvanced triggered");
-            // do stuff, value is not used
+            // play menu sound
+            FindObjectOfType<AudioManager>().Play("effect-menu-sound-4");
         }
         catch (MissingReferenceException e)
         {
@@ -183,7 +190,8 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event DialogueEnded triggered");
-            // do stuff, value is not used
+            // play menu sound
+            FindObjectOfType<AudioManager>().Play("effect-menu-sound-4");
         }
         catch (MissingReferenceException e)
         {
@@ -210,6 +218,7 @@ public class AudioEventSubscriber : MonoBehaviour
             else if (GameState.Meta.dialogueGoing.Value == "player")
             {
                 // do if glub stuff
+                FindObjectOfType<AudioManager>().Play("effect-glub");
             }
             else if (GameState.Meta.dialogueGoing.Value == "")
             {
@@ -390,7 +399,8 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event NonEncounterCardHoverChanged triggered");
-            // do stuff here, value is meaningless
+            // play card hover sound
+            FindObjectOfType<AudioManager>().Play("effect-card-mouse-over-1");
         }
         catch (MissingReferenceException e)
         {
@@ -409,7 +419,8 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event EncounterCardHoverChanged triggered");
-            // do stuff here, value is meaningless
+            // play card hover sound
+            FindObjectOfType<AudioManager>().Play("effect-card-mouse-over-2");
         }
         catch (MissingReferenceException e)
         {
@@ -428,7 +439,8 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event DeckbuilderCardAddedToDeck triggered");
-            // do stuff here, value is meaningless
+            // play card hover sound
+            FindObjectOfType<AudioManager>().Play("effect-card-mouse-over-3");
         }
         catch (MissingReferenceException e)
         {
@@ -447,7 +459,8 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event DeckbuilderCardRemovedFromDeck triggered");
-            // do stuff here, value is meaningless
+            // play card hover sound
+            FindObjectOfType<AudioManager>().Play("effect-card-mouse-over-3");
         }
         catch (MissingReferenceException e)
         {
@@ -466,7 +479,8 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event PageDown triggered");
-            // do stuff here, value is meaningless
+            // Play sound
+            FindObjectOfType<AudioManager>().Play("effect-menu-tab");
         }
         catch (MissingReferenceException e)
         {
@@ -485,7 +499,8 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event PageUp triggered");
-            // do stuff here, value is meaningless
+            // Play sound
+            FindObjectOfType<AudioManager>().Play("effect-menu-tab");
         }
         catch (MissingReferenceException e)
         {
@@ -530,7 +545,8 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event MenuPageFlip triggered");
-            // do stuff here, value is meaningless
+            // Play page flip sound
+            FindObjectOfType<AudioManager>().Play("effect-page-flip");
         }
         catch (MissingReferenceException e)
         {
@@ -549,7 +565,8 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event MenuTabFlip triggered");
-            // do stuff here, value is meaningless
+            // Play sound
+            FindObjectOfType<AudioManager>().Play("effect-menu-tab");
         }
         catch (MissingReferenceException e)
         {
@@ -571,10 +588,14 @@ public class AudioEventSubscriber : MonoBehaviour
             if (GameState.Meta.mapIsOpen.Value)
             {
                 // do stuff on enter
+                // Play map sound
+                FindObjectOfType<AudioManager>().Play("effect-map");
             }
             else
             {
                 // do stuff on exit
+                // Play map sound
+                FindObjectOfType<AudioManager>().Play("effect-map");
             }
         }
         catch (MissingReferenceException e)
@@ -594,7 +615,10 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event MapLocationPicked triggered");
-            // do stuff here, value is meaningless
+            // stop map sound
+            FindObjectOfType<AudioManager>().Stop("effect-map");
+            // Play menu sound
+            FindObjectOfType<AudioManager>().Play("effect-menu-sound-4");
         }
         catch (MissingReferenceException e)
         {

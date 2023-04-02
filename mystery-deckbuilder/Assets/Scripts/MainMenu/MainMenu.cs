@@ -17,12 +17,15 @@ public class MainMenu : MonoBehaviour
     public void Play() 
     {
         // Stop playing title theme
-        FindObjectOfType<AudioManager>().Stop("music-placeholder-investigation");
+        FindObjectOfType<AudioManager>().Stop("music-encounter-normal");
 
         GameState.Meta.inMainMenu.Value = false;
 
+        // Play menu sound
+        FindObjectOfType<AudioManager>().Play("effect-menu-sound-4");
+
         // Start playing intro theme
-        FindObjectOfType<AudioManager>().Play("music-town");
+        FindObjectOfType<AudioManager>().Play("music-town-new");
 
         //GameState.Meta.inMainMenu.Value = false;
         SceneManager.LoadScene(_sceneIndex);
@@ -30,6 +33,9 @@ public class MainMenu : MonoBehaviour
 
     public void Quit()
     {
+        // Play menu sound
+        FindObjectOfType<AudioManager>().Play("effect-menu-sound-4");
+
         Debug.Log("Quit");
         Application.Quit();
     }

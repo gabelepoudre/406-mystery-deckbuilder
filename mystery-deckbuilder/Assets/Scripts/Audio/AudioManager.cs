@@ -63,7 +63,7 @@ public class AudioManager : MonoBehaviour
         GameState.Player.location.OnChange += LocationChange;
 
         // Play initial music
-        Sound start = Array.Find(sounds, sound => sound.name == "music-placeholder-investigation");
+        Sound start = Array.Find(sounds, sound => sound.name == "music-encounter-normal");
         start.source.Play();
 
         // we need this to not play every sound effect when GameStates are reset 
@@ -72,14 +72,14 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
 
     // want to call this from outside the script
     // finds a sound in array by matching string.
     public void Play(string name)
     {
-        if (!GameState.Meta.inMainMenu.Value || name == "music-placeholder-investigation")  // will be refused if you change the main theme music unless you swap this
+        if (!GameState.Meta.inMainMenu.Value || name == "music-encounter-normal")  // will be refused if you change the main theme music unless you swap this
         {
             Sound s = Array.Find(sounds, sound => sound.name == name);
             s.source.Play();
@@ -117,9 +117,9 @@ public class AudioManager : MonoBehaviour
                 }
                 //     Then, 
                 //     Play investigation theme
-                Play("music-placeholder-investigation");
+                Play("music-encounter-normal");
             }
-            
+
 
             // On encounter exit:
             if (GameState.Meta.activeEncounter.Value == null)
@@ -131,9 +131,9 @@ public class AudioManager : MonoBehaviour
                 }
                 //     Then, 
                 //     Play town theme
-                Play("music-town");
+                Play("music-town-new");
             }
-            
+
 
 
         }
@@ -164,7 +164,7 @@ public class AudioManager : MonoBehaviour
             }
             //     Then, 
             //     Play investigation theme
-            Play("music-placeholder-investigation");
+            Play("music-encounter-normal");
 
         }
         catch (MissingReferenceException e)
@@ -202,11 +202,11 @@ public class AudioManager : MonoBehaviour
                 }
                 //     Then, 
                 //     Play town theme
-                Play("music-town");
+                Play("music-town-new");
             }
- 
-            
-            
+
+
+
 
         }
         catch (MissingReferenceException e)
@@ -221,4 +221,27 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+
+    // Stub
+    public void Stub()
+    {
+        try // here is the code
+        {
+
+        }
+        catch (MissingReferenceException e)
+        {
+
+        }
+        catch (NullReferenceException e)
+        {
+
+        }
+    }
+
+
 }
+
+
+
+
