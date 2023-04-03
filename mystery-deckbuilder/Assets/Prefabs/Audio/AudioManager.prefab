@@ -178,6 +178,18 @@ MonoBehaviour:
     volume: 0.51
     pitch: 1
     source: {fileID: 0}
+  - name: music-good-end
+    clip: {fileID: 8300000, guid: 11d1c7ab9a9dd0d45a7f9443eee4887c, type: 3}
+    loop: 1
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: music-bad-end
+    clip: {fileID: 8300000, guid: e4270862082abc8449b0d9b0fbc4d608, type: 3}
+    loop: 1
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
   - name: effect-menu-sound-3
     clip: {fileID: 8300000, guid: 639f21dff2c6e8d4ebb706e82c639b20, type: 3}
     loop: 1

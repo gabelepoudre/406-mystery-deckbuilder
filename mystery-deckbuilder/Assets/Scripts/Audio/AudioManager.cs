@@ -63,11 +63,12 @@ public class AudioManager : MonoBehaviour
         GameState.NPCs.Crouton.finishedBerryCommotion.OnChange += BerryCommotionChange;
 
         // Listen for scene change
-        GameState.Player.location.OnChange += LocationChange;
+        //GameState.Player.location.OnChange += LocationChange;
 
         // Play initial music
-        Sound start = Array.Find(sounds, sound => sound.name == "music-encounter-normal");
-        start.source.Play();
+        //Sound start = Array.Find(sounds, sound => sound.name == "music-encounter-normal");
+        //start.source.Play();
+        Play("music-town-new");
 
         // we need this to not play every sound effect when GameStates are reset 
         GameState.Meta.inMainMenu.Value = true;
@@ -95,6 +96,7 @@ public class AudioManager : MonoBehaviour
         else
         {
             Debug.LogWarning("Refused to play sound " + name + " because we are in main menu");
+            Play("music-encounter-normal");
         }
 
     }
@@ -124,34 +126,34 @@ public class AudioManager : MonoBehaviour
     {
         //try
         //{
-        //    // here is the code
+        //    //// here is the code
 
-        //    // On encounter enter:
-        //    if (GameState.Meta.activeEncounter.Value != null)
-        //    {
-        //        //     Stop playing all sounds
-        //        foreach (Sound s in sounds)
-        //        {
-        //            s.source.Stop();
-        //        }
-        //        //     Then, 
-        //        //     Play investigation theme
-        //        Play("music-encounter-normal");
-        //    }
+        //    //// On encounter enter:
+        //    //if (GameState.Meta.activeEncounter.Value != null)
+        //    //{
+        //    //    //     Stop playing all sounds
+        //    //    foreach (Sound s in sounds)
+        //    //    {
+        //    //        s.source.Stop();
+        //    //    }
+        //    //    //     Then, 
+        //    //    //     Play investigation theme
+        //    //    Play("music-encounter-normal");
+        //    //}
 
 
-        //    // On encounter exit:
-        //    if (GameState.Meta.activeEncounter.Value == null)
-        //    {
-        //        //     Stop playing all sounds
-        //        foreach (Sound s in sounds)
-        //        {
-        //            s.source.Stop();
-        //        }
-        //        //     Then, 
-        //        //     Play town theme
-        //        Play("music-town-new");
-        //    }
+        //    //// On encounter exit:
+        //    //if (GameState.Meta.activeEncounter.Value == null)
+        //    //{
+        //    //    //     Stop playing all sounds
+        //    //    foreach (Sound s in sounds)
+        //    //    {
+        //    //        s.source.Stop();
+        //    //    }
+        //    //    //     Then, 
+        //    //    //     Play town theme
+        //    //    Play("music-town-new");
+        //    //}
 
 
 
@@ -171,92 +173,80 @@ public class AudioManager : MonoBehaviour
     // Change music on Berry Commotion enter.
     public void BerryCommotionChange()
     {
-        try
-        {
-            // here is the code
+        //Debug.Log("Berry thing!!!!!");
 
-            // On Commotion enter:
-            //     Stop playing all sounds
-            foreach (Sound s in sounds)
-            {
-                s.source.Stop();
-            }
-            //     Then, 
-            //     Play investigation theme
-            Play("music-encounter-normal");
+        //// here is the code
 
-        }
-        catch (MissingReferenceException e)
-        {
-            e.Message.Contains("e");
-            GameState.NPCs.Crouton.finishedBerryCommotion.OnChange -= BerryCommotionChange;
-        }
-        catch (NullReferenceException e)
-        {
-            e.Message.Contains("e");
-            GameState.NPCs.Crouton.finishedBerryCommotion.OnChange -= BerryCommotionChange;
-        }
+        //// On Commotion enter:
+        ////     Stop playing all sounds
+        //foreach (Sound s in sounds)
+        //{
+        //    s.source.Stop();
+        //}
+        ////     Then, 
+        ////     Play investigation theme
+        //Play("music-encounter-normal");
     }
 
     // Location change listener.
-    public void LocationChange()
-    {
-        try
-        {
-            // here is the code
+    //public void LocationChange()
+    //{
+    //    try
+    //    {
+    //        // here is the code
 
-            // On Berry Commotion exit:
+    //        // On Berry Commotion exit:
 
-            // (if the player has not left the commotion before,
-            // and the berry commotion has happened)
+    //        // (if the player has not left the commotion before,
+    //        // and the berry commotion has happened)
 
-            if (!leftCommotion && GameState.NPCs.Crouton.finishedBerryCommotion.Value)
-            {
-                // Flip event-happened bit
-                leftCommotion = true;
-                //     Stop playing all sounds
-                foreach (Sound s in sounds)
-                {
-                    s.source.Stop();
-                }
-                //     Then, 
-                //     Play town theme
-                Play("music-town-new");
-            }
-
-
+    //        if (!leftCommotion && GameState.NPCs.Crouton.finishedBerryCommotion.Value)
+    //        {
+    //            // Flip event-happened bit
+    //            leftCommotion = true;
+    //            //     Stop playing all sounds
+    //            foreach (Sound s in sounds)
+    //            {
+    //                s.source.Stop();
+    //            }
+    //            //     Then, 
+    //            //     Play town theme
+    //            Play("music-town-new");
+    //        }
 
 
-        }
-        catch (MissingReferenceException e)
-        {
-            e.Message.Contains("e");
-            GameState.NPCs.Crouton.finishedBerryCommotion.OnChange -= BerryCommotionChange;
-        }
-        catch (NullReferenceException e)
-        {
-            e.Message.Contains("e");
-            GameState.NPCs.Crouton.finishedBerryCommotion.OnChange -= BerryCommotionChange;
-        }
-    }
 
 
-    // Stub
-    public void Stub()
-    {
-        try // here is the code
-        {
+    //    }
+    //    catch (MissingReferenceException e)
+    //    {
+    //        e.Message.Contains("e");
+    //        GameState.NPCs.Crouton.finishedBerryCommotion.OnChange -= BerryCommotionChange;
+    //    }
+    //    catch (NullReferenceException e)
+    //    {
+    //        e.Message.Contains("e");
+    //        GameState.NPCs.Crouton.finishedBerryCommotion.OnChange -= BerryCommotionChange;
+    //    }
+    //}
 
-        }
-        catch (MissingReferenceException e)
-        {
 
-        }
-        catch (NullReferenceException e)
-        {
+    //// Stub
+    //public void Stub()
+    //{
+    //    try // here is the code
+    //    {
 
-        }
-    }
+    //    }
+    //    catch (MissingReferenceException e)
+    //    {
+
+    //    }
+    //    catch (NullReferenceException e)
+    //    {
+
+    //    }
+    //}
 
 
 }

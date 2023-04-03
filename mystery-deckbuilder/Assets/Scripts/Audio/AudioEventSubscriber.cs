@@ -18,6 +18,9 @@ public class AudioEventSubscriber : MonoBehaviour
     // Previous song; song played before encounter
     String previousSong = "music-town-new";
 
+    // Set value for berry farm leaving after commotion.
+    bool leftCommotion = false;
+
     public void Start()
     {
         GameState.Meta.activeEncounterComplianceRaisedByAmount.OnChange += CardPlayed;
@@ -99,6 +102,34 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event LocationChanged triggered");
+
+            // For berry commotion:
+            // play berry commotion music
+            if (GameState.Meta.currentDay.Value == 2 && GameState.NPCs.Crouton.finishedBerryCommotion.Value == false)
+            {
+                FindObjectOfType<AudioManager>().StopAll();
+                FindObjectOfType<AudioManager>().Play("music-encounter-danger");
+            }
+
+            // On Berry Commotion exit:
+
+            // (if the player has not left the commotion before,
+            // and the day is greater than 1,
+            // and the berry commotion has happened)
+            if (leftCommotion == false && GameState.Meta.currentDay.Value > 1 && GameState.NPCs.Crouton.finishedBerryCommotion.Value)
+            {
+                // Flip event-happened bit
+                leftCommotion = true;
+                //     Stop playing all sounds
+                FindObjectOfType<AudioManager>().StopAll();
+                //     Then, 
+                //     Play town theme
+                FindObjectOfType<AudioManager>().Play("music-town-new");
+            }
+
+
+
+            // For rat pub:
             if (GameState.Player.location.Value == GameState.Player.Locations.Bar)
             {
                 // do stuff. Note: if you want to ensure you don't replay base music on 
@@ -108,6 +139,7 @@ public class AudioEventSubscriber : MonoBehaviour
 
             }
         }
+        
         catch (MissingReferenceException e)
         {
             e.Message.Contains("e");
@@ -424,6 +456,8 @@ public class AudioEventSubscriber : MonoBehaviour
             if (GameState.Meta.inBadEnd.Value)
             {
                 // do stuff on enter
+                // play bad end theme
+                FindObjectOfType<AudioManager>().Play("music-bad-end");
             }
             else
             {
@@ -450,6 +484,8 @@ public class AudioEventSubscriber : MonoBehaviour
             if (GameState.Meta.inGoodEnd.Value)
             {
                 // do stuff on enter
+                // play good end theme
+                FindObjectOfType<AudioManager>().Play("music-good-end");
             }
             else
             {
@@ -746,7 +782,7 @@ public class AudioEventSubscriber : MonoBehaviour
                 {
                     // do start encounter with boss
                     //     Play boss encounter theme
-                    FindObjectOfType<AudioManager>().Play("music-encounter-boss");
+                    FindObjectOfType<AudioManager>().Play("music-encounter-danger");
                 }
                 else
                 {
