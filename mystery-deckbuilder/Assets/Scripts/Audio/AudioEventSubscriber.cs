@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 using System;
 
 // ADUIO MANAGER USAGE:
@@ -226,11 +227,7 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event DialogueGoing triggered with value " + GameState.Meta.dialogueGoing.Value);
-            if (GameState.Meta.dialogueGoing.Value == "npc")
-            {
-                // do stuff
-            }
-            else if (GameState.Meta.dialogueGoing.Value == "player")
+            if (GameState.Meta.dialogueGoing.Value == "player")
             {
                 // do if glub stuff
                 FindObjectOfType<AudioManager>().Play("effect-glub");
@@ -241,7 +238,95 @@ public class AudioEventSubscriber : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("Audio listener had an invalid dialogue trigger");
+                Debug.Log(GameState.Meta.dialogueGoing.Value);
+                int randomNum = Random.Range(1, 8);
+                switch(GameState.Meta.dialogueGoing.Value)
+                {
+                    case "Nibbles":
+                        // Play animal noise sound
+                        FindObjectOfType<AudioManager>().Play("ac_voice_b" + randomNum);
+                        break;
+                    case "Austin":
+                        // Play animal noise sound
+                        FindObjectOfType<AudioManager>().Play("ac_voice_c" + randomNum);
+                        break;
+                    case "Austyn":
+                        // Play animal noise sound
+                        FindObjectOfType<AudioManager>().Play("ac_voice_c" + randomNum);
+                        break;
+                    case "Alan":
+                        // Play animal noise sound
+                        FindObjectOfType<AudioManager>().Play("ac_voice_a" + randomNum);
+                        break;
+                    case "Mark":
+                        // Play animal noise sound
+                        FindObjectOfType<AudioManager>().Play("ac_voice_a" + randomNum);
+                        break;
+                    case "Samuel":
+                        // Play animal noise sound
+                        FindObjectOfType<AudioManager>().Play("ac_voice_b" + randomNum);
+                        break;
+                    case "Doug":
+                        // Play animal noise sound
+                        FindObjectOfType<AudioManager>().Play("ac_voice_a" + randomNum);
+                        break;
+                    case "Elk Secretary":
+                        // Play animal noise sound
+                        FindObjectOfType<AudioManager>().Play("ac_voice_c" + randomNum);
+                        break;
+                    case "Rat Leader":
+                        // Play animal noise sound
+                        FindObjectOfType<AudioManager>().Play("ac_voice_a" + randomNum);
+                        break;
+                    case "Rat Prince":
+                        // Play animal noise sound
+                        FindObjectOfType<AudioManager>().Play("ac_voice_c" + randomNum);
+                        break;
+                    case "Big Rat":
+                        // Play animal noise sound
+                        FindObjectOfType<AudioManager>().Play("ac_voice_a" + randomNum);
+                        break;
+                    case "Bee":
+                        // Play animal noise sound
+                        FindObjectOfType<AudioManager>().Play("ac_voice_b" + randomNum);
+                        break;
+                    case "Marry":
+                        // Play animal noise sound
+                        FindObjectOfType<AudioManager>().Play("ac_voice_b" + randomNum);
+                        break;
+                    case "Wolverine":
+                        // Play animal noise sound
+                        FindObjectOfType<AudioManager>().Play("ac_voice_a" + randomNum);
+                        break;
+                    case "Black Bear":
+                        // Play animal noise sound
+                        FindObjectOfType<AudioManager>().Play("ac_voice_b" + randomNum);
+                        break;
+                    case "Crouton":
+                        // Play animal noise sound
+                        FindObjectOfType<AudioManager>().Play("ac_voice_b" + randomNum);
+                        break;
+                    case "Nina":
+                        // Play animal noise sound
+                        FindObjectOfType<AudioManager>().Play("ac_voice_b" + randomNum);
+                        break;
+                    case "Mike":
+                        // Play animal noise sound
+                        FindObjectOfType<AudioManager>().Play("ac_voice_b" + randomNum);
+                        break;
+                    case "Speck":
+                        // Play animal noise sound
+                        FindObjectOfType<AudioManager>().Play("ac_voice_c" + randomNum);
+                        break;
+                    case "Oslow":
+                        // Play animal noise sound
+                        FindObjectOfType<AudioManager>().Play("ac_voice_c" + randomNum);
+                        break;
+                    case "Clay":
+                        // Play animal noise sound
+                        FindObjectOfType<AudioManager>().Play("ac_voice_c" + randomNum);
+                        break;
+                }
             }
         }
         catch (MissingReferenceException e)

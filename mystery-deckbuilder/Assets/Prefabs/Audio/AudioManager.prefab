@@ -196,6 +196,150 @@ MonoBehaviour:
     volume: 0.146
     pitch: 1
     source: {fileID: 0}
+  - name: ac_voice_a1
+    clip: {fileID: 8300000, guid: 34e57f8ba7d0d8645bce3720fee49794, type: 3}
+    loop: 0
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: ac_voice_a2
+    clip: {fileID: 8300000, guid: d8be7a8f7d87afa48b37613f849064ca, type: 3}
+    loop: 0
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: ac_voice_a3
+    clip: {fileID: 8300000, guid: 27a4320e922e8f64c815e889eae3ac26, type: 3}
+    loop: 0
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: ac_voice_a4
+    clip: {fileID: 8300000, guid: 51f4aa3e235d1ed41ad2f5bf46605b8e, type: 3}
+    loop: 0
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: ac_voice_a5
+    clip: {fileID: 8300000, guid: 84f5202ed78aee4468f3f78a21152a6c, type: 3}
+    loop: 0
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: ac_voice_a6
+    clip: {fileID: 8300000, guid: a6052516476dc194a9ead1ba52042ca1, type: 3}
+    loop: 0
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: ac_voice_a7
+    clip: {fileID: 8300000, guid: cf21a1f5e0d1cf543bcbee6e6db83b02, type: 3}
+    loop: 0
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: ac_voice_a8
+    clip: {fileID: 8300000, guid: a0a540823065cf441b4ba0592f77e89b, type: 3}
+    loop: 0
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: ac_voice_b1
+    clip: {fileID: 8300000, guid: 789f2681fd1b08044a37d49d8ff46020, type: 3}
+    loop: 0
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: ac_voice_b2
+    clip: {fileID: 8300000, guid: ecc2179c3e3f00045a0c74a294396c7a, type: 3}
+    loop: 0
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: ac_voice_b3
+    clip: {fileID: 8300000, guid: 73538106196256648becb59f86f1187c, type: 3}
+    loop: 0
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: ac_voice_b4
+    clip: {fileID: 8300000, guid: d168b7c630a2a13449781ba6d549130d, type: 3}
+    loop: 0
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: ac_voice_b5
+    clip: {fileID: 8300000, guid: 4dd819d129868924392470016a716d04, type: 3}
+    loop: 0
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: ac_voice_b6
+    clip: {fileID: 8300000, guid: 9cfc8f06a422d924ab1ff1047f05a2c8, type: 3}
+    loop: 0
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: ac_voice_b7
+    clip: {fileID: 8300000, guid: 61613235184e6ee498b3966b43247348, type: 3}
+    loop: 0
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: ac_voice_b8
+    clip: {fileID: 8300000, guid: db863e734de5f6a45a990600f98113b8, type: 3}
+    loop: 0
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: ac_voice_c1
+    clip: {fileID: 8300000, guid: ef4ea74bc09bd974b8791e5f4e813562, type: 3}
+    loop: 0
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: ac_voice_c2
+    clip: {fileID: 8300000, guid: 788900b3d7ece2a44a8e0bc67f56a5a3, type: 3}
+    loop: 0
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: ac_voice_c3
+    clip: {fileID: 8300000, guid: f21c133bb3e3850418dfe9df31720a46, type: 3}
+    loop: 0
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: ac_voice_c4
+    clip: {fileID: 8300000, guid: 752d45518aa728246b1f5b320b186ca0, type: 3}
+    loop: 0
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: ac_voice_c5
+    clip: {fileID: 8300000, guid: 596be742998fa9848b3a2fa6e5c9ce95, type: 3}
+    loop: 0
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: ac_voice_c6
+    clip: {fileID: 8300000, guid: 4e9e98e574fc9d54aaaf72a762f26ebd, type: 3}
+    loop: 0
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: ac_voice_c7
+    clip: {fileID: 8300000, guid: 5fdb2d579372f964db639609549aa4d5, type: 3}
+    loop: 0
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: ac_voice_c8
+    clip: {fileID: 8300000, guid: 5fdb2d579372f964db639609549aa4d5, type: 3}
+    loop: 0
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
 --- !u!114 &6946789703319326359
 MonoBehaviour:
   m_ObjectHideFlags: 0
