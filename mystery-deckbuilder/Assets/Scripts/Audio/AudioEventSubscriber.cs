@@ -104,28 +104,31 @@ public class AudioEventSubscriber : MonoBehaviour
             Debug.Log("Event LocationChanged triggered");
 
             // For berry commotion:
-            // play berry commotion music
-            if (GameState.Meta.currentDay.Value == 2 && GameState.NPCs.Crouton.finishedBerryCommotion.Value == false)
-            {
-                FindObjectOfType<AudioManager>().StopAll();
-                FindObjectOfType<AudioManager>().Play("music-encounter-danger");
-            }
 
             // On Berry Commotion exit:
 
             // (if the player has not left the commotion before,
             // and the day is greater than 1,
             // and the berry commotion has happened)
-            if (leftCommotion == false && GameState.Meta.currentDay.Value > 1 && GameState.NPCs.Crouton.finishedBerryCommotion.Value)
+            if (leftCommotion == true && GameState.Meta.currentDay.Value > 1 && GameState.NPCs.Crouton.finishedBerryCommotion.Value && GameState.Player.location.Value != GameState.Player.Locations.BerryFarm)
             {
-                // Flip event-happened bit
-                leftCommotion = true;
+                Debug.Log("Left berry commotion!");
                 //     Stop playing all sounds
                 FindObjectOfType<AudioManager>().StopAll();
                 //     Then, 
                 //     Play town theme
                 FindObjectOfType<AudioManager>().Play("music-town-new");
             }
+
+            // play berry commotion music
+            else if (GameState.Meta.currentDay.Value == 2 && leftCommotion == false && GameState.Player.location.Value == GameState.Player.Locations.BerryFarm)
+            {
+                FindObjectOfType<AudioManager>().StopAll();
+                FindObjectOfType<AudioManager>().Play("music-encounter-danger");
+                leftCommotion = true;
+            }
+
+            
 
 
 
