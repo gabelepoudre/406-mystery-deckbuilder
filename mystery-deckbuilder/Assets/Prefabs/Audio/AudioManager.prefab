@@ -97,7 +97,7 @@ MonoBehaviour:
   - name: effect-card-mouse-over-3
     clip: {fileID: 8300000, guid: 6813e72312e56794cbc685ceec4b5d94, type: 3}
     loop: 0
-    volume: 0.311
+    volume: 1
     pitch: 1
     source: {fileID: 0}
   - name: effect-glub
@@ -160,16 +160,22 @@ MonoBehaviour:
     volume: 0.33
     pitch: 1
     source: {fileID: 0}
+  - name: effect-secret
+    clip: {fileID: 8300000, guid: 5b804cc138d60d1468fe95f8a38ff02e, type: 3}
+    loop: 0
+    volume: 0.21
+    pitch: 1
+    source: {fileID: 0}
   - name: music-encounter-defeat
     clip: {fileID: 8300000, guid: ae867c7aa0556334bb1b1b94258aa181, type: 3}
     loop: 0
-    volume: 0.167
+    volume: 0.207
     pitch: 1
     source: {fileID: 0}
   - name: music-encounter-victory
     clip: {fileID: 8300000, guid: 27acf44154c757648b831c0f045f590f, type: 3}
     loop: 0
-    volume: 0.183
+    volume: 0.207
     pitch: 1
     source: {fileID: 0}
   - name: music-good-end
@@ -356,6 +362,12 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 9abb392d0cd1f6841a46297471fb2eff, type: 3}
     loop: 0
     volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: music-dream
+    clip: {fileID: 8300000, guid: 24fb1fa14846707468b30ad3433614b5, type: 3}
+    loop: 1
+    volume: 0.15
     pitch: 1
     source: {fileID: 0}
 --- !u!114 &6946789703319326359

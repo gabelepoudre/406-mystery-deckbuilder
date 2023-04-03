@@ -184,6 +184,7 @@ public class AudioEventSubscriber : MonoBehaviour
         {
             Debug.Log("Event SecretFound triggered");
             // do stuff, value is not used
+            FindObjectOfType<AudioManager>().Play("effect-secret");
         }
         catch (MissingReferenceException e)
         {
@@ -426,6 +427,8 @@ public class AudioEventSubscriber : MonoBehaviour
             if (GameState.Meta.withinDream.Value)
             {
                 // do stuff on enter
+                FindObjectOfType<AudioManager>().StopAll();
+                FindObjectOfType<AudioManager>().Play("music-dream");
             }
             else
             {
@@ -434,6 +437,8 @@ public class AudioEventSubscriber : MonoBehaviour
                 {
                     GameState.Meta.lastDayPostDream.Raise();
                 }
+                FindObjectOfType<AudioManager>().StopAll();
+                FindObjectOfType<AudioManager>().Play("music-town-new");
             }
         }
         catch (MissingReferenceException e)
