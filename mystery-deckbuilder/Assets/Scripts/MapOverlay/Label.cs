@@ -20,6 +20,8 @@ public class Label : MonoBehaviour
         GameState.Meta.dialogueActive.Value = false;
 
         Debug.Log("Move to " + locationAsString);
+        GameState.Meta.mapIsOpen.Value = false;
+        GameState.Meta.mapLocationClicked.Raise();
 
         //update state
         GameState.Player.location.Value = GameState.Player.Locations.Parse<GameState.Player.Locations>(locationAsString);

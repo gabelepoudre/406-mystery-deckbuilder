@@ -3233,10 +3233,7 @@ MonoBehaviour:
   - {fileID: 732707770}
   - {fileID: 974998023}
   - {fileID: 1396385654}
-  redCardNoEncounter: {fileID: 9204399067519391359, guid: 97a6a58ded51d2a499c75eef49cf975f, type: 3}
-  blueCardNoEncounter: {fileID: 2988496786782926893, guid: 07628ced1fda5ee4a9b9bdacd696b590, type: 3}
-  greenCardNoEncounter: {fileID: 3279046307657509022, guid: 7d09218a0cfde6f4099a944f6b56e6ff, type: 3}
-  greyCardNoEncounter: {fileID: 6754762022743972773, guid: 47e9ed273c5e13540a3d8920f734db6e, type: 3}
+  noEncounterCardPrefab: {fileID: 9204399067519391359, guid: ae32b5e4dbfd9ee4385b898a3e276246, type: 3}
   plusOne: {fileID: 1722943923}
   minusOne: {fileID: 711421892}
   previewCardSpawn: {fileID: 1810575157}
@@ -5652,10 +5649,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

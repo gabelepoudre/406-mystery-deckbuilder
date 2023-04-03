@@ -94,6 +94,7 @@ public class PageNavigation : MonoBehaviour
     public void NextPage()
     {
         //If next page, exists, go
+        GameState.Meta.menuNotepadPageSwitch.Raise();
     
         
      if(currentPageID < (currentChapter.GetNumPages() -1))
@@ -172,15 +173,16 @@ public class PageNavigation : MonoBehaviour
         currentPage = currentChapter.pageList[0];
         currentPageID = 0;
         DisplayNotes();
-          
+        GameState.Meta.menuNotepadTabSwitch.Raise();
+
     }
 
     //Change the current chapter to be the Deck chapter
     public void ChangedChapterDeck()
     {
-
         currentChapterID = 3;
         currentChapter = chapterList[currentChapterID];
+        GameState.Meta.menuNotepadTabSwitch.Raise();
     }
 
     
@@ -198,7 +200,7 @@ public class PageNavigation : MonoBehaviour
         currentPage = currentChapter.pageList[0];
         currentPageID = 0;
         DisplayNotes();
-
+        GameState.Meta.menuNotepadTabSwitch.Raise();
     }
 
 
@@ -210,6 +212,7 @@ public class PageNavigation : MonoBehaviour
    
         currentChapterID = 2;
         currentChapter = chapterList[currentChapterID];
+        GameState.Meta.menuNotepadTabSwitch.Raise();
     }
 
     
