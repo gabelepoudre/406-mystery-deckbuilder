@@ -246,6 +246,9 @@ public class AudioEventSubscriber : MonoBehaviour
             Debug.Log("Event DialogueEnded triggered");
             // play menu sound
             FindObjectOfType<AudioManager>().Play("effect-menu-sound-4");
+
+            // Stop previous animal noise sound
+            FindObjectOfType<AudioManager>().Stop(previousBabble);
         }
         catch (MissingReferenceException e)
         {
@@ -268,6 +271,9 @@ public class AudioEventSubscriber : MonoBehaviour
             if (GameState.Meta.dialogueGoing.Value == "player")
             {
                 // do if glub stuff
+                // Stop previous animal noise sound
+                FindObjectOfType<AudioManager>().Stop(previousBabble);
+                // play glub
                 FindObjectOfType<AudioManager>().Play("effect-glub");
             }
             else if (GameState.Meta.dialogueGoing.Value == "")
