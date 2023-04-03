@@ -2171,38 +2171,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4462939111587983103, guid: 9a89543a34e40b04fb9ea954cb1b8a45, type: 3}
-      propertyPath: sounds.Array.data[21].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 11d1c7ab9a9dd0d45a7f9443eee4887c, type: 3}
-    - target: {fileID: 4462939111587983103, guid: 9a89543a34e40b04fb9ea954cb1b8a45, type: 3}
-      propertyPath: sounds.Array.data[21].name
-      value: music-good-end
-      objectReference: {fileID: 0}
-    - target: {fileID: 4462939111587983103, guid: 9a89543a34e40b04fb9ea954cb1b8a45, type: 3}
-      propertyPath: sounds.Array.data[22].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: e4270862082abc8449b0d9b0fbc4d608, type: 3}
-    - target: {fileID: 4462939111587983103, guid: 9a89543a34e40b04fb9ea954cb1b8a45, type: 3}
-      propertyPath: sounds.Array.data[22].name
-      value: music-bad-end
-      objectReference: {fileID: 0}
-    - target: {fileID: 4462939111587983103, guid: 9a89543a34e40b04fb9ea954cb1b8a45, type: 3}
-      propertyPath: sounds.Array.data[23].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 9c53ae7f90138ff46bcafb08fbf606b5, type: 3}
-    - target: {fileID: 4462939111587983103, guid: 9a89543a34e40b04fb9ea954cb1b8a45, type: 3}
-      propertyPath: sounds.Array.data[23].name
-      value: effect-menu-sound-2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4462939111587983103, guid: 9a89543a34e40b04fb9ea954cb1b8a45, type: 3}
-      propertyPath: sounds.Array.data[21].volume
-      value: 0.146
-      objectReference: {fileID: 0}
-    - target: {fileID: 4462939111587983103, guid: 9a89543a34e40b04fb9ea954cb1b8a45, type: 3}
-      propertyPath: sounds.Array.data[23].volume
-      value: 0.51
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a89543a34e40b04fb9ea954cb1b8a45, type: 3}
 --- !u!1 &1390132444

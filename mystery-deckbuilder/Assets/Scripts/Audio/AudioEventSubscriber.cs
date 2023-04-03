@@ -164,6 +164,7 @@ public class AudioEventSubscriber : MonoBehaviour
         {
             Debug.Log("Event CardDrawn triggered");
             // do stuff, value is not used
+            FindObjectOfType<AudioManager>().Play("effect-draw");
         }
         catch (MissingReferenceException e)
         {
@@ -676,10 +677,12 @@ public class AudioEventSubscriber : MonoBehaviour
             if (GameState.Meta.notepadActive.Value)
             {
                 // do stuff on enter
+                FindObjectOfType<AudioManager>().Play("effect-notebook-open-2");
             }
             else
             {
                 // do stuff on exit
+                FindObjectOfType<AudioManager>().Play("effect-notebook-close");
             }
         }
         catch (MissingReferenceException e)

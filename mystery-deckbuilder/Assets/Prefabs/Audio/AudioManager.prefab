@@ -172,12 +172,6 @@ MonoBehaviour:
     volume: 0.183
     pitch: 1
     source: {fileID: 0}
-  - name: effect-menu-sound-2
-    clip: {fileID: 8300000, guid: 9c53ae7f90138ff46bcafb08fbf606b5, type: 3}
-    loop: 1
-    volume: 0.51
-    pitch: 1
-    source: {fileID: 0}
   - name: music-good-end
     clip: {fileID: 8300000, guid: 11d1c7ab9a9dd0d45a7f9443eee4887c, type: 3}
     loop: 1
@@ -188,6 +182,12 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: e4270862082abc8449b0d9b0fbc4d608, type: 3}
     loop: 1
     volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: effect-menu-sound-2
+    clip: {fileID: 8300000, guid: 9c53ae7f90138ff46bcafb08fbf606b5, type: 3}
+    loop: 1
+    volume: 0.51
     pitch: 1
     source: {fileID: 0}
   - name: effect-menu-sound-3
@@ -348,6 +348,12 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: ac_voice_c8
     clip: {fileID: 8300000, guid: 5fdb2d579372f964db639609549aa4d5, type: 3}
+    loop: 0
+    volume: 0.146
+    pitch: 1
+    source: {fileID: 0}
+  - name: effect-draw
+    clip: {fileID: 8300000, guid: 9abb392d0cd1f6841a46297471fb2eff, type: 3}
     loop: 0
     volume: 0.146
     pitch: 1
