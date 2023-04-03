@@ -21,6 +21,9 @@ public class AudioEventSubscriber : MonoBehaviour
     // Set value for berry farm leaving after commotion.
     bool leftCommotion = false;
 
+    // Previous babble; used for stopping babble when advancing dialogue
+    String previousBabble = "ac_voice_b1";
+
     public void Start()
     {
         GameState.Meta.activeEncounterComplianceRaisedByAmount.OnChange += CardPlayed;
@@ -274,94 +277,100 @@ public class AudioEventSubscriber : MonoBehaviour
             else
             {
                 Debug.Log(GameState.Meta.dialogueGoing.Value);
+
+                // Stop previous animal noise sound
+                FindObjectOfType<AudioManager>().Stop(previousBabble);
+
                 int randomNum = Random.Range(1, 8);
                 switch(GameState.Meta.dialogueGoing.Value)
                 {
                     case "Nibbles":
-                        // Play animal noise sound
-                        FindObjectOfType<AudioManager>().Play("ac_voice_b" + randomNum);
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_b" + randomNum;
                         break;
                     case "Austin":
-                        // Play animal noise sound
-                        FindObjectOfType<AudioManager>().Play("ac_voice_c" + randomNum);
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_c" + randomNum;
                         break;
                     case "Austyn":
-                        // Play animal noise sound
-                        FindObjectOfType<AudioManager>().Play("ac_voice_c" + randomNum);
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_c" + randomNum;
                         break;
                     case "Alan":
-                        // Play animal noise sound
-                        FindObjectOfType<AudioManager>().Play("ac_voice_a" + randomNum);
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_a" + randomNum;
                         break;
                     case "Mark":
-                        // Play animal noise sound
-                        FindObjectOfType<AudioManager>().Play("ac_voice_a" + randomNum);
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_a" + randomNum;
                         break;
                     case "Samuel":
-                        // Play animal noise sound
-                        FindObjectOfType<AudioManager>().Play("ac_voice_b" + randomNum);
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_b" + randomNum;
                         break;
                     case "Doug":
-                        // Play animal noise sound
-                        FindObjectOfType<AudioManager>().Play("ac_voice_a" + randomNum);
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_a" + randomNum;
                         break;
                     case "Elk Secretary":
-                        // Play animal noise sound
-                        FindObjectOfType<AudioManager>().Play("ac_voice_c" + randomNum);
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_c" + randomNum;
                         break;
                     case "Rat Leader":
-                        // Play animal noise sound
-                        FindObjectOfType<AudioManager>().Play("ac_voice_a" + randomNum);
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_a" + randomNum;
                         break;
                     case "Rat Prince":
-                        // Play animal noise sound
-                        FindObjectOfType<AudioManager>().Play("ac_voice_c" + randomNum);
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_c" + randomNum;
                         break;
                     case "Big Rat":
-                        // Play animal noise sound
-                        FindObjectOfType<AudioManager>().Play("ac_voice_a" + randomNum);
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_a" + randomNum;
                         break;
                     case "Bee":
-                        // Play animal noise sound
-                        FindObjectOfType<AudioManager>().Play("ac_voice_b" + randomNum);
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_b" + randomNum;
                         break;
                     case "Marry":
-                        // Play animal noise sound
-                        FindObjectOfType<AudioManager>().Play("ac_voice_b" + randomNum);
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_b" + randomNum;
                         break;
                     case "Wolverine":
-                        // Play animal noise sound
-                        FindObjectOfType<AudioManager>().Play("ac_voice_a" + randomNum);
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_a" + randomNum;
                         break;
                     case "Black Bear":
-                        // Play animal noise sound
-                        FindObjectOfType<AudioManager>().Play("ac_voice_b" + randomNum);
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_b" + randomNum;
                         break;
                     case "Crouton":
-                        // Play animal noise sound
-                        FindObjectOfType<AudioManager>().Play("ac_voice_b" + randomNum);
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_b" + randomNum;
                         break;
                     case "Nina":
-                        // Play animal noise sound
-                        FindObjectOfType<AudioManager>().Play("ac_voice_b" + randomNum);
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_b" + randomNum;
                         break;
                     case "Mike":
-                        // Play animal noise sound
-                        FindObjectOfType<AudioManager>().Play("ac_voice_b" + randomNum);
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_b" + randomNum;
                         break;
                     case "Speck":
-                        // Play animal noise sound
-                        FindObjectOfType<AudioManager>().Play("ac_voice_c" + randomNum);
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_c" + randomNum;
                         break;
                     case "Oslow":
-                        // Play animal noise sound
-                        FindObjectOfType<AudioManager>().Play("ac_voice_c" + randomNum);
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_c" + randomNum;
                         break;
                     case "Clay":
-                        // Play animal noise sound
-                        FindObjectOfType<AudioManager>().Play("ac_voice_c" + randomNum);
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_c" + randomNum;
                         break;
                 }
+                // Play animal noise sound
+                FindObjectOfType<AudioManager>().Play(previousBabble);
             }
         }
         catch (MissingReferenceException e)
