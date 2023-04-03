@@ -6,7 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/* The Class which holds all of the Elk Secretary's dialogue trees in a dictionary, the point being
+/* The Class which holds all of Doug's dialogue trees in a dictionary, the point being
  * that all of the dialogue will be built here and passed to the NPC class 
  */
 public class DougDialogueTrees : MonoBehaviour, IDialogueTreeCollection
@@ -389,10 +389,10 @@ public class DougDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     private DialogueTree BuildAfterEncounterWinSecondOrThirdMainSuspect()
     {
         NPCNode dialogue = new(new string[] {"Okay, sure. All our equipment, which includes rentals, follows a rigorous sign-out, sign-in process.", 
-        "Non of our equipment could have been used for the theft.", 
+        "None of our equipment could have been used for the theft.", 
         "As for our workers, they just want to work a good job, they aren't cultists.", 
         "You know, if I was masterminding that kind of thing, I might hide the berries in some sort of rail car.", 
-        "There's enough of them coming in, shipping out, and sitting on standby that the couldn't all be accounted for, right?"});
+        "There's enough of them coming in, shipping out, and sitting on standby that they couldn't all be accounted for, right?"});
 
         return new DialogueTree(dialogue);
     }
