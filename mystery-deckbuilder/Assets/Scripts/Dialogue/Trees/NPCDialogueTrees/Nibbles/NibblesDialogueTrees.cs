@@ -40,7 +40,7 @@ public class NibblesDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         intro.SetNext(introReply);
 
         NPCNode nibblesGourmand = new(new string[] {"I am Nibbles the mouse, I am a locally renowned gourmand.", 
-        "A gourmouse, if you will. I have travelled far, training my palate on all of the amazing creations made of the flatland's boundaries."});
+        "A gourmouse, if you will. I have travelled far, training my palate on all of the amazing creations made of the flatland's bounties."});
         NPCNode loveOfCuisine = new(new string[] {"Not particularly, however wherever you go there will be people with love of cuisine.", 
         "People for who cooking is an art and people for who eating connects to that wonderful art!"});
         NPCNode confidential = new(new string[] {"Hmmmmm........",

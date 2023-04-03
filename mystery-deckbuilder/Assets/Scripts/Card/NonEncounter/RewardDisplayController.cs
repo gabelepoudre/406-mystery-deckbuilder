@@ -5,10 +5,7 @@ using UnityEngine.UI;
 
 public class RewardDisplayController : MonoBehaviour
 {
-    public GameObject redCardNoEncounter;
-    public GameObject blueCardNoEncounter;
-    public GameObject greenCardNoEncounter;
-    public GameObject greyCardNoEncounter;
+    public GameObject cardPrefab;
 
     public Text displayText;
     public Transform rewardSpawn;
@@ -36,21 +33,7 @@ public class RewardDisplayController : MonoBehaviour
         }
         Card card = (Card)Cards.CreateCardWithID(id, true);
         GameObject _cardPrefabInstance = null;
-        switch (card.GetElement())
-        {
-            case "Intimidation":
-                _cardPrefabInstance = Instantiate(redCardNoEncounter, rewardSpawn.position, rewardSpawn.rotation, this.gameObject.transform);
-                break;
-            case "Sympathy":
-                _cardPrefabInstance = Instantiate(blueCardNoEncounter, rewardSpawn.position, rewardSpawn.rotation, this.gameObject.transform);
-                break;
-            case "Persuasion":
-                _cardPrefabInstance = Instantiate(greenCardNoEncounter, rewardSpawn.position, rewardSpawn.rotation, this.gameObject.transform);
-                break;
-            case "Preparation":
-                _cardPrefabInstance = Instantiate(greyCardNoEncounter, rewardSpawn.position, rewardSpawn.rotation, this.gameObject.transform);
-                break;
-        }
+        _cardPrefabInstance = Instantiate(cardPrefab, rewardSpawn.position, rewardSpawn.rotation, this.gameObject.transform);
 
         NoEncounterCardPrefabController cardController = _cardPrefabInstance.GetComponent<NoEncounterCardPrefabController>();
         cardController.DisableInteractions();

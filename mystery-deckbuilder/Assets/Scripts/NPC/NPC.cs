@@ -9,10 +9,14 @@ public class NPC : MonoBehaviour
     //Variables 
     public string CharacterName;
 
+    public int reactionOffsetX = 0;
+    public int reactionOffsetY = 0;
+
+    public bool IsBoss = false;
+
     [Range(0.0f, 1.0f)]public float affinity_intimidation = 0.5f;
     [Range(0.0f, 1.0f)]public float affinity_sympathy = 0.5f;
     [Range(0.0f, 1.0f)]public float affintiy_persuasion = 0.5f;
-
 
     [Range(1.0f, 500.0f)]public float startingPatience;
     [Range(1.0f, 500.0f)]public float startingCompliance;
@@ -24,6 +28,7 @@ public class NPC : MonoBehaviour
     public int cardIDUnlockFromWinEncounter = -1;
 
     public NPCEncounterSpriteController encounterSprites;
+    public GameObject reactionPrefab;
 
     public Dictionary<string, DialogueTree> DialogueTreeDictionary;
 

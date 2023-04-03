@@ -40,7 +40,7 @@ public class GlubYapping : MonoBehaviour
     {
         try
         {
-            if (GameState.Player.glubTalkingInDialogue.Value)
+            if (GameState.Meta.dialogueGoing.Value == "player")
             {
                 _yapping = true;
                 BeginSwapTimer();
@@ -53,12 +53,12 @@ public class GlubYapping : MonoBehaviour
         catch (MissingReferenceException e)
         {
             e.Message.Contains("e");
-            GameState.Player.glubTalkingInDialogue.OnChange -= OnGlubChange;
+            GameState.Meta.dialogueGoing.OnChange -= OnGlubChange;
         }
         catch (NullReferenceException e)
         {
             e.Message.Contains("e");
-            GameState.Player.glubTalkingInDialogue.OnChange -= OnGlubChange;
+            GameState.Meta.dialogueGoing.OnChange -= OnGlubChange;
         }
     }
 
@@ -66,7 +66,7 @@ public class GlubYapping : MonoBehaviour
     void Start()
     {
         glub.sprite = glubNeutral;
-        GameState.Player.glubTalkingInDialogue.OnChange += OnGlubChange;
+        GameState.Meta.dialogueGoing.OnChange += OnGlubChange;
     }
 
     void FixedUpdate()

@@ -256,7 +256,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: c1ae645abbeeaa54e825c9429ee7142c, type: 3}
-  m_Color: {r: 0.7264151, g: 0.7024297, b: 0.7024297, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -445,8 +445,8 @@ Transform:
   m_GameObject: {fileID: 8310409467724307531}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.51, y: 1.34, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.26, y: 0.26, z: 0.52}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8310409466412650138}
   m_Father: {fileID: 0}
@@ -465,6 +465,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Nibbles
+  reactionOffsetX: 0
+  reactionOffsetY: 0
+  IsBoss: 0
   affinity_intimidation: 0.288
   affinity_sympathy: 0.295
   affintiy_persuasion: 0.705
@@ -475,6 +478,7 @@ MonoBehaviour:
   ComplianceThreshhold: 0
   cardIDUnlockFromWinEncounter: 21
   encounterSprites: {fileID: 7538326253552544718}
+  reactionPrefab: {fileID: 2712194818219275452, guid: 4b4b5573e3208524fa9ed0b98fb86ccd, type: 3}
 --- !u!114 &8310409467724307525
 MonoBehaviour:
   m_ObjectHideFlags: 0

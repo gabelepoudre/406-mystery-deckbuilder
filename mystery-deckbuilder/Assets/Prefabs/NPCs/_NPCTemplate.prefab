@@ -564,6 +564,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: 
+  reactionOffsetX: 0
+  reactionOffsetY: 0
+  IsBoss: 0
   affinity_intimidation: 0.5
   affinity_sympathy: 0.5
   affintiy_persuasion: 0.5
@@ -572,7 +575,9 @@ MonoBehaviour:
   currentPatience: 1
   currentCompliance: 0
   ComplianceThreshhold: 0
+  cardIDUnlockFromWinEncounter: -1
   encounterSprites: {fileID: 0}
+  reactionPrefab: {fileID: 2712194818219275452, guid: 4b4b5573e3208524fa9ed0b98fb86ccd, type: 3}
 --- !u!114 &2974809267316779736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -597,8 +602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2c6071d43e4cf47b85ce574f5d547d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neutral: {fileID: 21300000, guid: 69b76798043f9294e80ecd048e0f598f, type: 3}
-  happy: {fileID: 21300000, guid: 2b141436e10be3243bde4e9909f9510f, type: 3}
-  angry: {fileID: 21300000, guid: 71d5e99097a229847ac47310745494f6, type: 3}
-  stress: {fileID: 21300000, guid: 73495014746bf854996269911abe12ee, type: 3}
-  worry: {fileID: 21300000, guid: f2ea7d015499dcc468b28ba484ef01e3, type: 3}
+  phaseOne: {fileID: 0}
+  PhaseTwo: {fileID: 0}
+  PhaseThree: {fileID: 0}
+  PhaseFour: {fileID: 0}

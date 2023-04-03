@@ -32,7 +32,7 @@ public class WolverineStateListener : MonoBehaviour
                 transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterLoss";
             }
 
-            transform.GetComponent<NPCDialogueTrigger>().StartDialogue();
+            transform.GetComponent<WolverineDialogueTrigger>().StartDialogue();
 
             if (GameState.NPCs.Wolverine.encountersWon.Value == 0)
             {
@@ -62,6 +62,14 @@ public class WolverineStateListener : MonoBehaviour
         if (GameState.Player.location.Value == GameState.Player.Locations.Bar)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "Bar";
+        }
+
+        if (GameState.Player.location.Value == GameState.Player.Locations.Boxcar)
+        {
+            //he doesn't hang around the boxcar after the player finishes whole event
+            if (GameState.NPCs.Wolverine.encountersWon.Value == 1) {
+                gameObject.SetActive(false);
+            }
         }
        
     }

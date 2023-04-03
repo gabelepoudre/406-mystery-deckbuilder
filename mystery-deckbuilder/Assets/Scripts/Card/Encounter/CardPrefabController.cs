@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine;
+using TMPro;
 
 public class CardPrefabController : MonoBehaviour, IDeselectHandler, IPointerEnterHandler, IPointerExitHandler
 {
@@ -17,14 +18,25 @@ public class CardPrefabController : MonoBehaviour, IDeselectHandler, IPointerEnt
     private string currentMode = "PLAY";
 
     public Image highlight;
-    public Image cardRect;
-    public Image cardPicture;
-    public Image type;
-    public Image descriptionHolder;
-    public Text cardName;
-    public Text cardDescription;
-    public Text visiblePatience;
-    public Text visibleCompliance;
+    public Image cardBackground;
+
+    public Sprite intimPlayImage;
+    public Sprite sympPlayImage;
+    public Sprite persPlayImage;
+    public Sprite prepPlayImage;
+    public Image playButton;
+
+    public Sprite intimHuhImage;
+    public Sprite sympHuhImage;
+    public Sprite persHuhImage;
+    public Sprite prepHuhImage;
+    public Image huhButton;
+
+    public CardArtHolder cardArt;
+    public TMP_Text cardName;
+    public TMP_Text cardDescription;
+    public TMP_Text visiblePatience;
+    public TMP_Text visibleCompliance;
     public GameObject effectCirclePrefab;
     public GameObject options;
     public GameObject effectSlots;
@@ -86,6 +98,34 @@ public class CardPrefabController : MonoBehaviour, IDeselectHandler, IPointerEnt
         }
         
     }
+    public void SetBackground(int card_id)
+    {
+        cardBackground.sprite = cardArt.GetArtByCardID(card_id);
+        switch (GetElement())
+        {
+            case "Intimidation":
+                this.selectionTint = new Color(1, 0.855f, 0.855f);
+                this.playButton.sprite = intimPlayImage;
+                this.huhButton.sprite = intimHuhImage;
+                break;
+            case "Sympathy":
+                this.selectionTint = new Color(0.874f, 0.889f, 1);
+                this.playButton.sprite = sympPlayImage;
+                this.huhButton.sprite = sympHuhImage;
+                break;
+            case "Persuasion":
+                this.selectionTint = new Color(0.889f, 1, 0.874f);
+                this.playButton.sprite = persPlayImage;
+                this.huhButton.sprite = persHuhImage;
+                break;
+            case "Preparation":
+                this.selectionTint = new Color(0.924f, 0.924f, 0.924f);
+                this.playButton.sprite = prepPlayImage;
+                this.huhButton.sprite = prepHuhImage;
+                break;
+        }
+    }
+
     public bool GetHighlighted()
     {
         return _highlighted;
@@ -125,15 +165,15 @@ public class CardPrefabController : MonoBehaviour, IDeselectHandler, IPointerEnt
 
         if (compliance > _defaultCompliance)
         {
-            visibleCompliance.color = Color.green;
+            visibleCompliance.color = new Color32(0, 255, 0, 255);
         }
         else if (compliance < _defaultCompliance)
         {
-            visibleCompliance.color = Color.red;
+            visibleCompliance.color = new Color32(255, 0, 0, 255);
         }
         else
         {
-            visibleCompliance.color = Color.black;
+            visibleCompliance.color = new Color32(0, 0, 0, 255);
         }
     }
 
@@ -145,15 +185,15 @@ public class CardPrefabController : MonoBehaviour, IDeselectHandler, IPointerEnt
 
         if (patience > _defaultPatience)
         {
-            visiblePatience.color = Color.red;
+            visiblePatience.color = new Color32(255, 0, 0, 255);
         }
         else if (patience < _defaultPatience)
         {
-            visiblePatience.color = Color.green;
+            visiblePatience.color = new Color32(0, 255, 0, 255);
         }
         else
         {
-            visiblePatience.color = Color.black;
+            visiblePatience.color = new Color32(0, 0, 0, 255);
         }
     }
 
@@ -194,6 +234,7 @@ public class CardPrefabController : MonoBehaviour, IDeselectHandler, IPointerEnt
 
     public void HighlightCard()
     {
+        GameState.Meta.activeEncounterCardHelp.Raise();
         GameState.Meta.activeEncounter.Value.GetEncounterController().HighlightCard(this.gameObject);
         EventSystem.current.SetSelectedGameObject(gameObject);
         _highlighted = true;
@@ -212,7 +253,7 @@ public class CardPrefabController : MonoBehaviour, IDeselectHandler, IPointerEnt
 
     public void ShowOptions()
     {
-        cardRect.color = selectionTint;
+        cardBackground.color = selectionTint;
         EventSystem.current.SetSelectedGameObject(gameObject);
         options.SetActive(true);
         _showingOptions = true;
@@ -220,13 +261,14 @@ public class CardPrefabController : MonoBehaviour, IDeselectHandler, IPointerEnt
 
     public void HideOptions()
     {
-        cardRect.color = Color.white;
+        cardBackground.color = Color.white;
         options.SetActive(false);
         _showingOptions = false;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        GameState.Meta.activeEncounterCardHoverOver.Raise();
         if (!_highlighted)
         {
             ShowOptions();

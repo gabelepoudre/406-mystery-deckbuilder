@@ -652,10 +652,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1380,6 +1380,250 @@ PrefabInstance:
       propertyPath: m_Name
       value: Notepad
       objectReference: {fileID: 0}
+    - target: {fileID: 2923378104774606540, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923378105206869674, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 37a2506d2d8622e4fa6555b6b92eee1e, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: barHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 89bf4303a5b54084ab50cd88836493a7, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: AlanHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 99a5977865427c5478e14a52a2b0044b, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: ClayHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 95b31490d2a13eb4faf96344bea2b77c, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: DougHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 78097d7a979183b4e8a2878a933a032d, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: MarkHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: b3e7b944b7d180141b2ac7a0034ffc11, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: NinaHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: d8b16edd96bea5646bfd8375fa805455, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: MarryHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: c3707e5fd9029bf4fb408488355862c8, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: OslowHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: e48051f56f0b583438eb30a28a6db059, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: SpeckHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 0c3b34b90029a2f4686f2902e316129e, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: motelheadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 0d54249834afc754fa4a398345264600, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: AustinHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 4cd0483959b216c4f8ed0a5d8608f821, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: AustynHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: b1b3f308e2248784e8ad022ea46e40c8, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: BigRatHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: e32ada551b40f9e4aa0a4e8ed2a93272, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: SamuelHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 94114e1aec90d6d498c1e5ff66af9ea3, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: boxcarHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 100358a9d28f60a4b90d142ae2478849, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: CroutonHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: a3e31d3f812d58d4caeedeab255e4981, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: RatCaveHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 1ed7b3a870b7d4748ab3a609c39760b7, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: nibblesHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 37a2506d2d8622e4fa6555b6b92eee1e, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: RailYardHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: ea81c81a80f5c7d4c80294d2d0c75cd2, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: BreakfastHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 6d2be64302f09ee41ae5577fc3fb79b8, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: RatLeaderHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: e32ada551b40f9e4aa0a4e8ed2a93272, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: RatPrinceHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 981af2e66ab4cff4e8ab7127d217f163, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: WolverineHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 40b485a984725204c88450580fa99203, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: berryfarmheadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 3bd4bacaf8a898c4f91c129166f7c1a1, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: blackbearHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 548b07f5268c3f947a777b45470ece4d, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: PostOfficeHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 37cc48547a6d88e4b98ecf7c46cea117, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: mainstreetHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 08b4a3fd05abc6543aaa1675acf8f4fb, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: beaverLodgeHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 15f3777e9ffa3dd45b3075ca5b4df852, type: 3}
+    - target: {fileID: 2923378105212209542, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: ElkSecretaryHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 026460b62ff94004c893c68dbad64fe0, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: barHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 89bf4303a5b54084ab50cd88836493a7, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: AlanHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 99a5977865427c5478e14a52a2b0044b, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: ClayHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 95b31490d2a13eb4faf96344bea2b77c, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: DougHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 78097d7a979183b4e8a2878a933a032d, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: MarkHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: b3e7b944b7d180141b2ac7a0034ffc11, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: NinaHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: d8b16edd96bea5646bfd8375fa805455, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: MarryHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: c3707e5fd9029bf4fb408488355862c8, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: OslowHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: e48051f56f0b583438eb30a28a6db059, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: SpeckHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 0c3b34b90029a2f4686f2902e316129e, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: motelheadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 0d54249834afc754fa4a398345264600, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: AustinHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 4cd0483959b216c4f8ed0a5d8608f821, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: AustynHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: b1b3f308e2248784e8ad022ea46e40c8, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: BigRatHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: e32ada551b40f9e4aa0a4e8ed2a93272, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: SamuelHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 94114e1aec90d6d498c1e5ff66af9ea3, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: boxcarHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 100358a9d28f60a4b90d142ae2478849, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: CroutonHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: a3e31d3f812d58d4caeedeab255e4981, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: RatCaveHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 1ed7b3a870b7d4748ab3a609c39760b7, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: nibblesHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 37a2506d2d8622e4fa6555b6b92eee1e, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: RailYardHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: ea81c81a80f5c7d4c80294d2d0c75cd2, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: BreakfastHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 6d2be64302f09ee41ae5577fc3fb79b8, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: RatLeaderHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: e32ada551b40f9e4aa0a4e8ed2a93272, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: RatPrinceHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 981af2e66ab4cff4e8ab7127d217f163, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: WolverineHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 40b485a984725204c88450580fa99203, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: berryfarmheadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 3bd4bacaf8a898c4f91c129166f7c1a1, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: blackbearHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 548b07f5268c3f947a777b45470ece4d, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: PostOfficeHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 37cc48547a6d88e4b98ecf7c46cea117, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: mainstreetHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 08b4a3fd05abc6543aaa1675acf8f4fb, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: beaverLodgeHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 15f3777e9ffa3dd45b3075ca5b4df852, type: 3}
+    - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: ElkSecretaryHeadshot
+      value: 
+      objectReference: {fileID: 21300000, guid: 026460b62ff94004c893c68dbad64fe0, type: 3}
+    - target: {fileID: 2923378105592434924, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 37a2506d2d8622e4fa6555b6b92eee1e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
 --- !u!4 &9019697684947194406 stripped
