@@ -18,11 +18,12 @@ public class EncounterPrefabController : MonoBehaviour
     public GameObject patienceBar;
     public GameObject cardPlaceMat;
 
-    public GameObject redCard;
-    public GameObject blueCard;
-    public GameObject greenCard;
-    public GameObject greyCard;
+    public GameObject cardPrefab;
+
     public Transform cardHighlightTransform;
+    public Image FrustrationImage;
+    public Image MadImage;
+    public Image SweatImage;
     public GameObject YouWonPage;
     public GameObject YouLostPage;
 
@@ -81,22 +82,19 @@ public class EncounterPrefabController : MonoBehaviour
         switch (remainingPatienceRatio)
         {
             case 0:
-                _npcHeadshotScript.GetHappy(npcHeadshot);
+                _npcHeadshotScript.GetPhaseOne(npcHeadshot);
                 break;
-            case <= 0.15f:
-                _npcHeadshotScript.GetAngry(npcHeadshot);
-                break;
-            case <= 0.3f:
-                _npcHeadshotScript.GetStress(npcHeadshot);
+            case <= 0.2f:
+                _npcHeadshotScript.GetPhaseFour(npcHeadshot);
                 break;
             case <= 0.5f:
-                _npcHeadshotScript.GetWorry(npcHeadshot);
+                _npcHeadshotScript.GetPhaseThree(npcHeadshot);
                 break;
-            case <= 0.8f:
-                _npcHeadshotScript.GetNeutral(npcHeadshot);
+            case <= 0.75f:
+                _npcHeadshotScript.GetPhaseTwo(npcHeadshot);
                 break;
             default:
-                _npcHeadshotScript.GetHappy(npcHeadshot);
+                _npcHeadshotScript.GetPhaseOne(npcHeadshot);
                 break;
         }
     }
@@ -115,21 +113,7 @@ public class EncounterPrefabController : MonoBehaviour
 
         // actually instantiate the card
         GameObject cardFrontend = null;
-        switch (card.GetElement())
-        {
-            case "Intimidation":
-                cardFrontend = Instantiate(redCard, empty.position, empty.rotation, _placeMatScript.gameObject.transform);
-                break;
-            case "Sympathy":
-                cardFrontend = Instantiate(blueCard, empty.position, empty.rotation, _placeMatScript.gameObject.transform);
-                break;
-            case "Persuasion":
-                cardFrontend = Instantiate(greenCard, empty.position, empty.rotation, _placeMatScript.gameObject.transform);
-                break;
-            case "Preparation":
-                cardFrontend = Instantiate(greyCard, empty.position, empty.rotation, _placeMatScript.gameObject.transform);
-                break;
-        }
+        cardFrontend = Instantiate(cardPrefab, empty.position, empty.rotation, _placeMatScript.gameObject.transform);
 
         // Initialize with the proper info
         CardPrefabController frontendController = cardFrontend.GetComponent<CardPrefabController>();

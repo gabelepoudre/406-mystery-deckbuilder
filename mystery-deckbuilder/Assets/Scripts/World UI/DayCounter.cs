@@ -15,7 +15,7 @@ public class DayCounter : MonoBehaviour
     {
         try
         {
-            GetTextElement().text = "Day " + GameState.Meta.currentDay.Value;
+            GetTextElement().text = "" + GameState.Meta.currentDay.Value;
         }
         catch (MissingReferenceException e)  // oops! This script doesn't exist any more
         {

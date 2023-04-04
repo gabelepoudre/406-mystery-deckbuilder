@@ -9,16 +9,15 @@ public class DBDeckUIController : MonoBehaviour
 {
     public UnityEngine.Object sceneOnComplete;
 
+    public bool isDebug = false;
+
     public Text cardTypeOnHighlight;
     public Text numCardsInDeck;
 
     public GameObject[] deckContainers;
     public GameObject[] collectionContainers;
 
-    public GameObject redCardNoEncounter;
-    public GameObject blueCardNoEncounter;
-    public GameObject greenCardNoEncounter;
-    public GameObject greyCardNoEncounter;
+    public GameObject noEncounterCardPrefab;
 
     public GameObject plusOne;
     public GameObject minusOne;
@@ -134,6 +133,7 @@ public class DBDeckUIController : MonoBehaviour
         {
             Debug.Log("Went up in deck");
             DeckPage -= 1;
+            GameState.Meta.pageUpTrigger.Raise();
         }
         Debug.Log("Failed to go up in deck");
     }
@@ -144,6 +144,7 @@ public class DBDeckUIController : MonoBehaviour
         {
             Debug.Log("Went down in deck");
             DeckPage += 1;
+            GameState.Meta.pageDownTrigger.Raise();
         }
         Debug.Log("Failed to go down in deck");
     }
@@ -172,6 +173,7 @@ public class DBDeckUIController : MonoBehaviour
         if (CanMoveCollectionPageUp())
         {
             CollectionPage -= 1;
+            GameState.Meta.pageUpTrigger.Raise();
         }
     }
 
@@ -180,6 +182,7 @@ public class DBDeckUIController : MonoBehaviour
         if (CanMoveCollectionPageDown())
         {
             CollectionPage += 1;
+            GameState.Meta.pageDownTrigger.Raise();
         }
     }
 
@@ -226,22 +229,8 @@ public class DBDeckUIController : MonoBehaviour
 
                 Card card = (Card)Cards.CreateCardWithID(cardIdx, true);
                 GameObject _cardPrefabInstance = null;
+                _cardPrefabInstance = Instantiate(noEncounterCardPrefab, _deckContainerControllers[normalized_idx].spawn.position, _deckContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
 
-                switch (card.GetElement())
-                {
-                    case "Intimidation":
-                        _cardPrefabInstance = Instantiate(redCardNoEncounter, _deckContainerControllers[normalized_idx].spawn.position, _deckContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                        break;
-                    case "Sympathy":
-                        _cardPrefabInstance = Instantiate(blueCardNoEncounter, _deckContainerControllers[normalized_idx].spawn.position, _deckContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                        break;
-                    case "Persuasion":
-                        _cardPrefabInstance = Instantiate(greenCardNoEncounter, _deckContainerControllers[normalized_idx].spawn.position, _deckContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                        break;
-                    case "Preparation":
-                        _cardPrefabInstance = Instantiate(greyCardNoEncounter, _deckContainerControllers[normalized_idx].spawn.position, _deckContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                        break;
-                }
                 _currentDeckCardInstantiations.Add(_cardPrefabInstance);
 
                 NoEncounterCardPrefabController c = _cardPrefabInstance.GetComponent<NoEncounterCardPrefabController>();
@@ -294,22 +283,8 @@ public class DBDeckUIController : MonoBehaviour
 
                 Card card = (Card)Cards.CreateCardWithID(cardIdx, true);
                 GameObject _cardPrefabInstance = null;
+                _cardPrefabInstance = Instantiate(noEncounterCardPrefab, _collectionContainerControllers[normalized_idx].spawn.position, _collectionContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
 
-                switch (card.GetElement())
-                {
-                    case "Intimidation":
-                        _cardPrefabInstance = Instantiate(redCardNoEncounter, _collectionContainerControllers[normalized_idx].spawn.position, _collectionContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                        break;
-                    case "Sympathy":
-                        _cardPrefabInstance = Instantiate(blueCardNoEncounter, _collectionContainerControllers[normalized_idx].spawn.position, _collectionContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                        break;
-                    case "Persuasion":
-                        _cardPrefabInstance = Instantiate(greenCardNoEncounter, _collectionContainerControllers[normalized_idx].spawn.position, _collectionContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                        break;
-                    case "Preparation":
-                        _cardPrefabInstance = Instantiate(greyCardNoEncounter, _collectionContainerControllers[normalized_idx].spawn.position, _collectionContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                        break;
-                }
                 _currentCollectionCardInstantiations.Add(_cardPrefabInstance);
 
                 NoEncounterCardPrefabController c = _cardPrefabInstance.GetComponent<NoEncounterCardPrefabController>();
@@ -345,12 +320,14 @@ public class DBDeckUIController : MonoBehaviour
     {
         GameState.Player.fullDeck.Value = new(new int[] { });
         GameState.Player.dailyDeck.Value = new(GameState.Player.fullDeck.Value.ToArray());
+        GameState.Meta.dbCardRemovedFromDeck.Raise();
         ShowProperControlsForHighlightedCard();
     }
 
 
     public void AddOneOfPreviewedCard()
     {
+        GameState.Meta.dbCardMovedToDeck.Raise();
         for (int x = 0; x <= 1 -1; x++)
         {
             GameState.Player.fullDeck.Value.Add(_previewedCardID);
@@ -384,6 +361,7 @@ public class DBDeckUIController : MonoBehaviour
 
     public void RemoveOneOfPreviewedCard()
     {
+        GameState.Meta.dbCardRemovedFromDeck.Raise();
         for (int x = 0; x <= 1 - 1; x++)
         {
             GameState.Player.fullDeck.Value.Remove(_previewedCardID);
@@ -419,22 +397,8 @@ public class DBDeckUIController : MonoBehaviour
     {
         Card card = (Card)Cards.CreateCardWithID(cardID, true);
         GameObject _cardPrefabInstance = null;
+        _cardPrefabInstance = Instantiate(noEncounterCardPrefab, previewCardSpawn.position, previewCardSpawn.rotation, this.gameObject.transform);
 
-        switch (card.GetElement())
-        {
-            case "Intimidation":
-                _cardPrefabInstance = Instantiate(redCardNoEncounter, previewCardSpawn.position, previewCardSpawn.rotation, this.gameObject.transform);
-                break;
-            case "Sympathy":
-                _cardPrefabInstance = Instantiate(blueCardNoEncounter, previewCardSpawn.position, previewCardSpawn.rotation, this.gameObject.transform);
-                break;
-            case "Persuasion":
-                _cardPrefabInstance = Instantiate(greenCardNoEncounter, previewCardSpawn.position, previewCardSpawn.rotation, this.gameObject.transform);
-                break;
-            case "Preparation":
-                _cardPrefabInstance = Instantiate(greyCardNoEncounter, previewCardSpawn.position, previewCardSpawn.rotation, this.gameObject.transform);
-                break;
-        }
         NoEncounterCardPrefabController c = _cardPrefabInstance.GetComponent<NoEncounterCardPrefabController>();
         c.makeBiggerTransform = previewCardSpawn;
         c.DisableInteractions();
@@ -490,8 +454,14 @@ public class DBDeckUIController : MonoBehaviour
 
     public void LaunchIntoScene()
     {
-        SceneManager.LoadScene("Motel");
+        if (isDebug)
+        {
+            this.gameObject.GetComponentInParent<Canvas>().gameObject.SetActive(false);
+            return;
+        }
         GameState.Meta.justSlept.Value = true;
+        GameState.Meta.withinDream.Value = false;
+        SceneManager.LoadScene("Motel");
     }
 
     public void Start()
@@ -514,5 +484,6 @@ public class DBDeckUIController : MonoBehaviour
 
         _deckOnStart = new(GameState.Player.fullDeck.Value.ToArray());
         GameState.Player.dailyDeck.Value = new(GameState.Player.fullDeck.Value.ToArray());
+        GameState.Meta.withinDream.Value = true;
     }
 }

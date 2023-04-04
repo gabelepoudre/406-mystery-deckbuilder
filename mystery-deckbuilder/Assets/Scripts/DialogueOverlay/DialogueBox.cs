@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 
 /*
@@ -30,6 +31,16 @@ public class DialogueBox : MonoBehaviour
     private bool _inPosition = false; //whether it has finished moving to its position
     private bool _finished = false; //whether the dialogue is over
     public bool FinishedSentence = true;
+
+
+    public Image npcHeadshot;
+
+    private string lastTalker = "";
+
+    public GameObject evilCanvasOptionBox;
+
+    private Transform _childMurdererTransform;
+    private ChildMurderer _childMurderer;
 
     [SerializeField] private GameObject _optionBoxPrefab;
     [SerializeField] private GameObject _optionButtonPrefab;
@@ -71,12 +82,14 @@ public class DialogueBox : MonoBehaviour
     {
         _finished = true;
         DestroyOptionBox();
+        this.npcHeadshot.gameObject.SetActive(false);
         Destroy(gameObject, 0.5f);
     }
 
     /* instantiate a new option box, as well as its buttons */
     public void SpawnOptionBox(OptionNode optionNode)
     {
+        evilCanvasOptionBox.SetActive(true);
         _optionBox = Instantiate(_optionBoxPrefab, new Vector3(0f, -1.5f, 0f), Quaternion.identity, transform);
         SpawnOptionButtons(optionNode);
     }
@@ -84,11 +97,13 @@ public class DialogueBox : MonoBehaviour
     /* destroy the spawned option box and its buttons */
     public void DestroyOptionBox()
     {
+        evilCanvasOptionBox.SetActive(false);
         Destroy(_optionBox);
         foreach(Transform child in transform.Find("Canvas").transform.Find("Canvas").transform)
         {
             Destroy(child.gameObject);
         }
+        _childMurderer.KillChildren();
     }
 
     /* spawn option buttons corresponding to optionss in optionNode 
@@ -103,19 +118,18 @@ public class DialogueBox : MonoBehaviour
             string option = optionNode.options[index];
             //instantiate option buttons
             GameObject optionButton = Instantiate(_optionButtonPrefab, new Vector3(5.0f, 1.3f - counter * 0.5f, 0f), 
-            Quaternion.identity, transform.Find("Canvas").transform.Find("Canvas"));
+            Quaternion.identity, _childMurdererTransform);
             optionButton.GetComponentInChildren<Text>().text = option; //set correct text of button
 
             //change text to red if it leads to encounter
             
             IDialogueNode node = optionNode.Next(index);
-            if (node.Next() != null)
+           
+            //traverse tree until we hit null or back to options. if we hit an encounter node we set the text to red
+            while (node != null && node.NodeType() != "option")
             {
-                if (node.Next().NodeType() == "encounter") optionButton.GetComponentInChildren<Text>().color = Color.red;
-            }
-            if (node.Next().Next() != null)
-            {
-                if (node.Next().Next().NodeType() == "encounter") optionButton.GetComponentInChildren<Text>().color = Color.red;
+                if (node.NodeType() == "encounter") optionButton.GetComponentInChildren<Text>().color = Color.red;
+                node = node.Next();
             }
             
 
@@ -146,6 +160,71 @@ public class DialogueBox : MonoBehaviour
             if (_waiting) yield return new WaitForSeconds(0.03f);
         }
         FinishedSentence = true;
+        GameState.Meta.dialogueGoing.Value = "";
         _waiting = true;
+    }
+
+    public void DarkenNpc()
+    {
+        Debug.Log(GameState.Meta.dialogueGoing.Value);
+        try
+        {
+            if (GameState.Meta.dialogueGoing.Value == "player")
+            {
+                lastTalker = "player";
+                npcHeadshot.color = new Color(0.7f, 0.7f, 0.7f, 1);
+            }
+            else if (GameState.Meta.dialogueGoing.Value == "" && lastTalker == "player")
+            {
+                npcHeadshot.color = new Color(0.7f, 0.7f, 0.7f, 1);
+            }
+               
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("E");
+            GameState.Meta.dialogueGoing.OnChange -= DarkenNpc;
+        }
+        catch (NullReferenceException e)
+        {
+            e.Message.Contains("E");
+            GameState.Meta.dialogueGoing.OnChange -= DarkenNpc;
+        }
+    }
+
+    public void NormalNpc()
+    {
+        Debug.Log(GameState.Meta.dialogueGoing.Value);
+        try
+        {
+            if (GameState.Meta.dialogueGoing.Value != "player" && GameState.Meta.dialogueGoing.Value != "")
+            {
+                lastTalker = "npc";
+                npcHeadshot.color = new Color(1, 1, 1, 1);
+            }
+            else if (GameState.Meta.dialogueGoing.Value == "" && lastTalker != "player" && lastTalker != "")
+            {
+                npcHeadshot.color = new Color(1, 1, 1, 1);
+            }
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("E");
+            GameState.Meta.dialogueGoing.OnChange -= NormalNpc;
+        }
+        catch (NullReferenceException e)
+        {
+            e.Message.Contains("E");
+            GameState.Meta.dialogueGoing.OnChange -= NormalNpc;
+        }
+    }
+
+
+    private void Start()
+    {
+        GameState.Meta.dialogueGoing.OnChange += NormalNpc;
+        GameState.Meta.dialogueGoing.OnChange += DarkenNpc;
+        _childMurderer = gameObject.GetComponentInChildren<Canvas>().gameObject.GetComponentInChildren<ChildMurderer>();
+        _childMurdererTransform = _childMurderer.gameObject.GetComponent<Transform>();
     }
 }

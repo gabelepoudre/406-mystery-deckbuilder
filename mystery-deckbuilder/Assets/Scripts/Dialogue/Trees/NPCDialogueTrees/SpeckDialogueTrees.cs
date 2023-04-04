@@ -29,7 +29,7 @@ public class SpeckDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         intro.SetNext(options);
 
         PlayerNode askWhere = new(new string[] {"Where were you on the night of the berry disappearance?"});
-        PlayerNode answerWhere = new(new string[] {"Me? Why do you want to know? Are all detectives so nosy?"});
+        NPCNode answerWhere = new(new string[] {"Me? Why do you want to know? Are all detectives so nosy?"});
         EncounterNode encounter = new();
         askWhere.SetNext(answerWhere);
         answerWhere.SetNext(encounter);
@@ -42,8 +42,8 @@ public class SpeckDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         answerRole.SetNext(options);
 
         PlayerNode askBerries = new(new string[] {"Do you have any idea as to who may have stolen the berries?"});
-        NPCNode answerBerries = new(new string[] {"You wanna know what I thing? I think the elk might be up to something. I have never trusted him nor the mayor.", 
-        "but Crouton doesn't seem bright enough to plot something like this. I would check on the elk if I were you."});
+        NPCNode answerBerries = new(new string[] {"You wanna know what I think? I think the elk might be up to something. I have never trusted him nor the mayor...", 
+        "But Crouton doesn't seem bright enough to plot something like this. I would check on the elk if I were you."});
         askBerries.SetNext(answerBerries);
         answerBerries.SetNext(options);
 
@@ -63,13 +63,15 @@ public class SpeckDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     {
         NPCNode root = new(new string[] {"The night of the incident... Right... I was uhhhh enjoying the night drinking with my buddy Clay.", 
         "Now if you'll excuse me I'm looking for something. (Now where did I drop this stupid thing...)"});
+        PlayerNode note = new(new string[] {"(Hmmm, it looks like he dropped a note.)", "......", "(Maybe I should keep it as evidence.)"});
+        root.SetNext(note);
          DialogueTree tree = new (root);
         return tree;
     }
 
     private DialogueTree BuildAfterEncounterLoss()
     {
-        DialogueTree tree = new(new NPCNode(new string[] {"Stop bothering me. I got things to do"}));
+        DialogueTree tree = new(new NPCNode(new string[] {"Stop bothering me. I got things to do."}));
         return tree;
     }
 

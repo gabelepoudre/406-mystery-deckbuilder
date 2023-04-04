@@ -9,10 +9,7 @@ public class DeckUIController : MonoBehaviour
     public GameObject[] deckContainers;
     public GameObject[] collectionContainers;
 
-    public GameObject redCardNoEncounter;
-    public GameObject blueCardNoEncounter;
-    public GameObject greenCardNoEncounter;
-    public GameObject greyCardNoEncounter;
+    public GameObject noEncounterCardPrefab;
 
     public Transform previewCardSpawn;
 
@@ -116,6 +113,7 @@ public class DeckUIController : MonoBehaviour
         {
             Debug.Log("Went up in deck");
             DeckPage -= 1;
+            GameState.Meta.pageUpTrigger.Raise();
         }
         Debug.Log("Failed to go up in deck");
     }
@@ -126,6 +124,7 @@ public class DeckUIController : MonoBehaviour
         {
             Debug.Log("Went down in deck");
             DeckPage += 1;
+            GameState.Meta.pageDownTrigger.Raise();
         }
         Debug.Log("Failed to go down in deck");
     }
@@ -207,22 +206,7 @@ public class DeckUIController : MonoBehaviour
 
                 Card card = (Card)Cards.CreateCardWithID(cardIdx, true);
                 GameObject _cardPrefabInstance = null;
-
-                switch (card.GetElement())
-                {
-                    case "Intimidation":
-                        _cardPrefabInstance = Instantiate(redCardNoEncounter, _deckContainerControllers[normalized_idx].spawn.position, _deckContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                        break;
-                    case "Sympathy":
-                        _cardPrefabInstance = Instantiate(blueCardNoEncounter, _deckContainerControllers[normalized_idx].spawn.position, _deckContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                        break;
-                    case "Persuasion":
-                        _cardPrefabInstance = Instantiate(greenCardNoEncounter, _deckContainerControllers[normalized_idx].spawn.position, _deckContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                        break;
-                    case "Preparation":
-                        _cardPrefabInstance = Instantiate(greyCardNoEncounter, _deckContainerControllers[normalized_idx].spawn.position, _deckContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                        break;
-                }
+                _cardPrefabInstance = Instantiate(noEncounterCardPrefab, _deckContainerControllers[normalized_idx].spawn.position, _deckContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
                 _currentDeckCardInstantiations.Add(_cardPrefabInstance);
 
                 NoEncounterCardPrefabController c = _cardPrefabInstance.GetComponent<NoEncounterCardPrefabController>();
@@ -270,22 +254,8 @@ public class DeckUIController : MonoBehaviour
 
                 Card card = (Card)Cards.CreateCardWithID(cardIdx, true);
                 GameObject _cardPrefabInstance = null;
+                _cardPrefabInstance = Instantiate(noEncounterCardPrefab, _collectionContainerControllers[normalized_idx].spawn.position, _collectionContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
 
-                switch (card.GetElement())
-                {
-                    case "Intimidation":
-                        _cardPrefabInstance = Instantiate(redCardNoEncounter, _collectionContainerControllers[normalized_idx].spawn.position, _collectionContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                        break;
-                    case "Sympathy":
-                        _cardPrefabInstance = Instantiate(blueCardNoEncounter, _collectionContainerControllers[normalized_idx].spawn.position, _collectionContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                        break;
-                    case "Persuasion":
-                        _cardPrefabInstance = Instantiate(greenCardNoEncounter, _collectionContainerControllers[normalized_idx].spawn.position, _collectionContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                        break;
-                    case "Preparation":
-                        _cardPrefabInstance = Instantiate(greyCardNoEncounter, _collectionContainerControllers[normalized_idx].spawn.position, _collectionContainerControllers[normalized_idx].spawn.rotation, this.gameObject.transform);
-                        break;
-                }
                 _currentCollectionCardInstantiations.Add(_cardPrefabInstance);
 
                 NoEncounterCardPrefabController c = _cardPrefabInstance.GetComponent<NoEncounterCardPrefabController>();

@@ -256,7 +256,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 4ae563b5846e9ed408efb69609451cce, type: 3}
-  m_Color: {r: 0.7264151, g: 0.7024297, b: 0.7024297, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -566,16 +566,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Nina
+  reactionOffsetX: 0
+  reactionOffsetY: 0
+  IsBoss: 0
   affinity_intimidation: 0.71
   affinity_sympathy: 0.16
   affintiy_persuasion: 0.14
-  startingPatience: 25
-  startingCompliance: 115
+  startingPatience: 22
+  startingCompliance: 105
   currentPatience: 1
   currentCompliance: 0
   ComplianceThreshhold: 0
-  cardIDUnlockFromWinEncounter: 10
+  cardIDUnlockFromWinEncounter: 14
   encounterSprites: {fileID: 701282225796089859}
+  reactionPrefab: {fileID: 2712194818219275452, guid: 4b4b5573e3208524fa9ed0b98fb86ccd, type: 3}
 --- !u!114 &2974809267316779736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -600,11 +604,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2c6071d43e4cf47b85ce574f5d547d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neutral: {fileID: 21300000, guid: 69b76798043f9294e80ecd048e0f598f, type: 3}
-  happy: {fileID: 21300000, guid: 2b141436e10be3243bde4e9909f9510f, type: 3}
-  angry: {fileID: 21300000, guid: 71d5e99097a229847ac47310745494f6, type: 3}
-  stress: {fileID: 21300000, guid: 73495014746bf854996269911abe12ee, type: 3}
-  worry: {fileID: 21300000, guid: f2ea7d015499dcc468b28ba484ef01e3, type: 3}
+  phaseOne: {fileID: 21300000, guid: 0058d44bb3f05c244aeecee40b6cf924, type: 3}
+  PhaseTwo: {fileID: 21300000, guid: 2a1c36d55b8adde48b1719c461338722, type: 3}
+  PhaseThree: {fileID: 21300000, guid: 35433c87417fde442a22bb43b7b29178, type: 3}
+  PhaseFour: {fileID: 21300000, guid: 5d948850548a0be46839a0d0514abe40, type: 3}
 --- !u!114 &3499478264171026166
 MonoBehaviour:
   m_ObjectHideFlags: 0

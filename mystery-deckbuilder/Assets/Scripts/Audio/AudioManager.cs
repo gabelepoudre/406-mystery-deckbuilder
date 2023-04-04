@@ -61,20 +61,34 @@ public class AudioManager : MonoBehaviour
 
         // Listen for scene change
         GameState.Player.location.OnChange += LocationChange;
+
+        // Play initial music
+        Sound start = Array.Find(sounds, sound => sound.name == "music-placeholder-investigation");
+        start.source.Play();
+
+        // we need this to not play every sound effect when GameStates are reset 
+        GameState.Meta.inMainMenu.Value = true;
     }
 
     private void Start()
     {
-        // Play initial music
-        Play("music-placeholder-investigation");
+        
     }
 
     // want to call this from outside the script
     // finds a sound in array by matching string.
     public void Play(string name)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        s.source.Play();
+        if (!GameState.Meta.inMainMenu.Value || name == "music-placeholder-investigation")  // will be refused if you change the main theme music unless you swap this
+        {
+            Sound s = Array.Find(sounds, sound => sound.name == name);
+            s.source.Play();
+        }
+        else
+        {
+            Debug.LogWarning("Refused to play sound " + name + " because we are in main menu");
+        }
+
     }
 
     public void Stop(string name)
@@ -117,7 +131,7 @@ public class AudioManager : MonoBehaviour
                 }
                 //     Then, 
                 //     Play town theme
-                Play("music-placeholder-town");
+                Play("music-town");
             }
             
 
@@ -187,8 +201,8 @@ public class AudioManager : MonoBehaviour
                     s.source.Stop();
                 }
                 //     Then, 
-                //     Play investigation theme
-                Play("music-placeholder-town");
+                //     Play town theme
+                Play("music-town");
             }
  
             

@@ -6,7 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/* The Class which holds all of the Elk Secretary's dialogue trees in a dictionary, the point being
+/* The Class which holds all of Doug's dialogue trees in a dictionary, the point being
  * that all of the dialogue will be built here and passed to the NPC class 
  */
 public class DougDialogueTrees : MonoBehaviour, IDialogueTreeCollection
@@ -46,21 +46,18 @@ public class DougDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         intro.SetNext(introReply);
 
         PlayerNode askWhere = new(new string[] {"Where were you on the night of the berry disappearance?"});
-        PlayerNode askTheft = new(new string[] {"Do you have any client you think might be involved with the berry disappearance?"});
+
         
         NPCNode explainWhere = new(new string[] {"Me personally, I was at home fast asleep.", "I prescribe to that work hard, sleep hard mentality.", 
         "As for our workers in general, there certainly weren't any on the clock at that hour."});
 
-        EncounterNode encounter = new();
 
         askWhere.SetNext(explainWhere);
-        askTheft.SetNext(encounter);
 
         explainWhere.SetNext(introReply);
 
         (string, IDialogueNode) [] IntroReplyOptionsList = {
             ("Ask Whereabouts", askWhere),
-            ("Ask about berries", askTheft)
 
         };
 
@@ -121,7 +118,7 @@ public class DougDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
         NPCNode explainWhere = new(new string[] {"Me personally, I was at home fast asleep.", "I prescribe to that work hard, sleep hard mentality.", 
         "As for our workers in general, there certainly weren't any on the clock at that hour."});
-        NPCNode explainFestival = new(new string[] {"Ah so this is the motive angle you're working, huh?", "The harvest festiavl isn't a competition.", 
+        NPCNode explainFestival = new(new string[] {"Ah so this is the motive angle you're working, huh?", "The harvest festival isn't a competition.", 
         "It's a way to give back to the community at the end of a good year's work.", "It's primarily for union members and their families, but we open it up to the public as an act of good will."});
 
         PlayerNode askEvidence = new(new string[] {"There's some solid evidence stacking up against the union.", "I need you to work with me here."});
@@ -166,8 +163,8 @@ public class DougDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
         explainWhere.SetNext(introReply);
 
-        PlayerNode askSam = new(new string[] { "What do you make of the claim that the beaver union throws it�s weight around is disrespectful to rental equipment?" });
-        NPCNode samAnswer = new(new string[] { "That�s just business." });
+        PlayerNode askSam = new(new string[] { "What do you make of the claim that the beaver union throws its weight around is disrespectful to rental equipment?" });
+        NPCNode samAnswer = new(new string[] { "That's just business." });
 
         askSam.SetNext(samAnswer);
         samAnswer.SetNext(introReply);
@@ -197,7 +194,7 @@ public class DougDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
         NPCNode explainWhere = new(new string[] {"Me personally, I was at home fast asleep.", "I prescribe to that work hard, sleep hard mentality.",
         "As for our workers in general, there certainly weren't any on the clock at that hour."});
-        NPCNode explainFestival = new(new string[] {"Ah so this is the motive angle you're working, huh?", "The harvest festiavl isn't a competition.",
+        NPCNode explainFestival = new(new string[] {"Ah so this is the motive angle you're working, huh?", "The harvest festival isn't a competition.",
         "It's a way to give back to the community at the end of a good year's work.", "It's primarily for union members and their families, but we open it up to the public as an act of good will."});
 
         PlayerNode askEvidence = new(new string[] { "There's some solid evidence stacking up against the union.", "I need you to work with me here." });
@@ -210,8 +207,8 @@ public class DougDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         askFestival.SetNext(explainFestival);
         explainFestival.SetNext(introReply);
 
-        PlayerNode askSam = new(new string[] { "What do you make of the claim that the beaver union throws it�s weight around is disrespectful to rental equipment?" });
-        NPCNode samAnswer = new(new string[] { "That�s just business." });
+        PlayerNode askSam = new(new string[] { "What do you make of the claim that the beaver union throws its weight around is disrespectful to rental equipment?" });
+        NPCNode samAnswer = new(new string[] { "That's just business." });
 
         askSam.SetNext(samAnswer);
         samAnswer.SetNext(introReply);
@@ -254,8 +251,8 @@ public class DougDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         askUnion.SetNext(explainUnion);
         explainUnion.SetNext(introReply);
 
-        PlayerNode askSam = new(new string[] { "What do you make of the claim that the beaver union throws it�s weight around is disrespectful to rental equipment?" });
-        NPCNode samAnswer = new(new string[] { "That�s just business." });
+        PlayerNode askSam = new(new string[] { "What do you make of the claim that the beaver union throws its weight around is disrespectful to rental equipment?" });
+        NPCNode samAnswer = new(new string[] { "That's just business." });
 
         askSam.SetNext(samAnswer);
         samAnswer.SetNext(introReply);
@@ -335,7 +332,7 @@ public class DougDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         "As for our workers in general, there certainly weren't any on the clock at that hour."});
         NPCNode explainUnion = new(new string[] {"Sure detective, we aren't exactly hiding it.", "Anyone with eyes could tell you we have a number of boats and a decent sized workforce.",
         "But, it's not exactly like we're the only group with those kind of resources in the region."});
-        NPCNode explainFestival = new(new string[] {"Ah so this is the motive angle you're working, huh?", "The harvest festiavl isn't a competition.",
+        NPCNode explainFestival = new(new string[] {"Ah so this is the motive angle you're working, huh?", "The harvest festival isn't a competition.",
         "It's a way to give back to the community at the end of a good year's work.", "It's primarily for union members and their families, but we open it up to the public as an act of good will."});
 
         PlayerNode askEvidence = new(new string[] { "There's some solid evidence stacking up against the union.", "I need you to work with me here." });
@@ -351,7 +348,7 @@ public class DougDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         askFestival.SetNext(explainFestival);
         explainFestival.SetNext(introReply);
 
-        PlayerNode askSam = new(new string[] { "What do you make of the claim that the beaver union throws it�s weight around is disrespectful to rental equipment?" });
+        PlayerNode askSam = new(new string[] { "What do you make of the claim that the beaver union throws its weight around is disrespectful to rental equipment?" });
         NPCNode samAnswer = new(new string[] { "That's just business." });
 
         askSam.SetNext(samAnswer);
@@ -379,9 +376,9 @@ public class DougDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     private DialogueTree BuildAfterEncounterWinFirstMainSuspect()
     {
         NPCNode dialogue = new(new string[] {"Okay, sure. All our equipment, which includes rentals, follows a rigorous sign-out, sign-in process.", 
-        "Non of our equipment could have been used for the theft.", 
+        "None of our equipment could have been used for the theft.", 
         "As for our workers, they just want to work a good job, they aren't cultists.", 
-        "Here, let me give you some advice.", "There's this bar called [Rat Prince's Bar] on the North side.", 
+        "Here, let me give you some advice.", "There's this pub on the North side...", 
         "It's frequented by some rough types, but the kind of rough types that have some power behind them."});
 
 
@@ -392,10 +389,10 @@ public class DougDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     private DialogueTree BuildAfterEncounterWinSecondOrThirdMainSuspect()
     {
         NPCNode dialogue = new(new string[] {"Okay, sure. All our equipment, which includes rentals, follows a rigorous sign-out, sign-in process.", 
-        "Non of our equipment could have been used for the theft.", 
+        "None of our equipment could have been used for the theft.", 
         "As for our workers, they just want to work a good job, they aren't cultists.", 
         "You know, if I was masterminding that kind of thing, I might hide the berries in some sort of rail car.", 
-        "There's enough of them coming in, shipping out, and sitting on standby that the couldn't all be accounted for, right?"});
+        "There's enough of them coming in, shipping out, and sitting on standby that they couldn't all be accounted for, right?"});
 
         return new DialogueTree(dialogue);
     }

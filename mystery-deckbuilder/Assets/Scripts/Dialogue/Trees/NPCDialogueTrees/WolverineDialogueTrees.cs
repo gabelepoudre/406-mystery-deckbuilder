@@ -26,12 +26,12 @@ public class WolverineDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     private DialogueTree BuildIntro()
     {
         
-        PlayerNode root = new(new string[] {"....."});
+        NPCNode root = new(new string[] {"....."});
         OptionNode options = new(); //set options later
         root.SetNext(options);
 
         PlayerNode askWhere = new(new string[] {"Where were you on the night of the berry disappearance?"});
-        PlayerNode answerWhere = new(new string[] {"......"});
+        NPCNode answerWhere = new(new string[] {"......"});
         askWhere.SetNext(answerWhere);
         answerWhere.SetNext(options);
        
@@ -49,7 +49,7 @@ public class WolverineDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         (string, IDialogueNode) [] OptionsList = {
             ("Ask about Whereabouts", askWhere),
             ("Ask about Role", askRole),
-            ("Ask what convince", convince)
+            ("Try to convince", convince)
         };
 
         options.SetOptions(OptionsList);
@@ -61,6 +61,11 @@ public class WolverineDialogueTrees : MonoBehaviour, IDialogueTreeCollection
     private DialogueTree BuildAfterEncounterWin()
     {
         NPCNode root = new(new string[] {"Fine, do what you will."});
+        ArbitraryCodeNode disappear = new(() => {
+            gameObject.SetActive(false);
+            return 0;
+            });
+        root.SetNext(disappear);
          DialogueTree tree = new (root);
         return tree;
     }

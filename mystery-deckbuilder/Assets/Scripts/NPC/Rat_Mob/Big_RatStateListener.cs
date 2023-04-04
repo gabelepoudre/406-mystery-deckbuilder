@@ -16,7 +16,7 @@ public class Big_RatStateListener : MonoBehaviour
     {
         //dialogue based on whether you've won an encounter with big rat or oslow
         GameState.NPCs.Big_Rat.encountersCompleted.OnChange += OnEncounterComplete;
-        GameState.NPCs.Oslow.encountersCompleted.OnChange += OnOslowWin;
+        GameState.NPCs.Oslow.encountersWon.OnChange += OnOslowWin;
         
     }
 
@@ -57,17 +57,17 @@ public class Big_RatStateListener : MonoBehaviour
     private void OnOslowWin()
     {
         try {
-            GameState.NPCs.Oslow.encountersCompleted.OnChange += UpdateDialogue;
+            UpdateDialogue();
         }
         catch (MissingReferenceException e)
         {
             e.Message.Contains("e");
-            GameState.NPCs.Oslow.encountersCompleted.OnChange -= UpdateDialogue;
+            GameState.NPCs.Oslow.encountersWon.OnChange -= OnOslowWin;
         }
         catch (NullReferenceException e)
         {
             e.Message.Contains("e");
-            GameState.NPCs.Oslow.encountersCompleted.OnChange -= UpdateDialogue;
+            GameState.NPCs.Oslow.encountersWon.OnChange -= OnOslowWin;
         }
     }
 

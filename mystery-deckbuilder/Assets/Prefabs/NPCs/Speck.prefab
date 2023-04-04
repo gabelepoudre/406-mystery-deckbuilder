@@ -256,7 +256,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 5e82698123ca6e844a5d67c1ceccf72b, type: 3}
-  m_Color: {r: 0.7264151, g: 0.7024297, b: 0.7024297, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -546,8 +546,8 @@ Transform:
   m_GameObject: {fileID: 7429489653972524998}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.51, y: 1.34, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7126463671949975562}
   m_Father: {fileID: 0}
@@ -566,16 +566,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Speck
+  reactionOffsetX: 64
+  reactionOffsetY: 22
+  IsBoss: 0
   affinity_intimidation: 0.24
   affinity_sympathy: 0.82
   affintiy_persuasion: 0.22
   startingPatience: 25
-  startingCompliance: 115
+  startingCompliance: 125
   currentPatience: 1
   currentCompliance: 0
   ComplianceThreshhold: 0
-  cardIDUnlockFromWinEncounter: 2
+  cardIDUnlockFromWinEncounter: 34
   encounterSprites: {fileID: 701282225796089859}
+  reactionPrefab: {fileID: 4488296313786778136, guid: f76f2d30f18c9d64dbbc4a8e04af613a, type: 3}
 --- !u!114 &2974809267316779736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -600,11 +604,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2c6071d43e4cf47b85ce574f5d547d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neutral: {fileID: 21300000, guid: 69b76798043f9294e80ecd048e0f598f, type: 3}
-  happy: {fileID: 21300000, guid: 2b141436e10be3243bde4e9909f9510f, type: 3}
-  angry: {fileID: 21300000, guid: 71d5e99097a229847ac47310745494f6, type: 3}
-  stress: {fileID: 21300000, guid: 73495014746bf854996269911abe12ee, type: 3}
-  worry: {fileID: 21300000, guid: f2ea7d015499dcc468b28ba484ef01e3, type: 3}
+  phaseOne: {fileID: 21300000, guid: 1a300ac56fa8dc945a55d33d133e9b07, type: 3}
+  PhaseTwo: {fileID: 21300000, guid: 79c78db0ee783b842b7eb81ad55f653c, type: 3}
+  PhaseThree: {fileID: 21300000, guid: 7f884e657e43dfc4992a00faa2c2df24, type: 3}
+  PhaseFour: {fileID: 21300000, guid: 51390c96332b6344888a94d0520eb57a, type: 3}
 --- !u!114 &2051382831568858523
 MonoBehaviour:
   m_ObjectHideFlags: 0

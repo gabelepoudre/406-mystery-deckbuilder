@@ -24,11 +24,11 @@ public class DougStateListener : MonoBehaviour
     {
         try
         {
-        //if you've completed the first encounter, then we want to initiate the encounter win tree
-        if (GameState.NPCs.Doug.encountersCompleted.Value == 1)
+        //if you've won the first encounter, then we want to initiate the encounter win tree
+        if (GameState.NPCs.Doug.encountersWon.Value == 1)
         {
             //if Doug was the first main suspect we won an encounter with
-            if (GameState.NPCs.Elk.encountersCompleted.Value == 0 && GameState.NPCs.Rat_Leader.encountersCompleted.Value == 0)
+            if (GameState.NPCs.Elk.encountersWon.Value == 0 && GameState.NPCs.Rat_Leader.encountersWon.Value == 0)
             {
                 transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWinFirstMainSuspect";
             }
@@ -48,6 +48,7 @@ public class DougStateListener : MonoBehaviour
         if (GameState.NPCs.Doug.encountersWon.Value == 0)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "Intro";
+            MetAustynOrMarkOrSamuel();
         }
         }
         catch (MissingReferenceException e)
@@ -116,7 +117,7 @@ public class DougStateListener : MonoBehaviour
         if (GameState.NPCs.Doug.encountersWon.Value == 1)
         {
             //if Doug was the first main suspect we won an encounter with
-            if (GameState.NPCs.Elk.encountersCompleted.Value == 0 && GameState.NPCs.Rat_Leader.encountersCompleted.Value == 0)
+            if (GameState.NPCs.Elk.encountersWon.Value == 0 && GameState.NPCs.Rat_Leader.encountersWon.Value == 0)
             {
                 transform.GetComponent<NPC>().CurrentDialogueKey = "AfterEncounterWinFirstMainSuspect";
             }

@@ -10,18 +10,17 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine;
+using TMPro;
 
 public class NoEncounterCardPrefabController : MonoBehaviour, IPointerClickHandler, IDeselectHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public Image highlight;
-    public Image cardRect;
-    public Image cardPicture;
-    public Image type;
-    public Image descriptionHolder;
-    public Text cardName;
-    public Text cardDescription;
-    public Text visiblePatience;
-    public Text visibleCompliance;
+    public Image cardBackground;
+    public CardArtHolder cardArt;
+    public TMP_Text cardName;
+    public TMP_Text cardDescription;
+    public TMP_Text visiblePatience;
+    public TMP_Text visibleCompliance;
 
     public DBDeckUIController onlyAddInDeckbuilding; // I am so sorry
     public bool onlyAddInDeckbuildingIsDeck;  // I am so sorry 
@@ -43,6 +42,11 @@ public class NoEncounterCardPrefabController : MonoBehaviour, IPointerClickHandl
     void Awake()
     {
         _spawnTransformPosition = gameObject.transform.position;
+    }
+
+    public void SetBackground(int card_id)
+    {
+        cardBackground.sprite = cardArt.GetArtByCardID(card_id);
     }
 
     public void SetElement(string element)
@@ -158,6 +162,7 @@ public class NoEncounterCardPrefabController : MonoBehaviour, IPointerClickHandl
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        GameState.Meta.nonEncounterCardHoverOver.Raise();
         if (!_highlighted && _hasInteraction && !_deckbuildingMode)
         {
             _highlighted = true;

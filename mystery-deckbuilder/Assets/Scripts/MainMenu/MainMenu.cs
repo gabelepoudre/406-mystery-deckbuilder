@@ -19,9 +19,12 @@ public class MainMenu : MonoBehaviour
         // Stop playing title theme
         FindObjectOfType<AudioManager>().Stop("music-placeholder-investigation");
 
-        // Start playing intro theme
-        FindObjectOfType<AudioManager>().Play("music-placeholder-town");
+        GameState.Meta.inMainMenu.Value = false;
 
+        // Start playing intro theme
+        FindObjectOfType<AudioManager>().Play("music-town");
+
+        //GameState.Meta.inMainMenu.Value = false;
         SceneManager.LoadScene(_sceneIndex);
     }
 
