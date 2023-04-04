@@ -85,13 +85,13 @@ MonoBehaviour:
   - name: effect-card-mouse-over-1
     clip: {fileID: 8300000, guid: 2f16891efef7173498db6140ca0acb78, type: 3}
     loop: 0
-    volume: 0.303
+    volume: 0.399
     pitch: 1
     source: {fileID: 0}
   - name: effect-card-mouse-over-2
     clip: {fileID: 8300000, guid: ca89d70c8b2f4324397d608843fdcd6f, type: 3}
     loop: 0
-    volume: 0.315
+    volume: 0.419
     pitch: 1
     source: {fileID: 0}
   - name: effect-card-mouse-over-3

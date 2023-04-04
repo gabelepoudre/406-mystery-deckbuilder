@@ -71,19 +71,62 @@ public class AudioEventSubscriber : MonoBehaviour
             switch (lastCardPlayedElement)
             {
                 case "Intimidation":
-                    // Play light hit sound
-                    FindObjectOfType<AudioManager>().Play("effect-hit-light");
+                    if (complianceGained > 40)
+                    {
+                        FindObjectOfType<AudioManager>().Play("effect-hit-heavy");
+                    }
+                    else if (complianceGained > 20)
+                    {
+                        FindObjectOfType<AudioManager>().Play("effect-hit-medium");
+                    }
+                    else
+                    {
+                        FindObjectOfType<AudioManager>().Play("effect-hit-light");
+                    }
                     break;
                 case "Persuasion":
-                    // Play light hit sound
+                    if (complianceGained > 40)
+                    {
+                        FindObjectOfType<AudioManager>().Play("effect-hit-heavy");
+                    }
+                    else if (complianceGained > 20)
+                    {
+                        FindObjectOfType<AudioManager>().Play("effect-hit-medium");
+                    }
+                    else
+                    {
+                        FindObjectOfType<AudioManager>().Play("effect-hit-light");
+                    }
                     FindObjectOfType<AudioManager>().Play("effect-hit-light");
                     break;
                 case "Sympathy":
-                    // Play light hit sound
+                    if (complianceGained > 40)
+                    {
+                        FindObjectOfType<AudioManager>().Play("effect-hit-heavy");
+                    }
+                    else if (complianceGained > 20)
+                    {
+                        FindObjectOfType<AudioManager>().Play("effect-hit-medium");
+                    }
+                    else
+                    {
+                        FindObjectOfType<AudioManager>().Play("effect-hit-light");
+                    }
                     FindObjectOfType<AudioManager>().Play("effect-hit-light");
                     break;
                 case "Preparation":
-                    // Play light hit sound
+                    if (complianceGained > 40)
+                    {
+                        FindObjectOfType<AudioManager>().Play("effect-hit-heavy");
+                    }
+                    else if (complianceGained > 20)
+                    {
+                        FindObjectOfType<AudioManager>().Play("effect-hit-medium");
+                    }
+                    else
+                    {
+                        FindObjectOfType<AudioManager>().Play("effect-hit-light");
+                    }
                     FindObjectOfType<AudioManager>().Play("effect-hit-light");
                     break;
             }
@@ -482,6 +525,7 @@ public class AudioEventSubscriber : MonoBehaviour
                 // do stuff on enter
                 // play bad end theme
                 FindObjectOfType<AudioManager>().Play("music-bad-end");
+                FindObjectOfType<AudioManager>().Stop("music-bad-end");
             }
             else
             {
