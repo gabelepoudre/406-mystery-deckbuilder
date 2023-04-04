@@ -20,6 +20,11 @@ public class NPCSetImage : MonoBehaviour
         _spriteRenderer.sprite = _streetViewStationary;
     }
 
+    public Sprite GetStationary()
+    {
+        return _streetViewStationary;
+    }
+
     public void SetStreetViewWave()
     {
         _spriteRenderer.sprite = _streetViewWave;

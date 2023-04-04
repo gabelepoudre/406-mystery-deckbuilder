@@ -472,7 +472,7 @@ MonoBehaviour:
   affinity_sympathy: 0.295
   affintiy_persuasion: 0.705
   startingPatience: 20
-  startingCompliance: 100
+  startingCompliance: 80
   currentPatience: 10
   currentCompliance: 100
   ComplianceThreshhold: 0
