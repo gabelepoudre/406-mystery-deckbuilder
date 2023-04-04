@@ -92,6 +92,7 @@ public static class GameState
         public static GameStateValue<bool> inPickSuspect = new(false, _gameStateValues);
 
         public static GameStateValue<bool> encounterTutorialComplete = new(false, _gameStateValues);
+        public static GameStateValue<bool> DeckBuildingTutorialComplete = new(false, _gameStateValues);
     }
 
 
