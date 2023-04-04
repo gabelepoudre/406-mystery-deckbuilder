@@ -524,8 +524,8 @@ public class AudioEventSubscriber : MonoBehaviour
             {
                 // do stuff on enter
                 // play bad end theme
+                FindObjectOfType<AudioManager>().Stop("music-town-new");
                 FindObjectOfType<AudioManager>().Play("music-bad-end");
-                FindObjectOfType<AudioManager>().Stop("music-bad-end");
             }
             else
             {
@@ -553,6 +553,7 @@ public class AudioEventSubscriber : MonoBehaviour
             {
                 // do stuff on enter
                 // play good end theme
+                FindObjectOfType<AudioManager>().Stop("music-town-new");
                 FindObjectOfType<AudioManager>().Play("music-good-end");
             }
             else
@@ -949,6 +950,7 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event EncounterCardHelpClicked triggered");
+            FindObjectOfType<AudioManager>().Play("effect-notebook-open-2");
             // do stuff here, value is meaningless
         }
         catch (MissingReferenceException e)
