@@ -237,7 +237,7 @@ public class DialogueManager : MonoBehaviour
         {
             if (_talkingNPC != NPCName)
             {
-                if (_talkingNPC == "Crowd")
+                if (_talkingNPC == "Crowd" || _talkingNPC == "Crowd")
                 {
                     Image headshotReference = _dialogueBox.GetComponent<DialogueBox>().npcHeadshot;
                     headshotReference.gameObject.SetActive(false);
@@ -272,13 +272,6 @@ public class DialogueManager : MonoBehaviour
                 NPCSetImage setImageScript = CurrentNPC.GetComponent<NPC>().gameObject.GetComponentInChildren<NPCSetImage>();
                 Debug.LogWarning(setImageScript != null);
                 headshotReference.sprite = setImageScript.GetStationary();
-
-
-
-                if (NPCName != "Nibbles" && NPCName != "Marry" && NPCName != "Austyn")
-                {
-                    headshotReference.transform.localScale = new Vector3(-headshotReference.transform.localScale.x, headshotReference.transform.localScale.y, headshotReference.transform.localScale.z);
-                }
                 _dialogueBox.GetComponent<DialogueBox>().npcHeadshot.gameObject.GetComponent<EncounterImageController>().ChangeSize();
             }
         }

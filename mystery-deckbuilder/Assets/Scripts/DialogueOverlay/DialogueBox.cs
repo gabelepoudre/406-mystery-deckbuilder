@@ -82,6 +82,7 @@ public class DialogueBox : MonoBehaviour
     {
         _finished = true;
         DestroyOptionBox();
+        this.npcHeadshot.gameObject.SetActive(false);
         Destroy(gameObject, 0.5f);
     }
 
