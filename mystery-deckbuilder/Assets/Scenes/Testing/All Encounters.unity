@@ -11463,7 +11463,7 @@ MonoBehaviour:
   - {fileID: 1765947587}
   - {fileID: 1740444687}
   - {fileID: 1759840713}
-  noEncounterCardPrefab: {fileID: 9204399067519391359, guid: ae32b5e4dbfd9ee4385b898a3e276246, type: 3}
+  noEncounterCardPrefab: {fileID: 0}
   plusOne: {fileID: 1865651153}
   minusOne: {fileID: 840380547}
   previewCardSpawn: {fileID: 1511699472}

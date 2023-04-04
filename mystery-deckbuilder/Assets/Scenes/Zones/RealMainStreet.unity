@@ -189,7 +189,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6795207596825268420, guid: 54747101ca5d0432aa3c02f5e7a57288, type: 3}
       propertyPath: _card
-      value: 10
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 6795207596825268421, guid: 54747101ca5d0432aa3c02f5e7a57288, type: 3}
       propertyPath: m_RootOrder
@@ -385,17 +385,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6795207596825268422, guid: 54747101ca5d0432aa3c02f5e7a57288, type: 3}
   m_PrefabInstance: {fileID: 458104934}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1161634710 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4467739801104387035, guid: 46a451d6f7fd84947a5a62d91425b599, type: 3}
-  m_PrefabInstance: {fileID: 1681822081}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 024131001af0b44f8b00df44aab57b45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1543334549 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 905738060473532872, guid: 46a451d6f7fd84947a5a62d91425b599, type: 3}
@@ -584,7 +573,7 @@ PrefabInstance:
     - target: {fileID: 499620242668039038, guid: 6719e8677d797684bbb895c45d20abbd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1161634710}
+      objectReference: {fileID: 0}
     - target: {fileID: 499620242668039038, guid: 6719e8677d797684bbb895c45d20abbd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -704,7 +693,7 @@ PrefabInstance:
     - target: {fileID: 1801952375297412204, guid: 6719e8677d797684bbb895c45d20abbd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1161634710}
+      objectReference: {fileID: 0}
     - target: {fileID: 1801952375297412204, guid: 6719e8677d797684bbb895c45d20abbd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -732,7 +721,7 @@ PrefabInstance:
     - target: {fileID: 4018194451447909202, guid: 6719e8677d797684bbb895c45d20abbd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1161634710}
+      objectReference: {fileID: 0}
     - target: {fileID: 4018194451447909202, guid: 6719e8677d797684bbb895c45d20abbd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -760,7 +749,7 @@ PrefabInstance:
     - target: {fileID: 4105152666869009115, guid: 6719e8677d797684bbb895c45d20abbd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1161634710}
+      objectReference: {fileID: 0}
     - target: {fileID: 4105152666869009115, guid: 6719e8677d797684bbb895c45d20abbd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -788,7 +777,7 @@ PrefabInstance:
     - target: {fileID: 5697722442594987918, guid: 6719e8677d797684bbb895c45d20abbd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1161634710}
+      objectReference: {fileID: 0}
     - target: {fileID: 5697722442594987918, guid: 6719e8677d797684bbb895c45d20abbd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -816,7 +805,7 @@ PrefabInstance:
     - target: {fileID: 7713384323573564827, guid: 6719e8677d797684bbb895c45d20abbd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1161634710}
+      objectReference: {fileID: 0}
     - target: {fileID: 7713384323573564827, guid: 6719e8677d797684bbb895c45d20abbd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
