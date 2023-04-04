@@ -29,7 +29,7 @@ public class OslowDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         intro.SetNext(options);
 
         PlayerNode askWhere = new(new string[] {"Where were you on the night of the berry disappearance?"});
-        PlayerNode answerWhere = new(new string[] {"I was at home enjoying a good novel.", 
+        NPCNode answerWhere = new(new string[] {"I was at home enjoying a good novel.", 
         "I know, it sounds pretty boring but I'm at that age where I just don't have the energy for high spirited activities. Plus, I do like reading."});
         askWhere.SetNext(answerWhere);
         answerWhere.SetNext(options);
