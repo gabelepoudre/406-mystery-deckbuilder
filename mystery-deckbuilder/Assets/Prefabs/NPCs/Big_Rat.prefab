@@ -577,7 +577,7 @@ MonoBehaviour:
   currentPatience: 1
   currentCompliance: 0
   ComplianceThreshhold: 0
-  cardIDUnlockFromWinEncounter: 31
+  cardIDUnlockFromWinEncounter: 10
   encounterSprites: {fileID: 701282225796089859}
   reactionPrefab: {fileID: 4488296313786778136, guid: f76f2d30f18c9d64dbbc4a8e04af613a, type: 3}
 --- !u!114 &2974809267316779736

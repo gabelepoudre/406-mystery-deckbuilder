@@ -456,7 +456,7 @@ public class Salutation : Card
         this._metadata["name"] = "Salutation";
         this._metadata["description"] = "When played as the first card, automatically draw a card";
         this._metadata["patience"] = "2";
-        this._metadata["compliance"] = "15";
+        this._metadata["compliance"] = "20";
         this._metadata["duration"] = "0";
         this._metadata["filterId"] = "0";
 
