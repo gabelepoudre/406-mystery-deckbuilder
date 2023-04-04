@@ -98,7 +98,7 @@ public class DialogueManager : MonoBehaviour
 
 
 
-        if (NPCName != "Nibbles" && NPCName != "Marry" && NPCName != "Austyn" && NPCName != "Big Rat" && NPCName != "Nina")
+        if (NPCName != "Nibbles" && NPCName != "Marry" && NPCName != "Austyn" && NPCName != "Big Rat" && NPCName != "Nina" && NPCName != "Clay")
         {
             headshotReference.transform.localScale = new Vector3(-headshotReference.transform.localScale.x, headshotReference.transform.localScale.y, headshotReference.transform.localScale.z); 
         }
