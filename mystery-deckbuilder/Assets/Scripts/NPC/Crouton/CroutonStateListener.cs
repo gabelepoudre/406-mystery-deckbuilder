@@ -56,10 +56,12 @@ public class CroutonStateListener : MonoBehaviour
 
     private void UpdateDialogue()
     {
-        if (GameState.Player.location.Value == GameState.Player.Locations.BerryFarm && !GameState.NPCs.Crouton.finishedBerryCommotion.Value)
+        if (GameState.Meta.currentDay.Value == 2 && GameState.Player.location.Value == GameState.Player.Locations.BerryFarm && !GameState.NPCs.Crouton.finishedBerryCommotion.Value)
         {
             transform.GetComponent<NPC>().CurrentDialogueKey = "BerryCommotion";
             GameState.NPCs.Crouton.finishedBerryCommotion.Value = true;
+            GameState.Meta.evilInBerryCommotion.Value = true;
+            Debug.LogWarning("AHHHHHHHHHHHHH");
         }
 
         if (GameState.NPCs.Alan.encountersWon.Value > 0)
