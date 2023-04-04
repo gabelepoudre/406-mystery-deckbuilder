@@ -210,7 +210,15 @@ public class DialogueManager : MonoBehaviour
 
         if (_sentences.Count != 0) //if we still have sentences in the queue
         {
-            GameState.Meta.dialogueGoing.Value = _currentNode.NodeType();
+            //GameState.Meta.dialogueGoing.Value = _currentNode.NodeType();
+            if (_currentNode.NodeType() == "npc")
+            {
+                GameState.Meta.dialogueGoing.Value = NPCName;
+            } 
+            else
+            {
+                GameState.Meta.dialogueGoing.Value = "player";
+            }
 
             string sentence = _sentences.Dequeue();
             _dialogueBox.GetComponent<DialogueBox>().DisplaySentence(sentence);

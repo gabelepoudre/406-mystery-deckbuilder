@@ -2171,30 +2171,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4462939111587983103, guid: 9a89543a34e40b04fb9ea954cb1b8a45, type: 3}
-      propertyPath: sounds.Array.data[2].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: c05af4862e9dcb549987d6b078596232, type: 3}
-    - target: {fileID: 4462939111587983103, guid: 9a89543a34e40b04fb9ea954cb1b8a45, type: 3}
-      propertyPath: sounds.Array.data[2].name
-      value: music-town
-      objectReference: {fileID: 0}
-    - target: {fileID: 4462939111587983103, guid: 9a89543a34e40b04fb9ea954cb1b8a45, type: 3}
-      propertyPath: sounds.Array.data[0].volume
-      value: 0.162
-      objectReference: {fileID: 0}
-    - target: {fileID: 4462939111587983103, guid: 9a89543a34e40b04fb9ea954cb1b8a45, type: 3}
-      propertyPath: sounds.Array.data[1].volume
-      value: 0.181
-      objectReference: {fileID: 0}
-    - target: {fileID: 4462939111587983103, guid: 9a89543a34e40b04fb9ea954cb1b8a45, type: 3}
-      propertyPath: sounds.Array.data[2].volume
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4462939111587983103, guid: 9a89543a34e40b04fb9ea954cb1b8a45, type: 3}
-      propertyPath: sounds.Array.data[3].volume
-      value: 0.155
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a89543a34e40b04fb9ea954cb1b8a45, type: 3}
 --- !u!1 &1390132444

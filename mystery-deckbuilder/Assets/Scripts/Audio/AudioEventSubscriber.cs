@@ -1,10 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 using System;
+
+// ADUIO MANAGER USAGE:
+//      Make sure this is placed in the first scene the game loads.
+// TO PLAY A SOUND:
+//      In any script:
+//          FindObjectOfType<AudioManager>().Play("filename-of-sound");
+// TO STOP A SOUND:
+//      In any script:
+//          FindObjectOfType<AudioManager>().Stop("filename-of-sound");
 
 public class AudioEventSubscriber : MonoBehaviour
 {
+    // Previous song; song played before encounter
+    String previousSong = "music-town-new";
+
+    // Set value for berry farm leaving after commotion.
+    bool leftCommotion = false;
+
+    // Previous babble; used for stopping babble when advancing dialogue
+    String previousBabble = "ac_voice_b1";
+
     public void Start()
     {
         GameState.Meta.activeEncounterComplianceRaisedByAmount.OnChange += CardPlayed;
@@ -34,6 +53,8 @@ public class AudioEventSubscriber : MonoBehaviour
         GameState.Meta.activeEncounterCardHelp.OnChange += EncounterCardHelpClicked;
         GameState.Player.location.OnChange += LocationChanged;
         GameState.Meta.dialogueGoing.OnChange += DialogueGoing;
+        GameState.Meta.activeEncounterCardDrawn.OnChange += CardDrawn;
+        GameState.Meta.secretFound.OnChange += SecretFound;
     }
 
     public void CardPlayed()
@@ -44,19 +65,69 @@ public class AudioEventSubscriber : MonoBehaviour
             string lastCardPlayedElement = GameState.Meta.activeEncounterLastCardPlayedElement.Value;
             int patienceDealt = GameState.Meta.activeEncounterPatienceDroppedByAmount.Value;
             int complianceGained = GameState.Meta.activeEncounterComplianceRaisedByAmount.Value;
+            // if (GameState.Meta.activeEncounterComplianceRaisedByAmount.Value > 40)
+            // else if (GameState.Meta.activeEncounterComplianceRaisedByAmount.Value > 20)
+            // else if (GameState.Meta.activeEncounterComplianceRaisedByAmount.Value > 0)
             switch (lastCardPlayedElement)
             {
                 case "Intimidation":
-                    // do stuff
+                    if (complianceGained > 40)
+                    {
+                        FindObjectOfType<AudioManager>().Play("effect-hit-heavy");
+                    }
+                    else if (complianceGained > 20)
+                    {
+                        FindObjectOfType<AudioManager>().Play("effect-hit-medium");
+                    }
+                    else
+                    {
+                        FindObjectOfType<AudioManager>().Play("effect-hit-light");
+                    }
                     break;
                 case "Persuasion":
-                    // do stuff
+                    if (complianceGained > 40)
+                    {
+                        FindObjectOfType<AudioManager>().Play("effect-hit-heavy");
+                    }
+                    else if (complianceGained > 20)
+                    {
+                        FindObjectOfType<AudioManager>().Play("effect-hit-medium");
+                    }
+                    else
+                    {
+                        FindObjectOfType<AudioManager>().Play("effect-hit-light");
+                    }
+                    FindObjectOfType<AudioManager>().Play("effect-hit-light");
                     break;
                 case "Sympathy":
-                    // do stuff
+                    if (complianceGained > 40)
+                    {
+                        FindObjectOfType<AudioManager>().Play("effect-hit-heavy");
+                    }
+                    else if (complianceGained > 20)
+                    {
+                        FindObjectOfType<AudioManager>().Play("effect-hit-medium");
+                    }
+                    else
+                    {
+                        FindObjectOfType<AudioManager>().Play("effect-hit-light");
+                    }
+                    FindObjectOfType<AudioManager>().Play("effect-hit-light");
                     break;
                 case "Preparation":
-                    // do stuff
+                    if (complianceGained > 40)
+                    {
+                        FindObjectOfType<AudioManager>().Play("effect-hit-heavy");
+                    }
+                    else if (complianceGained > 20)
+                    {
+                        FindObjectOfType<AudioManager>().Play("effect-hit-medium");
+                    }
+                    else
+                    {
+                        FindObjectOfType<AudioManager>().Play("effect-hit-light");
+                    }
+                    FindObjectOfType<AudioManager>().Play("effect-hit-light");
                     break;
             }
         }
@@ -77,13 +148,47 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event LocationChanged triggered");
+
+            // For berry commotion:
+
+            // On Berry Commotion exit:
+
+            // (if the player has not left the commotion before,
+            // and the day is greater than 1,
+            // and the berry commotion has happened)
+            if (leftCommotion == true && GameState.Meta.currentDay.Value > 1 && GameState.NPCs.Crouton.finishedBerryCommotion.Value && GameState.Player.location.Value != GameState.Player.Locations.BerryFarm)
+            {
+                Debug.Log("Left berry commotion!");
+                //     Stop playing all sounds
+                FindObjectOfType<AudioManager>().StopAll();
+                //     Then, 
+                //     Play town theme
+                FindObjectOfType<AudioManager>().Play("music-town-new");
+            }
+
+            // play berry commotion music
+            else if (GameState.Meta.currentDay.Value == 2 && leftCommotion == false && GameState.Player.location.Value == GameState.Player.Locations.BerryFarm)
+            {
+                FindObjectOfType<AudioManager>().StopAll();
+                FindObjectOfType<AudioManager>().Play("music-encounter-danger");
+                leftCommotion = true;
+            }
+
+            
+
+
+
+            // For rat pub:
             if (GameState.Player.location.Value == GameState.Player.Locations.Bar)
             {
                 // do stuff. Note: if you want to ensure you don't replay base music on 
                 //  each location swap but still want pub music, you'll want to keep a variable like
                 //  "normal music playing" and check against it for an else if to this conditional
+
+
             }
         }
+        
         catch (MissingReferenceException e)
         {
             e.Message.Contains("e");
@@ -95,6 +200,47 @@ public class AudioEventSubscriber : MonoBehaviour
             GameState.Player.location.OnChange -= LocationChanged;
         }
     }
+
+    public void CardDrawn()
+    {
+        try
+        {
+            Debug.Log("Event CardDrawn triggered");
+            // do stuff, value is not used
+            FindObjectOfType<AudioManager>().Play("effect-draw");
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.Meta.activeEncounterCardDrawn.OnChange -= CardDrawn;
+        }
+        catch (NullReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.Meta.activeEncounterCardDrawn.OnChange -= CardDrawn;
+        }
+    }
+
+    public void SecretFound()
+    {
+        try
+        {
+            Debug.Log("Event SecretFound triggered");
+            // do stuff, value is not used
+            FindObjectOfType<AudioManager>().Play("effect-secret");
+        }
+        catch (MissingReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.Meta.secretFound.OnChange -= SecretFound;
+        }
+        catch (NullReferenceException e)
+        {
+            e.Message.Contains("e");
+            GameState.Meta.secretFound.OnChange -= SecretFound;
+        }
+    }
+
 
     public void DialogueStarted()
     {
@@ -122,7 +268,8 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event DialogueAdvanced triggered");
-            // do stuff, value is not used
+            // play menu sound
+            FindObjectOfType<AudioManager>().Play("effect-menu-sound-4");
         }
         catch (MissingReferenceException e)
         {
@@ -142,7 +289,11 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event DialogueEnded triggered");
-            // do stuff, value is not used
+            // play menu sound
+            FindObjectOfType<AudioManager>().Play("effect-menu-sound-4");
+
+            // Stop previous animal noise sound
+            FindObjectOfType<AudioManager>().Stop(previousBabble);
         }
         catch (MissingReferenceException e)
         {
@@ -162,13 +313,13 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event DialogueGoing triggered with value " + GameState.Meta.dialogueGoing.Value);
-            if (GameState.Meta.dialogueGoing.Value == "npc")
-            {
-                // do stuff
-            }
-            else if (GameState.Meta.dialogueGoing.Value == "player")
+            if (GameState.Meta.dialogueGoing.Value == "player")
             {
                 // do if glub stuff
+                // Stop previous animal noise sound
+                FindObjectOfType<AudioManager>().Stop(previousBabble);
+                // play glub
+                FindObjectOfType<AudioManager>().Play("effect-glub");
             }
             else if (GameState.Meta.dialogueGoing.Value == "")
             {
@@ -176,7 +327,101 @@ public class AudioEventSubscriber : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("Audio listener had an invalid dialogue trigger");
+                Debug.Log(GameState.Meta.dialogueGoing.Value);
+
+                // Stop previous animal noise sound
+                FindObjectOfType<AudioManager>().Stop(previousBabble);
+
+                int randomNum = Random.Range(1, 8);
+                switch(GameState.Meta.dialogueGoing.Value)
+                {
+                    case "Nibbles":
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_b" + randomNum;
+                        break;
+                    case "Austin":
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_c" + randomNum;
+                        break;
+                    case "Austyn":
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_c" + randomNum;
+                        break;
+                    case "Alan":
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_a" + randomNum;
+                        break;
+                    case "Mark":
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_a" + randomNum;
+                        break;
+                    case "Samuel":
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_b" + randomNum;
+                        break;
+                    case "Doug":
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_a" + randomNum;
+                        break;
+                    case "Elk Secretary":
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_c" + randomNum;
+                        break;
+                    case "Rat Leader":
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_a" + randomNum;
+                        break;
+                    case "Rat Prince":
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_c" + randomNum;
+                        break;
+                    case "Big Rat":
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_a" + randomNum;
+                        break;
+                    case "Bee":
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_b" + randomNum;
+                        break;
+                    case "Marry":
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_b" + randomNum;
+                        break;
+                    case "Wolverine":
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_a" + randomNum;
+                        break;
+                    case "Black Bear":
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_b" + randomNum;
+                        break;
+                    case "Crouton":
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_b" + randomNum;
+                        break;
+                    case "Nina":
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_b" + randomNum;
+                        break;
+                    case "Mike":
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_b" + randomNum;
+                        break;
+                    case "Speck":
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_c" + randomNum;
+                        break;
+                    case "Oslow":
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_c" + randomNum;
+                        break;
+                    case "Clay":
+                        // Generate animal noise sound
+                        previousBabble = "ac_voice_c" + randomNum;
+                        break;
+                }
+                // Play animal noise sound
+                FindObjectOfType<AudioManager>().Play(previousBabble);
             }
         }
         catch (MissingReferenceException e)
@@ -225,6 +470,8 @@ public class AudioEventSubscriber : MonoBehaviour
             if (GameState.Meta.withinDream.Value)
             {
                 // do stuff on enter
+                FindObjectOfType<AudioManager>().StopAll();
+                FindObjectOfType<AudioManager>().Play("music-dream");
             }
             else
             {
@@ -233,6 +480,8 @@ public class AudioEventSubscriber : MonoBehaviour
                 {
                     GameState.Meta.lastDayPostDream.Raise();
                 }
+                FindObjectOfType<AudioManager>().StopAll();
+                FindObjectOfType<AudioManager>().Play("music-town-new");
             }
         }
         catch (MissingReferenceException e)
@@ -274,6 +523,9 @@ public class AudioEventSubscriber : MonoBehaviour
             if (GameState.Meta.inBadEnd.Value)
             {
                 // do stuff on enter
+                // play bad end theme
+                FindObjectOfType<AudioManager>().Stop("music-town-new");
+                FindObjectOfType<AudioManager>().Play("music-bad-end");
             }
             else
             {
@@ -300,6 +552,9 @@ public class AudioEventSubscriber : MonoBehaviour
             if (GameState.Meta.inGoodEnd.Value)
             {
                 // do stuff on enter
+                // play good end theme
+                FindObjectOfType<AudioManager>().Stop("music-town-new");
+                FindObjectOfType<AudioManager>().Play("music-good-end");
             }
             else
             {
@@ -349,7 +604,8 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event NonEncounterCardHoverChanged triggered");
-            // do stuff here, value is meaningless
+            // play card hover sound
+            FindObjectOfType<AudioManager>().Play("effect-card-mouse-over-1");
         }
         catch (MissingReferenceException e)
         {
@@ -368,7 +624,8 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event EncounterCardHoverChanged triggered");
-            // do stuff here, value is meaningless
+            // play card hover sound
+            FindObjectOfType<AudioManager>().Play("effect-card-mouse-over-2");
         }
         catch (MissingReferenceException e)
         {
@@ -387,7 +644,8 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event DeckbuilderCardAddedToDeck triggered");
-            // do stuff here, value is meaningless
+            // play card hover sound
+            FindObjectOfType<AudioManager>().Play("effect-card-mouse-over-3");
         }
         catch (MissingReferenceException e)
         {
@@ -406,7 +664,8 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event DeckbuilderCardRemovedFromDeck triggered");
-            // do stuff here, value is meaningless
+            // play card hover sound
+            FindObjectOfType<AudioManager>().Play("effect-card-mouse-over-3");
         }
         catch (MissingReferenceException e)
         {
@@ -425,7 +684,8 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event PageDown triggered");
-            // do stuff here, value is meaningless
+            // Play sound
+            FindObjectOfType<AudioManager>().Play("effect-menu-tab");
         }
         catch (MissingReferenceException e)
         {
@@ -444,7 +704,8 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event PageUp triggered");
-            // do stuff here, value is meaningless
+            // Play sound
+            FindObjectOfType<AudioManager>().Play("effect-menu-tab");
         }
         catch (MissingReferenceException e)
         {
@@ -466,10 +727,12 @@ public class AudioEventSubscriber : MonoBehaviour
             if (GameState.Meta.notepadActive.Value)
             {
                 // do stuff on enter
+                FindObjectOfType<AudioManager>().Play("effect-notebook-open-2");
             }
             else
             {
                 // do stuff on exit
+                FindObjectOfType<AudioManager>().Play("effect-notebook-close");
             }
         }
         catch (MissingReferenceException e)
@@ -489,7 +752,8 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event MenuPageFlip triggered");
-            // do stuff here, value is meaningless
+            // Play page flip sound
+            FindObjectOfType<AudioManager>().Play("effect-page-flip");
         }
         catch (MissingReferenceException e)
         {
@@ -508,7 +772,8 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event MenuTabFlip triggered");
-            // do stuff here, value is meaningless
+            // Play sound
+            FindObjectOfType<AudioManager>().Play("effect-menu-tab");
         }
         catch (MissingReferenceException e)
         {
@@ -530,10 +795,14 @@ public class AudioEventSubscriber : MonoBehaviour
             if (GameState.Meta.mapIsOpen.Value)
             {
                 // do stuff on enter
+                // Play map sound
+                FindObjectOfType<AudioManager>().Play("effect-map");
             }
             else
             {
                 // do stuff on exit
+                // Play map sound
+                FindObjectOfType<AudioManager>().Play("effect-map");
             }
         }
         catch (MissingReferenceException e)
@@ -553,7 +822,10 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event MapLocationPicked triggered");
-            // do stuff here, value is meaningless
+            // stop map sound
+            FindObjectOfType<AudioManager>().Stop("effect-map");
+            // Play menu sound
+            FindObjectOfType<AudioManager>().Play("effect-menu-sound-4");
         }
         catch (MissingReferenceException e)
         {
@@ -574,18 +846,29 @@ public class AudioEventSubscriber : MonoBehaviour
             Debug.Log("Event EncounterChanged triggered");
             if (GameState.Meta.activeEncounter.Value != null)
             {
-                if(GameState.Meta.activeEncounter.Value.GetOpponent().IsBoss)
+                //     Stop playing all sounds
+                FindObjectOfType<AudioManager>().StopAll();
+
+                if (GameState.Meta.activeEncounter.Value.GetOpponent().IsBoss)
                 {
                     // do start encounter with boss
+                    //     Play boss encounter theme
+                    FindObjectOfType<AudioManager>().Play("music-encounter-danger");
                 }
                 else
                 {
                     // do start encounter non boss
+
+                    //     Play encounter theme
+                    FindObjectOfType<AudioManager>().Play("music-encounter-normal");
                 }
             }
             else
             {
-                // do stuff on exit (not sure if called before or after win screen)
+                // do stuff on exit;
+                // this is triggered AFTER the win/lose screen
+                FindObjectOfType<AudioManager>().StopAll();
+                FindObjectOfType<AudioManager>().Play(previousSong);
             }
         }
         catch (MissingReferenceException e)
@@ -608,6 +891,11 @@ public class AudioEventSubscriber : MonoBehaviour
             if (GameState.Meta.activeEncounterInWinScreen.Value)
             {
                 // do stuff on enter
+                // stop playing all sounds
+                FindObjectOfType<AudioManager>().StopAll();
+
+                // play victory theme
+                FindObjectOfType<AudioManager>().Play("music-encounter-victory");
             }
             else
             {
@@ -634,6 +922,11 @@ public class AudioEventSubscriber : MonoBehaviour
             if (GameState.Meta.activeEncounterInLossScreen.Value)
             {
                 // do stuff on enter
+                // stop playing all sounds
+                FindObjectOfType<AudioManager>().StopAll();
+
+                // play defeat theme
+                FindObjectOfType<AudioManager>().Play("music-encounter-defeat");
             }
             else
             {
@@ -657,6 +950,7 @@ public class AudioEventSubscriber : MonoBehaviour
         try
         {
             Debug.Log("Event EncounterCardHelpClicked triggered");
+            FindObjectOfType<AudioManager>().Play("effect-notebook-open-2");
             // do stuff here, value is meaningless
         }
         catch (MissingReferenceException e)

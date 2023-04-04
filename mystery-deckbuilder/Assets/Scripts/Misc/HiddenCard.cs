@@ -20,6 +20,7 @@ public class HiddenCard : MonoBehaviour
 
     public void PickUpCard()
     {
+        GameState.Meta.secretFound.Raise();
         GameObject cardFound = Instantiate(_cardFoundPrefab, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity, transform.Find("Canvas").transform);
         cardFound.GetComponent<RewardDisplayController>().DisplayCardAsReward(_card);
         cardFound.GetComponent<RewardDisplayController>().SetParent(this.gameObject);
