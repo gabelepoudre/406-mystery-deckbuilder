@@ -39,6 +39,8 @@ public class DialogueManager : MonoBehaviour
     private IDialogueNode _currentNode;
     private string _talkingNPC;
 
+    private bool doOnce = false;
+
     private Queue<string> _sentences = new();
 
     [SerializeField] private GameObject _dialogueBoxPrefab;
@@ -233,12 +235,13 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (GameState.Meta.evilInBerryCommotion.Value)
+        if (GameState.Meta.evilInBerryCommotion.Value && DialogueActive)
         {
             if (_talkingNPC != NPCName)
             {
                 if (_talkingNPC == "Crowd" || _talkingNPC == "Crowd")
                 {
+                    doOnce = false;
                     Image headshotReference = _dialogueBox.GetComponent<DialogueBox>().npcHeadshot;
                     headshotReference.gameObject.SetActive(false);
                 }
@@ -246,8 +249,6 @@ public class DialogueManager : MonoBehaviour
                 {
                     Image headshotReference = _dialogueBox.GetComponent<DialogueBox>().npcHeadshot;
                     headshotReference.gameObject.SetActive(true);
-                    Debug.LogWarning(headshotReference != null);
-                    Debug.LogWarning(CurrentNPC != null);
                     headshotReference.sprite = blackBearReference;
                     _dialogueBox.GetComponent<DialogueBox>().npcHeadshot.gameObject.GetComponent<EncounterImageController>().ChangeSize();
                 }
@@ -255,24 +256,24 @@ public class DialogueManager : MonoBehaviour
                 {
                     Image headshotReference = _dialogueBox.GetComponent<DialogueBox>().npcHeadshot;
                     headshotReference.gameObject.SetActive(true);
-                    Debug.LogWarning(headshotReference != null);
-                    Debug.LogWarning(CurrentNPC != null);
                     headshotReference.sprite = elkSecretary;
                     _dialogueBox.GetComponent<DialogueBox>().npcHeadshot.gameObject.GetComponent<EncounterImageController>().ChangeSize();
 
 
                 }
             }
-            else
+            else 
             {
-                Image headshotReference = _dialogueBox.GetComponent<DialogueBox>().npcHeadshot;
-                headshotReference.gameObject.SetActive(true);
-                Debug.LogWarning(headshotReference != null);
-                Debug.LogWarning(CurrentNPC != null);
-                NPCSetImage setImageScript = CurrentNPC.GetComponent<NPC>().gameObject.GetComponentInChildren<NPCSetImage>();
-                Debug.LogWarning(setImageScript != null);
-                headshotReference.sprite = setImageScript.GetStationary();
-                _dialogueBox.GetComponent<DialogueBox>().npcHeadshot.gameObject.GetComponent<EncounterImageController>().ChangeSize();
+                if (!doOnce)
+                {
+                    Image headshotReference = _dialogueBox.GetComponent<DialogueBox>().npcHeadshot;
+                    headshotReference.gameObject.SetActive(true);
+                    NPCSetImage setImageScript = CurrentNPC.GetComponent<NPC>().gameObject.GetComponentInChildren<NPCSetImage>();
+                    headshotReference.sprite = setImageScript.GetStationary();
+                    _dialogueBox.GetComponent<DialogueBox>().npcHeadshot.gameObject.GetComponent<EncounterImageController>().ChangeSize();
+                    doOnce = true;
+                }
+                
             }
         }
     }
