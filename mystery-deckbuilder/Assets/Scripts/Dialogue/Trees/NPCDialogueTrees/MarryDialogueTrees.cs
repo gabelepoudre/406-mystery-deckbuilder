@@ -37,7 +37,7 @@ public class MarryDialogueTrees : MonoBehaviour, IDialogueTreeCollection
 
 
         PlayerNode askAboutMarry = new(new string[] {"Nice to meet you, miss. Would you care to tell me about yourself?"});
-        PlayerNode askAboutSights = new(new string[] {"Is there anything you might recommend as a must see?"});
+        PlayerNode askAboutSights = new(new string[] {"Is there anything you might recommend as a must-see?"});
         
         NPCNode marryIntroduction = new(new string[] {"I'm Marry. I work for the Small Pines tourism board.", 
         "Normally I work in more of a planning and management position,", "but during our popular events, like the berry festival,"
