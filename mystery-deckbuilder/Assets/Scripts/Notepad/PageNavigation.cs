@@ -419,7 +419,7 @@ public class PageNavigation : MonoBehaviour
         
         Page ch2p9 = new Page("RatMobCave", unseenImage, RatCaveHeadshot);
         Page ch2p10 = new Page("Boxcar", unseenImage, boxcarHeadshot);
-        Page ch2p8 = new Page("LumberYard", unseenImage, boxcarHeadshot);
+        Page ch2p8 = new Page("LumberYard", unseenImage, beaverLodgeHeadshot);
 
         //add the pages to the chapter
         two.AddPage(ch2p1);
