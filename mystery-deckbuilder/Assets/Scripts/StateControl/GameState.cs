@@ -391,10 +391,11 @@ public static class GameState
     public class Zones
     {
 
-        //to keep track of what zones have been visited by the player
-        public static List<string> zonesVisted = new List<string>();
-        
+       
 
+        public static GameStateValue<List<string>> zonesVisted = new (new List<string>(), _gameStateValues);
+        
+    
 
     }
 
