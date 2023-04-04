@@ -561,6 +561,7 @@ GameObject:
   - component: {fileID: 1628377751}
   - component: {fileID: 1628377753}
   - component: {fileID: 1628377752}
+  - component: {fileID: 1628377754}
   m_Layer: 5
   m_Name: DaysLeftText
   m_TagString: Untagged
@@ -575,14 +576,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628377750}
-  m_LocalRotation: {x: 0.0019200462, y: 0.00016274127, z: 0.084456, w: 0.9964254}
+  m_LocalRotation: {x: 0.0019172821, y: 0.00019259058, z: 0.09994657, w: 0.994991}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.98337, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 216462590}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0.218, y: 0.037, z: 9.69}
+  m_LocalEulerAnglesHint: {x: 0.216, y: 0.044, z: 11.472}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -112, y: 7}
@@ -685,3 +686,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628377750}
   m_CullTransparentMesh: 1
+--- !u!114 &1628377754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628377750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 884030d5264c1d94182d9380279be604, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  daysRemainingText: {fileID: 1628377752}

@@ -461,7 +461,7 @@ public class DBDeckUIController : MonoBehaviour
         }
         GameState.Meta.justSlept.Value = true;
         GameState.Meta.withinDream.Value = false;
-        SceneManager.LoadScene("Motel");
+        SceneManager.LoadScene("DaysUntil");
     }
 
     public void Start()
