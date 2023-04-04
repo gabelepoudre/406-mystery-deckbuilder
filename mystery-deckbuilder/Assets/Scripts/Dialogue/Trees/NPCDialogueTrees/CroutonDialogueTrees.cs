@@ -353,6 +353,9 @@ public class CroutonDialogueTrees : MonoBehaviour, IDialogueTreeCollection
         "We have one week left before the berry festival, so we better act quickly"}, name:"Black Bear");
         yes.SetNext(bearIntro);
 
+        ArbitraryCodeNode finishComm = new(() => { GameState.Meta.evilInBerryCommotion.Value = false; return 1; });
+        bearIntro.SetNext(finishComm);
+
         return new DialogueTree(berriesGone);
     }
 

@@ -11,6 +11,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /*
  * The singleton class responsible for the following:
@@ -31,8 +32,12 @@ public class DialogueManager : MonoBehaviour
 
     public GameObject CurrentNPC;
 
+    public Sprite blackBearReference;
+    public Sprite elkSecretary;
+
     private DialogueTree _dialogueTree;
     private IDialogueNode _currentNode;
+    private string _talkingNPC;
 
     private Queue<string> _sentences = new();
 
@@ -84,6 +89,18 @@ public class DialogueManager : MonoBehaviour
 
         //instantiate the dialogue box prefab
         _dialogueBox = Instantiate(_dialogueBoxPrefab, new Vector3(0, -7, 0), Quaternion.identity);
+        Image headshotReference = _dialogueBox.GetComponent<DialogueBox>().npcHeadshot;
+        headshotReference.gameObject.SetActive(true);
+        NPCSetImage setImageScript = CurrentNPC.GetComponent<NPC>().gameObject.GetComponentInChildren<NPCSetImage>();
+        headshotReference.sprite = setImageScript.GetStationary();
+
+
+
+        if (NPCName != "Nibbles" && NPCName != "Marry" && NPCName != "Austyn")
+        {
+            headshotReference.transform.localScale = new Vector3(-headshotReference.transform.localScale.x, headshotReference.transform.localScale.y, headshotReference.transform.localScale.z); 
+        }
+        _dialogueBox.GetComponent<DialogueBox>().npcHeadshot.gameObject.GetComponent<EncounterImageController>().ChangeSize();
 
         GameState.Meta.dialogueActive.Value = true;
         GoToNode(_dialogueTree.root); //we start at the root node of the dialogue tree
@@ -132,10 +149,12 @@ public class DialogueManager : MonoBehaviour
                 string secondName = ((NPCNode)_currentNode).Name;
                 if (secondName is null) {
                     _dialogueBox.GetComponent<DialogueBox>().SetName(NPCName);
+                    _talkingNPC = NPCName;
                 }
                 else //for handling multiple different NPCs
                 {
                     _dialogueBox.GetComponent<DialogueBox>().SetName(secondName);
+                    _talkingNPC = secondName;
                 }
                
             }
@@ -212,6 +231,58 @@ public class DialogueManager : MonoBehaviour
 
     }
 
+    void Update()
+    {
+        if (GameState.Meta.evilInBerryCommotion.Value)
+        {
+            if (_talkingNPC != NPCName)
+            {
+                if (_talkingNPC == "Crowd")
+                {
+                    Image headshotReference = _dialogueBox.GetComponent<DialogueBox>().npcHeadshot;
+                    headshotReference.gameObject.SetActive(false);
+                }
+                else if (_talkingNPC == "Black Bear")
+                {
+                    Image headshotReference = _dialogueBox.GetComponent<DialogueBox>().npcHeadshot;
+                    headshotReference.gameObject.SetActive(true);
+                    Debug.LogWarning(headshotReference != null);
+                    Debug.LogWarning(CurrentNPC != null);
+                    headshotReference.sprite = blackBearReference;
+                    _dialogueBox.GetComponent<DialogueBox>().npcHeadshot.gameObject.GetComponent<EncounterImageController>().ChangeSize();
+                }
+                else if (_talkingNPC == "Elk Secretary")
+                {
+                    Image headshotReference = _dialogueBox.GetComponent<DialogueBox>().npcHeadshot;
+                    headshotReference.gameObject.SetActive(true);
+                    Debug.LogWarning(headshotReference != null);
+                    Debug.LogWarning(CurrentNPC != null);
+                    headshotReference.sprite = elkSecretary;
+                    _dialogueBox.GetComponent<DialogueBox>().npcHeadshot.gameObject.GetComponent<EncounterImageController>().ChangeSize();
+
+
+                }
+            }
+            else
+            {
+                Image headshotReference = _dialogueBox.GetComponent<DialogueBox>().npcHeadshot;
+                headshotReference.gameObject.SetActive(true);
+                Debug.LogWarning(headshotReference != null);
+                Debug.LogWarning(CurrentNPC != null);
+                NPCSetImage setImageScript = CurrentNPC.GetComponent<NPC>().gameObject.GetComponentInChildren<NPCSetImage>();
+                Debug.LogWarning(setImageScript != null);
+                headshotReference.sprite = setImageScript.GetStationary();
+
+
+
+                if (NPCName != "Nibbles" && NPCName != "Marry" && NPCName != "Austyn")
+                {
+                    headshotReference.transform.localScale = new Vector3(-headshotReference.transform.localScale.x, headshotReference.transform.localScale.y, headshotReference.transform.localScale.z);
+                }
+                _dialogueBox.GetComponent<DialogueBox>().npcHeadshot.gameObject.GetComponent<EncounterImageController>().ChangeSize();
+            }
+        }
+    }
 
 
     /* Enqueues all sentences contained in the current node */
@@ -246,6 +317,8 @@ public class DialogueManager : MonoBehaviour
         _currentNode = new PlayerNode(new string[]{}, node);
         NextNode();
     }
+
+
 
     private void StartEncounter()
     {

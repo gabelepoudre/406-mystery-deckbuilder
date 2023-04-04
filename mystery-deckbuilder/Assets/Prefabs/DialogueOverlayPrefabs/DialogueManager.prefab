@@ -45,7 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c63583193790f4b6c8acf836e60b94a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DialogueActive: 0
   CurrentNPC: {fileID: 0}
+  blackBearReference: {fileID: 21300000, guid: 71f6349a6f6de1349892ba01af107a97, type: 3}
+  elkSecretary: {fileID: 21300000, guid: 6d925023469342b43a6ac419c0c4599d, type: 3}
   _dialogueBoxPrefab: {fileID: 67603996440480299, guid: 5197f27ac1bb44a88b2f2168afdc497d, type: 3}
 --- !u!114 &3233293930869074380
 MonoBehaviour:

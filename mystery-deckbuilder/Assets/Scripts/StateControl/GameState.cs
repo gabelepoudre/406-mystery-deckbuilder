@@ -34,6 +34,7 @@ public static class GameState
         public static GameStateValue<GameplayPhases> currentGameplayPhase = 
             new(GameplayPhases.Tutorial, _gameStateValues);
 
+        public static GameStateValue<bool> evilInBerryCommotion = new(false, _gameStateValues);
 
         public static GameStateValue<bool> inMainMenu = new(false, new List<IGameStateValue>());  // evilly we do not reset this value
         
