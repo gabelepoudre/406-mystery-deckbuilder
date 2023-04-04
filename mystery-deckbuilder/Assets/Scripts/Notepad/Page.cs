@@ -93,5 +93,11 @@ public class Page
 
     }
 
+    public void ClearNotes()
+    {
+        this.notes.Clear();
+      
+    }
+
 
 }
