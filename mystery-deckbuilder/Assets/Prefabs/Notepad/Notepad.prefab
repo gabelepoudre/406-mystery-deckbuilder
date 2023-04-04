@@ -1646,8 +1646,8 @@ RectTransform:
   m_GameObject: {fileID: 2923378103812743088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2923378104981228587}
   m_Father: {fileID: 2923378103630993683}
@@ -3141,7 +3141,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 39d62af54b85145e8b8703d9640ebd36, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3166,13 +3166,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 27
+  m_fontSizeBase: 27
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -3205,7 +3205,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &2923378103994848732
@@ -8262,8 +8262,8 @@ RectTransform:
   m_GameObject: {fileID: 2923378104774606540}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2923378104072895852}
   - {fileID: 2923378105592434931}
@@ -10696,7 +10696,6 @@ MonoBehaviour:
   currentPageID: 0
   noteText: {fileID: 2923378104203205509}
   pageTitle: {fileID: 2923378105667777255}
-  previousPageID: 0
   headshotObject: {fileID: 2923378105592434930}
   nibblesHeadshot: {fileID: 21300000, guid: c1ae645abbeeaa54e825c9429ee7142c, type: 3}
   AustinHeadshot: {fileID: 21300000, guid: adb51fc5ec05f3040a591eb000e37f45, type: 3}
@@ -11600,7 +11599,6 @@ MonoBehaviour:
   currentPageID: 0
   noteText: {fileID: 2923378103854216551}
   pageTitle: {fileID: 2923378103992185908}
-  previousPageID: 0
   headshotObject: {fileID: 2923378104857651057}
   nibblesHeadshot: {fileID: 21300000, guid: 143458d432237e64ebb69b2c07a62140, type: 3}
   AustinHeadshot: {fileID: 21300000, guid: 143458d432237e64ebb69b2c07a62140, type: 3}
@@ -13150,8 +13148,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 39d62af54b85145e8b8703d9640ebd36, type: 2}
+  m_sharedMaterial: {fileID: -4845525113468457572, guid: 39d62af54b85145e8b8703d9640ebd36, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13181,7 +13179,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
