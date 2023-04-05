@@ -82,6 +82,7 @@ public class BlockerTutorial : MonoBehaviour
 
     public void Next()
     {
+        GameState.Meta.tutProgress.Value = count;
         switch (count)
         {
             case 0:

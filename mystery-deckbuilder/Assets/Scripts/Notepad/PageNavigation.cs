@@ -174,7 +174,26 @@ public class PageNavigation : MonoBehaviour
         currentPageID = 0;
         DisplayNotes();
         GameState.Meta.menuNotepadTabSwitch.Raise();
+    }
+    public void TutOpenSuspects()
+    {
+        try
+        {
+            if (GameState.Meta.tutProgress.Value == 24)
+            {
+                ChangedChapterSuspects();
+                Debug.Log("EEEEEEE");
+            }
 
+        }
+        catch (MissingReferenceException e)
+        {
+            GameState.Meta.tutProgress.OnChange -= TutOpenSuspects;
+        }
+        catch (NullReferenceException e)
+        {
+            GameState.Meta.tutProgress.OnChange -= TutOpenSuspects;
+        }
     }
 
     //Change the current chapter to be the Deck chapter
@@ -184,8 +203,28 @@ public class PageNavigation : MonoBehaviour
         currentChapter = chapterList[currentChapterID];
         GameState.Meta.menuNotepadTabSwitch.Raise();
     }
+    public void TutOpenDeck()
+    {
+        try
+        {
+            if (GameState.Meta.tutProgress.Value == 20)
+            {
+                ChangedChapterDeck();
+                Debug.Log("EEEEEEE");
+            }
 
-    
+        }
+        catch (MissingReferenceException e)
+        {
+            GameState.Meta.tutProgress.OnChange -= TutOpenDeck;
+        }
+        catch (NullReferenceException e)
+        {
+            GameState.Meta.tutProgress.OnChange -= TutOpenDeck;
+        }
+    }
+
+
     //Change the current chapter to be the zone chapter
     public void ChangedChapterZones()
     {
@@ -453,6 +492,27 @@ public class PageNavigation : MonoBehaviour
 
     }
 
+    public void TutOpenPause()
+    {
+        try
+        {
+            if (GameState.Meta.tutProgress.Value == 18)
+            {
+                PausePage();
+                Debug.Log("EEEEEEE");
+            }
+                
+        }
+        catch (MissingReferenceException e) 
+        {
+            GameState.Meta.tutProgress.OnChange -= TutOpenPause;
+        }
+        catch (NullReferenceException e)
+        {
+            GameState.Meta.tutProgress.OnChange -= TutOpenPause;
+        }
+    }
+
     void Start()
     {
         UpdateNotepad();
@@ -462,7 +522,10 @@ public class PageNavigation : MonoBehaviour
         }
  
         GameState.Zones.zonesVisted.OnChange += UpdateNotepad;
-        
+        GameState.Meta.tutProgress.OnChange += TutOpenPause;
+        GameState.Meta.tutProgress.OnChange += TutOpenDeck;
+        GameState.Meta.tutProgress.OnChange += TutOpenSuspects;
+
     }
 
     // Update is called once per frame
