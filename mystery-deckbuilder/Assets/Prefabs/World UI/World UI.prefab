@@ -1648,7 +1648,7 @@ PrefabInstance:
     - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
       propertyPath: nibblesHeadshot
       value: 
-      objectReference: {fileID: 21300000, guid: 37a2506d2d8622e4fa6555b6b92eee1e, type: 3}
+      objectReference: {fileID: 21300000, guid: a3afa3360f9a82444b6fdced2e4dca96, type: 3}
     - target: {fileID: 2923378105351727341, guid: 5df5620d04df24064b6284e0adc37266, type: 3}
       propertyPath: RailYardHeadshot
       value: 

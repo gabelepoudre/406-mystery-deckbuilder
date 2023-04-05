@@ -245,9 +245,9 @@ public class DialogueManager : MonoBehaviour
     {
         if (GameState.Meta.evilInBerryCommotion.Value && DialogueActive)
         {
-            if (_talkingNPC != NPCName)
+            if (_talkingNPC != NPCName && DialogueActive && _dialogueBox != null)
             {
-                if (_talkingNPC == "Crowd" || _talkingNPC == "Crowd")
+                if (_talkingNPC == "Crowd" || _talkingNPC == "?")
                 {
                     doOnce = false;
                     Image headshotReference = _dialogueBox.GetComponent<DialogueBox>().npcHeadshot;
@@ -268,6 +268,10 @@ public class DialogueManager : MonoBehaviour
                     _dialogueBox.GetComponent<DialogueBox>().npcHeadshot.gameObject.GetComponent<EncounterImageController>().ChangeSize();
 
 
+                }
+                else
+                {
+                    // do nothing
                 }
             }
             else 
